@@ -1,22 +1,25 @@
 public class Main {
     public static void main(String[] args) {
-        String nomeTecnico = "Carlos";
-        int quantidadeServicos = 5;
-        int metaMinima = 8;
-        int metaBoa = 12;
-        int metaExcelente = 15;
+        int tipoServico = 9;
 
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-
-        if (quantidadeServicos >= metaExcelente) {
-            System.out.println("Performance excelente.");
-        } else if (quantidadeServicos >= metaBoa) {
-            System.out.println("Performance boa.");
-        } else if (quantidadeServicos >= metaMinima) {
-            System.out.println("Performance mínima atingida.");
-        } else {
-            System.out.println("Meta não atingida.");
+        switch (tipoServico) {
+            case 1:
+                System.out.println("Tipo de serviço: Montagem.");
+                break;
+            case 2:
+                System.out.println("Tipo de serviço: Assistência técnica.");
+                break;
+            case 3:
+                System.out.println("Tipo de serviço: Entrega.");
+                break;
+            case 4:
+                System.out.println("Tipo de serviço: Vistoria.");
+                break;
+            case 5:
+                System.out.println("Tipo de serviço: Troca.");
+                break;
+            default:
+                System.out.println("Tipo de serviço inválido.");
         }
     }
 }

@@ -707,3 +707,92 @@ Concluída.
 
 ### Próxima aula
 Aula 2.7 - Estrutura condicional `switch`.
+
+---
+
+## Aula 2.7 - Estrutura condicional switch
+
+### O que foi feito
+- Estudada a estrutura condicional `switch`.
+- Praticado o uso de `case`.
+- Praticado o uso de `break`.
+- Praticado o uso de `default`.
+- Testado o comportamento sem `break`, conhecido como fall-through.
+- Criado um exemplo com opções de menu.
+- Criado um exemplo com status de ordem de serviço.
+- Criado um exercício de tipo de serviço.
+- Testados os cenários `tipoServico = 1`, `tipoServico = 2`, `tipoServico = 5` e `tipoServico = 9`.
+- Atualizado o arquivo `atalhos.txt` com o atalho `Shift` duas vezes.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        int tipoServico = 9;
+
+        switch (tipoServico) {
+            case 1:
+                System.out.println("Tipo de serviço: Montagem.");
+                break;
+            case 2:
+                System.out.println("Tipo de serviço: Assistência técnica.");
+                break;
+            case 3:
+                System.out.println("Tipo de serviço: Entrega.");
+                break;
+            case 4:
+                System.out.println("Tipo de serviço: Vistoria.");
+                break;
+            case 5:
+                System.out.println("Tipo de serviço: Troca.");
+                break;
+            default:
+                System.out.println("Tipo de serviço inválido.");
+        }
+    }
+}
+```
+
+### Resultados obtidos
+```text
+Cenário 1:
+tipoServico = 1
+Resultado: Tipo de serviço: Montagem.
+
+Cenário 2:
+tipoServico = 2
+Resultado: Tipo de serviço: Assistência técnica.
+
+Cenário 3:
+tipoServico = 5
+Resultado: Tipo de serviço: Troca.
+
+Cenário 4:
+tipoServico = 9
+Resultado: Tipo de serviço inválido.
+```
+
+### O que foi aprendido
+- `switch` é usado quando uma variável precisa ser comparada com valores fixos.
+- `case` representa uma possibilidade de valor.
+- `break` encerra a execução do `switch` após encontrar o caso correspondente.
+- `default` é executado quando nenhum `case` atende ao valor informado.
+- Sem `break`, o Java pode continuar executando os próximos casos.
+- Esse comportamento é chamado de fall-through.
+- `switch` é útil para status, tipos, categorias, opções de menu e códigos fixos.
+
+### Dificuldades encontradas
+- Foi necessário entender a importância do `break`.
+- Foi necessário testar o valor inválido para validar o `default`.
+
+### Como foi resolvido
+- Testados diferentes valores de `tipoServico`.
+- Confirmado que cada `case` executa a saída correta.
+- Confirmado que `tipoServico = 9` cai no `default`.
+- Validada a execução no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.8 - Entrada de dados com Scanner.

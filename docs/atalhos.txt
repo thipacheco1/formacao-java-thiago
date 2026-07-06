@@ -81,3 +81,9 @@ Shift + Tab
 
 Uso:
 Ajuda a organizar blocos de código dentro de if, else, métodos e classes.
+
+18. Buscar em qualquer lugar do projeto
+Shift duas vezes
+
+Uso:
+Abre a busca global do IntelliJ para encontrar arquivos, classes, configurações, ações e símbolos.
