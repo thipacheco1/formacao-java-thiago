@@ -4,82 +4,72 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do técnico:");
-        String nomeTecnico = scanner.nextLine();
+        System.out.println("Digite o nome do Cliente : ");
+        String nomeCliente = scanner.nextLine();
 
-        System.out.println("Digite o tipo de serviço:");
-        System.out.println("1 - Montagem");
-        System.out.println("2 - Assistência técnica");
-        System.out.println("3 - Entrega");
-        System.out.println("4 - Vistoria");
-        System.out.println("5 - Troca");
-        int tipoServico = scanner.nextInt();
+        System.out.println("Digite o Status da OS:");
+        System.out.println("1 - Aberta");
+        System.out.println("2 - Agendada");
+        System.out.println("3 - Em Atendimento");
+        System.out.println("4 - Concluida");
+        System.out.println("5 - Cancelada");
+        int statusOs = scanner.nextInt();
 
-        System.out.println("Digite a quantidade de serviços:");
-        int quantidadeServicos = scanner.nextInt();
+        System.out.println("Digite o valor do serviço:");
+        double valorServico = scanner.nextDouble();
 
-        System.out.println("Digite a meta de serviços:");
-        int metaServicos = scanner.nextInt();
+        System.out.println("Cliente ativo? true/false");
+        boolean clienteAtivo = scanner.nextBoolean();
 
-        System.out.println("Digite o valor por serviço:");
-        double valorPorServico = scanner.nextDouble();
+        System.out.println("Possui Pendencia? true/false");
+        boolean possuiPendencia = scanner.nextBoolean();
 
-        System.out.println("O técnico está ativo? true/false");
-        boolean tecnicoAtivo = scanner.nextBoolean();
+        String descricaoStatusOs;
 
-        System.out.println("O técnico possui bloqueio? true/false");
-        boolean possuiBloqueio = scanner.nextBoolean();
-
-        String descricaoTipoServico;
-
-        switch (tipoServico) {
+        switch (statusOs) {
             case 1:
-                descricaoTipoServico = "Montagem";
+                descricaoStatusOs = "Aberta";
                 break;
             case 2:
-                descricaoTipoServico = "Assistência técnica";
+                descricaoStatusOs = "Agendada";
                 break;
             case 3:
-                descricaoTipoServico = "Entrega";
+                descricaoStatusOs = "Em atendimento";
                 break;
             case 4:
-                descricaoTipoServico = "Vistoria";
+                descricaoStatusOs = "Concluída";
                 break;
             case 5:
-                descricaoTipoServico = "Troca";
+                descricaoStatusOs = "Cancelada";
                 break;
             default:
-                descricaoTipoServico = "Tipo inválido";
+                descricaoStatusOs = "Status inválido";
         }
 
-        double totalBruto = quantidadeServicos * valorPorServico;
-        boolean atingiuMeta = quantidadeServicos >= metaServicos;
-        boolean podeReceberBonus = atingiuMeta && tecnicoAtivo && !possuiBloqueio;
+        boolean podeSeguirAtendimento = clienteAtivo && !possuiPendencia && statusOs == 2;
 
-        String classificacaoPerformance;
 
-        if (quantidadeServicos >= 15) {
-            classificacaoPerformance = "Excelente";
-        } else if (quantidadeServicos >= 10) {
-            classificacaoPerformance = "Boa";
-        } else if (quantidadeServicos >= 5) {
-            classificacaoPerformance = "Regular";
+        String classificacaoValor;
+
+        if (valorServico  >= 500) {
+            classificacaoValor = "Serviço de alto valor";
+        } else if (valorServico  >= 200) {
+            classificacaoValor = "Serviço de médio valor";
+        } else if (valorServico  >0) {
+            classificacaoValor = "Serviço de baixo valor";
         } else {
-            classificacaoPerformance = "Baixa";
+            classificacaoValor = "Valor inválido";
         }
 
         System.out.println("----- Resultado da Análise -----");
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Tipo de serviço: " + descricaoTipoServico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Meta de serviços: " + metaServicos);
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Total bruto: R$ " + totalBruto);
-        System.out.println("Técnico ativo? " + tecnicoAtivo);
-        System.out.println("Possui bloqueio? " + possuiBloqueio);
-        System.out.println("Atingiu a meta? " + atingiuMeta);
-        System.out.println("Pode receber bônus? " + podeReceberBonus);
-        System.out.println("Classificação de performance: " + classificacaoPerformance);
+        System.out.println("Nome do cliente: " + nomeCliente);
+        System.out.println("Status da OS: " + descricaoStatusOs);
+        System.out.println("Valor do serviço: " + valorServico);
+        System.out.println("Cliente Ativo? " + clienteAtivo);
+        System.out.println("Possui pendencia? " + possuiPendencia);
+
+        System.out.println("Pode seguir para atendimento? " + podeSeguirAtendimento);
+        System.out.println("Classificação do valor: " + classificacaoValor);
 
         scanner.close();
     }

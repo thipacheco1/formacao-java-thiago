@@ -998,3 +998,101 @@ Concluída.
 ### Próxima aula
 Aula 2.10 - Revisão do Módulo 2 e preparação para laços de repetição.
 
+---
+
+## Aula 2.10 - Revisão do Módulo 2 e preparação para laços de repetição
+
+### O que foi feito
+- Revisados os principais conceitos do Módulo 2.
+- Respondidas perguntas teóricas sobre atribuição, comparação, operadores lógicos, switch, break, nextLine e nextInt.
+- Criado um exercício prático chamado Sistema de aprovação de OS.
+- Utilizada entrada de dados com Scanner.
+- Lidos dados do cliente, status da OS, valor do serviço, cliente ativo e pendência.
+- Utilizado switch para traduzir o status da OS.
+- Criada regra booleana para verificar se a OS pode seguir para atendimento.
+- Utilizado if, else if e else para classificar o valor do serviço.
+- Testado cenário positivo.
+- Testado cenário negativo com pendência ativa.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- import java.util.Scanner;
+- Scanner scanner = new Scanner(System.in);
+- String para nome do cliente;
+- int para status da OS;
+- double para valor do serviço;
+- boolean para cliente ativo e pendência;
+- switch para descrição do status da OS;
+- operador lógico &&;
+- operador de negação !;
+- comparação statusOs == 2;
+- if, else if e else para classificação do valor;
+- scanner.close();
+
+### Regra principal validada
+A OS pode seguir para atendimento somente quando:
+- cliente está ativo;
+- cliente não possui pendência;
+- status da OS é igual a 2, ou seja, Agendada.
+
+Regra usada:
+boolean podeSeguirAtendimento = clienteAtivo && !possuiPendencia && statusOs == 2;
+
+### Cenário positivo testado
+Dados:
+- Nome do cliente: maria
+- Status da OS: 2
+- Valor do serviço: 350.0
+- Cliente ativo: true
+- Possui pendência: false
+
+Resultado:
+- Status da OS: Agendada
+- Pode seguir para atendimento? true
+- Classificação do valor: Serviço de médio valor
+
+### Cenário negativo testado
+Dados:
+- Nome do cliente: maria
+- Status da OS: 2
+- Valor do serviço: 350.0
+- Cliente ativo: true
+- Possui pendência: true
+
+Resultado:
+- Status da OS: Agendada
+- Cliente ativo? true
+- Possui pendência? true
+- Pode seguir para atendimento? false
+- Classificação do valor: Serviço de médio valor
+
+### O que foi aprendido
+- A diferença entre atribuição com = e comparação com ==.
+- Como combinar regras booleanas com &&.
+- Como inverter uma regra booleana usando !.
+- Quando usar switch para valores fixos.
+- Quando usar if para regras condicionais e faixas de valor.
+- A importância do break no switch tradicional.
+- A diferença entre nextLine e nextInt.
+- Como transformar uma regra de negócio simples em código Java.
+- Como validar cenários positivo e negativo.
+
+### Dificuldades encontradas
+- Foi necessário ajustar a saída do console para exibir a descrição do status da OS em vez do número.
+- Foi necessário remover o R$ da impressão de pendência, pois pendência é boolean e não valor monetário.
+- Foi necessário validar que uma OS agendada não pode seguir quando existe pendência ativa.
+
+### Como foi resolvido
+- Utilizada a variável descricaoStatusOs no resultado final.
+- Corrigida a impressão de possuiPendencia.
+- Testado o cenário negativo com status 2, cliente ativo e pendência true.
+- Confirmado que o resultado correto foi false.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.1 - Introdução aos laços de repetição.
