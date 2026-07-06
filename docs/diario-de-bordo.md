@@ -2317,3 +2317,147 @@ Concluída.
 ### Próxima aula
 Aula 3.10 - Revisão final do Módulo 3 e preparação para arrays.
 
+---
+
+## Aula 3.10 - Revisão final do Módulo 3 e preparação para arrays
+
+### O que foi feito
+- Realizada a revisão final dos principais conceitos do Módulo 3.
+- Revisados os laços for, while e do while.
+- Revisados os comandos break e continue.
+- Revisados os conceitos de contador, acumulador local e acumulador geral.
+- Revisado o uso de Scanner com nextInt e nextLine.
+- Revisado o uso de switch no exercício integrador.
+- Realizado exercício prático para demonstrar a limitação de variáveis repetidas antes do estudo de arrays.
+- Preparada a transição do Módulo 3 para o Módulo 4.
+
+### Conceitos revisados
+- for
+- while
+- do while
+- break
+- continue
+- Scanner
+- scanner.nextInt
+- scanner.nextLine
+- contador
+- acumulador local
+- acumulador geral
+- switch
+- if
+- validação
+- repetição
+- preparação para arrays
+
+### Revisão conceitual
+for:
+- usado quando sabemos ou controlamos a quantidade de repetições.
+
+while:
+- usado quando queremos repetir enquanto uma condição for verdadeira.
+- útil quando não sabemos quantas vezes o usuário pode errar ou quantas vezes a condição pode acontecer.
+
+do while:
+- usado quando o bloco precisa executar pelo menos uma vez.
+- muito útil para menus.
+
+break:
+- usado para interromper o laço inteiro.
+- exemplo: parar o processamento ao encontrar uma atividade bloqueada.
+
+continue:
+- usado para pular apenas a repetição atual.
+- exemplo: ignorar uma atividade pendente, cancelada ou inválida e continuar as próximas.
+
+### Acumulador local e acumulador geral
+Acumulador local:
+- guarda informações apenas do processamento atual.
+- exemplo: total da OS atual.
+
+Acumulador geral:
+- guarda informações consolidadas de todo o sistema.
+- exemplo: total de todas as OS processadas.
+
+### scanner.nextLine após scanner.nextInt
+O scanner.nextInt lê apenas o número e deixa o Enter pendente.
+
+Quando o programa precisa ler um texto logo depois, usamos scanner.nextLine para limpar esse Enter antes de ler a String.
+
+### Revisão da Aula 3.9
+No exercício da Aula 3.9:
+- a atividade 4 do Carlos não foi processada porque a atividade 3 estava bloqueada;
+- ao encontrar a atividade bloqueada, o sistema executou break;
+- o break interrompeu o for;
+- por isso, a próxima atividade não foi lida nem processada.
+
+O switch foi usado para traduzir o código do status da atividade:
+- 1 - Concluída
+- 2 - Pendente
+- 3 - Cancelada
+- 4 - Bloqueada
+- Outro valor - Status inválido
+
+O while foi usado para validar a quantidade de atividades, pedindo novamente quando o valor informado era menor ou igual a zero.
+
+### Exercício prático
+Foi criado um programa com cinco valores fixos de atividades:
+- atividade1 = 100.0
+- atividade2 = 200.0
+- atividade3 = 0.0
+- atividade4 = 150.0
+- atividade5 = -50.0
+
+Regras:
+- valores maiores que zero entram no total;
+- valores menores ou iguais a zero são inválidos;
+- ao final, o sistema mostra total final, atividades válidas e atividades inválidas.
+
+### Resultado validado
+- Total final: R$ 450.0
+- Atividades válidas: 3
+- Atividades inválidas: 2
+- Execução finalizada com exit code 0
+
+### Explicação do resultado
+Entraram no total:
+- 100.0
+- 200.0
+- 150.0
+
+Não entraram no total:
+- 0.0
+- -50.0
+
+Cálculo:
+- 100.0 + 200.0 + 150.0 = 450.0
+
+### Limitação percebida
+O código funcionou, mas ficou repetitivo.
+
+Foi necessário criar:
+- atividade1
+- atividade2
+- atividade3
+- atividade4
+- atividade5
+
+Também foi necessário repetir vários blocos if.
+
+Se fossem 100 atividades, o código ficaria muito grande e difícil de manter.
+
+### Preparação para arrays
+A aula preparou o próximo módulo.
+
+A ideia principal é:
+- em vez de criar várias variáveis separadas;
+- vamos aprender a guardar vários valores dentro de uma única estrutura.
+
+Essa estrutura será o array.
+
+### Status
+Concluída.
+
+### Próxima aula
+Módulo 4 - Arrays.
+
+

@@ -4943,3 +4943,236 @@ Mesmo assim, a lógica central seria parecida:
 - O sistema interrompeu OS bloqueada.
 - O sistema manteve resumo geral.
 - O resultado final consolidou corretamente todas as OS.
+
+
+---
+
+## Aula 3.10 - Revisão final do Módulo 3 e preparação para arrays
+
+### Objetivo da aula
+Fechar o Módulo 3 com uma revisão geral dos laços de repetição e preparar a transição para arrays.
+
+Nesta aula foram revisados:
+- for
+- while
+- do while
+- break
+- continue
+- Scanner
+- if
+- switch
+- contador
+- acumulador
+- validação
+- menu
+- resumo local
+- resumo geral
+
+Também foi feito um exercício propositalmente repetitivo para mostrar por que arrays serão necessários no próximo módulo.
+
+### Quando usar for
+Use for quando você sabe ou controla a quantidade de repetições.
+
+Exemplo mental:
+- tenho 5 atividades;
+- quero processar da atividade 1 até a atividade 5.
+
+Nesse caso, o for é a estrutura mais natural.
+
+### Quando usar while
+Use while quando você quer repetir enquanto uma condição for verdadeira, mas não sabe quantas vezes isso vai acontecer.
+
+Exemplo mental:
+- enquanto a quantidade digitada for inválida, peça novamente.
+
+O usuário pode errar uma vez, várias vezes ou nenhuma.
+
+### Quando usar do while
+Use do while quando o bloco precisa executar pelo menos uma vez.
+
+Exemplo mental:
+- mostrar o menu pelo menos uma vez;
+- depois verificar se o usuário quer continuar.
+
+Por isso, do while combina muito com menus.
+
+### Quando usar break
+Use break quando precisa parar o laço inteiro.
+
+Exemplo:
+- encontrou uma atividade bloqueada;
+- não pode continuar processando a OS;
+- interrompe o laço.
+
+O break encerra o laço imediatamente.
+
+### Quando usar continue
+Use continue quando precisa ignorar apenas o item atual, mas continuar processando os próximos.
+
+Exemplo:
+- atividade pendente;
+- atividade cancelada;
+- atividade com valor inválido.
+
+A atividade atual não entra na regra, mas as próximas ainda podem ser analisadas.
+
+### Acumulador local
+Acumulador local guarda informações apenas do processamento atual.
+
+Exemplo:
+- total da OS atual;
+- atividades processadas da OS atual;
+- atividades inválidas da OS atual.
+
+Quando começa uma nova OS, esses valores são reiniciados.
+
+### Acumulador geral
+Acumulador geral guarda informações consolidadas de todo o sistema.
+
+Exemplo:
+- total de todas as OS processadas;
+- total geral financeiro;
+- total geral de atividades inválidas;
+- total geral de OS bloqueadas.
+
+Esses valores ficam fora do processamento individual e continuam acumulando.
+
+### scanner.nextLine depois de scanner.nextInt
+O scanner.nextInt lê apenas o número.
+
+Ele não consome completamente o Enter digitado pelo usuário.
+
+Quando logo depois usamos scanner.nextLine para ler texto, esse Enter pendente pode atrapalhar a leitura.
+
+Por isso, usamos scanner.nextLine depois de scanner.nextInt para limpar o buffer antes de ler uma String.
+
+### Revisão do exercício integrador da Aula 3.9
+No exercício da Aula 3.9, a atividade 4 do Carlos não foi processada porque a atividade 3 estava bloqueada.
+
+Quando o sistema encontrou a atividade bloqueada:
+- marcou houveBloqueio como true;
+- exibiu a mensagem de bloqueio;
+- executou break;
+- interrompeu o for.
+
+Por isso, a atividade seguinte não foi lida nem processada.
+
+### Papel do switch na Aula 3.9
+O switch foi usado para traduzir o código do status da atividade.
+
+Mapeamento:
+- 1 - Concluída
+- 2 - Pendente
+- 3 - Cancelada
+- 4 - Bloqueada
+- outro valor - Status inválido
+
+O switch deixou a tradução do status mais organizada.
+
+### Papel do while na Aula 3.9
+O while foi usado para validar a quantidade de atividades.
+
+Se o usuário digitasse uma quantidade menor ou igual a zero, o sistema pedia novamente.
+
+O programa só continuava quando a quantidade fosse válida.
+
+Esse é um caso clássico de uso de while.
+
+### Exercício prático da Aula 3.10
+Foi criado um programa com cinco atividades fixas:
+
+- atividade1 = 100.0
+- atividade2 = 200.0
+- atividade3 = 0.0
+- atividade4 = 150.0
+- atividade5 = -50.0
+
+Regras:
+- atividades com valor maior que zero entram no total;
+- atividades com valor menor ou igual a zero são inválidas;
+- ao final, o sistema exibe o total final, a quantidade de válidas e a quantidade de inválidas.
+
+### Resultado validado
+O programa exibiu:
+- Total final: R$ 450.0
+- Atividades válidas: 3
+- Atividades inválidas: 2
+
+Explicação:
+- 100.0 entrou no total;
+- 200.0 entrou no total;
+- 0.0 foi inválido;
+- 150.0 entrou no total;
+- -50.0 foi inválido.
+
+Total:
+- 100.0 + 200.0 + 150.0 = 450.0
+
+### Por que esse exercício foi propositalmente repetitivo
+O código funcionou, mas ficou repetitivo.
+
+Foi necessário criar variáveis separadas:
+- atividade1
+- atividade2
+- atividade3
+- atividade4
+- atividade5
+
+Também foi necessário repetir blocos if para cada atividade.
+
+Isso mostra uma limitação importante:
+- com poucas atividades, funciona;
+- com muitas atividades, fica ruim;
+- com 100 atividades, seria inviável manter assim.
+
+### Ponte para arrays
+Arrays vão resolver esse problema.
+
+A ideia de array é guardar vários valores do mesmo tipo em uma única estrutura.
+
+Exemplo conceitual:
+- valoresAtividades = 100, 200, 0, 150, -50
+
+Em vez de criar uma variável para cada atividade, vamos guardar tudo em uma estrutura só.
+
+Depois, vamos usar for para percorrer essa estrutura.
+
+### Relação entre Módulo 3 e Módulo 4
+O Módulo 3 ensinou como repetir ações.
+
+O Módulo 4 vai ensinar como guardar vários valores e percorrer esses valores.
+
+A combinação será:
+- array para guardar os dados;
+- for para percorrer os dados;
+- if para validar os dados;
+- acumulador para somar os dados.
+
+### Aprendizado principal
+O principal aprendizado da aula foi perceber que os laços resolvem parte do problema, mas não resolvem tudo sozinhos.
+
+Para processar muitos valores de forma organizada, precisamos de uma estrutura para armazenar esses valores.
+
+Essa estrutura será estudada no próximo módulo: arrays.
+
+### Resumo do Módulo 3
+No Módulo 3 foram estudados:
+- for
+- while
+- do while
+- break
+- continue
+- menus
+- validações
+- contadores
+- acumuladores
+- processamento de múltiplos itens
+- resumo local
+- resumo geral
+
+Esse módulo criou a base para processamentos repetitivos em Java.
+
+### Encerramento
+O Módulo 3 foi concluído com sucesso.
+
+A próxima etapa da formação será o Módulo 4, começando por arrays.
