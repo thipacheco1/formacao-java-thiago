@@ -4382,3 +4382,378 @@ Erros comuns:
 - Valores inválidos não foram somados.
 - O resumo final refletiu tudo que foi processado.
 
+---
+
+## Aula 3.8 - Controle de fluxo com break e continue
+
+### Objetivo da aula
+Aprender dois comandos de controle de fluxo usados dentro de laços de repetição:
+- break
+- continue
+
+Esses comandos permitem controlar o comportamento do laço quando uma regra específica acontece.
+
+### O que é break
+O break serve para interromper o laço inteiro imediatamente.
+
+Quando o Java encontra um break dentro de um laço, ele sai do laço na hora.
+
+Exemplo conceitual:
+- percorra os números de 1 até 10;
+- se encontrar o número 5, pare tudo.
+
+Resultado:
+- processa 1, 2, 3 e 4;
+- ao chegar no 5, interrompe;
+- não processa 6, 7, 8, 9 e 10.
+
+### O que é continue
+O continue serve para pular apenas a repetição atual.
+
+Quando o Java encontra um continue, ele ignora o restante do bloco naquela repetição e vai para a próxima volta do laço.
+
+Exemplo conceitual:
+- percorra os números de 1 até 10;
+- se encontrar o número 5, ignore esse número;
+- continue processando os próximos.
+
+Resultado:
+- processa 1, 2, 3 e 4;
+- ignora 5;
+- continua processando 6, 7, 8, 9 e 10.
+
+### Diferença entre break e continue
+break:
+- interrompe o laço inteiro;
+- nenhuma próxima repetição é executada;
+- usado quando existe uma regra crítica ou condição de parada.
+
+continue:
+- pula apenas a repetição atual;
+- o laço continua na próxima repetição;
+- usado quando um item específico deve ser ignorado.
+
+Resumo simples:
+- break para tudo;
+- continue pula só o item atual.
+
+### Exemplo simples com break
+Exemplo conceitual:
+
+    for (int numero = 1; numero <= 10; numero++) {
+        if (numero == 5) {
+            System.out.println("Número 5 encontrado. Parando o laço.");
+            break;
+        }
+
+        System.out.println("Número atual: " + numero);
+    }
+
+Resultado esperado:
+- Número atual: 1
+- Número atual: 2
+- Número atual: 3
+- Número atual: 4
+- Número 5 encontrado. Parando o laço.
+
+O número 5 não é processado como número atual porque o break acontece antes da impressão.
+
+### Exemplo simples com continue
+Exemplo conceitual:
+
+    for (int numero = 1; numero <= 10; numero++) {
+        if (numero == 5) {
+            System.out.println("Número 5 ignorado.");
+            continue;
+        }
+
+        System.out.println("Número atual: " + numero);
+    }
+
+Resultado esperado:
+- Número atual: 1
+- Número atual: 2
+- Número atual: 3
+- Número atual: 4
+- Número 5 ignorado.
+- Número atual: 6
+- Número atual: 7
+- Número atual: 8
+- Número atual: 9
+- Número atual: 10
+
+O número 5 foi ignorado, mas o laço continuou.
+
+### Quando usar continue
+Use continue quando um item deve ser ignorado, mas os próximos ainda devem ser processados.
+
+Exemplos:
+- ignorar atividade com valor zero;
+- ignorar cliente inativo;
+- ignorar produto sem estoque;
+- ignorar transação inválida;
+- ignorar item cancelado;
+- pular linha vazia de um arquivo;
+- pular registro inválido de uma importação.
+
+Ideia em português:
+- se este item é inválido, pule este item;
+- continue processando os próximos.
+
+### Quando usar break
+Use break quando o processamento inteiro deve ser interrompido.
+
+Exemplos:
+- parar ao encontrar uma atividade bloqueada;
+- parar ao encontrar erro crítico;
+- parar quando encontrar o item procurado;
+- parar quando o usuário escolher sair;
+- parar quando atingir um limite;
+- parar quando uma regra impedir a continuação.
+
+Ideia em português:
+- se encontrou erro crítico, pare o processamento inteiro.
+
+### Exemplo com OS usando continue
+Cenário:
+- uma OS possui 5 atividades;
+- cada atividade tem um valor;
+- se o valor for menor ou igual a zero, a atividade deve ser ignorada;
+- atividades válidas entram no total.
+
+Exemplo conceitual:
+
+    double totalOs = 0.0;
+
+    for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
+        double valorAtividade = 100.00;
+
+        if (atividadeAtual == 3) {
+            valorAtividade = 0.0;
+        }
+
+        if (valorAtividade <= 0) {
+            System.out.println("Atividade " + atividadeAtual + " inválida. Pulando processamento.");
+            continue;
+        }
+
+        totalOs = totalOs + valorAtividade;
+
+        System.out.println("Atividade " + atividadeAtual + " processada.");
+        System.out.println("Total parcial da OS: R$ " + totalOs);
+    }
+
+    System.out.println("Total final da OS: R$ " + totalOs);
+
+Nesse exemplo, a atividade 3 é ignorada, mas as atividades 4 e 5 continuam sendo processadas.
+
+### Exemplo com OS usando break
+Cenário:
+- se encontrar uma atividade bloqueada, o processamento da OS deve parar.
+
+Exemplo conceitual:
+
+    double totalOs = 0.0;
+
+    for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
+        boolean atividadeBloqueada = atividadeAtual == 4;
+
+        if (atividadeBloqueada) {
+            System.out.println("Atividade " + atividadeAtual + " bloqueada.");
+            System.out.println("Processamento da OS interrompido.");
+            break;
+        }
+
+        totalOs = totalOs + 100.00;
+
+        System.out.println("Atividade " + atividadeAtual + " processada.");
+        System.out.println("Total parcial da OS: R$ " + totalOs);
+    }
+
+    System.out.println("Total final da OS: R$ " + totalOs);
+
+Nesse exemplo:
+- atividades 1, 2 e 3 são processadas;
+- atividade 4 bloqueia;
+- atividade 5 nem chega a ser analisada.
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Processador de OS com break e continue.
+
+O programa simula 6 atividades.
+
+Regras:
+- cada atividade começa com valor padrão de R$ 100.00;
+- a atividade 2 possui valor 0.0;
+- atividade com valor menor ou igual a zero deve ser ignorada;
+- atividade ignorada usa continue;
+- a atividade 6 foi configurada como bloqueada no teste adicional;
+- atividade bloqueada interrompe o processamento com break;
+- atividades válidas entram no total;
+- o sistema exibe um resumo final.
+
+### Código praticado
+Código final da aula:
+
+    public class Main {
+        public static void main(String[] args) {
+            int quantidadeAtividades = 6;
+            double totalOs = 0.0;
+            int atividadesProcessadas = 0;
+            int atividadesIgnoradas = 0;
+            boolean houveBloqueio = false;
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                double valorAtividade = 100.00;
+                boolean atividadeBloqueada = atividadeAtual == 6;
+
+                if (atividadeAtual == 2) {
+                    valorAtividade = 0.0;
+                }
+
+                if (valorAtividade <= 0) {
+                    atividadesIgnoradas++;
+
+                    System.out.println("Atividade " + atividadeAtual + " inválida. Valor não será somado.");
+                    continue;
+                }
+
+                if (atividadeBloqueada) {
+                    houveBloqueio = true;
+
+                    System.out.println("Atividade " + atividadeAtual + " bloqueada.");
+                    System.out.println("Processamento interrompido.");
+                    break;
+                }
+
+                totalOs = totalOs + valorAtividade;
+                atividadesProcessadas++;
+
+                System.out.println("Atividade " + atividadeAtual + " processada.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("----- Resumo da OS -----");
+            System.out.println("Total processado: R$ " + totalOs);
+            System.out.println("Atividades processadas: " + atividadesProcessadas);
+            System.out.println("Atividades ignoradas: " + atividadesIgnoradas);
+            System.out.println("Houve bloqueio? " + houveBloqueio);
+        }
+    }
+
+### Resultado validado
+Configuração:
+- quantidade de atividades: 6;
+- atividade inválida: 2;
+- atividade bloqueada: 6;
+- valor padrão por atividade: R$ 100.00.
+
+Resultado:
+- Atividade 1 processada.
+- Atividade 2 inválida. Valor não será somado.
+- Atividade 3 processada.
+- Atividade 4 processada.
+- Atividade 5 processada.
+- Atividade 6 bloqueada.
+- Processamento interrompido.
+- Total processado: R$ 400.0.
+- Atividades processadas: 4.
+- Atividades ignoradas: 1.
+- Houve bloqueio? true.
+
+### Explicação do resultado
+Atividade 1:
+- valor 100;
+- processada;
+- total passa para 100.
+
+Atividade 2:
+- valor 0;
+- inválida;
+- incrementa atividadesIgnoradas;
+- executa continue;
+- não soma no total.
+
+Atividade 3:
+- valor 100;
+- processada;
+- total passa para 200.
+
+Atividade 4:
+- valor 100;
+- processada;
+- total passa para 300.
+
+Atividade 5:
+- valor 100;
+- processada;
+- total passa para 400.
+
+Atividade 6:
+- bloqueada;
+- houveBloqueio vira true;
+- executa break;
+- processamento é interrompido.
+
+### Ordem dos if
+A ordem dos if importa.
+
+No exercício, a ordem foi:
+- definir valor padrão;
+- identificar se atividade 2 deve ter valor zero;
+- verificar se valor é inválido;
+- verificar se atividade está bloqueada;
+- processar atividade válida.
+
+Se a atividade for inválida, o continue pula para a próxima repetição.
+
+Se a atividade for bloqueada, o break encerra o laço.
+
+### Relação com backend
+break e continue aparecem em várias situações de backend.
+
+continue pode ser usado quando:
+- um item é inválido, mas os próximos ainda devem ser processados;
+- uma linha de arquivo está vazia;
+- um registro importado possui erro não crítico;
+- um cliente está inativo;
+- uma transação deve ser ignorada.
+
+break pode ser usado quando:
+- ocorre erro crítico;
+- uma regra impede continuação;
+- um item obrigatório está bloqueado;
+- o sistema encontrou o registro procurado;
+- não faz mais sentido continuar o processamento.
+
+### Aprendizado principal
+O principal aprendizado foi entender que nem toda repetição precisa ir até o fim da mesma forma.
+
+Às vezes, um item deve ser ignorado.
+
+Às vezes, o processamento inteiro deve parar.
+
+Para isso:
+- use continue para pular um item;
+- use break para interromper tudo.
+
+### Erros comuns
+Erros comuns com break e continue:
+- usar break quando queria apenas ignorar um item;
+- usar continue quando deveria interromper tudo;
+- colocar continue antes de atualizar contadores necessários;
+- colocar break antes de registrar o motivo do bloqueio;
+- não testar o que acontece depois de um item inválido;
+- não testar o que acontece depois de um bloqueio;
+- esquecer que break encerra o laço inteiro;
+- esquecer que continue pula o restante da repetição atual.
+
+### Resumo da aula
+- break interrompe o laço inteiro.
+- continue pula apenas a repetição atual.
+- continue é útil para ignorar itens inválidos.
+- break é útil para interromper processamento crítico.
+- A ordem dos if influencia o resultado.
+- Atividades inválidas foram ignoradas.
+- Atividade bloqueada interrompeu o processamento.
+- O resumo final refletiu apenas atividades realmente processadas.

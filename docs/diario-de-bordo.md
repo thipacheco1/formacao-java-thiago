@@ -2061,3 +2061,131 @@ Concluída.
 ### Próxima aula
 Aula 3.8 - Controle de fluxo com break e continue.
 
+---
+
+## Aula 3.8 - Controle de fluxo com break e continue
+
+### O que foi feito
+- Estudado o controle de fluxo dentro de laços de repetição.
+- Aprendido o uso do comando break.
+- Aprendido o uso do comando continue.
+- Entendida a diferença entre interromper um laço inteiro e pular apenas uma repetição.
+- Testado exemplo simples com break no número 5.
+- Testado exemplo simples com continue no número 5.
+- Testado exemplo de OS usando continue para ignorar atividade inválida.
+- Testado exemplo de OS usando break para interromper processamento em caso de bloqueio.
+- Criado exercício final chamado Processador de OS com break e continue.
+- Simulada uma OS com 6 atividades.
+- Configurada atividade 2 como inválida.
+- Configurada atividade 6 como bloqueada no teste adicional.
+- Validado total processado, atividades processadas, atividades ignoradas e bloqueio.
+
+### Conceitos usados
+- for
+- if
+- continue
+- break
+- contador
+- acumulador
+- boolean
+- regra de bloqueio
+- regra de atividade inválida
+- total processado
+- atividades processadas
+- atividades ignoradas
+
+### Regras praticadas
+O sistema simulou 6 atividades.
+
+Regras:
+- cada atividade começa com valor padrão de R$ 100.00;
+- a atividade 2 possui valor 0.0;
+- atividade com valor menor ou igual a zero deve ser ignorada;
+- atividade ignorada usa continue;
+- a atividade 6 foi configurada como bloqueada no teste adicional;
+- atividade bloqueada interrompe o processamento com break;
+- atividades válidas entram no total;
+- o sistema exibe um resumo final.
+
+### Resultado obtido no teste adicional
+Configuração:
+- quantidadeAtividades: 6
+- atividade inválida: 2
+- atividade bloqueada: 6
+- valor padrão por atividade: R$ 100.00
+
+Resultado:
+- Atividade 1 processada.
+- Atividade 2 inválida. Valor não será somado.
+- Atividade 3 processada.
+- Atividade 4 processada.
+- Atividade 5 processada.
+- Atividade 6 bloqueada.
+- Processamento interrompido.
+- Total processado: R$ 400.0
+- Atividades processadas: 4
+- Atividades ignoradas: 1
+- Houve bloqueio? true
+- Execução finalizada com exit code 0
+
+### O que foi aprendido
+- break interrompe o laço inteiro imediatamente.
+- continue pula apenas a repetição atual.
+- Após o continue, o restante do bloco não é executado naquela repetição.
+- Após o break, nenhuma próxima repetição do laço é executada.
+- continue é útil para ignorar itens inválidos e continuar processando os próximos.
+- break é útil para parar o processamento quando existe uma regra crítica.
+- A ordem dos if dentro do laço influencia o comportamento do programa.
+- Contadores podem registrar quantos itens foram processados ou ignorados.
+- Um boolean pode registrar se houve bloqueio durante o processamento.
+- Esse tipo de controle é comum em regras de backend.
+
+### Diferença entre break e continue
+break:
+- para o laço inteiro;
+- impede que as próximas repetições aconteçam;
+- usado quando existe uma regra crítica ou condição de parada.
+
+continue:
+- pula apenas a repetição atual;
+- continua o laço na próxima repetição;
+- usado quando um item deve ser ignorado, mas os próximos ainda devem ser processados.
+
+### Regra com continue
+Quando valorAtividade é menor ou igual a zero:
+- incrementa atividadesIgnoradas;
+- mostra mensagem de atividade inválida;
+- executa continue;
+- não soma no total;
+- não incrementa atividadesProcessadas.
+
+### Regra com break
+Quando atividadeBloqueada é true:
+- altera houveBloqueio para true;
+- mostra mensagem de bloqueio;
+- executa break;
+- interrompe o processamento das próximas atividades.
+
+### Dificuldades encontradas
+- Foi necessário entender que continue não encerra o for.
+- Foi necessário entender que break encerra o for imediatamente.
+- Foi necessário validar que a atividade 2 foi ignorada, mas o processamento continuou.
+- Foi necessário validar que a atividade 6 interrompeu o processamento.
+- Foi necessário conferir o total final com base apenas nas atividades válidas antes do bloqueio.
+
+### Como foi resolvido
+- Criada uma regra para tornar a atividade 2 inválida.
+- Criada uma regra para tornar a atividade 6 bloqueada.
+- Usado continue quando o valor da atividade era menor ou igual a zero.
+- Usado break quando a atividade estava bloqueada.
+- Somado no total apenas atividades válidas.
+- Incrementado atividadesProcessadas apenas quando a atividade foi realmente processada.
+- Incrementado atividadesIgnoradas apenas quando a atividade foi inválida.
+- Validado resumo final com R$ 400.0, 4 processadas, 1 ignorada e bloqueio true.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.9 - Exercício integrador do Módulo 3.
+

@@ -1,86 +1,45 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        int quantidadeAtividades = 6;
+        double totalOs = 0.0;
+        int atividadesProcessadas = 0;
+        int atividadesIgnoradas = 0;
+        boolean houveBloqueio = false;
 
-        int opcao;
-        int totalOsProcessadas = 0;
-        double totalGeralSistema = 0.0;
-        int totalAtividadesValidasGeral = 0;
-        int totalAtividadesInvalidasGeral = 0;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            double valorAtividade = 100.00;
+            boolean atividadeBloqueada = atividadeAtual == 6;
 
-        do {
-            System.out.println("----- Sistema de Processamento de OS -----");
-            System.out.println("1 - Processar OS");
-            System.out.println("2 - Exibir resumo geral");
-            System.out.println("0 - Sair");
-            System.out.println("Digite uma opção:");
-
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-
-            if (opcao == 1) {
-                System.out.println("Digite o nome do cliente:");
-                String nomeCliente = scanner.nextLine();
-
-                System.out.println("Digite a quantidade de atividades:");
-                int quantidadeAtividades = scanner.nextInt();
-
-                double totalOs = 0.0;
-                int atividadesValidas = 0;
-                int atividadesInvalidas = 0;
-
-                for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                    System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
-                    double valorAtividade = scanner.nextDouble();
-
-                    if (valorAtividade > 0) {
-                        totalOs = totalOs + valorAtividade;
-                        atividadesValidas++;
-
-                        System.out.println("Atividade " + atividadeAtual + " válida.");
-                        System.out.println("Total parcial da OS: R$ " + totalOs);
-                    } else {
-                        atividadesInvalidas++;
-
-                        System.out.println("Atividade " + atividadeAtual + " inválida. Valor não somado.");
-                    }
-                }
-
-                totalOsProcessadas++;
-                totalGeralSistema = totalGeralSistema + totalOs;
-                totalAtividadesValidasGeral = totalAtividadesValidasGeral + atividadesValidas;
-                totalAtividadesInvalidasGeral = totalAtividadesInvalidasGeral + atividadesInvalidas;
-
-                System.out.println("----- Resumo da OS -----");
-                System.out.println("Cliente: " + nomeCliente);
-                System.out.println("Atividades válidas: " + atividadesValidas);
-                System.out.println("Atividades inválidas: " + atividadesInvalidas);
-                System.out.println("Total da OS: R$ " + totalOs);
-
-            } else if (opcao == 2) {
-                System.out.println("----- Resumo Geral -----");
-                System.out.println("Total de OS processadas: " + totalOsProcessadas);
-                System.out.println("Total geral do sistema: R$ " + totalGeralSistema);
-                System.out.println("Total de atividades válidas: " + totalAtividadesValidasGeral);
-                System.out.println("Total de atividades inválidas: " + totalAtividadesInvalidasGeral);
-
-            } else if (opcao == 0) {
-                System.out.println("Encerrando sistema.");
-
-            } else {
-                System.out.println("Opção inválida.");
+            if (atividadeAtual == 2) {
+                valorAtividade = 0.0;
             }
 
-        } while (opcao != 0);
+            if (valorAtividade <= 0) {
+                atividadesIgnoradas++;
 
-        System.out.println("----- Resumo Final -----");
-        System.out.println("Total de OS processadas: " + totalOsProcessadas);
-        System.out.println("Total geral do sistema: R$ " + totalGeralSistema);
-        System.out.println("Total de atividades válidas: " + totalAtividadesValidasGeral);
-        System.out.println("Total de atividades inválidas: " + totalAtividadesInvalidasGeral);
+                System.out.println("Atividade " + atividadeAtual + " inválida. Valor não será somado.");
+                continue;
+            }
 
-        scanner.close();
+            if (atividadeBloqueada) {
+                houveBloqueio = true;
+
+                System.out.println("Atividade " + atividadeAtual + " bloqueada.");
+                System.out.println("Processamento interrompido.");
+                break;
+            }
+
+            totalOs = totalOs + valorAtividade;
+            atividadesProcessadas++;
+
+            System.out.println("Atividade " + atividadeAtual + " processada.");
+            System.out.println("Total parcial da OS: R$ " + totalOs);
+        }
+
+        System.out.println("----- Resumo da OS -----");
+        System.out.println("Total processado: R$ " + totalOs);
+        System.out.println("Atividades processadas: " + atividadesProcessadas);
+        System.out.println("Atividades ignoradas: " + atividadesIgnoradas);
+        System.out.println("Houve bloqueio? " + houveBloqueio);
     }
 }
