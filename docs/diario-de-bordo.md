@@ -2662,3 +2662,124 @@ Concluída.
 Aula 4.3 - Preenchendo arrays com Scanner.
 
 
+---
+
+## Aula 4.3 - Preenchendo arrays com Scanner
+
+### O que foi feito
+- Estudado como preencher um array com valores informados pelo usuário.
+- Criado um array com tamanho definido em tempo de execução.
+- Utilizado Scanner para ler a quantidade de atividades.
+- Utilizado while para validar quantidade menor ou igual a zero.
+- Criado array de double com base na quantidade informada.
+- Utilizado for para preencher o array.
+- Utilizado for para percorrer o array após o preenchimento.
+- Utilizado if e else para classificar atividades válidas e inválidas.
+- Calculado total final das atividades válidas.
+- Contabilizadas atividades válidas e inválidas.
+
+### Conceitos usados
+- Scanner
+- scanner.nextInt
+- scanner.nextDouble
+- while
+- array
+- double[]
+- new double[quantidadeAtividades]
+- for
+- índice
+- length
+- if
+- else
+- acumulador
+- contador
+
+### Regras praticadas
+- O usuário informa a quantidade de atividades.
+- Se a quantidade for menor ou igual a zero, o sistema solicita novamente.
+- O sistema cria um array com o tamanho informado.
+- O usuário informa o valor de cada atividade.
+- Cada valor é armazenado em uma posição do array.
+- Depois do preenchimento, o sistema percorre o array.
+- Valores maiores que zero são considerados válidos.
+- Valores menores ou iguais a zero são considerados inválidos.
+- Somente valores válidos entram no total final.
+
+### Sequência testada
+- 0
+- 5
+- 100
+- 200
+- 0
+- 150
+- -50
+
+### Explicação da sequência
+- 0: quantidade inválida.
+- 5: quantidade válida corrigida.
+- 100: atividade 1.
+- 200: atividade 2.
+- 0: atividade 3 inválida.
+- 150: atividade 4.
+- -50: atividade 5 inválida.
+
+### Resultado validado
+- Atividade 1 válida: R$ 100.0
+- Atividade 2 válida: R$ 200.0
+- Atividade 3 inválida: R$ 0.0
+- Atividade 4 válida: R$ 150.0
+- Atividade 5 inválida: R$ -50.0
+- Total final: R$ 450.0
+- Atividades válidas: 3
+- Atividades inválidas: 2
+- Execução finalizada com exit code 0
+
+### Explicação do resultado
+Valores válidos:
+- 100.0
+- 200.0
+- 150.0
+
+Valores inválidos:
+- 0.0
+- -50.0
+
+Cálculo:
+- 100.0 + 200.0 + 150.0 = 450.0
+
+### O que foi aprendido
+- Um array pode ter tamanho definido durante a execução.
+- O tamanho do array pode vir de uma variável.
+- Scanner pode ser usado para preencher posições do array.
+- O índice interno do array começa em 0.
+- Para exibir ao usuário, pode ser usado indice + 1.
+- O primeiro for foi usado para preencher o array.
+- O segundo for foi usado para processar o array.
+- while é útil para validar a quantidade antes de criar o array.
+- length permite percorrer o array sem fixar um número manualmente.
+- A combinação de Scanner, array e for permite processar vários dados informados pelo usuário.
+
+### Relação com backend
+Esse padrão se aproxima de fluxos reais de backend.
+
+Em uma aplicação real, os dados poderiam vir de:
+- API REST;
+- JSON;
+- banco de dados;
+- fila;
+- arquivo de importação.
+
+Mesmo assim, a lógica central seria parecida:
+- receber vários dados;
+- armazenar em uma estrutura;
+- percorrer os dados;
+- validar item por item;
+- somar o que for válido;
+- gerar um resumo final.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 4.4 - Arrays de texto com String.
+

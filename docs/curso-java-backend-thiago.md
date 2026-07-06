@@ -5669,3 +5669,245 @@ Também foi reforçado que:
 - Os valores foram exibidos depois da correção.
 - O total final foi calculado com for.
 - O resultado final validado foi R$ 800.0.
+
+
+---
+
+## Aula 4.3 - Preenchendo arrays com Scanner
+
+### Objetivo da aula
+Aprender como preencher um array com valores informados pelo usuário no console.
+
+Até agora, os arrays eram criados com valores fixos no código ou preenchidos manualmente por posição.
+
+Nesta aula, o usuário informou a quantidade de atividades e depois informou o valor de cada uma.
+
+### Criando um array com tamanho informado pelo usuário
+O tamanho do array pode ser definido em tempo de execução.
+
+Exemplo:
+
+    System.out.println("Digite a quantidade de atividades:");
+    int quantidadeAtividades = scanner.nextInt();
+
+    double[] atividades = new double[quantidadeAtividades];
+
+Se o usuário digitar 5, o array terá 5 posições.
+
+Se o usuário digitar 10, o array terá 10 posições.
+
+### Validação da quantidade com while
+Antes de criar o array, é importante validar a quantidade informada.
+
+Regra:
+
+    while (quantidadeAtividades <= 0) {
+        System.out.println("Quantidade inválida. Digite novamente:");
+        quantidadeAtividades = scanner.nextInt();
+    }
+
+Essa validação impede criar um array com quantidade inválida.
+
+O while é adequado porque não sabemos quantas vezes o usuário pode errar.
+
+### Preenchendo o array com for
+Depois de criar o array, usamos for para preencher cada posição.
+
+Exemplo:
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
+        atividades[indice] = scanner.nextDouble();
+    }
+
+O índice começa em 0, mas para o usuário exibimos indice + 1.
+
+Assim, o usuário vê:
+- atividade 1;
+- atividade 2;
+- atividade 3.
+
+Internamente, o Java usa:
+- índice 0;
+- índice 1;
+- índice 2.
+
+### Processando o array depois do preenchimento
+Após preencher o array, usamos outro for para processar os valores.
+
+Exemplo:
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        double valorAtividade = atividades[indice];
+
+        if (valorAtividade > 0) {
+            total = total + valorAtividade;
+            atividadesValidas++;
+        } else {
+            atividadesInvalidas++;
+        }
+    }
+
+Nesse trecho:
+- cada valor do array é lido;
+- valores positivos são somados;
+- valores menores ou iguais a zero são considerados inválidos;
+- os contadores são atualizados.
+
+### Código praticado
+Código principal da aula:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite a quantidade de atividades:");
+            int quantidadeAtividades = scanner.nextInt();
+
+            while (quantidadeAtividades <= 0) {
+                System.out.println("Quantidade inválida. Digite novamente:");
+                quantidadeAtividades = scanner.nextInt();
+            }
+
+            double[] atividades = new double[quantidadeAtividades];
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
+                atividades[indice] = scanner.nextDouble();
+            }
+
+            double total = 0.0;
+            int atividadesValidas = 0;
+            int atividadesInvalidas = 0;
+
+            System.out.println("----- Atividades informadas -----");
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                double valorAtividade = atividades[indice];
+
+                if (valorAtividade > 0) {
+                    total = total + valorAtividade;
+                    atividadesValidas++;
+
+                    System.out.println("Atividade " + (indice + 1) + " válida: R$ " + valorAtividade);
+                } else {
+                    atividadesInvalidas++;
+
+                    System.out.println("Atividade " + (indice + 1) + " inválida: R$ " + valorAtividade);
+                }
+            }
+
+            System.out.println("----- Resumo -----");
+            System.out.println("Total final: R$ " + total);
+            System.out.println("Atividades válidas: " + atividadesValidas);
+            System.out.println("Atividades inválidas: " + atividadesInvalidas);
+
+            scanner.close();
+        }
+    }
+
+### Sequência validada
+Foi testada a sequência:
+
+- 0
+- 5
+- 100
+- 200
+- 0
+- 150
+- -50
+
+Explicação:
+- 0 foi uma quantidade inválida;
+- 5 foi a quantidade corrigida;
+- 100 foi o valor da atividade 1;
+- 200 foi o valor da atividade 2;
+- 0 foi o valor da atividade 3;
+- 150 foi o valor da atividade 4;
+- -50 foi o valor da atividade 5.
+
+### Resultado validado
+O sistema exibiu:
+- Atividade 1 válida: R$ 100.0
+- Atividade 2 válida: R$ 200.0
+- Atividade 3 inválida: R$ 0.0
+- Atividade 4 válida: R$ 150.0
+- Atividade 5 inválida: R$ -50.0
+- Total final: R$ 450.0
+- Atividades válidas: 3
+- Atividades inválidas: 2
+
+### Explicação do resultado
+Valores válidos:
+- 100.0
+- 200.0
+- 150.0
+
+Valores inválidos:
+- 0.0
+- -50.0
+
+Total:
+- 100.0 + 200.0 + 150.0 = 450.0
+
+### Dois usos diferentes do for
+Nesta aula, o for apareceu duas vezes.
+
+Primeiro for:
+- preencheu o array com valores informados pelo usuário.
+
+Segundo for:
+- percorreu o array já preenchido;
+- validou os valores;
+- calculou o total;
+- contou válidos e inválidos.
+
+Isso mostra que um array pode ser preenchido em uma etapa e processado em outra.
+
+### Por que usar length
+Usar atividades.length evita escrever um número fixo no for.
+
+Se o usuário informar 5 atividades, o array terá tamanho 5.
+
+Se informar 8 atividades, o array terá tamanho 8.
+
+O for se adapta ao tamanho do array.
+
+### Relação com backend
+Esse padrão é muito comum em backend.
+
+Em vez de receber um único valor, o sistema recebe vários dados.
+
+Exemplos:
+- uma lista de atividades;
+- uma lista de produtos;
+- uma lista de itens de pedido;
+- uma lista de transações;
+- uma lista de registros importados.
+
+O backend precisa:
+- receber os dados;
+- armazenar em uma estrutura;
+- percorrer item por item;
+- validar;
+- separar válidos e inválidos;
+- calcular totais;
+- retornar um resumo.
+
+### Aprendizado principal
+O principal aprendizado da aula foi combinar Scanner, while, array, for e if.
+
+Com isso, o programa deixou de depender de valores fixos no código e passou a trabalhar com dados informados pelo usuário.
+
+### Resumo da aula
+- O usuário informou a quantidade de atividades.
+- O sistema validou a quantidade com while.
+- O array foi criado com o tamanho informado.
+- O usuário preencheu o array pelo console.
+- O sistema percorreu o array com for.
+- Valores positivos foram somados.
+- Valores menores ou iguais a zero foram considerados inválidos.
+- O resultado final validado foi R$ 450.0, com 3 válidas e 2 inválidas.
+
