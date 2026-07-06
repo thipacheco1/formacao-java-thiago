@@ -72,3 +72,12 @@ Ctrl + F5
 
 Uso:
 Executa novamente a última configuração rodada no IntelliJ.
+
+16. Recuar/indentar código automaticamente
+Tab
+
+17. Voltar indentação
+Shift + Tab
+
+Uso:
+Ajuda a organizar blocos de código dentro de if, else, métodos e classes.

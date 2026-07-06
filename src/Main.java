@@ -1,18 +1,22 @@
 public class Main {
     public static void main(String[] args) {
-        String nomeUsuario = "Thiago";
-        boolean usuarioAtivo = true;
-        boolean senhaCorreta = true;
-        boolean possuiPermissao = true;
-        boolean contaBloqueada = false;
+        String nomeTecnico = "Carlos";
+        int quantidadeServicos = 5;
+        int metaMinima = 8;
+        int metaBoa = 12;
+        int metaExcelente = 15;
 
-        boolean podeAcessarSistema = usuarioAtivo && senhaCorreta && possuiPermissao && !contaBloqueada;
+        System.out.println("Técnico: " + nomeTecnico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
 
-        System.out.println("Usuário: " + nomeUsuario);
-        System.out.println("Usuário ativo? " + usuarioAtivo);
-        System.out.println("Senha correta? " + senhaCorreta);
-        System.out.println("Possui permissão? " + possuiPermissao);
-        System.out.println("Conta bloqueada? " + contaBloqueada);
-        System.out.println("Pode acessar o sistema? " + podeAcessarSistema);
+        if (quantidadeServicos >= metaExcelente) {
+            System.out.println("Performance excelente.");
+        } else if (quantidadeServicos >= metaBoa) {
+            System.out.println("Performance boa.");
+        } else if (quantidadeServicos >= metaMinima) {
+            System.out.println("Performance mínima atingida.");
+        } else {
+            System.out.println("Meta não atingida.");
+        }
     }
 }

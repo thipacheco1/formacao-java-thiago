@@ -622,3 +622,88 @@ Concluída.
 
 ### Próxima aula
 Aula 2.6 - Estruturas condicionais com `if`, `else if` e `else`.
+
+---
+
+## Aula 2.6 - Estruturas condicionais com if, else if e else
+
+### O que foi feito
+- Estudada a estrutura condicional `if`.
+- Estudada a estrutura `else`.
+- Estudada a estrutura `else if`.
+- Criada uma regra de classificação de performance de técnico.
+- Testados quatro cenários diferentes de quantidade de serviços.
+- Validada a ordem correta das condições.
+- Atualizado o arquivo `atalhos.txt` com os atalhos `Tab` e `Shift + Tab`.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeTecnico = "Carlos";
+        int quantidadeServicos = 5;
+        int metaMinima = 8;
+        int metaBoa = 12;
+        int metaExcelente = 15;
+
+        System.out.println("Técnico: " + nomeTecnico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+
+        if (quantidadeServicos >= metaExcelente) {
+            System.out.println("Performance excelente.");
+        } else if (quantidadeServicos >= metaBoa) {
+            System.out.println("Performance boa.");
+        } else if (quantidadeServicos >= metaMinima) {
+            System.out.println("Performance mínima atingida.");
+        } else {
+            System.out.println("Meta não atingida.");
+        }
+    }
+}
+```
+
+### Resultados obtidos
+```text
+Cenário 1:
+quantidadeServicos = 16
+Resultado: Performance excelente.
+
+Cenário 2:
+quantidadeServicos = 13
+Resultado: Performance boa.
+
+Cenário 3:
+quantidadeServicos = 9
+Resultado: Performance mínima atingida.
+
+Cenário 4:
+quantidadeServicos = 5
+Resultado: Meta não atingida.
+```
+
+### O que foi aprendido
+- `if` executa um bloco quando a condição é verdadeira.
+- `else` executa um bloco quando nenhuma condição anterior é verdadeira.
+- `else if` permite testar múltiplas possibilidades.
+- O Java avalia as condições de cima para baixo.
+- Quando uma condição verdadeira é encontrada, os próximos `else if` são ignorados.
+- Em regras com níveis, a ordem das condições importa.
+- Para classificação por faixa, normalmente a regra mais forte deve vir primeiro.
+- Estruturas condicionais são a base para decisões em sistemas backend.
+
+### Dificuldades encontradas
+- Foi necessário validar todos os cenários para garantir que a regra estava correta.
+- Foi reforçada a importância da ordem dos `else if`.
+
+### Como foi resolvido
+- Testado o cenário excelente com `quantidadeServicos = 16`.
+- Testado o cenário bom com `quantidadeServicos = 13`.
+- Testado o cenário mínimo com `quantidadeServicos = 9`.
+- Testado o cenário de meta não atingida com `quantidadeServicos = 5`.
+- Confirmada a execução no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.7 - Estrutura condicional `switch`.
