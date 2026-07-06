@@ -472,3 +472,79 @@ Concluída.
 
 ### Próxima aula
 Aula 2.4 - Operadores de comparação em Java.
+
+---
+
+## Aula 2.4 - Operadores de comparação em Java
+
+### O que foi feito
+- Estudados os operadores de comparação em Java.
+- Praticados os operadores `==`, `!=`, `>`, `<`, `>=` e `<=`.
+- Reforçada a diferença entre `=` e `==`.
+- Criada uma regra simples de negócio usando comparação.
+- Simulado um cenário de meta de serviços de um técnico.
+- Testado o cenário positivo com `quantidadeServicos = 12`.
+- Testado o cenário negativo com `quantidadeServicos = 8`.
+- Atualizado o arquivo `atalhos.txt` com o atalho `Alt + Enter`.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeTecnico = "Carlos";
+        int quantidadeServicos = 8;
+        int metaServicos = 10;
+        double valorPorServico = 120.50;
+        double bonusMeta = 200.00;
+
+        boolean atingiuMeta = quantidadeServicos >= metaServicos;
+        double totalSemBonus = quantidadeServicos * valorPorServico;
+
+        System.out.println("Técnico: " + nomeTecnico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+        System.out.println("Meta de serviços: " + metaServicos);
+        System.out.println("Valor por serviço: R$ " + valorPorServico);
+        System.out.println("Total sem bônus: R$ " + totalSemBonus);
+        System.out.println("Bônus da meta: R$ " + bonusMeta);
+        System.out.println("Atingiu a meta? " + atingiuMeta);
+    }
+}
+```
+
+### Resultados obtidos
+```text
+Cenário 1:
+quantidadeServicos = 12
+Atingiu a meta? true
+
+Cenário 2:
+quantidadeServicos = 8
+Atingiu a meta? false
+```
+
+### O que foi aprendido
+- Operadores de comparação retornam valores booleanos.
+- `==` compara igualdade.
+- `!=` compara diferença.
+- `>` compara se um valor é maior que outro.
+- `<` compara se um valor é menor que outro.
+- `>=` compara se um valor é maior ou igual a outro.
+- `<=` compara se um valor é menor ou igual a outro.
+- `=` é atribuição.
+- `==` é comparação.
+- Comparações são a base para regras de negócio.
+- Uma variável `boolean` pode armazenar o resultado de uma regra.
+
+### Dificuldades encontradas
+- Foi necessário testar tanto o cenário positivo quanto o cenário negativo para validar a regra corretamente.
+
+### Como foi resolvido
+- Primeiro foi testado `quantidadeServicos = 12`, retornando `true`.
+- Depois foi testado `quantidadeServicos = 8`, retornando `false`.
+- A execução foi validada no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.5 - Operadores lógicos em Java.

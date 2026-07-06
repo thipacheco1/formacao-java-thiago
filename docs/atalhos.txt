@@ -60,3 +60,9 @@ Shift + End ou Shift + Home
 
 Uso:
 Ajuda a editar código mais rápido no IntelliJ.
+
+14. Exibir ações rápidas / sugestões de correção
+Alt + Enter
+
+Uso:
+Quando o IntelliJ sublinha algo ou mostra sugestão, Alt + Enter abre opções de correção, importação, ajuste ou melhoria.
