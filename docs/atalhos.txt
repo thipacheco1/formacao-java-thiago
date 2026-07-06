@@ -48,3 +48,15 @@ Ctrl + Espaço
 
 Uso:
 Mostra sugestões de código, variáveis, métodos e classes disponíveis.
+
+11. Ir para o final da linha
+End
+
+12. Ir para o começo da linha
+Home
+
+13. Selecionar linha atual
+Shift + End ou Shift + Home
+
+Uso:
+Ajuda a editar código mais rápido no IntelliJ.

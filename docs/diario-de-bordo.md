@@ -400,3 +400,75 @@ Concluída.
 ### Próxima aula
 Aula 2.3 - Operadores aritméticos em Java.
 
+---
+
+## Aula 2.3 - Operadores aritméticos em Java
+
+### O que foi feito
+- Estudados os operadores aritméticos básicos do Java.
+- Praticados os operadores `+`, `-`, `*`, `/` e `%`.
+- Testada a diferença entre divisão inteira e divisão decimal.
+- Criado um exercício simulando cálculo de remuneração.
+- Calculado total bruto, total com bônus e total final.
+- Atualizado o arquivo `atalhos.txt` com atalhos de navegação e seleção de linha.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        double valorPorServico = 120.50;
+        int quantidadeServicos = 8;
+        double bonus = 150.00;
+        double desconto = 80.00;
+
+        double totalBruto = valorPorServico * quantidadeServicos;
+        double totalComBonus = totalBruto + bonus;
+        double totalFinal = totalComBonus - desconto;
+
+        System.out.println("Valor por serviço: R$ " + valorPorServico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+        System.out.println("Total bruto: R$ " + totalBruto);
+        System.out.println("Bônus: R$ " + bonus);
+        System.out.println("Total com bônus: R$ " + totalComBonus);
+        System.out.println("Desconto: R$ " + desconto);
+        System.out.println("Total final: R$ " + totalFinal);
+    }
+}
+```
+
+### Resultado obtido
+```text
+Valor por serviço: R$ 120.5
+Quantidade de serviços: 8
+Total bruto: R$ 964.0
+Bônus: R$ 150.0
+Total com bônus: R$ 1114.0
+Desconto: R$ 80.0
+Total final: R$ 1034.0
+```
+
+### O que foi aprendido
+- `+` realiza soma ou concatenação, dependendo do contexto.
+- `-` realiza subtração.
+- `*` realiza multiplicação.
+- `/` realiza divisão.
+- `%` retorna o resto da divisão.
+- Divisão entre inteiros pode gerar resultado inteiro.
+- Para obter resultado decimal em divisão, é possível usar `double`.
+- O uso de `double` serve para aprendizado, mas não é o ideal para dinheiro em sistemas reais.
+- Para cálculos financeiros reais, futuramente será utilizado `BigDecimal`.
+
+### Dificuldades encontradas
+- Foi necessário observar a diferença entre cálculo matemático e apresentação no console.
+- Foi reforçado que dinheiro com `double` é aceitável apenas para estudo inicial.
+
+### Como foi resolvido
+- Criado um exercício prático com valores de serviço, quantidade, bônus e desconto.
+- Validado o resultado no console.
+- Confirmado o sucesso da execução com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.4 - Operadores de comparação em Java.

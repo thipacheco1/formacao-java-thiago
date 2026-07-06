@@ -1,24 +1,20 @@
 public class Main {
     public static void main(String[] args) {
-        String nomeCompleto = "Thiago Pacheco";
-        int idade = 44;
-        double altura = 1.79;
-        float peso = 90.0F;
-        char inicialSobrenome = 'P';
-        int quantidadeFilhos = 2;
-        int anosExperienciaQa = 10;
-        boolean estudaJava = true;
-        boolean pretendeVirarArquiteto = true;
+        double valorPorServico = 120.50;
+        int quantidadeServicos = 8;
+        double bonus = 150.00;
+        double desconto = 80.00;
 
-        System.out.println("Nome Completo: " + nomeCompleto);
-        System.out.println("Idade: " + idade);
-        System.out.println("Altura: " + altura);
-        System.out.println("Peso: " + peso);
-        System.out.println("Inicial do sobrenome: " + inicialSobrenome);
-        System.out.println("Quantidade de filhos: " + quantidadeFilhos);
-        System.out.println("Anos de experiência como QA: " + anosExperienciaQa);
-        System.out.println("Estuda Java? " + estudaJava);
-        System.out.println("Pretende virar Arquiteto Java? " + pretendeVirarArquiteto);
+        double totalBruto = valorPorServico * quantidadeServicos;
+        double totalComBonus = totalBruto + bonus;
+        double totalFinal = totalComBonus - desconto;
 
+        System.out.println("Valor por serviço: R$ " + valorPorServico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+        System.out.println("Total bruto: R$ " + totalBruto);
+        System.out.println("Bônus: R$ " + bonus);
+        System.out.println("Total com bônus: R$ " + totalComBonus);
+        System.out.println("Desconto: R$ " + desconto);
+        System.out.println("Total final: R$ " + totalFinal);
     }
 }
