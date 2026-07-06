@@ -87,3 +87,9 @@ Shift duas vezes
 
 Uso:
 Abre a busca global do IntelliJ para encontrar arquivos, classes, configurações, ações e símbolos.
+
+19. Abrir terminal do IntelliJ
+Alt + F12
+
+Uso:
+Abre ou fecha o terminal integrado do IntelliJ.

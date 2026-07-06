@@ -796,3 +796,111 @@ Concluída.
 
 ### Próxima aula
 Aula 2.8 - Entrada de dados com Scanner.
+
+---
+
+## Aula 2.8 - Entrada de dados com Scanner
+
+### O que foi feito
+- Estudada a entrada de dados pelo console.
+- Utilizada a classe `Scanner`.
+- Importada a classe `java.util.Scanner`.
+- Criado um objeto `Scanner` usando `System.in`.
+- Testada leitura de texto com `nextLine()`.
+- Testada leitura de número inteiro com `nextInt()`.
+- Testada leitura de número decimal com `nextDouble()`.
+- Testado o comportamento de leitura de dados digitados pelo usuário.
+- Criado um exercício profissional simulando entrada de dados de um técnico.
+- Calculado o total sem bônus com base na quantidade de serviços e valor por serviço.
+- Validada a regra de meta usando operador de comparação.
+- Atualizado o arquivo `atalhos.txt` com o atalho `Alt + F12`.
+
+### Código praticado
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o nome do técnico:");
+        String nomeTecnico = scanner.nextLine();
+
+        System.out.println("Digite a quantidade de serviços:");
+        int quantidadeServicos = scanner.nextInt();
+
+        System.out.println("Digite a meta de serviços:");
+        int metaServicos = scanner.nextInt();
+
+        System.out.println("Digite o valor por serviço:");
+        double valorPorServico = scanner.nextDouble();
+
+        boolean atingiuMeta = quantidadeServicos >= metaServicos;
+        double totalSemBonus = quantidadeServicos * valorPorServico;
+
+        System.out.println("----- Resultado -----");
+        System.out.println("Técnico: " + nomeTecnico);
+        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+        System.out.println("Meta de serviços: " + metaServicos);
+        System.out.println("Valor por serviço: R$ " + valorPorServico);
+        System.out.println("Total sem bônus: R$ " + totalSemBonus);
+        System.out.println("Atingiu a meta? " + atingiuMeta);
+
+        scanner.close();
+    }
+}
+```
+
+### Resultado obtido
+```text
+Digite o nome do técnico:
+Thiago
+
+Digite a quantidade de serviços:
+8
+
+Digite a meta de serviços:
+10
+
+Digite o valor por serviço:
+120,5
+
+----- Resultado -----
+Técnico: Thiago
+Quantidade de serviços: 8
+Meta de serviços: 10
+Valor por serviço: R$ 120.5
+Total sem bônus: R$ 964.0
+Atingiu a meta? false
+```
+
+### O que foi aprendido
+- `Scanner` permite ler dados digitados pelo usuário no console.
+- `System.in` representa a entrada padrão do sistema, normalmente o teclado.
+- `nextLine()` lê uma linha de texto.
+- `nextInt()` lê um número inteiro.
+- `nextDouble()` lê um número decimal.
+- `scanner.close()` fecha o recurso de entrada após o uso.
+- Valores digitados pelo usuário podem ser armazenados em variáveis.
+- As variáveis lidas podem ser usadas em cálculos e regras de negócio.
+- No ambiente utilizado, o `nextDouble()` aceitou valor decimal com vírgula, como `120,5`.
+- Em alguns ambientes, pode ser necessário usar ponto, como `120.5`.
+
+### Dificuldades encontradas
+- Foi necessário testar mais de um cenário para validar corretamente a regra.
+- Em um teste inicial, a quantidade de serviços foi igual à meta, retornando `true`.
+- Foi necessário testar o cenário negativo obrigatório, com quantidade menor que a meta.
+- Também foi observado que informar valor `0` gera total `0.0`, pois o programa calcula com base no valor digitado.
+
+### Como foi resolvido
+- Testado o cenário com `quantidadeServicos = 8` e `metaServicos = 10`.
+- Informado o valor por serviço como `120,5`.
+- Validado que o total sem bônus foi calculado como `964.0`.
+- Confirmado que a regra `8 >= 10` retornou `false`.
+- Validada a execução no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.9 - Exercício integrador dos fundamentos iniciais.
