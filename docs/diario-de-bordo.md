@@ -1388,3 +1388,155 @@ Concluída.
 ### Próxima aula
 Aula 3.3 - Laço for com condicionais dentro da repetição.
 
+---
+
+## Aula 3.3 - Laço for com condicionais dentro da repetição
+
+### O que foi feito
+- Estudado o uso de if dentro de um laço for.
+- Entendido que uma condição pode ser avaliada a cada repetição.
+- Testado exemplo de número par e ímpar.
+- Testado exemplo somando apenas números pares.
+- Testado exemplo de OS com atividades concluídas e pendentes.
+- Criado exercício final chamado mentalmente de Processador de Atividades Concluídas.
+- Utilizado for para percorrer todas as atividades.
+- Utilizado if para identificar atividades concluídas.
+- Utilizado else para identificar atividades pendentes.
+- Somado valor apenas das atividades concluídas.
+- Contabilizado total de atividades concluídas.
+- Contabilizado total de atividades pendentes.
+- Calculado total final da OS.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- for;
+- if;
+- else;
+- contador;
+- acumulador;
+- operador de comparação <=;
+- incremento com ++;
+- totalização condicional;
+- contagem de itens concluídos;
+- contagem de itens pendentes;
+- cálculo de total final.
+
+Código final praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Carlos";
+            int quantidadeAtividades = 6;
+            int atividadesConcluidas = 2;
+            double valorPorAtividade = 200.00;
+            double totalOs = 0.0;
+            int totalConcluidas = 0;
+            int totalPendentes = 0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                if (atividadeAtual <= atividadesConcluidas) {
+                    totalOs = totalOs + valorPorAtividade;
+                    totalConcluidas++;
+
+                    System.out.println("Atividade " + atividadeAtual + " concluída.");
+                    System.out.println("Total parcial da OS: R$ " + totalOs);
+                } else {
+                    totalPendentes++;
+
+                    System.out.println("Atividade " + atividadeAtual + " pendente.");
+                }
+            }
+
+            System.out.println("----- Resumo da OS -----");
+            System.out.println("Total de atividades concluídas: " + totalConcluidas);
+            System.out.println("Total de atividades pendentes: " + totalPendentes);
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+### Resultado obtido
+- Cliente: Carlos
+- Atividade 1 concluída.
+- Total parcial da OS: R$ 200.0
+- Atividade 2 concluída.
+- Total parcial da OS: R$ 400.0
+- Atividade 3 pendente.
+- Atividade 4 pendente.
+- Atividade 5 pendente.
+- Atividade 6 pendente.
+- Total de atividades concluídas: 2
+- Total de atividades pendentes: 4
+- Total final da OS: R$ 400.0
+- Process finished with exit code 0
+
+### O que foi aprendido
+- É possível colocar if dentro de um for.
+- O if é avaliado novamente a cada repetição.
+- Nem todos os itens de uma repetição precisam ser processados da mesma forma.
+- É possível somar apenas os itens que passam em uma regra.
+- É possível ignorar ou tratar de forma diferente os itens que não passam na regra.
+- O contador do for controla a atividade atual.
+- O acumulador totalOs guarda o valor financeiro das atividades concluídas.
+- totalConcluidas conta quantas atividades entraram na regra de concluídas.
+- totalPendentes conta quantas atividades ficaram fora da regra.
+- O else é usado para tratar o cenário oposto da condição.
+- Essa lógica se aproxima mais de regras reais de backend.
+
+### Regra praticada
+A atividade entra no total da OS somente se estiver dentro da quantidade de atividades concluídas.
+
+Regra usada:
+if (atividadeAtual <= atividadesConcluidas)
+
+Com:
+- quantidadeAtividades = 6
+- atividadesConcluidas = 2
+- valorPorAtividade = 200.00
+
+Fluxo:
+- Atividade 1: concluída, soma R$ 200.00
+- Atividade 2: concluída, soma R$ 200.00
+- Atividade 3: pendente, não soma
+- Atividade 4: pendente, não soma
+- Atividade 5: pendente, não soma
+- Atividade 6: pendente, não soma
+
+Resumo:
+- Total concluídas: 2
+- Total pendentes: 4
+- Total final da OS: R$ 400.0
+
+### Diferença entre os controles usados
+- atividadeAtual controla qual atividade está sendo analisada no momento.
+- totalOs acumula o valor financeiro das atividades concluídas.
+- totalConcluidas conta quantas atividades foram concluídas.
+- totalPendentes conta quantas atividades ficaram pendentes.
+
+### Dificuldades encontradas
+- Foi necessário entender que o if fica dentro do for.
+- Foi necessário entender que a condição é avaliada em cada volta do laço.
+- Foi necessário separar o que acontece quando a atividade é concluída e quando é pendente.
+- Foi necessário trabalhar com mais de um acumulador/contador no mesmo programa.
+
+### Como foi resolvido
+- Criado um for para percorrer todas as atividades.
+- Criado um if para validar se a atividade atual estava dentro das concluídas.
+- Somado valor apenas quando a atividade estava concluída.
+- Incrementado totalConcluidas dentro do if.
+- Incrementado totalPendentes dentro do else.
+- Testado cenário com 6 atividades, 2 concluídas e valor de R$ 200.00.
+- Confirmado que o resumo final apresentou 2 concluídas, 4 pendentes e total de R$ 400.0.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.4 - Laço for com Scanner.
+
+
+

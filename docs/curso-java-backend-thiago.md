@@ -2747,3 +2747,286 @@ Mesmo que futuramente sejam usadas listas, streams e banco de dados, entender ac
 - totalOs = totalOs + valorPorAtividade soma um novo valor ao total anterior.
 - O total parcial mostra o andamento do cálculo.
 - O total final aparece depois que o for termina.
+
+
+---
+
+## Aula 3.3 - Laço for com condicionais dentro da repetição
+
+### Objetivo da aula
+Aprender a usar condicionais dentro de um laço for.
+
+Até este ponto, o for já tinha sido usado para repetir mensagens e acumular valores.
+
+Nesta aula, o for passou a tomar decisões durante a repetição.
+
+Isso significa que, para cada volta do laço, o programa pode analisar uma regra e decidir o que fazer com o item atual.
+
+### Por que usar if dentro do for
+Em sistemas reais, nem todos os itens devem ser tratados da mesma forma.
+
+Exemplos:
+- uma atividade concluída entra no total da OS;
+- uma atividade pendente não entra no total;
+- uma atividade cancelada pode ser ignorada;
+- uma atividade com erro pode gerar alerta;
+- um item inválido pode bloquear o processamento;
+- um produto ativo pode ser vendido;
+- um produto inativo pode ser desconsiderado.
+
+A estrutura geral fica assim:
+
+    for (...) {
+        if (...) {
+            // processa item válido
+        } else {
+            // trata item inválido ou fora da regra
+        }
+    }
+
+### Primeiro exemplo: par ou ímpar
+Foi usado o operador de resto da divisão para identificar números pares e ímpares.
+
+Exemplo:
+
+    public class Main {
+        public static void main(String[] args) {
+
+            for (int numero = 1; numero <= 5; numero++) {
+                if (numero % 2 == 0) {
+                    System.out.println("Número " + numero + " é par.");
+                } else {
+                    System.out.println("Número " + numero + " é ímpar.");
+                }
+            }
+
+        }
+    }
+
+A regra:
+
+    numero % 2 == 0
+
+significa que, se o resto da divisão por 2 for zero, o número é par.
+
+### Operador %
+O operador % retorna o resto da divisão.
+
+Exemplos:
+- 2 % 2 = 0
+- 3 % 2 = 1
+- 4 % 2 = 0
+- 5 % 2 = 1
+
+Por isso, números com resto zero na divisão por 2 são pares.
+
+### Segundo exemplo: somar apenas números pares
+Foi criado um exemplo usando for, if e acumulador juntos.
+
+Ideia:
+- percorrer números de 1 até 10;
+- se o número for par, somar;
+- se for ímpar, ignorar.
+
+Código de referência:
+
+    public class Main {
+        public static void main(String[] args) {
+            int totalPares = 0;
+
+            for (int numero = 1; numero <= 10; numero++) {
+                if (numero % 2 == 0) {
+                    totalPares = totalPares + numero;
+                    System.out.println("Somando número par: " + numero);
+                    System.out.println("Total parcial: " + totalPares);
+                } else {
+                    System.out.println("Ignorando número ímpar: " + numero);
+                }
+            }
+
+            System.out.println("Total final dos pares: " + totalPares);
+        }
+    }
+
+Resultado final:
+- 2 + 4 + 6 + 8 + 10 = 30.
+
+### Exemplo com contexto de OS
+O conceito foi aplicado a uma OS com atividades concluídas e pendentes.
+
+Regra:
+- atividades concluídas entram no total;
+- atividades pendentes não entram no total.
+
+Exemplo:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 6;
+            int atividadesConcluidas = 4;
+            double valorPorAtividade = 150.00;
+            double totalOs = 0.0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                if (atividadeAtual <= atividadesConcluidas) {
+                    totalOs = totalOs + valorPorAtividade;
+
+                    System.out.println("Atividade " + atividadeAtual + " concluída.");
+                    System.out.println("Total parcial da OS: R$ " + totalOs);
+                } else {
+                    System.out.println("Atividade " + atividadeAtual + " pendente.");
+                    System.out.println("Não entrou no total da OS.");
+                }
+            }
+
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+Com 6 atividades e 4 concluídas, apenas as 4 primeiras entram no total.
+
+Total:
+- 4 x R$ 150.00 = R$ 600.0.
+
+### Regra principal da aula
+A regra usada foi:
+
+    if (atividadeAtual <= atividadesConcluidas)
+
+Essa condição verifica se a atividade atual está dentro da quantidade de atividades concluídas.
+
+Exemplo:
+- atividadesConcluidas = 4;
+- atividadeAtual = 1, 2, 3 ou 4 entram no if;
+- atividadeAtual = 5 ou 6 caem no else.
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Processador de Atividades Concluídas.
+
+Variáveis usadas:
+- nomeCliente;
+- quantidadeAtividades;
+- atividadesConcluidas;
+- valorPorAtividade;
+- totalOs;
+- totalConcluidas;
+- totalPendentes.
+
+Código praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Carlos";
+            int quantidadeAtividades = 6;
+            int atividadesConcluidas = 2;
+            double valorPorAtividade = 200.00;
+            double totalOs = 0.0;
+            int totalConcluidas = 0;
+            int totalPendentes = 0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                if (atividadeAtual <= atividadesConcluidas) {
+                    totalOs = totalOs + valorPorAtividade;
+                    totalConcluidas++;
+
+                    System.out.println("Atividade " + atividadeAtual + " concluída.");
+                    System.out.println("Total parcial da OS: R$ " + totalOs);
+                } else {
+                    totalPendentes++;
+
+                    System.out.println("Atividade " + atividadeAtual + " pendente.");
+                }
+            }
+
+            System.out.println("----- Resumo da OS -----");
+            System.out.println("Total de atividades concluídas: " + totalConcluidas);
+            System.out.println("Total de atividades pendentes: " + totalPendentes);
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+### Resultado validado
+Com:
+- quantidadeAtividades = 6;
+- atividadesConcluidas = 2;
+- valorPorAtividade = 200.00;
+
+Resultado:
+- Atividade 1 concluída.
+- Atividade 2 concluída.
+- Atividade 3 pendente.
+- Atividade 4 pendente.
+- Atividade 5 pendente.
+- Atividade 6 pendente.
+- Total de atividades concluídas: 2.
+- Total de atividades pendentes: 4.
+- Total final da OS: R$ 400.0.
+
+### Aprendizado principal
+O aprendizado principal foi entender que uma repetição pode ter regras internas.
+
+O for percorre todos os itens.
+
+O if decide o que fazer com cada item.
+
+O acumulador soma apenas os itens aprovados pela regra.
+
+Os contadores adicionais registram quantos itens caíram em cada cenário.
+
+### Três controles usados
+Nesta aula foram usados três controles importantes:
+
+    double totalOs = 0.0;
+    int totalConcluidas = 0;
+    int totalPendentes = 0;
+
+Função de cada um:
+- totalOs acumula o valor financeiro das atividades concluídas;
+- totalConcluidas conta quantas atividades foram concluídas;
+- totalPendentes conta quantas atividades ficaram pendentes.
+
+### Relação com backend
+Essa lógica aparece muito em backend.
+
+Um sistema pode precisar retornar um resumo como:
+
+    totalAtividades: 6
+    totalConcluidas: 2
+    totalPendentes: 4
+    valorTotal: 400.0
+
+Mesmo antes de estudar listas, banco de dados e JSON, a base lógica desse processamento já está aqui.
+
+### Exemplos reais de uso
+Esse padrão pode ser usado para:
+- somar apenas transações aprovadas;
+- contar atividades concluídas;
+- ignorar itens cancelados;
+- processar apenas clientes ativos;
+- calcular total de produtos válidos;
+- gerar resumo de status;
+- separar registros válidos e inválidos;
+- montar relatórios.
+
+### Erros comuns
+Erros comuns ao usar if dentro do for:
+- colocar o acumulador no lugar errado;
+- somar no total mesmo quando o item deveria ser ignorado;
+- esquecer de incrementar o contador de pendentes;
+- usar a condição invertida;
+- esquecer o else;
+- declarar contadores dentro do for;
+- não testar cenário positivo e negativo.
+
+### Resumo da aula
+- O for repete.
+- O if decide.
+- O else trata o caso contrário.
+- O acumulador soma apenas o que passa na regra.
+- Contadores adicionais podem registrar quantidades por status.
+- Essa lógica é base para processamentos reais em backend.
