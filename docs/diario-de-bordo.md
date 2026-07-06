@@ -1709,3 +1709,64 @@ Concluída.
 Aula 3.5 - Laço while.
 
 
+"C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.2.6.2\lib\idea_rt.jar=55157" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\win\Documents\Java\formacao-java-thiago\out\production\formacao-java-thiago Main
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+2
+Total de OS processadas: 0
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+1
+OS processada com sucesso.
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+1
+OS processada com sucesso.
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+2
+Total de OS processadas: 2
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+9
+Opção inválida.
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+1
+OS processada com sucesso.
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+2
+Total de OS processadas: 3
+----- Menu de OS -----
+1 - Processar nova OS
+2 - Exibir quantidade de OS processadas
+0 - Sair
+Digite uma opção:
+0
+Encerrando sistema.
+Total final de OS processadas: 3
+
+Process finished with exit code 0
+

@@ -4,30 +4,31 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do cliente:");
-        String nomeCliente = scanner.nextLine();
+        int opcao = -1;
+        int totalOsProcessadas = 0;
 
-        System.out.println("Digite a quantidade de atividades:");
-        int quantidadeAtividades = scanner.nextInt();
+        while (opcao != 0) {
+            System.out.println("----- Menu de OS -----");
+            System.out.println("1 - Processar nova OS");
+            System.out.println("2 - Exibir quantidade de OS processadas");
+            System.out.println("0 - Sair");
+            System.out.println("Digite uma opção:");
 
-        double totalOs = 0.0;
+            opcao = scanner.nextInt();
 
-        System.out.println("Cliente: " + nomeCliente);
-
-        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-            System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
-            double valorAtividade = scanner.nextDouble();
-
-            totalOs = totalOs + valorAtividade;
-
-            System.out.println("Atividade " + atividadeAtual + " processada.");
-            System.out.println("Total parcial da OS: R$ " + totalOs);
+            if (opcao == 1) {
+                totalOsProcessadas++;
+                System.out.println("OS processada com sucesso.");
+            } else if (opcao == 2) {
+                System.out.println("Total de OS processadas: " + totalOsProcessadas);
+            } else if (opcao == 0) {
+                System.out.println("Encerrando sistema.");
+            } else {
+                System.out.println("Opção inválida.");
+            }
         }
 
-        System.out.println("----- Resumo da OS -----");
-        System.out.println("Cliente: " + nomeCliente);
-        System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
-        System.out.println("Total final da OS: R$ " + totalOs);
+        System.out.println("Total final de OS processadas: " + totalOsProcessadas);
 
         scanner.close();
     }

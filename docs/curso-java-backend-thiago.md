@@ -3289,3 +3289,390 @@ Erros comuns ao usar Scanner com for:
 - Cada repetição pode receber um valor diferente.
 - O acumulador soma os valores digitados.
 - O programa fica mais dinâmico e mais próximo de um processamento real.
+
+---
+
+## Aula 3.5 - Laço while
+
+### Objetivo da aula
+Aprender o laço de repetição while.
+
+O while é usado quando queremos repetir um bloco de código enquanto uma condição continuar verdadeira.
+
+A palavra while pode ser entendida como enquanto.
+
+Exemplo em português:
+
+    Enquanto o usuário não escolher sair:
+        exibir o menu
+        ler a opção
+        executar a ação escolhida
+
+### Diferença entre for e while
+O for é mais usado quando sabemos ou controlamos claramente a quantidade de repetições.
+
+Exemplo:
+
+    for (int contador = 1; contador <= 5; contador++) {
+        System.out.println(contador);
+    }
+
+Nesse caso, está claro que o laço vai de 1 até 5.
+
+O while é mais usado quando a repetição depende de uma condição.
+
+Exemplo:
+
+    while (opcao != 0) {
+        // continua executando enquanto a opção for diferente de 0
+    }
+
+A quantidade de repetições pode variar. Pode executar uma vez, várias vezes ou nenhuma vez, dependendo da condição.
+
+### Estrutura do while
+A estrutura básica é:
+
+    while (condicao) {
+        bloco que será repetido
+    }
+
+O bloco será executado enquanto a condição for verdadeira.
+
+Quando a condição ficar falsa, o laço termina.
+
+### Primeiro exemplo com while
+Foi testado um contador simples usando while.
+
+Código de referência:
+
+    public class Main {
+        public static void main(String[] args) {
+            int contador = 1;
+
+            while (contador <= 5) {
+                System.out.println("Contador: " + contador);
+                contador++;
+            }
+        }
+    }
+
+Resultado esperado:
+- Contador: 1
+- Contador: 2
+- Contador: 3
+- Contador: 4
+- Contador: 5
+
+### Fluxo do contador
+O fluxo acontece assim:
+
+- contador começa em 1;
+- verifica se 1 <= 5;
+- como é verdadeiro, imprime;
+- contador++ soma 1;
+- contador vira 2;
+- verifica novamente;
+- repete até contador virar 6;
+- quando contador é 6, a condição 6 <= 5 é falsa;
+- o while termina.
+
+### Loop infinito
+Loop infinito acontece quando a condição do while nunca fica falsa.
+
+Exemplo perigoso:
+
+    int contador = 1;
+
+    while (contador <= 5) {
+        System.out.println("Contador: " + contador);
+    }
+
+Neste exemplo, falta contador++.
+
+O contador fica sempre 1.
+
+A condição contador <= 5 continua sempre verdadeira.
+
+O programa nunca para sozinho.
+
+### Como evitar loop infinito
+Para evitar loop infinito, é preciso garantir que algo dentro do while possa tornar a condição falsa.
+
+Exemplos:
+- incrementar um contador;
+- alterar uma variável de controle;
+- ler uma nova opção do usuário;
+- mudar um status;
+- sair quando uma condição de parada for atingida.
+
+### Comparação entre for e while no mesmo cenário
+Com for:
+
+    for (int contador = 1; contador <= 5; contador++) {
+        System.out.println("Contador: " + contador);
+    }
+
+Com while:
+
+    int contador = 1;
+
+    while (contador <= 5) {
+        System.out.println("Contador: " + contador);
+        contador++;
+    }
+
+Os dois exemplos fazem a mesma coisa.
+
+A diferença é que no for o início, a condição e o incremento ficam na mesma linha.
+
+No while:
+- a variável é criada antes;
+- a condição fica no while;
+- o incremento fica dentro do bloco.
+
+### Exemplo com Scanner
+Foi estudado um exemplo de menu simples.
+
+Código de referência:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int opcao = 1;
+
+            while (opcao != 0) {
+                System.out.println("Digite uma opção:");
+                System.out.println("1 - Processar OS");
+                System.out.println("0 - Sair");
+
+                opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+                    System.out.println("OS processada.");
+                } else if (opcao == 0) {
+                    System.out.println("Sistema encerrado.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            }
+
+            scanner.close();
+        }
+    }
+
+### Explicação do menu simples
+A variável opcao controla o while.
+
+A condição:
+
+    while (opcao != 0)
+
+significa:
+
+    enquanto a opção for diferente de 0, continue executando.
+
+Se o usuário digitar 1:
+- o sistema processa a OS;
+- o menu aparece novamente.
+
+Se digitar 9:
+- o sistema mostra opção inválida;
+- o menu aparece novamente.
+
+Se digitar 0:
+- o sistema encerra;
+- a condição do while fica falsa;
+- o laço termina.
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Menu de Processamento de OS.
+
+O menu possui as opções:
+- 1 - Processar nova OS;
+- 2 - Exibir quantidade de OS processadas;
+- 0 - Sair.
+
+Regras:
+- enquanto o usuário não digitar 0, o menu continua aparecendo;
+- se digitar 1, o sistema soma 1 no total de OS processadas;
+- se digitar 2, o sistema exibe o total de OS processadas;
+- se digitar 0, o sistema encerra;
+- se digitar qualquer outro número, mostra opção inválida.
+
+### Código praticado
+Código final da aula:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int opcao = -1;
+            int totalOsProcessadas = 0;
+
+            while (opcao != 0) {
+                System.out.println("----- Menu de OS -----");
+                System.out.println("1 - Processar nova OS");
+                System.out.println("2 - Exibir quantidade de OS processadas");
+                System.out.println("0 - Sair");
+                System.out.println("Digite uma opção:");
+
+                opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+                    totalOsProcessadas++;
+                    System.out.println("OS processada com sucesso.");
+                } else if (opcao == 2) {
+                    System.out.println("Total de OS processadas: " + totalOsProcessadas);
+                } else if (opcao == 0) {
+                    System.out.println("Encerrando sistema.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            }
+
+            System.out.println("Total final de OS processadas: " + totalOsProcessadas);
+
+            scanner.close();
+        }
+    }
+
+### Por que opcao começa com -1
+A variável opcao começa com -1 para garantir que seja diferente de 0.
+
+Como a condição do while é:
+
+    opcao != 0
+
+se opcao começasse com 0, o while nem executaria.
+
+Com opcao = -1, o menu aparece pela primeira vez.
+
+### Contador de OS processadas
+A variável:
+
+    int totalOsProcessadas = 0;
+
+guarda quantas OS foram processadas.
+
+Ela começa em 0 porque nenhuma OS foi processada no início.
+
+Quando o usuário digita 1, executa:
+
+    totalOsProcessadas++;
+
+Isso soma 1 ao total.
+
+É equivalente a:
+
+    totalOsProcessadas = totalOsProcessadas + 1;
+
+### Opção 2
+A opção 2 apenas exibe o total.
+
+Ela não altera o contador.
+
+Exemplo:
+- se o total está 2;
+- o usuário digita 2;
+- o sistema mostra 2;
+- o total continua 2.
+
+### Opção 9
+A opção 9 foi usada para testar entrada inválida.
+
+Quando o usuário digita 9:
+- não processa OS;
+- não altera o contador;
+- mostra opção inválida;
+- o menu continua.
+
+### Opção 0
+A opção 0 encerra o programa.
+
+Quando o usuário digita 0:
+- opcao passa a valer 0;
+- a mensagem Encerrando sistema é exibida;
+- ao voltar para a condição do while, opcao != 0 fica falso;
+- o laço termina;
+- o total final é exibido.
+
+### Sequência validada
+Foi testada a sequência:
+
+- 2
+- 1
+- 1
+- 2
+- 9
+- 1
+- 2
+- 0
+
+### Resultado da sequência
+A sequência gerou o seguinte comportamento:
+
+- opção 2 mostrou Total de OS processadas: 0;
+- opção 1 processou uma OS;
+- opção 1 processou mais uma OS;
+- opção 2 mostrou Total de OS processadas: 2;
+- opção 9 mostrou Opção inválida;
+- opção 1 processou mais uma OS;
+- opção 2 mostrou Total de OS processadas: 3;
+- opção 0 encerrou o sistema;
+- total final exibido: 3.
+
+### Aprendizado principal
+O aprendizado principal foi entender que o while permite criar programas que continuam executando até uma condição de parada acontecer.
+
+No exercício, a condição de parada foi o usuário digitar 0.
+
+Enquanto isso não aconteceu, o menu continuou aparecendo.
+
+### Relação com backend
+Menus de console são simples, mas o conceito do while é usado em backend em várias situações.
+
+Exemplos:
+- enquanto houver mensagens na fila, processe;
+- enquanto houver registros pendentes, continue processando;
+- enquanto existir próxima página de resultados, busque a próxima;
+- enquanto o status não for finalizado, continue verificando;
+- enquanto houver dados para importar, continue importando.
+
+Exemplo conceitual:
+
+    while (temProximaPagina) {
+        buscarProximaPagina();
+    }
+
+Outro exemplo conceitual:
+
+    while (existeMensagemNaFila) {
+        processarMensagem();
+    }
+
+A estrutura muda, mas a lógica é a mesma.
+
+### Erros comuns
+Erros comuns com while:
+- esquecer de atualizar a variável de controle;
+- criar uma condição que nunca fica falsa;
+- iniciar a variável com um valor que impede o while de executar;
+- atualizar o contador no lugar errado;
+- reiniciar acumuladores dentro do while;
+- não tratar opção inválida;
+- esquecer scanner.close;
+- confundir while com for.
+
+### Resumo da aula
+- while significa enquanto.
+- O while repete enquanto a condição for verdadeira.
+- O while é útil quando a quantidade de repetições depende de uma condição.
+- É preciso garantir que a condição possa ficar falsa.
+- Caso contrário, pode ocorrer loop infinito.
+- Menus são exemplos clássicos de uso do while.
+- O usuário pode controlar quando o laço termina.
