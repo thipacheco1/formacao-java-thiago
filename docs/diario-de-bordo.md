@@ -232,3 +232,40 @@ Concluída com ajuste de organização pendente.
 ### Próxima aula
 Aula 1.10 - Revisão da estrutura profissional do projeto e primeiros conceitos de arquivos versionados.
 
+---
+
+## Aula 1.10 - Revisão da estrutura profissional do projeto
+
+### O que foi feito
+- Validado o estado do repositório com `git status`.
+- Confirmado que a branch `main` está atualizada com `origin/main`.
+- Executado o comando `git ls-files`.
+- Validado quais arquivos estão sendo versionados pelo Git.
+
+### Arquivos versionados
+```text
+.gitignore
+README.md
+docs/atalhos.txt
+docs/diario-de-bordo.md
+src/Main.java
+```
+
+### O que foi aprendido
+- Arquivos versionados são arquivos controlados pelo Git.
+- Arquivos ignorados existem localmente, mas não entram no histórico do Git.
+- Código-fonte e documentação devem ser versionados.
+- Arquivos gerados, temporários e internos da IDE devem ficar fora do Git.
+- O comando `git ls-files` mostra exatamente quais arquivos estão sendo controlados pelo Git.
+
+### Validação
+- O diretório `.idea` não foi versionado.
+- O diretório `out` não foi versionado.
+- O arquivo `.iml` não foi versionado.
+- O projeto está limpo com `working tree clean`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.1 - Variáveis em Java: o primeiro conceito real da linguagem.
