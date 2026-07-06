@@ -1,0 +1,38 @@
+ATALHOS INTELLIJ - FORMAÇÃO JAVA
+
+1. Criar método main
+Digitar: main + Tab
+ou: psvm + Tab
+
+Resultado:
+public static void main(String[] args) {
+
+}
+
+2. Criar System.out.println
+Digitar: sout + Tab
+
+Resultado:
+System.out.println();
+
+3. Executar programa
+Shift + F10
+
+4. Duplicar linha
+Ctrl + D
+
+5. Apagar linha
+Ctrl + Y
+
+6. Formatar código
+Ctrl + Alt + L
+
+7. Comentar ou descomentar linha
+Ctrl + /
+Exemplo:
+Transforma uma linha em comentário usando //
+
+8. Criar novo arquivo ou classe
+Alt + Insert
+Uso:
+Dentro de uma pasta, permite criar novo arquivo, classe Java, pacote, entre outros.
