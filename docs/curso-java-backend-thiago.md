@@ -2514,3 +2514,236 @@ Mesmo que no futuro o Java moderno use estruturas como for-each e streams, enten
 - contador++ soma 1 ao contador.
 - O bloco executa enquanto a condição for verdadeira.
 - Usar variável como limite torna o código flexível.
+
+---
+
+## Aula 3.2 - Laço for com soma e acumuladores
+
+### Objetivo da aula
+Aprender a usar o laço for para somar valores progressivamente.
+
+Na aula anterior, o for foi usado apenas para repetir mensagens no console.
+
+Nesta aula, o for passou a executar uma regra mais útil: acumular valores.
+
+Esse conceito é fundamental para backend, porque muitos sistemas precisam calcular totais, somar itens, processar registros e gerar valores consolidados.
+
+### O que é um acumulador
+Um acumulador é uma variável usada para guardar um valor que vai sendo atualizado durante a execução do programa.
+
+Exemplo simples:
+
+    int total = 0;
+
+    total = total + 10;
+    total = total + 20;
+    total = total + 30;
+
+Ao final, total vale 60.
+
+A variável total acumulou os valores 10, 20 e 30.
+
+### Acumulador dentro do for
+O acumulador fica fora do for, porque ele precisa manter o valor entre as repetições.
+
+Exemplo:
+
+    int total = 0;
+
+    for (int numero = 1; numero <= 5; numero++) {
+        total = total + numero;
+    }
+
+Se o total fosse declarado dentro do for, ele seria recriado a cada repetição e perderia o valor anterior.
+
+### Exemplo somando números de 1 até 5
+Código de exemplo:
+
+    public class Main {
+        public static void main(String[] args) {
+            int total = 0;
+
+            for (int numero = 1; numero <= 5; numero++) {
+                total = total + numero;
+                System.out.println("Número atual: " + numero);
+                System.out.println("Total acumulado: " + total);
+            }
+
+            System.out.println("Resultado final: " + total);
+        }
+    }
+
+Fluxo do cálculo:
+- total começa em 0.
+- numero = 1, total = 0 + 1 = 1.
+- numero = 2, total = 1 + 2 = 3.
+- numero = 3, total = 3 + 3 = 6.
+- numero = 4, total = 6 + 4 = 10.
+- numero = 5, total = 10 + 5 = 15.
+
+Resultado final:
+- 15.
+
+### Forma completa e forma abreviada
+A forma completa da soma é:
+
+    total = total + numero;
+
+Existe também uma forma abreviada:
+
+    total += numero;
+
+As duas fazem a mesma coisa.
+
+Nesta fase inicial, a forma completa ajuda a entender melhor o raciocínio.
+
+### Diferença entre contador e acumulador
+Contador e acumulador não são a mesma coisa.
+
+O contador controla a quantidade de repetições.
+
+Exemplo:
+
+    atividadeAtual
+
+O acumulador guarda um valor calculado ao longo das repetições.
+
+Exemplo:
+
+    totalOs
+
+Em um processamento de OS:
+- atividadeAtual indica qual atividade está sendo processada.
+- totalOs guarda o valor total acumulado da OS.
+
+### Exemplo com contexto de OS
+Uma OS pode ter várias atividades.
+
+Se cada atividade possui um valor, o sistema pode usar um for para processar cada atividade e somar o valor no total da OS.
+
+Exemplo:
+
+    public class Main {
+        public static void main(String[] args) {
+            int quantidadeAtividades = 5;
+            double valorPorAtividade = 100.00;
+            double totalOs = 0.0;
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                totalOs = totalOs + valorPorAtividade;
+
+                System.out.println("Atividade " + atividadeAtual + " processada.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+Resultado esperado:
+- Atividade 1 processada. Total parcial: R$ 100.0.
+- Atividade 2 processada. Total parcial: R$ 200.0.
+- Atividade 3 processada. Total parcial: R$ 300.0.
+- Atividade 4 processada. Total parcial: R$ 400.0.
+- Atividade 5 processada. Total parcial: R$ 500.0.
+- Total final da OS: R$ 500.0.
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Calculadora de Total da OS.
+
+Variáveis usadas:
+- nomeCliente;
+- quantidadeAtividades;
+- valorPorAtividade;
+- totalOs.
+
+Código praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 3;
+            double valorPorAtividade = 200.00;
+            double totalOs = 0.0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                totalOs = totalOs + valorPorAtividade;
+
+                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+### Resultado validado
+Com:
+- quantidadeAtividades = 3;
+- valorPorAtividade = 200.00;
+
+O console exibiu:
+- Cliente: Maria.
+- Processando atividade 1 de 3.
+- Total parcial da OS: R$ 200.0.
+- Processando atividade 2 de 3.
+- Total parcial da OS: R$ 400.0.
+- Processando atividade 3 de 3.
+- Total parcial da OS: R$ 600.0.
+- Total final da OS: R$ 600.0.
+
+### Aprendizado principal
+O aprendizado principal foi entender que uma variável pode guardar um valor progressivo durante o laço.
+
+A cada repetição, o programa reaproveita o valor anterior de totalOs e soma um novo valor.
+
+Essa lógica é usada em muitos cenários reais, como:
+- calcular total de uma OS;
+- somar valores de produtos;
+- calcular total de transações;
+- somar remunerações;
+- calcular quantidade total de itens;
+- gerar totais em relatórios;
+- consolidar valores retornados de banco de dados.
+
+### Atenção sobre dinheiro
+Nesta fase, foi usado double para simplificar o aprendizado.
+
+Em backend real, valores monetários devem ser tratados com BigDecimal.
+
+Motivo:
+- double pode apresentar problemas de precisão em cálculos financeiros;
+- BigDecimal oferece maior controle para valores monetários;
+- BigDecimal será estudado futuramente em momento apropriado.
+
+### Erros comuns
+Erros comuns ao usar acumuladores:
+- declarar o acumulador dentro do for;
+- esquecer de inicializar o acumulador;
+- atualizar o acumulador fora do local correto;
+- confundir contador com acumulador;
+- usar int quando o valor pode ser decimal;
+- esperar que o total seja calculado automaticamente sem somar dentro do laço.
+
+### Relação com backend
+Em backend, acumuladores aparecem em várias situações:
+- cálculo de total de pedidos;
+- totalização de atividades;
+- soma de valores de notas fiscais;
+- cálculo de remuneração;
+- consolidação de relatórios;
+- processamento de listas;
+- totalização de registros retornados de consultas.
+
+Mesmo que futuramente sejam usadas listas, streams e banco de dados, entender acumulador com for é essencial para compreender a base dos cálculos.
+
+### Resumo da aula
+- Acumulador guarda um valor progressivo.
+- O acumulador deve ser criado antes do for.
+- O contador controla a repetição.
+- O acumulador guarda o resultado.
+- totalOs = totalOs + valorPorAtividade soma um novo valor ao total anterior.
+- O total parcial mostra o andamento do cálculo.
+- O total final aparece depois que o for termina.

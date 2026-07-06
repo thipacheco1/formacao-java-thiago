@@ -1260,3 +1260,131 @@ Concluída.
 
 ### Próxima aula
 Aula 3.2 - Laço for com soma e acumuladores.
+
+---
+
+## Aula 3.2 - Laço for com soma e acumuladores
+
+### O que foi feito
+- Estudado o conceito de acumulador.
+- Revisado o uso do laço for.
+- Entendido como somar valores dentro de uma repetição.
+- Testado exemplo simples somando números de 1 até 5.
+- Testado exemplo de OS com atividades de valor fixo.
+- Criado exercício final chamado mentalmente de Calculadora de Total da OS.
+- Utilizadas variáveis para cliente, quantidade de atividades, valor por atividade e total da OS.
+- Processadas atividades usando for.
+- Calculado total parcial a cada repetição.
+- Calculado total final da OS.
+- Testado cenário dinâmico alterando quantidade de atividades e valor por atividade.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- for;
+- contador;
+- acumulador;
+- double;
+- soma progressiva;
+- total parcial;
+- total final;
+- variável como limite do laço;
+- incremento com ++;
+- cálculo dentro da repetição.
+
+Código final praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 3;
+            double valorPorAtividade = 200.00;
+            double totalOs = 0.0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                totalOs = totalOs + valorPorAtividade;
+
+                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("Total final da OS: R$ " + totalOs);
+        }
+    }
+
+### Resultado obtido
+- Cliente: Maria
+- Processando atividade 1 de 3
+- Total parcial da OS: R$ 200.0
+- Processando atividade 2 de 3
+- Total parcial da OS: R$ 400.0
+- Processando atividade 3 de 3
+- Total parcial da OS: R$ 600.0
+- Total final da OS: R$ 600.0
+- Process finished with exit code 0
+
+### O que foi aprendido
+- Acumulador é uma variável usada para guardar um valor que vai sendo atualizado durante o laço.
+- O acumulador normalmente começa com valor inicial neutro, como 0 ou 0.0.
+- No caso de soma, o acumulador começa em 0.
+- A cada repetição, um novo valor pode ser somado ao acumulador.
+- A instrução totalOs = totalOs + valorPorAtividade atualiza o total com base no valor anterior.
+- O contador controla quantas vezes o laço executa.
+- O acumulador guarda o resultado progressivo.
+- Contador e acumulador têm papéis diferentes.
+- O total parcial mostra o valor acumulado até a repetição atual.
+- O total final mostra o valor acumulado depois que o laço termina.
+
+### Diferença entre contador e acumulador
+- Contador controla a repetição.
+- Acumulador guarda um valor calculado durante a repetição.
+
+Exemplo:
+- atividadeAtual é o contador.
+- totalOs é o acumulador.
+
+### Regra praticada
+A cada atividade processada, o sistema soma o valor da atividade ao total da OS.
+
+Regra usada:
+totalOs = totalOs + valorPorAtividade;
+
+Com:
+- quantidadeAtividades = 3
+- valorPorAtividade = 200.00
+
+Fluxo:
+- Atividade 1: totalOs = 0.0 + 200.0 = 200.0
+- Atividade 2: totalOs = 200.0 + 200.0 = 400.0
+- Atividade 3: totalOs = 400.0 + 200.0 = 600.0
+
+### Observação importante
+Nesta fase do curso foi usado double para representar valores monetários porque ainda estamos estudando fundamentos.
+
+Em sistemas reais de backend, valores financeiros devem ser tratados com BigDecimal.
+
+O BigDecimal será estudado futuramente, quando houver mais base de orientação a objetos e classes.
+
+### Dificuldades encontradas
+- Foi necessário entender que o totalOs precisa ser declarado antes do for.
+- Foi necessário entender que o totalOs não pode ser reiniciado dentro do for.
+- Foi necessário perceber que a cada repetição o total anterior é reaproveitado.
+- Foi necessário diferenciar contador de acumulador.
+
+### Como foi resolvido
+- Criada a variável totalOs antes do laço, iniciando com 0.0.
+- Somado o valorPorAtividade ao totalOs dentro do for.
+- Exibido o total parcial a cada atividade processada.
+- Validado o total final com 3 atividades de R$ 200.00.
+- Confirmado que o total final foi R$ 600.0.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.3 - Laço for com condicionais dentro da repetição.
+
