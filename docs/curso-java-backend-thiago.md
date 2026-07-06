@@ -4757,3 +4757,189 @@ Erros comuns com break e continue:
 - Atividades inválidas foram ignoradas.
 - Atividade bloqueada interrompeu o processamento.
 - O resumo final refletiu apenas atividades realmente processadas.
+
+
+---
+
+## Aula 3.9 - Exercício integrador do Módulo 3
+
+### Objetivo da aula
+Construir um exercício integrador para consolidar os principais conceitos do Módulo 3.
+
+A proposta foi criar um Sistema Integrado de Processamento de OS, juntando:
+- do while
+- while
+- for
+- switch
+- if, else if e else
+- break
+- continue
+- Scanner
+- contadores
+- acumuladores
+- validações
+- menu
+- resumo da OS
+- resumo geral
+- resumo final
+
+### Visão geral do sistema
+O sistema possui um menu principal com três opções:
+- 1 - Processar nova OS
+- 2 - Exibir resumo geral
+- 0 - Sair
+
+O menu é controlado por do while, porque precisa aparecer pelo menos uma vez e continuar até o usuário escolher sair.
+
+### Uso das estruturas
+- do while controla o menu principal.
+- while valida a quantidade de atividades.
+- for processa as atividades da OS.
+- switch traduz o código do status da atividade.
+- if aplica as regras de negócio.
+- continue ignora itens que não entram no total.
+- break interrompe a OS em caso de bloqueio.
+
+### Regras de processamento das atividades
+Atividade concluída:
+- se o valor for maior que zero, entra no total da OS;
+- se o valor for menor ou igual a zero, conta como inválida e não entra no total.
+
+Atividade pendente:
+- conta como pendente;
+- não entra no total;
+- usa continue.
+
+Atividade cancelada:
+- conta como cancelada;
+- não entra no total;
+- usa continue.
+
+Atividade bloqueada:
+- marca que houve bloqueio;
+- interrompe o processamento da OS;
+- usa break.
+
+Status inválido:
+- conta como inválida;
+- não entra no total;
+- usa continue.
+
+### Acumuladores locais
+Acumuladores locais representam apenas a OS atual:
+- totalOs
+- atividadesProcessadas
+- atividadesInvalidas
+- atividadesPendentes
+- atividadesCanceladas
+- houveBloqueio
+
+Esses valores são reiniciados a cada nova OS.
+
+### Acumuladores gerais
+Acumuladores gerais representam o consolidado de todo o sistema:
+- totalOsProcessadas
+- totalGeralSistema
+- totalAtividadesProcessadasGeral
+- totalAtividadesInvalidasGeral
+- totalAtividadesPendentesGeral
+- totalAtividadesCanceladasGeral
+- totalOsBloqueadas
+
+Esses valores ficam fora do processamento individual da OS, porque precisam acumular tudo desde o início do programa.
+
+### Resultado da OS Maria
+A OS da Maria teve:
+- quantidade inválida inicial igual a 0, corrigida para 3;
+- atividade 1 concluída com valor 100;
+- atividade 2 pendente com valor 50;
+- atividade 3 concluída com valor -20.
+
+Resultado:
+- atividades processadas: 1
+- atividades inválidas: 1
+- atividades pendentes: 1
+- atividades canceladas: 0
+- houve bloqueio: false
+- total da OS: R$ 100.0
+
+### Resultado da OS Carlos
+A OS do Carlos teve:
+- atividade 1 concluída com valor 200;
+- atividade 2 cancelada com valor 150;
+- atividade 3 bloqueada com valor 80;
+- atividade 4 não foi processada por causa do break.
+
+Resultado:
+- atividades processadas: 1
+- atividades inválidas: 0
+- atividades pendentes: 0
+- atividades canceladas: 1
+- houve bloqueio: true
+- total da OS: R$ 200.0
+
+### Resultado geral final
+Ao final da execução, o sistema exibiu:
+- Total de OS processadas: 2
+- Total geral do sistema: R$ 300.0
+- Total de atividades processadas: 2
+- Total de atividades inválidas: 1
+- Total de atividades pendentes: 1
+- Total de atividades canceladas: 1
+- Total de OS bloqueadas: 1
+
+### Aprendizado principal
+O principal aprendizado foi entender como combinar estruturas de repetição e decisão em um fluxo mais realista.
+
+O sistema usou:
+- do while para controlar o ciclo principal;
+- while para validação;
+- for para processamento repetitivo;
+- switch para tradução de status;
+- if para aplicar regra de negócio;
+- continue para ignorar itens;
+- break para interromper em caso crítico.
+
+### Relação com backend
+Esse exercício se aproxima de lógicas reais de backend.
+
+Em uma aplicação real, a entrada não viria pelo console, mas poderia vir de:
+- API REST;
+- JSON;
+- banco de dados;
+- fila;
+- arquivo de importação;
+- formulário.
+
+Mesmo assim, a lógica central seria parecida:
+- receber dados;
+- validar;
+- processar itens;
+- separar status;
+- ignorar itens que não entram na regra;
+- interromper em caso crítico;
+- acumular totais;
+- retornar um resumo.
+
+### Erros comuns neste tipo de sistema
+- esquecer scanner.nextLine após nextInt;
+- não validar quantidade menor ou igual a zero;
+- somar atividade pendente no total;
+- somar atividade cancelada no total;
+- somar atividade com valor inválido;
+- não interromper ao encontrar bloqueio;
+- continuar lendo atividades depois de um break esperado;
+- misturar acumuladores locais com acumuladores gerais;
+- atualizar totais gerais antes de concluir a OS;
+- não tratar opção inválida;
+- não testar resumo inicial e resumo final.
+
+### Resumo da aula
+- A aula integrou os principais conceitos do Módulo 3.
+- O sistema processou múltiplas OS.
+- Cada OS teve atividades com status diferentes.
+- O sistema validou quantidade inválida.
+- O sistema ignorou pendentes, canceladas e inválidas.
+- O sistema interrompeu OS bloqueada.
+- O sistema manteve resumo geral.
+- O resultado final consolidou corretamente todas as OS.

@@ -2189,3 +2189,131 @@ Concluída.
 ### Próxima aula
 Aula 3.9 - Exercício integrador do Módulo 3.
 
+---
+
+## Aula 3.9 - Exercício integrador do Módulo 3
+
+### O que foi feito
+- Criado exercício integrador do Módulo 3.
+- Desenvolvido um Sistema Integrado de Processamento de OS.
+- Utilizado do while para controlar o menu principal.
+- Utilizado while para validar quantidade de atividades menor ou igual a zero.
+- Utilizado for para percorrer as atividades de cada OS.
+- Utilizado switch para traduzir o status da atividade.
+- Utilizado if, else if e else para tratar opções do menu e regras de processamento.
+- Utilizado continue para ignorar atividades que não entram no total.
+- Utilizado break para interromper o processamento da OS em caso de bloqueio.
+- Utilizado Scanner para entrada de dados.
+- Trabalhado com acumuladores locais por OS.
+- Trabalhado com acumuladores gerais do sistema.
+- Validado resumo inicial, resumo por OS, resumo geral, opção inválida e resumo final.
+
+### Regras praticadas
+Menu principal:
+- 1 - Processar nova OS
+- 2 - Exibir resumo geral
+- 0 - Sair
+
+Status das atividades:
+- 1 - Concluída
+- 2 - Pendente
+- 3 - Cancelada
+- 4 - Bloqueada
+- Outro valor - Status inválido
+
+Regras:
+- Atividade concluída com valor maior que zero entra no total.
+- Atividade concluída com valor menor ou igual a zero é inválida.
+- Atividade pendente não entra no total.
+- Atividade cancelada não entra no total.
+- Atividade bloqueada interrompe o processamento da OS.
+- Status inválido não entra no total.
+
+### Sequência testada
+- 2
+- 1
+- maria
+- 0
+- 3
+- 100
+- 1
+- 50
+- 2
+- -20
+- 1
+- 2
+- 1
+- carlos
+- 4
+- 200
+- 1
+- 150
+- 3
+- 80
+- 4
+- 2
+- 9
+- 0
+
+### Resultado obtido - OS Maria
+Dados:
+- Cliente: maria
+- Quantidade inválida inicial: 0
+- Quantidade corrigida: 3
+- Atividade 1: valor 100, status concluída
+- Atividade 2: valor 50, status pendente
+- Atividade 3: valor -20, status concluída com valor inválido
+
+Resultado:
+- Atividades processadas: 1
+- Atividades inválidas: 1
+- Atividades pendentes: 1
+- Atividades canceladas: 0
+- Houve bloqueio? false
+- Total da OS: R$ 100.0
+
+### Resultado obtido - OS Carlos
+Dados:
+- Cliente: carlos
+- Quantidade de atividades: 4
+- Atividade 1: valor 200, status concluída
+- Atividade 2: valor 150, status cancelada
+- Atividade 3: valor 80, status bloqueada
+- Atividade 4: não foi processada por causa do break
+
+Resultado:
+- Atividades processadas: 1
+- Atividades inválidas: 0
+- Atividades pendentes: 0
+- Atividades canceladas: 1
+- Houve bloqueio? true
+- Total da OS: R$ 200.0
+
+### Resultado final validado
+- Total de OS processadas: 2
+- Total geral do sistema: R$ 300.0
+- Total de atividades processadas: 2
+- Total de atividades inválidas: 1
+- Total de atividades pendentes: 1
+- Total de atividades canceladas: 1
+- Total de OS bloqueadas: 1
+- Execução finalizada com exit code 0
+
+### O que foi aprendido
+- É possível combinar vários tipos de laço em um único sistema.
+- do while é útil para manter o menu principal.
+- while é útil para validações em que o usuário pode errar várias vezes.
+- for é útil para processar uma quantidade definida de atividades.
+- switch é útil para traduzir códigos de status.
+- continue é útil para ignorar atividades que não devem entrar no total.
+- break é útil para interromper o processamento quando há bloqueio.
+- Acumuladores locais representam uma OS específica.
+- Acumuladores gerais representam o consolidado do sistema.
+- A ordem das validações influencia o comportamento do programa.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.10 - Revisão final do Módulo 3 e preparação para arrays.
+
