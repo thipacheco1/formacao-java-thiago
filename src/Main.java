@@ -1,32 +1,34 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        String nomeCliente = "Carlos";
-        int quantidadeAtividades = 6;
-        int atividadesConcluidas = 2;
-        double valorPorAtividade = 200.00;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o nome do cliente:");
+        String nomeCliente = scanner.nextLine();
+
+        System.out.println("Digite a quantidade de atividades:");
+        int quantidadeAtividades = scanner.nextInt();
+
         double totalOs = 0.0;
-        int totalConcluidas = 0;
-        int totalPendentes = 0;
 
         System.out.println("Cliente: " + nomeCliente);
 
         for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-            if (atividadeAtual <= atividadesConcluidas) {
-                totalOs = totalOs + valorPorAtividade;
-                totalConcluidas++;
+            System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+            double valorAtividade = scanner.nextDouble();
 
-                System.out.println("Atividade " + atividadeAtual + " concluída.");
-                System.out.println("Total parcial da OS: R$ " + totalOs);
-            } else {
-                totalPendentes++;
+            totalOs = totalOs + valorAtividade;
 
-                System.out.println("Atividade " + atividadeAtual + " pendente.");
-            }
+            System.out.println("Atividade " + atividadeAtual + " processada.");
+            System.out.println("Total parcial da OS: R$ " + totalOs);
         }
 
         System.out.println("----- Resumo da OS -----");
-        System.out.println("Total de atividades concluídas: " + totalConcluidas);
-        System.out.println("Total de atividades pendentes: " + totalPendentes);
+        System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
         System.out.println("Total final da OS: R$ " + totalOs);
+
+        scanner.close();
     }
 }

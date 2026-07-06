@@ -3030,3 +3030,262 @@ Erros comuns ao usar if dentro do for:
 - O acumulador soma apenas o que passa na regra.
 - Contadores adicionais podem registrar quantidades por status.
 - Essa lógica é base para processamentos reais em backend.
+
+---
+
+## Aula 3.4 - Laço for com Scanner
+
+### Objetivo da aula
+Aprender a combinar Scanner com o laço for.
+
+Até aqui, o for usava valores definidos diretamente no código.
+
+Exemplo:
+
+    int quantidadeAtividades = 6;
+
+Nesta aula, a quantidade passou a ser informada pelo usuário.
+
+Exemplo:
+
+    int quantidadeAtividades = scanner.nextInt();
+
+Isso deixou o programa mais dinâmico, porque o usuário passou a controlar quantas vezes o laço será executado.
+
+### Diferença entre valor fixo e valor digitado
+Quando usamos valor fixo, o programa sempre executa com a mesma quantidade.
+
+Exemplo:
+
+    int quantidadeAtividades = 3;
+
+Nesse caso, o for sempre executa 3 vezes, a menos que o código seja alterado.
+
+Quando usamos Scanner:
+
+    int quantidadeAtividades = scanner.nextInt();
+
+o usuário informa a quantidade durante a execução.
+
+Se digitar 3, o for executa 3 vezes.
+Se digitar 5, o for executa 5 vezes.
+Se digitar 10, o for executa 10 vezes.
+
+### Primeiro exemplo da aula
+Foi testado um programa simples em que o usuário informa a quantidade de repetições.
+
+Código de referência:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite a quantidade de repetições:");
+            int quantidadeRepeticoes = scanner.nextInt();
+
+            for (int contador = 1; contador <= quantidadeRepeticoes; contador++) {
+                System.out.println("Repetição número: " + contador);
+            }
+
+            scanner.close();
+        }
+    }
+
+Esse exemplo mostrou que o for pode usar uma variável lida pelo Scanner como limite.
+
+### Lendo valores dentro do for
+Depois, foi estudado um exemplo em que o usuário informa o valor de cada atividade dentro do próprio laço.
+
+Código de referência:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite a quantidade de atividades:");
+            int quantidadeAtividades = scanner.nextInt();
+
+            double totalOs = 0.0;
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+                double valorAtividade = scanner.nextDouble();
+
+                totalOs = totalOs + valorAtividade;
+
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("Total final da OS: R$ " + totalOs);
+
+            scanner.close();
+        }
+    }
+
+### O que esse exemplo ensina
+Esse exemplo ensina três coisas importantes:
+
+1. O usuário define quantas atividades serão processadas.
+2. O for repete com base nessa quantidade.
+3. Dentro de cada repetição, o usuário informa um novo valor.
+
+Isso é mais realista do que usar um único valor fixo para todas as atividades.
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Calculadora Dinâmica de OS.
+
+O programa pede:
+- nome do cliente;
+- quantidade de atividades;
+- valor de cada atividade.
+
+O programa calcula:
+- total parcial da OS;
+- quantidade de atividades processadas;
+- total final da OS.
+
+Código praticado:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite o nome do cliente:");
+            String nomeCliente = scanner.nextLine();
+
+            System.out.println("Digite a quantidade de atividades:");
+            int quantidadeAtividades = scanner.nextInt();
+
+            double totalOs = 0.0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+                double valorAtividade = scanner.nextDouble();
+
+                totalOs = totalOs + valorAtividade;
+
+                System.out.println("Atividade " + atividadeAtual + " processada.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("----- Resumo da OS -----");
+            System.out.println("Cliente: " + nomeCliente);
+            System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
+            System.out.println("Total final da OS: R$ " + totalOs);
+
+            scanner.close();
+        }
+    }
+
+### Resultado validado - Maria
+Dados informados:
+- Cliente: maria;
+- Quantidade de atividades: 3;
+- Valores: 100, 200 e 300.
+
+Resultado:
+- Total parcial após atividade 1: R$ 100.0;
+- Total parcial após atividade 2: R$ 300.0;
+- Total parcial após atividade 3: R$ 600.0;
+- Total final da OS: R$ 600.0.
+
+### Resultado validado - Carlos
+Dados informados:
+- Cliente: carlos;
+- Quantidade de atividades: 4;
+- Valores: 120,5, 80, 200 e 99,5.
+
+Cálculo:
+- 120,5 + 80 = 200,5;
+- 200,5 + 200 = 400,5;
+- 400,5 + 99,5 = 500,0.
+
+Resultado:
+- Total final da OS: R$ 500.0.
+
+### Conceito principal da aula
+O conceito principal pode ser resumido assim:
+
+    Scanner fornece os dados.
+    for controla a repetição.
+    acumulador calcula o total.
+
+No exercício:
+- scanner.nextLine leu o nome do cliente;
+- scanner.nextInt leu a quantidade de atividades;
+- scanner.nextDouble leu o valor de cada atividade;
+- for repetiu conforme a quantidade informada;
+- totalOs acumulou os valores digitados.
+
+### Ponto de atenção sobre nextLine e nextInt
+Nesta aula, a ordem usada foi:
+
+    String nomeCliente = scanner.nextLine();
+    int quantidadeAtividades = scanner.nextInt();
+
+Essa ordem não gerou problema.
+
+O problema clássico acontece quando lemos número primeiro e depois texto com nextLine.
+
+Exemplo problemático:
+
+    int idade = scanner.nextInt();
+    String nome = scanner.nextLine();
+
+Nesse caso, pode ser necessário limpar o Enter pendente com:
+
+    scanner.nextLine();
+
+Esse ponto já havia sido estudado na aula de Scanner, mas foi reforçado aqui.
+
+### Relação com backend
+Essa lógica se aproxima de processamentos reais.
+
+Um backend pode receber:
+- quantidade de itens;
+- valores de produtos;
+- atividades de uma OS;
+- parcelas;
+- transações;
+- registros de uma solicitação.
+
+Depois, o sistema pode percorrer esses dados, processar cada item e calcular um total.
+
+Nesta fase ainda estamos usando console e Scanner, mas a lógica é a mesma que futuramente será aplicada com listas, objetos, JSON, APIs e banco de dados.
+
+### Exemplos reais de uso
+Esse padrão pode ser usado para:
+- calcular total de uma OS;
+- somar valores de produtos;
+- processar atividades informadas;
+- calcular total de um pedido;
+- somar transações;
+- gerar resumo financeiro;
+- processar uma lista de itens enviada por uma API.
+
+### Erros comuns
+Erros comuns ao usar Scanner com for:
+- ler a quantidade depois do for;
+- usar um limite fixo em vez da variável digitada;
+- esquecer de inicializar o acumulador antes do for;
+- declarar o acumulador dentro do for;
+- esquecer de somar o valor digitado;
+- confundir valorAtividade com totalOs;
+- esquecer scanner.close;
+- ter problemas com nextLine depois de nextInt.
+
+### Resumo da aula
+- O usuário pode definir a quantidade de repetições.
+- O for pode usar uma variável lida pelo Scanner como limite.
+- É possível ler valores dentro do for.
+- Cada repetição pode receber um valor diferente.
+- O acumulador soma os valores digitados.
+- O programa fica mais dinâmico e mais próximo de um processamento real.

@@ -1539,4 +1539,173 @@ Concluída.
 Aula 3.4 - Laço for com Scanner.
 
 
+---
+
+## Aula 3.4 - Laço for com Scanner
+
+### O que foi feito
+- Estudado o uso de Scanner junto com o laço for.
+- Entendido como fazer o for depender de um valor digitado pelo usuário.
+- Testado exemplo simples com quantidade de repetições informada pelo usuário.
+- Testado exemplo lendo o valor de cada atividade dentro do for.
+- Criado exercício final chamado mentalmente de Calculadora Dinâmica de OS.
+- Lido o nome do cliente usando nextLine.
+- Lida a quantidade de atividades usando nextInt.
+- Lido o valor de cada atividade usando nextDouble.
+- Calculado o total parcial da OS a cada atividade processada.
+- Calculado o total final da OS.
+- Testado cenário com cliente Maria.
+- Testado cenário com cliente Carlos.
+- Validado uso de valores decimais com vírgula no ambiente local.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- import java.util.Scanner;
+- Scanner scanner = new Scanner(System.in);
+- nextLine;
+- nextInt;
+- nextDouble;
+- for;
+- contador;
+- acumulador;
+- leitura de dados dentro da repetição;
+- total parcial;
+- total final;
+- scanner.close.
+
+Código final praticado:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite o nome do cliente:");
+            String nomeCliente = scanner.nextLine();
+
+            System.out.println("Digite a quantidade de atividades:");
+            int quantidadeAtividades = scanner.nextInt();
+
+            double totalOs = 0.0;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+                double valorAtividade = scanner.nextDouble();
+
+                totalOs = totalOs + valorAtividade;
+
+                System.out.println("Atividade " + atividadeAtual + " processada.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            }
+
+            System.out.println("----- Resumo da OS -----");
+            System.out.println("Cliente: " + nomeCliente);
+            System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
+            System.out.println("Total final da OS: R$ " + totalOs);
+
+            scanner.close();
+        }
+    }
+
+### Resultado obtido - Cenário Maria
+Dados informados:
+- Cliente: maria
+- Quantidade de atividades: 3
+- Valor da atividade 1: 100
+- Valor da atividade 2: 200
+- Valor da atividade 3: 300
+
+Resultado:
+- Cliente: maria
+- Atividade 1 processada.
+- Total parcial da OS: R$ 100.0
+- Atividade 2 processada.
+- Total parcial da OS: R$ 300.0
+- Atividade 3 processada.
+- Total parcial da OS: R$ 600.0
+- Quantidade de atividades processadas: 3
+- Total final da OS: R$ 600.0
+
+### Resultado obtido - Cenário Carlos
+Dados informados:
+- Cliente: carlos
+- Quantidade de atividades: 4
+- Valor da atividade 1: 120,5
+- Valor da atividade 2: 80
+- Valor da atividade 3: 200
+- Valor da atividade 4: 99,5
+
+Resultado:
+- Cliente: carlos
+- Atividade 1 processada.
+- Total parcial da OS: R$ 120.5
+- Atividade 2 processada.
+- Total parcial da OS: R$ 200.5
+- Atividade 3 processada.
+- Total parcial da OS: R$ 400.5
+- Atividade 4 processada.
+- Total parcial da OS: R$ 500.0
+- Quantidade de atividades processadas: 4
+- Total final da OS: R$ 500.0
+- Process finished with exit code 0
+
+### O que foi aprendido
+- O Scanner pode fornecer dados para controlar o for.
+- A quantidade de repetições não precisa ficar fixa no código.
+- O usuário pode informar a quantidade de atividades.
+- O for pode usar essa quantidade digitada como limite.
+- É possível ler valores dentro do for.
+- Cada repetição pode receber um valor diferente.
+- O acumulador totalOs soma os valores digitados pelo usuário.
+- O total parcial mostra a evolução do cálculo.
+- O total final mostra o resultado após o término do for.
+- A ordem nextLine antes de nextInt não causou problema neste exercício.
+- No ambiente local, o nextDouble aceitou valores decimais com vírgula.
+
+### Conceito principal
+O Scanner fornece os dados.
+O for usa esses dados para controlar a repetição.
+O acumulador soma os valores digitados.
+
+No exercício:
+- quantidadeAtividades define quantas vezes o for executa;
+- valorAtividade recebe o valor informado em cada repetição;
+- totalOs acumula o total da OS.
+
+### Regra praticada
+A cada atividade informada pelo usuário, o sistema soma o valor digitado ao total da OS.
+
+Regra usada:
+totalOs = totalOs + valorAtividade;
+
+No cenário Carlos:
+- 120,5 + 80 + 200 + 99,5 = 500.0
+
+### Dificuldades encontradas
+- Foi necessário juntar Scanner com for.
+- Foi necessário entender que o valor digitado pelo usuário controla a quantidade de repetições.
+- Foi necessário ler dados dentro da repetição.
+- Foi necessário validar que cada atividade poderia ter um valor diferente.
+- Foi necessário observar o comportamento do nextDouble com vírgula no ambiente local.
+
+### Como foi resolvido
+- Criada a leitura da quantidade de atividades antes do for.
+- Usada a variável quantidadeAtividades como limite do laço.
+- Lido o valor de cada atividade dentro do for.
+- Somado cada valor digitado ao acumulador totalOs.
+- Testado cenário com 3 atividades totalizando R$ 600.0.
+- Testado cenário com 4 atividades totalizando R$ 500.0.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.5 - Laço while.
+
 
