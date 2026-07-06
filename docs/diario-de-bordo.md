@@ -548,3 +548,77 @@ Concluída.
 
 ### Próxima aula
 Aula 2.5 - Operadores lógicos em Java.
+
+---
+
+## Aula 2.5 - Operadores lógicos em Java
+
+### O que foi feito
+- Estudados os operadores lógicos em Java.
+- Praticado o operador `&&` para regras onde todas as condições precisam ser verdadeiras.
+- Praticado o operador `||` para regras onde pelo menos uma condição precisa ser verdadeira.
+- Praticado o operador `!` para inverter valores booleanos.
+- Criada uma regra de negócio para verificar se um técnico pode receber bônus.
+- Testados cenários positivos e negativos para recebimento de bônus.
+- Criada uma regra de acesso ao sistema.
+- Testado acesso com conta bloqueada e conta desbloqueada.
+- Atualizado o arquivo `atalhos.txt` com o atalho `Ctrl + F5`.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeUsuario = "Thiago";
+        boolean usuarioAtivo = true;
+        boolean senhaCorreta = true;
+        boolean possuiPermissao = true;
+        boolean contaBloqueada = false;
+
+        boolean podeAcessarSistema = usuarioAtivo && senhaCorreta && possuiPermissao && !contaBloqueada;
+
+        System.out.println("Usuário: " + nomeUsuario);
+        System.out.println("Usuário ativo? " + usuarioAtivo);
+        System.out.println("Senha correta? " + senhaCorreta);
+        System.out.println("Possui permissão? " + possuiPermissao);
+        System.out.println("Conta bloqueada? " + contaBloqueada);
+        System.out.println("Pode acessar o sistema? " + podeAcessarSistema);
+    }
+}
+```
+
+### Resultados obtidos
+```text
+Cenário 1:
+contaBloqueada = true
+Pode acessar o sistema? false
+
+Cenário 2:
+contaBloqueada = false
+Pode acessar o sistema? true
+```
+
+### O que foi aprendido
+- `&&` significa E lógico.
+- Com `&&`, todas as condições precisam ser verdadeiras para o resultado final ser `true`.
+- `||` significa OU lógico.
+- Com `||`, basta uma condição ser verdadeira para o resultado final ser `true`.
+- `!` significa negação.
+- `!true` resulta em `false`.
+- `!false` resulta em `true`.
+- Operadores lógicos são usados para combinar regras booleanas.
+- Regras como acesso ao sistema, bloqueio, permissão e validação de status usam operadores lógicos com frequência.
+
+### Dificuldades encontradas
+- Foi necessário testar mais de um cenário para validar corretamente a regra.
+- Foi reforçada a importância de testar tanto o caminho positivo quanto o caminho negativo.
+
+### Como foi resolvido
+- Testado cenário com conta bloqueada, retornando `false`.
+- Testado cenário com conta desbloqueada, retornando `true`.
+- Validada a execução no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.6 - Estruturas condicionais com `if`, `else if` e `else`.

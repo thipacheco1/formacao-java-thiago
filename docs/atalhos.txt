@@ -66,3 +66,9 @@ Alt + Enter
 
 Uso:
 Quando o IntelliJ sublinha algo ou mostra sugestão, Alt + Enter abre opções de correção, importação, ajuste ou melhoria.
+
+15. Rodar novamente a última execução
+Ctrl + F5
+
+Uso:
+Executa novamente a última configuração rodada no IntelliJ.

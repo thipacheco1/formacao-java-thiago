@@ -1,20 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        String nomeTecnico = "Carlos";
-        int quantidadeServicos = 8;
-        int metaServicos = 10;
-        double valorPorServico = 120.50;
-        double bonusMeta = 200.00;
+        String nomeUsuario = "Thiago";
+        boolean usuarioAtivo = true;
+        boolean senhaCorreta = true;
+        boolean possuiPermissao = true;
+        boolean contaBloqueada = false;
 
-        boolean atingiuMeta = quantidadeServicos >= metaServicos;
-        double totalSemBonus = quantidadeServicos * valorPorServico;
+        boolean podeAcessarSistema = usuarioAtivo && senhaCorreta && possuiPermissao && !contaBloqueada;
 
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Meta de serviços: " + metaServicos);
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Total sem bônus: R$ " + totalSemBonus);
-        System.out.println("Bônus da meta: R$ " + bonusMeta);
-        System.out.println("Atingiu a meta? " + atingiuMeta);
+        System.out.println("Usuário: " + nomeUsuario);
+        System.out.println("Usuário ativo? " + usuarioAtivo);
+        System.out.println("Senha correta? " + senhaCorreta);
+        System.out.println("Possui permissão? " + possuiPermissao);
+        System.out.println("Conta bloqueada? " + contaBloqueada);
+        System.out.println("Pode acessar o sistema? " + podeAcessarSistema);
     }
 }
