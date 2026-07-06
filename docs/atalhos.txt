@@ -43,3 +43,8 @@ Shift + F6
 Uso:
 Seleciona uma variável, classe ou arquivo e renomeia em todos os pontos necessários.
 
+10. Auto completar sugestões
+Ctrl + Espaço
+
+Uso:
+Mostra sugestões de código, variáveis, métodos e classes disponíveis.

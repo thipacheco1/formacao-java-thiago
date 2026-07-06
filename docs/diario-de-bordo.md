@@ -332,3 +332,71 @@ Concluída.
 ### Próxima aula
 Aula 2.2 - Tipos primitivos em Java.
 
+---
+
+## Aula 2.2 - Tipos primitivos em Java
+
+### O que foi feito
+- Estudados os tipos primitivos do Java.
+- Criado um programa usando `int`, `double`, `float`, `char` e `boolean`.
+- Utilizada a classe `String` para texto.
+- Testado o uso de `F` em valores `float`.
+- Testado o uso de aspas simples em valores `char`.
+- Criadas variáveis com dados pessoais/profissionais para praticar tipos.
+- Atualizado o arquivo `atalhos.txt` com o atalho `Ctrl + Espaço`.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeCompleto = "Thiago Pacheco";
+        int idade = 44;
+        double altura = 1.79;
+        float peso = 90.0F;
+        char inicialSobrenome = 'P';
+        int quantidadeFilhos = 2;
+        int anosExperienciaQa = 10;
+        boolean estudaJava = true;
+        boolean pretendeVirarArquiteto = true;
+
+        System.out.println("Nome completo: " + nomeCompleto);
+        System.out.println("Idade: " + idade);
+        System.out.println("Altura: " + altura);
+        System.out.println("Peso: " + peso);
+        System.out.println("Inicial do sobrenome: " + inicialSobrenome);
+        System.out.println("Quantidade de filhos: " + quantidadeFilhos);
+        System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
+        System.out.println("Estuda Java? " + estudaJava);
+        System.out.println("Pretende virar Arquiteto Java? " + pretendeVirarArquiteto);
+    }
+}
+```
+
+### O que foi aprendido
+- Java possui 8 tipos primitivos: `byte`, `short`, `int`, `long`, `float`, `double`, `char` e `boolean`.
+- `int` é usado para números inteiros.
+- `long` é usado para números inteiros maiores e normalmente recebe `L` no final.
+- `double` é usado para números decimais com maior precisão.
+- `float` é usado para números decimais com menor precisão e recebe `F` no final.
+- `char` representa um único caractere e usa aspas simples.
+- `boolean` representa apenas `true` ou `false`.
+- `String` representa texto, mas não é tipo primitivo; é uma classe.
+- `String` usa aspas duplas.
+- Variáveis devem seguir o padrão `camelCase`.
+
+### Dificuldades encontradas
+- Foi necessário reforçar a diferença entre `char` e `String`.
+- Foi necessário observar que `float` precisa do sufixo `F`.
+- Foi reforçado o cuidado com nomes de variáveis e textos exibidos no console.
+
+### Como foi resolvido
+- Criado um exercício prático usando cada tipo em uma situação real.
+- Executado o programa no IntelliJ.
+- Validado o resultado no console com `exit code 0`.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.3 - Operadores aritméticos em Java.
+

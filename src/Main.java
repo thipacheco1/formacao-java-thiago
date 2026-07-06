@@ -1,21 +1,24 @@
 public class Main {
     public static void main(String[] args) {
-        String nome = "Thiago";
-        int idade = 39;
-        String cidade = "Barueri";
-        String profissaoAtual = "QA";
-        String objetivoProfissional = "Engenheiro Java Backend";
+        String nomeCompleto = "Thiago Pacheco";
+        int idade = 44;
+        double altura = 1.79;
+        float peso = 90.0F;
+        char inicialSobrenome = 'P';
+        int quantidadeFilhos = 2;
         int anosExperienciaQa = 10;
-        boolean estudandoJava = true;
+        boolean estudaJava = true;
+        boolean pretendeVirarArquiteto = true;
 
-        System.out.println("Nome: " + nome);
+        System.out.println("Nome Completo: " + nomeCompleto);
         System.out.println("Idade: " + idade);
-        System.out.println("Cidade: " + cidade);
-        System.out.println("Profissão Atual: " + profissaoAtual);
-        System.out.println("Objetivo profissional : " + objetivoProfissional);
-        System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
-        System.out.println("Está estudando Java? " + estudandoJava);
+        System.out.println("Altura: " + altura);
+        System.out.println("Peso: " + peso);
+        System.out.println("Inicial do sobrenome: " + inicialSobrenome);
+        System.out.println("Quantidade de filhos: " + quantidadeFilhos);
+        System.out.println("Anos de experiência como QA: " + anosExperienciaQa);
+        System.out.println("Estuda Java? " + estudaJava);
+        System.out.println("Pretende virar Arquiteto Java? " + pretendeVirarArquiteto);
 
     }
 }
-
