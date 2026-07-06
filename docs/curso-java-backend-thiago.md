@@ -5445,3 +5445,227 @@ A combinação de array com for permite processar vários valores de forma organ
 - Valores do array são acessados com colchetes.
 - O exercício da Aula 3.10 foi melhorado usando array.
 - O segundo teste validou total de R$ 750.0, 4 atividades válidas e 3 inválidas.
+
+
+---
+
+## Aula 4.2 - Alterando valores de um array e entendendo posições
+
+### Objetivo da aula
+Aprender como alterar valores dentro de um array e reforçar o entendimento sobre posições e índices.
+
+Na Aula 4.1, o array foi criado já com valores.
+
+Nesta aula, o array foi criado vazio, com tamanho fixo, e depois preenchido posição por posição.
+
+### Criando array com tamanho fixo
+Um array também pode ser criado informando apenas o tamanho.
+
+Exemplo:
+
+    double[] atividades = new double[5];
+
+Leitura em português:
+- foi criado um array chamado atividades;
+- esse array guarda valores do tipo double;
+- esse array possui 5 posições.
+
+Como é um array de double, as posições começam com valor padrão 0.0.
+
+### Índices válidos
+Um array com 5 posições possui os seguintes índices:
+
+- 0
+- 1
+- 2
+- 3
+- 4
+
+O índice 5 não existe.
+
+Isso acontece porque, em Java, arrays começam na posição 0.
+
+### Preenchendo posições do array
+Depois de criar o array, podemos preencher cada posição manualmente.
+
+Exemplo:
+
+    atividades[0] = 100.0;
+    atividades[1] = 200.0;
+    atividades[2] = 0.0;
+    atividades[3] = 150.0;
+    atividades[4] = -50.0;
+
+Cada linha altera uma posição específica do array.
+
+### Lendo posições do array
+Para ler uma posição, usamos o nome do array e o índice entre colchetes.
+
+Exemplo:
+
+    atividades[2]
+
+Esse comando acessa o valor guardado na posição 2.
+
+### Alterando posições do array
+Para alterar uma posição, usamos atribuição.
+
+Exemplo:
+
+    atividades[2] = 300.0;
+
+Antes:
+- posição 2: 0.0
+
+Depois:
+- posição 2: 300.0
+
+O array continua sendo o mesmo, mas o valor daquela posição foi atualizado.
+
+### Correções realizadas no exercício
+No exercício da aula, os valores iniciais foram:
+
+- posição 0: 100.0
+- posição 1: 200.0
+- posição 2: 0.0
+- posição 3: 150.0
+- posição 4: -50.0
+
+Depois, foram aplicadas as correções:
+
+    atividades[2] = 300.0;
+    atividades[4] = 50.0;
+
+Após a correção, os valores ficaram:
+
+- posição 0: 100.0
+- posição 1: 200.0
+- posição 2: 300.0
+- posição 3: 150.0
+- posição 4: 50.0
+
+### Exibindo valores com for
+O for foi usado para percorrer o array e exibir cada posição.
+
+Exemplo:
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+    }
+
+Esse código percorre todas as posições válidas do array.
+
+### Calculando total com for
+Depois da correção, o total foi calculado com outro for.
+
+Exemplo:
+
+    double total = 0.0;
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        total = total + atividades[indice];
+    }
+
+O acumulador total recebe a soma de todos os valores do array.
+
+### Resultado validado
+Resultado final:
+
+- Total final: R$ 800.0
+
+Cálculo:
+- 100.0 + 200.0 + 300.0 + 150.0 + 50.0 = 800.0
+
+### Código praticado
+Código principal da aula:
+
+    public class Main {
+        public static void main(String[] args) {
+            double[] atividades = new double[5];
+
+            atividades[0] = 100.0;
+            atividades[1] = 200.0;
+            atividades[2] = 0.0;
+            atividades[3] = 150.0;
+            atividades[4] = -50.0;
+
+            System.out.println("----- Antes da correção -----");
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+            }
+
+            atividades[2] = 300.0;
+            atividades[4] = 50.0;
+
+            System.out.println("----- Depois da correção -----");
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+            }
+
+            double total = 0.0;
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                total = total + atividades[indice];
+            }
+
+            System.out.println("----- Resumo -----");
+            System.out.println("Total final: R$ " + total);
+        }
+    }
+
+### O tamanho do array não muda
+Quando criamos:
+
+    double[] atividades = new double[5];
+
+O array possui exatamente 5 posições.
+
+As posições válidas são:
+- 0
+- 1
+- 2
+- 3
+- 4
+
+Tentar acessar a posição 5 causaria erro.
+
+Exemplo de erro:
+
+    atividades[5] = 600.0;
+
+Esse erro é chamado de ArrayIndexOutOfBoundsException.
+
+Ele significa que o programa tentou acessar uma posição fora do limite do array.
+
+### Relação com backend
+Esse conceito aparece em várias situações de backend.
+
+Exemplos:
+- corrigir valor de uma atividade;
+- atualizar status de um item;
+- substituir uma informação inválida;
+- preencher uma lista de resultados;
+- montar uma resposta com vários itens;
+- processar registros de uma importação.
+
+Mesmo que no backend real sejam usadas estruturas como List e ArrayList, entender array ajuda a compreender posições, índices e processamento sequencial.
+
+### Aprendizado principal
+O principal aprendizado da aula foi entender que cada posição do array pode ser lida e alterada usando índice.
+
+Também foi reforçado que:
+- arrays começam no índice 0;
+- length informa o tamanho do array;
+- o último índice é length - 1;
+- o tamanho do array é fixo depois de criado.
+
+### Resumo da aula
+- Foi criado um array vazio com new double[5].
+- As posições foram preenchidas manualmente.
+- Os valores foram exibidos antes da correção.
+- As posições 2 e 4 foram alteradas.
+- Os valores foram exibidos depois da correção.
+- O total final foi calculado com for.
+- O resultado final validado foi R$ 800.0.

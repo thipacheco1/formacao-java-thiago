@@ -1,29 +1,35 @@
 public class Main {
     public static void main(String[] args) {
-        double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+        double[] atividades = new double[5];
 
-        double total = 0.0;
-        int atividadesValidas = 0;
-        int atividadesInvalidas = 0;
+        atividades[0] = 100.0;
+        atividades[1] = 200.0;
+        atividades[2] = 0.0;
+        atividades[3] = 150.0;
+        atividades[4] = -50.0;
+
+        System.out.println("----- Antes da correção -----");
 
         for (int indice = 0; indice < atividades.length; indice++) {
-            double valorAtividade = atividades[indice];
+            System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+        }
 
-            if (valorAtividade > 0) {
-                total = total + valorAtividade;
-                atividadesValidas++;
+        atividades[2] = 300.0;
+        atividades[4] = 50.0;
 
-                System.out.println("Atividade " + indice + " válida: R$ " + valorAtividade);
-            } else {
-                atividadesInvalidas++;
+        System.out.println("----- Depois da correção -----");
 
-                System.out.println("Atividade " + indice + " inválida: R$ " + valorAtividade);
-            }
+        for (int indice = 0; indice < atividades.length; indice++) {
+            System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+        }
+
+        double total = 0.0;
+
+        for (int indice = 0; indice < atividades.length; indice++) {
+            total = total + atividades[indice];
         }
 
         System.out.println("----- Resumo -----");
         System.out.println("Total final: R$ " + total);
-        System.out.println("Atividades válidas: " + atividadesValidas);
-        System.out.println("Atividades inválidas: " + atividadesInvalidas);
     }
 }

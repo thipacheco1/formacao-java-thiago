@@ -2585,3 +2585,80 @@ Concluída.
 Aula 4.2 - Alterando valores de um array e entendendo posições.
 
 
+---
+
+## Aula 4.2 - Alterando valores de um array e entendendo posições
+
+### O que foi feito
+- Estudado como alterar valores dentro de um array.
+- Criado um array vazio com tamanho fixo usando new double[5].
+- Preenchidas posições do array manualmente.
+- Exibidos os valores antes da correção.
+- Alteradas posições específicas do array.
+- Exibidos os valores depois da correção.
+- Calculado o total final percorrendo o array com for.
+- Validado o uso de índice para ler e alterar valores.
+
+### Conceitos usados
+- array
+- double[]
+- new double[5]
+- índice
+- posição do array
+- leitura de posição
+- alteração de posição
+- length
+- for
+- acumulador
+
+### Valores iniciais
+- posição 0: 100.0
+- posição 1: 200.0
+- posição 2: 0.0
+- posição 3: 150.0
+- posição 4: -50.0
+
+### Correções aplicadas
+- posição 2 alterada para 300.0
+- posição 4 alterada para 50.0
+
+### Resultado depois da correção
+- posição 0: 100.0
+- posição 1: 200.0
+- posição 2: 300.0
+- posição 3: 150.0
+- posição 4: 50.0
+
+### Resultado final validado
+- Total final: R$ 800.0
+- Execução finalizada com exit code 0
+
+### Explicação do resultado
+Após as correções, o total foi calculado com os valores:
+- 100.0
+- 200.0
+- 300.0
+- 150.0
+- 50.0
+
+Cálculo:
+- 100.0 + 200.0 + 300.0 + 150.0 + 50.0 = 800.0
+
+### O que foi aprendido
+- Um array pode ser criado vazio com tamanho fixo.
+- Um array criado com new double[5] possui 5 posições.
+- As posições válidas desse array são 0, 1, 2, 3 e 4.
+- Cada posição pode ser preenchida manualmente.
+- Cada posição pode ser alterada usando o índice.
+- O tamanho do array não muda depois de criado.
+- O for pode ser usado para exibir todos os valores do array.
+- O for também pode ser usado para calcular o total dos valores.
+- O atributo length evita que o código dependa de um número fixo no laço.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 4.3 - Preenchendo arrays com Scanner.
+
+
