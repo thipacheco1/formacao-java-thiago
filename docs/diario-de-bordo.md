@@ -904,3 +904,97 @@ Concluída.
 
 ### Próxima aula
 Aula 2.9 - Exercício integrador dos fundamentos iniciais.
+
+---
+
+## Aula 2.9 - Exercício integrador dos fundamentos iniciais
+
+### O que foi feito
+- Criado um programa integrador chamado mentalmente de Analisador de Serviço Técnico.
+- Utilizada entrada de dados com Scanner.
+- Lidos dados de texto, números inteiros, números decimais e booleanos.
+- Utilizado switch para identificar o tipo de serviço.
+- Utilizado cálculo aritmético para calcular o total bruto.
+- Utilizada comparação para verificar se o técnico atingiu a meta.
+- Utilizado operador lógico para validar se o técnico pode receber bônus.
+- Utilizado if, else if e else para classificar a performance.
+- Testados os cenários aprovado, bloqueado e abaixo da meta.
+- Atualizado o arquivo atalhos.txt com o atalho Ctrl + F.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados no código:
+- import java.util.Scanner;
+- Scanner scanner = new Scanner(System.in);
+- leitura com nextLine, nextInt, nextDouble e nextBoolean;
+- switch para tipo de serviço;
+- cálculo do total bruto;
+- boolean atingiuMeta;
+- boolean podeReceberBonus;
+- if / else if / else para classificação de performance;
+- scanner.close();
+
+### Resultados obtidos
+
+Cenário 1 - Aprovado:
+- Tipo de serviço: Assistência técnica
+- Quantidade de serviços: 16
+- Meta de serviços: 10
+- Total bruto: R$ 1928.0
+- Técnico ativo? true
+- Possui bloqueio? false
+- Atingiu a meta? true
+- Pode receber bônus? true
+- Classificação de performance: Excelente
+
+Cenário 2 - Bloqueado:
+- Tipo de serviço: Assistência técnica
+- Quantidade de serviços: 16
+- Meta de serviços: 10
+- Total bruto: R$ 1928.0
+- Técnico ativo? true
+- Possui bloqueio? true
+- Atingiu a meta? true
+- Pode receber bônus? false
+- Classificação de performance: Excelente
+
+Cenário 3 - Abaixo da meta:
+- Tipo de serviço: Tipo inválido
+- Quantidade de serviços: 4
+- Meta de serviços: 10
+- Total bruto: R$ 482.0
+- Técnico ativo? true
+- Possui bloqueio? false
+- Atingiu a meta? false
+- Pode receber bônus? false
+- Classificação de performance: Baixa
+
+### O que foi aprendido
+- Um programa pode combinar vários conceitos básicos em uma regra maior.
+- Scanner permite tornar o programa interativo.
+- switch é útil para valores fixos, como tipos de serviço.
+- if, else if e else são úteis para classificar regras por prioridade.
+- Operadores aritméticos permitem calcular totais.
+- Operadores de comparação permitem criar regras booleanas.
+- Operadores lógicos permitem combinar várias regras.
+- Testar cenários diferentes é essencial para validar uma regra de negócio.
+- Como QA, testar caminho positivo, caminho bloqueado e caminho negativo ajuda a garantir confiabilidade.
+
+### Dificuldades encontradas
+- Foi necessário validar mais de um cenário para garantir que todas as regras funcionavam.
+- Foi necessário observar o efeito do bloqueio mesmo quando a meta era atingida.
+- Foi necessário validar o default do switch com tipo de serviço inválido.
+
+### Como foi resolvido
+- Testado cenário aprovado com tipo de serviço válido, meta atingida e sem bloqueio.
+- Testado cenário bloqueado com meta atingida, mas com bloqueio ativo.
+- Testado cenário abaixo da meta com tipo de serviço inválido e quantidade menor que a meta.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.10 - Revisão do Módulo 2 e preparação para laços de repetição.
+
