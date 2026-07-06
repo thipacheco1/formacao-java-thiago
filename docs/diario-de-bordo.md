@@ -269,3 +269,66 @@ Concluída.
 
 ### Próxima aula
 Aula 2.1 - Variáveis em Java: o primeiro conceito real da linguagem.
+
+---
+
+## Aula 2.1 - Variáveis em Java
+
+### O que foi feito
+- Criado um programa usando variáveis em Java.
+- Declaradas variáveis dos tipos `String`, `int` e `boolean`.
+- Impressos os valores das variáveis no console.
+- Utilizada concatenação com `+`.
+- Aplicado o padrão `camelCase` em nomes de variáveis.
+- Utilizado o atalho `Shift + F6` para renomear variável com segurança.
+
+### Código praticado
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nome = "Thiago";
+        int idade = 39;
+        String cidade = "Barueri";
+        String profissaoAtual = "QA";
+        String objetivoProfissional = "Engenheiro Java Backend";
+        int anosExperienciaQa = 10;
+        boolean estudandoJava = true;
+
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("Cidade: " + cidade);
+        System.out.println("Profissão atual: " + profissaoAtual);
+        System.out.println("Objetivo profissional: " + objetivoProfissional);
+        System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
+        System.out.println("Está estudando Java? " + estudandoJava);
+    }
+}
+```
+
+### O que foi aprendido
+- Variável é um espaço na memória usado para armazenar um valor.
+- Toda variável em Java possui tipo, nome e valor.
+- `String` é usado para textos.
+- `int` é usado para números inteiros.
+- `boolean` é usado para valores verdadeiro/falso.
+- Para imprimir o valor de uma variável, ela deve ser usada sem aspas.
+- Para imprimir texto fixo, o texto deve estar entre aspas.
+- O operador `+` pode ser usado para concatenar texto com variáveis.
+- Nomes de variáveis devem seguir o padrão `camelCase`.
+
+### Dificuldades encontradas
+- Inicialmente a variável `objetivoProfissional` foi criada, mas não foi impressa.
+- O nome `anosExperiencia` estava genérico.
+- A saída do console precisou ser padronizada.
+
+### Como foi resolvido
+- Adicionada a impressão de `objetivoProfissional`.
+- Renomeada a variável para `anosExperienciaQa`.
+- Ajustada a saída do console para ficar mais clara e profissional.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 2.2 - Tipos primitivos em Java.
+

@@ -36,3 +36,10 @@ Transforma uma linha em comentário usando //
 Alt + Insert
 Uso:
 Dentro de uma pasta, permite criar novo arquivo, classe Java, pacote, entre outros.
+
+9. Renomear variável, classe ou arquivo com segurança
+Shift + F6
+
+Uso:
+Seleciona uma variável, classe ou arquivo e renomeia em todos os pontos necessários.
+
