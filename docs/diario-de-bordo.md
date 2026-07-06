@@ -141,3 +141,94 @@ Concluída.
 
 ### Próxima aula
 Aula 1.8 - Introdução ao Git e versionamento do projeto.
+
+---
+
+## Aula 1.8 - Introdução ao Git e primeiro commit
+
+### O que foi feito
+- Verificada a instalação do Git.
+- Confirmada a versão `git version 2.54.0.windows.1`.
+- Configurado o nome global do Git.
+- Configurado o e-mail global do Git.
+- Inicializado o repositório local com `git init`.
+- Validado o estado do projeto com `git status`.
+- Ajustado o `.gitignore` para ignorar arquivos internos da IDE e arquivos compilados.
+- Adicionados os arquivos ao stage com `git add .`.
+- Criado o primeiro commit da formação.
+- Validado o histórico com `git log --oneline`.
+
+### Commit criado
+```text
+e960423 Adiciona estrutura inicial da formacao Java
+```
+
+### O que foi aprendido
+- Git é uma ferramenta de controle de versão.
+- GitHub é uma plataforma online para hospedar repositórios Git.
+- `git init` inicia um repositório local.
+- `git status` mostra a situação atual dos arquivos.
+- `git add .` adiciona os arquivos ao stage.
+- `git commit -m` registra uma versão do projeto.
+- `git log --oneline` mostra o histórico resumido de commits.
+- `working tree clean` significa que não existem alterações pendentes.
+
+### Dificuldades encontradas
+- Foi digitado `git configo` em vez de `git config`.
+- Foi digitado `git add ,` em vez de `git add .`.
+- O Git exibiu aviso sobre `LF` e `CRLF`.
+
+### Como foi resolvido
+- Corrigido o comando `git config`.
+- Corrigido o comando para `git add .`.
+- O aviso de `LF/CRLF` foi identificado como alerta de quebra de linha no Windows, sem impacto neste momento.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 1.9 - Criar repositório no GitHub e subir o projeto.
+
+---
+
+## Aula 1.9 - Branch main, GitHub e primeiro push
+
+### O que foi feito
+- Renomeada a branch principal de `master` para `main`.
+- Criado o repositório `formacao-java-thiago` no GitHub.
+- Configurado o repositório remoto com `git remote add origin`.
+- Validado o remoto com `git remote -v`.
+- Enviado o projeto local para o GitHub com `git push -u origin main`.
+- Confirmado que a branch `main` local está rastreando `origin/main`.
+- Validado o projeto publicado no GitHub.
+
+### Comandos utilizados
+```bash
+git branch
+git branch -M main
+git remote add origin https://github.com/thipacheco1/formacao-java-thiago
+git remote -v
+git push -u origin main
+```
+
+### O que foi aprendido
+- `master` e `main` são nomes de branches principais.
+- O padrão moderno mais comum é usar `main`.
+- `origin` é o nome convencional do repositório remoto.
+- `git remote add origin` conecta o projeto local ao GitHub.
+- `git push -u origin main` envia a branch local para o GitHub e cria o rastreamento entre local e remoto.
+- Depois do primeiro `push -u`, os próximos envios podem ser feitos apenas com `git push`.
+
+### Dificuldades encontradas
+- O `README.md` foi criado inicialmente dentro da pasta `docs`.
+
+### Como foi resolvido
+- O arquivo será movido para a raiz do projeto usando `git mv`.
+- Será criado um novo commit apenas para esse ajuste de organização.
+
+### Status
+Concluída com ajuste de organização pendente.
+
+### Próxima aula
+Aula 1.10 - Revisão da estrutura profissional do projeto e primeiros conceitos de arquivos versionados.
+
