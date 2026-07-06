@@ -3676,3 +3676,319 @@ Erros comuns com while:
 - Caso contrário, pode ocorrer loop infinito.
 - Menus são exemplos clássicos de uso do while.
 - O usuário pode controlar quando o laço termina.
+
+---
+
+## Aula 3.6 - Laço do while
+
+### Objetivo da aula
+Aprender o laço de repetição do while.
+
+O do while é uma estrutura de repetição parecida com o while, mas com uma diferença muito importante: ele executa o bloco primeiro e verifica a condição depois.
+
+Isso significa que o bloco do do while sempre executa pelo menos uma vez.
+
+### Estrutura do do while
+A estrutura básica é:
+
+    do {
+        bloco executado
+    } while (condicao);
+
+O ponto e vírgula no final é obrigatório.
+
+Isso diferencia o do while do while comum.
+
+### Diferença entre while e do while
+O while verifica a condição antes de executar o bloco.
+
+Exemplo:
+
+    int contador = 10;
+
+    while (contador <= 5) {
+        System.out.println("Contador: " + contador);
+        contador++;
+    }
+
+Nesse caso, nada será impresso, porque a condição contador <= 5 já começa falsa.
+
+O do while executa o bloco antes de verificar a condição.
+
+Exemplo:
+
+    int contador = 10;
+
+    do {
+        System.out.println("Contador: " + contador);
+        contador++;
+    } while (contador <= 5);
+
+Nesse caso, será impresso Contador: 10, mesmo a condição sendo falsa depois.
+
+### Resumo da diferença
+- while verifica antes de executar.
+- do while executa antes de verificar.
+- while pode executar zero vezes.
+- do while executa pelo menos uma vez.
+
+### Primeiro exemplo com do while
+Foi testado um contador de 1 até 5.
+
+Código de referência:
+
+    public class Main {
+        public static void main(String[] args) {
+            int contador = 1;
+
+            do {
+                System.out.println("Contador: " + contador);
+                contador++;
+            } while (contador <= 5);
+        }
+    }
+
+Resultado:
+- Contador: 1
+- Contador: 2
+- Contador: 3
+- Contador: 4
+- Contador: 5
+
+### Exemplo com condição inicialmente falsa
+Foi testado também um contador começando em 10.
+
+Código de referência:
+
+    public class Main {
+        public static void main(String[] args) {
+            int contador = 10;
+
+            do {
+                System.out.println("Contador: " + contador);
+                contador++;
+            } while (contador <= 5);
+        }
+    }
+
+Resultado:
+- Contador: 10
+
+Esse exemplo mostra claramente que o do while executa pelo menos uma vez.
+
+### Quando usar do while
+Use do while quando uma primeira execução é obrigatória.
+
+Exemplos:
+- exibir um menu pelo menos uma vez;
+- pedir uma opção ao usuário pelo menos uma vez;
+- solicitar uma senha antes de validar;
+- pedir dados antes de perguntar se deseja continuar;
+- executar uma tentativa inicial antes de decidir repetir.
+
+### Menu com do while
+Foi criado um menu simples usando do while.
+
+Código de referência:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int opcao;
+
+            do {
+                System.out.println("----- Menu de OS -----");
+                System.out.println("1 - Processar OS");
+                System.out.println("0 - Sair");
+                System.out.println("Digite uma opção:");
+
+                opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+                    System.out.println("OS processada.");
+                } else if (opcao == 0) {
+                    System.out.println("Sistema encerrado.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } while (opcao != 0);
+
+            scanner.close();
+        }
+    }
+
+### Diferença no controle da variável opcao
+No while comum, normalmente inicializamos a variável antes.
+
+Exemplo:
+
+    int opcao = -1;
+
+    while (opcao != 0) {
+        ...
+    }
+
+Isso é necessário porque o while verifica a condição antes de executar.
+
+No do while, podemos declarar:
+
+    int opcao;
+
+E atribuir valor dentro do bloco:
+
+    opcao = scanner.nextInt();
+
+Isso funciona porque o bloco executa antes da condição ser verificada.
+
+### Atenção ao ponto e vírgula
+No do while, a linha final precisa terminar com ponto e vírgula:
+
+    } while (opcao != 0);
+
+Esse ponto e vírgula faz parte da sintaxe do do while.
+
+No while comum, a estrutura é diferente:
+
+    while (opcao != 0) {
+        ...
+    }
+
+### Exercício final da aula
+Foi criado um programa chamado mentalmente de Menu de Atendimento com do while.
+
+O menu possui as opções:
+- 1 - Processar nova OS;
+- 2 - Exibir quantidade de OS processadas;
+- 3 - Exibir status do sistema;
+- 0 - Sair.
+
+Regras:
+- o menu deve aparecer pelo menos uma vez;
+- se digitar 1, soma 1 no total de OS processadas;
+- se digitar 2, mostra o total de OS processadas;
+- se digitar 3, mostra a mensagem de status do sistema;
+- se digitar 0, encerra;
+- qualquer outro número mostra opção inválida;
+- ao final, mostra o total final de OS processadas.
+
+### Código praticado
+Código final da aula:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int opcao;
+            int totalOsProcessadas = 0;
+
+            do {
+                System.out.println("----- Menu de Atendimento -----");
+                System.out.println("1 - Processar nova OS");
+                System.out.println("2 - Exibir quantidade de OS processadas");
+                System.out.println("3 - Exibir status do sistema");
+                System.out.println("0 - Sair");
+                System.out.println("Digite uma opção:");
+
+                opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+                    totalOsProcessadas++;
+                    System.out.println("OS processada com sucesso.");
+                } else if (opcao == 2) {
+                    System.out.println("Total de OS processadas: " + totalOsProcessadas);
+                } else if (opcao == 3) {
+                    System.out.println("Sistema operacional e aguardando comandos.");
+                } else if (opcao == 0) {
+                    System.out.println("Encerrando sistema.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } while (opcao != 0);
+
+            System.out.println("Total final de OS processadas: " + totalOsProcessadas);
+
+            scanner.close();
+        }
+    }
+
+### Sequência validada
+Foi testada a sequência:
+
+- 3
+- 2
+- 1
+- 1
+- 2
+- 9
+- 1
+- 3
+- 0
+
+### Resultado da sequência
+A sequência gerou o seguinte comportamento:
+
+- opção 3 mostrou Sistema operacional e aguardando comandos;
+- opção 2 mostrou Total de OS processadas: 0;
+- opção 1 processou uma OS;
+- opção 1 processou mais uma OS;
+- opção 2 mostrou Total de OS processadas: 2;
+- opção 9 mostrou Opção inválida;
+- opção 1 processou mais uma OS;
+- opção 3 mostrou Sistema operacional e aguardando comandos;
+- opção 0 mostrou Encerrando sistema;
+- total final exibido: 3.
+
+### Aprendizado principal
+O aprendizado principal foi entender que do while é ideal quando a primeira execução precisa acontecer antes da validação da condição.
+
+No exercício, o menu precisava aparecer pelo menos uma vez.
+
+Depois de cada opção digitada, o sistema verificava se deveria continuar ou parar.
+
+### Relação com backend
+O do while aparece menos que for e while em aplicações modernas, mas o conceito é importante.
+
+Ele pode ser útil quando uma primeira execução é obrigatória.
+
+Exemplos conceituais:
+- executar uma primeira tentativa e repetir se necessário;
+- buscar uma primeira página e verificar se existe próxima;
+- solicitar dados e depois perguntar se deseja continuar;
+- exibir uma primeira interação antes de validar saída.
+
+### Comparação final entre os laços
+for:
+- usado quando há controle claro da quantidade de repetições.
+
+while:
+- usado quando se repete enquanto uma condição for verdadeira;
+- pode executar zero vezes.
+
+do while:
+- usado quando é necessário executar pelo menos uma vez;
+- verifica a condição depois da execução.
+
+### Erros comuns
+Erros comuns com do while:
+- esquecer o ponto e vírgula no final;
+- confundir a posição da condição;
+- achar que ele pode executar zero vezes;
+- esquecer de alterar a variável de controle;
+- criar loop infinito;
+- não tratar opção inválida;
+- reiniciar contadores dentro do laço;
+- esquecer scanner.close.
+
+### Resumo da aula
+- do while executa primeiro e verifica depois.
+- Ele sempre executa pelo menos uma vez.
+- É útil para menus e fluxos em que a primeira execução é obrigatória.
+- A condição fica no final.
+- O ponto e vírgula final é obrigatório.
+- A opção 0 foi usada como condição de parada.
+
