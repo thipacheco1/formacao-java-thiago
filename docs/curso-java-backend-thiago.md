@@ -3992,3 +3992,393 @@ Erros comuns com do while:
 - O ponto e vírgula final é obrigatório.
 - A opção 0 foi usada como condição de parada.
 
+---
+
+## Aula 3.7 - Revisão dos laços for, while e do while
+
+### Objetivo da aula
+Consolidar os principais laços de repetição estudados até agora no Módulo 3.
+
+Nesta aula foram revisados:
+- for
+- while
+- do while
+- contador
+- acumulador
+- condição de parada
+- loop infinito
+- Scanner com repetição
+- if dentro de laço
+- menu com repetição
+- resumo parcial
+- resumo geral
+- resumo final
+
+A aula também teve um exercício integrador mais completo, juntando vários conceitos em um único programa.
+
+### Revisão do for
+O for é usado quando sabemos ou controlamos a quantidade de repetições.
+
+Exemplo conceitual:
+
+    for (int contador = 1; contador <= 5; contador++) {
+        System.out.println("Contador: " + contador);
+    }
+
+Leitura em português:
+- começa com contador igual a 1;
+- continua enquanto contador for menor ou igual a 5;
+- ao final de cada repetição, soma 1 no contador.
+
+Uso comum:
+- processar uma quantidade conhecida de atividades;
+- contar de 1 até 10;
+- percorrer itens;
+- somar valores em uma quantidade controlada.
+
+### Revisão do while
+O while é usado quando queremos repetir enquanto uma condição for verdadeira.
+
+Exemplo conceitual:
+
+    while (opcao != 0) {
+        // executa enquanto opcao for diferente de zero
+    }
+
+O while verifica a condição antes de executar.
+
+Por isso, ele pode executar:
+- zero vezes;
+- uma vez;
+- várias vezes.
+
+Uso comum:
+- manter um menu rodando até o usuário escolher sair;
+- processar enquanto houver dados;
+- repetir enquanto um status não estiver finalizado;
+- buscar dados enquanto existir próxima página.
+
+### Revisão do do while
+O do while é usado quando o bloco precisa executar pelo menos uma vez.
+
+Exemplo conceitual:
+
+    do {
+        // executa pelo menos uma vez
+    } while (opcao != 0);
+
+O do while executa primeiro e verifica a condição depois.
+
+Por isso, ele sempre executa pelo menos uma vez.
+
+Uso comum:
+- exibir menu inicial;
+- pedir uma opção ao usuário;
+- executar uma tentativa inicial;
+- solicitar dados antes de perguntar se deseja continuar.
+
+### Comparação direta entre os laços
+for:
+- usado quando há controle claro da quantidade de repetições.
+
+while:
+- usado quando a repetição depende de uma condição;
+- pode executar zero vezes.
+
+do while:
+- usado quando a primeira execução é obrigatória;
+- executa pelo menos uma vez.
+
+### Contador
+Contador é uma variável usada para controlar a posição atual ou a quantidade de repetições.
+
+Exemplo:
+
+    int atividadeAtual = 1;
+
+Em um for:
+
+    for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++)
+
+A variável atividadeAtual indica qual atividade está sendo processada no momento.
+
+### Acumulador
+Acumulador é uma variável que guarda um valor progressivo.
+
+Exemplo:
+
+    double totalOs = 0.0;
+
+Dentro do laço:
+
+    totalOs = totalOs + valorAtividade;
+
+A cada repetição, o valor anterior é reaproveitado e atualizado.
+
+### Condição de parada
+Condição de parada é a regra que faz o laço terminar.
+
+Exemplo:
+
+    opcao != 0
+
+Enquanto essa condição for verdadeira, o laço continua.
+
+Quando a opção vira 0, a condição fica falsa e o laço termina.
+
+### Loop infinito
+Loop infinito acontece quando a condição nunca fica falsa.
+
+Exemplo conceitual de problema:
+
+    int contador = 1;
+
+    while (contador <= 5) {
+        System.out.println(contador);
+    }
+
+Nesse caso, falta alterar o contador.
+
+Como contador continua sempre 1, a condição contador <= 5 nunca fica falsa.
+
+Para corrigir, seria necessário adicionar:
+
+    contador++;
+
+### Exercício integrador da aula
+Foi criado um programa chamado mentalmente de Sistema de Processamento de OS com Menu.
+
+Esse programa juntou:
+- Scanner
+- do while
+- for
+- if
+- else if
+- else
+- contador
+- acumulador local
+- acumulador geral
+- menu
+- opção inválida
+- resumo por OS
+- resumo geral
+- resumo final
+
+### Regras do sistema
+O sistema possui um menu com as opções:
+- 1 - Processar OS
+- 2 - Exibir resumo geral
+- 0 - Sair
+
+Na opção 1, o sistema:
+- pede o nome do cliente;
+- pede a quantidade de atividades;
+- usa for para percorrer as atividades;
+- lê o valor de cada atividade;
+- considera válida apenas atividade com valor maior que zero;
+- soma somente atividades válidas no total da OS;
+- conta atividades válidas;
+- conta atividades inválidas;
+- exibe resumo da OS;
+- atualiza os acumuladores gerais.
+
+Na opção 2, o sistema:
+- exibe o resumo geral acumulado até o momento.
+
+Na opção 0, o sistema:
+- encerra;
+- exibe o resumo final.
+
+Qualquer outro número:
+- exibe opção inválida;
+- não altera os acumuladores.
+
+### Uso do scanner.nextLine após nextInt
+Foi necessário usar:
+
+    scanner.nextLine();
+
+após:
+
+    opcao = scanner.nextInt();
+
+Isso foi feito para limpar o Enter pendente antes de ler o nome do cliente com nextLine.
+
+Sem essa limpeza, o Java poderia pular a leitura do nome.
+
+Esse é um detalhe importante quando usamos Scanner misturando leitura de número e leitura de texto.
+
+### Acumuladores locais
+Acumuladores locais representam apenas a OS atual.
+
+No exercício:
+- totalOs
+- atividadesValidas
+- atividadesInvalidas
+
+Eles são criados dentro da opção 1, porque cada OS precisa começar com seus próprios totais.
+
+Exemplo:
+- OS da Maria começa com totalOs igual a 0.0;
+- OS do Carlos também começa com totalOs igual a 0.0;
+- os dados de uma OS não podem contaminar a outra.
+
+### Acumuladores gerais
+Acumuladores gerais representam todo o sistema.
+
+No exercício:
+- totalOsProcessadas
+- totalGeralSistema
+- totalAtividadesValidasGeral
+- totalAtividadesInvalidasGeral
+
+Eles são criados antes do do while para manter os valores durante todo o uso do menu.
+
+Eles acumulam tudo que foi processado desde o início do programa.
+
+### Validação da atividade
+A regra usada foi:
+
+    valorAtividade > 0
+
+Se o valor for maior que zero:
+- a atividade é válida;
+- soma no total da OS;
+- incrementa atividadesValidas.
+
+Se o valor for menor ou igual a zero:
+- a atividade é inválida;
+- não soma no total da OS;
+- incrementa atividadesInvalidas.
+
+### Sequência validada
+Foi testada a sequência:
+
+- 2
+- 1
+- maria
+- 3
+- 100
+- -50
+- 200
+- 2
+- 1
+- carlos
+- 2
+- 300
+- 0
+- 2
+- 9
+- 0
+
+### Resultado da OS Maria
+Dados:
+- cliente: maria
+- quantidade de atividades: 3
+- valores: 100, -50 e 200
+
+Resultado:
+- atividades válidas: 2
+- atividades inválidas: 1
+- total da OS: R$ 300.0
+
+Explicação:
+- 100 é válido;
+- -50 é inválido;
+- 200 é válido;
+- total válido: 100 + 200 = 300.0.
+
+### Resultado da OS Carlos
+Dados:
+- cliente: carlos
+- quantidade de atividades: 2
+- valores: 300 e 0
+
+Resultado:
+- atividades válidas: 1
+- atividades inválidas: 1
+- total da OS: R$ 300.0
+
+Explicação:
+- 300 é válido;
+- 0 é inválido;
+- total válido: 300.0.
+
+### Resultado geral final
+Ao final, o sistema exibiu:
+- Total de OS processadas: 2
+- Total geral do sistema: R$ 600.0
+- Total de atividades válidas: 3
+- Total de atividades inválidas: 2
+
+Explicação:
+- Maria teve total de R$ 300.0;
+- Carlos teve total de R$ 300.0;
+- total geral ficou R$ 600.0;
+- Maria teve 2 atividades válidas;
+- Carlos teve 1 atividade válida;
+- total de atividades válidas ficou 3;
+- Maria teve 1 atividade inválida;
+- Carlos teve 1 atividade inválida;
+- total de atividades inválidas ficou 2.
+
+### Aprendizado principal
+O principal aprendizado foi perceber como os laços podem ser combinados.
+
+O do while controlou o menu.
+
+O for processou as atividades de cada OS.
+
+O if dentro do for validou cada atividade.
+
+Os acumuladores locais guardaram os dados da OS atual.
+
+Os acumuladores gerais guardaram o histórico consolidado do sistema.
+
+Essa combinação se aproxima de uma lógica real de backend.
+
+### Relação com backend
+Em backend, é comum ter processamentos que:
+- recebem uma solicitação;
+- percorrem itens;
+- validam cada item;
+- acumulam totais;
+- separam itens válidos e inválidos;
+- retornam um resumo final.
+
+Futuramente, a entrada não será pelo console, mas por API, JSON, banco de dados ou fila.
+
+Mesmo assim, a lógica central será parecida.
+
+### Exemplos reais de aplicação
+Esse padrão pode ser usado para:
+- processar atividades de uma OS;
+- validar itens de um pedido;
+- separar transações válidas e inválidas;
+- calcular total de produtos;
+- gerar resumo financeiro;
+- consolidar dados por cliente;
+- retornar resumo de importação;
+- processar registros de uma fila.
+
+### Erros comuns neste tipo de exercício
+Erros comuns:
+- esquecer scanner.nextLine após nextInt;
+- criar acumuladores gerais dentro do menu e perder os dados;
+- criar acumuladores locais fora da OS e misturar dados entre clientes;
+- somar valores inválidos;
+- esquecer de contar atividades inválidas;
+- atualizar totais gerais antes da OS terminar;
+- não tratar opção inválida;
+- esquecer a condição de parada do do while;
+- esquecer scanner.close.
+
+### Resumo da aula
+- A aula revisou for, while e do while.
+- O exercício integrou os principais conceitos de repetição.
+- O sistema processou múltiplas OS.
+- Cada OS teve validação própria.
+- O sistema manteve um resumo geral.
+- Valores inválidos não foram somados.
+- O resumo final refletiu tudo que foi processado.
+

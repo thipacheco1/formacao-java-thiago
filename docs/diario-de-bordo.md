@@ -1708,141 +1708,356 @@ Concluída.
 ### Próxima aula
 Aula 3.5 - Laço while.
 
+---
 
-"C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.2.6.2\lib\idea_rt.jar=55157" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\win\Documents\Java\formacao-java-thiago\out\production\formacao-java-thiago Main
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-2
-Total de OS processadas: 0
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-2
-Total de OS processadas: 2
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-9
-Opção inválida.
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-2
-Total de OS processadas: 3
------ Menu de OS -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-0 - Sair
-Digite uma opção:
-0
-Encerrando sistema.
-Total final de OS processadas: 3
+## Aula 3.6 - Laço do while
 
-Process finished with exit code 0
+### O que foi feito
+- Estudado o laço de repetição do while.
+- Entendida a diferença entre while e do while.
+- Validado que o do while executa pelo menos uma vez.
+- Comparado o comportamento do while e do while.
+- Testado exemplo com contador.
+- Testado exemplo em que a condição já começa falsa.
+- Criado menu simples usando do while.
+- Criado exercício final chamado mentalmente de Menu de Atendimento com do while.
+- Utilizada variável opcao para controlar a repetição.
+- Utilizado contador totalOsProcessadas.
+- Tratadas opções válidas, opção inválida e opção de saída.
+- Validado encerramento do menu ao digitar 0.
 
-"C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.2.6.2\lib\idea_rt.jar=49397" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\win\Documents\Java\formacao-java-thiago\out\production\formacao-java-thiago Main
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-3
-Sistema operacional e aguardando comandos.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-2
-Total de OS processadas: 0
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-2
-Total de OS processadas: 2
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-9
-Opção inválida.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-1
-OS processada com sucesso.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-3
-Sistema operacional e aguardando comandos.
------ Menu de Atendimento -----
-1 - Processar nova OS
-2 - Exibir quantidade de OS processadas
-3 - Exibir status do sistema
-0 - Sair
-Digite uma opção:
-0
-Encerrando sistema.
-Total final de OS processadas: 3
+### Código praticado
+Arquivo: src/Main.java
 
-Process finished with exit code 0
+Conceitos usados:
+- import java.util.Scanner;
+- Scanner scanner = new Scanner(System.in);
+- do while;
+- condição de repetição ao final do bloco;
+- variável de controle;
+- contador;
+- incremento com ++;
+- if;
+- else if;
+- else;
+- menu no console;
+- scanner.nextInt;
+- scanner.close.
+
+Código final praticado:
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            int opcao;
+            int totalOsProcessadas = 0;
+
+            do {
+                System.out.println("----- Menu de Atendimento -----");
+                System.out.println("1 - Processar nova OS");
+                System.out.println("2 - Exibir quantidade de OS processadas");
+                System.out.println("3 - Exibir status do sistema");
+                System.out.println("0 - Sair");
+                System.out.println("Digite uma opção:");
+
+                opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+                    totalOsProcessadas++;
+                    System.out.println("OS processada com sucesso.");
+                } else if (opcao == 2) {
+                    System.out.println("Total de OS processadas: " + totalOsProcessadas);
+                } else if (opcao == 3) {
+                    System.out.println("Sistema operacional e aguardando comandos.");
+                } else if (opcao == 0) {
+                    System.out.println("Encerrando sistema.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } while (opcao != 0);
+
+            System.out.println("Total final de OS processadas: " + totalOsProcessadas);
+
+            scanner.close();
+        }
+    }
+
+### Sequência testada
+- 3
+- 2
+- 1
+- 1
+- 2
+- 9
+- 1
+- 3
+- 0
+
+### Resultado obtido
+- Opção 3: Sistema operacional e aguardando comandos.
+- Opção 2: Total de OS processadas: 0
+- Opção 1: OS processada com sucesso.
+- Opção 1: OS processada com sucesso.
+- Opção 2: Total de OS processadas: 2
+- Opção 9: Opção inválida.
+- Opção 1: OS processada com sucesso.
+- Opção 3: Sistema operacional e aguardando comandos.
+- Opção 0: Encerrando sistema.
+- Total final de OS processadas: 3
+- Process finished with exit code 0
+
+### O que foi aprendido
+- do while executa o bloco primeiro e verifica a condição depois.
+- Diferente do while, o do while sempre executa pelo menos uma vez.
+- O while pode executar zero vezes se a condição já começar falsa.
+- O do while é útil quando a primeira execução é obrigatória.
+- Menus de console são bons exemplos de uso do do while.
+- No do while, a condição fica no final.
+- O ponto e vírgula no final do do while é obrigatório.
+- A variável opcao pode ser declarada sem valor inicial porque recebe valor dentro do bloco antes da condição ser verificada.
+- A opção 0 foi usada como condição de parada.
+- A opção 1 incrementou o total de OS processadas.
+- A opção 2 apenas consultou o contador.
+- A opção 3 exibiu status do sistema.
+- Opções inválidas foram tratadas no else.
+
+### Diferença entre while e do while
+- while verifica a condição antes de executar.
+- do while executa primeiro e verifica a condição depois.
+- while pode executar zero vezes.
+- do while executa pelo menos uma vez.
+
+### Regra praticada
+O menu continua aparecendo enquanto opcao for diferente de 0.
+
+Regra usada:
+do { ... } while (opcao != 0);
+
+Quando o usuário digita 0:
+- opcao passa a valer 0;
+- a mensagem Encerrando sistema é exibida;
+- a condição opcao != 0 fica falsa;
+- o laço termina;
+- o sistema exibe o total final.
+
+### Dificuldades encontradas
+- Foi necessário entender que a condição do do while fica no final.
+- Foi necessário lembrar do ponto e vírgula após while (opcao != 0).
+- Foi necessário entender por que a variável opcao pode ser declarada sem valor inicial.
+- Foi necessário comparar mentalmente o comportamento de while e do while.
+- Foi necessário validar que a opção inválida não altera o total.
+- Foi necessário validar que a opção 2 consulta, mas não incrementa o contador.
+
+### Como foi resolvido
+- Criado um menu com do while.
+- Declarada a variável opcao antes do bloco.
+- Lida a opção dentro do bloco.
+- Tratadas as opções com if, else if e else.
+- Incrementado totalOsProcessadas apenas quando a opção foi 1.
+- Mantida a opção 2 apenas para consulta.
+- Tratada a opção 3 como exibição de status.
+- Tratada a opção 9 como inválida.
+- Encerrado o sistema com a opção 0.
+- Confirmado o total final de OS processadas como 3.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.7 - Revisão dos laços for, while e do while.
+
+---
+
+## Aula 3.7 - Revisão dos laços for, while e do while
+
+### O que foi feito
+- Revisados os laços for, while e do while.
+- Revisados os conceitos de contador, acumulador, condição de parada e loop infinito.
+- Criado um exercício integrador chamado Sistema de Processamento de OS com Menu.
+- Utilizado do while para manter o menu em execução.
+- Utilizado Scanner para entrada de dados.
+- Utilizado if, else if e else para tratar as opções do menu.
+- Utilizado for para processar as atividades de cada OS.
+- Utilizado if dentro do for para validar atividades com valor maior que zero.
+- Utilizados acumuladores locais para cada OS.
+- Utilizados acumuladores gerais para consolidar o sistema.
+- Validado resumo inicial, resumo por OS, resumo geral, opção inválida e resumo final.
+
+### Regras praticadas
+O sistema possui um menu com as opções:
+- 1 - Processar OS
+- 2 - Exibir resumo geral
+- 0 - Sair
+
+Na opção 1:
+- o sistema lê o nome do cliente;
+- lê a quantidade de atividades;
+- percorre as atividades usando for;
+- lê o valor de cada atividade;
+- se o valor for maior que zero, considera a atividade válida;
+- se o valor for menor ou igual a zero, considera a atividade inválida;
+- soma apenas atividades válidas no total da OS;
+- contabiliza atividades válidas e inválidas da OS;
+- atualiza os totais gerais do sistema.
+
+Na opção 2:
+- o sistema exibe o resumo geral acumulado até o momento.
+
+Na opção 0:
+- o sistema encerra e exibe o resumo final.
+
+Em qualquer outra opção:
+- o sistema exibe opção inválida.
+
+### Conceitos usados
+- Scanner
+- do while
+- for
+- if
+- else if
+- else
+- contador
+- acumulador local
+- acumulador geral
+- scanner.nextInt
+- scanner.nextLine
+- limpeza de buffer
+- scanner.nextDouble
+- condição de parada
+- opção inválida
+- resumo parcial
+- resumo geral
+- resumo final
+
+### Sequência testada
+- 2
+- 1
+- maria
+- 3
+- 100
+- -50
+- 200
+- 2
+- 1
+- carlos
+- 2
+- 300
+- 0
+- 2
+- 9
+- 0
+
+### Resultado obtido - Resumo inicial
+- Total de OS processadas: 0
+- Total geral do sistema: R$ 0.0
+- Total de atividades válidas: 0
+- Total de atividades inválidas: 0
+
+### Resultado obtido - OS Maria
+Dados:
+- Cliente: maria
+- Quantidade de atividades: 3
+- Valores informados: 100, -50 e 200
+
+Resultado:
+- Atividades válidas: 2
+- Atividades inválidas: 1
+- Total da OS: R$ 300.0
+
+### Resultado obtido - OS Carlos
+Dados:
+- Cliente: carlos
+- Quantidade de atividades: 2
+- Valores informados: 300 e 0
+
+Resultado:
+- Atividades válidas: 1
+- Atividades inválidas: 1
+- Total da OS: R$ 300.0
+
+### Resultado final validado
+- Total de OS processadas: 2
+- Total geral do sistema: R$ 600.0
+- Total de atividades válidas: 3
+- Total de atividades inválidas: 2
+- Execução finalizada com exit code 0
+
+### O que foi aprendido
+- for é indicado quando existe uma quantidade controlada de repetições.
+- while é indicado quando a repetição depende de uma condição verdadeira.
+- do while é indicado quando o bloco precisa executar pelo menos uma vez.
+- Um menu pode ser controlado por do while.
+- Um processamento interno pode usar for dentro do do while.
+- É possível usar if dentro do for para validar cada item processado.
+- Acumuladores locais guardam os dados de uma OS específica.
+- Acumuladores gerais guardam os dados consolidados do sistema.
+- scanner.nextLine pode ser usado para limpar o Enter pendente após nextInt.
+- Valores inválidos podem ser tratados sem entrar no total.
+- Opção inválida deve ser tratada sem alterar os acumuladores.
+- O resumo final deve refletir tudo que foi processado durante o uso do sistema.
+
+### Diferença entre acumuladores locais e gerais
+Acumuladores locais:
+- totalOs
+- atividadesValidas
+- atividadesInvalidas
+
+Eles representam apenas a OS atual.
+
+Acumuladores gerais:
+- totalOsProcessadas
+- totalGeralSistema
+- totalAtividadesValidasGeral
+- totalAtividadesInvalidasGeral
+
+Eles representam o consolidado de todo o sistema.
+
+### Regra de validação de atividade
+Uma atividade só é válida se o valor for maior que zero.
+
+Regra usada:
+- valorAtividade > 0
+
+Se o valor for maior que zero:
+- soma no total da OS;
+- incrementa atividadesValidas.
+
+Se o valor for menor ou igual a zero:
+- não soma no total da OS;
+- incrementa atividadesInvalidas.
+
+### Dificuldades encontradas
+- Foi necessário juntar vários conceitos em um único programa.
+- Foi necessário usar do while para controlar o menu.
+- Foi necessário usar for dentro do processamento da OS.
+- Foi necessário usar if dentro do for para validar cada atividade.
+- Foi necessário separar acumuladores da OS atual e acumuladores gerais do sistema.
+- Foi necessário usar scanner.nextLine para evitar problema de leitura do nome do cliente.
+- Foi necessário validar se valores negativos e zero não entravam no total.
+- Foi necessário garantir que opção inválida não alterasse os totais.
+
+### Como foi resolvido
+- Criado menu com do while.
+- Criadas opções com if, else if e else.
+- Criado processamento de OS dentro da opção 1.
+- Criado for para percorrer as atividades da OS.
+- Criada validação valorAtividade > 0.
+- Criados acumuladores locais para cada OS.
+- Criados acumuladores gerais para todo o sistema.
+- Atualizados os acumuladores gerais somente após finalizar cada OS.
+- Testado resumo antes de processar qualquer OS.
+- Testada OS com atividade válida e inválida.
+- Testada segunda OS com valor zero inválido.
+- Testada opção inválida.
+- Validado resumo final com 2 OS, R$ 600.0, 3 atividades válidas e 2 inválidas.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.8 - Controle de fluxo com break e continue.
+
