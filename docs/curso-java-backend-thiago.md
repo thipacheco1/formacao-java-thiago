@@ -2317,3 +2317,200 @@ Atualizações futuras devem manter o padrão:
 - Relação com backend.
 - Relação com QA quando aplicável.
 - Resumo da aula.
+
+
+---
+
+## Aula 3.1 - Introdução aos laços de repetição com for
+
+### Objetivo da aula
+Aprender o conceito de laço de repetição e dar o primeiro passo prático usando o for.
+
+Laços de repetição permitem executar o mesmo bloco de código várias vezes sem precisar escrever várias linhas repetidas manualmente.
+
+Sem laço, para processar três atividades, seria necessário escrever algo como:
+
+    System.out.println("Processando atividade 1");
+    System.out.println("Processando atividade 2");
+    System.out.println("Processando atividade 3");
+
+Com laço, o Java repete automaticamente com base em uma regra definida.
+
+### Por que laços são importantes
+Em backend, normalmente não trabalhamos com apenas um item.
+
+É comum precisar:
+- processar várias ordens de serviço;
+- percorrer listas de clientes;
+- validar várias atividades;
+- somar valores de várias transações;
+- processar dados vindos de uma API;
+- percorrer registros vindos do banco de dados;
+- gerar relatórios;
+- validar coleções de objetos.
+
+Em automação de testes, laços também aparecem para:
+- repetir testes com massas diferentes;
+- validar vários elementos em tela;
+- percorrer arrays em respostas JSON;
+- testar combinações de dados;
+- validar listas de cards, tabelas e registros.
+
+### Tipos principais de laço em Java
+Os principais laços que serão estudados são:
+- for;
+- while;
+- do while.
+
+Nesta aula, o foco foi o for.
+
+### Quando usar for
+O for é muito usado quando sabemos ou controlamos a quantidade de repetições.
+
+Exemplos:
+- contar de 1 até 10;
+- processar 5 atividades;
+- percorrer uma lista com tamanho conhecido;
+- repetir uma validação para cada item de uma coleção.
+
+### Estrutura do for
+A estrutura geral é:
+
+    for (inicio; condicao; incremento) {
+        bloco executado enquanto a condição for verdadeira
+    }
+
+Exemplo:
+
+    for (int contador = 1; contador <= 5; contador++) {
+        System.out.println("Contador: " + contador);
+    }
+
+Esse exemplo imprime de 1 até 5.
+
+### Partes do for
+
+#### Início
+O início define onde a repetição começa.
+
+    int contador = 1
+
+Isso cria uma variável chamada contador começando em 1.
+
+#### Condição
+A condição define até quando o laço continua.
+
+    contador <= 5
+
+Enquanto essa condição for verdadeira, o bloco dentro do for será executado.
+
+#### Incremento
+O incremento define o que acontece ao final de cada repetição.
+
+    contador++
+
+Isso significa somar 1 ao contador.
+
+É equivalente a:
+
+    contador = contador + 1;
+
+### Fluxo de execução do for
+No exemplo contador de 1 até 5, o Java executa assim:
+
+- contador começa em 1;
+- verifica se 1 <= 5;
+- como é verdadeiro, executa o bloco;
+- imprime Contador: 1;
+- executa contador++;
+- contador vira 2;
+- verifica se 2 <= 5;
+- repete o processo;
+- quando contador vira 6, a condição 6 <= 5 é falsa;
+- o laço termina.
+
+### Exemplo com contexto de OS
+Foi testado um exemplo simulando processamento de ordens de serviço:
+
+    public class Main {
+        public static void main(String[] args) {
+
+            for (int numeroOs = 1; numeroOs <= 5; numeroOs++) {
+                System.out.println("Processando OS número: " + numeroOs);
+            }
+
+        }
+    }
+
+Resultado esperado:
+- Processando OS número: 1
+- Processando OS número: 2
+- Processando OS número: 3
+- Processando OS número: 4
+- Processando OS número: 5
+
+### Exercício final
+Foi criado um programa simulando o processamento de atividades de uma OS.
+
+Código praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 3;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+            }
+
+            System.out.println("Processamento finalizado.");
+        }
+    }
+
+### Resultado validado
+Com quantidadeAtividades = 3, o console exibiu:
+
+- Cliente: Maria
+- Processando atividade 1 de 3
+- Processando atividade 2 de 3
+- Processando atividade 3 de 3
+- Processamento finalizado.
+
+### Aprendizado principal
+O ponto mais importante da aula foi entender que o for não precisa depender de um número fixo.
+
+Ao usar:
+
+    atividadeAtual <= quantidadeAtividades
+
+o laço passa a respeitar o valor da variável quantidadeAtividades.
+
+Se quantidadeAtividades for 5, o laço executa 5 vezes.
+Se quantidadeAtividades for 3, o laço executa 3 vezes.
+Se quantidadeAtividades for 100, o laço executa 100 vezes.
+
+Isso torna o código mais flexível, reutilizável e profissional.
+
+### Erros comuns
+Erros comuns ao iniciar com for:
+- esquecer o ponto e vírgula entre as três partes do for;
+- esquecer o incremento;
+- criar uma condição que nunca fica falsa;
+- começar o contador em 0 quando queria começar em 1;
+- usar limite fixo quando deveria usar uma variável;
+- confundir contador++ com comparação.
+
+### Relação com backend
+Em backend, o conceito aprendido nesta aula será usado futuramente para percorrer listas, coleções e resultados de banco ou API.
+
+Mesmo que no futuro o Java moderno use estruturas como for-each e streams, entender o for tradicional é fundamental para compreender a base da linguagem.
+
+### Resumo da aula
+- Laço repete um bloco de código.
+- for é usado quando controlamos a quantidade de repetições.
+- O for possui início, condição e incremento.
+- contador++ soma 1 ao contador.
+- O bloco executa enquanto a condição for verdadeira.
+- Usar variável como limite torna o código flexível.

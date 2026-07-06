@@ -1096,3 +1096,167 @@ Concluída.
 
 ### Próxima aula
 Aula 3.1 - Introdução aos laços de repetição.
+
+---
+
+## Aula 3.1 - Introdução aos laços de repetição com for
+
+### O que foi feito
+- Iniciado o Módulo 3 da formação Java Backend.
+- Estudado o conceito de laços de repetição.
+- Entendido por que repetição é importante em Java, backend e automação.
+- Apresentado o primeiro laço de repetição: for.
+- Testado um contador de 1 até 5.
+- Testado um contador de 1 até 10.
+- Testado um exemplo simulando processamento de OS.
+- Criado um exercício final simulando o processamento de atividades de uma OS.
+- Alterada a quantidade de atividades de 5 para 3 para validar que o laço usa a variável como limite.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- for;
+- contador;
+- variável de controle;
+- condição de repetição;
+- incremento com ++;
+- impressão de dados dentro do laço;
+- uso de variável como limite do laço.
+
+Código final praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 3;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+            }
+
+            System.out.println("Processamento finalizado.");
+        }
+    }
+
+### Resultado obtido
+- Cliente: Maria
+- Processando atividade 1 de 3
+- Processando atividade 2 de 3
+- Processando atividade 3 de 3
+- Processamento finalizado.
+- Process finished with exit code 0
+
+### O que foi aprendido
+- Laço de repetição permite executar o mesmo bloco de código várias vezes.
+- O for é indicado quando sabemos ou controlamos a quantidade de repetições.
+- A estrutura do for possui três partes principais: início, condição e incremento.
+- O início define onde a contagem começa.
+- A condição define até quando o laço continua executando.
+- O incremento altera o contador a cada repetição.
+- contador++ é uma forma curta de escrever contador = contador + 1.
+- O bloco dentro do for executa enquanto a condição for verdadeira.
+- Quando a condição fica falsa, o laço termina.
+- Usar uma variável como limite deixa o código mais flexível.
+
+### Dificuldades encontradas
+- Foi necessário entender o fluxo completo do for.
+- Foi necessário perceber que a variável atividadeAtual muda a cada repetição.
+- Foi necessário validar que alterar quantidadeAtividades muda automaticamente a quantidade de execuções.
+
+### Como foi resolvido
+- Testado primeiro um contador simples.
+- Depois testado um exemplo com processamento de OS.
+- Por fim, criado o exercício com atividades de uma OS.
+- Alterada a variável quantidadeAtividades de 5 para 3.
+- Confirmado que o console exibiu apenas 3 atividades.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.2 - Laço for com soma e acumuladores.---
+
+## Aula 3.1 - Introdução aos laços de repetição com for
+
+### O que foi feito
+- Iniciado o Módulo 3 da formação Java Backend.
+- Estudado o conceito de laços de repetição.
+- Entendido por que repetição é importante em Java, backend e automação.
+- Apresentado o primeiro laço de repetição: for.
+- Testado um contador de 1 até 5.
+- Testado um contador de 1 até 10.
+- Testado um exemplo simulando processamento de OS.
+- Criado um exercício final simulando o processamento de atividades de uma OS.
+- Alterada a quantidade de atividades de 5 para 3 para validar que o laço usa a variável como limite.
+
+### Código praticado
+Arquivo: src/Main.java
+
+Conceitos usados:
+- for;
+- contador;
+- variável de controle;
+- condição de repetição;
+- incremento com ++;
+- impressão de dados dentro do laço;
+- uso de variável como limite do laço.
+
+Código final praticado:
+
+    public class Main {
+        public static void main(String[] args) {
+            String nomeCliente = "Maria";
+            int quantidadeAtividades = 3;
+
+            System.out.println("Cliente: " + nomeCliente);
+
+            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+            }
+
+            System.out.println("Processamento finalizado.");
+        }
+    }
+
+### Resultado obtido
+- Cliente: Maria
+- Processando atividade 1 de 3
+- Processando atividade 2 de 3
+- Processando atividade 3 de 3
+- Processamento finalizado.
+- Process finished with exit code 0
+
+### O que foi aprendido
+- Laço de repetição permite executar o mesmo bloco de código várias vezes.
+- O for é indicado quando sabemos ou controlamos a quantidade de repetições.
+- A estrutura do for possui três partes principais: início, condição e incremento.
+- O início define onde a contagem começa.
+- A condição define até quando o laço continua executando.
+- O incremento altera o contador a cada repetição.
+- contador++ é uma forma curta de escrever contador = contador + 1.
+- O bloco dentro do for executa enquanto a condição for verdadeira.
+- Quando a condição fica falsa, o laço termina.
+- Usar uma variável como limite deixa o código mais flexível.
+
+### Dificuldades encontradas
+- Foi necessário entender o fluxo completo do for.
+- Foi necessário perceber que a variável atividadeAtual muda a cada repetição.
+- Foi necessário validar que alterar quantidadeAtividades muda automaticamente a quantidade de execuções.
+
+### Como foi resolvido
+- Testado primeiro um contador simples.
+- Depois testado um exemplo com processamento de OS.
+- Por fim, criado o exercício com atividades de uma OS.
+- Alterada a variável quantidadeAtividades de 5 para 3.
+- Confirmado que o console exibiu apenas 3 atividades.
+- Confirmada a execução com exit code 0.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 3.2 - Laço for com soma e acumuladores.
