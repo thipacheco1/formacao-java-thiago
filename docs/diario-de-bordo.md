@@ -2461,3 +2461,127 @@ Concluída.
 Módulo 4 - Arrays.
 
 
+---
+
+## Aula 4.1 - Introdução a Arrays
+
+### O que foi feito
+- Iniciado o Módulo 4 da formação Java Backend.
+- Apresentado o conceito de array.
+- Entendido que array permite guardar vários valores do mesmo tipo em uma única variável.
+- Comparado o uso de várias variáveis separadas com o uso de um array.
+- Criado um array de valores double representando atividades.
+- Utilizado o atributo length para descobrir o tamanho do array.
+- Utilizado for para percorrer todas as posições do array.
+- Utilizado índice para acessar cada posição do array.
+- Refeito o exercício da Aula 3.10 usando array.
+- Validado processamento de atividades válidas e inválidas.
+- Validado o segundo teste com mais valores no array.
+
+### Conceitos usados
+- array
+- double[]
+- índice
+- posição do array
+- length
+- for
+- if
+- else
+- acumulador
+- contador
+- atividades válidas
+- atividades inválidas
+
+### Código praticado
+Foi utilizado um array com os seguintes valores:
+
+- 100.0
+- 200.0
+- 0.0
+- 150.0
+- -50.0
+- 300.0
+- -10.0
+
+Código principal praticado:
+
+    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+
+    double total = 0.0;
+    int atividadesValidas = 0;
+    int atividadesInvalidas = 0;
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        double valorAtividade = atividades[indice];
+
+        if (valorAtividade > 0) {
+            total = total + valorAtividade;
+            atividadesValidas++;
+
+            System.out.println("Atividade " + indice + " válida: R$ " + valorAtividade);
+        } else {
+            atividadesInvalidas++;
+
+            System.out.println("Atividade " + indice + " inválida: R$ " + valorAtividade);
+        }
+    }
+
+    System.out.println("----- Resumo -----");
+    System.out.println("Total final: R$ " + total);
+    System.out.println("Atividades válidas: " + atividadesValidas);
+    System.out.println("Atividades inválidas: " + atividadesInvalidas);
+
+### Resultado validado
+Resultado do segundo teste:
+
+- Total final: R$ 750.0
+- Atividades válidas: 4
+- Atividades inválidas: 3
+- Execução finalizada com exit code 0
+
+### Explicação do resultado
+Valores válidos:
+- 100.0
+- 200.0
+- 150.0
+- 300.0
+
+Valores inválidos:
+- 0.0
+- -50.0
+- -10.0
+
+Cálculo:
+- 100.0 + 200.0 + 150.0 + 300.0 = 750.0
+
+### O que foi aprendido
+- Um array guarda vários valores do mesmo tipo.
+- A primeira posição de um array em Java é 0.
+- Um array com 7 itens possui índices de 0 até 6.
+- Para acessar uma posição do array, usamos colchetes.
+- O atributo length informa a quantidade de itens do array.
+- O for pode percorrer todas as posições usando indice < array.length.
+- Usar indice <= array.length causaria erro, pois tentaria acessar uma posição inexistente.
+- O array reduziu a repetição do código da Aula 3.10.
+- Agora o programa se adapta melhor quando novos valores são adicionados ao array.
+
+### Diferença percebida em relação à Aula 3.10
+Na Aula 3.10, foram usadas variáveis separadas:
+- atividade1
+- atividade2
+- atividade3
+- atividade4
+- atividade5
+
+Na Aula 4.1, os valores foram colocados dentro de uma única estrutura:
+- double[] atividades
+
+Com isso, o for conseguiu percorrer todos os valores de forma automática usando atividades.length.
+
+### Status
+Concluída.
+
+### Próxima aula
+Aula 4.2 - Alterando valores de um array e entendendo posições.
+
+

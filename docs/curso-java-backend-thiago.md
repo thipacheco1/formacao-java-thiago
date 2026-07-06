@@ -5176,3 +5176,272 @@ Esse módulo criou a base para processamentos repetitivos em Java.
 O Módulo 3 foi concluído com sucesso.
 
 A próxima etapa da formação será o Módulo 4, começando por arrays.
+
+
+---
+
+## Aula 4.1 - Introdução a Arrays
+
+### Objetivo da aula
+Iniciar o Módulo 4 da formação Java Backend, apresentando o conceito de array.
+
+A ideia principal foi entender como guardar vários valores do mesmo tipo dentro de uma única variável.
+
+Essa aula também mostrou por que arrays são uma evolução natural depois dos laços de repetição estudados no Módulo 3.
+
+### Problema antes dos arrays
+Antes dos arrays, para guardar vários valores, era necessário criar várias variáveis separadas.
+
+Exemplo:
+
+    double atividade1 = 100.0;
+    double atividade2 = 200.0;
+    double atividade3 = 0.0;
+    double atividade4 = 150.0;
+    double atividade5 = -50.0;
+
+Esse código funciona, mas não escala bem.
+
+Se fossem 100 atividades, seriam necessárias 100 variáveis.
+
+Além disso, seria necessário repetir muitos blocos if para validar cada atividade.
+
+### O que é um array
+Array é uma estrutura que guarda vários valores do mesmo tipo dentro de uma única variável.
+
+Exemplo:
+
+    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
+
+Leitura em português:
+- foi criado um array chamado atividades;
+- esse array guarda valores do tipo double;
+- os valores representam atividades;
+- todos os valores estão dentro de uma única variável.
+
+### Sintaxe básica de array
+A estrutura básica é:
+
+    tipo[] nomeDoArray = {valor1, valor2, valor3};
+
+Exemplos:
+
+    int[] numeros = {10, 20, 30};
+    double[] valores = {100.0, 200.0, 300.0};
+    String[] clientes = {"Maria", "Carlos", "Ana"};
+    boolean[] ativos = {true, false, true};
+
+Cada array guarda vários valores de um mesmo tipo.
+
+### Índice do array
+Todo array trabalha com índice.
+
+Em Java, o primeiro índice é sempre 0.
+
+Exemplo:
+
+    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
+
+Posições:
+- índice 0: 100.0
+- índice 1: 200.0
+- índice 2: 0.0
+- índice 3: 150.0
+- índice 4: -50.0
+
+Esse ponto é muito importante.
+
+Um array com 5 itens possui índices de 0 até 4.
+
+Ele não possui índice 5.
+
+### Acessando posições do array
+Para acessar uma posição do array, usamos colchetes.
+
+Exemplos:
+
+    atividades[0]
+    atividades[1]
+    atividades[2]
+
+Código de exemplo:
+
+    System.out.println("Primeira atividade: R$ " + atividades[0]);
+    System.out.println("Segunda atividade: R$ " + atividades[1]);
+    System.out.println("Terceira atividade: R$ " + atividades[2]);
+
+### Tamanho do array com length
+Para saber quantos itens existem em um array, usamos length.
+
+Exemplo:
+
+    atividades.length
+
+Se o array possui 5 valores, atividades.length retorna 5.
+
+Atenção:
+- length retorna a quantidade de itens;
+- o último índice é length - 1.
+
+Exemplo:
+- quantidade de itens: 5;
+- último índice: 4.
+
+### Percorrendo array com for
+Como o array possui posições, podemos usar for para percorrer todos os itens.
+
+Exemplo:
+
+    for (int indice = 0; indice < atividades.length; indice++) {
+        System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+    }
+
+Explicação:
+- o índice começa em 0;
+- o laço continua enquanto indice for menor que atividades.length;
+- a cada repetição, o índice aumenta em 1;
+- atividades[indice] acessa o valor da posição atual.
+
+### Por que usar indice < atividades.length
+Usamos:
+
+    indice < atividades.length
+
+Não usamos:
+
+    indice <= atividades.length
+
+Motivo:
+- se o array tem 5 itens, os índices válidos são 0, 1, 2, 3 e 4;
+- atividades.length vale 5;
+- se o código tentar acessar atividades[5], ocorrerá erro.
+
+O erro seria parecido com:
+
+    ArrayIndexOutOfBoundsException
+
+Esse erro significa que o programa tentou acessar uma posição fora do limite do array.
+
+### Exercício praticado
+Foi refeito o exercício da Aula 3.10 usando array.
+
+Array usado no segundo teste:
+
+    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+
+Regras:
+- valores maiores que zero são válidos;
+- valores menores ou iguais a zero são inválidos;
+- valores válidos entram no total;
+- valores inválidos não entram no total;
+- ao final, o sistema exibe total, quantidade de válidas e quantidade de inválidas.
+
+### Código praticado
+Código principal da aula:
+
+    public class Main {
+        public static void main(String[] args) {
+            double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+
+            double total = 0.0;
+            int atividadesValidas = 0;
+            int atividadesInvalidas = 0;
+
+            for (int indice = 0; indice < atividades.length; indice++) {
+                double valorAtividade = atividades[indice];
+
+                if (valorAtividade > 0) {
+                    total = total + valorAtividade;
+                    atividadesValidas++;
+
+                    System.out.println("Atividade " + indice + " válida: R$ " + valorAtividade);
+                } else {
+                    atividadesInvalidas++;
+
+                    System.out.println("Atividade " + indice + " inválida: R$ " + valorAtividade);
+                }
+            }
+
+            System.out.println("----- Resumo -----");
+            System.out.println("Total final: R$ " + total);
+            System.out.println("Atividades válidas: " + atividadesValidas);
+            System.out.println("Atividades inválidas: " + atividadesInvalidas);
+        }
+    }
+
+### Resultado validado
+Resultado obtido:
+
+- Total final: R$ 750.0
+- Atividades válidas: 4
+- Atividades inválidas: 3
+
+### Explicação do resultado
+Valores válidos:
+- 100.0
+- 200.0
+- 150.0
+- 300.0
+
+Valores inválidos:
+- 0.0
+- -50.0
+- -10.0
+
+Total:
+- 100.0 + 200.0 + 150.0 + 300.0 = 750.0
+
+Quantidade:
+- atividades válidas: 4
+- atividades inválidas: 3
+
+### Por que o código ficou melhor
+Com variáveis separadas, seria necessário repetir muitos blocos if.
+
+Com array, a regra fica centralizada dentro de um único for.
+
+Se novos valores forem adicionados ao array, o for continua funcionando porque usa atividades.length.
+
+Exemplo:
+- se o array tiver 5 itens, percorre 5;
+- se tiver 7 itens, percorre 7;
+- se tiver 100 itens, percorre 100.
+
+O código fica mais flexível e mais fácil de manter.
+
+### Relação com backend
+Em backend, normalmente não processamos apenas um único item.
+
+É comum processar listas de dados, como:
+- atividades;
+- produtos;
+- pedidos;
+- transações;
+- mensagens;
+- clientes;
+- registros de importação;
+- erros de validação.
+
+O array é uma das primeiras estruturas para entender como guardar e percorrer vários valores.
+
+Depois, essa ideia evolui para estruturas muito usadas em backend Java, como:
+- List;
+- ArrayList;
+- Collections.
+
+### Aprendizado principal
+O principal aprendizado da aula foi entender que array permite guardar vários valores em uma única variável.
+
+Também foi aprendido que arrays trabalham com índices, começando em 0.
+
+A combinação de array com for permite processar vários valores de forma organizada e sem repetir código desnecessário.
+
+### Resumo da aula
+- Array guarda vários valores do mesmo tipo.
+- A primeira posição do array é 0.
+- O tamanho do array é acessado com length.
+- O último índice é length - 1.
+- O for pode percorrer o array usando indice < array.length.
+- Valores do array são acessados com colchetes.
+- O exercício da Aula 3.10 foi melhorado usando array.
+- O segundo teste validou total de R$ 750.0, 4 atividades válidas e 3 inválidas.
