@@ -1,26 +1,9 @@
-# 009 — M0.09 — Git: Instalação e Configuração Global
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.09.01` — Git instalação e configuração global — Conceito, por que existe e vocabulário essencial.
-- `M0.09.02` — Git instalação e configuração global — Exemplo mínimo digitado do zero.
-- `M0.09.03` — Git instalação e configuração global — Exemplo aplicado ao domínio corporativo.
-- `M0.09.04` — Git instalação e configuração global — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar Git como base de rastreabilidade profissional, não apenas como ferramenta para “salvar código”.
-
----
+﻿# 009 — M0.09 — Git: Instalação e Configuração Global
 
 ## Complemento operacional — baixar, instalar e validar Git
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula é o ponto oficial para instalar Git no Windows e configurar a identidade global.
 

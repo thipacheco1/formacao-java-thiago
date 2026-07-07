@@ -1,19 +1,4 @@
-# 038 — M1.18 — Switch Moderno e Expressões
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.18.01` — Switch moderno e expressões — Conceito, por que existe e vocabulário essencial.
-- `M1.18.02` — Switch moderno e expressões — Exemplo mínimo digitado do zero.
-- `M1.18.03` — Switch moderno e expressões — Exemplo aplicado ao domínio corporativo.
-- `M1.18.04` — Switch moderno e expressões — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `switch` moderno, arrow syntax, `yield`, retorno de valor, diferença entre switch statement e switch expression, comparação com o switch tradicional, preparação para uso futuro com `enum` e aplicação em cenários de backend.
-
----
+﻿# 038 — M1.18 — Switch Moderno e Expressões
 
 ## Onde estamos na formação
 

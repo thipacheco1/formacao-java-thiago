@@ -1,26 +1,9 @@
-# 004 — M0.04 — Terminal, PowerShell e Comandos Básicos para Desenvolvimento Java Backend
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.04.01` — Terminal, PowerShell e comandos básicos — Conceito, por que existe e vocabulário essencial.
-- `M0.04.02` — Terminal, PowerShell e comandos básicos — Exemplo mínimo digitado do zero.
-- `M0.04.03` — Terminal, PowerShell e comandos básicos — Exemplo aplicado ao domínio corporativo.
-- `M0.04.04` — Terminal, PowerShell e comandos básicos — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar terminal como ferramenta de autonomia profissional, e não como uma lista mecânica de comandos.
-
----
+﻿# 004 — M0.04 — Terminal, PowerShell e Comandos Básicos para Desenvolvimento Java Backend
 
 ## Complemento operacional — terminal como validador de instalação
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula passa a ser também a referência para validar se uma ferramenta instalada está realmente visível no terminal.
 

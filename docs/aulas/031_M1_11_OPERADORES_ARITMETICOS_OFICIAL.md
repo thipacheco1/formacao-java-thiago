@@ -1,19 +1,4 @@
-# 031 — M1.11 — Operadores Aritméticos
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.11.01` — Operadores aritméticos — Conceito, por que existe e vocabulário essencial.
-- `M1.11.02` — Operadores aritméticos — Exemplo mínimo digitado do zero.
-- `M1.11.03` — Operadores aritméticos — Exemplo aplicado ao domínio corporativo.
-- `M1.11.04` — Operadores aritméticos — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar soma, subtração, multiplicação, divisão, resto da divisão, precedência, parênteses, leitura de expressões aritméticas, armadilhas com inteiros e decimais, e aplicação em cenários de backend.
-
----
+﻿# 031 — M1.11 — Operadores Aritméticos
 
 ## Onde estamos na formação
 

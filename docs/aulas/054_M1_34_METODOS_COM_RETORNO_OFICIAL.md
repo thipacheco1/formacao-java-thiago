@@ -1,19 +1,4 @@
-# 054 — M1.34 — Métodos com Retorno
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.34.01` — Métodos com retorno — Conceito, por que existe e vocabulário essencial.
-- `M1.34.02` — Métodos com retorno — Exemplo mínimo digitado do zero.
-- `M1.34.03` — Métodos com retorno — Exemplo aplicado ao domínio corporativo.
-- `M1.34.04` — Métodos com retorno — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `return`, tipo de retorno, uso do resultado, clareza, diferença entre método `void` e método com retorno, retorno de `int`, `long`, `double`, `boolean` e `String`, retorno calculado a partir de arrays, tratamento de caminhos de retorno, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 054 — M1.34 — Métodos com Retorno
 
 ## Onde estamos na formação
 

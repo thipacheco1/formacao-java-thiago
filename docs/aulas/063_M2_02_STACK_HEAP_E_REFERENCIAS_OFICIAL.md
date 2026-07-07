@@ -1,19 +1,4 @@
-# 063 — M2.02 — Stack, Heap e Referências
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.02.01` — Stack, heap e referências — Conceito profundo e quando usar.
-- `M2.02.02` — Stack, heap e referências — Implementação guiada com código realista.
-- `M2.02.03` — Stack, heap e referências — Refatoração, melhoria e leitura crítica.
-- `M2.02.04` — Stack, heap e referências — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar memória de variáveis locais, objetos, referências, `null`, ciclo de vida, diferença entre valor primitivo e referência, stack frame, heap, objetos alcançáveis, alteração de conteúdo, reatribuição de referência, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 063 — M2.02 — Stack, Heap e Referências
 
 ## Onde estamos na formação
 

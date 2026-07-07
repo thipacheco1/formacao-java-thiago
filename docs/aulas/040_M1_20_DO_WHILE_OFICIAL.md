@@ -1,19 +1,4 @@
-# 040 — M1.20 — Do While
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.20.01` — Do while — Conceito, por que existe e vocabulário essencial.
-- `M1.20.02` — Do while — Exemplo mínimo digitado do zero.
-- `M1.20.03` — Do while — Exemplo aplicado ao domínio corporativo.
-- `M1.20.04` — Do while — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `do while`, repetição que executa ao menos uma vez, menus interativos, opção sair, validação interativa, comparação com `while`, erros comuns, diagnóstico e aplicação em cenários de backend.
-
----
+﻿# 040 — M1.20 — Do While
 
 ## Onde estamos na formação
 

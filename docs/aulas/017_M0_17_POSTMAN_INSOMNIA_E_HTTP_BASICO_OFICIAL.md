@@ -1,26 +1,9 @@
-# 017 — M0.17 — Postman, Insomnia e HTTP Básico
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.17.01` — Postman/Insomnia e HTTP básico — Conceito, por que existe e vocabulário essencial.
-- `M0.17.02` — Postman/Insomnia e HTTP básico — Exemplo mínimo digitado do zero.
-- `M0.17.03` — Postman/Insomnia e HTTP básico — Exemplo aplicado ao domínio corporativo.
-- `M0.17.04` — Postman/Insomnia e HTTP básico — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para preparar o ambiente e o vocabulário básico de testes de API com Postman ou Insomnia, conectando requisição, resposta, métodos HTTP, headers, body, JSON, status code e diagnóstico inicial.
-
----
+﻿# 017 — M0.17 — Postman, Insomnia e HTTP Básico
 
 ## Complemento operacional — instalar cliente HTTP e criar primeira collection
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já ensina HTTP básico, request, response, métodos, headers, body, JSON, status code, collection e environment. Este complemento deixa explícito como preparar a ferramenta.
 

@@ -1,19 +1,4 @@
-# 057 — M1.37 — Escopo de Variáveis
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.37.01` — Escopo de variáveis — Conceito, por que existe e vocabulário essencial.
-- `M1.37.02` — Escopo de variáveis — Exemplo mínimo digitado do zero.
-- `M1.37.03` — Escopo de variáveis — Exemplo aplicado ao domínio corporativo.
-- `M1.37.04` — Escopo de variáveis — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar variável local, parâmetro, bloco, tempo de vida, visibilidade, sombra, variáveis dentro de `if`, `else`, `for`, métodos, diferença entre variável local e parâmetro, inicialização obrigatória, diagnóstico de erros de escopo e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 057 — M1.37 — Escopo de Variáveis
 
 ## Onde estamos na formação
 

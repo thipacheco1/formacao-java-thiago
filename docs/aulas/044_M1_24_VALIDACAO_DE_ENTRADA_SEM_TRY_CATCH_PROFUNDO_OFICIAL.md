@@ -1,19 +1,4 @@
-# 044 — M1.24 — Validação de Entrada sem Try/Catch Profundo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.24.01` — Validação de entrada sem try/catch profundo — Conceito, por que existe e vocabulário essencial.
-- `M1.24.02` — Validação de entrada sem try/catch profundo — Exemplo mínimo digitado do zero.
-- `M1.24.03` — Validação de entrada sem try/catch profundo — Exemplo aplicado ao domínio corporativo.
-- `M1.24.04` — Validação de entrada sem try/catch profundo — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar validação de entrada com `while`, mensagens claras, tentativa novamente, proteção inicial, leitura segura em console dentro do nível atual, sem aprofundar `try/catch`, exceções ou tratamento avançado de erros neste momento da formação.
-
----
+﻿# 044 — M1.24 — Validação de Entrada sem Try/Catch Profundo
 
 ## Onde estamos na formação
 

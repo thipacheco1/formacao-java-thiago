@@ -1,19 +1,4 @@
-# 090 — M3.01 — De main gigante para métodos pequenos
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M3.01.01` — De main gigante para métodos pequenos — Conceito profundo e quando usar.
-- `M3.01.02` — De main gigante para métodos pequenos — Implementação guiada com código realista.
-- `M3.01.03` — De main gigante para métodos pequenos — Refatoração, melhoria e leitura crítica.
-- `M3.01.04` — De main gigante para métodos pequenos — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar sinais de `main` inchado, extração manual de métodos, responsabilidade, nomes, parâmetros, retorno, duplicação, leitura crítica, refatoração incremental, diagnóstico, aplicação em domínio corporativo e entrega com diário e commit.
-
----
+﻿# 090 — M3.01 — De main gigante para métodos pequenos
 
 ## Pré-requisito de ambiente
 
@@ -106,31 +91,6 @@ código difícil de testar.
 ```
 
 Esta aula começa a corrigir isso pela base.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-090 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 90
-Aulas oficiais restantes: 448
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-91 arquivos gerados no total.
-```
-
-Esta é a primeira aula oficial do Módulo 3.
 
 ---
 

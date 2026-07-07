@@ -1,19 +1,4 @@
-# 051 — M1.31 — Arrays Paralelos
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.31.01` — Arrays paralelos — Conceito, por que existe e vocabulário essencial.
-- `M1.31.02` — Arrays paralelos — Exemplo mínimo digitado do zero.
-- `M1.31.03` — Arrays paralelos — Exemplo aplicado ao domínio corporativo.
-- `M1.31.04` — Arrays paralelos — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar arrays paralelos com cliente, valor e status, vínculo por índice, fragilidade dessa abordagem, validação de tamanhos, busca, alteração, relatórios, riscos de desalinhamento, diagnóstico de erros e preparação conceitual para objetos.
-
----
+﻿# 051 — M1.31 — Arrays Paralelos
 
 ## Onde estamos na formação
 

@@ -1,19 +1,4 @@
-# 069 — M2.08 — Wrappers e Autoboxing
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.08.01` — Wrappers e autoboxing — Conceito profundo e quando usar.
-- `M2.08.02` — Wrappers e autoboxing — Implementação guiada com código realista.
-- `M2.08.03` — Wrappers e autoboxing — Refatoração, melhoria e leitura crítica.
-- `M2.08.04` — Wrappers e autoboxing — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `Integer`, `Long`, `Double`, `Boolean`, diferença entre primitivos e wrappers, `null` em wrappers, autoboxing, unboxing, comparação, cache de wrappers, performance, armadilhas comuns, leitura crítica e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 069 — M2.08 — Wrappers e Autoboxing
 
 ## Onde estamos na formação
 
@@ -64,31 +49,6 @@ A pergunta principal é:
 ```text
 quando usar primitivo e quando usar wrapper?
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-069 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 69
-Aulas oficiais restantes: 469
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-70 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, fortalecendo Java Core antes de avançar para conversões, datas, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

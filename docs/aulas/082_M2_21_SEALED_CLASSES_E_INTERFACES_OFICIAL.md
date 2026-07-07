@@ -1,19 +1,4 @@
-# 082 — M2.21 — Sealed classes e interfaces
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.21.01` — Sealed classes e interfaces — Conceito profundo e quando usar.
-- `M2.21.02` — Sealed classes e interfaces — Implementação guiada com código realista.
-- `M2.21.03` — Sealed classes e interfaces — Refatoração, melhoria e leitura crítica.
-- `M2.21.04` — Sealed classes e interfaces — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar modelagem fechada, hierarquias controladas e uso moderno com `sealed`, `permits`, `final`, `non-sealed`, `sealed interface`, leitura crítica, refatoração, riscos, limites e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 082 — M2.21 — Sealed classes e interfaces
 
 ## Onde estamos na formação
 
@@ -53,31 +38,6 @@ Herança totalmente bloqueada pode limitar a modelagem.
 ```text
 permite extensão, mas controla quem pode estender.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-082 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 82
-Aulas oficiais restantes: 456
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-83 arquivos gerados no total.
-```
-
-Ainda estamos no Módulo 2, consolidando recursos modernos e fundamentos avançados de Java Core antes de avançar para classes, encapsulamento, interfaces, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

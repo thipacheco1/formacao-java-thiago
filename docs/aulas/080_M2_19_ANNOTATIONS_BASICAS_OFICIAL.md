@@ -1,19 +1,4 @@
-# 080 — M2.19 — Annotations básicas
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.19.01` — Annotations básicas — Conceito profundo e quando usar.
-- `M2.19.02` — Annotations básicas — Implementação guiada com código realista.
-- `M2.19.03` — Annotations básicas — Refatoração, melhoria e leitura crítica.
-- `M2.19.04` — Annotations básicas — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `@Override`, `@Deprecated`, `@SuppressWarnings` e leitura básica de metadados, incluindo motivação, alternativas, trade-offs, armadilhas, implementação guiada, refatoração, leitura crítica e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 080 — M2.19 — Annotations básicas
 
 ## Onde estamos na formação
 
@@ -72,31 +57,6 @@ como o compilador usa;
 como frameworks podem ler;
 como usar as básicas com responsabilidade.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-080 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 80
-Aulas oficiais restantes: 458
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-81 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para reflection conceitual, classes, encapsulamento, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

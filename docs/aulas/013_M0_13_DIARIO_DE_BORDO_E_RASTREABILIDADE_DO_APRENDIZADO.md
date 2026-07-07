@@ -1,19 +1,4 @@
-# 013 — M0.13 — Diário de Bordo e Rastreabilidade do Aprendizado
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.13.01` — Diário de bordo e rastreabilidade do aprendizado — Conceito, por que existe e vocabulário essencial.
-- `M0.13.02` — Diário de bordo e rastreabilidade do aprendizado — Exemplo mínimo digitado do zero.
-- `M0.13.03` — Diário de bordo e rastreabilidade do aprendizado — Exemplo aplicado ao domínio corporativo.
-- `M0.13.04` — Diário de bordo e rastreabilidade do aprendizado — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para transformar o diário de bordo em uma ferramenta real de revisão, rastreabilidade, evolução técnica e prova de aprendizado.
-
----
+﻿# 013 — M0.13 — Diário de Bordo e Rastreabilidade do Aprendizado
 
 ## Onde estamos na formação
 

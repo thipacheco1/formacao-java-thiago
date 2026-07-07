@@ -1,19 +1,4 @@
-# 056 — M1.36 — Sobrecarga de Métodos Inicial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.36.01` — Sobrecarga de métodos inicial — Conceito, por que existe e vocabulário essencial.
-- `M1.36.02` — Sobrecarga de métodos inicial — Exemplo mínimo digitado do zero.
-- `M1.36.03` — Sobrecarga de métodos inicial — Exemplo aplicado ao domínio corporativo.
-- `M1.36.04` — Sobrecarga de métodos inicial — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar mesmo nome com parâmetros diferentes, assinatura de método, resolução de chamada, quantidade de parâmetros, tipo dos parâmetros, ordem dos parâmetros, quando a sobrecarga ajuda, quando ela confunde, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 056 — M1.36 — Sobrecarga de Métodos Inicial
 
 ## Onde estamos na formação
 

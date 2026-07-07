@@ -1,19 +1,4 @@
-# 058 — M1.38 — Passagem de Valores e Referências
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.38.01` — Passagem de valores e referências — Conceito, por que existe e vocabulário essencial.
-- `M1.38.02` — Passagem de valores e referências — Exemplo mínimo digitado do zero.
-- `M1.38.03` — Passagem de valores e referências — Exemplo aplicado ao domínio corporativo.
-- `M1.38.04` — Passagem de valores e referências — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `pass-by-value` em Java, diferença entre primitivos, referências, objetos e arrays, alteração de parâmetro, alteração de conteúdo, reatribuição de referência, comportamento com `String`, arrays, diagnóstico de erros conceituais e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 058 — M1.38 — Passagem de Valores e Referências
 
 ## Onde estamos na formação
 

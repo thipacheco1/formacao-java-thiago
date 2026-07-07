@@ -1,19 +1,4 @@
-# 087 — M2.26 — Organização de pacotes desde cedo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.26.01` — Organização de pacotes desde cedo — Conceito profundo e quando usar.
-- `M2.26.02` — Organização de pacotes desde cedo — Implementação guiada com código realista.
-- `M2.26.03` — Organização de pacotes desde cedo — Refatoração, melhoria e leitura crítica.
-- `M2.26.04` — Organização de pacotes desde cedo — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `package`, `import`, nomes, domínio, `app`, `util`, organização inicial, relação entre pacote e pasta, compilação manual com `-d`, execução com `-cp`, erros comuns, leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 087 — M2.26 — Organização de pacotes desde cedo
 
 ## Pré-requisito de ambiente
 
@@ -100,31 +85,6 @@ app;
 util;
 separação de responsabilidades.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-087 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 87
-Aulas oficiais restantes: 451
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-88 arquivos gerados no total.
-```
-
-Ainda estamos em Java Core, preparando base para classes, encapsulamento, organização, coleções, exceções estruturadas, Maven, testes e Spring Boot.
 
 ---
 

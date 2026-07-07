@@ -1,19 +1,4 @@
-# 061 — M1.41 — Mini Projeto Calculadora Profissional Console
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.41.01` — Mini projeto calculadora profissional console — Conceito, por que existe e vocabulário essencial.
-- `M1.41.02` — Mini projeto calculadora profissional console — Exemplo mínimo digitado do zero.
-- `M1.41.03` — Mini projeto calculadora profissional console — Exemplo aplicado ao domínio corporativo.
-- `M1.41.04` — Mini projeto calculadora profissional console — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para consolidar o Módulo 1 com menu, métodos, histórico em array, resultados pares, validações, tratamento inicial de erro de entrada, documentação, debug, checklist de aprovação, organização de repositório e entrega final.
-
----
+﻿# 061 — M1.41 — Mini Projeto Calculadora Profissional Console
 
 ## Onde estamos na formação
 

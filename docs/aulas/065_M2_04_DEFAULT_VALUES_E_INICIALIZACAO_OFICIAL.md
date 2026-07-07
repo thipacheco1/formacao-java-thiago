@@ -1,19 +1,4 @@
-# 065 — M2.04 — Default Values e Inicialização
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.04.01` — Default values e inicialização — Conceito profundo e quando usar.
-- `M2.04.02` — Default values e inicialização — Implementação guiada com código realista.
-- `M2.04.03` — Default values e inicialização — Refatoração, melhoria e leitura crítica.
-- `M2.04.04` — Default values e inicialização — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar valores padrão de campos, arrays, variáveis locais, inicialização explícita, erros de compilação, `null`, `0`, `false`, `'\u0000'`, diferença entre campo e variável local, leitura crítica de defaults perigosos, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 065 — M2.04 — Default Values e Inicialização
 
 ## Onde estamos na formação
 
@@ -96,37 +81,6 @@ valores padrão;
 inicialização explícita;
 erros de compilação.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos na aula oficial:
-
-```text
-065 de 538
-```
-
-Considerando apenas os arquivos oficiais de aula mentorada:
-
-```text
-Aulas concluídas com esta geração: 65
-Aulas restantes após esta geração: 473
-```
-
-Além disso, já existe o arquivo de abertura:
-
-```text
-000 — Aula de abertura
-```
-
-Contando a abertura, o total de arquivos gerados fica:
-
-```text
-66 arquivos
-```
-
-O curso ainda está no começo, mas já passamos por toda a base inicial do Módulo 1 e entramos na parte mais profunda do Java Core.
 
 ---
 

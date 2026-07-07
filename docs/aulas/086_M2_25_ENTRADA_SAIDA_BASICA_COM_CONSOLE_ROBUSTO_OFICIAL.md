@@ -1,19 +1,4 @@
-# 086 — M2.25 — Entrada/saída básica com console robusto
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.25.01` — Entrada/saída básica com console robusto — Conceito profundo e quando usar.
-- `M2.25.02` — Entrada/saída básica com console robusto — Implementação guiada com código realista.
-- `M2.25.03` — Entrada/saída básica com console robusto — Refatoração, melhoria e leitura crítica.
-- `M2.25.04` — Entrada/saída básica com console robusto — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar leitura segura, prompts claros, validação, repetição, entrada com `Scanner`, cuidado com `nextInt`, uso de `nextLine`, conversão controlada, tratamento de `NumberFormatException`, leitura de textos obrigatórios, inteiros, decimais, datas, confirmação sim/não, menus, refatoração para métodos utilitários e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 086 — M2.25 — Entrada/saída básica com console robusto
 
 ## Atualização de continuidade
 
@@ -110,31 +95,6 @@ código cheio de repetição.
 ```
 
 Esta aula existe para transformar console de exemplo frágil em console minimamente robusto.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-086 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 86
-Aulas oficiais restantes: 452
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-87 arquivos gerados no total.
-```
-
-Ainda estamos consolidando Java Core antes de avançar para organização de pacotes, classes, encapsulamento, coleções, exceções mais estruturadas, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

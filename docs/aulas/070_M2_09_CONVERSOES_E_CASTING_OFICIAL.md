@@ -1,19 +1,4 @@
-# 070 — M2.09 — Conversões e Casting
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.09.01` — Conversões e casting — Conceito profundo e quando usar.
-- `M2.09.02` — Conversões e casting — Implementação guiada com código realista.
-- `M2.09.03` — Conversões e casting — Refatoração, melhoria e leitura crítica.
-- `M2.09.04` — Conversões e casting — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `widening`, `narrowing`, `parseInt`, `valueOf`, `NumberFormatException`, validação, perda de precisão, overflow, conversões seguras, casting explícito, parsing de entrada textual, leitura crítica e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 070 — M2.09 — Conversões e Casting
 
 ## Onde estamos na formação
 
@@ -77,31 +62,6 @@ regra de negócio mascarada por conversão.
 ```
 
 Esta aula vai organizar esse assunto.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-070 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 70
-Aulas oficiais restantes: 468
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-71 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, fortalecendo Java Core antes de avançar para utilitários numéricos, datas, enums, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

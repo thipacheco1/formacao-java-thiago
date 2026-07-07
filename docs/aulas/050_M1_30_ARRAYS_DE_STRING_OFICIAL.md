@@ -1,19 +1,4 @@
-# 050 — M1.30 — Arrays de String
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.30.01` — Arrays de String — Conceito, por que existe e vocabulário essencial.
-- `M1.30.02` — Arrays de String — Exemplo mínimo digitado do zero.
-- `M1.30.03` — Arrays de String — Exemplo aplicado ao domínio corporativo.
-- `M1.30.04` — Arrays de String — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar listas de nomes, arrays de texto, índice, `length`, preenchimento, busca textual, `equals`, diferença entre `==` e `equals`, `isEmpty`, `isBlank`, `trim`, normalização textual, validação textual, erros comuns e aplicação em cenários de cliente, produto, pedido, OS, auditoria e mensageria.
-
----
+﻿# 050 — M1.30 — Arrays de String
 
 ## Onde estamos na formação
 

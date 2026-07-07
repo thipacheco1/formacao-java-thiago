@@ -1,19 +1,4 @@
-# 025 — M1.05 — Tipos Inteiros em Java
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.05.01` — Tipos inteiros em Java — Conceito, por que existe e vocabulário essencial.
-- `M1.05.02` — Tipos inteiros em Java — Exemplo mínimo digitado do zero.
-- `M1.05.03` — Tipos inteiros em Java — Exemplo aplicado ao domínio corporativo.
-- `M1.05.04` — Tipos inteiros em Java — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `byte`, `short`, `int`, `long`, limites, overflow, sufixo `L`, escolha correta de tipo inteiro e aplicação em cenários de backend.
-
----
+﻿# 025 — M1.05 — Tipos Inteiros em Java
 
 ## Onde estamos na formação
 

@@ -1,19 +1,4 @@
-# 048 — M1.28 — Busca em Array
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.28.01` — Busca em array — Conceito, por que existe e vocabulário essencial.
-- `M1.28.02` — Busca em array — Exemplo mínimo digitado do zero.
-- `M1.28.03` — Busca em array — Exemplo aplicado ao domínio corporativo.
-- `M1.28.04` — Busca em array — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar procura de valor em array, busca linear, flag `encontrou`, posição encontrada, uso de `break`, diferença entre encontrar o primeiro item e contar todos, validação do resultado da busca, diagnóstico de erros e aplicação em cenários de produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 048 — M1.28 — Busca em Array
 
 ## Onde estamos na formação
 

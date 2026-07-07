@@ -1,19 +1,4 @@
-# 066 — M2.05 — Null e NullPointerException
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.05.01` — Null e NullPointerException — Conceito profundo e quando usar.
-- `M2.05.02` — Null e NullPointerException — Implementação guiada com código realista.
-- `M2.05.03` — Null e NullPointerException — Refatoração, melhoria e leitura crítica.
-- `M2.05.04` — Null e NullPointerException — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar causas de `NullPointerException`, prevenção, validação, mensagens, leitura de stack trace, contratos de método, retorno `null`, parâmetros `null`, campos não inicializados, arrays de referências, comparação segura com `equals`, uso inicial de `Optional` no momento certo, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 066 — M2.05 — Null e NullPointerException
 
 ## Onde estamos na formação
 
@@ -68,31 +53,6 @@ NullPointerException.
 ```
 
 Essa aula é uma das mais importantes do Módulo 2, porque `null` aparece em praticamente todo sistema Java.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-066 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 66
-Aulas oficiais restantes: 472
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-67 arquivos gerados no total.
-```
-
-Ainda estamos no início do Módulo 2, consolidando Java Core profundo antes de avançar para orientação a objetos mais robusta, coleções, exceções, Maven, banco, Spring e arquitetura backend.
 
 ---
 

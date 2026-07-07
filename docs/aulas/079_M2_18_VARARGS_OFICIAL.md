@@ -1,19 +1,4 @@
-# 079 — M2.18 — Varargs
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.18.01` — Varargs — Conceito profundo e quando usar.
-- `M2.18.02` — Varargs — Implementação guiada com código realista.
-- `M2.18.03` — Varargs — Refatoração, melhoria e leitura crítica.
-- `M2.18.04` — Varargs — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar métodos com quantidade variável de argumentos, arrays internos, cuidado com ambiguidade, boas práticas, quando usar, quando evitar, leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 079 — M2.18 — Varargs
 
 ## Onde estamos na formação
 
@@ -68,31 +53,6 @@ sobrecarga;
 validação;
 uso excessivo.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-079 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 79
-Aulas oficiais restantes: 459
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-80 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para annotations, classes tradicionais, encapsulamento, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

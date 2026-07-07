@@ -1,19 +1,4 @@
-# 028 — M1.08 — Char e String em Uso Inicial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.08.01` — Char e String em uso inicial — Conceito, por que existe e vocabulário essencial.
-- `M1.08.02` — Char e String em uso inicial — Exemplo mínimo digitado do zero.
-- `M1.08.03` — Char e String em uso inicial — Exemplo aplicado ao domínio corporativo.
-- `M1.08.04` — Char e String em uso inicial — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `char`, `String`, diferença entre aspas simples e aspas duplas, concatenação inicial, textos em domínio corporativo, leitura de valores textuais e primeiros erros envolvendo caracteres e textos em Java.
-
----
+﻿# 028 — M1.08 — Char e String em Uso Inicial
 
 ## Onde estamos na formação
 

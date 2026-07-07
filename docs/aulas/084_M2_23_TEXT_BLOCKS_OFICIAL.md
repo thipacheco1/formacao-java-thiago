@@ -1,19 +1,4 @@
-# 084 — M2.23 — Text blocks
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.23.01` — Text blocks — Conceito profundo e quando usar.
-- `M2.23.02` — Text blocks — Implementação guiada com código realista.
-- `M2.23.03` — Text blocks — Refatoração, melhoria e leitura crítica.
-- `M2.23.04` — Text blocks — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar strings multilinha, JSON/SQL em testes, formatação, indentação, quebras de linha, `stripIndent`, `formatted`, armadilhas, leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 084 — M2.23 — Text blocks
 
 ## Onde estamos na formação
 
@@ -56,31 +41,6 @@ documentação curta.
 Antes dos text blocks, escrever esses textos exigia muita concatenação e muitos caracteres de escape.
 
 Com text blocks, o código fica mais legível.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-084 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 84
-Aulas oficiais restantes: 454
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-85 arquivos gerados no total.
-```
-
-Ainda estamos no Módulo 2, consolidando recursos modernos e fundamentos avançados de Java Core antes de entrar com mais profundidade em exceções, classes, encapsulamento, coleções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

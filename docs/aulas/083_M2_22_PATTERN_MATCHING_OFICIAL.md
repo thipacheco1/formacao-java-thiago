@@ -1,19 +1,4 @@
-# 083 — M2.22 — Pattern matching
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.22.01` — Pattern matching — Conceito profundo e quando usar.
-- `M2.22.02` — Pattern matching — Implementação guiada com código realista.
-- `M2.22.03` — Pattern matching — Refatoração, melhoria e leitura crítica.
-- `M2.22.04` — Pattern matching — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `instanceof` moderno, redução de cast manual, legibilidade, escopo da variável de padrão, cuidado com `null`, uso com sealed classes, visão conceitual de switch patterns, trade-offs, armadilhas, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 083 — M2.22 — Pattern matching
 
 ## Onde estamos na formação
 
@@ -56,31 +41,6 @@ E também teremos uma visão conceitual de:
 ```text
 switch patterns.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-083 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 83
-Aulas oficiais restantes: 455
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-84 arquivos gerados no total.
-```
-
-Ainda estamos no Módulo 2, consolidando recursos modernos e fundamentos avançados de Java Core antes de avançar para text blocks, classes, encapsulamento, interfaces, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

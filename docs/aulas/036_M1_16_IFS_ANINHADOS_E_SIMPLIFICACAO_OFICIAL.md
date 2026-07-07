@@ -1,19 +1,4 @@
-# 036 — M1.16 — Ifs Aninhados e Simplificação
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.16.01` — Ifs aninhados e simplificação — Conceito, por que existe e vocabulário essencial.
-- `M1.16.02` — Ifs aninhados e simplificação — Exemplo mínimo digitado do zero.
-- `M1.16.03` — Ifs aninhados e simplificação — Exemplo aplicado ao domínio corporativo.
-- `M1.16.04` — Ifs aninhados e simplificação — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar quando aninhar `if`, quando evitar, como identificar leitura ruim, como simplificar regras condicionais, como extrair variáveis booleanas, como reduzir níveis de indentação e como se preparar para o conceito de guard clauses.
-
----
+﻿# 036 — M1.16 — Ifs Aninhados e Simplificação
 
 ## Onde estamos na formação
 

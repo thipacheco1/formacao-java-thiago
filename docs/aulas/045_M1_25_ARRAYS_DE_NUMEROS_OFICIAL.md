@@ -1,19 +1,4 @@
-# 045 — M1.25 — Arrays de Números
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.25.01` — Arrays de números — Conceito, por que existe e vocabulário essencial.
-- `M1.25.02` — Arrays de números — Exemplo mínimo digitado do zero.
-- `M1.25.03` — Arrays de números — Exemplo aplicado ao domínio corporativo.
-- `M1.25.04` — Arrays de números — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar declaração, inicialização, índice, `length`, iteração, soma, média, leitura de posições, erro de índice, valores padrão, uso com números inteiros, valores monetários em centavos e aplicação em cenários de pedido, produto, pagamento, auditoria, mensageria e relatórios simples.
-
----
+﻿# 045 — M1.25 — Arrays de Números
 
 ## Onde estamos na formação
 

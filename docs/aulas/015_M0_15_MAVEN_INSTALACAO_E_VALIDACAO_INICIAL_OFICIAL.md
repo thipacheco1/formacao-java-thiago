@@ -1,26 +1,9 @@
-# 015 — M0.15 — Maven: Instalação e Validação Inicial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.15.01` — Maven instalação e validação inicial — Conceito, por que existe e vocabulário essencial.
-- `M0.15.02` — Maven instalação e validação inicial — Exemplo mínimo digitado do zero.
-- `M0.15.03` — Maven instalação e validação inicial — Exemplo aplicado ao domínio corporativo.
-- `M0.15.04` — Maven instalação e validação inicial — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para instalar, configurar e validar Maven no ambiente local, garantindo que terminal, JDK, variáveis de ambiente e IntelliJ estejam coerentes antes de qualquer uso mais avançado da ferramenta.
-
----
+﻿# 015 — M0.15 — Maven: Instalação e Validação Inicial
 
 ## Complemento operacional — roteiro final de instalação do Maven
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já traz uma explicação forte sobre Maven, `JAVA_HOME`, `PATH`, `MAVEN_HOME`, `mvn -version` e diagnóstico. Este complemento funciona como roteiro resumido de execução.
 

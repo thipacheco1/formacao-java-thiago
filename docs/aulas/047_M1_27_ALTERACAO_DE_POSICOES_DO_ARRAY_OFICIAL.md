@@ -1,19 +1,4 @@
-# 047 — M1.27 — Alteração de Posições do Array
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.27.01` — Alteração de posições do array — Conceito, por que existe e vocabulário essencial.
-- `M1.27.02` — Alteração de posições do array — Exemplo mínimo digitado do zero.
-- `M1.27.03` — Alteração de posições do array — Exemplo aplicado ao domínio corporativo.
-- `M1.27.04` — Alteração de posições do array — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar substituição de valor em posições do array, valores padrão, atualização incremental, validação de índice, risco de índice inválido, diferença entre tamanho fixo e conteúdo mutável, uso com `Scanner`, e aplicação em cenários de produto, pedido, pagamento, OS, auditoria, mensageria e SLA.
-
----
+﻿# 047 — M1.27 — Alteração de Posições do Array
 
 ## Onde estamos na formação
 

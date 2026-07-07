@@ -1,19 +1,4 @@
-# 021 — M1.01 — Primeiro Programa Java Destrinchado
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.01.01` — Primeiro programa Java destrinchado — Conceito, por que existe e vocabulário essencial.
-- `M1.01.02` — Primeiro programa Java destrinchado — Exemplo mínimo digitado do zero.
-- `M1.01.03` — Primeiro programa Java destrinchado — Exemplo aplicado ao domínio corporativo.
-- `M1.01.04` — Primeiro programa Java destrinchado — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para destrinchar o primeiro programa Java linha por linha, explicando `class`, `public`, `static`, `void`, `main`, `String[] args`, `System.out.println`, compilação, execução e erros iniciais.
-
----
+﻿# 021 — M1.01 — Primeiro Programa Java Destrinchado
 
 ## Onde estamos na formação
 

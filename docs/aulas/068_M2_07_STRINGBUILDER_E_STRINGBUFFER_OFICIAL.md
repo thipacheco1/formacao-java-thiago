@@ -1,19 +1,4 @@
-# 068 — M2.07 — StringBuilder e StringBuffer
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.07.01` — StringBuilder e StringBuffer — Conceito profundo e quando usar.
-- `M2.07.02` — StringBuilder e StringBuffer — Implementação guiada com código realista.
-- `M2.07.03` — StringBuilder e StringBuffer — Refatoração, melhoria e leitura crítica.
-- `M2.07.04` — StringBuilder e StringBuffer — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar concatenação em laços, mutabilidade, `StringBuilder`, `StringBuffer`, thread-safety, uso correto, trade-offs, armadilhas, refatoração de concatenação repetida, montagem de relatórios, logs, mensagens, payloads textuais e aplicações em cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 068 — M2.07 — StringBuilder e StringBuffer
 
 ## Onde estamos na formação
 
@@ -60,31 +45,6 @@ A pergunta central é:
 ```text
 quando devo usar String, StringBuilder ou StringBuffer?
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-068 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 68
-Aulas oficiais restantes: 470
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-69 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para wrappers, autoboxing, datas, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

@@ -1,19 +1,4 @@
-# 062 — M2.01 — JVM, Bytecode e Execução por Baixo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.01.01` — JVM, bytecode e execução por baixo — Conceito profundo e quando usar.
-- `M2.01.02` — JVM, bytecode e execução por baixo — Implementação guiada com código realista.
-- `M2.01.03` — JVM, bytecode e execução por baixo — Refatoração, melhoria e leitura crítica.
-- `M2.01.04` — JVM, bytecode e execução por baixo — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar compilação, bytecode, JVM, execução por baixo, interpretação conceitual, JIT conceitual, classloader básico, portabilidade, `javac`, `java`, `.java`, `.class`, leitura com `javap`, erros comuns de execução, diagnóstico e relação com desenvolvimento backend Java.
-
----
+﻿# 062 — M2.01 — JVM, Bytecode e Execução por Baixo
 
 ## Onde estamos na formação
 

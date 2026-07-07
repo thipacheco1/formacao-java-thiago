@@ -1,19 +1,4 @@
-# 053 — M1.33 — Métodos sem Retorno
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.33.01` — Métodos sem retorno — Conceito, por que existe e vocabulário essencial.
-- `M1.33.02` — Métodos sem retorno — Exemplo mínimo digitado do zero.
-- `M1.33.03` — Métodos sem retorno — Exemplo aplicado ao domínio corporativo.
-- `M1.33.04` — Métodos sem retorno — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar assinatura, `void`, chamada, responsabilidade, organização, parâmetros em métodos sem retorno, efeitos colaterais controlados, separação de blocos do `main`, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 053 — M1.33 — Métodos sem Retorno
 
 ## Onde estamos na formação
 

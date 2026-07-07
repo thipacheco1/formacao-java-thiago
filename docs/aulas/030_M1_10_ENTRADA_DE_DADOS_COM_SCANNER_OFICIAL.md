@@ -1,19 +1,4 @@
-# 030 — M1.10 — Entrada de Dados com Scanner
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.10.01` — Entrada de dados com Scanner — Conceito, por que existe e vocabulário essencial.
-- `M1.10.02` — Entrada de dados com Scanner — Exemplo mínimo digitado do zero.
-- `M1.10.03` — Entrada de dados com Scanner — Exemplo aplicado ao domínio corporativo.
-- `M1.10.04` — Entrada de dados com Scanner — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar entrada de dados com `Scanner`, cobrindo `nextLine`, `nextInt`, `nextDouble`, limpeza de buffer, `Locale`, fechamento do scanner, erros comuns e aplicação em pequenos cenários de backend.
-
----
+﻿# 030 — M1.10 — Entrada de Dados com Scanner
 
 ## Onde estamos na formação
 

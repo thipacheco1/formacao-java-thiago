@@ -1,26 +1,9 @@
-# 014 — M0.14 — Codex, IA no IntelliJ, Ética e Método de Uso
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.14.01` — Codex / IA no IntelliJ com ética e método — Conceito, por que existe e vocabulário essencial.
-- `M0.14.02` — Codex / IA no IntelliJ com ética e método — Exemplo mínimo digitado do zero.
-- `M0.14.03` — Codex / IA no IntelliJ com ética e método — Exemplo aplicado ao domínio corporativo.
-- `M0.14.04` — Codex / IA no IntelliJ com ética e método — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar IA como ferramenta de apoio técnico, sem terceirizar raciocínio, sem comprometer segurança e sem quebrar a evolução real do aprendizado.
-
----
+﻿# 014 — M0.14 — Codex, IA no IntelliJ, Ética e Método de Uso
 
 ## Complemento operacional — instalação, login e validação segura da IA
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula é principalmente sobre método, segurança e ética. A instalação da ferramenta de IA pode variar com o tempo, com o plano disponível e com o suporte da IDE.
 

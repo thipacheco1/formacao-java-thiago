@@ -1,19 +1,4 @@
-# 060 — M1.40 — Debug Aplicado aos Fundamentos
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.40.01` — Debug aplicado aos fundamentos — Conceito, por que existe e vocabulário essencial.
-- `M1.40.02` — Debug aplicado aos fundamentos — Exemplo mínimo digitado do zero.
-- `M1.40.03` — Debug aplicado aos fundamentos — Exemplo aplicado ao domínio corporativo.
-- `M1.40.04` — Debug aplicado aos fundamentos — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar breakpoint em `if`, laço, array, método e inspeção de variáveis, com foco em fundamentos Java, leitura de fluxo, entrada de dados, validação, métodos, escopo, passagem de valores, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 060 — M1.40 — Debug Aplicado aos Fundamentos
 
 ## Onde estamos na formação
 

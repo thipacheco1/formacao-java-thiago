@@ -1,19 +1,4 @@
-# 077 — M2.16 — Records
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.16.01` — Records — Conceito profundo e quando usar.
-- `M2.16.02` — Records — Implementação guiada com código realista.
-- `M2.16.03` — Records — Refatoração, melhoria e leitura crítica.
-- `M2.16.04` — Records — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar DTO imutável, `equals`/`hashCode` gerados, `toString` gerado, construtor canônico, construtor compacto, validação, limitações, uso em APIs, leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 077 — M2.16 — Records
 
 ## Onde estamos na formação
 
@@ -53,31 +38,6 @@ contratos simples de API.
 ```
 
 A ideia da aula é entender quando record ajuda e quando não ajuda.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-077 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 77
-Aulas oficiais restantes: 461
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-78 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para `var`, classes tradicionais, encapsulamento, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

@@ -1,19 +1,4 @@
-# 076 — M2.15 — Enum profissional
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.15.01` — Enum profissional — Conceito profundo e quando usar.
-- `M2.15.02` — Enum profissional — Implementação guiada com código realista.
-- `M2.15.03` — Enum profissional — Refatoração, melhoria e leitura crítica.
-- `M2.15.04` — Enum profissional — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar status, atributos, métodos, `fromCode`, validação e substituição de strings mágicas, incluindo leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 076 — M2.15 — Enum profissional
 
 ## Onde estamos na formação
 
@@ -68,31 +53,6 @@ substituição de strings mágicas;
 switch;
 leitura crítica.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-076 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 76
-Aulas oficiais restantes: 462
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-77 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para records, classes, encapsulamento, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

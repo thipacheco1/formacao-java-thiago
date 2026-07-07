@@ -1,19 +1,4 @@
-# 010 — M0.10 — Git Local do Zero
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.10.01` — Git local do zero — Conceito, por que existe e vocabulário essencial.
-- `M0.10.02` — Git local do zero — Exemplo mínimo digitado do zero.
-- `M0.10.03` — Git local do zero — Exemplo aplicado ao domínio corporativo.
-- `M0.10.04` — Git local do zero — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar Git local como prática real de versionamento, rastreabilidade e segurança de mudança.
-
----
+﻿# 010 — M0.10 — Git Local do Zero
 
 ## Onde estamos na formação
 

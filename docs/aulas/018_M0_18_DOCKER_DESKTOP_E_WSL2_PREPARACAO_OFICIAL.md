@@ -1,26 +1,9 @@
-# 018 — M0.18 — Docker Desktop e WSL2: Preparação
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.18.01` — Docker Desktop e WSL2 preparação — Conceito, por que existe e vocabulário essencial.
-- `M0.18.02` — Docker Desktop e WSL2 preparação — Exemplo mínimo digitado do zero.
-- `M0.18.03` — Docker Desktop e WSL2 preparação — Exemplo aplicado ao domínio corporativo.
-- `M0.18.04` — Docker Desktop e WSL2 preparação — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para preparar Docker Desktop e WSL2 no ambiente local, explicando imagem, container, volume, porta, `hello-world`, diagnóstico inicial e relação futura com Java Backend.
-
----
+﻿# 018 — M0.18 — Docker Desktop e WSL2: Preparação
 
 ## Complemento operacional — instalar WSL2, Docker Desktop e validar hello-world
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já explica WSL2, Docker Desktop, imagem, container, registry, pull, run, portas, volumes e comandos básicos. Este complemento deixa explícito o roteiro operacional de instalação.
 

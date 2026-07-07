@@ -1,26 +1,9 @@
-# 016 — M0.16 — PostgreSQL e DBeaver: Preparação
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.16.01` — PostgreSQL e DBeaver preparação — Conceito, por que existe e vocabulário essencial.
-- `M0.16.02` — PostgreSQL e DBeaver preparação — Exemplo mínimo digitado do zero.
-- `M0.16.03` — PostgreSQL e DBeaver preparação — Exemplo aplicado ao domínio corporativo.
-- `M0.16.04` — PostgreSQL e DBeaver preparação — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para preparar PostgreSQL e DBeaver no ambiente local, validar porta, usuário, banco de dados, conexão e diagnóstico básico antes dos módulos de backend com persistência.
-
----
+﻿# 016 — M0.16 — PostgreSQL e DBeaver: Preparação
 
 ## Complemento operacional — roteiro final de instalação do PostgreSQL e DBeaver
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já explica PostgreSQL, DBeaver, servidor, porta, usuário, database, driver JDBC e validação SQL. Este complemento funciona como checklist operacional.
 

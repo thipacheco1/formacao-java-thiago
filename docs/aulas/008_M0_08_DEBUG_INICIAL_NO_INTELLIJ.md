@@ -1,19 +1,4 @@
-# 008 — M0.08 — Debug Inicial no IntelliJ
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.08.01` — Debug inicial no IntelliJ — Conceito, por que existe e vocabulário essencial.
-- `M0.08.02` — Debug inicial no IntelliJ — Exemplo mínimo digitado do zero.
-- `M0.08.03` — Debug inicial no IntelliJ — Exemplo aplicado ao domínio corporativo.
-- `M0.08.04` — Debug inicial no IntelliJ — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar debug como habilidade de investigação, leitura de fluxo e formação de raciocínio profissional.
-
----
+﻿# 008 — M0.08 — Debug Inicial no IntelliJ
 
 ## Hoje a aula é sobre enxergar o programa por dentro
 

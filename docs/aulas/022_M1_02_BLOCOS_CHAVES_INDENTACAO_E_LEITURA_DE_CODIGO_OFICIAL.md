@@ -1,19 +1,4 @@
-# 022 — M1.02 — Blocos, Chaves, Indentação e Leitura de Código
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.02.01` — Blocos, chaves, indentação e leitura de código — Conceito, por que existe e vocabulário essencial.
-- `M1.02.02` — Blocos, chaves, indentação e leitura de código — Exemplo mínimo digitado do zero.
-- `M1.02.03` — Blocos, chaves, indentação e leitura de código — Exemplo aplicado ao domínio corporativo.
-- `M1.02.04` — Blocos, chaves, indentação e leitura de código — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar escopo visual, blocos aninhados, organização, formatação automática, leitura de código Java e diagnóstico de erros comuns envolvendo chaves e indentação.
-
----
+﻿# 022 — M1.02 — Blocos, Chaves, Indentação e Leitura de Código
 
 ## Onde estamos na formação
 

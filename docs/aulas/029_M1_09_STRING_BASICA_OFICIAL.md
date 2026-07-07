@@ -1,19 +1,4 @@
-# 029 — M1.09 — String Básica
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.09.01` — String básica — Conceito, por que existe e vocabulário essencial.
-- `M1.09.02` — String básica — Exemplo mínimo digitado do zero.
-- `M1.09.03` — String básica — Exemplo aplicado ao domínio corporativo.
-- `M1.09.04` — String básica — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para aprofundar o uso inicial de `String`, cobrindo concatenação, `length`, `isEmpty`, `isBlank`, `equals`, `equalsIgnoreCase`, `contains`, `trim`, leitura de textos, comparação correta, validações simples e aplicação em cenários de backend.
-
----
+﻿# 029 — M1.09 — String Básica
 
 ## Onde estamos na formação
 

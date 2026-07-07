@@ -1,19 +1,4 @@
-# 075 — M2.14 — Timezone e Instant
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.14.01` — Timezone e Instant — Conceito profundo e quando usar.
-- `M2.14.02` — Timezone e Instant — Implementação guiada com código realista.
-- `M2.14.03` — Timezone e Instant — Refatoração, melhoria e leitura crítica.
-- `M2.14.04` — Timezone e Instant — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar UTC, `Instant`, `ZoneId`, `ZonedDateTime`, `OffsetDateTime`, armazenamento, APIs, conversão entre fusos, erros clássicos de timezone, leitura crítica, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 075 — M2.14 — Timezone e Instant
 
 ## Onde estamos na formação
 
@@ -58,31 +43,6 @@ LocalDateTime não representa um instante global.
 ```
 
 Agora vamos entender isso profundamente.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-075 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 75
-Aulas oficiais restantes: 463
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-76 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para enums, records, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

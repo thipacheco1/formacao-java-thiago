@@ -1,19 +1,4 @@
-# 012 — M0.12 — Markdown para Documentação Técnica
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.12.01` — Markdown para documentação técnica — Conceito, por que existe e vocabulário essencial.
-- `M0.12.02` — Markdown para documentação técnica — Exemplo mínimo digitado do zero.
-- `M0.12.03` — Markdown para documentação técnica — Exemplo aplicado ao domínio corporativo.
-- `M0.12.04` — Markdown para documentação técnica — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar Markdown como ferramenta de comunicação técnica, documentação de projeto, rastreabilidade e colaboração profissional.
-
----
+﻿# 012 — M0.12 — Markdown para Documentação Técnica
 
 ## Onde estamos na formação
 

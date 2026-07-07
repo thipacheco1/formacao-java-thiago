@@ -1,19 +1,4 @@
-# 042 — M1.22 — Break e Continue
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.22.01` — Break e continue — Conceito, por que existe e vocabulário essencial.
-- `M1.22.02` — Break e continue — Exemplo mínimo digitado do zero.
-- `M1.22.03` — Break e continue — Exemplo aplicado ao domínio corporativo.
-- `M1.22.04` — Break e continue — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar interrupção de processamento com `break`, salto de item inválido com `continue`, diferença prática entre os dois, uso em `while`, `do while` e `for`, cuidados de legibilidade, erros comuns, diagnóstico e aplicação em cenários de backend.
-
----
+﻿# 042 — M1.22 — Break e Continue
 
 ## Onde estamos na formação
 

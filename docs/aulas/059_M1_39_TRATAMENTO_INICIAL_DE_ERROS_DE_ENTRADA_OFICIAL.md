@@ -1,19 +1,4 @@
-# 059 — M1.39 — Tratamento Inicial de Erros de Entrada
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.39.01` — Tratamento inicial de erros de entrada — Conceito, por que existe e vocabulário essencial.
-- `M1.39.02` — Tratamento inicial de erros de entrada — Exemplo mínimo digitado do zero.
-- `M1.39.03` — Tratamento inicial de erros de entrada — Exemplo aplicado ao domínio corporativo.
-- `M1.39.04` — Tratamento inicial de erros de entrada — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `InputMismatchException`, `try/catch` básico, recuperação simples de entrada inválida, uso correto de `Scanner`, limpeza do buffer, repetição até entrada válida, limites do tratamento inicial, diagnóstico de erros e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 059 — M1.39 — Tratamento Inicial de Erros de Entrada
 
 ## Onde estamos na formação
 

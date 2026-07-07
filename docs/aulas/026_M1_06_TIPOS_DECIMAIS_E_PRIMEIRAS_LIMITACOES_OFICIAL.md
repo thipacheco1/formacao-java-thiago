@@ -1,19 +1,4 @@
-# 026 — M1.06 — Tipos Decimais e Primeiras Limitações
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.06.01` — Tipos decimais e primeiras limitações — Conceito, por que existe e vocabulário essencial.
-- `M1.06.02` — Tipos decimais e primeiras limitações — Exemplo mínimo digitado do zero.
-- `M1.06.03` — Tipos decimais e primeiras limitações — Exemplo aplicado ao domínio corporativo.
-- `M1.06.04` — Tipos decimais e primeiras limitações — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `float`, `double`, literais decimais, sufixo `F`, precisão aproximada, armadilhas com dinheiro, primeiras limitações de números de ponto flutuante e aplicação em cenários de backend.
-
----
+﻿# 026 — M1.06 — Tipos Decimais e Primeiras Limitações
 
 ## Onde estamos na formação
 

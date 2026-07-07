@@ -1,26 +1,9 @@
-# 019 — M0.19 — Estrutura Profissional do Repositório de Curso
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.19.01` — Estrutura profissional do repositório de curso — Conceito, por que existe e vocabulário essencial.
-- `M0.19.02` — Estrutura profissional do repositório de curso — Exemplo mínimo digitado do zero.
-- `M0.19.03` — Estrutura profissional do repositório de curso — Exemplo aplicado ao domínio corporativo.
-- `M0.19.04` — Estrutura profissional do repositório de curso — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para estruturar o repositório da formação de forma profissional, com `README`, `docs`, `src`, commits por aula, padrões de nome, organização, rastreabilidade e disciplina de versionamento.
-
----
+﻿# 019 — M0.19 — Estrutura Profissional do Repositório de Curso
 
 ## Complemento operacional — consolidar ferramentas instaladas dentro do repositório
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula organiza o repositório do curso. O complemento abaixo conecta essa estrutura com as ferramentas já instaladas no Módulo 0.
 

@@ -1,19 +1,4 @@
-# 006 — M0.06 — Compilação Manual com `javac`
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.06.01` — Compilação manual com `javac` — Conceito, por que existe e vocabulário essencial.
-- `M0.06.02` — Compilação manual com `javac` — Exemplo mínimo digitado do zero.
-- `M0.06.03` — Compilação manual com `javac` — Exemplo aplicado ao domínio corporativo.
-- `M0.06.04` — Compilação manual com `javac` — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar compilação manual como entendimento real da plataforma Java, não como um ritual de comandos.
-
----
+﻿# 006 — M0.06 — Compilação Manual com `javac`
 
 ## Hoje a aula é sobre tirar a mágica da execução Java
 

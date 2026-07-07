@@ -1,19 +1,4 @@
-# 046 — M1.26 — Arrays com Tamanho Definido pelo Usuário
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.26.01` — Arrays com tamanho definido pelo usuário — Conceito, por que existe e vocabulário essencial.
-- `M1.26.02` — Arrays com tamanho definido pelo usuário — Exemplo mínimo digitado do zero.
-- `M1.26.03` — Arrays com tamanho definido pelo usuário — Exemplo aplicado ao domínio corporativo.
-- `M1.26.04` — Arrays com tamanho definido pelo usuário — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar criação de array com tamanho informado em tempo de execução, uso de `new double[n]`, preenchimento com `Scanner`, validação da quantidade antes de criar o array, iteração com `length`, soma, média, maior, menor, aplicação em domínio corporativo e diagnóstico de erros comuns.
-
----
+﻿# 046 — M1.26 — Arrays com Tamanho Definido pelo Usuário
 
 ## Onde estamos na formação
 

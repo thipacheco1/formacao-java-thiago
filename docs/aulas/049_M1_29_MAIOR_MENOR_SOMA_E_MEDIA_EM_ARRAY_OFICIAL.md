@@ -1,19 +1,4 @@
-# 049 — M1.29 — Maior, Menor, Soma e Média em Array
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.29.01` — Maior, menor, soma e média em array — Conceito, por que existe e vocabulário essencial.
-- `M1.29.02` — Maior, menor, soma e média em array — Exemplo mínimo digitado do zero.
-- `M1.29.03` — Maior, menor, soma e média em array — Exemplo aplicado ao domínio corporativo.
-- `M1.29.04` — Maior, menor, soma e média em array — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar inicialização correta, comparação, acumuladores, cálculo de soma, média, maior valor, menor valor, relatório final, diagnóstico de erros comuns e aplicação em cenários de backend como produto, pedido, pagamento, OS, auditoria, mensageria e SLA.
-
----
+﻿# 049 — M1.29 — Maior, Menor, Soma e Média em Array
 
 ## Onde estamos na formação
 

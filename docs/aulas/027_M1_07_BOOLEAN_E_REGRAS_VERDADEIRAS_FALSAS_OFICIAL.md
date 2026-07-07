@@ -1,19 +1,4 @@
-# 027 — M1.07 — Boolean e Regras Verdadeiras/Falsas
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.07.01` — Boolean e regras verdadeiras/falsas — Conceito, por que existe e vocabulário essencial.
-- `M1.07.02` — Boolean e regras verdadeiras/falsas — Exemplo mínimo digitado do zero.
-- `M1.07.03` — Boolean e regras verdadeiras/falsas — Exemplo aplicado ao domínio corporativo.
-- `M1.07.04` — Boolean e regras verdadeiras/falsas — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `boolean`, `true`, `false`, nomes profissionais para variáveis booleanas, leitura de regras, estados verdadeiros/falsos, armadilhas comuns e aplicação em validações iniciais de backend.
-
----
+﻿# 027 — M1.07 — Boolean e Regras Verdadeiras/Falsas
 
 ## Onde estamos na formação
 

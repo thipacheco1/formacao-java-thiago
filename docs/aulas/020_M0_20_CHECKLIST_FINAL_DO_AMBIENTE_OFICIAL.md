@@ -1,26 +1,9 @@
-# 020 — M0.20 — Checklist Final do Ambiente
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.20.01` — Checklist final do ambiente — Conceito, por que existe e vocabulário essencial.
-- `M0.20.02` — Checklist final do ambiente — Exemplo mínimo digitado do zero.
-- `M0.20.03` — Checklist final do ambiente — Exemplo aplicado ao domínio corporativo.
-- `M0.20.04` — Checklist final do ambiente — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para validar Java, Git, Maven, banco, Docker, IntelliJ, GitHub, documentação, rotina de estudo e organização do repositório antes da entrada no Módulo 1.
-
----
+﻿# 020 — M0.20 — Checklist Final do Ambiente
 
 ## Complemento operacional — checklist final ampliado de instalação e validação
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já é o fechamento do Módulo 0. O complemento abaixo transforma o checklist em uma validação final explícita de instalação, configuração e diagnóstico.
 

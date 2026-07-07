@@ -1,19 +1,4 @@
-# 052 — M1.32 — Matriz Bidimensional Inicial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.32.01` — Matriz bidimensional inicial — Conceito, por que existe e vocabulário essencial.
-- `M1.32.02` — Matriz bidimensional inicial — Exemplo mínimo digitado do zero.
-- `M1.32.03` — Matriz bidimensional inicial — Exemplo aplicado ao domínio corporativo.
-- `M1.32.04` — Matriz bidimensional inicial — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar linhas, colunas, tabela simples, leitura, exibição, matriz bidimensional em Java, acesso por dois índices, laços aninhados, uso correto de `length`, leitura com `Scanner`, exibição tabular, erros comuns e aplicação em cenários de produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 052 — M1.32 — Matriz Bidimensional Inicial
 
 ## Onde estamos na formação
 

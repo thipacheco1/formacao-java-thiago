@@ -1,19 +1,4 @@
-# 067 — M2.06 — String Pool e Imutabilidade de String
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.06.01` — String pool e imutabilidade de String — Conceito profundo e quando usar.
-- `M2.06.02` — String pool e imutabilidade de String — Implementação guiada com código realista.
-- `M2.06.03` — String pool e imutabilidade de String — Refatoração, melhoria e leitura crítica.
-- `M2.06.04` — String pool e imutabilidade de String — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar literais de `String`, `new String`, String pool, imutabilidade, diferença entre `equals` e `==`, concatenação, performance, leitura crítica, diagnóstico de bugs e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 067 — M2.06 — String Pool e Imutabilidade de String
 
 ## Onde estamos na formação
 
@@ -65,31 +50,6 @@ quando usar StringBuilder?
 ```
 
 Essa aula responde essas perguntas.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-067 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 67
-Aulas oficiais restantes: 471
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-68 arquivos gerados no total.
-```
-
-Ainda estamos no início do Módulo 2, fortalecendo Java Core antes de entrar em orientação a objetos mais completa, coleções, exceções, Maven, banco, APIs REST, Spring e arquitetura.
 
 ---
 

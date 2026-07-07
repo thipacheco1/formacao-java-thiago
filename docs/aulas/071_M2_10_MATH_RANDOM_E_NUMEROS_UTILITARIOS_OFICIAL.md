@@ -1,19 +1,4 @@
-# 071 — M2.10 — Math, Random e Números Utilitários
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.10.01` — Math, Random e números utilitários — Conceito profundo e quando usar.
-- `M2.10.02` — Math, Random e números utilitários — Implementação guiada com código realista.
-- `M2.10.03` — Math, Random e números utilitários — Refatoração, melhoria e leitura crítica.
-- `M2.10.04` — Math, Random e números utilitários — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar arredondamentos, potência, raiz, valores mínimo e máximo, limites numéricos, números aleatórios, `Math.random`, `Random`, uso em testes simples, armadilhas de arredondamento, validações, geração de dados de massa, leitura crítica e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 071 — M2.10 — Math, Random e Números Utilitários
 
 ## Onde estamos na formação
 
@@ -70,31 +55,6 @@ cenários de QA;
 validação de faixa;
 cálculos auxiliares de domínio.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-071 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 71
-Aulas oficiais restantes: 467
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-72 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para `BigDecimal`, datas, enums, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

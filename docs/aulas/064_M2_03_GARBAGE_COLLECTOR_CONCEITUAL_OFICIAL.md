@@ -1,19 +1,4 @@
-# 064 — M2.03 — Garbage Collector Conceitual
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.03.01` — Garbage Collector conceitual — Conceito profundo e quando usar.
-- `M2.03.02` — Garbage Collector conceitual — Implementação guiada com código realista.
-- `M2.03.03` — Garbage Collector conceitual — Refatoração, melhoria e leitura crítica.
-- `M2.03.04` — Garbage Collector conceitual — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar objetos elegíveis, memória liberada, sintomas de vazamento, noção de Garbage Collector, objetos alcançáveis, referências ativas, referências perdidas, `null`, escopo, heap, pressão de memória, cuidados com listas, arrays, caches, campos estáticos, `System.gc()` conceitual, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 064 — M2.03 — Garbage Collector Conceitual
 
 ## Onde estamos na formação
 

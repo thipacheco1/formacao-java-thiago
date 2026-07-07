@@ -1,26 +1,9 @@
-# 005 — M0.05 — JDK, JRE, JVM e Escolha de Versão LTS
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.05.01` — JDK, JRE, JVM e escolha de versão LTS — Conceito, por que existe e vocabulário essencial.
-- `M0.05.02` — JDK, JRE, JVM e escolha de versão LTS — Exemplo mínimo digitado do zero.
-- `M0.05.03` — JDK, JRE, JVM e escolha de versão LTS — Exemplo aplicado ao domínio corporativo.
-- `M0.05.04` — JDK, JRE, JVM e escolha de versão LTS — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar a plataforma Java como fundamento profissional, não como uma sequência isolada de siglas.
-
----
+﻿# 005 — M0.05 — JDK, JRE, JVM e Escolha de Versão LTS
 
 ## Complemento operacional — baixar, instalar e configurar o JDK
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula é o ponto oficial para instalar o Java da formação.
 

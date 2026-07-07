@@ -1,19 +1,4 @@
-# 039 — M1.19 — While
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.19.01` — While — Conceito, por que existe e vocabulário essencial.
-- `M1.19.02` — While — Exemplo mínimo digitado do zero.
-- `M1.19.03` — While — Exemplo aplicado ao domínio corporativo.
-- `M1.19.04` — While — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar repetição com condição, loops controlados, risco de loop infinito, contadores, acumuladores, leitura de fluxo, uso com `Scanner`, aplicação em processamento de lotes e diagnóstico de erros comuns.
-
----
+﻿# 039 — M1.19 — While
 
 ## Onde estamos na formação
 

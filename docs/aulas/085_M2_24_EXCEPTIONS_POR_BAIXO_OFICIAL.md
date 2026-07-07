@@ -1,19 +1,4 @@
-# 085 — M2.24 — Exceptions por baixo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.24.01` — Exceptions por baixo — Conceito profundo e quando usar.
-- `M2.24.02` — Exceptions por baixo — Implementação guiada com código realista.
-- `M2.24.03` — Exceptions por baixo — Refatoração, melhoria e leitura crítica.
-- `M2.24.04` — Exceptions por baixo — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar stack trace, checked exceptions, unchecked exceptions, causa raiz, mensagens de erro, leitura profissional de exceções, propagação, tratamento, relançamento, perda de contexto, refatoração, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 085 — M2.24 — Exceptions por baixo
 
 ## Onde estamos na formação
 
@@ -55,31 +40,6 @@ como diagnosticar erros em backend.
 ```
 
 Essa aula é essencial porque, no dia a dia, um desenvolvedor backend passa muito tempo lendo logs e entendendo falhas.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-085 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 85
-Aulas oficiais restantes: 453
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-86 arquivos gerados no total.
-```
-
-Estamos encerrando uma sequência forte de Java moderno e entrando numa parte crítica para backend real: robustez, diagnóstico, fluxo de erro e leitura de problemas.
 
 ---
 

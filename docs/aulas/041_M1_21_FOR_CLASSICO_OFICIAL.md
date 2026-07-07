@@ -1,19 +1,4 @@
-# 041 — M1.21 — For Clássico
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.21.01` — For clássico — Conceito, por que existe e vocabulário essencial.
-- `M1.21.02` — For clássico — Exemplo mínimo digitado do zero.
-- `M1.21.03` — For clássico — Exemplo aplicado ao domínio corporativo.
-- `M1.21.04` — For clássico — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar contador, início, condição, incremento, repetição controlada, leitura do fluxo do `for`, comparação com `while`, uso em contagens, processamento de lotes, acumuladores, menus simulados, erros comuns e diagnóstico.
-
----
+﻿# 041 — M1.21 — For Clássico
 
 ## Onde estamos na formação
 

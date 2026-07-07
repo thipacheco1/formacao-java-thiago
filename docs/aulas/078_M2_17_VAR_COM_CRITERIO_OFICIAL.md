@@ -1,19 +1,4 @@
-# 078 — M2.17 — Var com critério
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.17.01` — Var com critério — Conceito profundo e quando usar.
-- `M2.17.02` — Var com critério — Implementação guiada com código realista.
-- `M2.17.03` — Var com critério — Refatoração, melhoria e leitura crítica.
-- `M2.17.04` — Var com critério — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar inferência local de tipo, legibilidade, quando usar, quando evitar, impacto em leitura de código, limites do `var`, armadilhas, refatoração e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 078 — M2.17 — Var com critério
 
 ## Onde estamos na formação
 
@@ -64,31 +49,6 @@ A pergunta correta é:
 ```text
 usar var deixa este código mais legível ou menos legível?
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-078 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 78
-Aulas oficiais restantes: 460
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-79 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para varargs, classes tradicionais, encapsulamento, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

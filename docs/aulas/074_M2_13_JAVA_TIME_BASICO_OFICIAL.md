@@ -1,19 +1,4 @@
-# 074 — M2.13 — java.time básico
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.13.01` — java.time básico — Conceito profundo e quando usar.
-- `M2.13.02` — java.time básico — Implementação guiada com código realista.
-- `M2.13.03` — java.time básico — Refatoração, melhoria e leitura crítica.
-- `M2.13.04` — java.time básico — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `LocalDate`, `LocalTime`, `LocalDateTime`, `Duration`, `Period`, formatação, parsing, comparação, cálculo de datas, imutabilidade, armadilhas comuns, leitura crítica e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 074 — M2.13 — java.time básico
 
 ## Onde estamos na formação
 
@@ -73,31 +58,6 @@ DateTimeFormatter.
 ```
 
 Timezone, UTC, `Instant`, `ZoneId` e `OffsetDateTime` virão na próxima aula.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-074 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 74
-Aulas oficiais restantes: 464
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-75 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para timezone, enums, records, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

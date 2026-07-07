@@ -1,19 +1,4 @@
-# 002 — M0.02 — Diagnóstico Inicial Técnico e Plano de Estudo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.02.01` — Diagnóstico inicial técnico e plano de estudo — Conceito, por que existe e vocabulário essencial.
-- `M0.02.02` — Diagnóstico inicial técnico e plano de estudo — Exemplo mínimo digitado do zero.
-- `M0.02.03` — Diagnóstico inicial técnico e plano de estudo — Exemplo aplicado ao domínio corporativo.
-- `M0.02.04` — Diagnóstico inicial técnico e plano de estudo — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para transformar o diagnóstico em uma ferramenta real de evolução, e não em um formulário burocrático.
-
----
+﻿# 002 — M0.02 — Diagnóstico Inicial Técnico e Plano de Estudo
 
 ## Hoje a aula é sobre saber exatamente de onde se está partindo
 

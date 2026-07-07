@@ -1,19 +1,4 @@
-# 055 — M1.35 — Métodos com Parâmetros
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.35.01` — Métodos com parâmetros — Conceito, por que existe e vocabulário essencial.
-- `M1.35.02` — Métodos com parâmetros — Exemplo mínimo digitado do zero.
-- `M1.35.03` — Métodos com parâmetros — Exemplo aplicado ao domínio corporativo.
-- `M1.35.04` — Métodos com parâmetros — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para aprofundar entrada de dados para métodos, ordem dos parâmetros, nomes, legibilidade, parâmetros de tipos primitivos, `String`, arrays, matrizes, diferença entre parâmetro e argumento, validação de entrada recebida por método, efeitos em legibilidade, erros comuns, diagnóstico e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 055 — M1.35 — Métodos com Parâmetros
 
 ## Onde estamos na formação
 

@@ -1,26 +1,9 @@
-# 007 — M0.07 — IntelliJ IDEA Community Completo
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.07.01` — IntelliJ IDEA Community completo — Conceito, por que existe e vocabulário essencial.
-- `M0.07.02` — IntelliJ IDEA Community completo — Exemplo mínimo digitado do zero.
-- `M0.07.03` — IntelliJ IDEA Community completo — Exemplo aplicado ao domínio corporativo.
-- `M0.07.04` — IntelliJ IDEA Community completo — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar o IntelliJ como ambiente profissional de desenvolvimento Java, sem transformar a IDE em muleta e sem esconder o que acontece por baixo.
-
----
+﻿# 007 — M0.07 — IntelliJ IDEA Community Completo
 
 ## Complemento operacional — baixar, instalar e configurar o IntelliJ IDEA Community
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula é o ponto oficial para instalar e configurar a IDE do curso.
 

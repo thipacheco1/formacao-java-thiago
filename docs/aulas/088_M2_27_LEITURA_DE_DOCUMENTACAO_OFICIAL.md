@@ -1,19 +1,4 @@
-# 088 — M2.27 — Leitura de documentação oficial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.27.01` — Leitura de documentação oficial — Conceito profundo e quando usar.
-- `M2.27.02` — Leitura de documentação oficial — Implementação guiada com código realista.
-- `M2.27.03` — Leitura de documentação oficial — Refatoração, melhoria e leitura crítica.
-- `M2.27.04` — Leitura de documentação oficial — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar como ler JavaDoc, assinatura de método, parâmetros, retorno, exceções, exemplos, classes, construtores, métodos estáticos, métodos de instância, APIs de `String`, `BigDecimal`, `LocalDate`, `Scanner`, `Optional` conceitual, leitura crítica, prática com código verificável, registro no diário e transformação de documentação oficial em decisão técnica.
-
----
+﻿# 088 — M2.27 — Leitura de documentação oficial
 
 ## Pré-requisito de ambiente
 
@@ -95,31 +80,6 @@ Documentação oficial é uma fonte primária.
 Ela não substitui prática.
 
 Mas evita muito chute.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-088 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 88
-Aulas oficiais restantes: 450
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-89 arquivos gerados no total.
-```
-
-Esta aula encerra a sequência de Java Core profundo do Módulo 2 antes do mini projeto de consolidação.
 
 ---
 

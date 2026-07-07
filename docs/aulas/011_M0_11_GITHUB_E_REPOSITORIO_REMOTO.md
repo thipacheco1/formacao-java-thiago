@@ -1,26 +1,9 @@
-# 011 — M0.11 — GitHub e Repositório Remoto
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.11.01` — GitHub e repositório remoto — Conceito, por que existe e vocabulário essencial.
-- `M0.11.02` — GitHub e repositório remoto — Exemplo mínimo digitado do zero.
-- `M0.11.03` — GitHub e repositório remoto — Exemplo aplicado ao domínio corporativo.
-- `M0.11.04` — GitHub e repositório remoto — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar repositório remoto como extensão natural do Git local, com foco em segurança, rastreabilidade, colaboração e exposição profissional.
-
----
+﻿# 011 — M0.11 — GitHub e Repositório Remoto
 
 ## Complemento operacional — criar conta, repositório remoto e validar push
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula já explica GitHub, remoto, `origin`, `push`, `pull`, `clone`, HTTPS, SSH e autenticação. Este complemento adiciona um roteiro operacional para o aluno validar que o remoto realmente funciona.
 

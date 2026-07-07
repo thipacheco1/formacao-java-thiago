@@ -1,19 +1,4 @@
-# 032 — M1.12 — Operadores Relacionais
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.12.01` — Operadores relacionais — Conceito, por que existe e vocabulário essencial.
-- `M1.12.02` — Operadores relacionais — Exemplo mínimo digitado do zero.
-- `M1.12.03` — Operadores relacionais — Exemplo aplicado ao domínio corporativo.
-- `M1.12.04` — Operadores relacionais — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `>`, `<`, `>=`, `<=`, `==`, `!=`, leitura de expressões booleanas, comparação de valores, diferença entre atribuição e comparação, armadilhas com `String`, clareza em regras e aplicação em cenários de backend.
-
----
+﻿# 032 — M1.12 — Operadores Relacionais
 
 ## Onde estamos na formação
 

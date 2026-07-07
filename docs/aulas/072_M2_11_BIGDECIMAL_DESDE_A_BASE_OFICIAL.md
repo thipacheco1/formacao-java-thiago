@@ -1,19 +1,4 @@
-# 072 — M2.11 — BigDecimal desde a Base
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.11.01` — BigDecimal desde a base — Conceito profundo e quando usar.
-- `M2.11.02` — BigDecimal desde a base — Implementação guiada com código realista.
-- `M2.11.03` — BigDecimal desde a base — Refatoração, melhoria e leitura crítica.
-- `M2.11.04` — BigDecimal desde a base — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar criação correta, `scale`, arredondamento, `RoundingMode`, `compareTo`, `equals`, operações, divisão, dinheiro, armadilhas com `double`, leitura crítica, métodos utilitários e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 072 — M2.11 — BigDecimal desde a Base
 
 ## Onde estamos na formação
 
@@ -68,31 +53,6 @@ Por isso, Java oferece uma classe muito importante:
 ```java
 BigDecimal
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-072 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 72
-Aulas oficiais restantes: 466
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-73 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para formatação, datas, enums, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

@@ -1,19 +1,4 @@
-# 024 — M1.04 — Variáveis e Nomes Profissionais
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.04.01` — Variáveis e nomes profissionais — Conceito, por que existe e vocabulário essencial.
-- `M1.04.02` — Variáveis e nomes profissionais — Exemplo mínimo digitado do zero.
-- `M1.04.03` — Variáveis e nomes profissionais — Exemplo aplicado ao domínio corporativo.
-- `M1.04.04` — Variáveis e nomes profissionais — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar declaração, atribuição, alteração, intenção, `camelCase`, variáveis temporárias, leitura profissional de nomes e diagnóstico dos primeiros erros envolvendo variáveis em Java.
-
----
+﻿# 024 — M1.04 — Variáveis e Nomes Profissionais
 
 ## Onde estamos na formação
 

@@ -1,19 +1,4 @@
-# 023 — M1.03 — Comentários Úteis e Documentação Inicial
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.03.01` — Comentários úteis e documentação inicial — Conceito, por que existe e vocabulário essencial.
-- `M1.03.02` — Comentários úteis e documentação inicial — Exemplo mínimo digitado do zero.
-- `M1.03.03` — Comentários úteis e documentação inicial — Exemplo aplicado ao domínio corporativo.
-- `M1.03.04` — Comentários úteis e documentação inicial — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar comentário de linha, comentário de bloco, documentação inicial, quando comentar, quando melhorar o nome do código e como evitar comentários inúteis, desatualizados ou perigosos.
-
----
+﻿# 023 — M1.03 — Comentários Úteis e Documentação Inicial
 
 ## Onde estamos na formação
 

@@ -1,19 +1,4 @@
-# 089 — M2.28 — Mini projeto biblioteca Java Core
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.28.01` — Mini projeto biblioteca Java Core — Conceito profundo e quando usar.
-- `M2.28.02` — Mini projeto biblioteca Java Core — Implementação guiada com código realista.
-- `M2.28.03` — Mini projeto biblioteca Java Core — Refatoração, melhoria e leitura crítica.
-- `M2.28.04` — Mini projeto biblioteca Java Core — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para consolidar utilitários pequenos com `String`, datas, `BigDecimal`, `enum`, `record`, pacotes, documentação oficial, exceptions, console, validações e testes manuais, criando uma pequena biblioteca Java Core sem framework externo.
-
----
+﻿# 089 — M2.28 — Mini projeto biblioteca Java Core
 
 ## Pré-requisito de ambiente
 
@@ -102,31 +87,6 @@ Agora vamos juntar uma parte disso em um mini projeto.
 A ideia não é criar uma biblioteca gigante.
 
 A ideia é criar uma pequena biblioteca Java Core bem organizada, com utilitários simples e verificáveis.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-089 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 89
-Aulas oficiais restantes: 449
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-90 arquivos gerados no total.
-```
-
-Esta aula encerra o Módulo 2 e prepara a entrada no Módulo 3, onde começaremos a organizar melhor métodos, responsabilidades e projetos de console.
 
 ---
 

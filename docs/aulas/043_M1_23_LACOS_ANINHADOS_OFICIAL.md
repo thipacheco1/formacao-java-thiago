@@ -1,19 +1,4 @@
-# 043 — M1.23 — Laços Aninhados
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.23.01` — Laços aninhados — Conceito, por que existe e vocabulário essencial.
-- `M1.23.02` — Laços aninhados — Exemplo mínimo digitado do zero.
-- `M1.23.03` — Laços aninhados — Exemplo aplicado ao domínio corporativo.
-- `M1.23.04` — Laços aninhados — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar laços dentro de laços, leitura de fluxo com linha e coluna, matriz conceitual, menus com subfluxos, processamento de entidades relacionadas, uso cuidadoso de `break` e `continue` em loops internos, riscos de complexidade e estratégias de simplificação.
-
----
+﻿# 043 — M1.23 — Laços Aninhados
 
 ## Onde estamos na formação
 

@@ -1,26 +1,9 @@
-# 003 — M0.03 — Organização do Windows para Desenvolvimento Java Backend
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.03.01` — Organização do Windows para desenvolvimento — Conceito, por que existe e vocabulário essencial.
-- `M0.03.02` — Organização do Windows para desenvolvimento — Exemplo mínimo digitado do zero.
-- `M0.03.03` — Organização do Windows para desenvolvimento — Exemplo aplicado ao domínio corporativo.
-- `M0.03.04` — Organização do Windows para desenvolvimento — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar organização de ambiente como fundamento profissional, não como detalhe cosmético.
-
----
+﻿# 003 — M0.03 — Organização do Windows para Desenvolvimento Java Backend
 
 ## Complemento operacional — antes de instalar ferramentas
 
-
 > Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
 > A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
 
 Esta aula deve ser usada como a preparação física da máquina antes de baixar JDK, IntelliJ, Git, Maven, PostgreSQL, DBeaver, Postman/Insomnia e Docker.
 

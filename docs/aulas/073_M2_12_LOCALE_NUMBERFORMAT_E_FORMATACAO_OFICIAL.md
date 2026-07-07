@@ -1,19 +1,4 @@
-# 073 — M2.12 — Locale, NumberFormat e Formatação
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M2.12.01` — Locale, NumberFormat e formatação — Conceito profundo e quando usar.
-- `M2.12.02` — Locale, NumberFormat e formatação — Implementação guiada com código realista.
-- `M2.12.03` — Locale, NumberFormat e formatação — Refatoração, melhoria e leitura crítica.
-- `M2.12.04` — Locale, NumberFormat e formatação — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar moeda, número, decimal, `pt-BR`, problemas com vírgula e ponto, `Locale`, `NumberFormat`, formatação de moeda, formatação de número, formatação de percentual, parsing básico, separador decimal, separador de milhar, leitura crítica, responsabilidades e aplicação em cenários de cliente, produto, pedido, pagamento, OS, auditoria e mensageria.
-
----
+﻿# 073 — M2.12 — Locale, NumberFormat e Formatação
 
 ## Onde estamos na formação
 
@@ -62,31 +47,6 @@ separador de milhar;
 separador decimal;
 entrada e saída de dados.
 ```
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-073 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 73
-Aulas oficiais restantes: 465
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-74 arquivos gerados no total.
-```
-
-Ainda estamos no começo do Módulo 2, consolidando Java Core antes de avançar para `java.time`, datas, enums, coleções, exceções, Maven, banco de dados, Spring Boot e arquitetura backend.
 
 ---
 

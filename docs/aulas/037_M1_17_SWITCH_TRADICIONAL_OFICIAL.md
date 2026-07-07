@@ -1,19 +1,4 @@
-# 037 — M1.17 — Switch Tradicional
-
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.17.01` — Switch tradicional — Conceito, por que existe e vocabulário essencial.
-- `M1.17.02` — Switch tradicional — Exemplo mínimo digitado do zero.
-- `M1.17.03` — Switch tradicional — Exemplo aplicado ao domínio corporativo.
-- `M1.17.04` — Switch tradicional — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `switch` tradicional, `case`, `break`, `default`, menus, status, risco de `fall-through`, comparação com `if/else if`, boas práticas de leitura e aplicação em cenários de backend.
-
----
+﻿# 037 — M1.17 — Switch Tradicional
 
 ## Onde estamos na formação
 
