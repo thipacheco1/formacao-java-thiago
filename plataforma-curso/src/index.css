@@ -1804,8 +1804,8 @@ pre.speaking-highlight {
 
 .input-row {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 16px;
 }
 
 .auth-submit-btn {
