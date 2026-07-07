@@ -3,6 +3,7 @@ import { loadLessons } from './utils/lessonLoader';
 import Sidebar from './components/Sidebar';
 import MarkdownViewer from './components/MarkdownViewer';
 import WelcomeView from './components/WelcomeView';
+import AuthModal from './components/AuthModal';
 import { Menu, ChevronRight } from 'lucide-react';
 
 function App() {
