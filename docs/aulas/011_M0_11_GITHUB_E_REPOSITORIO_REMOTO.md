@@ -15,6 +15,147 @@ O conteúdo foi integrado em uma única aula mentorada para ensinar repositório
 
 ---
 
+## Complemento operacional — criar conta, repositório remoto e validar push
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula já explica GitHub, remoto, `origin`, `push`, `pull`, `clone`, HTTPS, SSH e autenticação. Este complemento adiciona um roteiro operacional para o aluno validar que o remoto realmente funciona.
+
+### Pré-requisito
+
+Antes desta aula, a aula 009 precisa estar concluída:
+
+```powershell
+git --version
+git config --global user.name
+git config --global user.email
+```
+
+E o repositório local precisa ter pelo menos um commit:
+
+```bash
+git log --oneline
+```
+
+### Criar ou acessar conta GitHub
+
+Fluxo:
+
+```text
+1. Acessar GitHub.
+2. Criar conta ou entrar na conta existente.
+3. Confirmar e-mail, se solicitado.
+4. Criar novo repositório.
+```
+
+### Criar repositório remoto
+
+Para projeto que nasceu localmente, crie o remoto vazio:
+
+```text
+sem README inicial;
+sem .gitignore inicial;
+sem licença inicial.
+```
+
+Isso evita histórico divergente no primeiro push.
+
+Nome recomendado:
+
+```text
+formacao-java-backend
+```
+
+### Conectar local ao remoto
+
+Na raiz do projeto:
+
+```powershell
+cd C:\dev\projects\formacao-java-backend
+git status
+git log --oneline
+git remote -v
+```
+
+Adicionar remoto:
+
+```bash
+git remote add origin URL_DO_REPOSITORIO
+```
+
+Validar:
+
+```bash
+git remote -v
+```
+
+Enviar:
+
+```bash
+git push -u origin main
+```
+
+### Autenticação
+
+O GitHub pode autenticar por:
+
+```text
+login no navegador;
+Git Credential Manager;
+token pessoal;
+SSH;
+GitHub CLI.
+```
+
+No começo, HTTPS com Git Credential Manager costuma ser o caminho mais simples no Windows.
+
+Regra de segurança:
+
+```text
+nunca colocar token em README;
+nunca commitar token;
+nunca printar token em material público;
+nunca salvar credencial real no repositório.
+```
+
+### Validação final
+
+Depois do push:
+
+```bash
+git status
+git remote -v
+```
+
+No GitHub, conferir:
+
+```text
+arquivos aparecem;
+branch main existe;
+último commit aparece;
+README aparece.
+```
+
+### Critério operacional atualizado
+
+```markdown
+## GitHub validado
+
+- [ ] Conta GitHub acessível.
+- [ ] Repositório remoto criado.
+- [ ] Repositório remoto criado vazio quando o projeto nasceu localmente.
+- [ ] `origin` configurado.
+- [ ] `git remote -v` mostra URL correta.
+- [ ] `git push -u origin main` funciona.
+- [ ] Arquivos aparecem no GitHub.
+- [ ] Nenhum token/senha/segredo foi versionado.
+```
+
+---
+
 ## Onde estamos na formação
 
 Até aqui, o Git já deixou de ser uma ideia abstrata.

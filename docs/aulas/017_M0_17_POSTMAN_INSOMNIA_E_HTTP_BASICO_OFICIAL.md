@@ -15,6 +15,106 @@ O conteúdo foi integrado em uma única aula mentorada para preparar o ambiente 
 
 ---
 
+## Complemento operacional — instalar cliente HTTP e criar primeira collection
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula já ensina HTTP básico, request, response, métodos, headers, body, JSON, status code, collection e environment. Este complemento deixa explícito como preparar a ferramenta.
+
+### Escolha da ferramenta
+
+Instale uma das duas:
+
+```text
+Postman;
+Insomnia.
+```
+
+Não é obrigatório instalar as duas.
+
+O importante é dominar o conceito HTTP.
+
+### Instalação
+
+Fluxo geral:
+
+```text
+1. Baixar a ferramenta pelo site oficial.
+2. Instalar no Windows.
+3. Abrir a ferramenta.
+4. Criar conta se for necessário para o uso escolhido.
+5. Criar workspace/projeto local.
+6. Criar collection de estudo.
+7. Criar environment local.
+```
+
+### Environment inicial
+
+Crie uma variável:
+
+```text
+base_url=http://localhost:8080
+```
+
+Ela será usada futuramente assim:
+
+```text
+{base_url}/clientes
+```
+
+### Primeira request preparada
+
+Mesmo antes de ter API local, deixe registrado o modelo:
+
+```text
+Método: GET
+URL: {base_url}/health
+Headers:
+Accept: application/json
+Body: vazio
+```
+
+### Primeira request POST preparada
+
+```text
+Método: POST
+URL: {base_url}/clientes
+Headers:
+Content-Type: application/json
+Accept: application/json
+Body:
+```
+
+```json
+{
+  "nome": "Cliente Exemplo",
+  "email": "cliente@exemplo.com"
+}
+```
+
+### Critério operacional atualizado
+
+```markdown
+## Cliente HTTP validado
+
+- [ ] Postman ou Insomnia instalado.
+- [ ] Workspace/projeto local criado.
+- [ ] Collection de estudo criada.
+- [ ] Environment local criado.
+- [ ] Variável `base_url` criada.
+- [ ] Request GET modelo criada.
+- [ ] Request POST com JSON modelo criada.
+- [ ] Headers `Content-Type` e `Accept` entendidos.
+- [ ] Sei identificar status code.
+- [ ] Sei diferenciar erro de conexão de erro HTTP.
+- [ ] Nenhum token real foi salvo em collection compartilhável.
+```
+
+---
+
 ## Onde estamos na formação
 
 Estamos seguindo a ordem oficial do Módulo 0.

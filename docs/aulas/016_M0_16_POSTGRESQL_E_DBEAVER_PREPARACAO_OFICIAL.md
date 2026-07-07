@@ -15,6 +15,112 @@ O conteúdo foi integrado em uma única aula mentorada para preparar PostgreSQL 
 
 ---
 
+## Complemento operacional — roteiro final de instalação do PostgreSQL e DBeaver
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula já explica PostgreSQL, DBeaver, servidor, porta, usuário, database, driver JDBC e validação SQL. Este complemento funciona como checklist operacional.
+
+### PostgreSQL — instalação
+
+Fluxo:
+
+```text
+1. Baixar PostgreSQL de fonte oficial.
+2. Executar instalador.
+3. Definir senha do usuário `postgres`.
+4. Confirmar porta, normalmente `5432`.
+5. Concluir instalação.
+6. Validar serviço rodando.
+7. Guardar a senha fora do Git.
+```
+
+Não registrar senha real em:
+
+```text
+README;
+docs/ambiente.md;
+diário;
+prints compartilhados;
+código;
+repositório.
+```
+
+### DBeaver — instalação
+
+Fluxo:
+
+```text
+1. Baixar DBeaver Community de fonte oficial.
+2. Instalar.
+3. Abrir.
+4. Criar conexão PostgreSQL.
+5. Permitir download do driver JDBC quando solicitado.
+6. Testar conexão.
+```
+
+### Conexão local recomendada
+
+```text
+Host: localhost
+Port: 5432
+Database: postgres ou formacao_java
+Username: postgres
+Password: senha definida localmente
+```
+
+Depois criar a database:
+
+```sql
+CREATE DATABASE formacao_java;
+```
+
+### Validação SQL obrigatória
+
+Conectado na database de estudo:
+
+```sql
+SELECT version();
+
+SELECT current_database();
+
+CREATE TABLE ambiente_validacao (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(100) NOT NULL,
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO ambiente_validacao (descricao)
+VALUES ('PostgreSQL e DBeaver preparados');
+
+SELECT *
+FROM ambiente_validacao;
+```
+
+### Critério operacional atualizado
+
+```markdown
+## PostgreSQL e DBeaver validados
+
+- [ ] PostgreSQL instalado.
+- [ ] Serviço do PostgreSQL rodando.
+- [ ] Porta identificada.
+- [ ] Senha do `postgres` guardada fora do Git.
+- [ ] DBeaver Community instalado.
+- [ ] Driver PostgreSQL JDBC baixado pelo DBeaver.
+- [ ] Conexão local criada.
+- [ ] `Test Connection` funciona.
+- [ ] Database `formacao_java` criada.
+- [ ] `SELECT version();` executado.
+- [ ] `SELECT current_database();` executado.
+- [ ] Tabela de validação criada, inserida e consultada.
+```
+
+---
+
 ## Onde estamos na formação
 
 Estamos seguindo a ordem oficial do Módulo 0.

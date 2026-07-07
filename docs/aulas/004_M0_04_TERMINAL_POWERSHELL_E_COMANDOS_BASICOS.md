@@ -15,6 +15,97 @@ O conteúdo foi integrado em uma única aula mentorada para ensinar terminal com
 
 ---
 
+## Complemento operacional — terminal como validador de instalação
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula passa a ser também a referência para validar se uma ferramenta instalada está realmente visível no terminal.
+
+Instalar uma ferramenta não basta. Depois de instalar, o aluno precisa abrir um novo PowerShell e validar o comando.
+
+### Comandos de validação por ferramenta
+
+```powershell
+java -version
+javac -version
+git --version
+mvn -version
+docker --version
+docker compose version
+wsl --status
+wsl -l -v
+```
+
+Quando aplicável:
+
+```powershell
+where java
+where javac
+where git
+where mvn
+echo $env:JAVA_HOME
+echo $env:MAVEN_HOME
+echo $env:Path
+```
+
+### Regra importante
+
+Depois de instalar ferramenta ou alterar variável de ambiente:
+
+```text
+feche o PowerShell;
+abra de novo;
+rode o comando de validação novamente.
+```
+
+Terminal antigo pode não enxergar PATH novo.
+
+### Como diagnosticar comando não reconhecido
+
+Se aparecer algo como:
+
+```text
+The term 'java' is not recognized
+```
+
+ou:
+
+```text
+mvn não é reconhecido como um comando interno ou externo
+```
+
+investigue nesta ordem:
+
+```text
+1. A ferramenta foi instalada?
+2. O executável existe?
+3. A pasta bin foi adicionada ao PATH?
+4. O terminal foi reaberto?
+5. O comando foi digitado corretamente?
+6. Existe mais de uma versão instalada?
+```
+
+### Checklist específico desta aula
+
+```markdown
+## Terminal como diagnóstico
+
+- [ ] Sei abrir PowerShell.
+- [ ] Sei abrir terminal integrado no IntelliJ.
+- [ ] Sei usar `pwd`.
+- [ ] Sei usar `ls`.
+- [ ] Sei usar `cd`.
+- [ ] Sei usar `where`.
+- [ ] Sei consultar `JAVA_HOME`.
+- [ ] Sei consultar `MAVEN_HOME`.
+- [ ] Sei que terminal antigo pode não refletir PATH atualizado.
+```
+
+---
+
 ## Hoje a aula é sobre parar de depender só de clique
 
 A partir de agora, o terminal precisa deixar de ser uma tela assustadora.

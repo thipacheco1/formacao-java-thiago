@@ -15,6 +15,94 @@ O conteúdo foi integrado em uma única aula mentorada para ensinar organizaçã
 
 ---
 
+## Complemento operacional — antes de instalar ferramentas
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula deve ser usada como a preparação física da máquina antes de baixar JDK, IntelliJ, Git, Maven, PostgreSQL, DBeaver, Postman/Insomnia e Docker.
+
+A organização recomendada continua sendo:
+
+```text
+C:\dev
+├── projects
+├── studies
+├── tools
+├── labs
+└── temp
+```
+
+### O que validar antes de seguir
+
+Execute no PowerShell:
+
+```powershell
+mkdir C:\dev
+cd C:\dev
+mkdir projects
+mkdir studies
+mkdir tools
+mkdir labs
+mkdir temp
+ls
+```
+
+Se alguma pasta já existir, não há problema. O importante é que a estrutura esteja clara.
+
+### Onde cada ferramenta entra
+
+Use este raciocínio:
+
+```text
+JDK, Git, IntelliJ, Docker Desktop, PostgreSQL e DBeaver
+-> normalmente são instalados pelo instalador oficial no local padrão do Windows.
+
+Maven em ZIP manual
+-> pode ficar em C:\dev\tools.
+
+Projetos do curso
+-> devem ficar em C:\dev\projects.
+
+Laboratórios descartáveis
+-> podem ficar em C:\dev\labs ou C:\dev\temp.
+
+Arquivos baixados temporariamente
+-> podem ficar em Downloads apenas durante o download, mas não como local definitivo de projeto.
+```
+
+### Checklist específico desta aula
+
+```markdown
+## Pré-instalação do ambiente
+
+- [ ] `C:\dev` existe.
+- [ ] `C:\dev\projects` existe.
+- [ ] `C:\dev\tools` existe.
+- [ ] `C:\dev\labs` existe.
+- [ ] `C:\dev\temp` existe.
+- [ ] Projetos não ficam em Downloads.
+- [ ] Projetos não ficam na Área de Trabalho.
+- [ ] Projetos não ficam dentro de Program Files.
+- [ ] Nomes de pastas evitam acento e espaço.
+```
+
+### Registro recomendado em `docs/ambiente.md`
+
+```markdown
+## Organização local
+
+- Pasta base: `C:\dev`
+- Projetos: `C:\dev\projects`
+- Ferramentas manuais: `C:\dev\tools`
+- Laboratórios: `C:\dev\labs`
+- Temporários: `C:\dev\temp`
+```
+
+---
+
 ## Hoje a aula é sobre organizar a máquina como ambiente profissional
 
 Antes de escrever código com profundidade, é preciso organizar o lugar onde esse código vai viver.

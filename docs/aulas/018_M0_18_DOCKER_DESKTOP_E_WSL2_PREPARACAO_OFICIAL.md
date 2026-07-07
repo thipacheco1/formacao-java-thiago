@@ -15,6 +15,108 @@ O conteúdo foi integrado em uma única aula mentorada para preparar Docker Desk
 
 ---
 
+## Complemento operacional — instalar WSL2, Docker Desktop e validar hello-world
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula já explica WSL2, Docker Desktop, imagem, container, registry, pull, run, portas, volumes e comandos básicos. Este complemento deixa explícito o roteiro operacional de instalação.
+
+### Pré-requisito: virtualização
+
+Antes do Docker, valide no Windows:
+
+```text
+Gerenciador de Tarefas
+Desempenho
+CPU
+Virtualização: Habilitado
+```
+
+Se estiver desabilitado, será necessário habilitar na BIOS/UEFI.
+
+### Instalar ou validar WSL2
+
+No PowerShell como administrador, quando aplicável:
+
+```powershell
+wsl --install
+```
+
+Depois reinicie se solicitado.
+
+Valide:
+
+```powershell
+wsl --status
+wsl -l -v
+```
+
+O objetivo é ter distribuição Linux disponível em WSL2.
+
+### Instalar Docker Desktop
+
+Fluxo:
+
+```text
+1. Baixar Docker Desktop de fonte oficial.
+2. Executar instalador.
+3. Habilitar backend WSL2 quando solicitado.
+4. Reiniciar se necessário.
+5. Abrir Docker Desktop.
+6. Aguardar o engine iniciar.
+7. Validar pelo PowerShell.
+```
+
+### Validação obrigatória
+
+Com Docker Desktop aberto:
+
+```powershell
+docker --version
+docker version
+docker info
+docker compose version
+docker run hello-world
+docker ps
+docker ps -a
+docker images
+```
+
+Interpretação:
+
+```text
+docker --version -> CLI disponível;
+docker version -> CLI conversa com engine;
+docker info -> engine fornece detalhes;
+hello-world -> Docker consegue baixar/criar/executar container;
+docker ps -a -> container encerrado aparece;
+docker images -> imagem hello-world aparece.
+```
+
+### Critério operacional atualizado
+
+```markdown
+## Docker e WSL2 validados
+
+- [ ] Virtualização habilitada.
+- [ ] WSL instalado.
+- [ ] Distribuição Linux disponível.
+- [ ] Distribuição usando WSL2 quando aplicável.
+- [ ] Docker Desktop instalado.
+- [ ] Docker Desktop aberto.
+- [ ] Engine iniciado.
+- [ ] `docker --version` funciona.
+- [ ] `docker version` funciona.
+- [ ] `docker compose version` funciona.
+- [ ] `docker run hello-world` funciona.
+- [ ] Sei diferenciar imagem e container.
+```
+
+---
+
 ## Onde estamos na formação
 
 Estamos seguindo a ordem oficial do Módulo 0.

@@ -15,6 +15,159 @@ O conteúdo foi integrado em uma única aula mentorada para validar Java, Git, M
 
 ---
 
+## Complemento operacional — checklist final ampliado de instalação e validação
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula já é o fechamento do Módulo 0. O complemento abaixo transforma o checklist em uma validação final explícita de instalação, configuração e diagnóstico.
+
+### Validação final em terminal externo
+
+Execute no PowerShell:
+
+```powershell
+java -version
+javac -version
+echo $env:JAVA_HOME
+where java
+where javac
+
+git --version
+git config --global --list
+
+mvn -version
+where mvn
+
+wsl --status
+wsl -l -v
+
+docker --version
+docker version
+docker compose version
+docker run hello-world
+```
+
+### Validação final no IntelliJ
+
+No terminal integrado:
+
+```powershell
+pwd
+ls
+java -version
+javac -version
+git --version
+mvn -version
+```
+
+Também validar manualmente:
+
+```text
+IntelliJ Community abre;
+projeto abre pela raiz;
+Project SDK configurado;
+Main.java executa;
+debug funciona;
+terminal integrado funciona.
+```
+
+### Validação final de banco
+
+No DBeaver:
+
+```sql
+SELECT version();
+
+SELECT current_database();
+```
+
+Conferir:
+
+```text
+PostgreSQL está rodando;
+conexão local funciona;
+database de estudo está correta;
+senha não foi registrada em Git.
+```
+
+### Validação final de cliente HTTP
+
+No Postman ou Insomnia:
+
+```text
+collection de estudo existe;
+environment local existe;
+base_url configurada;
+request GET modelo criada;
+request POST JSON modelo criada.
+```
+
+### Validação final do repositório
+
+```bash
+git status
+git diff
+git remote -v
+```
+
+Conferir:
+
+```text
+README existe;
+docs existem;
+diário atualizado;
+checklist atualizado;
+.gitignore revisado;
+nenhum segredo versionado;
+nenhum .class/target/out indevido versionado.
+```
+
+### Resultado do Módulo 0
+
+Marque no `docs/checklist-ambiente.md`:
+
+```markdown
+## Aprovação final do Módulo 0
+
+- [ ] Java validado.
+- [ ] IntelliJ validado.
+- [ ] Git validado.
+- [ ] GitHub validado.
+- [ ] Maven validado.
+- [ ] PostgreSQL validado.
+- [ ] DBeaver validado.
+- [ ] Postman ou Insomnia validado.
+- [ ] WSL2 validado.
+- [ ] Docker validado.
+- [ ] Repositório organizado.
+- [ ] Diário atualizado.
+- [ ] Nenhum segredo versionado.
+- [ ] Ambiente aprovado para iniciar o Módulo 1.
+```
+
+### Regra de transição para o M1
+
+Se falhar em item crítico, não avance como se estivesse tudo certo.
+
+Itens críticos para começar M1:
+
+```text
+Java;
+javac;
+IntelliJ;
+Git;
+repositório;
+diário;
+organização de pastas.
+```
+
+Itens como PostgreSQL, Postman/Insomnia e Docker podem ser corrigidos antes dos módulos que dependem deles, mas devem ficar registrados como pendência real se não estiverem prontos.
+
+---
+
 ## Onde estamos na formação
 
 Estamos no fechamento oficial do Módulo 0.

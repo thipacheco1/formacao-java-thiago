@@ -15,6 +15,98 @@ O conteúdo foi integrado em uma única aula mentorada para ensinar Git como bas
 
 ---
 
+## Complemento operacional — baixar, instalar e validar Git
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula é o ponto oficial para instalar Git no Windows e configurar a identidade global.
+
+### Fonte de download
+
+Baixe o Git para Windows pelo site oficial do Git.
+
+Use a versão para Windows 64-bit quando estiver em máquina moderna 64-bit.
+
+### Instalação no Windows
+
+Durante o instalador, para esta formação, o aluno pode manter o padrão na maior parte das telas.
+
+Pontos de atenção:
+
+```text
+Git precisa ficar disponível no PATH;
+Git Bash pode ser instalado, mas o curso usa PowerShell como base;
+o editor padrão pode ser simples, como Notepad, no início;
+não é necessário alterar opções avançadas sem entender.
+```
+
+### Validação após instalar
+
+Feche e abra um PowerShell novo:
+
+```powershell
+git --version
+where git
+```
+
+Resultado esperado:
+
+```text
+git version ...
+```
+
+### Configuração global mínima
+
+```powershell
+git config --global user.name "Nome Sobrenome"
+git config --global user.email "email@exemplo.com"
+git config --global init.defaultBranch main
+git config --global core.autocrlf true
+git config --global core.editor "notepad"
+```
+
+Depois confira:
+
+```powershell
+git config --global --list
+```
+
+### Teste local de instalação
+
+```powershell
+cd C:\dev\labs
+mkdir validacao-git
+cd validacao-git
+git init
+New-Item README.md
+git status
+git add README.md
+git commit -m "Valida instalacao do Git"
+git log --oneline
+```
+
+Se o commit funcionar, Git está instalado e configurado corretamente.
+
+### Critério operacional atualizado
+
+```markdown
+## Git validado
+
+- [ ] Git instalado.
+- [ ] `git --version` funciona.
+- [ ] `where git` aponta para local esperado.
+- [ ] `user.name` configurado.
+- [ ] `user.email` configurado.
+- [ ] `init.defaultBranch` configurado como `main`.
+- [ ] `core.autocrlf` configurado conscientemente.
+- [ ] Commit local de validação funciona.
+```
+
+---
+
 ## Onde estamos na formação
 
 Até aqui, já organizamos o terreno:

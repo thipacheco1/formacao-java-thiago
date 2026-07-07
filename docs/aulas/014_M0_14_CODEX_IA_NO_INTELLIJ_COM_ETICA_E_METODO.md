@@ -15,6 +15,111 @@ O conteúdo foi integrado em uma única aula mentorada para ensinar IA como ferr
 
 ---
 
+## Complemento operacional — instalação, login e validação segura da IA
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula é principalmente sobre método, segurança e ética. A instalação da ferramenta de IA pode variar com o tempo, com o plano disponível e com o suporte da IDE.
+
+Por isso, a regra operacional é:
+
+```text
+usar apenas integração oficial ou aprovada;
+consultar documentação oficial atual;
+validar em projeto pequeno antes de usar em repositório real;
+não instalar plugin desconhecido.
+```
+
+### Antes de configurar IA
+
+Valide primeiro o ambiente básico:
+
+```powershell
+java -version
+javac -version
+git --version
+```
+
+E confirme que o IntelliJ já executa `Main.java`.
+
+IA não deve ser usada para mascarar ambiente quebrado.
+
+### Quando houver integração oficial para JetBrains/IntelliJ
+
+Fluxo geral:
+
+```text
+1. Abrir IntelliJ.
+2. Ir em Settings/Preferences.
+3. Acessar Plugins.
+4. Pesquisar pela integração oficial.
+5. Conferir publicador/origem.
+6. Instalar.
+7. Reiniciar a IDE, se solicitado.
+8. Fazer login quando a ferramenta pedir.
+9. Ler permissões solicitadas.
+10. Testar em projeto pequeno.
+```
+
+### Quando não houver plugin disponível
+
+Se a integração não aparecer ou não estiver liberada:
+
+```text
+não instalar plugin aleatório;
+não baixar extensão de origem duvidosa;
+usar a ferramenta fora da IDE;
+ou usar CLI oficial, se fizer sentido;
+continuar o curso normalmente.
+```
+
+### Teste seguro
+
+Use um arquivo simples:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Teste de IA com revisão humana.");
+    }
+}
+```
+
+Peça uma explicação do código.
+
+Não comece pedindo para alterar muitos arquivos.
+
+### Checklist de segurança antes de aceitar sugestão
+
+```markdown
+## IA validada com segurança
+
+- [ ] Ferramenta/integração veio de fonte oficial ou aprovada.
+- [ ] Login realizado sem expor senha no projeto.
+- [ ] Permissões foram lidas.
+- [ ] Teste feito em projeto pequeno.
+- [ ] Nenhum segredo foi enviado.
+- [ ] Nenhum código corporativo sensível foi enviado.
+- [ ] Sugestão revisada antes de aceitar.
+- [ ] `git diff` conferido após qualquer alteração.
+```
+
+### Regra desta formação
+
+```text
+IA ajuda.
+IA não decide sozinha.
+IA não substitui leitura.
+IA não substitui teste.
+IA não substitui debug.
+IA não substitui responsabilidade.
+```
+
+---
+
 ## Onde estamos na formação
 
 Até aqui, a formação já preparou uma base importante:

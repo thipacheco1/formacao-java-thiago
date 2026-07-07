@@ -15,6 +15,115 @@ O conteúdo foi integrado em uma única aula mentorada para estruturar o reposit
 
 ---
 
+## Complemento operacional — consolidar ferramentas instaladas dentro do repositório
+
+
+> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
+> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
+
+
+Esta aula organiza o repositório do curso. O complemento abaixo conecta essa estrutura com as ferramentas já instaladas no Módulo 0.
+
+### Arquivo obrigatório: `docs/ambiente.md`
+
+Crie ou atualize:
+
+```text
+docs/ambiente.md
+```
+
+Modelo recomendado:
+
+```markdown
+# Ambiente de desenvolvimento
+
+## Pastas
+
+- Pasta base: `C:\dev`
+- Projetos: `C:\dev\projects`
+- Ferramentas manuais: `C:\dev\tools`
+
+## Java
+
+- `java -version`: validado
+- `javac -version`: validado
+- `JAVA_HOME`: configurado sem expor caminho sensível desnecessário
+
+## IntelliJ IDEA Community
+
+- Instalado: sim
+- Project SDK: JDK usado no curso
+- Terminal integrado: validado
+
+## Git e GitHub
+
+- `git --version`: validado
+- `user.name`: configurado
+- `user.email`: configurado
+- Remoto `origin`: configurado
+
+## Maven
+
+- `mvn -version`: validado
+- `MAVEN_HOME`: configurado, se instalação manual
+
+## PostgreSQL e DBeaver
+
+- PostgreSQL local: preparado
+- Database de estudo: `formacao_java`
+- Senha: não documentada
+
+## Postman ou Insomnia
+
+- Ferramenta escolhida:
+- Collection de estudo:
+- Environment local:
+
+## Docker e WSL2
+
+- `wsl --status`: validado
+- `docker run hello-world`: validado
+```
+
+### `.gitignore` reforçado
+
+Garanta que o `.gitignore` bloqueie:
+
+```gitignore
+target/
+build/
+.gradle/
+*.class
+out/
+.idea/
+*.iml
+.env
+.env.*
+!.env.example
+*.log
+```
+
+### Critério operacional atualizado
+
+```markdown
+## Repositório de curso validado
+
+- [ ] `README.md` existe.
+- [ ] `.gitignore` existe.
+- [ ] `docs/ambiente.md` existe.
+- [ ] `docs/diario-de-bordo.md` existe.
+- [ ] `docs/checklist-ambiente.md` existe.
+- [ ] `src/main/java` existe.
+- [ ] `src/test/java` existe.
+- [ ] `labs` existe.
+- [ ] `.gitignore` bloqueia arquivos gerados.
+- [ ] `.gitignore` bloqueia segredos.
+- [ ] Ambiente instalado foi registrado sem senhas reais.
+- [ ] `git status` está limpo ou contém apenas mudanças intencionais.
+```
+
+---
+
 ## Onde estamos na formação
 
 Estamos seguindo a ordem oficial do Módulo 0.
