@@ -468,16 +468,24 @@ const parseMarkdownIntoSections = (markdown) => {
   
   if (intro.startsWith('\n')) intro = intro.substring(1);
   
-  sections.push({
-    title: "Introdução",
-    content: intro
-  });
+  if (intro) {
+    sections.push({
+      title: "Introdução",
+      content: intro
+    });
+  }
   
   for (let i = 1; i < parts.length; i++) {
     const lines = parts[i].split('\n');
     const title = lines[0].trim();
     const content = lines.slice(1).join('\n').trim();
     if (title || content) {
+      // Skip "Cobertura da Grade Operacional" topics
+      const cleanTitle = title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (cleanTitle.includes("cobertura da grade operacional")) {
+        continue;
+      }
+
       sections.push({
         title: title,
         content: content
