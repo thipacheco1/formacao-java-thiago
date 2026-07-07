@@ -1,20 +1,5 @@
 # 034 — M1.14 — Incremento, decremento e acumuladores
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.14.01` — Incremento, decremento e acumuladores — Conceito, por que existe e vocabulário essencial.
-- `M1.14.02` — Incremento, decremento e acumuladores — Exemplo mínimo digitado do zero.
-- `M1.14.03` — Incremento, decremento e acumuladores — Exemplo aplicado ao domínio corporativo.
-- `M1.14.04` — Incremento, decremento e acumuladores — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `++`, `--`, contadores, totalizadores, acumuladores, padrões de loop, diferença entre incremento pré e pós, clareza, armadilhas, diagnóstico e aplicação em cenários de pedido, produto, OS, pagamento, auditoria e mensageria.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.

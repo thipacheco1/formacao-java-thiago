@@ -1,20 +1,5 @@
 # 094 — M3.05 — Retorno boolean para validação
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M3.05.01` — Retorno boolean para validação — Conceito profundo e quando usar.
-- `M3.05.02` — Retorno boolean para validação — Implementação guiada com código realista.
-- `M3.05.03` — Retorno boolean para validação — Refatoração, melhoria e leitura crítica.
-- `M3.05.04` — Retorno boolean para validação — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `isValido`, `podeProcessar`, regras simples, mensagens, retorno boolean, quando `boolean` é suficiente, quando começa a ficar limitado, nomes profissionais, separação entre validar e explicar erro, refatoração incremental e aplicação em cliente, produto, pedido, pagamento, OS, mensageria e auditoria.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.
@@ -96,29 +81,6 @@ public static boolean clienteValido(String nome, String email) {
 Esse padrão é simples, útil e aparece muito em código real.
 
 Mas também tem limites.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-094 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 94
-Aulas oficiais restantes: 444
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-95 arquivos gerados no total.
-```
 
 ---
 

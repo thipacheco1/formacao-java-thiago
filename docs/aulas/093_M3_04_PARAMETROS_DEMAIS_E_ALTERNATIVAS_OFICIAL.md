@@ -1,20 +1,5 @@
 # 093 — M3.04 — Parâmetros demais e alternativas
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M3.04.01` — Parâmetros demais e alternativas — Conceito profundo e quando usar.
-- `M3.04.02` — Parâmetros demais e alternativas — Implementação guiada com código realista.
-- `M3.04.03` — Parâmetros demais e alternativas — Refatoração, melhoria e leitura crítica.
-- `M3.04.04` — Parâmetros demais e alternativas — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar agrupamento, objeto futuro, clareza, cheiro de código, métodos com parâmetros demais, alternativas simples, uso de `record` como agrupamento inicial, cuidado com boolean misterioso, ordem de parâmetros, leitura crítica, refatoração incremental e aplicação em cenários de cliente, produto, pedido, pagamento, OS, mensageria e auditoria.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.
@@ -91,29 +76,6 @@ métodos com parâmetros demais.
 ```
 
 Esse problema aparece cedo em código procedural e aparece de novo em backend real, em métodos de service, validação, montagem de DTO, logs, auditoria, mensageria e chamadas de integração.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-093 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 93
-Aulas oficiais restantes: 445
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-94 arquivos gerados no total.
-```
 
 ---
 

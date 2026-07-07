@@ -1,20 +1,5 @@
 # 035 — M1.15 — If, else if e else
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.15.01` — If, else if e else — Conceito, por que existe e vocabulário essencial.
-- `M1.15.02` — If, else if e else — Exemplo mínimo digitado do zero.
-- `M1.15.03` — If, else if e else — Exemplo aplicado ao domínio corporativo.
-- `M1.15.04` — If, else if e else — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar decisão, fluxo, validações, mensagens, condições simples, `if`, `else`, `else if`, ordem de avaliação, múltiplos caminhos, erros comuns, diagnóstico, debug e aplicações em cliente, produto, pedido, pagamento, OS, mensageria e auditoria.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.

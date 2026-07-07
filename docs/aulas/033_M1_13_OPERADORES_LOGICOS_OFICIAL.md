@@ -1,20 +1,5 @@
 # 033 — M1.13 — Operadores lógicos
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M1.13.01` — Operadores lógicos — Conceito, por que existe e vocabulário essencial.
-- `M1.13.02` — Operadores lógicos — Exemplo mínimo digitado do zero.
-- `M1.13.03` — Operadores lógicos — Exemplo aplicado ao domínio corporativo.
-- `M1.13.04` — Operadores lógicos — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar `&&`, `||`, `!`, curto-circuito, combinações de condições, clareza na escrita de regras, diagnóstico de expressões booleanas e aplicação em cenários de cliente, pedido, pagamento, OS, acesso, auditoria e mensageria.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.

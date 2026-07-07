@@ -1,20 +1,5 @@
 # 092 — M3.03 — Coesão em métodos
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M3.03.01` — Coesão em métodos — Conceito profundo e quando usar.
-- `M3.03.02` — Coesão em métodos — Implementação guiada com código realista.
-- `M3.03.03` — Coesão em métodos — Refatoração, melhoria e leitura crítica.
-- `M3.03.04` — Coesão em métodos — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar que um método deve fazer uma coisa principal, com tamanho adequado, nomes claros, separação de responsabilidades, baixo nível de mistura, leitura crítica, refatoração incremental, diagnóstico, aplicação em domínio corporativo e validação com diário e commit.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.
@@ -86,29 +71,6 @@ o método realmente faz uma coisa só?
 Essa pergunta é essencial.
 
 Um método pode ter nome bonito, assinatura bonita e ainda assim ser ruim por dentro.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-092 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 92
-Aulas oficiais restantes: 446
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-93 arquivos gerados no total.
-```
 
 ---
 

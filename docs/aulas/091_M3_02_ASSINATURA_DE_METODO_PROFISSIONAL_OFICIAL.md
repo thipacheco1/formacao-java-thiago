@@ -1,20 +1,5 @@
 # 091 — M3.02 — Assinatura de método profissional
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M3.02.01` — Assinatura de método profissional — Conceito profundo e quando usar.
-- `M3.02.02` — Assinatura de método profissional — Implementação guiada com código realista.
-- `M3.02.03` — Assinatura de método profissional — Refatoração, melhoria e leitura crítica.
-- `M3.02.04` — Assinatura de método profissional — Exercício solo, perguntas e critério de aprovação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para ensinar nome, parâmetros, retorno, ordem, tipo, intenção, legibilidade, trade-offs, armadilhas, refatoração de assinaturas ruins, aplicação em domínio corporativo, exercícios, diagnóstico, diário e commit.
-
----
-
 ## Pré-requisito de ambiente
 
 Esta aula não exige instalação nova.
@@ -82,29 +67,6 @@ Não basta extrair método.
 É preciso criar métodos com assinaturas boas.
 
 Uma assinatura ruim deixa o código confuso mesmo quando o método é pequeno.
-
----
-
-## Progresso geral do curso
-
-Neste momento, estamos gerando a aula oficial:
-
-```text
-091 de 538
-```
-
-Após esta aula:
-
-```text
-Aulas oficiais concluídas: 91
-Aulas oficiais restantes: 447
-```
-
-Contando o arquivo de abertura `000`, teremos:
-
-```text
-92 arquivos gerados no total.
-```
 
 ---
 
