@@ -1,19 +1,5 @@
 # 001 — M0.01 — Mapa da Formação Completa e Níveis de Carreira Java
 
-## Cobertura da grade operacional
-
-Esta aula cobre integralmente as sessões da grade v4.1:
-
-- `M0.01.01` — Mapa da formação completa e níveis de carreira Java — Conceito, por que existe e vocabulário essencial.
-- `M0.01.02` — Mapa da formação completa e níveis de carreira Java — Exemplo mínimo digitado do zero.
-- `M0.01.03` — Mapa da formação completa e níveis de carreira Java — Exemplo aplicado ao domínio corporativo.
-- `M0.01.04` — Mapa da formação completa e níveis de carreira Java — Erros comuns, diagnóstico e perguntas de fixação.
-
-Nada dessas sessões foi removido.
-
-O conteúdo foi integrado em uma única aula mentorada para evitar repetição artificial e manter a explicação mais natural, completa e conectada.
-
----
 
 ## Hoje a aula é sobre o mapa inteiro
 
