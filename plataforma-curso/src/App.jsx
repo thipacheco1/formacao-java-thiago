@@ -9,6 +9,13 @@ function App() {
   const [lessons, setLessons] = useState([]);
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  
+  // User Authentication State
+  const [currentUser, setCurrentUser] = useState(() => {
+    const saved = localStorage.getItem('currentUser');
+    return saved ? JSON.parse(saved) : null;
+  });
   
   // State for sidebar width & collapse
   const [sidebarWidth, setSidebarWidth] = useState(() => {
@@ -21,22 +28,52 @@ function App() {
   });
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // State for completed lessons using localStorage
+  // State for completed lessons using user-specific localStorage key
   const [completedLessons, setCompletedLessons] = useState(() => {
-    const saved = localStorage.getItem('completedLessons');
+    const savedUser = localStorage.getItem('currentUser');
+    const user = savedUser ? JSON.parse(savedUser) : null;
+    const progressKey = user 
+      ? `completedLessons_${user.email.toLowerCase()}` 
+      : 'completedLessons_visitor';
+    const saved = localStorage.getItem(progressKey);
     return saved ? JSON.parse(saved) : {};
   });
 
-  // Save to localStorage whenever it changes
+  // Save to localStorage whenever it changes, linked to the active user profile
   useEffect(() => {
-    localStorage.setItem('completedLessons', JSON.stringify(completedLessons));
-  }, [completedLessons]);
+    const progressKey = currentUser 
+      ? `completedLessons_${currentUser.email.toLowerCase()}` 
+      : 'completedLessons_visitor';
+    localStorage.setItem(progressKey, JSON.stringify(completedLessons));
+  }, [completedLessons, currentUser]);
 
   const toggleLessonCompleted = (lessonId) => {
     setCompletedLessons(prev => ({
       ...prev,
       [lessonId]: !prev[lessonId]
     }));
+  };
+
+  const handleLoginSuccess = (user) => {
+    setCurrentUser(user);
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    
+    // Load progress for this user
+    const progressKey = `completedLessons_${user.email.toLowerCase()}`;
+    const saved = localStorage.getItem(progressKey);
+    setCompletedLessons(saved ? JSON.parse(saved) : {});
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('currentUser');
+    
+    // Load visitor progress
+    const saved = localStorage.getItem('completedLessons_visitor');
+    setCompletedLessons(saved ? JSON.parse(saved) : {});
+    
+    // Return to landing page on logout
+    setSelectedLesson(null);
   };
 
   const selectedLessonIndex = selectedLesson ? lessons.findIndex(l => l.id === selectedLesson.id) : -1;
@@ -106,6 +143,9 @@ function App() {
             }}
             isMobileOpen={isMobileSidebarOpen}
             setIsMobileOpen={setIsMobileSidebarOpen}
+            currentUser={currentUser}
+            onLogout={handleLogout}
+            onOpenAuthModal={() => setIsAuthModalOpen(true)}
           />
           <main className="main-content">
             {/* Mobile Header Navbar */}
@@ -152,6 +192,12 @@ function App() {
               )}
             </div>
           </main>
+
+          <AuthModal 
+            isOpen={isAuthModalOpen} 
+            onClose={() => setIsAuthModalOpen(false)} 
+            onLoginSuccess={handleLoginSuccess}
+          />
         </>
       )}
     </div>

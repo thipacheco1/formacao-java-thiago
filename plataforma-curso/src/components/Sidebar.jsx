@@ -12,7 +12,10 @@ const Sidebar = ({
   isCollapsed,
   setIsCollapsed,
   isMobileOpen,
-  setIsMobileOpen
+  setIsMobileOpen,
+  currentUser,
+  onLogout,
+  onOpenAuthModal
 }) => {
   const [collapsedGroups, setCollapsedGroups] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
@@ -196,6 +199,33 @@ const Sidebar = ({
           </div>
         )}
       </div>
+
+      {/* User Auth Section at the bottom */}
+      {!isCollapsed && (
+        <div className="sidebar-footer">
+          {currentUser ? (
+            <div className="user-profile-card">
+              <div className="user-avatar" title={currentUser.name}>
+                {currentUser.name.charAt(0).toUpperCase()}
+              </div>
+              <div className="user-info">
+                <span className="user-name">{currentUser.name}</span>
+                <span className="user-email">{currentUser.email}</span>
+              </div>
+              <button onClick={onLogout} className="logout-btn" title="Sair da conta">
+                Sair
+              </button>
+            </div>
+          ) : (
+            <div className="auth-prompt-card">
+              <p className="auth-prompt-text">Salve seu progresso de estudos.</p>
+              <button onClick={onOpenAuthModal} className="login-trigger-btn">
+                Entrar / Cadastrar
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Resizer bar */}
       {!isCollapsed && (
