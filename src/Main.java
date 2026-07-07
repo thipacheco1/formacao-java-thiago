@@ -1,50 +1,30 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        String[] clientes = {"Maria", "", "Carlos", "Ana", ""};
 
-        System.out.println("Digite a quantidade de atividades:");
-        int quantidadeAtividades = scanner.nextInt();
+        int clientesValidos = 0;
+        int clientesInvalidos = 0;
 
-        while (quantidadeAtividades <= 0) {
-            System.out.println("Quantidade inválida. Digite novamente:");
-            quantidadeAtividades = scanner.nextInt();
-        }
+        for (int indice = 0; indice < clientes.length; indice++) {
+            String cliente = clientes[indice];
 
-        double[] atividades = new double[quantidadeAtividades];
+            if (cliente.isEmpty()) {
+                clientesInvalidos++;
 
-        for (int indice = 0; indice < atividades.length; indice++) {
-            System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
-            atividades[indice] = scanner.nextDouble();
-        }
-
-        double total = 0.0;
-        int atividadesValidas = 0;
-        int atividadesInvalidas = 0;
-
-        System.out.println("----- Atividades informadas -----");
-
-        for (int indice = 0; indice < atividades.length; indice++) {
-            double valorAtividade = atividades[indice];
-
-            if (valorAtividade > 0) {
-                total = total + valorAtividade;
-                atividadesValidas++;
-
-                System.out.println("Atividade " + (indice + 1) + " válida: R$ " + valorAtividade);
+                System.out.println("Cliente na posição " + indice + " inválido. Nome vazio.");
             } else {
-                atividadesInvalidas++;
+                clientesValidos++;
 
-                System.out.println("Atividade " + (indice + 1) + " inválida: R$ " + valorAtividade);
+                System.out.println("Cliente na posição " + indice + " válido: " + cliente);
+
+                if (cliente.equals("Carlos")) {
+                    System.out.println("Cliente Carlos encontrado para validação especial.");
+                }
             }
         }
 
         System.out.println("----- Resumo -----");
-        System.out.println("Total final: R$ " + total);
-        System.out.println("Atividades válidas: " + atividadesValidas);
-        System.out.println("Atividades inválidas: " + atividadesInvalidas);
-
-        scanner.close();
+        System.out.println("Clientes válidos: " + clientesValidos);
+        System.out.println("Clientes inválidos: " + clientesInvalidos);
     }
 }

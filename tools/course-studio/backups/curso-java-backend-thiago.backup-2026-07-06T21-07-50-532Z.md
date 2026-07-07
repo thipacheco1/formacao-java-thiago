@@ -214,94 +214,76 @@ Ele é o material didático completo do curso.
 ## Aula 1.1 — Modelo da formação
 
 ### Objetivo
+Compreender a metodologia de estudo ativa e prática que será aplicada ao longo de toda a formação Java Backend, preparando-se para os desafios do mercado de desenvolvimento corporativo.
 
-Entender como a formação será conduzida.
+### Conceito principal: Estudo Orientado por Projeto (Project-Based Learning)
+Neste modelo de formação, você não é apenas um espectador de slides ou tutoriais passivos. Em vez disso, você atua como um engenheiro em treinamento. Cada conceito teórico de Java que você aprende é imediatamente implementado, testado e documentado em um repositório profissional.
 
-### Conceito principal
+> [!NOTE]
+> **O Paradigma do Dev Ativo:**
+> Decorar comandos ou copiar e colar código gera uma falsa sensação de aprendizado. O verdadeiro aprendizado do backend ocorre quando você digita linha por linha, encontra erros, lê as mensagens do console, entende os logs e os resolve manualmente.
 
-A formação será prática, progressiva e orientada por projeto.
+### Modelo de Trabalho do Backend
+Durante o curso, as ferramentas são organizadas como engrenagens de um fluxo de desenvolvimento real:
+* **IDE (IntelliJ)**: Seu laboratório. Onde você cria projetos, codifica, compila e depura sua lógica.
+* **Git & GitHub**: Seu histórico profissional. O controle de versão documenta cada commit e evolução técnica, preparando seu portfólio para recrutadores.
+* **Documentação Progressiva**: O mapa mental e diário de bordo que ajudam na retenção do conhecimento técnico de longo prazo.
 
-O aluno não vai apenas estudar Java de forma solta. Ele vai construir um repositório real, documentado e versionado.
-
-### Modelo adotado
-
-```text
-ChatGPT       = professor / mentor / revisor
-IntelliJ      = laboratório de desenvolvimento
-Codex         = assistente futuro
-Git           = controle de versão
-GitHub        = portfólio remoto
-Documento v3  = mapa oficial da formação
-```
-
-### Aprendizado importante
-
-Um desenvolvedor backend profissional não depende apenas de saber escrever código.
-
-Ele também precisa saber:
-
-- Configurar ambiente.
-- Organizar projeto.
-- Versionar alterações.
-- Documentar decisões.
-- Ler erros.
-- Corrigir problemas.
-- Testar cenários.
-- Evoluir o código com disciplina.
+### Relação com o Backend Real
+No mercado de trabalho, mais de 50% do tempo de um programador backend é gasto em tarefas que **não** são escrever código novo. Isso inclui configurar servidores locais, configurar Docker, corrigir erros inesperados de dependências, documentar APIs e versionar alterações no Git. Esta formação simula exatamente essa rotina desde o primeiro dia.
 
 ---
 
 ## Aula 1.2 — Instalação e validação do JDK 21
 
 ### Objetivo
+Instalar o Kit de Desenvolvimento Java (JDK 21 LTS), configurar as variáveis de ambiente e validar a capacidade do sistema operacional de compilar e executar bytecode Java.
 
-Instalar o Java JDK e validar se o ambiente consegue compilar e executar código Java.
-
-### O que é JDK
-
-JDK significa **Java Development Kit**.
-
-Ele é o kit necessário para desenvolver em Java.
-
-Inclui:
-
-- Compilador Java (`javac`).
-- Máquina virtual Java (`java`).
-- Bibliotecas padrão.
-- Ferramentas de desenvolvimento.
-
-### O que é JRE
-
-JRE significa **Java Runtime Environment**.
-
-Ele serve para executar aplicações Java, mas não necessariamente para desenvolvê-las.
-
-### O que é JVM
-
-JVM significa **Java Virtual Machine**.
-
-É a máquina virtual que executa o bytecode Java.
-
-Fluxo simplificado:
+### Conceito Principal: A Tríade do Java (JVM, JRE e JDK)
+Para entender como o Java funciona por baixo dos panos, use a analogia de uma **Confeitaria**:
 
 ```text
-Código .java
-   ↓ compilação com javac
-Arquivo .class
-   ↓ execução pela JVM
-Programa rodando
++-------------------------------------------------------------+
+|                     JDK (O Kit do Chef)                     |
+|  Contém as receitas (APIs), ferramentas (javac) e a cozinha |
+|  +-------------------------------------------------------+  |
+|  |                  JRE (A Cozinha Montada)              |  |
+|  |  Espaço físico com mesa, pratos e talheres de suporte |  |
+|  |  +-------------------------------------------------+  |  |
+|  |  |                JVM (O Forno Ativo)              |  |  |
+|  |  |  Onde a massa assa e vira bolo (Executa bytecode)|  |  |
+|  |  +-------------------------------------------------+  |  |
+|  +-------------------------------------------------------+  |
++-------------------------------------------------------------+
 ```
 
-### Validação realizada
+1. **JVM (Java Virtual Machine)**: É a máquina virtual. Ela lê o arquivo compilado (`.class`) e o traduz para a linguagem binária específica do sistema onde está rodando (Windows, Linux, macOS). É graças a ela que o Java é multiplataforma.
+2. **JRE (Java Runtime Environment)**: É o ambiente mínimo para rodar programas Java. Contém a JVM e as bibliotecas essenciais de suporte (telas, rede, arquivos). **Nota:** Usuários comuns precisam apenas da JRE instalada.
+3. **JDK (Java Development Kit)**: É o kit completo para desenvolvedores. Contém a JRE, a JVM e as ferramentas de desenvolvimento, como o compilador `javac` (que transforma arquivos `.java` em `.class`).
 
-Foram executados:
+### O Fluxo da Compilação
+Ao contrário de linguagens como C (que compilam direto para código de máquina) ou JavaScript (que são interpretadas linha por linha), o Java usa um modelo híbrido:
+
+```text
+[MeuCodigo.java] --(javac Compilador)--> [MeuCodigo.class (Bytecode)] --(JVM Execução)--> [Execução Física]
+```
+
+> [!WARNING]
+> **Pegadinha do Iniciante: javac vs java**
+> - O comando `javac` é usado para **compilar** (transformar texto em código intermediário - bytecode).
+> - O comando `java` é usado para **executar** o bytecode compilado.
+> Se você tentar rodar `java Arquivo.java` diretamente em versões mais antigas ou sem as configurações corretas, poderá ter erros de execução.
+
+### Comandos de Validação no Terminal
+Após instalar o JDK 21 LTS (Eclipse Temurin), você deve validar as versões no terminal:
 
 ```bash
 java -version
 javac -version
 ```
 
-Se ambos funcionam, o ambiente Java está pronto para desenvolvimento.
+Se ambos os comandos retornarem a versão `21.x`, significa que o seu sistema operacional local reconhece o compilador e a máquina virtual.
+
 
 ---
 
@@ -315,9 +297,11 @@ Criar o primeiro projeto Java no IntelliJ e executar o primeiro programa.
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Thiago começou a formação Java Backend.");
-    }
+```java
+public static void main(String[] args) {
+    System.out.println("Thiago começou a formação Java Backend.");
+}
+```
 }
 ```
 
@@ -370,9 +354,11 @@ Entender a estrutura básica do primeiro programa Java.
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Olá, Java!");
-    }
+```java
+public static void main(String[] args) {
+    System.out.println("Olá, Java!");
+}
+```
 }
 ```
 
@@ -390,7 +376,9 @@ Exemplo:
 
 ```java
 public class Main {
-    // conteúdo da classe
+```java
+// conteúdo da classe
+```
 }
 ```
 
@@ -681,250 +669,128 @@ A partir desse ponto, o projeto passou a existir localmente e remotamente.
 
 ### Objetivo
 
-Validar a estrutura do projeto e garantir que apenas arquivos corretos estavam versionados.
-
-### Comando usado
-
-```bash
-git ls-files
-```
-
-### Resultado esperado
-
-```text
-.gitignore
-README.md
-docs/atalhos.txt
-docs/diario-de-bordo.md
-src/Main.java
-```
-
-### Aprendizado
-
-Nem tudo deve entrar no Git.
-
-Arquivos de código e documentação entram.
-
-Arquivos gerados, compilados ou específicos da IDE ficam fora.
-
----
-
-# Módulo 2 — Fundamentos iniciais de Java
-
-## Aula 2.1 — Variáveis em Java
+Validar a estrutura do projeto e garantir que apenas ar## Aula 2.1 — Variáveis em Java
 
 ### Objetivo
+Compreender o conceito de variáveis em Java, como elas ocupam espaço na memória do computador e como declará-las de forma correta utilizando a sintaxe de tipagem forte da linguagem.
 
-Entender o que são variáveis e como criar variáveis em Java.
+### Conceito Principal: Variável como uma Caixa Etiquetada
+Imagine a memória RAM do computador como uma gigantesca central de armários com milhares de gavetas vazias. Uma **variável** é como reservar uma dessas gavetas, colocar uma etiqueta nela (nome da variável) e definir o que pode ser guardado lá dentro (tipo da variável).
 
-### O que é uma variável
+Como o Java é uma linguagem **fortemente tipada**, as regras são rígidas:
+* Se você declarou que a gaveta guarda um número inteiro (`int`), você **não** pode tentar enfiar um texto lá dentro. Isso seria o equivalente a tentar colocar sopa em uma caixa de sapatos. O compilador acusará erro imediatamente.
 
-Variável é um espaço na memória que guarda um valor.
-
-Toda variável em Java tem:
-
+Todo contêiner de variável precisa de três elementos:
 ```text
-tipo
-nome
-valor
+  tipo          nome       valor (inicial)
+  ----         -----       ---------------
+  String       nome    =   "Thiago";
+  int          idade   =   44;
 ```
 
-Exemplo:
+> [!NOTE]
+> **A Regra do camelCase:**
+> Em Java, seguimos a convenção de nomenclatura chamada `camelCase`. A primeira palavra começa com letra minúscula e as palavras seguintes começam com letra maiúscula (ex: `anosExperienciaQa`, `pretendeVirarArquiteto`). Isso melhora drasticamente a legibilidade do código e é padrão de mercado.
 
+### Concatenação
+Para juntar texto fixo com o valor dinâmico de uma variável no console, usamos o operador `+`:
 ```java
-String nome = "Thiago";
-int idade = 44;
-boolean estudandoJava = true;
+System.out.println("Idade: " + idade); // Imprime: Idade: 44
 ```
 
-### String
-
-Usada para textos.
-
-```java
-String cidade = "Barueri";
-```
-
-Textos usam aspas duplas.
-
-### int
-
-Usado para números inteiros.
-
-```java
-int idade = 44;
-```
-
-### boolean
-
-Usado para verdadeiro ou falso.
-
-```java
-boolean estudandoJava = true;
-```
-
-### Concatenar texto com variável
-
-```java
-System.out.println("Nome: " + nome);
-```
-
-O operador `+` une texto e valor da variável.
-
-### camelCase
-
-Em Java, nomes de variáveis normalmente usam camelCase.
-
-Exemplos:
-
-```java
-String objetivoProfissional = "Engenheiro Java Backend";
-int anosExperienciaQa = 10;
-boolean estudandoJava = true;
-```
-
-### Código praticado
-
+### Código Praticado
 ```java
 public class Main {
-    public static void main(String[] args) {
-        String nome = "Thiago";
-        int idade = 44;
-        String cidade = "Barueri";
-        String profissaoAtual = "QA";
-        String objetivoProfissional = "Engenheiro Java Backend";
-        int anosExperienciaQa = 10;
-        boolean estudandoJava = true;
+```java
+public static void main(String[] args) {
+    // Declaração de variáveis representativas do perfil do Thiago
+    String nome = "Thiago";
+    int idade = 44;
+    String cidade = "Barueri";
+    String profissaoAtual = "QA";
+    String objetivoProfissional = "Engenheiro Java Backend";
+    int anosExperienciaQa = 10;
+    boolean estudandoJava = true;
 
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-        System.out.println("Cidade: " + cidade);
-        System.out.println("Profissão atual: " + profissaoAtual);
-        System.out.println("Objetivo profissional: " + objetivoProfissional);
-        System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
-        System.out.println("Está estudando Java? " + estudandoJava);
-    }
+    // Exibição dos dados organizados no console
+    System.out.println("================ PROFILE ================");
+    System.out.println("Nome: " + nome);
+    System.out.println("Idade: " + idade + " anos");
+    System.out.println("Cidade: " + cidade);
+    System.out.println("Profissão atual: " + profissaoAtual);
+    System.out.println("Objetivo profissional: " + objetivoProfissional);
+    System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
+    System.out.println("Está estudando Java? " + estudandoJava);
+    System.out.println("=========================================");
+}
+```
 }
 ```
 
-### Aprendizado
-
-Variáveis permitem que o programa trabalhe com dados.
-
-Sem variáveis, o código ficaria preso a textos e valores fixos.
+### Relação com o Backend Real
+No desenvolvimento corporativo, você usará variáveis para capturar dados enviados por formulários de usuários, armazenar registros vindos do banco de dados temporariamente antes de processá-los ou guardar tokens de autenticação durante uma requisição HTTP.
 
 ---
 
 ## Aula 2.2 — Tipos primitivos
 
 ### Objetivo
+Conhecer e diferenciar os 8 tipos de dados primitivos do Java, entendendo o espaço físico de armazenamento que ocupam e quando aplicar cada um deles para otimização de memória.
 
-Conhecer os principais tipos de dados em Java.
+### Os 8 Tipos Primitivos do Java
+Java divide seus tipos básicos de dados em 8 categorias nativas directas na memória (não são objetos):
 
-### Tipos primitivos
+| Categoria | Tipo | Espaço em Memória | Faixa de Valores | Exemplo de Uso |
+| :--- | :--- | :--- | :--- | :--- |
+| **Inteiros** | `byte` | 8 bits | -128 a 127 | Status de sistema, pequenos códigos |
+| | `short` | 16 bits | -32.768 a 32.767 | Pequenos contadores locais |
+| | `int` | 32 bits | ~2 bilhões (Padrão) | Idades, IDs numéricos simples |
+| | `long` | 64 bits | Bilhões de bilhões | IDs de banco de dados, timestamp |
+| **Decimais** | `float` | 32 bits | Precisão simples | Alturas, pesos (precisa de sufixo `F`) |
+| | `double` | 64 bits | Precisão dupla (Padrão) | Preços, porcentagens, taxas |
+| **Caractere** | `char` | 16 bits | Um único caractere Unicode | Letra inicial, gênero ('M'/'F') |
+| **Lógico** | `boolean`| 1 bit | `true` ou `false` | Flags de controle, ativação de conta |
 
-Java possui 8 tipos primitivos:
+> [!IMPORTANT]
+> **A Diferença Crucial: String vs Tipos Primitivos**
+> Note que `String` **não** está nesta lista. `String` é uma Classe (um tipo objeto/referência) em Java, por isso ela começa com letra maiúscula `S`. Tipos primitivos começam sempre com letra minúscula (ex: `int`, `double`, `boolean`).
 
-```text
-byte
-short
-int
-long
-float
-double
-char
-boolean
-```
+> [!WARNING]
+> **Pegadinhas Comuns com Primitivos:**
+> 1. **O sufixo F**: Ao declarar um `float`, o compilador assume por padrão que qualquer número com ponto decimal é um `double`. Por isso, você DEVE colocar a letra `F` no final:
+>    `float peso = 90.0F;` (sem o `F`, o código não compila!).
+> 2. **Aspas simples vs Aspas duplas**: 
+>    - `char` usa aspas simples: `char inicial = 'T';`
+>    - `String` usa aspas duplas: `String nome = "Thiago";`
+>    Inverter isso causa erro de tipo na compilação.
 
-### int
-
-Números inteiros.
-
-```java
-int idade = 44;
-```
-
-### double
-
-Números decimais.
-
-```java
-double altura = 1.79;
-```
-
-### float
-
-Número decimal com menor precisão que `double`.
-
-Precisa usar `F` no final.
-
-```java
-float peso = 90.0F;
-```
-
-### long
-
-Número inteiro maior.
-
-Por convenção, pode usar `L` no final.
-
-```java
-long populacao = 210000000L;
-```
-
-### char
-
-Um único caractere.
-
-Usa aspas simples.
-
-```java
-char inicial = 'T';
-```
-
-### boolean
-
-Verdadeiro ou falso.
-
-```java
-boolean ativo = true;
-```
-
-### String não é tipo primitivo
-
-`String` é uma classe, não um tipo primitivo.
-
-Mas é muito usada para texto.
-
-```java
-String nome = "Thiago";
-```
-
-### Código praticado
-
+### Código Praticado
 ```java
 public class Main {
-    public static void main(String[] args) {
-        String nomeCompleto = "Thiago Pacheco";
-        int idade = 44;
-        double altura = 1.79;
-        float peso = 90.0F;
-        char inicialSobrenome = 'P';
-        int quantidadeFilhos = 2;
-        int anosExperienciaQa = 10;
-        boolean estudaJava = true;
-        boolean pretendeVirarArquiteto = true;
+```java
+public static void main(String[] args) {
+    // Uso intencional de múltiplos tipos de dados primitivos e a classe String
+    String nomeCompleto = "Thiago Pacheco";
+    int idade = 44;
+    double altura = 1.79;
+    float peso = 90.0F; // Atenção ao sufixo 'F'
+    char inicialSobrenome = 'P'; // Aspas simples para char
+    int quantidadeFilhos = 2;
+    int anosExperienciaQa = 10;
+    boolean estudaJava = true;
+    boolean pretendeVirarArquiteto = true;
 
-        System.out.println("Nome completo: " + nomeCompleto);
-        System.out.println("Idade: " + idade);
-        System.out.println("Altura: " + altura);
-        System.out.println("Peso: " + peso);
-        System.out.println("Inicial do sobrenome: " + inicialSobrenome);
-        System.out.println("Quantidade de filhos: " + quantidadeFilhos);
-        System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
-        System.out.println("Estuda Java? " + estudaJava);
-        System.out.println("Pretende virar Arquiteto Java? " + pretendeVirarArquiteto);
-    }
+    System.out.println("Nome completo: " + nomeCompleto);
+    System.out.println("Idade: " + idade + " anos");
+    System.out.println("Altura: " + altura + "m");
+    System.out.println("Peso: " + peso + "kg");
+    System.out.println("Inicial do sobrenome: " + inicialSobrenome);
+    System.out.println("Quantidade de filhos: " + quantidadeFilhos);
+    System.out.println("Anos de experiência com QA: " + anosExperienciaQa);
+    System.out.println("Estuda Java? " + estudaJava);
+    System.out.println("Pretende virar Arquiteto Java? " + pretendeVirarArquiteto);
+}
+```
 }
 ```
 
@@ -1028,24 +894,26 @@ Isso evita problemas de precisão.
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        double valorPorServico = 120.50;
-        int quantidadeServicos = 8;
-        double bonus = 150.00;
-        double desconto = 80.00;
+```java
+public static void main(String[] args) {
+    double valorPorServico = 120.50;
+    int quantidadeServicos = 8;
+    double bonus = 150.00;
+    double desconto = 80.00;
 
-        double totalBruto = valorPorServico * quantidadeServicos;
-        double totalComBonus = totalBruto + bonus;
-        double totalFinal = totalComBonus - desconto;
+    double totalBruto = valorPorServico * quantidadeServicos;
+    double totalComBonus = totalBruto + bonus;
+    double totalFinal = totalComBonus - desconto;
 
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Total bruto: R$ " + totalBruto);
-        System.out.println("Bônus: R$ " + bonus);
-        System.out.println("Total com bônus: R$ " + totalComBonus);
-        System.out.println("Desconto: R$ " + desconto);
-        System.out.println("Total final: R$ " + totalFinal);
-    }
+    System.out.println("Valor por serviço: R$ " + valorPorServico);
+    System.out.println("Quantidade de serviços: " + quantidadeServicos);
+    System.out.println("Total bruto: R$ " + totalBruto);
+    System.out.println("Bônus: R$ " + bonus);
+    System.out.println("Total com bônus: R$ " + totalComBonus);
+    System.out.println("Desconto: R$ " + desconto);
+    System.out.println("Total final: R$ " + totalFinal);
+}
+```
 }
 ```
 
@@ -1133,24 +1001,26 @@ idade == 18
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        String nomeTecnico = "Carlos";
-        int quantidadeServicos = 8;
-        int metaServicos = 10;
-        double valorPorServico = 120.50;
-        double bonusMeta = 200.00;
+```java
+public static void main(String[] args) {
+    String nomeTecnico = "Carlos";
+    int quantidadeServicos = 8;
+    int metaServicos = 10;
+    double valorPorServico = 120.50;
+    double bonusMeta = 200.00;
 
-        boolean atingiuMeta = quantidadeServicos >= metaServicos;
-        double totalSemBonus = quantidadeServicos * valorPorServico;
+    boolean atingiuMeta = quantidadeServicos >= metaServicos;
+    double totalSemBonus = quantidadeServicos * valorPorServico;
 
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Meta de serviços: " + metaServicos);
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Total sem bônus: R$ " + totalSemBonus);
-        System.out.println("Bônus da meta: R$ " + bonusMeta);
-        System.out.println("Atingiu a meta? " + atingiuMeta);
-    }
+    System.out.println("Técnico: " + nomeTecnico);
+    System.out.println("Quantidade de serviços: " + quantidadeServicos);
+    System.out.println("Meta de serviços: " + metaServicos);
+    System.out.println("Valor por serviço: R$ " + valorPorServico);
+    System.out.println("Total sem bônus: R$ " + totalSemBonus);
+    System.out.println("Bônus da meta: R$ " + bonusMeta);
+    System.out.println("Atingiu a meta? " + atingiuMeta);
+}
+```
 }
 ```
 
@@ -1220,22 +1090,24 @@ true
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        String nomeUsuario = "Thiago";
-        boolean usuarioAtivo = true;
-        boolean senhaCorreta = true;
-        boolean possuiPermissao = true;
-        boolean contaBloqueada = false;
+```java
+public static void main(String[] args) {
+    String nomeUsuario = "Thiago";
+    boolean usuarioAtivo = true;
+    boolean senhaCorreta = true;
+    boolean possuiPermissao = true;
+    boolean contaBloqueada = false;
 
-        boolean podeAcessarSistema = usuarioAtivo && senhaCorreta && possuiPermissao && !contaBloqueada;
+    boolean podeAcessarSistema = usuarioAtivo && senhaCorreta && possuiPermissao && !contaBloqueada;
 
-        System.out.println("Usuário: " + nomeUsuario);
-        System.out.println("Usuário ativo? " + usuarioAtivo);
-        System.out.println("Senha correta? " + senhaCorreta);
-        System.out.println("Possui permissão? " + possuiPermissao);
-        System.out.println("Conta bloqueada? " + contaBloqueada);
-        System.out.println("Pode acessar o sistema? " + podeAcessarSistema);
-    }
+    System.out.println("Usuário: " + nomeUsuario);
+    System.out.println("Usuário ativo? " + usuarioAtivo);
+    System.out.println("Senha correta? " + senhaCorreta);
+    System.out.println("Possui permissão? " + possuiPermissao);
+    System.out.println("Conta bloqueada? " + contaBloqueada);
+    System.out.println("Pode acessar o sistema? " + podeAcessarSistema);
+}
+```
 }
 ```
 
@@ -1264,9 +1136,13 @@ Aprender tomada de decisão.
 
 ```java
 if (condicao) {
-    // executa se verdadeiro
+```java
+// executa se verdadeiro
+```
 } else {
-    // executa se falso
+```java
+// executa se falso
+```
 }
 ```
 
@@ -1276,11 +1152,17 @@ Permite testar várias possibilidades.
 
 ```java
 if (quantidadeServicos >= 15) {
-    System.out.println("Excelente");
+```java
+System.out.println("Excelente");
+```
 } else if (quantidadeServicos >= 10) {
-    System.out.println("Boa");
+```java
+System.out.println("Boa");
+```
 } else {
-    System.out.println("Baixa");
+```java
+System.out.println("Baixa");
+```
 }
 ```
 
@@ -1292,9 +1174,13 @@ Correto:
 
 ```java
 if (quantidadeServicos >= 15) {
-    System.out.println("Excelente");
+```java
+System.out.println("Excelente");
+```
 } else if (quantidadeServicos >= 10) {
-    System.out.println("Boa");
+```java
+System.out.println("Boa");
+```
 }
 ```
 
@@ -1302,9 +1188,13 @@ Errado:
 
 ```java
 if (quantidadeServicos >= 10) {
-    System.out.println("Boa");
+```java
+System.out.println("Boa");
+```
 } else if (quantidadeServicos >= 15) {
-    System.out.println("Excelente");
+```java
+System.out.println("Excelente");
+```
 }
 ```
 
@@ -1314,26 +1204,28 @@ No exemplo errado, um valor 16 cairia primeiro na regra `>= 10`, e nunca chegari
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        String nomeTecnico = "Carlos";
-        int quantidadeServicos = 5;
-        int metaMinima = 8;
-        int metaBoa = 12;
-        int metaExcelente = 15;
+```java
+public static void main(String[] args) {
+    String nomeTecnico = "Carlos";
+    int quantidadeServicos = 5;
+    int metaMinima = 8;
+    int metaBoa = 12;
+    int metaExcelente = 15;
 
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
+    System.out.println("Técnico: " + nomeTecnico);
+    System.out.println("Quantidade de serviços: " + quantidadeServicos);
 
-        if (quantidadeServicos >= metaExcelente) {
-            System.out.println("Performance excelente.");
-        } else if (quantidadeServicos >= metaBoa) {
-            System.out.println("Performance boa.");
-        } else if (quantidadeServicos >= metaMinima) {
-            System.out.println("Performance mínima atingida.");
-        } else {
-            System.out.println("Meta não atingida.");
-        }
+    if (quantidadeServicos >= metaExcelente) {
+        System.out.println("Performance excelente.");
+    } else if (quantidadeServicos >= metaBoa) {
+        System.out.println("Performance boa.");
+    } else if (quantidadeServicos >= metaMinima) {
+        System.out.println("Performance mínima atingida.");
+    } else {
+        System.out.println("Meta não atingida.");
     }
+}
+```
 }
 ```
 
@@ -1375,13 +1267,15 @@ Exemplos:
 ```java
 switch (variavel) {
     case 1:
-        // ação
-        break;
-    case 2:
-        // ação
-        break;
-    default:
-        // ação padrão
+```java
+// ação
+break;
+ 2:
+// ação
+break;
+ult:
+// ação padrão
+```
 }
 ```
 
@@ -1401,29 +1295,31 @@ Esse comportamento é chamado de `fall-through`.
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-        int tipoServico = 9;
+```java
+public static void main(String[] args) {
+    int tipoServico = 9;
 
-        switch (tipoServico) {
-            case 1:
-                System.out.println("Tipo de serviço: Montagem.");
-                break;
-            case 2:
-                System.out.println("Tipo de serviço: Assistência técnica.");
-                break;
-            case 3:
-                System.out.println("Tipo de serviço: Entrega.");
-                break;
-            case 4:
-                System.out.println("Tipo de serviço: Vistoria.");
-                break;
-            case 5:
-                System.out.println("Tipo de serviço: Troca.");
-                break;
-            default:
-                System.out.println("Tipo de serviço inválido.");
-        }
+    switch (tipoServico) {
+        case 1:
+            System.out.println("Tipo de serviço: Montagem.");
+            break;
+        case 2:
+            System.out.println("Tipo de serviço: Assistência técnica.");
+            break;
+        case 3:
+            System.out.println("Tipo de serviço: Entrega.");
+            break;
+        case 4:
+            System.out.println("Tipo de serviço: Vistoria.");
+            break;
+        case 5:
+            System.out.println("Tipo de serviço: Troca.");
+            break;
+        default:
+            System.out.println("Tipo de serviço inválido.");
     }
+}
+```
 }
 ```
 
@@ -1545,34 +1441,36 @@ O `scanner.nextLine()` extra limpa o Enter pendente.
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+```java
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do técnico:");
-        String nomeTecnico = scanner.nextLine();
+    System.out.println("Digite o nome do técnico:");
+    String nomeTecnico = scanner.nextLine();
 
-        System.out.println("Digite a quantidade de serviços:");
-        int quantidadeServicos = scanner.nextInt();
+    System.out.println("Digite a quantidade de serviços:");
+    int quantidadeServicos = scanner.nextInt();
 
-        System.out.println("Digite a meta de serviços:");
-        int metaServicos = scanner.nextInt();
+    System.out.println("Digite a meta de serviços:");
+    int metaServicos = scanner.nextInt();
 
-        System.out.println("Digite o valor por serviço:");
-        double valorPorServico = scanner.nextDouble();
+    System.out.println("Digite o valor por serviço:");
+    double valorPorServico = scanner.nextDouble();
 
-        boolean atingiuMeta = quantidadeServicos >= metaServicos;
-        double totalSemBonus = quantidadeServicos * valorPorServico;
+    boolean atingiuMeta = quantidadeServicos >= metaServicos;
+    double totalSemBonus = quantidadeServicos * valorPorServico;
 
-        System.out.println("----- Resultado -----");
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Meta de serviços: " + metaServicos);
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Total sem bônus: R$ " + totalSemBonus);
-        System.out.println("Atingiu a meta? " + atingiuMeta);
+    System.out.println("----- Resultado -----");
+    System.out.println("Técnico: " + nomeTecnico);
+    System.out.println("Quantidade de serviços: " + quantidadeServicos);
+    System.out.println("Meta de serviços: " + metaServicos);
+    System.out.println("Valor por serviço: R$ " + valorPorServico);
+    System.out.println("Total sem bônus: R$ " + totalSemBonus);
+    System.out.println("Atingiu a meta? " + atingiuMeta);
 
-        scanner.close();
-    }
+    scanner.close();
+}
+```
 }
 ```
 
@@ -1672,88 +1570,90 @@ menor que 5              → Baixa
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+```java
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do técnico:");
-        String nomeTecnico = scanner.nextLine();
+    System.out.println("Digite o nome do técnico:");
+    String nomeTecnico = scanner.nextLine();
 
-        System.out.println("Digite o tipo de serviço:");
-        System.out.println("1 - Montagem");
-        System.out.println("2 - Assistência técnica");
-        System.out.println("3 - Entrega");
-        System.out.println("4 - Vistoria");
-        System.out.println("5 - Troca");
-        int tipoServico = scanner.nextInt();
+    System.out.println("Digite o tipo de serviço:");
+    System.out.println("1 - Montagem");
+    System.out.println("2 - Assistência técnica");
+    System.out.println("3 - Entrega");
+    System.out.println("4 - Vistoria");
+    System.out.println("5 - Troca");
+    int tipoServico = scanner.nextInt();
 
-        System.out.println("Digite a quantidade de serviços:");
-        int quantidadeServicos = scanner.nextInt();
+    System.out.println("Digite a quantidade de serviços:");
+    int quantidadeServicos = scanner.nextInt();
 
-        System.out.println("Digite a meta de serviços:");
-        int metaServicos = scanner.nextInt();
+    System.out.println("Digite a meta de serviços:");
+    int metaServicos = scanner.nextInt();
 
-        System.out.println("Digite o valor por serviço:");
-        double valorPorServico = scanner.nextDouble();
+    System.out.println("Digite o valor por serviço:");
+    double valorPorServico = scanner.nextDouble();
 
-        System.out.println("O técnico está ativo? true/false");
-        boolean tecnicoAtivo = scanner.nextBoolean();
+    System.out.println("O técnico está ativo? true/false");
+    boolean tecnicoAtivo = scanner.nextBoolean();
 
-        System.out.println("O técnico possui bloqueio? true/false");
-        boolean possuiBloqueio = scanner.nextBoolean();
+    System.out.println("O técnico possui bloqueio? true/false");
+    boolean possuiBloqueio = scanner.nextBoolean();
 
-        String descricaoTipoServico;
+    String descricaoTipoServico;
 
-        switch (tipoServico) {
-            case 1:
-                descricaoTipoServico = "Montagem";
-                break;
-            case 2:
-                descricaoTipoServico = "Assistência técnica";
-                break;
-            case 3:
-                descricaoTipoServico = "Entrega";
-                break;
-            case 4:
-                descricaoTipoServico = "Vistoria";
-                break;
-            case 5:
-                descricaoTipoServico = "Troca";
-                break;
-            default:
-                descricaoTipoServico = "Tipo inválido";
-        }
-
-        double totalBruto = quantidadeServicos * valorPorServico;
-        boolean atingiuMeta = quantidadeServicos >= metaServicos;
-        boolean podeReceberBonus = atingiuMeta && tecnicoAtivo && !possuiBloqueio;
-
-        String classificacaoPerformance;
-
-        if (quantidadeServicos >= 15) {
-            classificacaoPerformance = "Excelente";
-        } else if (quantidadeServicos >= 10) {
-            classificacaoPerformance = "Boa";
-        } else if (quantidadeServicos >= 5) {
-            classificacaoPerformance = "Regular";
-        } else {
-            classificacaoPerformance = "Baixa";
-        }
-
-        System.out.println("----- Resultado da Análise -----");
-        System.out.println("Técnico: " + nomeTecnico);
-        System.out.println("Tipo de serviço: " + descricaoTipoServico);
-        System.out.println("Quantidade de serviços: " + quantidadeServicos);
-        System.out.println("Meta de serviços: " + metaServicos);
-        System.out.println("Valor por serviço: R$ " + valorPorServico);
-        System.out.println("Total bruto: R$ " + totalBruto);
-        System.out.println("Técnico ativo? " + tecnicoAtivo);
-        System.out.println("Possui bloqueio? " + possuiBloqueio);
-        System.out.println("Atingiu a meta? " + atingiuMeta);
-        System.out.println("Pode receber bônus? " + podeReceberBonus);
-        System.out.println("Classificação de performance: " + classificacaoPerformance);
-
-        scanner.close();
+    switch (tipoServico) {
+        case 1:
+            descricaoTipoServico = "Montagem";
+            break;
+        case 2:
+            descricaoTipoServico = "Assistência técnica";
+            break;
+        case 3:
+            descricaoTipoServico = "Entrega";
+            break;
+        case 4:
+            descricaoTipoServico = "Vistoria";
+            break;
+        case 5:
+            descricaoTipoServico = "Troca";
+            break;
+        default:
+            descricaoTipoServico = "Tipo inválido";
     }
+
+    double totalBruto = quantidadeServicos * valorPorServico;
+    boolean atingiuMeta = quantidadeServicos >= metaServicos;
+    boolean podeReceberBonus = atingiuMeta && tecnicoAtivo && !possuiBloqueio;
+
+    String classificacaoPerformance;
+
+    if (quantidadeServicos >= 15) {
+        classificacaoPerformance = "Excelente";
+    } else if (quantidadeServicos >= 10) {
+        classificacaoPerformance = "Boa";
+    } else if (quantidadeServicos >= 5) {
+        classificacaoPerformance = "Regular";
+    } else {
+        classificacaoPerformance = "Baixa";
+    }
+
+    System.out.println("----- Resultado da Análise -----");
+    System.out.println("Técnico: " + nomeTecnico);
+    System.out.println("Tipo de serviço: " + descricaoTipoServico);
+    System.out.println("Quantidade de serviços: " + quantidadeServicos);
+    System.out.println("Meta de serviços: " + metaServicos);
+    System.out.println("Valor por serviço: R$ " + valorPorServico);
+    System.out.println("Total bruto: R$ " + totalBruto);
+    System.out.println("Técnico ativo? " + tecnicoAtivo);
+    System.out.println("Possui bloqueio? " + possuiBloqueio);
+    System.out.println("Atingiu a meta? " + atingiuMeta);
+    System.out.println("Pode receber bônus? " + podeReceberBonus);
+    System.out.println("Classificação de performance: " + classificacaoPerformance);
+
+    scanner.close();
+}
+```
 }
 ```
 
@@ -1932,76 +1832,78 @@ senão               → Valor inválido
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+```java
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do Cliente : ");
-        String nomeCliente = scanner.nextLine();
+    System.out.println("Digite o nome do Cliente : ");
+    String nomeCliente = scanner.nextLine();
 
-        System.out.println("Digite o Status da OS:");
-        System.out.println("1 - Aberta");
-        System.out.println("2 - Agendada");
-        System.out.println("3 - Em Atendimento");
-        System.out.println("4 - Concluida");
-        System.out.println("5 - Cancelada");
-        int statusOs = scanner.nextInt();
+    System.out.println("Digite o Status da OS:");
+    System.out.println("1 - Aberta");
+    System.out.println("2 - Agendada");
+    System.out.println("3 - Em Atendimento");
+    System.out.println("4 - Concluida");
+    System.out.println("5 - Cancelada");
+    int statusOs = scanner.nextInt();
 
-        System.out.println("Digite o valor do serviço:");
-        double valorServico = scanner.nextDouble();
+    System.out.println("Digite o valor do serviço:");
+    double valorServico = scanner.nextDouble();
 
-        System.out.println("Cliente ativo? true/false");
-        boolean clienteAtivo = scanner.nextBoolean();
+    System.out.println("Cliente ativo? true/false");
+    boolean clienteAtivo = scanner.nextBoolean();
 
-        System.out.println("Possui Pendencia? true/false");
-        boolean possuiPendencia = scanner.nextBoolean();
+    System.out.println("Possui Pendencia? true/false");
+    boolean possuiPendencia = scanner.nextBoolean();
 
-        String descricaoStatusOs;
+    String descricaoStatusOs;
 
-        switch (statusOs) {
-            case 1:
-                descricaoStatusOs = "Aberta";
-                break;
-            case 2:
-                descricaoStatusOs = "Agendada";
-                break;
-            case 3:
-                descricaoStatusOs = "Em atendimento";
-                break;
-            case 4:
-                descricaoStatusOs = "Concluída";
-                break;
-            case 5:
-                descricaoStatusOs = "Cancelada";
-                break;
-            default:
-                descricaoStatusOs = "Status inválido";
-        }
-
-        boolean podeSeguirAtendimento = clienteAtivo && !possuiPendencia && statusOs == 2;
-
-        String classificacaoValor;
-
-        if (valorServico >= 500) {
-            classificacaoValor = "Serviço de alto valor";
-        } else if (valorServico >= 200) {
-            classificacaoValor = "Serviço de médio valor";
-        } else if (valorServico > 0) {
-            classificacaoValor = "Serviço de baixo valor";
-        } else {
-            classificacaoValor = "Valor inválido";
-        }
-
-        System.out.println("----- Resultado da Análise -----");
-        System.out.println("Nome do cliente: " + nomeCliente);
-        System.out.println("Status da OS: " + descricaoStatusOs);
-        System.out.println("Valor do serviço: R$ " + valorServico);
-        System.out.println("Cliente Ativo? " + clienteAtivo);
-        System.out.println("Possui pendencia? " + possuiPendencia);
-        System.out.println("Pode seguir para atendimento? " + podeSeguirAtendimento);
-        System.out.println("Classificação do valor: " + classificacaoValor);
-
-        scanner.close();
+    switch (statusOs) {
+        case 1:
+            descricaoStatusOs = "Aberta";
+            break;
+        case 2:
+            descricaoStatusOs = "Agendada";
+            break;
+        case 3:
+            descricaoStatusOs = "Em atendimento";
+            break;
+        case 4:
+            descricaoStatusOs = "Concluída";
+            break;
+        case 5:
+            descricaoStatusOs = "Cancelada";
+            break;
+        default:
+            descricaoStatusOs = "Status inválido";
     }
+
+    boolean podeSeguirAtendimento = clienteAtivo && !possuiPendencia && statusOs == 2;
+
+    String classificacaoValor;
+
+    if (valorServico >= 500) {
+        classificacaoValor = "Serviço de alto valor";
+    } else if (valorServico >= 200) {
+        classificacaoValor = "Serviço de médio valor";
+    } else if (valorServico > 0) {
+        classificacaoValor = "Serviço de baixo valor";
+    } else {
+        classificacaoValor = "Valor inválido";
+    }
+
+    System.out.println("----- Resultado da Análise -----");
+    System.out.println("Nome do cliente: " + nomeCliente);
+    System.out.println("Status da OS: " + descricaoStatusOs);
+    System.out.println("Valor do serviço: R$ " + valorServico);
+    System.out.println("Cliente Ativo? " + clienteAtivo);
+    System.out.println("Possui pendencia? " + possuiPendencia);
+    System.out.println("Pode seguir para atendimento? " + podeSeguirAtendimento);
+    System.out.println("Classificação do valor: " + classificacaoValor);
+
+    scanner.close();
+}
+```
 }
 ```
 
@@ -2062,37 +1964,7 @@ Conceitos consolidados:
 
 ---
 
-# Módulo 3 — Laços de repetição
-
-## Aula 3.1 — Introdução aos laços de repetição
-
-Esta aula será iniciada após o fechamento do Módulo 2.
-
-### Objetivo futuro
-
-Entender como repetir blocos de código.
-
-### Laços que serão estudados
-
-```text
-for
-while
-do while
-```
-
-### Por que isso importa para backend
-
-Laços são usados para:
-
-- Percorrer listas.
-- Processar várias ordens de serviço.
-- Validar coleções.
-- Ler vários registros.
-- Executar regras em massa.
-- Processar dados de APIs.
-- Automatizar validações repetitivas.
-
----
+## Aula 2.11 - Guia de Referência: Git, Atalhos e Boas Práticas
 
 # Fluxo oficial de fechamento de aula
 
@@ -2321,6 +2193,8 @@ Atualizações futuras devem manter o padrão:
 
 ---
 
+# Módulo 3 — Laços de repetição
+
 ## Aula 3.1 - Introdução aos laços de repetição com for
 
 ### Objetivo da aula
@@ -2330,10 +2204,12 @@ Laços de repetição permitem executar o mesmo bloco de código várias vezes s
 
 Sem laço, para processar três atividades, seria necessário escrever algo como:
 
-    System.out.println("Processando atividade 1");
-    System.out.println("Processando atividade 2");
-    System.out.println("Processando atividade 3");
+```java
+System.out.println("Processando atividade 1");
+System.out.println("Processando atividade 2");
+System.out.println("Processando atividade 3");
 
+```
 Com laço, o Java repete automaticamente com base em uma regra definida.
 
 ### Por que laços são importantes
@@ -2376,16 +2252,20 @@ Exemplos:
 ### Estrutura do for
 A estrutura geral é:
 
-    for (inicio; condicao; incremento) {
-        bloco executado enquanto a condição for verdadeira
-    }
+```java
+for (inicio; condicao; incremento) {
+    bloco executado enquanto a condição for verdadeira
+}
 
+```
 Exemplo:
 
-    for (int contador = 1; contador <= 5; contador++) {
-        System.out.println("Contador: " + contador);
-    }
+```java
+for (int contador = 1; contador <= 5; contador++) {
+    System.out.println("Contador: " + contador);
+}
 
+```
 Esse exemplo imprime de 1 até 5.
 
 ### Partes do for
@@ -2393,8 +2273,10 @@ Esse exemplo imprime de 1 até 5.
 #### Início
 O início define onde a repetição começa.
 
-    int contador = 1
+```java
+int contador = 1
 
+```
 Isso cria uma variável chamada contador começando em 1.
 
 #### Condição
@@ -2432,16 +2314,18 @@ No exemplo contador de 1 até 5, o Java executa assim:
 ### Exemplo com contexto de OS
 Foi testado um exemplo simulando processamento de ordens de serviço:
 
-    public class Main {
-        public static void main(String[] args) {
+```java
+public class Main {
+    public static void main(String[] args) {
 
-            for (int numeroOs = 1; numeroOs <= 5; numeroOs++) {
-                System.out.println("Processando OS número: " + numeroOs);
-            }
-
+        for (int numeroOs = 1; numeroOs <= 5; numeroOs++) {
+            System.out.println("Processando OS número: " + numeroOs);
         }
-    }
 
+    }
+}
+
+```
 Resultado esperado:
 - Processando OS número: 1
 - Processando OS número: 2
@@ -2454,21 +2338,23 @@ Foi criado um programa simulando o processamento de atividades de uma OS.
 
 Código praticado:
 
-    public class Main {
-        public static void main(String[] args) {
-            String nomeCliente = "Maria";
-            int quantidadeAtividades = 3;
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeCliente = "Maria";
+        int quantidadeAtividades = 3;
 
-            System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + nomeCliente);
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
-            }
-
-            System.out.println("Processamento finalizado.");
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
         }
-    }
 
+        System.out.println("Processamento finalizado.");
+    }
+}
+
+```
 ### Resultado validado
 Com quantidadeAtividades = 3, o console exibiu:
 
@@ -2533,12 +2419,14 @@ Um acumulador é uma variável usada para guardar um valor que vai sendo atualiz
 
 Exemplo simples:
 
-    int total = 0;
+```java
+int total = 0;
 
-    total = total + 10;
-    total = total + 20;
-    total = total + 30;
+total = total + 10;
+total = total + 20;
+total = total + 30;
 
+```
 Ao final, total vale 60.
 
 A variável total acumulou os valores 10, 20 e 30.
@@ -2548,31 +2436,35 @@ O acumulador fica fora do for, porque ele precisa manter o valor entre as repeti
 
 Exemplo:
 
-    int total = 0;
+```java
+int total = 0;
 
-    for (int numero = 1; numero <= 5; numero++) {
-        total = total + numero;
-    }
+for (int numero = 1; numero <= 5; numero++) {
+    total = total + numero;
+}
 
+```
 Se o total fosse declarado dentro do for, ele seria recriado a cada repetição e perderia o valor anterior.
 
 ### Exemplo somando números de 1 até 5
 Código de exemplo:
 
-    public class Main {
-        public static void main(String[] args) {
-            int total = 0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int total = 0;
 
-            for (int numero = 1; numero <= 5; numero++) {
-                total = total + numero;
-                System.out.println("Número atual: " + numero);
-                System.out.println("Total acumulado: " + total);
-            }
-
-            System.out.println("Resultado final: " + total);
+        for (int numero = 1; numero <= 5; numero++) {
+            total = total + numero;
+            System.out.println("Número atual: " + numero);
+            System.out.println("Total acumulado: " + total);
         }
-    }
 
+        System.out.println("Resultado final: " + total);
+    }
+}
+
+```
 Fluxo do cálculo:
 - total começa em 0.
 - numero = 1, total = 0 + 1 = 1.
@@ -2623,23 +2515,25 @@ Se cada atividade possui um valor, o sistema pode usar um for para processar cad
 
 Exemplo:
 
-    public class Main {
-        public static void main(String[] args) {
-            int quantidadeAtividades = 5;
-            double valorPorAtividade = 100.00;
-            double totalOs = 0.0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int quantidadeAtividades = 5;
+        double valorPorAtividade = 100.00;
+        double totalOs = 0.0;
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                totalOs = totalOs + valorPorAtividade;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            totalOs = totalOs + valorPorAtividade;
 
-                System.out.println("Atividade " + atividadeAtual + " processada.");
-                System.out.println("Total parcial da OS: R$ " + totalOs);
-            }
-
-            System.out.println("Total final da OS: R$ " + totalOs);
+            System.out.println("Atividade " + atividadeAtual + " processada.");
+            System.out.println("Total parcial da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("Total final da OS: R$ " + totalOs);
+    }
+}
+
+```
 Resultado esperado:
 - Atividade 1 processada. Total parcial: R$ 100.0.
 - Atividade 2 processada. Total parcial: R$ 200.0.
@@ -2659,26 +2553,28 @@ Variáveis usadas:
 
 Código praticado:
 
-    public class Main {
-        public static void main(String[] args) {
-            String nomeCliente = "Maria";
-            int quantidadeAtividades = 3;
-            double valorPorAtividade = 200.00;
-            double totalOs = 0.0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeCliente = "Maria";
+        int quantidadeAtividades = 3;
+        double valorPorAtividade = 200.00;
+        double totalOs = 0.0;
 
-            System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + nomeCliente);
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                totalOs = totalOs + valorPorAtividade;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            totalOs = totalOs + valorPorAtividade;
 
-                System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
-                System.out.println("Total parcial da OS: R$ " + totalOs);
-            }
-
-            System.out.println("Total final da OS: R$ " + totalOs);
+            System.out.println("Processando atividade " + atividadeAtual + " de " + quantidadeAtividades);
+            System.out.println("Total parcial da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("Total final da OS: R$ " + totalOs);
+    }
+}
+
+```
 ### Resultado validado
 Com:
 - quantidadeAtividades = 3;
@@ -2776,33 +2672,37 @@ Exemplos:
 
 A estrutura geral fica assim:
 
-    for (...) {
-        if (...) {
-            // processa item válido
-        } else {
-            // trata item inválido ou fora da regra
-        }
+```java
+for (...) {
+    if (...) {
+        // processa item válido
+    } else {
+        // trata item inválido ou fora da regra
     }
+}
 
+```
 ### Primeiro exemplo: par ou ímpar
 Foi usado o operador de resto da divisão para identificar números pares e ímpares.
 
 Exemplo:
 
-    public class Main {
-        public static void main(String[] args) {
+```java
+public class Main {
+    public static void main(String[] args) {
 
-            for (int numero = 1; numero <= 5; numero++) {
-                if (numero % 2 == 0) {
-                    System.out.println("Número " + numero + " é par.");
-                } else {
-                    System.out.println("Número " + numero + " é ímpar.");
-                }
+        for (int numero = 1; numero <= 5; numero++) {
+            if (numero % 2 == 0) {
+                System.out.println("Número " + numero + " é par.");
+            } else {
+                System.out.println("Número " + numero + " é ímpar.");
             }
-
         }
-    }
 
+    }
+}
+
+```
 A regra:
 
     numero % 2 == 0
@@ -2830,24 +2730,26 @@ Ideia:
 
 Código de referência:
 
-    public class Main {
-        public static void main(String[] args) {
-            int totalPares = 0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int totalPares = 0;
 
-            for (int numero = 1; numero <= 10; numero++) {
-                if (numero % 2 == 0) {
-                    totalPares = totalPares + numero;
-                    System.out.println("Somando número par: " + numero);
-                    System.out.println("Total parcial: " + totalPares);
-                } else {
-                    System.out.println("Ignorando número ímpar: " + numero);
-                }
+        for (int numero = 1; numero <= 10; numero++) {
+            if (numero % 2 == 0) {
+                totalPares = totalPares + numero;
+                System.out.println("Somando número par: " + numero);
+                System.out.println("Total parcial: " + totalPares);
+            } else {
+                System.out.println("Ignorando número ímpar: " + numero);
             }
-
-            System.out.println("Total final dos pares: " + totalPares);
         }
-    }
 
+        System.out.println("Total final dos pares: " + totalPares);
+    }
+}
+
+```
 Resultado final:
 - 2 + 4 + 6 + 8 + 10 = 30.
 
@@ -2860,32 +2762,34 @@ Regra:
 
 Exemplo:
 
-    public class Main {
-        public static void main(String[] args) {
-            String nomeCliente = "Maria";
-            int quantidadeAtividades = 6;
-            int atividadesConcluidas = 4;
-            double valorPorAtividade = 150.00;
-            double totalOs = 0.0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeCliente = "Maria";
+        int quantidadeAtividades = 6;
+        int atividadesConcluidas = 4;
+        double valorPorAtividade = 150.00;
+        double totalOs = 0.0;
 
-            System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + nomeCliente);
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                if (atividadeAtual <= atividadesConcluidas) {
-                    totalOs = totalOs + valorPorAtividade;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            if (atividadeAtual <= atividadesConcluidas) {
+                totalOs = totalOs + valorPorAtividade;
 
-                    System.out.println("Atividade " + atividadeAtual + " concluída.");
-                    System.out.println("Total parcial da OS: R$ " + totalOs);
-                } else {
-                    System.out.println("Atividade " + atividadeAtual + " pendente.");
-                    System.out.println("Não entrou no total da OS.");
-                }
+                System.out.println("Atividade " + atividadeAtual + " concluída.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            } else {
+                System.out.println("Atividade " + atividadeAtual + " pendente.");
+                System.out.println("Não entrou no total da OS.");
             }
-
-            System.out.println("Total final da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("Total final da OS: R$ " + totalOs);
+    }
+}
+
+```
 Com 6 atividades e 4 concluídas, apenas as 4 primeiras entram no total.
 
 Total:
@@ -2894,8 +2798,10 @@ Total:
 ### Regra principal da aula
 A regra usada foi:
 
-    if (atividadeAtual <= atividadesConcluidas)
+```java
+if (atividadeAtual <= atividadesConcluidas)
 
+```
 Essa condição verifica se a atividade atual está dentro da quantidade de atividades concluídas.
 
 Exemplo:
@@ -2917,39 +2823,41 @@ Variáveis usadas:
 
 Código praticado:
 
-    public class Main {
-        public static void main(String[] args) {
-            String nomeCliente = "Carlos";
-            int quantidadeAtividades = 6;
-            int atividadesConcluidas = 2;
-            double valorPorAtividade = 200.00;
-            double totalOs = 0.0;
-            int totalConcluidas = 0;
-            int totalPendentes = 0;
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nomeCliente = "Carlos";
+        int quantidadeAtividades = 6;
+        int atividadesConcluidas = 2;
+        double valorPorAtividade = 200.00;
+        double totalOs = 0.0;
+        int totalConcluidas = 0;
+        int totalPendentes = 0;
 
-            System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + nomeCliente);
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                if (atividadeAtual <= atividadesConcluidas) {
-                    totalOs = totalOs + valorPorAtividade;
-                    totalConcluidas++;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            if (atividadeAtual <= atividadesConcluidas) {
+                totalOs = totalOs + valorPorAtividade;
+                totalConcluidas++;
 
-                    System.out.println("Atividade " + atividadeAtual + " concluída.");
-                    System.out.println("Total parcial da OS: R$ " + totalOs);
-                } else {
-                    totalPendentes++;
+                System.out.println("Atividade " + atividadeAtual + " concluída.");
+                System.out.println("Total parcial da OS: R$ " + totalOs);
+            } else {
+                totalPendentes++;
 
-                    System.out.println("Atividade " + atividadeAtual + " pendente.");
-                }
+                System.out.println("Atividade " + atividadeAtual + " pendente.");
             }
-
-            System.out.println("----- Resumo da OS -----");
-            System.out.println("Total de atividades concluídas: " + totalConcluidas);
-            System.out.println("Total de atividades pendentes: " + totalPendentes);
-            System.out.println("Total final da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("----- Resumo da OS -----");
+        System.out.println("Total de atividades concluídas: " + totalConcluidas);
+        System.out.println("Total de atividades pendentes: " + totalPendentes);
+        System.out.println("Total final da OS: R$ " + totalOs);
+    }
+}
+
+```
 ### Resultado validado
 Com:
 - quantidadeAtividades = 6;
@@ -2981,10 +2889,12 @@ Os contadores adicionais registram quantos itens caíram em cada cenário.
 ### Três controles usados
 Nesta aula foram usados três controles importantes:
 
-    double totalOs = 0.0;
-    int totalConcluidas = 0;
-    int totalPendentes = 0;
+```java
+double totalOs = 0.0;
+int totalConcluidas = 0;
+int totalPendentes = 0;
 
+```
 Função de cada um:
 - totalOs acumula o valor financeiro das atividades concluídas;
 - totalConcluidas conta quantas atividades foram concluídas;
@@ -3042,14 +2952,18 @@ Até aqui, o for usava valores definidos diretamente no código.
 
 Exemplo:
 
-    int quantidadeAtividades = 6;
+```java
+int quantidadeAtividades = 6;
 
+```
 Nesta aula, a quantidade passou a ser informada pelo usuário.
 
 Exemplo:
 
-    int quantidadeAtividades = scanner.nextInt();
+```java
+int quantidadeAtividades = scanner.nextInt();
 
+```
 Isso deixou o programa mais dinâmico, porque o usuário passou a controlar quantas vezes o laço será executado.
 
 ### Diferença entre valor fixo e valor digitado
@@ -3057,14 +2971,18 @@ Quando usamos valor fixo, o programa sempre executa com a mesma quantidade.
 
 Exemplo:
 
-    int quantidadeAtividades = 3;
+```java
+int quantidadeAtividades = 3;
 
+```
 Nesse caso, o for sempre executa 3 vezes, a menos que o código seja alterado.
 
 Quando usamos Scanner:
 
-    int quantidadeAtividades = scanner.nextInt();
+```java
+int quantidadeAtividades = scanner.nextInt();
 
+```
 o usuário informa a quantidade durante a execução.
 
 Se digitar 3, o for executa 3 vezes.
@@ -3076,23 +2994,25 @@ Foi testado um programa simples em que o usuário informa a quantidade de repeti
 
 Código de referência:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Digite a quantidade de repetições:");
-            int quantidadeRepeticoes = scanner.nextInt();
+        System.out.println("Digite a quantidade de repetições:");
+        int quantidadeRepeticoes = scanner.nextInt();
 
-            for (int contador = 1; contador <= quantidadeRepeticoes; contador++) {
-                System.out.println("Repetição número: " + contador);
-            }
-
-            scanner.close();
+        for (int contador = 1; contador <= quantidadeRepeticoes; contador++) {
+            System.out.println("Repetição número: " + contador);
         }
-    }
 
+        scanner.close();
+    }
+}
+
+```
 Esse exemplo mostrou que o for pode usar uma variável lida pelo Scanner como limite.
 
 ### Lendo valores dentro do for
@@ -3100,32 +3020,34 @@ Depois, foi estudado um exemplo em que o usuário informa o valor de cada ativid
 
 Código de referência:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Digite a quantidade de atividades:");
-            int quantidadeAtividades = scanner.nextInt();
+        System.out.println("Digite a quantidade de atividades:");
+        int quantidadeAtividades = scanner.nextInt();
 
-            double totalOs = 0.0;
+        double totalOs = 0.0;
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
-                double valorAtividade = scanner.nextDouble();
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+            double valorAtividade = scanner.nextDouble();
 
-                totalOs = totalOs + valorAtividade;
+            totalOs = totalOs + valorAtividade;
 
-                System.out.println("Total parcial da OS: R$ " + totalOs);
-            }
-
-            System.out.println("Total final da OS: R$ " + totalOs);
-
-            scanner.close();
+            System.out.println("Total parcial da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("Total final da OS: R$ " + totalOs);
+
+        scanner.close();
+    }
+}
+
+```
 ### O que esse exemplo ensina
 Esse exemplo ensina três coisas importantes:
 
@@ -3150,41 +3072,43 @@ O programa calcula:
 
 Código praticado:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Digite o nome do cliente:");
-            String nomeCliente = scanner.nextLine();
+        System.out.println("Digite o nome do cliente:");
+        String nomeCliente = scanner.nextLine();
 
-            System.out.println("Digite a quantidade de atividades:");
-            int quantidadeAtividades = scanner.nextInt();
+        System.out.println("Digite a quantidade de atividades:");
+        int quantidadeAtividades = scanner.nextInt();
 
-            double totalOs = 0.0;
+        double totalOs = 0.0;
 
-            System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + nomeCliente);
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
-                double valorAtividade = scanner.nextDouble();
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            System.out.println("Digite o valor da atividade " + atividadeAtual + ":");
+            double valorAtividade = scanner.nextDouble();
 
-                totalOs = totalOs + valorAtividade;
+            totalOs = totalOs + valorAtividade;
 
-                System.out.println("Atividade " + atividadeAtual + " processada.");
-                System.out.println("Total parcial da OS: R$ " + totalOs);
-            }
-
-            System.out.println("----- Resumo da OS -----");
-            System.out.println("Cliente: " + nomeCliente);
-            System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
-            System.out.println("Total final da OS: R$ " + totalOs);
-
-            scanner.close();
+            System.out.println("Atividade " + atividadeAtual + " processada.");
+            System.out.println("Total parcial da OS: R$ " + totalOs);
         }
-    }
 
+        System.out.println("----- Resumo da OS -----");
+        System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Quantidade de atividades processadas: " + quantidadeAtividades);
+        System.out.println("Total final da OS: R$ " + totalOs);
+
+        scanner.close();
+    }
+}
+
+```
 ### Resultado validado - Maria
 Dados informados:
 - Cliente: maria;
@@ -3214,10 +3138,12 @@ Resultado:
 ### Conceito principal da aula
 O conceito principal pode ser resumido assim:
 
-    Scanner fornece os dados.
-    for controla a repetição.
-    acumulador calcula o total.
+```java
+Scanner fornece os dados.
+for controla a repetição.
+acumulador calcula o total.
 
+```
 No exercício:
 - scanner.nextLine leu o nome do cliente;
 - scanner.nextInt leu a quantidade de atividades;
@@ -3228,18 +3154,22 @@ No exercício:
 ### Ponto de atenção sobre nextLine e nextInt
 Nesta aula, a ordem usada foi:
 
-    String nomeCliente = scanner.nextLine();
-    int quantidadeAtividades = scanner.nextInt();
+```java
+String nomeCliente = scanner.nextLine();
+int quantidadeAtividades = scanner.nextInt();
 
+```
 Essa ordem não gerou problema.
 
 O problema clássico acontece quando lemos número primeiro e depois texto com nextLine.
 
 Exemplo problemático:
 
-    int idade = scanner.nextInt();
-    String nome = scanner.nextLine();
+```java
+int idade = scanner.nextInt();
+String nome = scanner.nextLine();
 
+```
 Nesse caso, pode ser necessário limpar o Enter pendente com:
 
     scanner.nextLine();
@@ -3313,29 +3243,35 @@ O for é mais usado quando sabemos ou controlamos claramente a quantidade de rep
 
 Exemplo:
 
-    for (int contador = 1; contador <= 5; contador++) {
-        System.out.println(contador);
-    }
+```java
+for (int contador = 1; contador <= 5; contador++) {
+    System.out.println(contador);
+}
 
+```
 Nesse caso, está claro que o laço vai de 1 até 5.
 
 O while é mais usado quando a repetição depende de uma condição.
 
 Exemplo:
 
-    while (opcao != 0) {
-        // continua executando enquanto a opção for diferente de 0
-    }
+```java
+while (opcao != 0) {
+    // continua executando enquanto a opção for diferente de 0
+}
 
+```
 A quantidade de repetições pode variar. Pode executar uma vez, várias vezes ou nenhuma vez, dependendo da condição.
 
 ### Estrutura do while
 A estrutura básica é:
 
-    while (condicao) {
-        bloco que será repetido
-    }
+```java
+while (condicao) {
+    bloco que será repetido
+}
 
+```
 O bloco será executado enquanto a condição for verdadeira.
 
 Quando a condição ficar falsa, o laço termina.
@@ -3345,17 +3281,19 @@ Foi testado um contador simples usando while.
 
 Código de referência:
 
-    public class Main {
-        public static void main(String[] args) {
-            int contador = 1;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int contador = 1;
 
-            while (contador <= 5) {
-                System.out.println("Contador: " + contador);
-                contador++;
-            }
+        while (contador <= 5) {
+            System.out.println("Contador: " + contador);
+            contador++;
         }
     }
+}
 
+```
 Resultado esperado:
 - Contador: 1
 - Contador: 2
@@ -3381,12 +3319,14 @@ Loop infinito acontece quando a condição do while nunca fica falsa.
 
 Exemplo perigoso:
 
-    int contador = 1;
+```java
+int contador = 1;
 
-    while (contador <= 5) {
-        System.out.println("Contador: " + contador);
-    }
+while (contador <= 5) {
+    System.out.println("Contador: " + contador);
+}
 
+```
 Neste exemplo, falta contador++.
 
 O contador fica sempre 1.
@@ -3408,19 +3348,23 @@ Exemplos:
 ### Comparação entre for e while no mesmo cenário
 Com for:
 
-    for (int contador = 1; contador <= 5; contador++) {
-        System.out.println("Contador: " + contador);
-    }
+```java
+for (int contador = 1; contador <= 5; contador++) {
+    System.out.println("Contador: " + contador);
+}
 
+```
 Com while:
 
-    int contador = 1;
+```java
+int contador = 1;
 
-    while (contador <= 5) {
-        System.out.println("Contador: " + contador);
-        contador++;
-    }
+while (contador <= 5) {
+    System.out.println("Contador: " + contador);
+    contador++;
+}
 
+```
 Os dois exemplos fazem a mesma coisa.
 
 A diferença é que no for o início, a condição e o incremento ficam na mesma linha.
@@ -3435,41 +3379,45 @@ Foi estudado um exemplo de menu simples.
 
 Código de referência:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            int opcao = 1;
+        int opcao = 1;
 
-            while (opcao != 0) {
-                System.out.println("Digite uma opção:");
-                System.out.println("1 - Processar OS");
-                System.out.println("0 - Sair");
+        while (opcao != 0) {
+            System.out.println("Digite uma opção:");
+            System.out.println("1 - Processar OS");
+            System.out.println("0 - Sair");
 
-                opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
 
-                if (opcao == 1) {
-                    System.out.println("OS processada.");
-                } else if (opcao == 0) {
-                    System.out.println("Sistema encerrado.");
-                } else {
-                    System.out.println("Opção inválida.");
-                }
+            if (opcao == 1) {
+                System.out.println("OS processada.");
+            } else if (opcao == 0) {
+                System.out.println("Sistema encerrado.");
+            } else {
+                System.out.println("Opção inválida.");
             }
-
-            scanner.close();
         }
-    }
 
+        scanner.close();
+    }
+}
+
+```
 ### Explicação do menu simples
 A variável opcao controla o while.
 
 A condição:
 
-    while (opcao != 0)
+```java
+while (opcao != 0)
 
+```
 significa:
 
     enquanto a opção for diferente de 0, continue executando.
@@ -3505,42 +3453,44 @@ Regras:
 ### Código praticado
 Código final da aula:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            int opcao = -1;
-            int totalOsProcessadas = 0;
+        int opcao = -1;
+        int totalOsProcessadas = 0;
 
-            while (opcao != 0) {
-                System.out.println("----- Menu de OS -----");
-                System.out.println("1 - Processar nova OS");
-                System.out.println("2 - Exibir quantidade de OS processadas");
-                System.out.println("0 - Sair");
-                System.out.println("Digite uma opção:");
+        while (opcao != 0) {
+            System.out.println("----- Menu de OS -----");
+            System.out.println("1 - Processar nova OS");
+            System.out.println("2 - Exibir quantidade de OS processadas");
+            System.out.println("0 - Sair");
+            System.out.println("Digite uma opção:");
 
-                opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
 
-                if (opcao == 1) {
-                    totalOsProcessadas++;
-                    System.out.println("OS processada com sucesso.");
-                } else if (opcao == 2) {
-                    System.out.println("Total de OS processadas: " + totalOsProcessadas);
-                } else if (opcao == 0) {
-                    System.out.println("Encerrando sistema.");
-                } else {
-                    System.out.println("Opção inválida.");
-                }
+            if (opcao == 1) {
+                totalOsProcessadas++;
+                System.out.println("OS processada com sucesso.");
+            } else if (opcao == 2) {
+                System.out.println("Total de OS processadas: " + totalOsProcessadas);
+            } else if (opcao == 0) {
+                System.out.println("Encerrando sistema.");
+            } else {
+                System.out.println("Opção inválida.");
             }
-
-            System.out.println("Total final de OS processadas: " + totalOsProcessadas);
-
-            scanner.close();
         }
-    }
 
+        System.out.println("Total final de OS processadas: " + totalOsProcessadas);
+
+        scanner.close();
+    }
+}
+
+```
 ### Por que opcao começa com -1
 A variável opcao começa com -1 para garantir que seja diferente de 0.
 
@@ -3555,8 +3505,10 @@ Com opcao = -1, o menu aparece pela primeira vez.
 ### Contador de OS processadas
 A variável:
 
-    int totalOsProcessadas = 0;
+```java
+int totalOsProcessadas = 0;
 
+```
 guarda quantas OS foram processadas.
 
 Ela começa em 0 porque nenhuma OS foi processada no início.
@@ -3645,16 +3597,20 @@ Exemplos:
 
 Exemplo conceitual:
 
-    while (temProximaPagina) {
-        buscarProximaPagina();
-    }
+```java
+while (temProximaPagina) {
+    buscarProximaPagina();
+}
 
+```
 Outro exemplo conceitual:
 
-    while (existeMensagemNaFila) {
-        processarMensagem();
-    }
+```java
+while (existeMensagemNaFila) {
+    processarMensagem();
+}
 
+```
 A estrutura muda, mas a lógica é a mesma.
 
 ### Erros comuns
@@ -3691,10 +3647,12 @@ Isso significa que o bloco do do while sempre executa pelo menos uma vez.
 ### Estrutura do do while
 A estrutura básica é:
 
-    do {
-        bloco executado
-    } while (condicao);
+```java
+do {
+    bloco executado
+} while (condicao);
 
+```
 O ponto e vírgula no final é obrigatório.
 
 Isso diferencia o do while do while comum.
@@ -3704,26 +3662,30 @@ O while verifica a condição antes de executar o bloco.
 
 Exemplo:
 
-    int contador = 10;
+```java
+int contador = 10;
 
-    while (contador <= 5) {
-        System.out.println("Contador: " + contador);
-        contador++;
-    }
+while (contador <= 5) {
+    System.out.println("Contador: " + contador);
+    contador++;
+}
 
+```
 Nesse caso, nada será impresso, porque a condição contador <= 5 já começa falsa.
 
 O do while executa o bloco antes de verificar a condição.
 
 Exemplo:
 
-    int contador = 10;
+```java
+int contador = 10;
 
-    do {
-        System.out.println("Contador: " + contador);
-        contador++;
-    } while (contador <= 5);
+do {
+    System.out.println("Contador: " + contador);
+    contador++;
+} while (contador <= 5);
 
+```
 Nesse caso, será impresso Contador: 10, mesmo a condição sendo falsa depois.
 
 ### Resumo da diferença
@@ -3737,17 +3699,19 @@ Foi testado um contador de 1 até 5.
 
 Código de referência:
 
-    public class Main {
-        public static void main(String[] args) {
-            int contador = 1;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int contador = 1;
 
-            do {
-                System.out.println("Contador: " + contador);
-                contador++;
-            } while (contador <= 5);
-        }
+        do {
+            System.out.println("Contador: " + contador);
+            contador++;
+        } while (contador <= 5);
     }
+}
 
+```
 Resultado:
 - Contador: 1
 - Contador: 2
@@ -3760,17 +3724,19 @@ Foi testado também um contador começando em 10.
 
 Código de referência:
 
-    public class Main {
-        public static void main(String[] args) {
-            int contador = 10;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int contador = 10;
 
-            do {
-                System.out.println("Contador: " + contador);
-                contador++;
-            } while (contador <= 5);
-        }
+        do {
+            System.out.println("Contador: " + contador);
+            contador++;
+        } while (contador <= 5);
     }
+}
 
+```
 Resultado:
 - Contador: 10
 
@@ -3791,52 +3757,58 @@ Foi criado um menu simples usando do while.
 
 Código de referência:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            int opcao;
+        int opcao;
 
-            do {
-                System.out.println("----- Menu de OS -----");
-                System.out.println("1 - Processar OS");
-                System.out.println("0 - Sair");
-                System.out.println("Digite uma opção:");
+        do {
+            System.out.println("----- Menu de OS -----");
+            System.out.println("1 - Processar OS");
+            System.out.println("0 - Sair");
+            System.out.println("Digite uma opção:");
 
-                opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
 
-                if (opcao == 1) {
-                    System.out.println("OS processada.");
-                } else if (opcao == 0) {
-                    System.out.println("Sistema encerrado.");
-                } else {
-                    System.out.println("Opção inválida.");
-                }
-            } while (opcao != 0);
+            if (opcao == 1) {
+                System.out.println("OS processada.");
+            } else if (opcao == 0) {
+                System.out.println("Sistema encerrado.");
+            } else {
+                System.out.println("Opção inválida.");
+            }
+        } while (opcao != 0);
 
-            scanner.close();
-        }
+        scanner.close();
     }
+}
 
+```
 ### Diferença no controle da variável opcao
 No while comum, normalmente inicializamos a variável antes.
 
 Exemplo:
 
-    int opcao = -1;
+```java
+int opcao = -1;
 
-    while (opcao != 0) {
-        ...
-    }
+while (opcao != 0) {
+    ...
+}
 
+```
 Isso é necessário porque o while verifica a condição antes de executar.
 
 No do while, podemos declarar:
 
-    int opcao;
+```java
+int opcao;
 
+```
 E atribuir valor dentro do bloco:
 
     opcao = scanner.nextInt();
@@ -3852,10 +3824,12 @@ Esse ponto e vírgula faz parte da sintaxe do do while.
 
 No while comum, a estrutura é diferente:
 
-    while (opcao != 0) {
-        ...
-    }
+```java
+while (opcao != 0) {
+    ...
+}
 
+```
 ### Exercício final da aula
 Foi criado um programa chamado mentalmente de Menu de Atendimento com do while.
 
@@ -3877,45 +3851,47 @@ Regras:
 ### Código praticado
 Código final da aula:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            int opcao;
-            int totalOsProcessadas = 0;
+        int opcao;
+        int totalOsProcessadas = 0;
 
-            do {
-                System.out.println("----- Menu de Atendimento -----");
-                System.out.println("1 - Processar nova OS");
-                System.out.println("2 - Exibir quantidade de OS processadas");
-                System.out.println("3 - Exibir status do sistema");
-                System.out.println("0 - Sair");
-                System.out.println("Digite uma opção:");
+        do {
+            System.out.println("----- Menu de Atendimento -----");
+            System.out.println("1 - Processar nova OS");
+            System.out.println("2 - Exibir quantidade de OS processadas");
+            System.out.println("3 - Exibir status do sistema");
+            System.out.println("0 - Sair");
+            System.out.println("Digite uma opção:");
 
-                opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
 
-                if (opcao == 1) {
-                    totalOsProcessadas++;
-                    System.out.println("OS processada com sucesso.");
-                } else if (opcao == 2) {
-                    System.out.println("Total de OS processadas: " + totalOsProcessadas);
-                } else if (opcao == 3) {
-                    System.out.println("Sistema operacional e aguardando comandos.");
-                } else if (opcao == 0) {
-                    System.out.println("Encerrando sistema.");
-                } else {
-                    System.out.println("Opção inválida.");
-                }
-            } while (opcao != 0);
+            if (opcao == 1) {
+                totalOsProcessadas++;
+                System.out.println("OS processada com sucesso.");
+            } else if (opcao == 2) {
+                System.out.println("Total de OS processadas: " + totalOsProcessadas);
+            } else if (opcao == 3) {
+                System.out.println("Sistema operacional e aguardando comandos.");
+            } else if (opcao == 0) {
+                System.out.println("Encerrando sistema.");
+            } else {
+                System.out.println("Opção inválida.");
+            }
+        } while (opcao != 0);
 
-            System.out.println("Total final de OS processadas: " + totalOsProcessadas);
+        System.out.println("Total final de OS processadas: " + totalOsProcessadas);
 
-            scanner.close();
-        }
+        scanner.close();
     }
+}
 
+```
 ### Sequência validada
 Foi testada a sequência:
 
@@ -4021,10 +3997,12 @@ O for é usado quando sabemos ou controlamos a quantidade de repetições.
 
 Exemplo conceitual:
 
-    for (int contador = 1; contador <= 5; contador++) {
-        System.out.println("Contador: " + contador);
-    }
+```java
+for (int contador = 1; contador <= 5; contador++) {
+    System.out.println("Contador: " + contador);
+}
 
+```
 Leitura em português:
 - começa com contador igual a 1;
 - continua enquanto contador for menor ou igual a 5;
@@ -4041,10 +4019,12 @@ O while é usado quando queremos repetir enquanto uma condição for verdadeira.
 
 Exemplo conceitual:
 
-    while (opcao != 0) {
-        // executa enquanto opcao for diferente de zero
-    }
+```java
+while (opcao != 0) {
+    // executa enquanto opcao for diferente de zero
+}
 
+```
 O while verifica a condição antes de executar.
 
 Por isso, ele pode executar:
@@ -4063,10 +4043,12 @@ O do while é usado quando o bloco precisa executar pelo menos uma vez.
 
 Exemplo conceitual:
 
-    do {
-        // executa pelo menos uma vez
-    } while (opcao != 0);
+```java
+do {
+    // executa pelo menos uma vez
+} while (opcao != 0);
 
+```
 O do while executa primeiro e verifica a condição depois.
 
 Por isso, ele sempre executa pelo menos uma vez.
@@ -4094,12 +4076,16 @@ Contador é uma variável usada para controlar a posição atual ou a quantidade
 
 Exemplo:
 
-    int atividadeAtual = 1;
+```java
+int atividadeAtual = 1;
 
+```
 Em um for:
 
-    for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++)
+```java
+for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++)
 
+```
 A variável atividadeAtual indica qual atividade está sendo processada no momento.
 
 ### Acumulador
@@ -4107,8 +4093,10 @@ Acumulador é uma variável que guarda um valor progressivo.
 
 Exemplo:
 
-    double totalOs = 0.0;
+```java
+double totalOs = 0.0;
 
+```
 Dentro do laço:
 
     totalOs = totalOs + valorAtividade;
@@ -4131,12 +4119,14 @@ Loop infinito acontece quando a condição nunca fica falsa.
 
 Exemplo conceitual de problema:
 
-    int contador = 1;
+```java
+int contador = 1;
 
-    while (contador <= 5) {
-        System.out.println(contador);
-    }
+while (contador <= 5) {
+    System.out.println(contador);
+}
 
+```
 Nesse caso, falta alterar o contador.
 
 Como contador continua sempre 1, a condição contador <= 5 nunca fica falsa.
@@ -4440,15 +4430,17 @@ Resumo simples:
 ### Exemplo simples com break
 Exemplo conceitual:
 
-    for (int numero = 1; numero <= 10; numero++) {
-        if (numero == 5) {
-            System.out.println("Número 5 encontrado. Parando o laço.");
-            break;
-        }
-
-        System.out.println("Número atual: " + numero);
+```java
+for (int numero = 1; numero <= 10; numero++) {
+    if (numero == 5) {
+        System.out.println("Número 5 encontrado. Parando o laço.");
+        break;
     }
 
+    System.out.println("Número atual: " + numero);
+}
+
+```
 Resultado esperado:
 - Número atual: 1
 - Número atual: 2
@@ -4461,15 +4453,17 @@ O número 5 não é processado como número atual porque o break acontece antes 
 ### Exemplo simples com continue
 Exemplo conceitual:
 
-    for (int numero = 1; numero <= 10; numero++) {
-        if (numero == 5) {
-            System.out.println("Número 5 ignorado.");
-            continue;
-        }
-
-        System.out.println("Número atual: " + numero);
+```java
+for (int numero = 1; numero <= 10; numero++) {
+    if (numero == 5) {
+        System.out.println("Número 5 ignorado.");
+        continue;
     }
 
+    System.out.println("Número atual: " + numero);
+}
+
+```
 Resultado esperado:
 - Número atual: 1
 - Número atual: 2
@@ -4523,28 +4517,30 @@ Cenário:
 
 Exemplo conceitual:
 
-    double totalOs = 0.0;
+```java
+double totalOs = 0.0;
 
-    for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
-        double valorAtividade = 100.00;
+for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
+    double valorAtividade = 100.00;
 
-        if (atividadeAtual == 3) {
-            valorAtividade = 0.0;
-        }
-
-        if (valorAtividade <= 0) {
-            System.out.println("Atividade " + atividadeAtual + " inválida. Pulando processamento.");
-            continue;
-        }
-
-        totalOs = totalOs + valorAtividade;
-
-        System.out.println("Atividade " + atividadeAtual + " processada.");
-        System.out.println("Total parcial da OS: R$ " + totalOs);
+    if (atividadeAtual == 3) {
+        valorAtividade = 0.0;
     }
 
-    System.out.println("Total final da OS: R$ " + totalOs);
+    if (valorAtividade <= 0) {
+        System.out.println("Atividade " + atividadeAtual + " inválida. Pulando processamento.");
+        continue;
+    }
 
+    totalOs = totalOs + valorAtividade;
+
+    System.out.println("Atividade " + atividadeAtual + " processada.");
+    System.out.println("Total parcial da OS: R$ " + totalOs);
+}
+
+System.out.println("Total final da OS: R$ " + totalOs);
+
+```
 Nesse exemplo, a atividade 3 é ignorada, mas as atividades 4 e 5 continuam sendo processadas.
 
 ### Exemplo com OS usando break
@@ -4553,25 +4549,27 @@ Cenário:
 
 Exemplo conceitual:
 
-    double totalOs = 0.0;
+```java
+double totalOs = 0.0;
 
-    for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
-        boolean atividadeBloqueada = atividadeAtual == 4;
+for (int atividadeAtual = 1; atividadeAtual <= 5; atividadeAtual++) {
+    boolean atividadeBloqueada = atividadeAtual == 4;
 
-        if (atividadeBloqueada) {
-            System.out.println("Atividade " + atividadeAtual + " bloqueada.");
-            System.out.println("Processamento da OS interrompido.");
-            break;
-        }
-
-        totalOs = totalOs + 100.00;
-
-        System.out.println("Atividade " + atividadeAtual + " processada.");
-        System.out.println("Total parcial da OS: R$ " + totalOs);
+    if (atividadeBloqueada) {
+        System.out.println("Atividade " + atividadeAtual + " bloqueada.");
+        System.out.println("Processamento da OS interrompido.");
+        break;
     }
 
-    System.out.println("Total final da OS: R$ " + totalOs);
+    totalOs = totalOs + 100.00;
 
+    System.out.println("Atividade " + atividadeAtual + " processada.");
+    System.out.println("Total parcial da OS: R$ " + totalOs);
+}
+
+System.out.println("Total final da OS: R$ " + totalOs);
+
+```
 Nesse exemplo:
 - atividades 1, 2 e 3 são processadas;
 - atividade 4 bloqueia;
@@ -4595,52 +4593,54 @@ Regras:
 ### Código praticado
 Código final da aula:
 
-    public class Main {
-        public static void main(String[] args) {
-            int quantidadeAtividades = 6;
-            double totalOs = 0.0;
-            int atividadesProcessadas = 0;
-            int atividadesIgnoradas = 0;
-            boolean houveBloqueio = false;
+```java
+public class Main {
+    public static void main(String[] args) {
+        int quantidadeAtividades = 6;
+        double totalOs = 0.0;
+        int atividadesProcessadas = 0;
+        int atividadesIgnoradas = 0;
+        boolean houveBloqueio = false;
 
-            for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
-                double valorAtividade = 100.00;
-                boolean atividadeBloqueada = atividadeAtual == 6;
+        for (int atividadeAtual = 1; atividadeAtual <= quantidadeAtividades; atividadeAtual++) {
+            double valorAtividade = 100.00;
+            boolean atividadeBloqueada = atividadeAtual == 6;
 
-                if (atividadeAtual == 2) {
-                    valorAtividade = 0.0;
-                }
-
-                if (valorAtividade <= 0) {
-                    atividadesIgnoradas++;
-
-                    System.out.println("Atividade " + atividadeAtual + " inválida. Valor não será somado.");
-                    continue;
-                }
-
-                if (atividadeBloqueada) {
-                    houveBloqueio = true;
-
-                    System.out.println("Atividade " + atividadeAtual + " bloqueada.");
-                    System.out.println("Processamento interrompido.");
-                    break;
-                }
-
-                totalOs = totalOs + valorAtividade;
-                atividadesProcessadas++;
-
-                System.out.println("Atividade " + atividadeAtual + " processada.");
-                System.out.println("Total parcial da OS: R$ " + totalOs);
+            if (atividadeAtual == 2) {
+                valorAtividade = 0.0;
             }
 
-            System.out.println("----- Resumo da OS -----");
-            System.out.println("Total processado: R$ " + totalOs);
-            System.out.println("Atividades processadas: " + atividadesProcessadas);
-            System.out.println("Atividades ignoradas: " + atividadesIgnoradas);
-            System.out.println("Houve bloqueio? " + houveBloqueio);
-        }
-    }
+            if (valorAtividade <= 0) {
+                atividadesIgnoradas++;
 
+                System.out.println("Atividade " + atividadeAtual + " inválida. Valor não será somado.");
+                continue;
+            }
+
+            if (atividadeBloqueada) {
+                houveBloqueio = true;
+
+                System.out.println("Atividade " + atividadeAtual + " bloqueada.");
+                System.out.println("Processamento interrompido.");
+                break;
+            }
+
+            totalOs = totalOs + valorAtividade;
+            atividadesProcessadas++;
+
+            System.out.println("Atividade " + atividadeAtual + " processada.");
+            System.out.println("Total parcial da OS: R$ " + totalOs);
+        }
+
+        System.out.println("----- Resumo da OS -----");
+        System.out.println("Total processado: R$ " + totalOs);
+        System.out.println("Atividades processadas: " + atividadesProcessadas);
+        System.out.println("Atividades ignoradas: " + atividadesIgnoradas);
+        System.out.println("Houve bloqueio? " + houveBloqueio);
+    }
+}
+
+```
 ### Resultado validado
 Configuração:
 - quantidade de atividades: 6;
@@ -5180,6 +5180,8 @@ A próxima etapa da formação será o Módulo 4, começando por arrays.
 
 ---
 
+# Módulo 4 — Arrays
+
 ## Aula 4.1 - Introdução a Arrays
 
 ### Objetivo da aula
@@ -5194,12 +5196,14 @@ Antes dos arrays, para guardar vários valores, era necessário criar várias va
 
 Exemplo:
 
-    double atividade1 = 100.0;
-    double atividade2 = 200.0;
-    double atividade3 = 0.0;
-    double atividade4 = 150.0;
-    double atividade5 = -50.0;
+```java
+double atividade1 = 100.0;
+double atividade2 = 200.0;
+double atividade3 = 0.0;
+double atividade4 = 150.0;
+double atividade5 = -50.0;
 
+```
 Esse código funciona, mas não escala bem.
 
 Se fossem 100 atividades, seriam necessárias 100 variáveis.
@@ -5211,8 +5215,10 @@ Array é uma estrutura que guarda vários valores do mesmo tipo dentro de uma ú
 
 Exemplo:
 
-    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
+```java
+double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
 
+```
 Leitura em português:
 - foi criado um array chamado atividades;
 - esse array guarda valores do tipo double;
@@ -5226,11 +5232,13 @@ A estrutura básica é:
 
 Exemplos:
 
-    int[] numeros = {10, 20, 30};
-    double[] valores = {100.0, 200.0, 300.0};
-    String[] clientes = {"Maria", "Carlos", "Ana"};
-    boolean[] ativos = {true, false, true};
+```java
+int[] numeros = {10, 20, 30};
+double[] valores = {100.0, 200.0, 300.0};
+String[] clientes = {"Maria", "Carlos", "Ana"};
+boolean[] ativos = {true, false, true};
 
+```
 Cada array guarda vários valores de um mesmo tipo.
 
 ### Índice do array
@@ -5240,8 +5248,10 @@ Em Java, o primeiro índice é sempre 0.
 
 Exemplo:
 
-    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
+```java
+double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0};
 
+```
 Posições:
 - índice 0: 100.0
 - índice 1: 200.0
@@ -5266,10 +5276,12 @@ Exemplos:
 
 Código de exemplo:
 
-    System.out.println("Primeira atividade: R$ " + atividades[0]);
-    System.out.println("Segunda atividade: R$ " + atividades[1]);
-    System.out.println("Terceira atividade: R$ " + atividades[2]);
+```java
+System.out.println("Primeira atividade: R$ " + atividades[0]);
+System.out.println("Segunda atividade: R$ " + atividades[1]);
+System.out.println("Terceira atividade: R$ " + atividades[2]);
 
+```
 ### Tamanho do array com length
 Para saber quantos itens existem em um array, usamos length.
 
@@ -5292,10 +5304,12 @@ Como o array possui posições, podemos usar for para percorrer todos os itens.
 
 Exemplo:
 
-    for (int indice = 0; indice < atividades.length; indice++) {
-        System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
-    }
+```java
+for (int indice = 0; indice < atividades.length; indice++) {
+    System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+}
 
+```
 Explicação:
 - o índice começa em 0;
 - o laço continua enquanto indice for menor que atividades.length;
@@ -5327,8 +5341,10 @@ Foi refeito o exercício da Aula 3.10 usando array.
 
 Array usado no segundo teste:
 
-    double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+```java
+double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
 
+```
 Regras:
 - valores maiores que zero são válidos;
 - valores menores ou iguais a zero são inválidos;
@@ -5339,36 +5355,38 @@ Regras:
 ### Código praticado
 Código principal da aula:
 
-    public class Main {
-        public static void main(String[] args) {
-            double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
+```java
+public class Main {
+    public static void main(String[] args) {
+        double[] atividades = {100.0, 200.0, 0.0, 150.0, -50.0, 300.0, -10.0};
 
-            double total = 0.0;
-            int atividadesValidas = 0;
-            int atividadesInvalidas = 0;
+        double total = 0.0;
+        int atividadesValidas = 0;
+        int atividadesInvalidas = 0;
 
-            for (int indice = 0; indice < atividades.length; indice++) {
-                double valorAtividade = atividades[indice];
+        for (int indice = 0; indice < atividades.length; indice++) {
+            double valorAtividade = atividades[indice];
 
-                if (valorAtividade > 0) {
-                    total = total + valorAtividade;
-                    atividadesValidas++;
+            if (valorAtividade > 0) {
+                total = total + valorAtividade;
+                atividadesValidas++;
 
-                    System.out.println("Atividade " + indice + " válida: R$ " + valorAtividade);
-                } else {
-                    atividadesInvalidas++;
+                System.out.println("Atividade " + indice + " válida: R$ " + valorAtividade);
+            } else {
+                atividadesInvalidas++;
 
-                    System.out.println("Atividade " + indice + " inválida: R$ " + valorAtividade);
-                }
+                System.out.println("Atividade " + indice + " inválida: R$ " + valorAtividade);
             }
-
-            System.out.println("----- Resumo -----");
-            System.out.println("Total final: R$ " + total);
-            System.out.println("Atividades válidas: " + atividadesValidas);
-            System.out.println("Atividades inválidas: " + atividadesInvalidas);
         }
-    }
 
+        System.out.println("----- Resumo -----");
+        System.out.println("Total final: R$ " + total);
+        System.out.println("Atividades válidas: " + atividadesValidas);
+        System.out.println("Atividades inválidas: " + atividadesInvalidas);
+    }
+}
+
+```
 ### Resultado validado
 Resultado obtido:
 
@@ -5463,8 +5481,10 @@ Um array também pode ser criado informando apenas o tamanho.
 
 Exemplo:
 
-    double[] atividades = new double[5];
+```java
+double[] atividades = new double[5];
 
+```
 Leitura em português:
 - foi criado um array chamado atividades;
 - esse array guarda valores do tipo double;
@@ -5549,10 +5569,12 @@ O for foi usado para percorrer o array e exibir cada posição.
 
 Exemplo:
 
-    for (int indice = 0; indice < atividades.length; indice++) {
-        System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
-    }
+```java
+for (int indice = 0; indice < atividades.length; indice++) {
+    System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+}
 
+```
 Esse código percorre todas as posições válidas do array.
 
 ### Calculando total com for
@@ -5560,12 +5582,14 @@ Depois da correção, o total foi calculado com outro for.
 
 Exemplo:
 
-    double total = 0.0;
+```java
+double total = 0.0;
 
-    for (int indice = 0; indice < atividades.length; indice++) {
-        total = total + atividades[indice];
-    }
+for (int indice = 0; indice < atividades.length; indice++) {
+    total = total + atividades[indice];
+}
 
+```
 O acumulador total recebe a soma de todos os valores do array.
 
 ### Resultado validado
@@ -5579,47 +5603,51 @@ Cálculo:
 ### Código praticado
 Código principal da aula:
 
-    public class Main {
-        public static void main(String[] args) {
-            double[] atividades = new double[5];
+```java
+public class Main {
+    public static void main(String[] args) {
+        double[] atividades = new double[5];
 
-            atividades[0] = 100.0;
-            atividades[1] = 200.0;
-            atividades[2] = 0.0;
-            atividades[3] = 150.0;
-            atividades[4] = -50.0;
+        atividades[0] = 100.0;
+        atividades[1] = 200.0;
+        atividades[2] = 0.0;
+        atividades[3] = 150.0;
+        atividades[4] = -50.0;
 
-            System.out.println("----- Antes da correção -----");
+        System.out.println("----- Antes da correção -----");
 
-            for (int indice = 0; indice < atividades.length; indice++) {
-                System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
-            }
-
-            atividades[2] = 300.0;
-            atividades[4] = 50.0;
-
-            System.out.println("----- Depois da correção -----");
-
-            for (int indice = 0; indice < atividades.length; indice++) {
-                System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
-            }
-
-            double total = 0.0;
-
-            for (int indice = 0; indice < atividades.length; indice++) {
-                total = total + atividades[indice];
-            }
-
-            System.out.println("----- Resumo -----");
-            System.out.println("Total final: R$ " + total);
+        for (int indice = 0; indice < atividades.length; indice++) {
+            System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
         }
-    }
 
+        atividades[2] = 300.0;
+        atividades[4] = 50.0;
+
+        System.out.println("----- Depois da correção -----");
+
+        for (int indice = 0; indice < atividades.length; indice++) {
+            System.out.println("Atividade na posição " + indice + ": R$ " + atividades[indice]);
+        }
+
+        double total = 0.0;
+
+        for (int indice = 0; indice < atividades.length; indice++) {
+            total = total + atividades[indice];
+        }
+
+        System.out.println("----- Resumo -----");
+        System.out.println("Total final: R$ " + total);
+    }
+}
+
+```
 ### O tamanho do array não muda
 Quando criamos:
 
-    double[] atividades = new double[5];
+```java
+double[] atividades = new double[5];
 
+```
 O array possui exatamente 5 posições.
 
 As posições válidas são:
@@ -5687,11 +5715,13 @@ O tamanho do array pode ser definido em tempo de execução.
 
 Exemplo:
 
-    System.out.println("Digite a quantidade de atividades:");
-    int quantidadeAtividades = scanner.nextInt();
+```java
+System.out.println("Digite a quantidade de atividades:");
+int quantidadeAtividades = scanner.nextInt();
 
-    double[] atividades = new double[quantidadeAtividades];
+double[] atividades = new double[quantidadeAtividades];
 
+```
 Se o usuário digitar 5, o array terá 5 posições.
 
 Se o usuário digitar 10, o array terá 10 posições.
@@ -5701,11 +5731,13 @@ Antes de criar o array, é importante validar a quantidade informada.
 
 Regra:
 
-    while (quantidadeAtividades <= 0) {
-        System.out.println("Quantidade inválida. Digite novamente:");
-        quantidadeAtividades = scanner.nextInt();
-    }
+```java
+while (quantidadeAtividades <= 0) {
+    System.out.println("Quantidade inválida. Digite novamente:");
+    quantidadeAtividades = scanner.nextInt();
+}
 
+```
 Essa validação impede criar um array com quantidade inválida.
 
 O while é adequado porque não sabemos quantas vezes o usuário pode errar.
@@ -5715,11 +5747,13 @@ Depois de criar o array, usamos for para preencher cada posição.
 
 Exemplo:
 
-    for (int indice = 0; indice < atividades.length; indice++) {
-        System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
-        atividades[indice] = scanner.nextDouble();
-    }
+```java
+for (int indice = 0; indice < atividades.length; indice++) {
+    System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
+    atividades[indice] = scanner.nextDouble();
+}
 
+```
 O índice começa em 0, mas para o usuário exibimos indice + 1.
 
 Assim, o usuário vê:
@@ -5737,17 +5771,19 @@ Após preencher o array, usamos outro for para processar os valores.
 
 Exemplo:
 
-    for (int indice = 0; indice < atividades.length; indice++) {
-        double valorAtividade = atividades[indice];
+```java
+for (int indice = 0; indice < atividades.length; indice++) {
+    double valorAtividade = atividades[indice];
 
-        if (valorAtividade > 0) {
-            total = total + valorAtividade;
-            atividadesValidas++;
-        } else {
-            atividadesInvalidas++;
-        }
+    if (valorAtividade > 0) {
+        total = total + valorAtividade;
+        atividadesValidas++;
+    } else {
+        atividadesInvalidas++;
     }
+}
 
+```
 Nesse trecho:
 - cada valor do array é lido;
 - valores positivos são somados;
@@ -5757,57 +5793,59 @@ Nesse trecho:
 ### Código praticado
 Código principal da aula:
 
-    import java.util.Scanner;
+```java
+import java.util.Scanner;
 
-    public class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Digite a quantidade de atividades:");
-            int quantidadeAtividades = scanner.nextInt();
+        System.out.println("Digite a quantidade de atividades:");
+        int quantidadeAtividades = scanner.nextInt();
 
-            while (quantidadeAtividades <= 0) {
-                System.out.println("Quantidade inválida. Digite novamente:");
-                quantidadeAtividades = scanner.nextInt();
-            }
-
-            double[] atividades = new double[quantidadeAtividades];
-
-            for (int indice = 0; indice < atividades.length; indice++) {
-                System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
-                atividades[indice] = scanner.nextDouble();
-            }
-
-            double total = 0.0;
-            int atividadesValidas = 0;
-            int atividadesInvalidas = 0;
-
-            System.out.println("----- Atividades informadas -----");
-
-            for (int indice = 0; indice < atividades.length; indice++) {
-                double valorAtividade = atividades[indice];
-
-                if (valorAtividade > 0) {
-                    total = total + valorAtividade;
-                    atividadesValidas++;
-
-                    System.out.println("Atividade " + (indice + 1) + " válida: R$ " + valorAtividade);
-                } else {
-                    atividadesInvalidas++;
-
-                    System.out.println("Atividade " + (indice + 1) + " inválida: R$ " + valorAtividade);
-                }
-            }
-
-            System.out.println("----- Resumo -----");
-            System.out.println("Total final: R$ " + total);
-            System.out.println("Atividades válidas: " + atividadesValidas);
-            System.out.println("Atividades inválidas: " + atividadesInvalidas);
-
-            scanner.close();
+        while (quantidadeAtividades <= 0) {
+            System.out.println("Quantidade inválida. Digite novamente:");
+            quantidadeAtividades = scanner.nextInt();
         }
-    }
 
+        double[] atividades = new double[quantidadeAtividades];
+
+        for (int indice = 0; indice < atividades.length; indice++) {
+            System.out.println("Digite o valor da atividade " + (indice + 1) + ":");
+            atividades[indice] = scanner.nextDouble();
+        }
+
+        double total = 0.0;
+        int atividadesValidas = 0;
+        int atividadesInvalidas = 0;
+
+        System.out.println("----- Atividades informadas -----");
+
+        for (int indice = 0; indice < atividades.length; indice++) {
+            double valorAtividade = atividades[indice];
+
+            if (valorAtividade > 0) {
+                total = total + valorAtividade;
+                atividadesValidas++;
+
+                System.out.println("Atividade " + (indice + 1) + " válida: R$ " + valorAtividade);
+            } else {
+                atividadesInvalidas++;
+
+                System.out.println("Atividade " + (indice + 1) + " inválida: R$ " + valorAtividade);
+            }
+        }
+
+        System.out.println("----- Resumo -----");
+        System.out.println("Total final: R$ " + total);
+        System.out.println("Atividades válidas: " + atividadesValidas);
+        System.out.println("Atividades inválidas: " + atividadesInvalidas);
+
+        scanner.close();
+    }
+}
+
+```
 ### Sequência validada
 Foi testada a sequência:
 
@@ -5911,3 +5949,206 @@ Com isso, o programa deixou de depender de valores fixos no código e passou a t
 - Valores menores ou iguais a zero foram considerados inválidos.
 - O resultado final validado foi R$ 450.0, com 3 válidas e 2 inválidas.
 
+---
+
+## Aula 4.4 - Arrays de texto com String
+
+### Objetivo da aula
+Aprender a trabalhar com arrays de texto usando String.
+
+Até agora, os arrays estudados guardavam valores numéricos, principalmente double.
+
+Nesta aula, o foco foi guardar e validar textos dentro de um array.
+
+### Array de String
+Um array de String guarda vários textos dentro de uma única variável.
+
+Exemplo:
+
+```java
+String[] clientes = {"Maria", "", "Carlos", "Ana", ""};
+
+```
+Leitura em português:
+- foi criado um array chamado clientes;
+- esse array guarda valores do tipo String;
+- cada posição possui um texto;
+- algumas posições podem estar vazias.
+
+### Posições do array
+No array usado na aula:
+
+```java
+String[] clientes = {"Maria", "", "Carlos", "Ana", ""};
+
+```
+As posições são:
+- posição 0: Maria
+- posição 1: vazio
+- posição 2: Carlos
+- posição 3: Ana
+- posição 4: vazio
+
+Mesmo sendo um array de texto, a regra de índice continua igual:
+- o primeiro índice é 0;
+- o último índice é length - 1.
+
+### Percorrendo array de String
+O array foi percorrido com for.
+
+Exemplo:
+
+```java
+for (int indice = 0; indice < clientes.length; indice++) {
+    String cliente = clientes[indice];
+}
+
+```
+A variável cliente recebe o valor da posição atual do array.
+
+### Validando texto vazio com isEmpty
+Para verificar se uma String está vazia, usamos isEmpty.
+
+Exemplo:
+
+```java
+if (cliente.isEmpty()) {
+    System.out.println("Cliente inválido. Nome vazio.");
+}
+
+```
+Essa validação identifica textos vazios, como:
+
+    ""
+
+No exercício, nomes vazios foram considerados inválidos.
+
+### Comparando texto com equals
+Para comparar conteúdo de texto em Java, usamos equals.
+
+Exemplo:
+
+```java
+if (cliente.equals("Carlos")) {
+    System.out.println("Cliente Carlos encontrado para validação especial.");
+}
+
+```
+Essa é a forma correta de comparar o conteúdo de uma String.
+
+### Por que não usar == com String
+O operador == não é a forma correta de comparar conteúdo de String.
+
+Para tipos primitivos, como int e double, usamos operadores como:
+- ==
+- >
+- <
+- >=
+- <=
+
+Para String, usamos equals.
+
+Resumo:
+- número: pode usar ==
+- texto: use equals
+
+### Regra especial para Carlos
+Foi criada uma regra especial para o cliente Carlos.
+
+Quando o sistema encontrou o texto Carlos no array, exibiu:
+
+    Cliente Carlos encontrado para validação especial.
+
+Essa regra foi feita dentro do else, porque só faz sentido aplicar a regra especial em clientes válidos.
+
+### Código praticado
+Código principal da aula:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String[] clientes = {"Maria", "", "Carlos", "Ana", ""};
+
+        int clientesValidos = 0;
+        int clientesInvalidos = 0;
+
+        for (int indice = 0; indice < clientes.length; indice++) {
+            String cliente = clientes[indice];
+
+            if (cliente.isEmpty()) {
+                clientesInvalidos++;
+
+                System.out.println("Cliente na posição " + indice + " inválido. Nome vazio.");
+            } else {
+                clientesValidos++;
+
+                System.out.println("Cliente na posição " + indice + " válido: " + cliente);
+
+                if (cliente.equals("Carlos")) {
+                    System.out.println("Cliente Carlos encontrado para validação especial.");
+                }
+            }
+        }
+
+        System.out.println("----- Resumo -----");
+        System.out.println("Clientes válidos: " + clientesValidos);
+        System.out.println("Clientes inválidos: " + clientesInvalidos);
+    }
+}
+
+```
+### Resultado validado
+Resultado do console:
+
+- Cliente na posição 0 válido: Maria
+- Cliente na posição 1 inválido. Nome vazio.
+- Cliente na posição 2 válido: Carlos
+- Cliente Carlos encontrado para validação especial.
+- Cliente na posição 3 válido: Ana
+- Cliente na posição 4 inválido. Nome vazio.
+- Clientes válidos: 3
+- Clientes inválidos: 2
+
+### Explicação do resultado
+Clientes válidos:
+- Maria
+- Carlos
+- Ana
+
+Clientes inválidos:
+- posição 1 vazia
+- posição 4 vazia
+
+Regra especial:
+- Carlos foi encontrado usando equals.
+
+### Relação com backend
+Validação de texto é muito comum em backend.
+
+Exemplos:
+- nome obrigatório;
+- CPF obrigatório;
+- e-mail obrigatório;
+- código de produto obrigatório;
+- status textual específico;
+- tipo de serviço específico;
+- cliente corporativo específico.
+
+Em sistemas reais, é comum receber listas de dados e validar campo por campo.
+
+### Aprendizado principal
+O principal aprendizado foi entender que arrays podem armazenar texto, não apenas números.
+
+Também foi aprendido que String possui métodos próprios, como:
+- isEmpty
+- equals
+
+Esses métodos são fundamentais para validações de texto em Java.
+
+### Resumo da aula
+- Foi criado um array de String.
+- O array foi percorrido com for.
+- Nomes vazios foram identificados com isEmpty.
+- O texto Carlos foi comparado com equals.
+- Clientes válidos e inválidos foram contabilizados.
+- O resultado final foi 3 clientes válidos e 2 inválidos.
