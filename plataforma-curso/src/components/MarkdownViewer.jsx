@@ -480,9 +480,12 @@ const parseMarkdownIntoSections = (markdown) => {
     const title = lines[0].trim();
     const content = lines.slice(1).join('\n').trim();
     if (title || content) {
-      // Skip "Cobertura da Grade Operacional" topics
+      // Skip "Cobertura da Grade Operacional" and "Progresso Geral do Curso" topics
       const cleanTitle = title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if (cleanTitle.includes("cobertura da grade operacional")) {
+      if (
+        cleanTitle.includes("cobertura da grade operacional") || 
+        cleanTitle.includes("progresso geral do curso")
+      ) {
         continue;
       }
 
