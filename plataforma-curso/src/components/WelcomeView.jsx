@@ -61,7 +61,7 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
           <div className="logo-glow"></div>
         </div>
         <h1 className="welcome-title">Formação Java Completa</h1>
-        <p className="welcome-subtitle">Uma jornada profunda do zero ao nível de Engenheiro e Arquiteto de Sistemas com Thiago Pacheco</p>
+        <p className="welcome-subtitle">Uma jornada profunda do zero ao nível de Engenheiro e Arquiteto de Sistemas</p>
         
         <button className="welcome-start-btn" onClick={handleStart}>
           <Play size={20} fill="currentColor" />
