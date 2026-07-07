@@ -18,8 +18,14 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
 
   // Group lessons by module to count how many lessons per module are completed
   const moduleStats = lessons.reduce((acc, lesson) => {
-    const parts = lesson.title.split('_');
-    const module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0, P0
+    let module;
+    // Special case: the 000 opening lesson belongs to the P0 module
+    if (lesson.title.startsWith('000_')) {
+      module = 'P0';
+    } else {
+      const parts = lesson.title.split('_');
+      module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0, M1
+    }
     
     if (!acc[module]) {
       acc[module] = { total: 0, completed: 0 };
@@ -34,10 +40,10 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
   const modulesList = [
     { 
       id: 'P0', 
-      title: 'P0: Prólogo Mentorado', 
-      description: 'Propósito, postura de engenheiro, método de estudo ativo e uso responsável de IA.', 
+      title: 'Aula de Abertura', 
+      description: 'O caminho completo para se tornar Engenheiro Java Backend e Arquiteto de Sistemas — mentalidade, método e visão de carreira.', 
       icon: Zap,
-      topics: ['Pacto da Mentoria', 'Método de Estudo Ativo', 'IA com Ética (Codex/ChatGPT)', 'Diário de Bordo', 'Critérios de Evolução de Carreira']
+      topics: ['Por que esta formação existe', 'Como estudar sem virar colecionador de aulas', 'Pacto da Mentoria', 'Uso correto de IA (sem terceirizar raciocínio)', 'Diário de Bordo e rastreabilidade', 'Critérios Junior → Engenheiro → Arquiteto']
     },
     { 
       id: 'M0', 
