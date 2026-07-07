@@ -1,25 +1,5 @@
 ﻿# 019 — M0.19 — Estrutura Profissional do Repositório de Curso
 
-## Complemento operacional — consolidar ferramentas instaladas dentro do repositório
-
-> Nota de manutenção do material: este complemento foi incluído sem remover o conteúdo original da aula. 
-> A aula continua com a mesma cobertura da grade; o reforço abaixo apenas deixa mais explícito o que o aluno deve baixar, instalar, configurar, validar e registrar quando esta aula envolver preparação de ambiente.
-
-Esta aula organiza o repositório do curso. O complemento abaixo conecta essa estrutura com as ferramentas já instaladas no Módulo 0.
-
-### Arquivo obrigatório: `docs/ambiente.md`
-
-Crie ou atualize:
-
-```text
-docs/ambiente.md
-```
-
-Modelo recomendado:
-
-```markdown
-# Ambiente de desenvolvimento
-
 ## Pastas
 
 - Pasta base: `C:\dev`
