@@ -1,6 +1,9 @@
 import React from 'react';
 import javaLogo from '../assets/java_logo.png';
-import { Play, BookOpen, Award, Zap } from 'lucide-react';
+import { 
+  Play, BookOpen, Award, Zap, Shield, Database, Cpu, 
+  Globe, Terminal, Box, UserCheck, Settings, CheckSquare, Activity
+} from 'lucide-react';
 
 const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
   const totalCount = lessons.length;
@@ -16,7 +19,7 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
   // Group lessons by module to count how many lessons per module are completed
   const moduleStats = lessons.reduce((acc, lesson) => {
     const parts = lesson.title.split('_');
-    const module = parts.length >= 4 ? parts[1] : 'Outros';
+    const module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0, P0
     
     if (!acc[module]) {
       acc[module] = { total: 0, completed: 0 };
@@ -29,24 +32,25 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
   }, {});
 
   const modulesList = [
-    {
-      id: '0',
-      title: 'Módulo 0: Preparação do Ambiente',
-      description: 'Instalação do JDK, Git, GitHub, IntelliJ IDEA, PostgreSQL, Docker e WSL2.',
-      icon: Zap
-    },
-    {
-      id: '1',
-      title: 'Módulo 1: Fundamentos da Linguagem',
-      description: 'Tipos primitivos, operadores, estruturas condicionais/repetição, arrays e métodos.',
-      icon: BookOpen
-    },
-    {
-      id: '2',
-      title: 'Módulo 2: Arquitetura da JVM e Avançado',
-      description: 'Funcionamento de Stack vs Heap, Referências, Coletor de Lixo e String Pool.',
-      icon: Award
-    }
+    { id: 'P0', title: 'P0: Prólogo Mentorado', description: 'Propósito, postura de engenheiro, método de estudo ativo e uso responsável de IA.', icon: Zap },
+    { id: 'M0', title: 'M0: Ambiente e Método', description: 'Preparação do ambiente completo (JDK, Git, GitHub, Docker, WSL2) e organização de rotina.', icon: Settings },
+    { id: 'M1', title: 'M1: Fundamentos Absolutos', description: 'Sintaxe Java de alto nível, variáveis primitivas, lógica aplicada, arrays, laços e métodos.', icon: BookOpen },
+    { id: 'M2', title: 'M2: Java Core Profundo', description: 'Arquitetura interna da JVM, alocação de memória (Stack/Heap), referências, Garbage Collector e String Pool.', icon: Cpu },
+    { id: 'M3', title: 'M3: Organização Procedural', description: 'Quebra de responsabilidades em funções pequenas, modularização e projetos práticos console.', icon: Terminal },
+    { id: 'M4', title: 'M4: Orientação a Objetos', description: 'Modelagem orientada a objetos profissional, encapsulamento forte, construtores e objetos válidos.', icon: Code },
+    { id: 'M5', title: 'M5: Collections & Java Moderno', description: 'Generics, estruturas de dados, API de Streams, expressões lambda, record classes e performance.', icon: Award },
+    { id: 'M6', title: 'M6: SOLID & Design Patterns', description: 'Refatoração, Clean Code, princípios SOLID fundamentais e padrões de projeto aplicados.', icon: Award },
+    { id: 'M7', title: 'M7: Build & Ferramentas', description: 'Maven, Gradle, gestão de dependências, empacotamento, qualidade estática e linting.', icon: Settings },
+    { id: 'M8', title: 'M8: Testes Profissionais', description: 'Testes unitários e de integração utilizando JUnit 5, Mockito e boas práticas de TDD.', icon: CheckSquare },
+    { id: 'M9', title: 'M9: SQL & Banco de Dados', description: 'Modelagem relacional, consultas SQL, joins, transações e performance em PostgreSQL.', icon: Database },
+    { id: 'M10', title: 'M10: Persistência com JPA/Hibernate', description: 'Mapeamento objeto-relacional de verdade, JDBC, ciclo de vida do JPA e otimizações com Spring Data.', icon: Database },
+    { id: 'M11', title: 'M11: Spring Boot REST APIs', description: 'Construção de APIs corporativas, injeção de dependência, DTOs, controllers, tratamento global de erros.', icon: Globe },
+    { id: 'M12', title: 'M12: Segurança de Aplicações', description: 'Autenticação e autorização com Spring Security, JWT, OAuth2, LGPD e práticas contra ataques OWASP.', icon: Shield },
+    { id: 'M13', title: 'M13: Integrações & Mensageria', description: 'Webhooks, APIs externas, eventos assíncronos com Message Queues (RabbitMQ/Kafka) e resiliência.', icon: Globe },
+    { id: 'M14', title: 'M14: Docker & CI/CD Pipelines', description: 'Containerização, orquestração Kubernetes, pipelines do GitHub Actions e deploy em nuvem.', icon: Box },
+    { id: 'M15', title: 'M15: Observabilidade & Produção', description: 'Métricas, logs centralizados, tracing de requisições, concorrência no Java e JVM tuning.', icon: Activity },
+    { id: 'M16', title: 'M16: Arquitetura & DDD', description: 'Arquitetura Hexagonal, Clean Architecture, princípios DDD de modelagem de domínio e sistemas distribuídos.', icon: Cpu },
+    { id: 'M17', title: 'M17: Projeto Final & Carreira', description: 'Desenvolvimento do projeto final da formação, defesa técnica, portfólio profissional e preparação de entrevistas.', icon: UserCheck }
   ];
 
   return (
@@ -57,7 +61,7 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
           <div className="logo-glow"></div>
         </div>
         <h1 className="welcome-title">Formação Java Completa</h1>
-        <p className="welcome-subtitle">Aprenda programação moderna orientada a objetos com Thiago Pacheco</p>
+        <p className="welcome-subtitle">Uma jornada profunda do zero ao nível de Engenheiro e Arquiteto de Sistemas com Thiago Pacheco</p>
         
         <button className="welcome-start-btn" onClick={handleStart}>
           <Play size={20} fill="currentColor" />
@@ -83,18 +87,23 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
         <div className="modules-grid">
           {modulesList.map((mod) => {
             const IconComponent = mod.icon;
-            const stats = moduleStats[`M${mod.id}`] || { total: 0, completed: 0 };
+            const stats = moduleStats[mod.id] || { total: 0, completed: 0 };
             const isModuleCompleted = stats.total > 0 && stats.completed === stats.total;
             
-            let badgeText = 'Novo';
-            let badgeClass = 'new';
+            let badgeText = 'Em Breve';
+            let badgeClass = 'coming-soon';
             
-            if (isModuleCompleted) {
-              badgeText = 'Concluído';
-              badgeClass = 'completed';
-            } else if (stats.completed > 0) {
-              badgeText = `${stats.completed}/${stats.total} Aulas`;
-              badgeClass = 'in-progress';
+            if (stats.total > 0) {
+              if (isModuleCompleted) {
+                badgeText = 'Concluído';
+                badgeClass = 'completed';
+              } else if (stats.completed > 0) {
+                badgeText = `${stats.completed}/${stats.total} Aulas`;
+                badgeClass = 'in-progress';
+              } else {
+                badgeText = `${stats.total} Aulas`;
+                badgeClass = 'new';
+              }
             }
             
             return (
@@ -117,5 +126,24 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
     </div>
   );
 };
+
+// Simple custom replacement for lucide Code icon if import issues arise
+const Code = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.size || 24}
+    height={props.size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className}
+  >
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+);
 
 export default WelcomeView;

@@ -1619,6 +1619,12 @@ pre.speaking-highlight {
     min-width: 100%;
   }
 }
+
+.module-badge.coming-soon {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
   
 
 
