@@ -67,6 +67,23 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
     }
   };
 
+  const sendEmailNotification = async (userData) => {
+    try {
+      await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: userData.name,
+          age: userData.age,
+          email: userData.email,
+          phone: userData.phone
+        })
+      });
+    } catch (err) {
+      console.error("Failed to send email notification:", err);
+    }
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
@@ -121,8 +138,9 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
     users.push(newUser);
     saveUsers(users);
 
-    // Notify owner
+    // Notify owner via Webhook and Email
     await sendWebhookNotification(newUser);
+    await sendEmailNotification(newUser);
 
     onLoginSuccess(newUser);
     setSuccess('Cadastro realizado com sucesso!');
