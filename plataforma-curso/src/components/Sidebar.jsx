@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X } from 'lucide-react';
+import javaLogo from '../assets/java_logo.png';
 
 const Sidebar = ({ 
   lessons, 
@@ -91,11 +92,19 @@ const Sidebar = ({
       style={{ width: isCollapsed ? 0 : sidebarWidth }}
     >
       <div className="sidebar-header">
-        <div className="logo-container">
-          <BookOpen className="logo-icon" size={24} />
+        <div 
+          className="logo-container" 
+          onClick={() => {
+            onSelectLesson(null);
+            setIsMobileOpen(false);
+          }}
+          style={{ cursor: 'pointer' }}
+          title="Ir para a página inicial"
+        >
+          <img src={javaLogo} alt="Java Logo" className="logo-image-sidebar" />
           <div>
-            <h1 className="logo-text">Plataforma</h1>
-            <p className="subtitle">Formação Java</p>
+            <h1 className="logo-text">Java</h1>
+            <p className="subtitle">Formação Completa</p>
           </div>
         </div>
 

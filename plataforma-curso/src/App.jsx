@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { loadLessons } from './utils/lessonLoader';
 import Sidebar from './components/Sidebar';
 import MarkdownViewer from './components/MarkdownViewer';
+import WelcomeView from './components/WelcomeView';
 import { Menu, ChevronRight } from 'lucide-react';
 
 function App() {
@@ -57,9 +58,7 @@ function App() {
   useEffect(() => {
     loadLessons().then(loadedLessons => {
       setLessons(loadedLessons);
-      if (loadedLessons.length > 0) {
-        setSelectedLesson(loadedLessons[0]);
-      }
+      // Keep selectedLesson as null to show the WelcomeScreen initially
       setLoading(false);
     });
   }, []);
@@ -115,7 +114,7 @@ function App() {
                 <Menu size={24} />
               </button>
               <h2 className="mobile-navbar-title">
-                {selectedLesson ? formatNavbarTitle(selectedLesson.title) : 'Plataforma'}
+                {selectedLesson ? formatNavbarTitle(selectedLesson.title) : 'Formação Java'}
               </h2>
             </header>
 
@@ -134,15 +133,23 @@ function App() {
             )}
 
             <div className="content-scroll-area">
-              <MarkdownViewer 
-                lesson={selectedLesson} 
-                isCompleted={selectedLesson ? !!completedLessons[selectedLesson.id] : false}
-                onToggleCompleted={() => selectedLesson && toggleLessonCompleted(selectedLesson.id)}
-                onNextLesson={goToNextLesson}
-                onPrevLesson={goToPrevLesson}
-                hasNextLesson={hasNextLesson}
-                hasPrevLesson={hasPrevLesson}
-              />
+              {selectedLesson ? (
+                <MarkdownViewer 
+                  lesson={selectedLesson} 
+                  isCompleted={!!completedLessons[selectedLesson.id]}
+                  onToggleCompleted={() => toggleLessonCompleted(selectedLesson.id)}
+                  onNextLesson={goToNextLesson}
+                  onPrevLesson={goToPrevLesson}
+                  hasNextLesson={hasNextLesson}
+                  hasPrevLesson={hasPrevLesson}
+                />
+              ) : (
+                <WelcomeView 
+                  lessons={lessons}
+                  completedLessons={completedLessons}
+                  onSelectLesson={setSelectedLesson}
+                />
+              )}
             </div>
           </main>
         </>

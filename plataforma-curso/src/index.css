@@ -1329,3 +1329,296 @@ pre.speaking-highlight {
     font-size: 0.85rem !important;
   }
 }
+
+/* Custom CSS for logo image in sidebar */
+.logo-image-sidebar {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+/* Welcome Page CSS */
+.welcome-view-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-hero {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-logo-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-logo-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  z-index: 2;
+  animation: floatLogo 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4)) drop-shadow(0 0 40px rgba(249, 115, 22, 0.2));
+}
+
+.logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(249, 115, 22, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(8px);
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.welcome-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 55%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto 32px auto;
+  line-height: 1.6;
+}
+
+.welcome-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.welcome-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #6d70f2 0%, #5b53e6 100%);
+}
+
+.welcome-start-btn:active {
+  transform: translateY(0);
+}
+
+.welcome-stats-row {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-stat-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 320px;
+  max-width: 500px;
+  text-align: center;
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.stat-progress-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #2dd4bf);
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-subtext {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.welcome-modules-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 40px;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.module-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.module-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.module-icon-wrapper {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-card:nth-child(2) .module-icon-wrapper {
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+}
+
+.module-card:nth-child(3) .module-icon-wrapper {
+  background: rgba(45, 212, 191, 0.1);
+  color: #2dd4bf;
+}
+
+.module-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.module-badge.new {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.module-badge.in-progress {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+}
+
+.module-badge.completed {
+  background: rgba(45, 212, 191, 0.15);
+  color: #2dd4bf;
+}
+
+.module-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.module-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .welcome-view-container {
+    padding: 30px 16px;
+  }
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+  .welcome-stat-card {
+    min-width: 100%;
+  }
+}
+  
+
+
