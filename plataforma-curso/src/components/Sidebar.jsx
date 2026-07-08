@@ -24,6 +24,15 @@ const moduleTitles = {
   'M17': 'M17: Projeto Final & Carreira'
 };
 
+/**
+ * DOCUMENTAÇÃO - BUSCA COM SNIPPETS
+ * 
+ * A funcionalidade de busca foi aprimorada para percorrer o conteúdo textual 
+ * de todos os arquivos Markdown das aulas. Caso o termo pesquisado não seja 
+ * encontrado no título, o sistema extrai automaticamente um trecho (snippet) 
+ * do conteúdo onde a palavra ocorre, exibindo-o logo abaixo do título na sidebar.
+ */
+
 const parseModuleHeader = (module, rawTitle) => {
   if (module === 'P0') {
     return { badge: 'Start', title: rawTitle || 'Aula de Abertura' };
@@ -39,6 +48,23 @@ const parseModuleHeader = (module, rawTitle) => {
   }
   
   return { badge: module, title: titleText };
+};
+
+const getSearchSnippet = (content, term) => {
+  if (!content || !term) return null;
+  const cleanTerm = term.trim().toLowerCase();
+  if (!cleanTerm) return null;
+  const index = content.toLowerCase().indexOf(cleanTerm);
+  if (index === -1) return null;
+  
+  const start = Math.max(0, index - 25);
+  const end = Math.min(content.length, index + cleanTerm.length + 35);
+  let snippet = content.substring(start, end).replace(/\s+/g, ' ');
+  
+  if (start > 0) snippet = '...' + snippet;
+  if (end < content.length) snippet = snippet + '...';
+  
+  return snippet;
 };
 
 const Sidebar = ({ 
@@ -66,10 +92,14 @@ const Sidebar = ({
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
-  // Filter lessons based on search
-  const filteredLessons = lessons.filter(lesson => 
-    lesson.title.replace(/_/g, ' ').toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter lessons based on search (in title or content)
+  const filteredLessons = lessons.filter(lesson => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return true;
+    const matchesTitle = lesson.title.replace(/_/g, ' ').toLowerCase().includes(term);
+    const matchesContent = lesson.content && lesson.content.toLowerCase().includes(term);
+    return matchesTitle || matchesContent;
+  });
 
   // Group filtered lessons by module
   const groupedLessons = filteredLessons.reduce((acc, lesson) => {
@@ -162,7 +192,13 @@ const Sidebar = ({
     document.removeEventListener('mouseup', handleMouseUp);
   };
 
-  const formatTitle = (title) => {
+  const formatTitle = (lesson) => {
+    const title = lesson.title;
+    const term = searchTerm.trim();
+    const snippet = term ? getSearchSnippet(lesson.content, term) : null;
+    const isTitleMatch = term ? title.replace(/_/g, ' ').toLowerCase().includes(term.toLowerCase()) : true;
+    const isContentMatch = snippet && !isTitleMatch;
+    
     const parts = title.split('_');
     if (parts.length >= 4) {
       const moduleStr = parts[1] + '.' + parts[2]; // M0.01
@@ -172,10 +208,22 @@ const Sidebar = ({
         <span className="lesson-item-text">
           <span className="lesson-item-badge">{moduleStr}</span>
           <span className="lesson-item-title">{prettyText}</span>
+          {isContentMatch && (
+            <span className="lesson-search-snippet">{snippet}</span>
+          )}
         </span>
       );
     }
-    return title.replace(/_/g, ' ');
+    
+    const prettyText = title.replace(/_/g, ' ');
+    return (
+      <span className="lesson-item-text">
+        <span className="lesson-item-title">{prettyText}</span>
+        {isContentMatch && (
+          <span className="lesson-search-snippet">{snippet}</span>
+        )}
+      </span>
+    );
   };
 
   return (
@@ -304,7 +352,7 @@ const Sidebar = ({
                           className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                           onClick={() => onSelectLesson(lesson)}
                         >
-                          {formatTitle(lesson.title)}
+                          {formatTitle(lesson)}
                           
                           <div className="lesson-item-actions">
                             {isCompleted && <CheckCircle2 className="check-icon" size={14} />}

@@ -316,6 +316,30 @@ body {
   transform: translateX(0);
 }
 
+.lesson-search-snippet {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 4px;
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.85;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.lesson-item:hover .lesson-search-snippet {
+  color: var(--text-secondary);
+}
+
+.lesson-item.active .lesson-search-snippet {
+  color: #a5b4fc;
+  opacity: 0.9;
+}
+
 /* Main Content */
 .main-content {
   flex: 1;

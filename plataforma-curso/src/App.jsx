@@ -98,6 +98,21 @@ function App() {
       setLessons(loadedLessons);
       // Keep selectedLesson as null to show the WelcomeScreen initially
       setLoading(false);
+
+      // Preload all lesson contents in the background for search index
+      Promise.all(
+        loadedLessons.map(async (lesson) => {
+          try {
+            const content = await lesson.loadContent();
+            lesson.content = content;
+          } catch (e) {
+            console.error("Failed to load content for search index:", lesson.title, e);
+          }
+        })
+      ).then(() => {
+        // Trigger a state update once all contents are cached
+        setLessons([...loadedLessons]);
+      });
     });
   }, []);
 
