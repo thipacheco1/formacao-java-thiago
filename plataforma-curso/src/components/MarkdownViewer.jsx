@@ -550,10 +550,7 @@ const MarkdownViewer = ({
       const scrollContainer = document.querySelector('.content-scroll-area');
       if (!scrollContainer) return;
       
-      let delay = 35; // default 1.0x
-      if (scrollSpeed === 0.5) delay = 70;
-      if (scrollSpeed === 1.5) delay = 22;
-      if (scrollSpeed === 2.0) delay = 14;
+      const delay = Math.round(35 / (scrollSpeed || 1.0));
 
       scrollIntervalRef.current = setInterval(() => {
         const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
@@ -717,10 +714,16 @@ const MarkdownViewer = ({
                     onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
                     className="auto-scroll-speed-select"
                   >
-                    <option value="0.5">0.5x</option>
-                    <option value="1.0">1.0x</option>
-                    <option value="1.5">1.5x</option>
-                    <option value="2.0">2.0x</option>
+                    <option value={0.2}>0.2x</option>
+                    <option value={0.3}>0.3x</option>
+                    <option value={0.4}>0.4x</option>
+                    <option value={0.5}>0.5x</option>
+                    <option value={0.6}>0.6x</option>
+                    <option value={0.8}>0.8x</option>
+                    <option value={1.0}>1.0x</option>
+                    <option value={1.2}>1.2x</option>
+                    <option value={1.5}>1.5x</option>
+                    <option value={2.0}>2.0x</option>
                   </select>
                 </div>
 
@@ -775,10 +778,16 @@ const MarkdownViewer = ({
                   onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
                   className="auto-scroll-speed-select"
                 >
-                  <option value="0.5">0.5x</option>
-                  <option value="1.0">1.0x</option>
-                  <option value="1.5">1.5x</option>
-                  <option value="2.0">2.0x</option>
+                  <option value={0.2}>0.2x</option>
+                  <option value={0.3}>0.3x</option>
+                  <option value={0.4}>0.4x</option>
+                  <option value={0.5}>0.5x</option>
+                  <option value={0.6}>0.6x</option>
+                  <option value={0.8}>0.8x</option>
+                  <option value={1.0}>1.0x</option>
+                  <option value={1.2}>1.2x</option>
+                  <option value={1.5}>1.5x</option>
+                  <option value={2.0}>2.0x</option>
                 </select>
               </div>
 
