@@ -515,16 +515,72 @@ const MarkdownViewer = ({
     const saved = localStorage.getItem('isContinuousMode');
     return saved ? JSON.parse(saved) : true;
   });
+  
+  // Auto-scroll and Sticky Header states
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [scrollSpeed, setScrollSpeed] = useState(1.0);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const scrollIntervalRef = useRef(null);
 
   const toggleViewMode = (mode) => {
     setIsContinuousMode(mode);
     localStorage.setItem('isContinuousMode', JSON.stringify(mode));
   };
 
+  // Listen to scroll to toggle sticky thin header
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    if (!scrollContainer) return;
+    
+    const handleScroll = () => {
+      if (scrollContainer.scrollTop > 180) {
+        setShowStickyHeader(true);
+      } else {
+        setShowStickyHeader(false);
+      }
+    };
+    
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Manage Auto-scroll speed and interval
+  useEffect(() => {
+    if (isAutoScrolling) {
+      const scrollContainer = document.querySelector('.content-scroll-area');
+      if (!scrollContainer) return;
+      
+      let delay = 35; // default 1.0x
+      if (scrollSpeed === 0.5) delay = 70;
+      if (scrollSpeed === 1.5) delay = 22;
+      if (scrollSpeed === 2.0) delay = 14;
+
+      scrollIntervalRef.current = setInterval(() => {
+        const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        if (scrollContainer.scrollTop >= maxScroll - 2) {
+          setIsAutoScrolling(false);
+        } else {
+          scrollContainer.scrollTop += 1;
+        }
+      }, delay);
+    } else {
+      if (scrollIntervalRef.current) {
+        clearInterval(scrollIntervalRef.current);
+      }
+    }
+    
+    return () => {
+      if (scrollIntervalRef.current) {
+        clearInterval(scrollIntervalRef.current);
+      }
+    };
+  }, [isAutoScrolling, scrollSpeed]);
+
   useEffect(() => {
     if (lesson) {
       setLoading(true);
       setCurrentSectionIdx(0);
+      setIsAutoScrolling(false); // Reset auto scroll on lesson change
       
       lesson.loadContent().then((text) => {
         const parsed = parseMarkdownIntoSections(text);
@@ -593,6 +649,46 @@ const MarkdownViewer = ({
         </div>
       ) : (
         <>
+          {/* Sticky Thin Header */}
+          {showStickyHeader && (
+            <div className="sticky-lesson-header">
+              <div className="sticky-header-left">
+                <span className="sticky-lesson-title">{mainTitle}</span>
+                {sections.length > 1 && !isContinuousMode && (
+                  <span className="sticky-lesson-step">Tópico {currentSectionIdx + 1}/{sections.length}</span>
+                )}
+              </div>
+              
+              <div className="sticky-header-right">
+                {/* Auto Scroll Widget */}
+                <div className="auto-scroll-widget">
+                  <span className="widget-label">Rolagem Auto</span>
+                  <button 
+                    className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
+                    onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                    title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                  >
+                    {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
+                  </button>
+                  <select
+                    value={scrollSpeed}
+                    onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
+                    className="auto-scroll-speed-select"
+                  >
+                    <option value="0.5">0.5x</option>
+                    <option value="1.0">1.0x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2.0">2.0x</option>
+                  </select>
+                </div>
+
+                <div className={`sticky-status-badge ${isCompleted ? 'completed' : ''}`}>
+                  {isCompleted ? 'Concluída' : 'Lendo'}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Header Dashboard */}
           <header className="lesson-dashboard">
             <h1 className="lesson-main-title">{mainTitle}</h1>
@@ -620,6 +716,28 @@ const MarkdownViewer = ({
               
               <div className={`meta-status-badge ${isCompleted ? 'completed' : ''}`}>
                 {isCompleted ? 'Concluída' : 'Em Andamento'}
+              </div>
+
+              {/* Auto Scroll Widget */}
+              <div className="auto-scroll-widget">
+                <span className="widget-label">Rolagem Auto</span>
+                <button 
+                  className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
+                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                >
+                  {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
+                </button>
+                <select
+                  value={scrollSpeed}
+                  onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
+                  className="auto-scroll-speed-select"
+                >
+                  <option value="0.5">0.5x</option>
+                  <option value="1.0">1.0x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2.0">2.0x</option>
+                </select>
               </div>
 
               {/* View Mode Toggle */}

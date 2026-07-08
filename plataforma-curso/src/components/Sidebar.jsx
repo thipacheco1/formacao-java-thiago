@@ -67,6 +67,31 @@ const getSearchSnippet = (content, term) => {
   return snippet;
 };
 
+const estimateReadingTime = (content) => {
+  if (!content) return 5; // Default fallback to 5 minutes before load completes
+  const cleanContent = content.replace(/[#*`\-_[\]()|]/g, ' ');
+  const words = cleanContent.trim().split(/\s+/).filter(w => w.length > 0).length;
+  // A student reads technical text + codes along at about 110 words per minute
+  const wpm = 110; 
+  const minutes = Math.ceil(words / wpm);
+  return Math.max(2, minutes); // Minimum 2 minutes per lesson
+};
+
+const formatDurationForModule = (totalMinutes) => {
+  if (totalMinutes < 60) {
+    return `${totalMinutes} min`;
+  }
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return minutes > 0 ? `${hours} h ${minutes} min` : `${hours} h`;
+};
+
+const formatDurationForCourse = (totalMinutes) => {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+};
+
 const Sidebar = ({ 
   lessons, 
   selectedLesson, 
@@ -91,6 +116,23 @@ const Sidebar = ({
   const totalCount = lessons.length;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+  // Calculate course duration and section count
+  const totalCourseMinutes = lessons.reduce((acc, lesson) => {
+    return acc + estimateReadingTime(lesson.content);
+  }, 0);
+  
+  const totalSectionsCount = Object.keys(lessons.reduce((acc, lesson) => {
+    let module;
+    if (lesson.title.startsWith('000_')) {
+      module = 'P0';
+    } else {
+      const parts = lesson.title.split('_');
+      module = parts.length >= 4 ? parts[1] : 'Outros';
+    }
+    acc[module] = true;
+    return acc;
+  }, {})).length;
 
   // Filter lessons based on search (in title or content)
   const filteredLessons = lessons.filter(lesson => {
@@ -278,6 +320,9 @@ const Sidebar = ({
         <div className="progress-bar-container">
           <div className="progress-bar-fill" style={{ width: `${progressPercent}%` }}></div>
         </div>
+        <div className="progress-stats-footer">
+          <span>{totalSectionsCount} seções • {totalCount} aulas • Duração total: {formatDurationForCourse(totalCourseMinutes)}</span>
+        </div>
       </div>
 
       {/* Search Input Widget */}
@@ -310,6 +355,10 @@ const Sidebar = ({
           const totalModuleCount = moduleLessons.length;
           const isModuleCompleted = completedModuleCount === totalModuleCount;
 
+          const totalModuleMinutes = moduleLessons.reduce((acc, lesson) => {
+            return acc + estimateReadingTime(lesson.content);
+          }, 0);
+
           return (
             <div 
               key={module} 
@@ -329,6 +378,9 @@ const Sidebar = ({
                 </div>
                 
                 <div className="module-header-actions">
+                  <span className="module-stats-right">
+                    {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'} • {formatDurationForModule(totalModuleMinutes)}
+                  </span>
                   {isModuleCompleted ? (
                     <CheckCircle2 className="module-check-icon" size={14} />
                   ) : completedModuleCount > 0 ? (
@@ -355,6 +407,7 @@ const Sidebar = ({
                           {formatTitle(lesson)}
                           
                           <div className="lesson-item-actions">
+                            <span className="lesson-duration-badge">{estimateReadingTime(lesson.content)} min</span>
                             {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
                             <ChevronRight className="chevron-icon" size={14} />
                           </div>
