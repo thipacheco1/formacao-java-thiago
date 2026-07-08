@@ -373,6 +373,10 @@ body {
   scroll-behavior: smooth;
 }
 
+.content-scroll-area.autoscrolling-active {
+  scroll-behavior: auto !important;
+}
+
 .module-group {
   margin-bottom: 8px;
   padding: 0 8px;
@@ -1441,6 +1445,17 @@ pre.speaking-highlight {
   
   .mobile-sidebar-open .sidebar {
     transform: translateX(290px); /* Slide in */
+  }
+
+  .sidebar.collapsed {
+    width: 280px !important;
+    overflow-y: auto !important;
+    display: flex !important;
+    border-right: 1px solid var(--border-color) !important;
+  }
+
+  .expand-sidebar-btn {
+    display: none !important;
   }
   
   .sidebar-resizer {

@@ -113,6 +113,16 @@ function App() {
     const progressKey = `completedLessons_${user.email.toLowerCase()}`;
     const saved = localStorage.getItem(progressKey);
     setCompletedLessons(saved ? JSON.parse(saved) : {});
+
+    // Redirect to the lesson in URL if present and lessons loaded
+    const params = new URLSearchParams(window.location.search);
+    const lessonId = params.get('aula');
+    if (lessonId && lessons.length > 0) {
+      const found = lessons.find(l => l.id === lessonId);
+      if (found) {
+        setSelectedLesson(found);
+      }
+    }
   };
 
   const handleLogout = () => {
@@ -143,11 +153,74 @@ function App() {
     }
   };
 
+  // Sync selectedLesson state with the URL query parameter
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const currentParam = params.get('aula');
+    
+    if (selectedLesson) {
+      if (currentParam !== selectedLesson.id) {
+        params.set('aula', selectedLesson.id);
+        window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+      }
+    } else {
+      if (currentParam) {
+        params.delete('aula');
+        const search = params.toString();
+        const suffix = search ? `?${search}` : '';
+        window.history.pushState({}, '', `${window.location.pathname}${suffix}`);
+      }
+    }
+  }, [selectedLesson]);
+
+  // Listen to browser back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      if (lessons.length === 0) return;
+      const params = new URLSearchParams(window.location.search);
+      const lessonId = params.get('aula');
+      if (lessonId) {
+        const found = lessons.find(l => l.id === lessonId);
+        if (found) {
+          if (!currentUser) {
+            setIsAuthModalOpen(true);
+            setSelectedLesson(null);
+          } else {
+            setSelectedLesson(found);
+          }
+        } else {
+          setSelectedLesson(null);
+        }
+      } else {
+        setSelectedLesson(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [lessons, currentUser]);
+
   useEffect(() => {
     loadLessons().then(loadedLessons => {
       setLessons(loadedLessons);
-      // Keep selectedLesson as null to show the WelcomeScreen initially
       setLoading(false);
+
+      // Check URL on initial load to restore the correct lesson if user is logged in
+      const savedUser = localStorage.getItem('currentUser');
+      const user = savedUser ? JSON.parse(savedUser) : null;
+      const params = new URLSearchParams(window.location.search);
+      const lessonId = params.get('aula');
+      if (lessonId) {
+        const found = loadedLessons.find(l => l.id === lessonId);
+        if (found) {
+          if (!user) {
+            // User is not logged in, prompt for authentication
+            setIsAuthModalOpen(true);
+          } else {
+            setSelectedLesson(found);
+          }
+        }
+      }
 
       // Preload all lesson contents in the background for search index
       Promise.all(

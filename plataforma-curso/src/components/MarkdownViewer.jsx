@@ -576,12 +576,34 @@ const MarkdownViewer = ({
     };
   }, [isAutoScrolling, scrollSpeed]);
 
+  // Toggle .autoscrolling-active class on scroll container when auto scroll changes
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    if (!scrollContainer) return;
+    if (isAutoScrolling) {
+      scrollContainer.classList.add('autoscrolling-active');
+    } else {
+      scrollContainer.classList.remove('autoscrolling-active');
+    }
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.classList.remove('autoscrolling-active');
+      }
+    };
+  }, [isAutoScrolling]);
+
   useEffect(() => {
     if (lesson) {
       setLoading(true);
       setCurrentSectionIdx(0);
       setIsAutoScrolling(false); // Reset auto scroll on lesson change
       
+      // Reset scroll position to top when lesson changes
+      const scrollContainer = document.querySelector('.content-scroll-area');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = 0;
+      }
+
       lesson.loadContent().then((text) => {
         const parsed = parseMarkdownIntoSections(text);
         setParsedData(parsed);
