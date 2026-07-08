@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X } from 'lucide-react';
 import javaLogo from '../assets/java_logo.png';
 
@@ -40,6 +40,7 @@ const Sidebar = ({
   onOpenAuthModal
 }) => {
   const [openGroup, setOpenGroup] = useState(null);
+  const lessonRefs = useRef({});
   const [searchTerm, setSearchTerm] = useState('');
   const [isResizing, setIsResizing] = useState(false);
 
@@ -85,6 +86,36 @@ const Sidebar = ({
   const toggleGroup = (module) => {
     setOpenGroup(prev => prev === module ? null : module);
   };
+
+  // Auto-scroll when a group is opened
+  useEffect(() => {
+    if (openGroup && groupedLessons[openGroup]) {
+      const groupLessons = groupedLessons[openGroup];
+      
+      // Find the lesson to scroll to:
+      // 1. If the selected lesson is in this group, scroll to it.
+      let targetLesson = groupLessons.find(l => selectedLesson?.id === l.id);
+      
+      // 2. Otherwise, find the first uncompleted lesson in this group.
+      if (!targetLesson) {
+        targetLesson = groupLessons.find(l => !completedLessons[l.id]);
+      }
+      
+      // 3. If all are completed, scroll to the first lesson of the group.
+      if (!targetLesson && groupLessons.length > 0) {
+        targetLesson = groupLessons[0];
+      }
+
+      if (targetLesson && lessonRefs.current[targetLesson.id]) {
+        setTimeout(() => {
+          lessonRefs.current[targetLesson.id]?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+          });
+        }, 150);
+      }
+    }
+  }, [openGroup, groupedLessons, selectedLesson, completedLessons]);
 
   const handleMouseDown = (e) => {
     e.preventDefault();
@@ -225,7 +256,7 @@ const Sidebar = ({
                   const isCompleted = !!completedLessons[lesson.id];
                   const isActive = selectedLesson?.id === lesson.id;
                   return (
-                    <li key={lesson.id} className="lesson-item-container">
+                    <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
                       <button
                         className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                         onClick={() => onSelectLesson(lesson)}

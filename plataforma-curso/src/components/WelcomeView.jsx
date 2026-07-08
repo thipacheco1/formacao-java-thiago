@@ -189,18 +189,7 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
         </button>
       </div>
 
-      <div className="welcome-stats-row">
-        <div className="welcome-stat-card">
-          <span className="stat-label">Progresso do Curso</span>
-          <div className="stat-progress-container">
-            <span className="stat-value">{progressPercent}%</span>
-            <div className="stat-progress-bar">
-              <div className="stat-progress-fill" style={{ width: `${progressPercent}%` }}></div>
-            </div>
-          </div>
-          <span className="stat-subtext">{completedCount} de {totalCount} aulas concluídas</span>
-        </div>
-      </div>
+
 
       <div className="welcome-modules-section">
         <h2 className="section-heading">Grade Curricular da Formação</h2>
