@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search } from 'lucide-react';
+import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search, Lock } from 'lucide-react';
 import javaLogo from '../assets/java_logo.png';
 
 const moduleTitles = {
@@ -24,14 +24,11 @@ const moduleTitles = {
   'M17': 'M17: Projeto Final & Carreira'
 };
 
-/**
- * DOCUMENTAÇÃO - BUSCA COM SNIPPETS
- * 
- * A funcionalidade de busca foi aprimorada para percorrer o conteúdo textual 
- * de todos os arquivos Markdown das aulas. Caso o termo pesquisado não seja 
- * encontrado no título, o sistema extrai automaticamente um trecho (snippet) 
- * do conteúdo onde a palavra ocorre, exibindo-o logo abaixo do título na sidebar.
- */
+const phases = [
+  { id: 1, name: 'Fase 1: Fundações & Core', modules: ['P0', 'M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'Outros'] },
+  { id: 2, name: 'Fase 2: Testes & Spring Boot', modules: ['M7', 'M8', 'M9', 'M10', 'M11', 'M12'] },
+  { id: 3, name: 'Fase 3: DevOps & Arquitetura', modules: ['M13', 'M14', 'M15', 'M16', 'M17'] }
+];
 
 const parseModuleHeader = (module, rawTitle) => {
   if (module === 'P0') {
@@ -68,13 +65,12 @@ const getSearchSnippet = (content, term) => {
 };
 
 const estimateReadingTime = (content) => {
-  if (!content) return 5; // Default fallback to 5 minutes before load completes
+  if (!content) return 5;
   const cleanContent = content.replace(/[#*`\-_[\]()|]/g, ' ');
   const words = cleanContent.trim().split(/\s+/).filter(w => w.length > 0).length;
-  // A student reads technical text + codes along at about 110 words per minute
   const wpm = 110; 
   const minutes = Math.ceil(words / wpm);
-  return Math.max(2, minutes); // Minimum 2 minutes per lesson
+  return Math.max(2, minutes);
 };
 
 const formatDurationForModule = (totalMinutes) => {
@@ -107,10 +103,26 @@ const Sidebar = ({
   onLogout,
   onOpenAuthModal
 }) => {
+  const [openPhase, setOpenPhase] = useState(1);
   const [openGroup, setOpenGroup] = useState(null);
   const lessonRefs = useRef({});
   const [searchTerm, setSearchTerm] = useState('');
   const [isResizing, setIsResizing] = useState(false);
+
+  const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
+
+  const getGlobalLessonIndex = (lessonId) => {
+    return lessons.findIndex(l => l.id === lessonId);
+  };
+
+  const isLessonUnlocked = (lessonId) => {
+    if (!currentUser) return true; // Let App.jsx handle the prompt
+    if (isAuthorizedAdmin) return true;
+    const globalIdx = getGlobalLessonIndex(lessonId);
+    if (globalIdx <= 0) return true;
+    const prevLesson = lessons[globalIdx - 1];
+    return !!completedLessons[prevLesson.id];
+  };
 
   // Calculate Progress Stats
   const totalCount = lessons.length;
@@ -150,7 +162,7 @@ const Sidebar = ({
       module = 'P0';
     } else {
       const parts = lesson.title.split('_');
-      module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0
+      module = parts.length >= 4 ? parts[1] : 'Outros';
     }
     
     if (!acc[module]) acc[module] = [];
@@ -158,7 +170,7 @@ const Sidebar = ({
     return acc;
   }, {});
 
-  // Auto-open module when a lesson is selected
+  // Auto-open phase and module when a lesson is selected
   useEffect(() => {
     if (selectedLesson) {
       let module;
@@ -169,6 +181,11 @@ const Sidebar = ({
         module = parts.length >= 4 ? parts[1] : 'Outros';
       }
       setOpenGroup(module);
+      
+      const parentPhase = phases.find(p => p.modules.includes(module));
+      if (parentPhase) {
+        setOpenPhase(parentPhase.id);
+      }
     }
   }, [selectedLesson]);
 
@@ -181,16 +198,12 @@ const Sidebar = ({
     if (openGroup && groupedLessons[openGroup]) {
       const groupLessons = groupedLessons[openGroup];
       
-      // Find the lesson to scroll to:
-      // 1. If the selected lesson is in this group, scroll to it.
       let targetLesson = groupLessons.find(l => selectedLesson?.id === l.id);
       
-      // 2. Otherwise, find the first uncompleted lesson in this group.
       if (!targetLesson) {
         targetLesson = groupLessons.find(l => !completedLessons[l.id]);
       }
       
-      // 3. If all are completed, scroll to the first lesson of the group.
       if (!targetLesson && groupLessons.length > 0) {
         targetLesson = groupLessons[0];
       }
@@ -243,7 +256,7 @@ const Sidebar = ({
     
     const parts = title.split('_');
     if (parts.length >= 4) {
-      const moduleStr = parts[1] + '.' + parts[2]; // M0.01
+      const moduleStr = parts[1] + '.' + parts[2];
       const text = parts.slice(3).join(' '); 
       const prettyText = text.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
       return (
@@ -291,7 +304,6 @@ const Sidebar = ({
         </div>
 
         <div className="header-actions">
-          {/* Desktop Collapse Button */}
           <button 
             className="collapse-sidebar-btn desktop-only" 
             onClick={() => setIsCollapsed(true)}
@@ -300,7 +312,6 @@ const Sidebar = ({
             <ChevronLeft size={16} />
           </button>
 
-          {/* Mobile Close Button */}
           <button 
             className="close-sidebar-btn mobile-only" 
             onClick={() => setIsMobileOpen(false)}
@@ -311,7 +322,6 @@ const Sidebar = ({
         </div>
       </div>
 
-      {/* Progress Bar Widget */}
       <div className="sidebar-progress">
         <div className="progress-header">
           <span>Progresso Geral</span>
@@ -325,7 +335,6 @@ const Sidebar = ({
         </div>
       </div>
 
-      {/* Search Input Widget */}
       <div className="sidebar-search">
         <div className="search-input-wrapper">
           <Search size={14} className="search-icon" />
@@ -340,82 +349,121 @@ const Sidebar = ({
       </div>
       
       <div className="sidebar-content">
-        {Object.keys(groupedLessons).sort((a, b) => {
-          if (a === 'P0') return -1;
-          if (b === 'P0') return 1;
-          if (a === 'Outros') return 1;
-          if (b === 'Outros') return -1;
-          const numA = parseInt(a.replace('M', ''), 10);
-          const numB = parseInt(b.replace('M', ''), 10);
-          return numA - numB;
-        }).map(module => {
-          const { badge, title } = parseModuleHeader(module, moduleTitles[module]);
-          const moduleLessons = groupedLessons[module];
-          const completedModuleCount = moduleLessons.filter(l => completedLessons[l.id]).length;
-          const totalModuleCount = moduleLessons.length;
-          const isModuleCompleted = completedModuleCount === totalModuleCount;
-
-          const totalModuleMinutes = moduleLessons.reduce((acc, lesson) => {
-            return acc + estimateReadingTime(lesson.content);
-          }, 0);
+        {phases.map(phase => {
+          const phaseModules = phase.modules.filter(mod => groupedLessons[mod] && groupedLessons[mod].length > 0);
+          
+          if (phaseModules.length === 0) return null;
+          
+          const isPhaseOpen = openPhase === phase.id || searchTerm.trim() !== '';
+          
+          let totalPhaseCount = 0;
+          let completedPhaseCount = 0;
+          phaseModules.forEach(mod => {
+            totalPhaseCount += groupedLessons[mod].length;
+            completedPhaseCount += groupedLessons[mod].filter(l => completedLessons[l.id]).length;
+          });
+          const isPhaseCompleted = totalPhaseCount > 0 && completedPhaseCount === totalPhaseCount;
 
           return (
-            <div 
-              key={module} 
-              className={`module-group ${openGroup === module ? 'is-open' : ''} ${isModuleCompleted ? 'is-completed' : ''}`}
-            >
+            <div key={phase.id} className={`phase-accordion-group ${isPhaseOpen ? 'is-open' : ''} ${isPhaseCompleted ? 'is-completed' : ''}`}>
               <button 
-                className={`module-group-header ${openGroup === module ? 'active' : ''} ${isModuleCompleted ? 'completed' : ''}`} 
-                onClick={() => toggleGroup(module)}
+                className={`phase-accordion-header ${isPhaseOpen ? 'active' : ''} ${isPhaseCompleted ? 'completed' : ''}`}
+                onClick={() => setOpenPhase(prev => prev === phase.id ? null : phase.id)}
               >
-                <div className="module-info-container">
-                  <span className={`module-badge ${module === 'P0' ? 'start-badge' : ''} ${module === 'Outros' ? 'extra-badge' : ''}`}>
-                    {badge}
-                  </span>
-                  <h3 className="section-title">
-                    {title}
-                  </h3>
-                </div>
-                
-                <div className="module-header-actions">
-                  <span className="module-stats-right">
-                    {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'} • {formatDurationForModule(totalModuleMinutes)}
-                  </span>
-                  {isModuleCompleted ? (
-                    <CheckCircle2 className="module-check-icon" size={14} />
-                  ) : completedModuleCount > 0 ? (
-                    <span className="module-progress-text">{completedModuleCount}/{totalModuleCount}</span>
-                  ) : null}
-                  <ChevronDown 
-                    size={14} 
-                    className={`module-chevron ${openGroup !== module ? 'collapsed' : ''}`} 
-                  />
+                <span className="phase-title">{phase.name}</span>
+                <div className="phase-header-actions">
+                  <span className="phase-progress-text">{completedPhaseCount}/{totalPhaseCount}</span>
+                  <ChevronDown size={14} className={`phase-chevron ${!isPhaseOpen ? 'collapsed' : ''}`} />
                 </div>
               </button>
               
-              <div className={`module-lessons ${openGroup !== module ? 'hidden' : ''}`}>
-                <ul className="lesson-list">
-                  {moduleLessons.map((lesson) => {
-                    const isCompleted = !!completedLessons[lesson.id];
-                    const isActive = selectedLesson?.id === lesson.id;
-                    return (
-                      <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
-                        <button
-                          className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
-                          onClick={() => onSelectLesson(lesson)}
-                        >
-                          {formatTitle(lesson)}
-                          
-                          <div className="lesson-item-actions">
-                            <span className="lesson-duration-badge">{estimateReadingTime(lesson.content)} min</span>
-                            {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
-                            <ChevronRight className="chevron-icon" size={14} />
-                          </div>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div className={`phase-modules-container ${!isPhaseOpen ? 'hidden' : ''}`}>
+                {phaseModules.map(module => {
+                  const { badge, title } = parseModuleHeader(module, moduleTitles[module]);
+                  const moduleLessons = groupedLessons[module];
+                  const completedModuleCount = moduleLessons.filter(l => completedLessons[l.id]).length;
+                  const totalModuleCount = moduleLessons.length;
+                  const isModuleCompleted = completedModuleCount === totalModuleCount;
+                  
+                  const isModuleOpen = openGroup === module || searchTerm.trim() !== '';
+
+                  const totalModuleMinutes = moduleLessons.reduce((acc, lesson) => {
+                    return acc + estimateReadingTime(lesson.content);
+                  }, 0);
+
+                  return (
+                    <div 
+                      key={module} 
+                      className={`module-group ${isModuleOpen ? 'is-open' : ''} ${isModuleCompleted ? 'is-completed' : ''}`}
+                    >
+                      <button 
+                        className={`module-group-header ${isModuleOpen ? 'active' : ''} ${isModuleCompleted ? 'completed' : ''}`} 
+                        onClick={() => toggleGroup(module)}
+                      >
+                        <div className="module-info-container">
+                          <span className={`module-badge ${module === 'P0' ? 'start-badge' : ''} ${module === 'Outros' ? 'extra-badge' : ''}`}>
+                            {badge}
+                          </span>
+                          <h3 className="section-title">
+                            {title}
+                          </h3>
+                        </div>
+                        
+                        <div className="module-header-actions">
+                          <span className="module-stats-right">
+                            {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'} • {formatDurationForModule(totalModuleMinutes)}
+                          </span>
+                          {isModuleCompleted ? (
+                            <CheckCircle2 className="module-check-icon" size={14} />
+                          ) : completedModuleCount > 0 ? (
+                            <span className="module-progress-text">{completedModuleCount}/{totalModuleCount}</span>
+                          ) : null}
+                          <ChevronDown 
+                            size={14} 
+                            className={`module-chevron ${!isModuleOpen ? 'collapsed' : ''}`} 
+                          />
+                        </div>
+                      </button>
+                      
+                      <div className={`module-lessons ${!isModuleOpen ? 'hidden' : ''}`}>
+                        <ul className="lesson-list">
+                          {moduleLessons.map((lesson) => {
+                            const isCompleted = !!completedLessons[lesson.id];
+                            const isActive = selectedLesson?.id === lesson.id;
+                            const isUnlocked = isLessonUnlocked(lesson.id);
+                            
+                            return (
+                              <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
+                                <button
+                                  className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} ${!isUnlocked ? 'locked' : ''}`}
+                                  onClick={() => {
+                                    if (!isUnlocked) {
+                                      alert("Atenção: Você precisa concluir as aulas anteriores para acessar esta aula!");
+                                      return;
+                                    }
+                                    onSelectLesson(lesson);
+                                  }}
+                                >
+                                  {formatTitle(lesson)}
+                                  
+                                  <div className="lesson-item-actions">
+                                    <span className="lesson-duration-badge">{estimateReadingTime(lesson.content)} min</span>
+                                    {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
+                                    {!isUnlocked ? (
+                                      <Lock className="lock-icon-sidebar" size={12} />
+                                    ) : (
+                                      <ChevronRight className="chevron-icon" size={14} />
+                                    )}
+                                  </div>
+                                </button>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );
@@ -427,7 +475,6 @@ const Sidebar = ({
         )}
       </div>
 
-      {/* User Auth Section at the bottom */}
       {!isCollapsed && (
         <div className="sidebar-footer">
           {currentUser ? (
@@ -454,7 +501,6 @@ const Sidebar = ({
         </div>
       )}
 
-      {/* Resizer bar */}
       {!isCollapsed && (
         <div 
           className="sidebar-resizer" 

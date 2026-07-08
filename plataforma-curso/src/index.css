@@ -3917,6 +3917,109 @@ pre.speaking-highlight {
     justify-content: center;
   }
 }
+/* Sidebar Phase Accordion */
+.phase-accordion-group {
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.01);
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phase-accordion-group.is-open {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.phase-accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.phase-accordion-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.phase-title {
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.phase-accordion-header.active .phase-title {
+  color: var(--text-primary);
+}
+
+.phase-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phase-progress-text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.phase-chevron {
+  color: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phase-chevron.collapsed {
+  transform: rotate(-90deg);
+}
+
+.phase-modules-container {
+  padding: 0 10px 10px 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phase-modules-container.hidden {
+  display: none;
+}
+
+/* Sequential locking styles */
+.lesson-item.locked {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.lesson-item.locked:hover {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+}
+
+.lesson-item.locked .lesson-icon {
+  color: var(--text-muted) !important;
+}
+
+.lock-icon-sidebar {
+  color: var(--text-muted);
+  opacity: 0.8;
+  margin-left: auto;
+}
 
 /* Print CSS Stylesheet override */
 @media print {
