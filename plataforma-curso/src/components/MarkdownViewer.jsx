@@ -592,6 +592,26 @@ const MarkdownViewer = ({
     };
   }, [isAutoScrolling]);
 
+  // Reset scroll to top when content loads and renders (bypasses mobile scroll anchoring)
+  useEffect(() => {
+    if (!loading && parsedData.mainTitle) {
+      const handleScrollReset = () => {
+        const scrollContainer = document.querySelector('.content-scroll-area');
+        if (scrollContainer) {
+          scrollContainer.scrollTop = 0;
+        }
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
+      };
+
+      handleScrollReset();
+      
+      // Run again shortly after to ensure layout reflow and scroll-anchoring are bypassed
+      const timer = setTimeout(handleScrollReset, 60);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, parsedData]);
+
   useEffect(() => {
     if (lesson) {
       setLoading(true);
