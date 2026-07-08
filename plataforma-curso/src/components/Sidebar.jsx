@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X } from 'lucide-react';
+import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search } from 'lucide-react';
 import javaLogo from '../assets/java_logo.png';
 
 const moduleTitles = {
@@ -22,6 +22,23 @@ const moduleTitles = {
   'M15': 'M15: Observabilidade & Produção',
   'M16': 'M16: Arquitetura & DDD',
   'M17': 'M17: Projeto Final & Carreira'
+};
+
+const parseModuleHeader = (module, rawTitle) => {
+  if (module === 'P0') {
+    return { badge: 'Start', title: rawTitle || 'Aula de Abertura' };
+  }
+  if (module === 'Outros') {
+    return { badge: 'Extra', title: 'Outros' };
+  }
+  
+  const titleText = rawTitle || `Módulo ${module.replace('M', '')}`;
+  if (titleText.includes(': ')) {
+    const parts = titleText.split(': ');
+    return { badge: parts[0], title: parts.slice(1).join(': ') };
+  }
+  
+  return { badge: module, title: titleText };
 };
 
 const Sidebar = ({ 
@@ -217,13 +234,16 @@ const Sidebar = ({
 
       {/* Search Input Widget */}
       <div className="sidebar-search">
-        <input 
-          type="text" 
-          placeholder="Pesquisar aula..." 
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
+        <div className="search-input-wrapper">
+          <Search size={14} className="search-icon" />
+          <input 
+            type="text" 
+            placeholder="Pesquisar aula..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
       </div>
       
       <div className="sidebar-content">
@@ -235,46 +255,70 @@ const Sidebar = ({
           const numA = parseInt(a.replace('M', ''), 10);
           const numB = parseInt(b.replace('M', ''), 10);
           return numA - numB;
-        }).map(module => (
-          <div key={module} className="module-group">
-            <button 
-              className="module-group-header" 
-              onClick={() => toggleGroup(module)}
+        }).map(module => {
+          const { badge, title } = parseModuleHeader(module, moduleTitles[module]);
+          const moduleLessons = groupedLessons[module];
+          const completedModuleCount = moduleLessons.filter(l => completedLessons[l.id]).length;
+          const totalModuleCount = moduleLessons.length;
+          const isModuleCompleted = completedModuleCount === totalModuleCount;
+
+          return (
+            <div 
+              key={module} 
+              className={`module-group ${openGroup === module ? 'is-open' : ''} ${isModuleCompleted ? 'is-completed' : ''}`}
             >
-              <h3 className="section-title">
-                {moduleTitles[module] || (module === 'Outros' ? 'Outros' : `Módulo ${module.replace('M', '')}`)}
-              </h3>
-              <ChevronDown 
-                size={14} 
-                className={`module-chevron ${openGroup !== module ? 'collapsed' : ''}`} 
-              />
-            </button>
-            
-            <div className={`module-lessons ${openGroup !== module ? 'hidden' : ''}`}>
-              <ul className="lesson-list">
-                {groupedLessons[module].map((lesson) => {
-                  const isCompleted = !!completedLessons[lesson.id];
-                  const isActive = selectedLesson?.id === lesson.id;
-                  return (
-                    <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
-                      <button
-                        className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
-                        onClick={() => onSelectLesson(lesson)}
-                      >
-                        {formatTitle(lesson.title)}
-                        
-                        <div className="lesson-item-actions">
-                          {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
-                          <ChevronRight className="chevron-icon" size={14} />
-                        </div>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              <button 
+                className={`module-group-header ${openGroup === module ? 'active' : ''} ${isModuleCompleted ? 'completed' : ''}`} 
+                onClick={() => toggleGroup(module)}
+              >
+                <div className="module-info-container">
+                  <span className={`module-badge ${module === 'P0' ? 'start-badge' : ''} ${module === 'Outros' ? 'extra-badge' : ''}`}>
+                    {badge}
+                  </span>
+                  <h3 className="section-title">
+                    {title}
+                  </h3>
+                </div>
+                
+                <div className="module-header-actions">
+                  {isModuleCompleted ? (
+                    <CheckCircle2 className="module-check-icon" size={14} />
+                  ) : completedModuleCount > 0 ? (
+                    <span className="module-progress-text">{completedModuleCount}/{totalModuleCount}</span>
+                  ) : null}
+                  <ChevronDown 
+                    size={14} 
+                    className={`module-chevron ${openGroup !== module ? 'collapsed' : ''}`} 
+                  />
+                </div>
+              </button>
+              
+              <div className={`module-lessons ${openGroup !== module ? 'hidden' : ''}`}>
+                <ul className="lesson-list">
+                  {moduleLessons.map((lesson) => {
+                    const isCompleted = !!completedLessons[lesson.id];
+                    const isActive = selectedLesson?.id === lesson.id;
+                    return (
+                      <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
+                        <button
+                          className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
+                          onClick={() => onSelectLesson(lesson)}
+                        >
+                          {formatTitle(lesson.title)}
+                          
+                          <div className="lesson-item-actions">
+                            {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
+                            <ChevronRight className="chevron-icon" size={14} />
+                          </div>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         {filteredLessons.length === 0 && (
           <div className="empty-state" style={{ padding: '20px 0' }}>
             <p style={{ fontSize: '0.85rem' }}>Nenhuma aula encontrada.</p>
