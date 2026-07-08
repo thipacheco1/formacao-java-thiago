@@ -1,6 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X } from 'lucide-react';
 import javaLogo from '../assets/java_logo.png';
+
+const moduleTitles = {
+  'P0': 'Aula de Abertura',
+  'M0': 'M0: Ambiente e Método',
+  'M1': 'M1: Fundamentos Absolutos',
+  'M2': 'M2: Java Core Profundo',
+  'M3': 'M3: Organização Procedural',
+  'M4': 'M4: Orientação a Objetos',
+  'M5': 'M5: Collections & Java Moderno',
+  'M6': 'M6: SOLID & Design Patterns',
+  'M7': 'M7: Build & Ferramentas',
+  'M8': 'M8: Testes Profissionais',
+  'M9': 'M9: SQL & Banco de Dados',
+  'M10': 'M10: Persistência com JPA/Hibernate',
+  'M11': 'M11: Spring Boot REST APIs',
+  'M12': 'M12: Segurança de Aplicações',
+  'M13': 'M13: Integrações & Mensageria',
+  'M14': 'M14: Docker & CI/CD Pipelines',
+  'M15': 'M15: Observabilidade & Produção',
+  'M16': 'M16: Arquitetura & DDD',
+  'M17': 'M17: Projeto Final & Carreira'
+};
 
 const Sidebar = ({ 
   lessons, 
@@ -17,7 +39,7 @@ const Sidebar = ({
   onLogout,
   onOpenAuthModal
 }) => {
-  const [collapsedGroups, setCollapsedGroups] = useState({});
+  const [openGroup, setOpenGroup] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isResizing, setIsResizing] = useState(false);
 
@@ -33,16 +55,35 @@ const Sidebar = ({
 
   // Group filtered lessons by module
   const groupedLessons = filteredLessons.reduce((acc, lesson) => {
-    const parts = lesson.title.split('_');
-    const module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0
+    let module;
+    if (lesson.title.startsWith('000_')) {
+      module = 'P0';
+    } else {
+      const parts = lesson.title.split('_');
+      module = parts.length >= 4 ? parts[1] : 'Outros'; // e.g. M0
+    }
     
     if (!acc[module]) acc[module] = [];
     acc[module].push(lesson);
     return acc;
   }, {});
 
+  // Auto-open module when a lesson is selected
+  useEffect(() => {
+    if (selectedLesson) {
+      let module;
+      if (selectedLesson.title.startsWith('000_')) {
+        module = 'P0';
+      } else {
+        const parts = selectedLesson.title.split('_');
+        module = parts.length >= 4 ? parts[1] : 'Outros';
+      }
+      setOpenGroup(module);
+    }
+  }, [selectedLesson]);
+
   const toggleGroup = (module) => {
-    setCollapsedGroups(prev => ({ ...prev, [module]: !prev[module] }));
+    setOpenGroup(prev => prev === module ? null : module);
   };
 
   const handleMouseDown = (e) => {
@@ -155,20 +196,30 @@ const Sidebar = ({
       </div>
       
       <div className="sidebar-content">
-        {Object.keys(groupedLessons).sort().map(module => (
+        {Object.keys(groupedLessons).sort((a, b) => {
+          if (a === 'P0') return -1;
+          if (b === 'P0') return 1;
+          if (a === 'Outros') return 1;
+          if (b === 'Outros') return -1;
+          const numA = parseInt(a.replace('M', ''), 10);
+          const numB = parseInt(b.replace('M', ''), 10);
+          return numA - numB;
+        }).map(module => (
           <div key={module} className="module-group">
             <button 
               className="module-group-header" 
               onClick={() => toggleGroup(module)}
             >
-              <h3 className="section-title">Módulo {module.replace('M', '')}</h3>
+              <h3 className="section-title">
+                {moduleTitles[module] || (module === 'Outros' ? 'Outros' : `Módulo ${module.replace('M', '')}`)}
+              </h3>
               <ChevronDown 
                 size={14} 
-                className={`module-chevron ${collapsedGroups[module] ? 'collapsed' : ''}`} 
+                className={`module-chevron ${openGroup !== module ? 'collapsed' : ''}`} 
               />
             </button>
             
-            <div className={`module-lessons ${collapsedGroups[module] ? 'hidden' : ''}`}>
+            <div className={`module-lessons ${openGroup !== module ? 'hidden' : ''}`}>
               <ul className="lesson-list">
                 {groupedLessons[module].map((lesson) => {
                   const isCompleted = !!completedLessons[lesson.id];
