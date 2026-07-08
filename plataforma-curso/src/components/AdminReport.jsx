@@ -165,13 +165,24 @@ const AdminReport = ({ lessons }) => {
     const completedLessons = user.completedLessons || {};
     const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
     const progressPercent = totalLessonsCount > 0 ? Math.round((completedCount / totalLessonsCount) * 100) : 0;
-    const isActive = completedCount > 0;
+    
+    let studyStatus = 'not-started';
+    let studyStatusText = 'Não Iniciou';
+    
+    if (progressPercent === 100) {
+      studyStatus = 'completed';
+      studyStatusText = 'Concluído';
+    } else if (completedCount > 0) {
+      studyStatus = 'active';
+      studyStatusText = 'Em Andamento';
+    }
 
     return {
       ...user,
       completedCount,
       progressPercent,
-      isActive,
+      studyStatus,
+      studyStatusText,
       completedLessons
     };
   });
@@ -185,15 +196,15 @@ const AdminReport = ({ lessons }) => {
     
     const matchesStatus = 
       statusFilter === 'all' ||
-      (statusFilter === 'active' && user.isActive) ||
-      (statusFilter === 'inactive' && !user.isActive);
+      (statusFilter === 'active' && (user.studyStatus === 'active' || user.studyStatus === 'completed')) ||
+      (statusFilter === 'inactive' && user.studyStatus === 'not-started');
 
     return matchesSearch && matchesStatus;
   });
 
   // Calculate global dashboard metrics
   const totalUsers = processedUsers.length;
-  const activeUsers = processedUsers.filter(u => u.isActive).length;
+  const inProgressUsers = processedUsers.filter(u => u.studyStatus === 'active' || u.studyStatus === 'completed').length;
   const averageProgress = totalUsers > 0 
     ? Math.round(processedUsers.reduce((sum, u) => sum + u.progressPercent, 0) / totalUsers) 
     : 0;
@@ -237,8 +248,8 @@ const AdminReport = ({ lessons }) => {
             <UserCheck size={22} className="metric-icon active" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Alunos Ativos</span>
-            <span className="metric-value">{activeUsers}</span>
+            <span className="metric-label">Alunos em Andamento</span>
+            <span className="metric-value">{inProgressUsers}</span>
           </div>
         </div>
 
@@ -276,13 +287,13 @@ const AdminReport = ({ lessons }) => {
             className={`status-tab-btn-admin ${statusFilter === 'active' ? 'active' : ''}`}
             onClick={() => setStatusFilter('active')}
           >
-            Ativos ({processedUsers.filter(u => u.isActive).length})
+            Em Andamento ({processedUsers.filter(u => u.studyStatus === 'active' || u.studyStatus === 'completed').length})
           </button>
           <button 
             className={`status-tab-btn-admin ${statusFilter === 'inactive' ? 'active' : ''}`}
             onClick={() => setStatusFilter('inactive')}
           >
-            Inativos ({processedUsers.filter(u => !u.isActive).length})
+            Não Iniciaram ({processedUsers.filter(u => u.studyStatus === 'not-started').length})
           </button>
         </div>
       </div>
@@ -355,8 +366,8 @@ const AdminReport = ({ lessons }) => {
                           </div>
                         </td>
                         <td>
-                          <span className={`status-badge-admin ${user.isActive ? 'active' : 'inactive'}`}>
-                            {user.isActive ? 'Ativo' : 'Inativo'}
+                          <span className={`status-badge-admin ${user.studyStatus}`}>
+                            {user.studyStatusText}
                           </span>
                         </td>
                         <td>

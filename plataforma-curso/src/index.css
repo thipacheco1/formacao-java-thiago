@@ -3675,16 +3675,22 @@ pre.speaking-highlight {
   display: inline-block;
 }
 
-.status-badge-admin.active {
-  background: rgba(45, 212, 191, 0.08);
-  color: #2dd4bf;
-  border: 1px solid rgba(45, 212, 191, 0.2);
-}
-
-.status-badge-admin.inactive {
+.status-badge-admin.not-started {
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-muted);
   border: 1px solid var(--border-color);
+}
+
+.status-badge-admin.active {
+  background: rgba(99, 102, 241, 0.08);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.status-badge-admin.completed {
+  background: rgba(45, 212, 191, 0.08);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.2);
 }
 
 .user-actions-cell {
