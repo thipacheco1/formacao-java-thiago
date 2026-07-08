@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import javaLogo from '../assets/java_logo.png';
+import CertificateModal from './CertificateModal';
 import { 
   Play, BookOpen, Award, Zap, Shield, Database, Cpu, 
   Globe, Terminal, Box, UserCheck, Settings, CheckSquare, Activity,
   Layers, ArrowRight, Clock, Sparkles, Trophy, CheckCircle2
 } from 'lucide-react';
 
-const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
+const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser }) => {
   const totalCount = lessons.length;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
   const [activePhase, setActivePhase] = useState(1);
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [isCertPreviewMode, setIsCertPreviewMode] = useState(false);
+
+  const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
+  const showCertificateBanner = progressPercent === 100 && isAuthorizedAdmin;
+
+  const handleOpenCertificate = (preview = false) => {
+    if (!isAuthorizedAdmin) return;
+    setIsCertPreviewMode(preview);
+    setIsCertModalOpen(true);
+  };
 
   const handleStart = () => {
     if (lessons.length === 0) return;
@@ -259,10 +271,35 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
           </div>
 
           {completedCount === 0 && (
-            <button className="welcome-start-btn" onClick={handleStart}>
-              <Play size={18} fill="currentColor" />
-              <span>Iniciar Formação</span>
-            </button>
+            <div style={{ display: 'flex', gap: '12px', marginTop: '16px', flexWrap: 'wrap' }}>
+              <button className="welcome-start-btn" onClick={handleStart}>
+                <Play size={18} fill="currentColor" />
+                <span>Iniciar Formação</span>
+              </button>
+              {isAuthorizedAdmin && (
+                <button 
+                  className="welcome-start-btn" 
+                  onClick={() => handleOpenCertificate(true)}
+                  style={{
+                    background: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    color: 'var(--text-primary)',
+                    boxShadow: 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                  }}
+                >
+                  <Award size={18} />
+                  <span>Visualizar Modelo de Certificado</span>
+                </button>
+              )}
+            </div>
           )}
         </div>
 
@@ -275,39 +312,101 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
       </div>
 
       {completedCount > 0 && (
-        <div className="welcome-dashboard">
+        <div className={`welcome-dashboard ${showCertificateBanner ? 'completed-dashboard' : ''}`} style={showCertificateBanner ? { border: '1px solid rgba(217, 119, 6, 0.3)', background: 'linear-gradient(135deg, rgba(20, 23, 31, 0.9) 0%, rgba(217, 119, 6, 0.05) 100%)' } : {}}>
           <div className="dashboard-content">
             <div className="dashboard-left">
-              <div className="dashboard-badge">
-                <Trophy size={13} className="dashboard-badge-icon" />
-                <span>SEU PROGRESSO ATUAL</span>
+              <div className="dashboard-badge" style={showCertificateBanner ? { background: 'rgba(217, 119, 6, 0.15)', color: '#fbbf24' } : {}}>
+                <Trophy size={13} className="dashboard-badge-icon" style={showCertificateBanner ? { color: '#fbbf24' } : {}} />
+                <span>{showCertificateBanner ? 'FORMAÇÃO CONCLUÍDA!' : 'SEU PROGRESSO ATUAL'}</span>
               </div>
               <h2 className="dashboard-title">
-                Você concluiu <strong>{progressPercent}%</strong> da formação!
+                {showCertificateBanner ? (
+                  <>Parabéns! Você concluiu <strong>100%</strong> da formação!</>
+                ) : (
+                  <>Você concluiu <strong>{progressPercent}%</strong> da formação!</>
+                )}
               </h2>
               <p className="dashboard-subtext">
-                Roteiro avançado com foco prático e arquitetura de nível enterprise.
+                {showCertificateBanner 
+                  ? 'Seu certificado de Engenheiro Java Backend & Arquiteto de Sistemas está pronto para ser emitido!' 
+                  : 'Roteiro avançado com foco prático e arquitetura de nível enterprise.'}
               </p>
+              
+              {progressPercent < 100 && isAuthorizedAdmin && (
+                <button 
+                  className="dashboard-preview-cert-btn" 
+                  onClick={() => handleOpenCertificate(true)}
+                  style={{
+                    background: 'transparent',
+                    border: '1px dashed rgba(255, 255, 255, 0.2)',
+                    color: 'var(--text-secondary)',
+                    borderRadius: '6px',
+                    padding: '6px 12px',
+                    fontSize: '0.8rem',
+                    fontWeight: '500',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    cursor: 'pointer',
+                    marginTop: '12px',
+                    transition: 'all 0.2s ease',
+                    width: 'fit-content'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent-color)';
+                    e.currentTarget.style.color = 'var(--text-primary)';
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    e.currentTarget.style.color = 'var(--text-secondary)';
+                    e.currentTarget.style.background = 'transparent';
+                  }}
+                >
+                  <Award size={14} />
+                  <span>Visualizar Modelo do Certificado</span>
+                </button>
+              )}
             </div>
             <div className="dashboard-right">
-              <div className="dashboard-metrics">
-                <div className="metric-box">
-                  <span className="metric-num">{completedCount}</span>
-                  <span className="metric-lbl">Aulas Feitas</span>
-                </div>
-                <div className="metric-box">
-                  <span className="metric-num">{totalCount - completedCount}</span>
-                  <span className="metric-lbl">Aulas Restantes</span>
-                </div>
-              </div>
-              <button className="dashboard-resume-btn" onClick={handleStart}>
-                <span>Continuar de Onde Parou</span>
-                <ArrowRight size={15} />
-              </button>
+              {showCertificateBanner ? (
+                <button 
+                  className="dashboard-resume-btn" 
+                  onClick={() => handleOpenCertificate(false)}
+                  style={{
+                    background: 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
+                    boxShadow: '0 4px 12px rgba(217, 119, 6, 0.3)',
+                    border: 'none',
+                    color: '#ffffff'
+                  }}
+                >
+                  <Award size={16} />
+                  <span>Emitir Meu Certificado</span>
+                </button>
+              ) : (
+                <>
+                  <div className="dashboard-metrics">
+                    <div className="metric-box">
+                      <span className="metric-num">{completedCount}</span>
+                      <span className="metric-lbl">Aulas Feitas</span>
+                    </div>
+                    <div className="metric-box">
+                      <span className="metric-num">{totalCount - completedCount}</span>
+                      <span className="metric-lbl">Aulas Restantes</span>
+                    </div>
+                  </div>
+                  {progressPercent < 100 && (
+                    <button className="dashboard-resume-btn" onClick={handleStart}>
+                      <span>Continuar de Onde Parou</span>
+                      <ArrowRight size={15} />
+                    </button>
+                  )}
+                </>
+              )}
             </div>
           </div>
           <div className="dashboard-progress-track">
-            <div className="dashboard-progress-fill" style={{ width: `${progressPercent}%` }}></div>
+            <div className="dashboard-progress-fill" style={{ width: `${progressPercent}%`, background: showCertificateBanner ? 'linear-gradient(90deg, #fbbf24, #d97706)' : 'var(--accent-color)' }}></div>
           </div>
         </div>
       )}
@@ -419,6 +518,15 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson }) => {
             })}
         </div>
       </div>
+
+      {isAuthorizedAdmin && (
+        <CertificateModal 
+          isOpen={isCertModalOpen} 
+          onClose={() => setIsCertModalOpen(false)} 
+          currentUser={currentUser}
+          isPreviewMode={isCertPreviewMode}
+        />
+      )}
     </div>
   );
 };

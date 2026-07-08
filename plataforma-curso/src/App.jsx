@@ -204,6 +204,7 @@ function App() {
                   lessons={lessons}
                   completedLessons={completedLessons}
                   onSelectLesson={setSelectedLesson}
+                  currentUser={currentUser}
                 />
               )}
             </div>
