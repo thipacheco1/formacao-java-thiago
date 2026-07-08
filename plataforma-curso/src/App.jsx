@@ -40,12 +40,62 @@ function App() {
     return saved ? JSON.parse(saved) : {};
   });
 
-  // Save to localStorage whenever it changes, linked to the active user profile
+  // Force migration of old localStorage users to central DB
+  useEffect(() => {
+    const migrationKey = 'db_migration_v1_done';
+    if (!localStorage.getItem(migrationKey)) {
+      // Clear old local users list and force logout
+      localStorage.removeItem('users');
+      localStorage.removeItem('currentUser');
+      setCurrentUser(null);
+      setCompletedLessons({});
+      localStorage.setItem(migrationKey, 'true');
+    }
+  }, []);
+
+  // Load progress from API when currentUser is set
+  useEffect(() => {
+    if (!currentUser) return;
+    
+    const loadProgress = async () => {
+      try {
+        const res = await fetch(`/api/progress?email=${currentUser.email}`);
+        if (res.ok) {
+          const dbProgress = await res.json();
+          setCompletedLessons(dbProgress || {});
+        }
+      } catch (e) {
+        console.error("Failed to load progress from Vercel KV:", e);
+      }
+    };
+    
+    loadProgress();
+  }, [currentUser]);
+
+  // Save to localStorage and database whenever it changes, linked to the active user profile
   useEffect(() => {
     const progressKey = currentUser 
       ? `completedLessons_${currentUser.email.toLowerCase()}` 
       : 'completedLessons_visitor';
     localStorage.setItem(progressKey, JSON.stringify(completedLessons));
+
+    if (currentUser) {
+      const syncProgress = async () => {
+        try {
+          await fetch('/api/progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: currentUser.email,
+              completedLessons
+            })
+          });
+        } catch (e) {
+          console.error("Failed to sync progress with Vercel KV:", e);
+        }
+      };
+      syncProgress();
+    }
   }, [completedLessons, currentUser]);
 
   const toggleLessonCompleted = (lessonId) => {
@@ -59,7 +109,7 @@ function App() {
     setCurrentUser(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
     
-    // Load progress for this user
+    // Quick local preview
     const progressKey = `completedLessons_${user.email.toLowerCase()}`;
     const saved = localStorage.getItem(progressKey);
     setCompletedLessons(saved ? JSON.parse(saved) : {});
@@ -146,6 +196,10 @@ function App() {
             lessons={lessons} 
             selectedLesson={selectedLesson} 
             onSelectLesson={(lesson) => {
+              if (lesson && !currentUser) {
+                setIsAuthModalOpen(true);
+                return;
+              }
               setSelectedLesson(lesson);
               setIsMobileSidebarOpen(false); // Close sidebar on mobile after selecting
             }}
@@ -205,6 +259,7 @@ function App() {
                   completedLessons={completedLessons}
                   onSelectLesson={setSelectedLesson}
                   currentUser={currentUser}
+                  onOpenAuthModal={() => setIsAuthModalOpen(true)}
                 />
               )}
             </div>

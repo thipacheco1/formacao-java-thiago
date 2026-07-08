@@ -84,7 +84,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     
@@ -93,16 +93,40 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       return;
     }
 
-    const users = getStoredUsers();
-    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    try {
+      const res = await fetch('/api/users');
+      if (res.ok) {
+        const users = await res.json();
+        const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
 
-    if (!user || user.password !== password) {
-      setError('E-mail ou senha incorretos.');
-      return;
+        if (!user || user.password !== password) {
+          setError('E-mail ou senha incorretos.');
+          return;
+        }
+
+        onLoginSuccess(user);
+        handleClose();
+        return;
+      } else {
+        const data = await res.json();
+        if (data.error && data.error.includes('Database environment variables not configured')) {
+          throw new Error('KV_NOT_CONFIGURED');
+        }
+        setError(data.error || 'Erro ao realizar login.');
+      }
+    } catch (err) {
+      // Fallback to local storage
+      const users = getStoredUsers();
+      const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+      if (!user || user.password !== password) {
+        setError('E-mail ou senha incorretos.');
+        return;
+      }
+
+      onLoginSuccess(user);
+      handleClose();
     }
-
-    onLoginSuccess(user);
-    handleClose();
   };
 
   const handleRegister = async (e) => {
@@ -119,14 +143,6 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       return;
     }
 
-    const users = getStoredUsers();
-    const emailExists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
-
-    if (emailExists) {
-      setError('Este e-mail já está cadastrado.');
-      return;
-    }
-
     const newUser = {
       name,
       age: parseInt(age, 10),
@@ -135,21 +151,54 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       password
     };
 
-    users.push(newUser);
-    saveUsers(users);
+    try {
+      const res = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser)
+      });
+      const data = await res.json();
 
-    // Notify owner via Webhook and Email
-    await sendWebhookNotification(newUser);
-    await sendEmailNotification(newUser);
+      if (res.ok) {
+        onLoginSuccess(data.user);
+        setSuccess('Cadastro realizado com sucesso!');
+        setTimeout(() => {
+          handleClose();
+        }, 1000);
+        return;
+      } else {
+        if (data.error && data.error.includes('Database environment variables not configured')) {
+          throw new Error('KV_NOT_CONFIGURED');
+        }
+        setError(data.error || 'Erro ao realizar cadastro.');
+        return;
+      }
+    } catch (err) {
+      // Fallback to local storage
+      const users = getStoredUsers();
+      const emailExists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
 
-    onLoginSuccess(newUser);
-    setSuccess('Cadastro realizado com sucesso!');
-    setTimeout(() => {
-      handleClose();
-    }, 1000);
+      if (emailExists) {
+        setError('Este e-mail já está cadastrado.');
+        return;
+      }
+
+      users.push(newUser);
+      saveUsers(users);
+
+      // Notify owner via Webhook and Email in background
+      await sendWebhookNotification(newUser);
+      await sendEmailNotification(newUser);
+
+      onLoginSuccess(newUser);
+      setSuccess('Cadastro realizado com sucesso!');
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
+    }
   };
 
-  const handleRecover = (e) => {
+  const handleRecover = async (e) => {
     e.preventDefault();
     setError('');
     
@@ -158,19 +207,43 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       return;
     }
 
-    const users = getStoredUsers();
-    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.phone === phone);
+    try {
+      const res = await fetch('/api/users');
+      if (res.ok) {
+        const users = await res.json();
+        const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.phone === phone);
 
-    if (!user) {
-      setError('E-mail ou Telefone não correspondem a nenhuma conta ativa.');
-      return;
+        if (!user) {
+          setError('E-mail ou Telefone não correspondem a nenhuma conta ativa.');
+          return;
+        }
+
+        setUserToReset(user);
+        setView('reset-password');
+        return;
+      } else {
+        const data = await res.json();
+        if (data.error && data.error.includes('Database environment variables not configured')) {
+          throw new Error('KV_NOT_CONFIGURED');
+        }
+        setError(data.error || 'Erro de conexão.');
+      }
+    } catch (err) {
+      // Fallback to local storage
+      const users = getStoredUsers();
+      const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.phone === phone);
+
+      if (!user) {
+        setError('E-mail ou Telefone não correspondem a nenhuma conta ativa.');
+        return;
+      }
+
+      setUserToReset(user);
+      setView('reset-password');
     }
-
-    setUserToReset(user);
-    setView('reset-password');
   };
 
-  const handleResetPassword = (e) => {
+  const handleResetPassword = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -189,24 +262,52 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       return;
     }
 
-    const users = getStoredUsers();
-    const updatedUsers = users.map(u => {
-      if (u.email.toLowerCase() === userToReset.email.toLowerCase()) {
-        return { ...u, password: newPassword };
-      }
-      return u;
-    });
+    try {
+      const res = await fetch('/api/users', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userToReset.email, password: newPassword })
+      });
+      const data = await res.json();
 
-    saveUsers(updatedUsers);
-    setSuccess('Senha redefinida com sucesso!');
-    setTimeout(() => {
-      setSuccess('');
-      setView('login');
-      setPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-      setUserToReset(null);
-    }, 1500);
+      if (res.ok) {
+        setSuccess('Senha redefinida com sucesso!');
+        setTimeout(() => {
+          setSuccess('');
+          setView('login');
+          setPassword('');
+          setNewPassword('');
+          setConfirmPassword('');
+          setUserToReset(null);
+        }, 1500);
+        return;
+      } else {
+        if (data.error && data.error.includes('Database environment variables not configured')) {
+          throw new Error('KV_NOT_CONFIGURED');
+        }
+        setError(data.error || 'Erro ao redefinir senha.');
+      }
+    } catch (err) {
+      // Fallback to local storage
+      const users = getStoredUsers();
+      const updatedUsers = users.map(u => {
+        if (u.email.toLowerCase() === userToReset.email.toLowerCase()) {
+          return { ...u, password: newPassword };
+        }
+        return u;
+      });
+
+      saveUsers(updatedUsers);
+      setSuccess('Senha redefinida com sucesso!');
+      setTimeout(() => {
+        setSuccess('');
+        setView('login');
+        setPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        setUserToReset(null);
+      }, 1500);
+    }
   };
 
   return (

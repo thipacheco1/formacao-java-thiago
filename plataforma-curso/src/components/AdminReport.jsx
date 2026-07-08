@@ -16,29 +16,90 @@ const AdminReport = ({ lessons }) => {
     loadUsers();
   }, []);
 
-  const loadUsers = () => {
-    const storedUsers = localStorage.getItem('users');
-    if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
-    } else {
-      setUsers([]);
+  const loadUsers = async () => {
+    try {
+      const res = await fetch('/api/users');
+      if (res.ok) {
+        const usersList = await res.json();
+        setUsers(usersList);
+        
+        // Fetch progress for each user asynchronously
+        usersList.forEach(async (user) => {
+          try {
+            const progressRes = await fetch(`/api/progress?email=${user.email}`);
+            if (progressRes.ok) {
+              const progress = await progressRes.json();
+              setUsers(prevUsers => prevUsers.map(u => 
+                u.email.toLowerCase() === user.email.toLowerCase()
+                  ? { ...u, completedLessons: progress }
+                  : u
+              ));
+            }
+          } catch (err) {
+            console.error("Failed to load progress for admin user", user.email, err);
+          }
+        });
+        return;
+      } else {
+        const data = await res.json();
+        if (data.error && data.error.includes('Database environment variables not configured')) {
+          throw new Error('KV_NOT_CONFIGURED');
+        }
+      }
+    } catch (err) {
+      // Fallback to local storage
+      const storedUsers = localStorage.getItem('users');
+      const usersList = storedUsers ? JSON.parse(storedUsers) : [];
+      
+      const usersWithLocalProgress = usersList.map(user => {
+        const progressKey = `completedLessons_${user.email.toLowerCase()}`;
+        const saved = localStorage.getItem(progressKey);
+        return {
+          ...user,
+          completedLessons: saved ? JSON.parse(saved) : {}
+        };
+      });
+      setUsers(usersWithLocalProgress);
     }
   };
 
   const getCompletedLessonsForUser = (email) => {
-    const progressKey = `completedLessons_${email.toLowerCase()}`;
-    const saved = localStorage.getItem(progressKey);
-    return saved ? JSON.parse(saved) : {};
+    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    return user && user.completedLessons ? user.completedLessons : {};
   };
 
-  const handleDeleteUser = (email) => {
+  const handleDeleteUser = async (email) => {
     if (window.confirm(`Tem certeza de que deseja remover o usuário ${email}? Isso apagará também seu progresso.`)) {
-      const updatedUsers = users.filter(u => u.email.toLowerCase() !== email.toLowerCase());
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
-      setUsers(updatedUsers);
-      if (expandedUser === email) {
-        setExpandedUser(null);
+      try {
+        const res = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'delete', email })
+        });
+        if (res.ok) {
+          setUsers(prev => prev.filter(u => u.email.toLowerCase() !== email.toLowerCase()));
+          if (expandedUser === email) {
+            setExpandedUser(null);
+          }
+          return;
+        } else {
+          const data = await res.json();
+          if (data.error && data.error.includes('Database environment variables not configured')) {
+            throw new Error('KV_NOT_CONFIGURED');
+          }
+          alert(data.error || 'Erro ao remover usuário.');
+        }
+      } catch (err) {
+        // Fallback to local storage
+        const storedUsers = localStorage.getItem('users');
+        const usersList = storedUsers ? JSON.parse(storedUsers) : [];
+        const updatedUsers = usersList.filter(u => u.email.toLowerCase() !== email.toLowerCase());
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
+        setUsers(prev => prev.filter(u => u.email.toLowerCase() !== email.toLowerCase()));
+        if (expandedUser === email) {
+          setExpandedUser(null);
+        }
       }
     }
   };
@@ -101,7 +162,7 @@ const AdminReport = ({ lessons }) => {
 
   // Process users data
   const processedUsers = users.map(user => {
-    const completedLessons = getCompletedLessonsForUser(user.email);
+    const completedLessons = user.completedLessons || {};
     const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
     const progressPercent = totalLessonsCount > 0 ? Math.round((completedCount / totalLessonsCount) * 100) : 0;
     const isActive = completedCount > 0;

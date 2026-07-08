@@ -8,7 +8,7 @@ import {
   Layers, ArrowRight, Clock, Sparkles, Trophy, CheckCircle2
 } from 'lucide-react';
 
-const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser }) => {
+const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, onOpenAuthModal }) => {
   const totalCount = lessons.length;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
@@ -34,6 +34,10 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser })
   };
 
   const handleStart = () => {
+    if (!currentUser) {
+      onOpenAuthModal();
+      return;
+    }
     if (lessons.length === 0) return;
     const nextLesson = lessons.find(l => !completedLessons[l.id]) || lessons[0];
     onSelectLesson(nextLesson);
