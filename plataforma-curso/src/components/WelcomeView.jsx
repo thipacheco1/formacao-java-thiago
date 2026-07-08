@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import javaLogo from '../assets/java_logo.png';
 import CertificateModal from './CertificateModal';
+import AdminReport from './AdminReport';
 import { 
   Play, BookOpen, Award, Zap, Shield, Database, Cpu, 
   Globe, Terminal, Box, UserCheck, Settings, CheckSquare, Activity,
@@ -15,8 +16,15 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser })
   const [activePhase, setActivePhase] = useState(1);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [isCertPreviewMode, setIsCertPreviewMode] = useState(false);
+  const [currentTab, setCurrentTab] = useState('course'); // 'course' | 'admin'
 
   const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
+
+  useEffect(() => {
+    if (!isAuthorizedAdmin) {
+      setCurrentTab('course');
+    }
+  }, [isAuthorizedAdmin]);
   const showCertificateBanner = progressPercent === 100 && isAuthorizedAdmin;
 
   const handleOpenCertificate = (preview = false) => {
@@ -232,7 +240,30 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser })
 
   return (
     <div className="welcome-view-container">
-      <div className="welcome-hero">
+      {isAuthorizedAdmin && (
+        <div className="admin-tab-header">
+          <button 
+            className={`admin-tab-btn ${currentTab === 'course' ? 'active' : ''}`}
+            onClick={() => setCurrentTab('course')}
+          >
+            <BookOpen size={16} />
+            <span>Painel do Aluno</span>
+          </button>
+          <button 
+            className={`admin-tab-btn ${currentTab === 'admin' ? 'active' : ''}`}
+            onClick={() => setCurrentTab('admin')}
+          >
+            <Shield size={16} />
+            <span>Relatório de Alunos (Admin)</span>
+          </button>
+        </div>
+      )}
+
+      {currentTab === 'admin' && isAuthorizedAdmin ? (
+        <AdminReport lessons={lessons} />
+      ) : (
+        <>
+          <div className="welcome-hero">
         <div className="hero-text-col">
           <div className="hero-tag-badge">
             <Sparkles size={12} className="tag-icon" />
@@ -518,6 +549,8 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser })
             })}
         </div>
       </div>
+    </>
+  )}
 
       {isAuthorizedAdmin && (
         <CertificateModal 
