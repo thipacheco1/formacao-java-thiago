@@ -1,60 +1,5 @@
 ﻿# 013 — M0.13 — Diário de Bordo e Rastreabilidade do Aprendizado
 
-## Onde estamos na formação
-
-Até aqui, a formação já construiu uma base operacional:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial;
-Git instalado e configurado;
-Git local;
-GitHub e repositório remoto;
-Markdown para documentação técnica.
-```
-
-Agora vamos juntar três coisas:
-
-```text
-Markdown;
-Git;
-aprendizado.
-```
-
-Essa junção vira diário de bordo.
-
-O diário de bordo não é um caderno bonito.
-
-Também não é uma obrigação burocrática.
-
-Ele é uma ferramenta de engenharia pessoal.
-
-Ele responde:
-
-```text
-o que foi estudado?
-quando foi estudado?
-qual prática foi feita?
-qual erro apareceu?
-qual decisão foi tomada?
-qual comando foi usado?
-qual evidência prova que houve avanço?
-qual dúvida ficou aberta?
-o que precisa ser revisado?
-```
-
-Sem diário, muito aprendizado se perde.
-
-Com diário, a formação deixa trilha.
-
----
-
 ## Hoje a aula é sobre não deixar o aprendizado desaparecer
 
 Um erro comum em estudo técnico é consumir conteúdo e não registrar nada.
@@ -125,17 +70,6 @@ Ele registra a caminhada.
 Exemplo:
 
 ```markdown
-## Aula 008 — Debug inicial no IntelliJ
-
-Aprendi que debug troca chute por evidência. Usei breakpoint, Step Over, Step Into e observei variáveis durante a execução.
-```
-
-Isso parece simples.
-
-Mas, acumulado ao longo de meses, vira um mapa da evolução.
-
----
-
 ## Diário de bordo não é apostila
 
 A apostila ensina o conteúdo.
@@ -358,38 +292,6 @@ O modelo precisa ser prático.
 Um bom bloco de diário pode ter:
 
 ```markdown
-## Aula 013 — Diário de bordo e rastreabilidade do aprendizado
-
-### O que aprendi
--
-
-### O que pratiquei
--
-
-### Arquivos criados ou alterados
--
-
-### Comandos usados
--
-
-### Erros ou dúvidas
--
-
-### Atalhos úteis
--
-
-### Próximo passo
--
-```
-
-Isso é suficiente.
-
-Nem toda aula precisa preencher tudo com detalhe.
-
-Mas toda aula concluída deve deixar registro.
-
----
-
 ## Modelo oficial recomendado para o diário
 
 Use este modelo como base:
@@ -398,40 +300,6 @@ Use este modelo como base:
 # Diário de bordo
 
 Registro cronológico da evolução na formação Java Backend.
-
----
-
-## Aula 001 — Mapa da formação completa e níveis de carreira Java
-
-### O que aprendi
-Entendi que a formação não é apenas sobre aprender sintaxe Java, mas sobre construir base para backend profissional, engenharia e arquitetura.
-
-### O que pratiquei
-Registrei minha visão inicial sobre a formação.
-
-### Arquivos criados ou alterados
-- `docs/diario-de-bordo.md`
-
-### Comandos usados
--
-
-### Erros ou dúvidas
--
-
-### Atalhos úteis
--
-
-### Próximo passo
-Seguir para o diagnóstico inicial técnico.
-```
-
-Esse formato tem uma vantagem:
-
-```text
-ele é repetível.
-```
-
-Quando a aula acaba, você sabe onde registrar.
 
 ---
 
@@ -455,37 +323,6 @@ Conteúdo inicial:
 # Diário de bordo
 
 Registro cronológico da evolução na formação Java Backend.
-
----
-
-## Aula 013 — Diário de bordo e rastreabilidade do aprendizado
-
-### O que aprendi
-Aprendi que o diário de bordo registra o caminho da formação e ajuda a transformar estudo em rastreabilidade.
-
-### O que pratiquei
-Criei ou atualizei o arquivo `docs/diario-de-bordo.md`.
-
-### Arquivos criados ou alterados
-- `docs/diario-de-bordo.md`
-
-### Comandos usados
-```powershell
-mkdir docs
-New-Item docs\diario-de-bordo.md
-```
-
-### Erros ou dúvidas
--
-
-### Atalhos úteis
--
-
-### Próximo passo
-Manter o diário atualizado após cada aula concluída.
-```
-
-Esse exemplo já é um diário funcional.
 
 ---
 
@@ -707,29 +544,6 @@ Ctrl + Shift + A
 ```
 
 e procure pelo nome da ação.
-
----
-
-## Atalhos úteis nesta aula
-
-Para trabalhar com diário e Markdown no IntelliJ, use quando fizer sentido:
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Abrir painel do projeto | `Alt + 1` | Encontrar `docs/diario-de-bordo.md` |
-| Voltar ao editor | `Esc` | Sair do painel e voltar ao texto |
-| Buscar ação | `Ctrl + Shift + A` | Encontrar comandos sem decorar |
-| Buscar no arquivo | `Ctrl + F` | Encontrar uma aula no diário |
-| Buscar no projeto | `Ctrl + Shift + F` | Procurar termo em todos os documentos |
-| Reformatar arquivo | `Ctrl + Alt + L` | Ajustar formatação quando aplicável |
-| Abrir terminal integrado | `Alt + F12` | Rodar comandos Git |
-| Renomear arquivo | `Shift + F6` | Renomear com auxílio da IDE |
-
-Não tente decorar tudo de uma vez.
-
-Use os atalhos que resolvem problema real.
-
-Depois registre no `docs/atalhos.md`.
 
 ---
 
@@ -1046,27 +860,6 @@ Fiz javac.
 Registro melhor:
 
 ```markdown
-## Aula 006 — Compilação manual com javac
-
-### O que pratiquei
-Criei `Main.java`, compilei com `javac Main.java` e executei com `java Main`.
-
-### O que observei
-O comando `javac` gerou `Main.class`. O comando `java Main` executou a classe pela JVM.
-
-### Erro reproduzido
-Tentei executar `java Main.class` e entendi que o correto é usar o nome da classe, sem `.class`.
-
-### Aprendizado
-`javac` compila arquivo `.java`. `java` executa classe compilada.
-```
-
-Esse registro ajuda revisão.
-
-Ele também mostra que houve prática real.
-
----
-
 ## Como manter o diário sem virar peso
 
 Algumas regras simples:
@@ -1269,25 +1062,7 @@ Decisão não registrada tende a ser rediscutida.
 
 ---
 
-## Diagnóstico de um diário ruim
-
-Pergunte:
-
-```text
-consigo entender o que foi aprendido?
-consigo saber o que foi praticado?
-consigo reproduzir os comandos principais?
-consigo ver quais erros aconteceram?
-consigo saber o que revisar?
-consigo relacionar a entrada a um commit?
-consigo ler isso daqui a um mês?
-```
-
-Se não, melhore o formato.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie ou atualize:
 
@@ -1344,55 +1119,7 @@ git status
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 013 — Diário de bordo e rastreabilidade do aprendizado
-
-### O que aprendi
-Aprendi que o diário de bordo registra a evolução da formação, ajuda na revisão e cria rastreabilidade junto com o Git.
-
-### O que pratiquei
-Criei ou atualizei os arquivos de diário, atalhos e revisões.
-
-### Arquivos criados ou alterados
-- `docs/diario-de-bordo.md`
-- `docs/atalhos.md`
-- `docs/revisoes.md`
-
-### Comandos usados
-```bash
-git status
-git diff
-git add docs/diario-de-bordo.md docs/atalhos.md docs/revisoes.md
-git diff --staged
-git commit -m "Organiza diario de bordo e revisoes"
-```
-
-### Atalhos úteis
-- `Alt + 1` — abrir painel Project.
-- `Esc` — voltar ao editor.
-- `Ctrl + F` — buscar no arquivo atual.
-- `Ctrl + Shift + F` — buscar no projeto.
-- `Alt + F12` — abrir terminal integrado.
-- `Ctrl + Shift + A` — buscar ação no IntelliJ.
-
-### Erros que quero evitar
-- copiar a aula inteira no diário;
-- registrar algo genérico demais;
-- deixar de registrar erros;
-- esquecer de commitar o diário;
-- colocar segredo em arquivo Markdown.
-
-### Próximo passo
-Estudar como usar IA/Codex no IntelliJ com ética, método e sem terceirizar raciocínio.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

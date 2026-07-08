@@ -1,64 +1,5 @@
 # 034 — M1.14 — Incremento, decremento e acumuladores
 
-## Pré-requisito de ambiente
-
-Esta aula não exige instalação nova.
-
-Antes de começar:
-
-```powershell
-java -version
-javac -version
-git --version
-```
-
-A prática desta aula será feita em:
-
-```text
-labs/m1/aula-034-incremento-decremento-acumuladores
-```
-
----
-
-## Onde estamos na formação
-
-Antes desta aula, estudamos:
-
-```text
-operadores aritméticos;
-operadores relacionais;
-operadores lógicos.
-```
-
-Agora vamos aprender um padrão muito usado em programação:
-
-```text
-contar;
-somar;
-acumular;
-incrementar;
-decrementar.
-```
-
-Esses conceitos aparecem em:
-
-```text
-laços;
-arrays;
-contagem de itens;
-cálculo de total;
-quantidade de erros;
-tentativas;
-paginação;
-processamento de listas;
-relatórios;
-métricas.
-```
-
-Mesmo antes de estudar profundamente `for` e `while`, precisamos entender o que significa aumentar, diminuir e acumular valores.
-
----
-
 ## A pergunta central da aula
 
 Como representar estas ações em Java?
@@ -862,30 +803,6 @@ Pode gerar número negativo quando isso não faz sentido.
 
 ---
 
-## Diagnóstico
-
-Quando contador ou acumulador der errado:
-
-```text
-1. Verifique valor inicial.
-2. Verifique onde incrementa.
-3. Verifique se incrementa mais de uma vez.
-4. Verifique se esqueceu de incrementar.
-5. Verifique se precisava acumular valor, não apenas contar.
-6. Verifique se BigDecimal recebeu atribuição após add.
-7. Imprima valor antes e depois.
-```
-
-Exemplo:
-
-```java
-System.out.println("Antes: " + total);
-total += 10;
-System.out.println("Depois: " + total);
-```
-
----
-
 ## Debug recomendado
 
 Use debug em:
@@ -922,23 +839,7 @@ totalPago depois da atribuição.
 
 ---
 
-## Quebrando de propósito
-
-Faça estes testes:
-
-```text
-remova a inicialização de um contador;
-troque `aprovados++` por `aprovados--`;
-chame `BigDecimal.add` sem atribuir;
-misture `contador++` em expressão complexa;
-deixe tentativasRestantes ficar negativo.
-```
-
-Explique cada erro.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie a pasta:
 
@@ -999,77 +900,6 @@ java ContagemAuditoria
 
 ---
 
-## README recomendado da aula
-
-```markdown
-# Aula 034 — Incremento, decremento e acumuladores
-
-## Objetivo
-
-Aprender a contar, incrementar, decrementar e acumular valores em Java.
-
-## Conceitos
-
-- `++` incrementa 1.
-- `--` decrementa 1.
-- `+=` acumula valor.
-- `-=` reduz valor.
-- Contador conta ocorrências.
-- Acumulador soma valores.
-- Totalizador guarda total.
-- BigDecimal exige `add` com atribuição.
-- Pré e pós-incremento devem ser usados com cuidado.
-
-## Comandos
-
-```powershell
-javac IncrementoBasico.java
-java IncrementoBasico
-javac AcumuladorPagamento.java
-java AcumuladorPagamento
-```
-```
-
----
-
-## Registro no diário de bordo
-
-```markdown
-## Aula 034 — Incremento, decremento e acumuladores
-
-### O que aprendi
-
-Aprendi a usar `++`, `--`, `+=`, `-=` e a diferença entre contador, acumulador e totalizador.
-
-### O que pratiquei
-
-Criei exemplos de pedidos, estoque, tentativas de login, OS atrasadas, auditoria e pagamentos acumulados.
-
-### Conceitos principais
-
-- incremento
-- decremento
-- contador
-- acumulador
-- totalizador
-- pré-incremento
-- pós-incremento
-- BigDecimal.add
-- valor inicial
-- debug de contadores
-
-### Erros que quero evitar
-
-- contador sem inicializar;
-- confundir contador com acumulador;
-- usar `++` em BigDecimal;
-- chamar `add` sem atribuir;
-- usar incremento em expressão complexa;
-- deixar decremento passar do limite.
-```
-
----
-
 ## Commit recomendado
 
 ```bash
@@ -1081,29 +911,7 @@ git status
 
 ---
 
-## Perguntas de fixação
-
-```text
-1. Para que serve `++`?
-2. Para que serve `--`?
-3. Para que serve `+=`?
-4. Para que serve `-=`?
-5. O que é contador?
-6. O que é acumulador?
-7. O que é totalizador?
-8. Qual diferença entre contador e acumulador?
-9. Qual diferença entre `contador++` e `++contador` em uma expressão?
-10. Por que evitar incremento em expressão complexa?
-11. Como acumular BigDecimal?
-12. Por que BigDecimal.add precisa de atribuição?
-13. Como contar pedidos aprovados?
-14. Como contar OS atrasadas?
-15. Como controlar tentativas restantes?
-```
-
----
-
-## Critério de aprovação
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

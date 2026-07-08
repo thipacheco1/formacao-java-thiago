@@ -1130,7 +1130,7 @@ Não apenas force valor.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Esta prática vale a pena fazer no IntelliJ.
 
@@ -1185,13 +1185,6 @@ Ela treina o olhar para regra de negócio.
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 008 — Debug inicial no IntelliJ
-
 ## O que aprendi
 Aprendi que debug permite observar o programa em execução, acompanhar variáveis, decisões, laços e chamadas de método.
 
@@ -1229,7 +1222,7 @@ Debug troca chute por evidência.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

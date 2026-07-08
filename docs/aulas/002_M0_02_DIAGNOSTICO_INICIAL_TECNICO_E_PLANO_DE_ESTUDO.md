@@ -42,44 +42,6 @@ O diagnóstico serve para transformar essa bagagem em plano.
 
 ---
 
-## Diagnóstico não é prova
-
-A primeira coisa importante: diagnóstico não é prova.
-
-Prova tenta medir acerto.
-
-Diagnóstico tenta revelar caminho.
-
-Se uma pessoa erra uma questão de Java básico, isso não significa que ela “não serve para backend”.
-
-Significa apenas:
-
-```text
-esse ponto precisa ser estudado antes de depender dele.
-```
-
-Se uma pessoa não sabe Git direito, isso não significa incapacidade.
-
-Significa:
-
-```text
-antes de trabalhar com branch, PR e conflito, precisa dominar add, commit, status, diff e log.
-```
-
-Se uma pessoa não sabe SQL com segurança, isso não significa fracasso.
-
-Significa:
-
-```text
-antes de JPA e Hibernate, precisa construir base relacional.
-```
-
-Um bom diagnóstico não humilha.
-
-Um bom diagnóstico orienta.
-
----
-
 ## Por que isso importa para uma formação Java Backend
 
 Backend Java exige várias competências ao mesmo tempo.
@@ -780,9 +742,6 @@ Conteúdo sugerido:
 ## Data
 AAAA-MM-DD
 
-## Objetivo
-Registrar meu ponto de partida na formação Java Backend.
-
 ## Escala
 1 = quase não conheço
 2 = já vi, mas preciso de apoio
@@ -820,30 +779,6 @@ Isso já é uma entrega útil.
 Não é enfeite.
 
 É ponto de partida.
-
----
-
-## Diagnóstico técnico não deve virar identidade
-
-Um cuidado importante:
-
-```text
-estar fraco em algo não significa ser fraco.
-```
-
-Significa apenas que aquele ponto precisa de estudo.
-
-O diagnóstico mede estado atual, não valor pessoal.
-
-Hoje a pessoa pode estar nível 1 em Git.
-
-Daqui a alguns meses pode estar nível 4.
-
-Hoje pode travar em Java básico.
-
-Depois pode estar explicando Spring, JPA e arquitetura.
-
-Formação existe justamente porque o estado atual não é o estado final.
 
 ---
 
@@ -991,7 +926,7 @@ Depois cresce de novo.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 
@@ -1011,7 +946,7 @@ Precisa sair sabendo como olhar para o próprio ponto de partida.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Esta prática vale a pena fazer.
 

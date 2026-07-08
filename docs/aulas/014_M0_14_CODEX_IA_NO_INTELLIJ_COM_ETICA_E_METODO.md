@@ -25,54 +25,6 @@ IA não substitui responsabilidade.
 
 ---
 
-## Onde estamos na formação
-
-Até aqui, a formação já preparou uma base importante:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial;
-Git instalado e configurado;
-Git local;
-GitHub e repositório remoto;
-Markdown para documentação técnica;
-diário de bordo e rastreabilidade do aprendizado.
-```
-
-Agora entra um tema atual e sensível:
-
-```text
-uso de IA no desenvolvimento.
-```
-
-Esse assunto precisa ser tratado com cuidado.
-
-IA pode acelerar muito.
-
-Mas também pode atrapalhar muito.
-
-Ela pode ajudar a explicar código, sugerir caminhos, revisar erros, gerar exemplos, criar testes e apoiar refatorações.
-
-Mas também pode fazer a pessoa copiar sem entender, aceitar código inseguro, introduzir bug, vazar contexto sensível, pular fundamentos e criar dependência.
-
-Por isso, esta aula não é “como apertar botão de IA”.
-
-Esta aula é sobre método.
-
-A pergunta principal é:
-
-```text
-Como usar IA para aprender e produzir melhor sem perder domínio técnico?
-```
-
----
-
 ## Hoje a aula é sobre usar IA sem virar refém dela
 
 Existe uma diferença enorme entre usar IA como apoio e usar IA como substituto do pensamento.
@@ -1272,54 +1224,6 @@ Ele ajuda a IA e ajuda você.
 
 ---
 
-## Atalhos úteis nesta aula
-
-Como estamos falando de IntelliJ, IA, Git e revisão, estes atalhos são especialmente úteis:
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Buscar ação | `Ctrl + Shift + A` | Encontrar comandos da IDE sem decorar |
-| Abrir terminal integrado | `Alt + F12` | Rodar Codex CLI, Git, Java e Maven |
-| Abrir painel Project | `Alt + 1` | Ver arquivos alterados/criados |
-| Voltar ao editor | `Esc` | Sair de painéis e continuar editando |
-| Buscar no arquivo | `Ctrl + F` | Procurar termos no arquivo atual |
-| Buscar no projeto | `Ctrl + Shift + F` | Procurar uso de classes, métodos e textos |
-| Search Everywhere | `Shift` `Shift` | Encontrar arquivo, classe, ação ou símbolo |
-| Recent Files | `Ctrl + E` | Voltar rapidamente a arquivos recentes |
-| Reformatar | `Ctrl + Alt + L` | Ajustar formatação antes de revisar diff |
-| Renomear com segurança | `Shift + F6` | Refatorar nomes com apoio da IDE |
-| Rodar | `Shift + F10` | Executar configuração atual |
-| Debug | `Shift + F9` | Executar em modo debug |
-| Toggle Breakpoint | `Ctrl + F8` | Marcar/remover breakpoint |
-| Step Over | `F8` | Avançar sem entrar no método |
-| Step Into | `F7` | Entrar no método |
-| Step Out | `Shift + F8` | Sair do método atual |
-| Resume | `F9` | Continuar execução até próximo breakpoint |
-| Commit | `Ctrl + K` | Abrir commit no IntelliJ |
-| Push | `Ctrl + Shift + K` | Enviar commits para remoto |
-
-Observação:
-
-```text
-atalhos podem variar conforme keymap, sistema operacional e teclado.
-```
-
-Quando não funcionar, use:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure pelo nome da ação.
-
-Registre os atalhos úteis no arquivo:
-
-```text
-docs/atalhos.md
-```
-
----
-
 ## Fluxo seguro com IA dentro da IDE
 
 Quando usar IA no IntelliJ ou terminal integrado, siga:
@@ -1455,10 +1359,6 @@ Exemplo:
 
 ```markdown
 # Uso de IA na formação
-
-## Objetivo
-
-Usar IA como apoio para explicação, revisão, diagnóstico e estudo, sem terceirizar raciocínio.
 
 ## Regras
 
@@ -1611,33 +1511,7 @@ atualizar diário de bordo quando a IA ajudar a resolver algo importante.
 
 ---
 
-## Diagnóstico de uso ruim de IA
-
-Faça estas perguntas:
-
-```text
-eu conseguiria explicar essa solução sem olhar a resposta?
-eu sei por que esse código compila?
-eu sei quais casos ele cobre?
-eu sei quais casos ele não cobre?
-eu revisei o diff?
-eu rodei teste?
-eu mandei algum dado sensível?
-eu pulei uma etapa da formação?
-eu estou mais capaz depois da ajuda ou só tenho um código pronto?
-```
-
-A última pergunta é a mais importante:
-
-```text
-a IA me deixou mais capaz?
-```
-
-Se não deixou, o uso foi ruim.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie:
 
@@ -1649,9 +1523,6 @@ Com o conteúdo base:
 
 ```markdown
 # Uso de IA na formação
-
-## Objetivo
-Usar IA como apoio técnico sem terceirizar raciocínio.
 
 ## Regras
 - Não aceitar código sem entender.
@@ -1692,63 +1563,7 @@ git status
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 014 — Codex, IA no IntelliJ, ética e método de uso
-
-### O que aprendi
-Aprendi que IA deve ser usada como apoio técnico, não como substituta do raciocínio. Toda resposta precisa ser entendida, revisada e validada.
-
-### O que pratiquei
-Criei ou atualizei um documento com regras de uso de IA na formação.
-
-### Arquivos criados ou alterados
-- `docs/uso-de-ia.md`
-- `docs/diario-de-bordo.md`
-- `docs/atalhos.md`
-
-### Comandos usados
-```bash
-git status
-git diff
-git add docs/uso-de-ia.md docs/diario-de-bordo.md docs/atalhos.md
-git diff --staged
-git commit -m "Documenta metodo de uso de IA na formacao"
-```
-
-### Atalhos úteis
-- `Ctrl + Shift + A` — buscar ação.
-- `Alt + F12` — abrir terminal integrado.
-- `Alt + 1` — abrir painel Project.
-- `Shift Shift` — Search Everywhere.
-- `Ctrl + K` — Commit.
-- `Ctrl + Shift + K` — Push.
-
-### Regras que vou seguir
-- não aceitar código sem entender;
-- não enviar dados sensíveis;
-- não usar IA para pular fundamentos;
-- sempre revisar diff;
-- sempre validar código;
-- registrar aprendizados importantes.
-
-### Erros que quero evitar
-- colar código gerado sem revisão;
-- pedir solução grande demais;
-- aceitar resposta bonita sem evidência;
-- compartilhar contexto corporativo sem permissão;
-- deixar a IA alterar muitos arquivos sem plano.
-
-### Próximo passo
-Estudar organização de pacotes e nomes no Java.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

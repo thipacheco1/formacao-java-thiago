@@ -1,47 +1,5 @@
 ﻿# 023 — M1.03 — Comentários Úteis e Documentação Inicial
 
-## Onde estamos na formação
-
-Estamos no Módulo 1, agora estudando Java de verdade.
-
-Até aqui no M1, já passamos por:
-
-```text
-M1.01 — primeiro programa Java destrinchado;
-M1.02 — blocos, chaves, indentação e leitura de código.
-```
-
-Agora vamos falar de comentários.
-
-Comentários parecem um assunto simples.
-
-Mas eles revelam maturidade.
-
-Um iniciante costuma comentar para tentar explicar tudo.
-
-Um código ruim costuma ter comentários tentando compensar nomes ruins.
-
-Um código perigoso pode ter comentários com senha, token, regra antiga ou observação desatualizada.
-
-Um código profissional usa comentário com intenção.
-
-Nesta aula, vamos aprender:
-
-```text
-comentário de linha;
-comentário de bloco;
-documentação inicial;
-quando comentar;
-quando não comentar;
-quando trocar comentário por nome melhor;
-como comentar regra de negócio;
-como evitar comentário mentiroso;
-como registrar aprendizado no diário;
-como manter código legível.
-```
-
----
-
 ## Hoje a aula é sobre escrever código para humanos também
 
 O compilador não precisa de comentário.
@@ -696,15 +654,6 @@ System.out.println("Pedido aprovado");
 Documentação em `README.md`:
 
 ```markdown
-## Objetivo
-
-Este laboratório demonstra saídas simples de status de pedido antes da introdução de variáveis.
-```
-
-Cada coisa no seu lugar.
-
----
-
 ## Exemplo mínimo: comentário de linha
 
 Arquivo:
@@ -1043,23 +992,12 @@ Exemplo para a pasta da aula:
 ```markdown
 # Aula 023 — Comentários úteis
 
-## Objetivo
-
-Praticar comentário de linha, comentário de bloco e documentação inicial em Java.
-
 ## Arquivos
 
 - `Main.java`
 - `ComentarioOrdemServico.java`
 - `ComentarioPedido.java`
 - `ComentarioAuditoria.java`
-
-## Comandos
-
-```powershell
-javac Main.java
-java Main
-```
 
 ## Cuidados
 
@@ -1074,38 +1012,6 @@ Isso é documentação inicial.
 Não precisa ser complexo.
 
 Precisa ser útil.
-
----
-
-## Atalhos úteis nesta aula
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Comentar/descomentar linha | `Ctrl + /` | Alternar comentário de linha |
-| Comentar/descomentar bloco | `Ctrl + Shift + /` em muitos keymaps | Alternar comentário de bloco |
-| Reformatar código | `Ctrl + Alt + L` | Organizar indentação |
-| Renomear símbolo | `Shift + F6` | Melhorar nomes em vez de comentar |
-| Terminal integrado | `Alt + F12` | Compilar e executar |
-| Project | `Alt + 1` | Navegar nos arquivos |
-| Buscar ação | `Ctrl + Shift + A` | Encontrar ações se atalho variar |
-| Search Everywhere | `Shift Shift` | Localizar arquivos e classes |
-| Recent Files | `Ctrl + E` | Alternar entre arquivos |
-| Commit | `Ctrl + K` | Revisar alterações |
-| Push | `Ctrl + Shift + K` | Enviar commits |
-
-Observação:
-
-```text
-atalhos podem variar conforme sistema operacional, teclado e keymap.
-```
-
-Se algum não funcionar:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure pelo nome da ação.
 
 ---
 
@@ -1468,71 +1374,6 @@ Não ataque pessoas.
 
 ---
 
-## Diagnóstico quando comentário causa problema
-
-### 1. O código parou de executar uma linha?
-
-Verifique se a linha não foi comentada com:
-
-```java
-//
-```
-
-### 2. O arquivo inteiro ficou cinza na IDE?
-
-Pode existir comentário de bloco aberto sem fechamento.
-
-Procure:
-
-```java
-/*
-```
-
-sem:
-
-```java
-*/
-```
-
-### 3. O compilador mostra erro estranho depois de comentário?
-
-Verifique comentário de bloco mal fechado.
-
-### 4. Existe `*/` solto?
-
-Remova ou corrija.
-
-### 5. Há código antigo comentado?
-
-Decida:
-
-```text
-é parte didática?
-se não, remova.
-```
-
-### 6. O comentário contradiz o código?
-
-Atualize ou remova.
-
-### 7. O comentário só repete o código?
-
-Remova ou melhore o nome.
-
-### 8. Há senha, token ou dado real?
-
-Remova imediatamente e trate como incidente se foi versionado.
-
-### 9. O comentário está grande demais?
-
-Talvez pertença ao README ou docs.
-
-### 10. O commit contém comentário temporário?
-
-Revise antes de commitar.
-
----
-
 ## Exemplo de revisão antes do commit
 
 Antes de commit, procure comentários suspeitos.
@@ -1568,7 +1409,7 @@ não enviar sujeira para o repositório.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Crie a pasta:
 
@@ -1673,32 +1514,12 @@ Crie `README.md` dentro do laboratório:
 ````markdown
 # Aula 023 — Comentários úteis e documentação inicial
 
-## Objetivo
-
-Praticar comentário de linha, comentário de bloco e comentário de documentação em Java.
-
 ## Arquivos
 
 - `Main.java`
 - `ComentarioOrdemServico.java`
 - `ComentarioPedido.java`
 - `ComentarioAuditoria.java`
-
-## Comandos
-
-```powershell
-javac Main.java
-java Main
-
-javac ComentarioOrdemServico.java
-java ComentarioOrdemServico
-
-javac ComentarioPedido.java
-java ComentarioPedido
-
-javac ComentarioAuditoria.java
-java ComentarioAuditoria
-```
 
 ## Cuidados
 
@@ -1709,72 +1530,6 @@ java ComentarioAuditoria
 ````
 
 Isso conecta código com documentação.
-
----
-
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 023 — Comentários úteis e documentação inicial
-
-### O que aprendi
-Aprendi os três formatos principais de comentário em Java: comentário de linha, comentário de bloco e comentário de documentação inicial.
-
-### O que pratiquei
-Criei programas simples com comentários úteis e um README para documentar o laboratório.
-
-### Conceitos principais
-- Comentário de linha `//`
-- Comentário de bloco `/* */`
-- Comentário de documentação `/** */`
-- Comentário útil
-- Comentário óbvio
-- Comentário desatualizado
-- Código morto comentado
-- Documentação em README
-- Segurança em comentários
-
-### Arquivos criados
-- `labs/m1/aula-023-comentarios-documentacao/Main.java`
-- `labs/m1/aula-023-comentarios-documentacao/ComentarioOrdemServico.java`
-- `labs/m1/aula-023-comentarios-documentacao/ComentarioPedido.java`
-- `labs/m1/aula-023-comentarios-documentacao/ComentarioAuditoria.java`
-- `labs/m1/aula-023-comentarios-documentacao/README.md`
-
-### Comandos usados
-```powershell
-javac Main.java
-java Main
-javac ComentarioOrdemServico.java
-java ComentarioOrdemServico
-javac ComentarioPedido.java
-java ComentarioPedido
-javac ComentarioAuditoria.java
-java ComentarioAuditoria
-```
-
-### Atalhos úteis
-- `Ctrl + /` — comentar/descomentar linha.
-- `Ctrl + Shift + /` — comentar/descomentar bloco, conforme keymap.
-- `Shift + F6` — renomear símbolo.
-- `Ctrl + Alt + L` — reformatar.
-- `Alt + F12` — terminal integrado.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- comentar o óbvio;
-- deixar comentário desatualizado;
-- deixar código morto comentado;
-- colocar senha ou token em comentário;
-- usar comentário para compensar nome ruim;
-- esquecer de fechar comentário de bloco;
-- colocar documentação longa no código quando deveria ir para README.
-
-### Próximo passo
-Estudar variáveis e nomes profissionais.
-```
 
 ---
 
@@ -1815,26 +1570,7 @@ Se `.class` aparecer, corrija `.gitignore` antes do commit.
 
 ---
 
-## Perguntas de fixação
-
-Responda com suas palavras no diário.
-
-```text
-1. Para que serve um comentário?
-2. Qual a diferença entre `//` e `/* */`?
-3. Para que serve `/** */`?
-4. Por que comentário óbvio atrapalha?
-5. Por que comentário desatualizado é perigoso?
-6. Quando é melhor melhorar o nome do código em vez de comentar?
-7. Por que código morto comentado deve ser removido?
-8. Por que senha ou token nunca deve aparecer em comentário?
-9. O que deve ir no README em vez de comentário no código?
-10. Qual é um exemplo de comentário útil em regra de negócio?
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

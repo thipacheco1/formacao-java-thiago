@@ -87,43 +87,6 @@ out/
 
 ---
 
-## Onde estamos na formação
-
-Estamos seguindo a ordem oficial do Módulo 0.
-
-Até aqui, a preparação já cobriu:
-
-```text
-M0.01 — mapa da formação;
-M0.02 — diagnóstico inicial;
-M0.03 — organização do Windows;
-M0.04 — PowerShell e comandos básicos;
-M0.05 — JDK, JRE e JVM;
-M0.06 — compilação manual com javac;
-M0.07 — IntelliJ IDEA Community;
-M0.08 — debug inicial;
-M0.09 — Git instalação e configuração global;
-M0.10 — Git local;
-M0.11 — GitHub e repositório remoto;
-M0.12 — Markdown para documentação técnica;
-M0.13 — diário de bordo e rastreabilidade;
-M0.14 — Codex/IA no IntelliJ com ética e método;
-M0.15 — Maven instalação e validação inicial;
-M0.16 — PostgreSQL e DBeaver preparação;
-M0.17 — Postman/Insomnia e HTTP básico;
-M0.18 — Docker Desktop e WSL2 preparação.
-```
-
-Agora vamos organizar o repositório de curso.
-
-Essa aula é importante porque, a partir daqui, a formação começa a ganhar mais arquivos, mais exercícios, mais códigos, mais anotações e mais evidências.
-
-Se o repositório nasce bagunçado, o aprendizado fica bagunçado.
-
-Se o repositório nasce organizado, cada aula vira uma peça rastreável da evolução.
-
----
-
 ## Hoje a aula é sobre transformar estudo em repositório profissional
 
 Muita gente estuda programação assim:
@@ -348,10 +311,6 @@ Use este modelo:
 
 Repositório de estudos, práticas e documentação da formação Java Backend.
 
-## Objetivo
-
-Construir uma base sólida em Java Backend, passando por ambiente, fundamentos da linguagem, orientação a objetos, banco de dados, APIs, testes, arquitetura, segurança, mensageria, observabilidade e boas práticas profissionais.
-
 ## Estrutura
 
 ```text
@@ -389,14 +348,6 @@ git status
 git diff
 git add .
 git commit -m "mensagem"
-```
-
-## Diário de bordo
-
-O registro de evolução fica em:
-
-```text
-docs/diario-de-bordo.md
 ```
 
 ## Regra de estudo
@@ -444,38 +395,6 @@ O diário de bordo registra a evolução.
 Ele pode ter entradas por aula:
 
 ```markdown
-## Aula 019 — Estrutura profissional do repositório
-
-### O que aprendi
-
-### O que pratiquei
-
-### Arquivos criados ou alterados
-
-### Comandos usados
-
-### Erros que quero evitar
-
-### Próximo passo
-```
-
-O diário não é texto bonito para enfeitar.
-
-Ele serve para:
-
-```text
-lembrar decisões;
-registrar aprendizado;
-anotar erros;
-rastrear evolução;
-facilitar revisão;
-criar evidência de progresso.
-```
-
-Em projetos reais, algo parecido aparece em ADRs, changelogs, runbooks e documentação técnica.
-
----
-
 ## `docs/atalhos.md`
 
 Atalhos úteis devem ficar centralizados.
@@ -1037,29 +956,6 @@ Cada aula deve deixar rastro.
 Exemplo de entrada no diário:
 
 ```markdown
-## Aula 019 — Estrutura profissional do repositório
-
-### Arquivos alterados
-- `README.md`
-- `.gitignore`
-- `docs/ambiente.md`
-- `docs/atalhos.md`
-- `docs/diario-de-bordo.md`
-- `docs/checklist-ambiente.md`
-- `labs/README.md`
-
-### Commit
-`Aula 019: organiza estrutura do repositorio`
-```
-
-Isso parece simples.
-
-Mas depois de dezenas de aulas, essa disciplina faz diferença.
-
-Você sabe o que cada aula gerou.
-
----
-
 ## Organização e evidência
 
 Em qualidade de software, evidência importa.
@@ -1087,37 +983,6 @@ Também ajuda a ensinar outra pessoa.
 A formação não é só aprender sintaxe Java.
 
 É construir postura profissional.
-
----
-
-## Atalhos úteis nesta aula
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Terminal integrado | `Alt + F12` | Criar pastas, rodar Git |
-| Project | `Alt + 1` | Ver estrutura criada |
-| Novo arquivo/pasta no IntelliJ | `Alt + Insert` | Criar arquivos pela IDE |
-| Buscar ação | `Ctrl + Shift + A` | Encontrar ações da IDE |
-| Search Everywhere | `Shift Shift` | Buscar arquivos e ações |
-| Recent Files | `Ctrl + E` | Alternar entre README, diário e gitignore |
-| Reformatar | `Ctrl + Alt + L` | Organizar Markdown |
-| Buscar no projeto | `Ctrl + Shift + F` | Procurar termos nos docs |
-| Commit | `Ctrl + K` | Revisar alterações |
-| Push | `Ctrl + Shift + K` | Enviar commits |
-
-Observação:
-
-```text
-atalhos podem variar conforme keymap, sistema operacional e teclado.
-```
-
-Se algum não funcionar, use:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure a ação pelo nome.
 
 ---
 
@@ -1268,27 +1133,6 @@ Não deixe bagunça crescer.
 
 ---
 
-## Diagnóstico de organização
-
-Quando o repositório parecer confuso, pergunte:
-
-```text
-o README explica o projeto?
-docs contém documentação ou está vazio?
-src contém código ou arquivos aleatórios?
-labs está organizado?
-.gitignore protege arquivos gerados?
-git status está limpo?
-commits têm mensagens claras?
-diário de bordo está atualizado?
-há senhas em algum arquivo?
-há arquivo duplicado com final, final2, agora-vai?
-```
-
-Se a resposta for ruim, reorganize.
-
----
-
 ## Checklist de estrutura
 
 Use este checklist:
@@ -1320,7 +1164,7 @@ Esse checklist prepara o fechamento do Módulo 0.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Execute a criação da estrutura.
 
@@ -1353,80 +1197,7 @@ O objetivo é organizar, não destruir.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 019 — Estrutura profissional do repositório de curso
-
-### O que aprendi
-Aprendi que o repositório deve contar a história técnica da formação, separando documentação, código, laboratórios, checklists e histórico de commits.
-
-### O que pratiquei
-Criei ou reorganizei a estrutura com `README.md`, `.gitignore`, `docs/`, `src/` e `labs/`.
-
-### Estrutura criada
-```text
-README.md
-.gitignore
-docs/
-src/main/java
-src/test/java
-labs/
-```
-
-### Arquivos criados ou alterados
-- `README.md`
-- `.gitignore`
-- `docs/ambiente.md`
-- `docs/atalhos.md`
-- `docs/diario-de-bordo.md`
-- `docs/checklist-ambiente.md`
-- `labs/README.md`
-
-### Comandos usados
-```powershell
-mkdir docs
-mkdir src
-mkdir src\main
-mkdir src\main\java
-mkdir src\test
-mkdir src\test\java
-mkdir labs
-New-Item README.md
-New-Item .gitignore
-git status
-git diff
-git add .
-git diff --staged
-git commit -m "Aula 019: organiza estrutura do repositorio"
-```
-
-### Atalhos úteis
-- `Alt + F12` — terminal integrado.
-- `Alt + 1` — Project.
-- `Alt + Insert` — criar arquivo/pasta.
-- `Ctrl + Shift + A` — buscar ação.
-- `Ctrl + E` — arquivos recentes.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- criar arquivos soltos na raiz;
-- usar nomes com espaço e acento;
-- commitar sem revisar diff;
-- versionar arquivos gerados;
-- versionar senhas;
-- deixar README desatualizado;
-- transformar labs em lixeira.
-
-### Próximo passo
-Executar o checklist final do ambiente.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

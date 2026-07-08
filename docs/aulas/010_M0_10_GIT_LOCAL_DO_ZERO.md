@@ -1,54 +1,5 @@
 ﻿# 010 — M0.10 — Git Local do Zero
 
-## Onde estamos na formação
-
-Até aqui, a formação construiu uma base operacional importante:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial;
-instalação e configuração global do Git.
-```
-
-Agora vamos usar Git de verdade.
-
-Na aula anterior, o foco foi preparar o Git:
-
-```text
-git instalado;
-git acessível no terminal;
-user.name configurado;
-user.email configurado;
-branch inicial main;
-core.autocrlf;
-editor básico.
-```
-
-Agora o foco é criar um repositório local do zero e entender o ciclo básico:
-
-```text
-iniciar repositório;
-ver estado;
-adicionar arquivos;
-criar commit;
-ver histórico;
-comparar mudanças;
-desfazer alteração de trabalho;
-ignorar arquivos que não devem ser versionados.
-```
-
-Essa aula é uma das mais importantes do módulo zero.
-
-A partir daqui, a formação começa a deixar rastro técnico real.
-
----
-
 ## Hoje a aula é sobre transformar pasta em repositório
 
 Uma pasta comum guarda arquivos.
@@ -768,53 +719,6 @@ Agora altere o `README.md`:
 
 Laboratório para aprender Git local.
 
-## Objetivo
-
-Entender init, status, add, commit, log, diff e restore.
-```
-
-Veja o status:
-
-```bash
-git status
-```
-
-Veja a diferença:
-
-```bash
-git diff
-```
-
-Adicione:
-
-```bash
-git add README.md
-```
-
-Veja o que está preparado:
-
-```bash
-git diff --staged
-```
-
-Commit:
-
-```bash
-git commit -m "Documenta objetivo do laboratorio Git"
-```
-
-Histórico:
-
-```bash
-git log --oneline
-```
-
-Agora existem dois commits.
-
-O histórico começou a contar uma história.
-
----
-
 ## Terceiro ciclo: usando `.gitignore`
 
 Crie um arquivo que não deve ser versionado:
@@ -1352,111 +1256,7 @@ usar commits para histórico.
 
 ---
 
-## Diagnóstico quando algo parecer errado
-
-### O Git diz que não é repositório
-
-Mensagem possível:
-
-```text
-fatal: not a git repository
-```
-
-Você provavelmente está fora de um repositório.
-
-Verifique:
-
-```powershell
-pwd
-ls
-```
-
-Entre na pasta correta ou rode `git init` se realmente ainda não iniciou.
-
----
-
-### Arquivo não aparece no status
-
-Possibilidades:
-
-```text
-arquivo não foi salvo;
-arquivo está ignorado;
-você está na pasta errada;
-arquivo já está rastreado e sem alteração;
-arquivo está fora do repositório.
-```
-
-Diagnóstico:
-
-```bash
-git status
-```
-
-e:
-
-```powershell
-pwd
-ls
-```
-
----
-
-### `.class` aparece no status
-
-Provavelmente `.gitignore` não está configurado ou foi criado depois.
-
-Adicione:
-
-```gitignore
-*.class
-```
-
-Depois verifique:
-
-```bash
-git status
-```
-
----
-
-### Commit não funciona por falta de identidade
-
-Configure:
-
-```powershell
-git config --global user.name "Nome Sobrenome"
-git config --global user.email "email@exemplo.com"
-```
-
-Valide:
-
-```powershell
-git config --global --list
-```
-
----
-
-### O histórico não aparece como esperado
-
-Use:
-
-```bash
-git log --oneline
-```
-
-Se não há commits, talvez você ainda não tenha commitado.
-
-Lembre:
-
-```text
-git add prepara.
-git commit grava no histórico.
-```
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Faça o laboratório completo.
 
@@ -1499,75 +1299,6 @@ Depois altere o README:
 
 Laboratório para aprender Git local.
 
-## Objetivo
-
-Entender init, status, add, commit, log, diff e restore.
-```
-
-Comandos:
-
-```bash
-git status
-git diff
-git add README.md
-git diff --staged
-git commit -m "Documenta objetivo do laboratorio Git"
-git log --oneline
-```
-
-Agora `.gitignore`:
-
-```powershell
-New-Item Main.class
-New-Item .gitignore
-```
-
-Conteúdo do `.gitignore`:
-
-```gitignore
-*.class
-out/
-target/
-.idea/
-*.iml
-.DS_Store
-Thumbs.db
-```
-
-Comandos:
-
-```bash
-git status
-git add .gitignore
-git commit -m "Adiciona gitignore inicial"
-git log --oneline
-```
-
-Teste `restore`:
-
-```text
-adicione uma linha qualquer ruim no README.md
-```
-
-Comandos:
-
-```bash
-git diff
-git restore README.md
-git status
-```
-
-Essa prática dá base real.
-
----
-
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 010 — Git local do zero
-
 ## O que aprendi
 Aprendi que Git local transforma uma pasta em repositório com histórico e que o ciclo básico é editar, verificar status, adicionar, commitar e consultar log.
 
@@ -1582,13 +1313,6 @@ Aprendi que Git local transforma uma pasta em repositório com histórico e que 
 - git diff --staged
 - git restore
 - git restore --staged
-
-## Conceitos
-Working tree:
-Staging area:
-Repository:
-Commit:
-.gitignore:
 
 ## Mensagens de commit usadas
 -
@@ -1607,7 +1331,7 @@ Git não é cópia de segurança manual. Git é histórico técnico controlado.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

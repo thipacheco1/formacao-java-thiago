@@ -1147,37 +1147,6 @@ A formação precisa mostrar tudo isso.
 
 ---
 
-## Diagnóstico rápido: como saber onde você está
-
-Sem transformar isso em prova, pense nas perguntas abaixo.
-
-Se você ainda não sabe responder, tudo bem. A formação existe para construir essas respostas.
-
-```text
-Eu sei explicar o que acontece quando rodo um programa Java?
-Eu sei por que Java usa JVM?
-Eu sei organizar um projeto sem depender da IDE?
-Eu sei escrever código simples sem copiar?
-Eu sei modelar uma regra de negócio em classe?
-Eu sei quando usar List, Set ou Map?
-Eu sei escrever teste útil?
-Eu sei ler uma query SQL?
-Eu sei explicar transação?
-Eu sei criar uma API REST com validação e erro decente?
-Eu sei proteger endpoint?
-Eu sei lidar com falha de integração?
-Eu sei observar aplicação em produção?
-Eu sei explicar trade-off arquitetural?
-```
-
-Essas perguntas vão aparecer ao longo da formação.
-
-Não como cobrança vazia.
-
-Como norte.
-
----
-
 ## O que precisa ficar claro ao final desta aula
 
 Ao final desta aula, você precisa entender que a formação tem uma intenção.

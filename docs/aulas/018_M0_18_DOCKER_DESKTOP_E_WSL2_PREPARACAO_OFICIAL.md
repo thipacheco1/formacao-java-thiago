@@ -18,60 +18,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Estamos seguindo a ordem oficial do Módulo 0.
-
-Até aqui, a preparação já cobriu:
-
-```text
-M0.01 — mapa da formação;
-M0.02 — diagnóstico inicial;
-M0.03 — organização do Windows;
-M0.04 — PowerShell e comandos básicos;
-M0.05 — JDK, JRE e JVM;
-M0.06 — compilação manual com javac;
-M0.07 — IntelliJ IDEA Community;
-M0.08 — debug inicial;
-M0.09 — Git instalação e configuração global;
-M0.10 — Git local;
-M0.11 — GitHub e repositório remoto;
-M0.12 — Markdown para documentação técnica;
-M0.13 — diário de bordo e rastreabilidade;
-M0.14 — Codex/IA no IntelliJ com ética e método;
-M0.15 — Maven instalação e validação inicial;
-M0.16 — PostgreSQL e DBeaver preparação;
-M0.17 — Postman/Insomnia e HTTP básico.
-```
-
-Agora vamos preparar Docker Desktop e WSL2.
-
-Ainda não estamos estudando Docker profundamente.
-
-Ainda não estamos criando imagem Java.
-
-Ainda não estamos escrevendo `Dockerfile`.
-
-Ainda não estamos usando Docker Compose.
-
-Ainda não estamos subindo aplicação Java em container.
-
-Esta aula é preparação.
-
-O objetivo é que o ambiente esteja pronto para módulos futuros, quando precisarmos rodar:
-
-```text
-PostgreSQL em container;
-Redis;
-RabbitMQ;
-Kafka;
-aplicações Java;
-serviços auxiliares;
-ambientes locais reproduzíveis.
-```
-
----
-
 ## Hoje a aula é sobre preparar o ambiente para containers
 
 Em backend profissional, muitas dependências não rodam diretamente instaladas no Windows.
@@ -1421,67 +1367,6 @@ Não substitui conhecimento.
 
 ---
 
-## Diagnóstico inicial de Docker
-
-Quando algo falhar, siga o roteiro.
-
-### 1. WSL funciona?
-
-```powershell
-wsl --status
-wsl -l -v
-```
-
-### 2. Docker CLI existe?
-
-```powershell
-docker --version
-```
-
-### 3. Docker Engine responde?
-
-```powershell
-docker version
-```
-
-### 4. Docker Desktop está aberto?
-
-Verifique interface.
-
-### 5. Docker info funciona?
-
-```powershell
-docker info
-```
-
-### 6. Hello-world roda?
-
-```bash
-docker run hello-world
-```
-
-### 7. O container aparece no histórico?
-
-```bash
-docker ps -a
-```
-
-### 8. A imagem aparece?
-
-```bash
-docker images
-```
-
-### 9. Há erro de porta?
-
-Leia mensagem.
-
-### 10. Há erro de permissão, WSL ou virtualização?
-
-Volte para WSL, Docker Desktop e documentação oficial.
-
----
-
 ## Checklist de preparação
 
 Use este checklist:
@@ -1519,7 +1404,7 @@ Não significa domínio profundo de Docker ainda.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Execute:
 
@@ -1549,32 +1434,6 @@ Modelo para `docs/docker-basico.md`:
 ````markdown
 # Docker básico
 
-## Conceitos
-
-- Imagem
-- Container
-- Registry
-- Pull
-- Run
-- Porta
-- Volume
-- Docker Desktop
-- WSL2
-
-## Comandos
-
-```powershell
-wsl --status
-wsl -l -v
-docker --version
-docker version
-docker info
-docker run hello-world
-docker ps
-docker ps -a
-docker images
-```
-
 ## Observações
 
 - Imagem é o modelo.
@@ -1600,70 +1459,7 @@ git status
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 018 — Docker Desktop e WSL2 preparação
-
-### O que aprendi
-Aprendi que Docker permite executar containers e que, no Windows, Docker Desktop normalmente usa WSL2 como base para containers Linux.
-
-### Conceitos principais
-- Docker
-- Docker Desktop
-- WSL2
-- Imagem
-- Container
-- Registry
-- Pull
-- Run
-- Porta
-- Volume
-- Docker Engine
-- Docker CLI
-
-### O que pratiquei
-Validei WSL, Docker Desktop, Docker CLI, Docker Engine e executei `hello-world`.
-
-### Comandos usados
-```powershell
-wsl --status
-wsl -l -v
-docker --version
-docker version
-docker info
-docker run hello-world
-docker ps
-docker ps -a
-docker images
-```
-
-### Atalhos úteis
-- `Alt + F12` — terminal integrado.
-- `Alt + 1` — Project.
-- `Ctrl + Shift + A` — buscar ação.
-- `Ctrl + Alt + L` — reformatar.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- confundir imagem com container;
-- achar que `docker --version` prova que engine está rodando;
-- esquecer Docker Desktop fechado;
-- ignorar WSL2;
-- mapear porta sem entender;
-- apagar volume sem saber o impacto;
-- rodar imagem desconhecida sem critério;
-- colocar segredo em comando ou documentação.
-
-### Próximo passo
-Organizar a estrutura profissional do repositório de curso.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

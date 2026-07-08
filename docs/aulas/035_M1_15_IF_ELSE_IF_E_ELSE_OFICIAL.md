@@ -1,50 +1,5 @@
 # 035 — M1.15 — If, else if e else
 
-## Pré-requisito de ambiente
-
-Esta aula não exige instalação nova.
-
-Antes de começar:
-
-```powershell
-java -version
-javac -version
-git --version
-```
-
-A prática desta aula será feita em:
-
-```text
-labs/m1/aula-035-if-else-if-e-else
-```
-
----
-
-## Onde estamos na formação
-
-Antes desta aula, estudamos:
-
-```text
-operadores aritméticos;
-operadores relacionais;
-operadores lógicos;
-incremento;
-decremento;
-acumuladores.
-```
-
-Agora chegamos em uma das estruturas mais importantes da programação:
-
-```text
-decisão.
-```
-
-Sem decisão, o programa executa sempre o mesmo caminho.
-
-Com `if`, `else if` e `else`, o programa escolhe caminhos diferentes conforme as condições.
-
----
-
 ## A pergunta central da aula
 
 Como fazer o programa tomar decisões?
@@ -682,30 +637,6 @@ Condição inválida com mensagem de sucesso.
 
 ---
 
-## Diagnóstico
-
-Quando uma decisão não funcionar:
-
-```text
-1. Imprima o valor analisado.
-2. Imprima o resultado de cada condição.
-3. Verifique a ordem dos blocos.
-4. Verifique se usou `else if` ou vários `if`.
-5. Verifique comparação de String.
-6. Verifique se há `else` final.
-7. Verifique se há `;` após o `if`.
-```
-
-Exemplo:
-
-```java
-System.out.println("total: " + total);
-System.out.println(">=1000: " + (total.compareTo(new BigDecimal("1000.00")) >= 0));
-System.out.println(">=500: " + (total.compareTo(new BigDecimal("500.00")) >= 0));
-```
-
----
-
 ## Debug recomendado
 
 Use debug em:
@@ -728,24 +659,7 @@ por que os blocos abaixo são ignorados.
 
 ---
 
-## Quebrando de propósito
-
-Faça estes testes:
-
-```text
-colocar `>= 500` antes de `>= 1000`;
-trocar `else if` por vários `if`;
-usar status desconhecido;
-comparar String com `==`;
-colocar ponto e vírgula após if;
-remover else final.
-```
-
-Explique cada comportamento.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie a pasta:
 
@@ -804,78 +718,6 @@ java AuditoriaIfElseIf
 
 ---
 
-## README recomendado da aula
-
-```markdown
-# Aula 035 — If, else if e else
-
-## Objetivo
-
-Aprender a criar decisões simples e decisões com múltiplos caminhos em Java.
-
-## Conceitos
-
-- `if` executa quando a condição é verdadeira.
-- `else` executa quando nenhuma condição anterior foi verdadeira.
-- `else if` cria caminhos intermediários.
-- Java avalia de cima para baixo.
-- Apenas um bloco executa em uma cadeia.
-- A ordem das condições importa.
-- `else` final trata caso padrão.
-- Vários `if` são diferentes de `else if`.
-- String deve ser comparada com `.equals`.
-
-## Comandos
-
-```powershell
-javac IfElseIfBasico.java
-java IfElseIfBasico
-javac PedidoIfElseIf.java
-java PedidoIfElseIf
-```
-```
-
----
-
-## Registro no diário de bordo
-
-```markdown
-## Aula 035 — If, else if e else
-
-### O que aprendi
-
-Aprendi a usar `if`, `else if` e `else` para criar decisões simples e múltiplos caminhos.
-
-### O que pratiquei
-
-Criei exemplos de idade, nota, pedido, produto, pagamento, OS, mensageria e auditoria.
-
-### Conceitos principais
-
-- if
-- else
-- else if
-- condição booleana
-- ordem de avaliação
-- múltiplos caminhos
-- else final
-- comparação de String
-- mensagens coerentes
-- debug de decisão
-
-### Erros que quero evitar
-
-- ordem errada das faixas;
-- vários if quando só um caminho deve executar;
-- esquecer else final;
-- repetir condição;
-- comparar String com `==`;
-- colocar `;` após if;
-- escrever mensagem incoerente.
-```
-
----
-
 ## Commit recomendado
 
 ```bash
@@ -887,34 +729,7 @@ git status
 
 ---
 
-## Perguntas de fixação
-
-```text
-1. Para que serve if?
-2. Para que serve else?
-3. Para que serve else if?
-4. O else é obrigatório?
-5. O que deve existir dentro dos parênteses do if?
-6. O que acontece quando a condição é true?
-7. O que acontece quando a condição é false?
-8. Java avalia else if em qual ordem?
-9. Quantos blocos executam em uma cadeia if/else if/else?
-10. Por que a ordem das faixas importa?
-11. Qual diferença entre vários if e else if?
-12. Para que serve else final?
-13. Como comparar String corretamente?
-14. Por que usar chaves?
-15. Qual problema de colocar `;` após if?
-16. Como classificar pedido por valor?
-17. Como tratar status de pagamento?
-18. Como tratar status de OS?
-19. Como debug ajuda em decisões?
-20. Quando uma cadeia grande demais pode pedir outra solução?
-```
-
----
-
-## Critério de aprovação
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

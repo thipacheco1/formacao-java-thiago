@@ -15,52 +15,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Até aqui, a base já começou a ficar organizada.
-
-Já passamos por:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac.
-```
-
-Agora entramos na IDE.
-
-Mas a ordem foi proposital.
-
-Se uma pessoa começa direto pela IDE, ela pode achar que Java é apertar um botão verde.
-
-Quando algo dá errado, ela não sabe se o problema é:
-
-```text
-código;
-JDK;
-SDK do projeto;
-terminal;
-configuração da IDE;
-classpath;
-pasta errada;
-arquivo não compilado;
-run configuration;
-estrutura do projeto.
-```
-
-Por isso, primeiro entendemos a plataforma.
-
-Agora o IntelliJ entra como ferramenta de produtividade.
-
-A IDE deve acelerar o entendimento.
-
-Ela não deve substituir o entendimento.
-
----
-
 ## Hoje a aula é sobre usar a IDE como profissional
 
 IntelliJ IDEA é uma das IDEs mais usadas no ecossistema Java.
@@ -1187,54 +1141,6 @@ entender o que está sendo versionado.
 
 ---
 
-## Diagnóstico quando a IDE parecer quebrada
-
-Use este roteiro.
-
-### 1. O projeto abriu na pasta correta?
-
-Confira o caminho na IDE e no terminal integrado:
-
-```powershell
-pwd
-ls
-```
-
-### 2. Existe JDK configurado?
-
-Verifique Project SDK / Project JDK.
-
-### 3. O terminal reconhece Java?
-
-```powershell
-java -version
-javac -version
-```
-
-### 4. O arquivo está em `src`?
-
-Veja a estrutura.
-
-### 5. Existe método `main` correto?
-
-```java
-public static void main(String[] args)
-```
-
-### 6. A run configuration aponta para a classe correta?
-
-Abra as configurações de execução e confira.
-
-### 7. O erro é da IDE, do compilador ou da execução?
-
-Leia a mensagem.
-
-Não tente resolver clicando em tudo.
-
-Siga evidências.
-
----
-
 ## Como a IDE ajuda a aprender melhor
 
 Use o IntelliJ para observar, não apenas para digitar.
@@ -1270,7 +1176,7 @@ Essas pistas fazem parte da leitura profissional.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Faça esta prática se estiver com o IntelliJ instalado.
 
@@ -1339,13 +1245,6 @@ Não faça commit automático sem entender o que mudou.
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 007 — IntelliJ IDEA Community completo
-
 ## O que aprendi
 Aprendi que a IDE é uma ferramenta de produtividade, mas o projeto continua dependendo de JDK, estrutura, compilação e execução.
 
@@ -1382,7 +1281,7 @@ Aprendi que a IDE é uma ferramenta de produtividade, mas o projeto continua dep
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

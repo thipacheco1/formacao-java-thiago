@@ -1264,84 +1264,6 @@ Ferramenta não deve morar dentro do projeto.
 
 ---
 
-## Diagnóstico quando Java não funcionar
-
-Use esta ordem.
-
-### 1. Ver se o terminal está funcionando
-
-```powershell
-pwd
-ls
-```
-
-### 2. Ver runtime
-
-```powershell
-java -version
-```
-
-### 3. Ver compilador
-
-```powershell
-javac -version
-```
-
-### 4. Ver caminhos
-
-```powershell
-where java
-where javac
-```
-
-### 5. Ver JAVA_HOME
-
-```powershell
-echo $env:JAVA_HOME
-```
-
-### 6. Ver se está na pasta do código
-
-```powershell
-ls
-```
-
-Procure:
-
-```text
-Main.java
-```
-
-### 7. Compilar
-
-```bash
-javac Main.java
-```
-
-### 8. Ver se gerou `.class`
-
-```powershell
-ls
-```
-
-Procure:
-
-```text
-Main.class
-```
-
-### 9. Executar
-
-```bash
-java Main
-```
-
-Não tente resolver no chute.
-
-Siga evidências.
-
----
-
 ## Pequena prática recomendada
 
 Esta prática é importante.
@@ -1414,13 +1336,6 @@ Esse pequeno teste ensina que alterar fonte não altera automaticamente o byteco
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 005 — JDK, JRE, JVM e versão LTS
-
 ## O que aprendi
 Aprendi que Java é linguagem e também plataforma, e que o JDK é necessário para desenvolver.
 
@@ -1456,7 +1371,7 @@ Esse registro será útil quando começarmos a compilar manualmente com mais pro
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

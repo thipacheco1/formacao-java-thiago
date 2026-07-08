@@ -1168,57 +1168,6 @@ Backend fraco tenta comando aleatório.
 
 ---
 
-## Diagnóstico em quatro perguntas
-
-Quando algo falhar no terminal, responda:
-
-```text
-1. Onde estou?
-2. O arquivo ou pasta existe aqui?
-3. O comando existe no sistema?
-4. A mensagem de erro é do PowerShell ou da ferramenta?
-```
-
-Essas quatro perguntas resolvem muitos problemas.
-
-Exemplo:
-
-```powershell
-git status
-```
-
-Erro:
-
-```text
-fatal: not a git repository
-```
-
-Isso não quer dizer que Git não está instalado.
-
-Quer dizer:
-
-```text
-você não está dentro de um repositório Git
-```
-
-Outro exemplo:
-
-```powershell
-gittt status
-```
-
-Erro:
-
-```text
-The term 'gittt' is not recognized
-```
-
-Aqui o comando foi digitado errado.
-
-São problemas diferentes.
-
----
-
 ## Comandos principais desta aula
 
 Resumo dos comandos:
@@ -1358,7 +1307,7 @@ Ela é a porta de entrada da autonomia.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Faça esta prática dentro de:
 
@@ -1427,7 +1376,7 @@ Antes de executar comando: pwd e ls.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

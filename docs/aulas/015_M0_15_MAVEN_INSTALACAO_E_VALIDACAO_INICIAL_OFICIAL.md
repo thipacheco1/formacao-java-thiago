@@ -14,50 +14,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Estamos no Módulo 0.
-
-O objetivo deste módulo ainda não é programar Java profundamente.
-
-O objetivo é preparar o ambiente profissional para que, quando a linguagem Java começar de verdade, a pessoa não fique travada por problemas de ferramenta.
-
-Até aqui, já passamos por:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-PowerShell e comandos básicos;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial;
-Git;
-GitHub;
-Markdown;
-diário de bordo;
-uso de IA com ética e método.
-```
-
-Agora entra o Maven.
-
-Mas nesta aula, o foco ainda não é `pom.xml`, dependências ou ciclo de vida.
-
-Antes disso, precisamos responder:
-
-```text
-o Maven está instalado?
-o terminal reconhece o comando mvn?
-o Maven está usando o Java correto?
-o IntelliJ consegue usar o mesmo Maven?
-o ambiente está pronto para projetos Maven?
-```
-
-Sem essa validação, qualquer aula futura de Maven pode virar diagnóstico confuso.
-
----
-
 ## Hoje a aula é sobre preparar Maven sem tratar ferramenta como mágica
 
 Maven é uma ferramenta de build muito usada no ecossistema Java.
@@ -957,47 +913,6 @@ Isso não é erro de instalação.
 
 ---
 
-## Atalhos úteis nesta aula
-
-Como esta aula envolve validação no IntelliJ e terminal, estes atalhos ajudam:
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Abrir terminal integrado | `Alt + F12` | Validar `mvn -version`, `java -version` e `where mvn` |
-| Abrir Project | `Alt + 1` | Ver estrutura do projeto quando houver |
-| Voltar ao editor | `Esc` | Sair do painel e voltar ao arquivo |
-| Buscar ação | `Ctrl + Shift + A` | Procurar configurações ou ações da IDE |
-| Search Everywhere | `Shift Shift` | Encontrar arquivos, ações e configurações |
-| Settings | `Ctrl + Alt + S` | Abrir configurações da IDE |
-| Buscar no arquivo | `Ctrl + F` | Procurar termos em anotações |
-| Buscar no projeto | `Ctrl + Shift + F` | Procurar `Maven`, `JAVA_HOME`, `pom.xml` |
-| Recent Files | `Ctrl + E` | Alternar entre arquivos recentes |
-| Reformatar | `Ctrl + Alt + L` | Organizar Markdown, XML ou Java |
-| Commit | `Ctrl + K` | Abrir tela de commit |
-| Push | `Ctrl + Shift + K` | Enviar commits |
-
-Observação:
-
-```text
-atalhos podem variar conforme sistema operacional, teclado e keymap.
-```
-
-Se algum atalho não funcionar, use:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure a ação pelo nome.
-
-Registre atalhos úteis em:
-
-```text
-docs/atalhos.md
-```
-
----
-
 ## Exemplo aplicado ao domínio corporativo
 
 Imagine que você entrou em um time backend Java.
@@ -1248,7 +1163,7 @@ Em ambiente profissional, checklist é uma ferramenta de qualidade.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Execute e registre:
 
@@ -1292,58 +1207,7 @@ Se ainda não houver repositório Git para esse material, apenas registre a prá
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 015 — Maven: instalação e validação inicial
-
-### O que aprendi
-Aprendi que Maven precisa ser instalado, configurado no PATH e validado com `mvn -version`. Também entendi que o Maven depende do Java e que preciso conferir se ele está usando o JDK correto.
-
-### O que pratiquei
-Validei Java, `JAVA_HOME`, Maven, `where mvn` e terminal integrado do IntelliJ.
-
-### Comandos usados
-```powershell
-java -version
-javac -version
-echo $env:JAVA_HOME
-where java
-where javac
-mvn -version
-where mvn
-```
-
-### Arquivos criados ou alterados
-- `docs/ambiente.md`
-- `docs/diario-de-bordo.md`
-- `docs/atalhos.md`
-
-### Atalhos úteis
-- `Alt + F12` — abrir terminal integrado.
-- `Ctrl + Alt + S` — abrir configurações do IntelliJ.
-- `Ctrl + Shift + A` — buscar ações da IDE.
-- `Shift Shift` — Search Everywhere.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- configurar `MAVEN_HOME` apontando para `bin`;
-- esquecer de adicionar o `bin` do Maven ao PATH;
-- não abrir novo terminal depois de alterar variável;
-- Maven usando Java diferente do esperado;
-- confundir Maven instalado com projeto Maven;
-- commitar arquivos com credenciais;
-- mexer em `settings.xml` sem entender.
-
-### Próximo passo
-Preparar PostgreSQL e DBeaver para os módulos que envolverão banco de dados.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

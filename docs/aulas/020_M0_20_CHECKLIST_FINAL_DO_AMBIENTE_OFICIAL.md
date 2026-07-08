@@ -38,48 +38,6 @@ Itens como PostgreSQL, Postman/Insomnia e Docker podem ser corrigidos antes dos 
 
 ---
 
-## Onde estamos na formação
-
-Estamos no fechamento oficial do Módulo 0.
-
-Até aqui, a preparação cobriu:
-
-```text
-M0.01 — mapa da formação;
-M0.02 — diagnóstico inicial;
-M0.03 — organização do Windows;
-M0.04 — PowerShell e comandos básicos;
-M0.05 — JDK, JRE e JVM;
-M0.06 — compilação manual com javac;
-M0.07 — IntelliJ IDEA Community;
-M0.08 — debug inicial;
-M0.09 — Git instalação e configuração global;
-M0.10 — Git local;
-M0.11 — GitHub e repositório remoto;
-M0.12 — Markdown para documentação técnica;
-M0.13 — diário de bordo e rastreabilidade;
-M0.14 — Codex/IA no IntelliJ com ética e método;
-M0.15 — Maven instalação e validação inicial;
-M0.16 — PostgreSQL e DBeaver preparação;
-M0.17 — Postman/Insomnia e HTTP básico;
-M0.18 — Docker Desktop e WSL2 preparação;
-M0.19 — estrutura profissional do repositório de curso.
-```
-
-Agora vamos fechar a preparação.
-
-Esta aula existe para responder uma pergunta simples:
-
-```text
-o ambiente está realmente pronto para começar Java de verdade?
-```
-
-Se a resposta for sim, entramos no M1.
-
-Se a resposta for não, corrigimos agora.
-
----
-
 ## Hoje a aula é sobre não entrar no Java com ambiente quebrado
 
 É tentador pular para código logo.
@@ -1264,109 +1222,12 @@ Domínio vem com prática nos módulos seguintes.
 
 ---
 
-## Diagnóstico por sintoma
-
-### `java` funciona, mas `javac` não
-
-Provável problema:
-
-```text
-JRE ou PATH incompleto;
-JDK não configurado corretamente.
-```
-
-### `mvn -version` não funciona
-
-Provável problema:
-
-```text
-Maven não instalado;
-PATH sem bin do Maven;
-terminal antigo;
-MAVEN_HOME incorreto.
-```
-
-### IntelliJ não reconhece Java
-
-Provável problema:
-
-```text
-Project SDK ausente;
-JDK não configurado na IDE.
-```
-
-### Git commit falha por identidade
-
-Provável problema:
-
-```text
-user.name ou user.email não configurado.
-```
-
-### DBeaver não conecta
-
-Provável problema:
-
-```text
-PostgreSQL parado;
-porta errada;
-senha errada;
-database inexistente;
-driver não baixado.
-```
-
-### Postman/Insomnia não conecta em localhost
-
-Provável problema:
-
-```text
-API não está rodando;
-porta errada;
-URL errada.
-```
-
-### Docker CLI funciona, mas engine não
-
-Provável problema:
-
-```text
-Docker Desktop fechado;
-engine não iniciou;
-problema de WSL2.
-```
-
-### `docker run hello-world` falha
-
-Possíveis causas:
-
-```text
-sem internet;
-Docker Desktop parado;
-problema com WSL2;
-proxy;
-bloqueio corporativo.
-```
-
-### `git status` mostra arquivos gerados
-
-Provável problema:
-
-```text
-.gitignore incompleto.
-```
-
----
-
 ## Arquivo final recomendado: `docs/checklist-ambiente.md`
 
 Conteúdo sugerido:
 
 ````markdown
 # Checklist final do ambiente
-
-## Objetivo
-
-Validar se o ambiente está pronto para iniciar o Módulo 1 da formação Java Backend.
 
 ## Java
 
@@ -1449,83 +1310,7 @@ Esse é o documento de passagem do M0 para o M1.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 020 — Checklist final do ambiente
-
-### O que aprendi
-Aprendi que antes de iniciar Java profundamente preciso validar ambiente, ferramentas, repositório, documentação e rotina.
-
-### O que validei
-- Java
-- Javac
-- JAVA_HOME
-- IntelliJ
-- Git
-- GitHub
-- Maven
-- PostgreSQL
-- DBeaver
-- Postman ou Insomnia
-- HTTP básico
-- WSL2
-- Docker
-- Estrutura do repositório
-- Documentação
-- Diário de bordo
-
-### Comandos usados
-```powershell
-java -version
-javac -version
-echo $env:JAVA_HOME
-where java
-where javac
-mvn -version
-where mvn
-wsl --status
-wsl -l -v
-docker --version
-docker version
-docker run hello-world
-```
-
-```bash
-git --version
-git status
-git diff
-git diff --staged
-```
-
-```sql
-SELECT version();
-SELECT current_database();
-```
-
-### Arquivos criados ou alterados
-- `docs/checklist-ambiente.md`
-- `docs/ambiente.md`
-- `docs/diario-de-bordo.md`
-- `docs/atalhos.md`
-- `README.md`
-
-### Erros encontrados e corrigidos
-- Nenhum registrado.
-- Ou registrar aqui os erros reais encontrados.
-
-### Commit
-`Aula 020: valida checklist final do ambiente`
-
-### Próximo passo
-Iniciar o Módulo 1: Java fundamentos absolutos e lógica aplicada.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 
@@ -1587,27 +1372,6 @@ organização.
 PostgreSQL, DBeaver, Postman/Insomnia e Docker são importantes para módulos futuros.
 
 Se algum deles ficar pendente por limitação real da máquina, registre claramente no diário, mas não finja conclusão.
-
----
-
-## Perguntas de fixação
-
-Responda no diário, de forma curta.
-
-```text
-1. Por que o Módulo 0 veio antes do Java profundo?
-2. Qual a diferença entre instalar uma ferramenta e validar uma ferramenta?
-3. Por que `javac` é importante?
-4. O que `mvn -version` prova?
-5. O que `docker --version` prova e o que ele não prova?
-6. Por que não podemos versionar `.env` com senha real?
-7. Por que o README é importante?
-8. Por que revisar `git diff` antes do commit?
-9. Qual a diferença entre DBeaver e PostgreSQL?
-10. Qual a diferença entre Postman/Insomnia e uma API backend?
-```
-
-Essas perguntas garantem que a preparação foi entendida, não apenas executada.
 
 ---
 

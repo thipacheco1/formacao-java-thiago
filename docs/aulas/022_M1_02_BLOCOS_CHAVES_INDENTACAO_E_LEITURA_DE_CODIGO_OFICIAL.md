@@ -1,48 +1,5 @@
 ﻿# 022 — M1.02 — Blocos, Chaves, Indentação e Leitura de Código
 
-## Onde estamos na formação
-
-Na aula anterior, o primeiro programa Java foi destrinchado:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Olá, Java!");
-    }
-}
-```
-
-Aprendemos o papel de:
-
-```text
-class;
-public;
-static;
-void;
-main;
-String[] args;
-System.out.println;
-javac;
-java;
-.java;
-.class.
-```
-
-Agora vamos olhar para algo que parece visual, mas é estrutural:
-
-```text
-blocos;
-chaves;
-indentação;
-leitura de código.
-```
-
-Essa aula vem antes de variáveis e controle de fluxo porque, sem ler blocos direito, todo código Java parece confuso.
-
-Antes de aprender `if`, `for`, `while`, métodos, classes e objetos, é preciso enxergar onde cada coisa começa e onde termina.
-
----
-
 ## Hoje a aula é sobre enxergar a estrutura do código
 
 Quando alguém começa em Java, é comum olhar para o código e ver apenas um monte de símbolos:
@@ -1209,71 +1166,6 @@ Isso é leitura de bloco.
 
 ---
 
-## Quebrando de propósito
-
-Faça testes.
-
-### Teste 1 — Remova uma chave final
-
-Código:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Olá");
-    }
-```
-
-Compile:
-
-```powershell
-javac Main.java
-```
-
-Leia o erro.
-
-Depois corrija.
-
-### Teste 2 — Coloque uma chave a mais
-
-Código:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Olá");
-    }
-}
-}
-```
-
-Compile e leia o erro.
-
-Depois corrija.
-
-### Teste 3 — Coloque código fora do método
-
-Código:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-    }
-
-    System.out.println("Fora do método");
-}
-```
-
-Compile e leia o erro.
-
-Depois corrija.
-
-Esses erros são normais.
-
-O objetivo é aprender a diagnosticar.
-
----
-
 ## Erros comuns
 
 ### Erro 1 — Faltar chave de fechamento
@@ -1448,68 +1340,6 @@ Leia antes de mexer aleatoriamente.
 
 ---
 
-## Diagnóstico de blocos
-
-Quando o código não compilar, siga:
-
-### 1. Formate o código
-
-No IntelliJ:
-
-```text
-Ctrl + Alt + L
-```
-
-### 2. Verifique pares de chaves
-
-Para cada `{`, deve haver um `}` correspondente.
-
-### 3. Confira o bloco da classe
-
-```java
-public class Main {
-    ...
-}
-```
-
-### 4. Confira o bloco do método
-
-```java
-public static void main(String[] args) {
-    ...
-}
-```
-
-### 5. Veja se há instrução fora do método
-
-Procure `System.out.println` fora do `main`.
-
-### 6. Veja se há código fora da classe
-
-Nada executável deve ficar depois da última chave da classe.
-
-### 7. Compile no terminal
-
-```powershell
-javac Main.java
-```
-
-### 8. Leia o erro completo
-
-Não leia só a última linha.
-
-### 9. Corrija uma coisa por vez
-
-Não mude tudo de uma vez.
-
-### 10. Compile novamente
-
-```powershell
-javac Main.java
-```
-
----
-
 ## Exemplo de leitura guiada
 
 Código:
@@ -1558,7 +1388,7 @@ Depois fica natural.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Crie pasta:
 
@@ -1647,68 +1477,6 @@ Depois quebre uma chave de propósito, compile, leia o erro e corrija.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 022 — Blocos, chaves, indentação e leitura de código
-
-### O que aprendi
-Aprendi que blocos em Java são delimitados por chaves e que a indentação ajuda a enxergar a estrutura do código.
-
-### O que pratiquei
-Criei programas simples, identifiquei blocos de classe, método e blocos aninhados. Também quebrei chaves de propósito para ler erros do compilador.
-
-### Conceitos principais
-- Bloco
-- Chaves
-- Blocos aninhados
-- Indentação
-- Escopo visual
-- Leitura de fora para dentro
-- Leitura de dentro para fora
-- Formatação automática
-- Código fora do método
-- Código fora da classe
-
-### Arquivos criados
-- `labs/m1/aula-022-blocos-chaves-indentacao/Main.java`
-- `labs/m1/aula-022-blocos-chaves-indentacao/ValidacaoPedido.java`
-- `labs/m1/aula-022-blocos-chaves-indentacao/LeituraOrdemServico.java`
-
-### Comandos usados
-```powershell
-javac Main.java
-java Main
-javac ValidacaoPedido.java
-java ValidacaoPedido
-javac LeituraOrdemServico.java
-java LeituraOrdemServico
-```
-
-### Atalhos úteis
-- `Ctrl + Alt + L` — reformatar código.
-- `Alt + F12` — terminal integrado.
-- `Alt + 1` — Project.
-- `Ctrl + Shift + A` — buscar ação.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- esquecer chave de fechamento;
-- colocar chave a mais;
-- deixar instrução fora do método;
-- deixar código fora da classe;
-- confiar em indentação errada;
-- não formatar código colado;
-- não ler erro do compilador.
-
-### Próximo passo
-Estudar comentários úteis e documentação inicial.
-```
-
----
-
 ## Commit recomendado
 
 Valide:
@@ -1746,26 +1514,7 @@ Se aparecer `.class`, corrija `.gitignore`.
 
 ---
 
-## Perguntas de fixação
-
-Responda com suas palavras no diário.
-
-```text
-1. O que é um bloco em Java?
-2. Para que servem as chaves `{}`?
-3. Qual bloco envolve o método `main`?
-4. Qual bloco envolve a classe?
-5. O que significa bloco aninhado?
-6. Java depende da indentação para compilar?
-7. Se Java não depende da indentação, por que ela é importante?
-8. O que é escopo visual?
-9. O que significa uma instrução estar fora do método?
-10. Como o IntelliJ ajuda a enxergar blocos?
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

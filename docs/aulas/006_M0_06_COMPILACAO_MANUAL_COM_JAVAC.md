@@ -1249,64 +1249,6 @@ javac -version
 
 ---
 
-## Diagnóstico guiado
-
-Quando algo der errado, siga este roteiro.
-
-### 1. Estou na pasta certa?
-
-```powershell
-pwd
-```
-
-### 2. O arquivo `.java` existe?
-
-```powershell
-ls
-```
-
-### 3. O compilador existe?
-
-```powershell
-javac -version
-```
-
-### 4. A compilação gera erro?
-
-```bash
-javac Main.java
-```
-
-Se gera erro, leia a mensagem.
-
-### 5. O `.class` foi criado?
-
-```powershell
-ls
-```
-
-### 6. Estou executando pelo nome da classe?
-
-```bash
-java Main
-```
-
-Não use:
-
-```bash
-java Main.class
-```
-
-### 7. A classe tem `main` correto?
-
-```java
-public static void main(String[] args)
-```
-
-Esse roteiro resolve a maioria dos problemas iniciais.
-
----
-
 ## Pequena prática recomendada
 
 Esta prática é relevante porque consolida o entendimento.
@@ -1414,13 +1356,6 @@ execução pelo nome da classe.
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 006 — Compilação manual com javac
-
 ## O que aprendi
 Aprendi que o arquivo .java é código-fonte, o javac gera .class e o java executa a classe na JVM.
 
@@ -1449,7 +1384,7 @@ Mesmo usando IntelliJ, Maven, Gradle e Spring Boot, a base continua sendo códig
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

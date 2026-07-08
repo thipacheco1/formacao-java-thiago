@@ -18,48 +18,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Estamos seguindo a ordem oficial do Módulo 0.
-
-Até aqui, a base já passou por:
-
-```text
-M0.01 — mapa da formação;
-M0.02 — diagnóstico inicial;
-M0.03 — organização do Windows;
-M0.04 — PowerShell e comandos básicos;
-M0.05 — JDK, JRE e JVM;
-M0.06 — compilação manual com javac;
-M0.07 — IntelliJ IDEA Community;
-M0.08 — debug inicial;
-M0.09 — Git instalação e configuração global;
-M0.10 — Git local;
-M0.11 — GitHub e repositório remoto;
-M0.12 — Markdown para documentação técnica;
-M0.13 — diário de bordo e rastreabilidade;
-M0.14 — Codex/IA no IntelliJ com ética e método;
-M0.15 — Maven instalação e validação inicial.
-```
-
-Agora o foco é banco de dados.
-
-Mas atenção:
-
-```text
-ainda não estamos estudando SQL profundamente;
-ainda não estamos estudando JDBC;
-ainda não estamos estudando JPA;
-ainda não estamos estudando Spring Data;
-ainda não estamos modelando banco profissionalmente.
-```
-
-Esta aula é preparação.
-
-O objetivo é garantir que, quando o backend precisar salvar e consultar dados, o ambiente local já esteja pronto.
-
----
-
 ## Hoje a aula é sobre preparar o banco antes de precisar dele
 
 Um backend real raramente vive só em memória.
@@ -1067,88 +1025,6 @@ Ainda vamos estudar SQL, modelagem, JDBC, transações, JPA e Spring Data em mó
 
 ---
 
-## Diagnóstico de conexão
-
-Quando a conexão falhar, siga o roteiro.
-
-### 1. PostgreSQL está instalado?
-
-Verifique no Windows se existe serviço do PostgreSQL.
-
-### 2. Serviço está rodando?
-
-Se estiver parado, inicie.
-
-### 3. Host está correto?
-
-Para local:
-
-```text
-localhost
-```
-
-ou:
-
-```text
-127.0.0.1
-```
-
-### 4. Porta está correta?
-
-Padrão:
-
-```text
-5432
-```
-
-Mas valide se foi alterada.
-
-### 5. Usuário está correto?
-
-Exemplo local:
-
-```text
-postgres
-```
-
-### 6. Senha está correta?
-
-Senha definida na instalação.
-
-### 7. Database existe?
-
-Se está conectando em:
-
-```text
-formacao_java
-```
-
-ela precisa existir.
-
-### 8. Driver JDBC foi baixado?
-
-Se DBeaver pediu driver, autorize quando for ambiente de estudo e fonte confiável.
-
-### 9. A mensagem é de autenticação ou conexão?
-
-Exemplo:
-
-```text
-password authentication failed
-```
-
-é diferente de:
-
-```text
-connection refused
-```
-
-### 10. Conseguiu rodar `SELECT current_database()`?
-
-Se sim, conexão básica está validada.
-
----
-
 ## Checklist de preparação
 
 Use este checklist:
@@ -1184,7 +1060,7 @@ Não significa domínio profundo de banco ainda.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Execute no DBeaver:
 
@@ -1229,80 +1105,7 @@ Se ainda não houver repositório para o material, apenas registre no diário.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 016 — PostgreSQL e DBeaver preparação
-
-### O que aprendi
-Aprendi que PostgreSQL é o servidor de banco e DBeaver é uma ferramenta cliente para conectar, visualizar e executar SQL.
-
-### O que pratiquei
-Preparei conexão local com PostgreSQL, criei a database `formacao_java`, executei queries de validação e registrei o ambiente sem expor senha.
-
-### Conceitos principais
-- PostgreSQL
-- DBeaver
-- Servidor de banco
-- Cliente de banco
-- Host
-- Porta
-- Database
-- Usuário
-- Senha
-- Driver JDBC
-- Test Connection
-- Serviço do PostgreSQL
-
-### SQL executado
-```sql
-SELECT version();
-
-SELECT current_database();
-
-CREATE TABLE ambiente_validacao (
-    id SERIAL PRIMARY KEY,
-    descricao VARCHAR(100) NOT NULL,
-    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-INSERT INTO ambiente_validacao (descricao)
-VALUES ('PostgreSQL e DBeaver preparados');
-
-SELECT *
-FROM ambiente_validacao;
-```
-
-### Arquivos criados ou alterados
-- `docs/ambiente.md`
-- `docs/diario-de-bordo.md`
-- `docs/atalhos.md`
-
-### Atalhos úteis
-- `Ctrl + Enter` — executar SQL atual no DBeaver, conforme keymap.
-- `Ctrl + Space` — autocomplete SQL, conforme keymap.
-- `Alt + F12` — terminal integrado.
-- `Ctrl + Shift + A` — buscar ação.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- confundir DBeaver com PostgreSQL;
-- esquecer que o PostgreSQL precisa estar rodando;
-- usar porta errada;
-- conectar na database errada;
-- documentar senha real;
-- usar banco corporativo em estudo sem autorização;
-- achar que preparação de banco já é domínio profundo de SQL.
-
-### Próximo passo
-Preparar Postman/Insomnia e HTTP básico.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

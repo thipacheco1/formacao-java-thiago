@@ -1,65 +1,5 @@
 ﻿# 012 — M0.12 — Markdown para Documentação Técnica
 
-## Onde estamos na formação
-
-Até aqui, a formação já construiu uma base operacional importante:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial;
-Git instalado e configurado;
-Git local;
-GitHub e repositório remoto.
-```
-
-Agora entramos em documentação técnica.
-
-Isso não é um assunto secundário.
-
-Um desenvolvedor backend não trabalha apenas escrevendo código.
-
-Ele também precisa comunicar:
-
-```text
-como rodar um projeto;
-qual problema foi resolvido;
-qual regra foi implementada;
-como uma API funciona;
-qual decisão técnica foi tomada;
-quais comandos devem ser executados;
-como reproduzir um erro;
-como validar uma entrega;
-como operar uma aplicação;
-como outro desenvolvedor deve continuar o trabalho.
-```
-
-Markdown é uma das ferramentas mais simples e mais usadas para isso.
-
-Nesta formação, Markdown será usado em:
-
-```text
-README.md;
-diário de bordo;
-atalhos;
-checklists;
-anotações técnicas;
-documentação de APIs;
-documentação de arquitetura;
-decisões técnicas;
-roteiros de execução;
-evidências de aprendizado.
-```
-
-Então, aprender Markdown agora prepara o restante da formação.
-
----
-
 ## Hoje a aula é sobre escrever documentação que ajuda
 
 Documentação ruim atrapalha.
@@ -249,8 +189,6 @@ Um documento técnico simples pode ter:
 
 ```markdown
 # Título principal
-
-## Objetivo
 
 ## Contexto
 
@@ -712,10 +650,6 @@ Conteúdo:
 
 Repositório de estudos, práticas e evolução técnica em Java Backend.
 
-## Objetivo
-
-Registrar a evolução dos estudos, exemplos de código, documentação técnica e práticas realizadas ao longo da formação.
-
 ## Estrutura
 
 - `docs`: documentação, diário de bordo e anotações técnicas.
@@ -775,41 +709,6 @@ Exemplo:
 
 ````markdown
 # Diário de bordo
-
-## Aula 012 — Markdown para documentação técnica
-
-### O que aprendi
-
-Aprendi que Markdown é uma forma simples de escrever documentação técnica versionável em Git.
-
-### Conceitos principais
-
-- Títulos com `#`
-- Listas com `-`
-- Código inline com crase
-- Blocos de código com três crases
-- Tabelas
-- Checklists
-- Links internos
-
-### Comandos usados
-
-```bash
-git status
-git add README.md docs/diario-de-bordo.md
-git commit -m "Documenta aprendizado sobre Markdown"
-```
-
-### Dúvidas
-
--
-````
-
-Esse formato transforma aula em registro revisável.
-
-Mais tarde, o diário ajuda a relembrar o caminho.
-
----
 
 ## Exemplo aplicado: documentação de comando
 
@@ -876,10 +775,6 @@ Um README melhor:
 
 ````markdown
 # API de Pedidos
-
-## Objetivo
-
-API responsável pelo cadastro, consulta e atualização de pedidos.
 
 ## Pré-requisitos
 
@@ -1166,15 +1061,6 @@ Ruim:
 ```markdown
 # Projeto
 ### Como rodar
-## Objetivo
-#### Testes
-```
-
-Melhor:
-
-```markdown
-# Projeto
-## Objetivo
 ## Como rodar
 ## Testes
 ```
@@ -1312,28 +1198,7 @@ Se a decisão técnica muda, commit.
 
 ---
 
-## Diagnóstico de documentação ruim
-
-Quando um documento parecer ruim, pergunte:
-
-```text
-O título diz claramente o assunto?
-O objetivo está explícito?
-A pessoa sabe o que fazer depois de ler?
-Os comandos estão em blocos de código?
-Há pré-requisitos?
-Há exemplos?
-Há alertas de erro comum?
-Há informação sensível?
-O documento está atualizado?
-O texto está dividido em seções?
-```
-
-Se muitas respostas forem “não”, o documento precisa melhorar.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie ou atualize três arquivos.
 
@@ -1345,10 +1210,6 @@ Use a estrutura:
 # Formação Java Backend
 
 Repositório de estudos, práticas e evolução técnica em Java Backend.
-
-## Objetivo
-
-Registrar a evolução dos estudos, exemplos de código, documentação técnica e práticas realizadas ao longo da formação.
 
 ## Estrutura
 
@@ -1412,13 +1273,6 @@ git status
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 012 — Markdown para documentação técnica
-
 ## O que aprendi
 Aprendi que Markdown é uma sintaxe simples para escrever documentação técnica versionável em Git.
 
@@ -1459,7 +1313,7 @@ Markdown não é enfeite. Markdown organiza comunicação técnica.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

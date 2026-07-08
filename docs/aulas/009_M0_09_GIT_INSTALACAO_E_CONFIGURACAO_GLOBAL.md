@@ -14,45 +14,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Até aqui, já organizamos o terreno:
-
-```text
-mapa da formação;
-diagnóstico inicial;
-organização do Windows;
-terminal e PowerShell;
-JDK, JRE e JVM;
-compilação manual com javac;
-IntelliJ IDEA Community;
-debug inicial.
-```
-
-Agora entra uma ferramenta que vai acompanhar toda a formação:
-
-```text
-Git
-```
-
-Git não é um detalhe.
-
-Git é a memória técnica do projeto.
-
-Sem Git, o código vira arquivo solto.
-
-Com Git bem usado, o projeto passa a ter histórico, rastreabilidade, segurança de mudança e possibilidade de colaboração.
-
-Nesta aula, o foco ainda não é branch, merge, rebase, pull request ou conflito.
-
-Esses assuntos virão depois.
-
-Agora o foco é preparar o Git corretamente na máquina.
-
-Antes de versionar código, precisamos garantir que o Git está instalado, acessível no terminal e configurado com identidade, comportamento de linha e branch padrão.
-
----
-
 ## Hoje a aula é sobre preparar o Git para trabalhar direito
 
 Um erro comum é tratar Git como algo que só aparece na hora de “subir para o GitHub”.
@@ -1034,65 +995,7 @@ Com validação, você sabe.
 
 ---
 
-## Diagnóstico quando Git não funcionar
-
-Siga este roteiro.
-
-### 1. O comando existe?
-
-```powershell
-git --version
-```
-
-Se não reconhece, problema de instalação ou `PATH`.
-
-### 2. Onde o Git está?
-
-```powershell
-where git
-```
-
-Se não aparece caminho, o sistema não encontrou.
-
-### 3. O terminal foi aberto depois da instalação?
-
-Se não, feche e abra de novo.
-
-### 4. As configurações existem?
-
-```powershell
-git config --global --list
-```
-
-### 5. Nome está configurado?
-
-```powershell
-git config --global user.name
-```
-
-### 6. E-mail está configurado?
-
-```powershell
-git config --global user.email
-```
-
-### 7. Branch padrão está configurada?
-
-```powershell
-git config --global init.defaultBranch
-```
-
-### 8. Quebra de linha está configurada?
-
-```powershell
-git config --global core.autocrlf
-```
-
-Esse diagnóstico evita muita tentativa sem direção.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Faça a configuração e registre as evidências.
 
@@ -1122,13 +1025,6 @@ git config --global core.editor
 O objetivo é saber configurar e saber validar.
 
 ---
-
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 009 — Git instalação e configuração global
 
 ## O que aprendi
 Aprendi que Git é a ferramenta de controle de versão e que GitHub é uma plataforma remota. Git começa localmente.
@@ -1161,7 +1057,7 @@ O Git será usado para registrar a evolução dos códigos, documentos, prática
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

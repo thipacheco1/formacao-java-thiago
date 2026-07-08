@@ -1,69 +1,5 @@
 ﻿# 021 — M1.01 — Primeiro Programa Java Destrinchado
 
-## Onde estamos na formação
-
-O Módulo 0 foi encerrado.
-
-Ele preparou o ambiente:
-
-```text
-Windows organizado;
-PowerShell;
-JDK;
-javac;
-java;
-IntelliJ;
-debug;
-Git;
-GitHub;
-Markdown;
-diário de bordo;
-IA com método;
-Maven;
-PostgreSQL;
-DBeaver;
-Postman/Insomnia;
-HTTP básico;
-Docker;
-WSL2;
-estrutura do repositório;
-checklist final.
-```
-
-Agora começa o Módulo 1.
-
-Aqui começa Java de verdade.
-
-Mas não vamos começar correndo.
-
-A primeira aula de Java precisa ser feita com calma, porque o primeiro programa concentra muitos conceitos importantes em poucas linhas.
-
-O código parece pequeno.
-
-Mas ele contém:
-
-```text
-classe;
-método;
-modificador de acesso;
-método estático;
-tipo de retorno;
-ponto de entrada;
-array de String;
-chamada de método;
-saída no console;
-bloco;
-ponto e vírgula;
-compilação;
-execução.
-```
-
-Se isso for tratado como “só copia e roda”, a base fica fraca.
-
-Nesta aula, vamos destrinchar.
-
----
-
 ## Hoje a aula é sobre entender cada palavra do primeiro programa
 
 O primeiro programa Java clássico é este:
@@ -1257,36 +1193,6 @@ Bytecode gerado não.
 
 ---
 
-## Atalhos úteis nesta aula
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Terminal integrado | `Alt + F12` | Compilar e executar |
-| Project | `Alt + 1` | Navegar até arquivos `.java` |
-| Novo arquivo/classe | `Alt + Insert` | Criar classe no IntelliJ |
-| Buscar ação | `Ctrl + Shift + A` | Encontrar ações |
-| Search Everywhere | `Shift Shift` | Buscar classe ou arquivo |
-| Reformatar código | `Ctrl + Alt + L` | Ajustar indentação |
-| Organizar imports | `Ctrl + Alt + O` | Será mais útil depois |
-| Rodar | `Shift + F10` | Executar configuração atual |
-| Debug | `Shift + F9` | Debugar |
-| Step Over | `F8` em muitos keymaps | Avançar linha no debug |
-| Resume | `F9` em muitos keymaps | Continuar execução |
-| Commit | `Ctrl + K` | Revisar alterações |
-| Push | `Ctrl + Shift + K` | Enviar commits |
-
-Atalhos podem variar.
-
-Se algum não funcionar:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure pelo nome da ação.
-
----
-
 ## Erros comuns
 
 ### Erro 1 — Nome do arquivo diferente da classe pública
@@ -1484,83 +1390,6 @@ Se rodar sem compilar depois de alteração, pode executar versão antiga do `.c
 
 ---
 
-## Diagnóstico quando der erro
-
-Siga este roteiro.
-
-### 1. Estou na pasta certa?
-
-```powershell
-pwd
-ls
-```
-
-Precisa aparecer:
-
-```text
-Main.java
-```
-
-### 2. O arquivo tem o nome correto?
-
-```text
-Main.java
-```
-
-classe:
-
-```java
-public class Main
-```
-
-### 3. Compilei?
-
-```powershell
-javac Main.java
-```
-
-### 4. Apareceu `Main.class`?
-
-```powershell
-ls
-```
-
-### 5. Executei corretamente?
-
-```powershell
-java Main
-```
-
-Não use:
-
-```powershell
-java Main.class
-```
-
-### 6. O método `main` está correto?
-
-```java
-public static void main(String[] args)
-```
-
-### 7. Faltou ponto e vírgula?
-
-Verifique linhas com instruções.
-
-### 8. As chaves estão fechadas?
-
-Conte blocos.
-
-### 9. `String` está com S maiúsculo?
-
-Verifique.
-
-### 10. O erro aponta linha?
-
-Leia a linha indicada pelo compilador.
-
----
-
 ## Como ler erro do compilador
 
 Exemplo de erro por ponto e vírgula:
@@ -1592,53 +1421,7 @@ Compile de novo.
 
 ---
 
-## Quebrando de propósito
-
-Faça estes testes.
-
-### Teste 1 — Remova o ponto e vírgula
-
-```java
-System.out.println("Olá, Java!")
-```
-
-Compile:
-
-```powershell
-javac Main.java
-```
-
-Leia o erro.
-
-Depois corrija.
-
-### Teste 2 — Troque `String` por `string`
-
-Compile e leia o erro.
-
-Depois corrija.
-
-### Teste 3 — Troque `main` por `Main`
-
-Compile.
-
-Talvez compile.
-
-Depois tente executar:
-
-```powershell
-java Main
-```
-
-Veja o erro de ponto de entrada.
-
-Depois corrija.
-
-Esses testes ensinam diagnóstico.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie três arquivos:
 
@@ -1713,64 +1496,6 @@ Essa organização evita jogar arquivos na raiz.
 
 ---
 
-## Atualização do diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 021 — Primeiro programa Java destrinchado
-
-### O que aprendi
-Aprendi a estrutura do primeiro programa Java, entendendo `class`, `public`, `static`, `void`, `main`, `String[] args` e `System.out.println`.
-
-### O que pratiquei
-Criei, compilei e executei programas Java simples pelo terminal.
-
-### Arquivos criados
-- `labs/m1/aula-021-primeiro-programa-java/Main.java`
-- `labs/m1/aula-021-primeiro-programa-java/ResumoOrdemServico.java`
-- `labs/m1/aula-021-primeiro-programa-java/ResumoPedido.java`
-
-### Comandos usados
-```powershell
-javac Main.java
-java Main
-javac ResumoOrdemServico.java
-java ResumoOrdemServico
-javac ResumoPedido.java
-java ResumoPedido
-```
-
-### Conceitos principais
-- Classe
-- Método `main`
-- `public`
-- `static`
-- `void`
-- `String[] args`
-- `System.out.println`
-- Compilação
-- Execução
-- `.java`
-- `.class`
-
-### Erros que quero evitar
-- nome do arquivo diferente da classe pública;
-- escrever `Main` no lugar de `main`;
-- esquecer `static`;
-- esquecer `void`;
-- escrever `string` minúsculo;
-- esquecer ponto e vírgula;
-- usar aspas simples para texto;
-- executar com `java Main.class`;
-- versionar `.class`.
-
-### Próximo passo
-Estudar variáveis, literais e tipos primitivos.
-```
-
----
-
 ## Commit recomendado
 
 Antes:
@@ -1810,30 +1535,7 @@ Corrija `.gitignore`.
 
 ---
 
-## Perguntas de fixação
-
-Responda com suas palavras no diário.
-
-```text
-1. Para que serve a palavra `class`?
-2. Por que o arquivo `Main.java` precisa combinar com `public class Main`?
-3. O que é o método `main`?
-4. Por que o `main` é `static`?
-5. O que significa `void`?
-6. O que representa `String[] args`?
-7. Para que serve `System.out.println`?
-8. Qual a diferença entre `print` e `println`?
-9. O que `javac Main.java` gera?
-10. Por que executamos `java Main` e não `java Main.class`?
-```
-
-Não responda decorando.
-
-Responda explicando.
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

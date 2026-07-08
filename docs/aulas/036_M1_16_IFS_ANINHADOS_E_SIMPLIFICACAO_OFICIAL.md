@@ -1,50 +1,5 @@
 ﻿# 036 — M1.16 — Ifs Aninhados e Simplificação
 
-## Onde estamos na formação
-
-Estamos no Módulo 1, logo depois da primeira aula de decisão com `if`, `else if` e `else`.
-
-A sequência recente foi:
-
-```text
-031 — M1.11 — Operadores aritméticos;
-032 — M1.12 — Operadores relacionais;
-033 — M1.13 — Operadores lógicos;
-034 — M1.14 — Incremento, decremento e acumuladores;
-035 — M1.15 — If, else if e else;
-036 — M1.16 — Ifs aninhados e simplificação.
-```
-
-Na aula anterior, o programa começou a tomar decisões.
-
-Exemplo:
-
-```java
-if (pedidoPodeProcessar) {
-    System.out.println("Pedido pode ser processado");
-} else {
-    System.out.println("Pedido não pode ser processado");
-}
-```
-
-Agora vamos estudar um problema que aparece logo depois que a pessoa aprende `if`:
-
-```text
-começar a colocar if dentro de if dentro de if.
-```
-
-Isso é chamado de:
-
-```text
-if aninhado.
-```
-
-If aninhado não é proibido.
-
-Mas, se usado sem cuidado, cria código difícil de ler, difícil de testar e fácil de quebrar.
-
----
-
 ## Hoje a aula é sobre não deixar o código virar uma escada
 
 Quando começamos a programar, é comum escrever regras assim:
@@ -1468,124 +1423,7 @@ Sem testar combinações, regra condicional passa falsa sensação de segurança
 
 ---
 
-## Diagnóstico de if aninhado
-
-Quando o código ficar confuso, siga o roteiro.
-
-### 1. Quantos níveis de indentação existem?
-
-Se passar de dois ou três, olhe com cuidado.
-
-### 2. As condições fazem parte da mesma regra?
-
-Se sim, talvez `&&` resolva.
-
-### 3. Precisa mostrar motivo específico?
-
-Se sim, talvez `else if` por bloqueio seja melhor.
-
-### 4. Precisa mostrar todos os erros?
-
-Se sim, use `if` separados.
-
-### 5. Os caminhos são exclusivos?
-
-Se sim, use `else if`.
-
-### 6. Existe uma regra que pode ser nomeada?
-
-Crie variável booleana intermediária.
-
-### 7. A ordem dos bloqueios reflete o negócio?
-
-Reorganize se necessário.
-
-### 8. O fluxo principal está enterrado?
-
-Tente deixá-lo mais visível.
-
-### 9. Há comparação de String com `==`?
-
-Troque por `equals`.
-
-### 10. O código foi testado com combinações diferentes?
-
-Teste cenários de aprovação e bloqueio.
-
----
-
-## Quebrando de propósito
-
-Faça estes testes.
-
-### Teste 1 — Escada de if
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        boolean a = true;
-        boolean b = true;
-        boolean c = true;
-
-        if (a) {
-            if (b) {
-                if (c) {
-                    System.out.println("Executou");
-                }
-            }
-        }
-    }
-}
-```
-
-Depois simplifique para:
-
-```java
-if (a && b && c) {
-    System.out.println("Executou");
-}
-```
-
-### Teste 2 — else if impedindo múltiplos erros
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        String nome = "";
-        String email = "email-sem-arroba";
-
-        if (nome.isBlank()) {
-            System.out.println("Nome obrigatório");
-        } else if (!email.contains("@")) {
-            System.out.println("E-mail inválido");
-        }
-    }
-}
-```
-
-Depois troque por `if` separados.
-
-### Teste 3 — Mensagem específica versus regra única
-
-Crie uma versão com:
-
-```java
-boolean clienteApto = clienteAtivo && !possuiPendencia && emailValidado;
-```
-
-e outra com mensagens específicas usando `else if`.
-
-Compare a utilidade de cada uma.
-
-### Teste 4 — Ordem de bloqueio
-
-Troque a ordem de validações no exemplo de produto.
-
-Veja como a primeira mensagem muda.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie a pasta:
 
@@ -1660,31 +1498,6 @@ Registre no diário qual ficou mais fácil de ler e por quê.
 
 ---
 
-## Atalhos úteis nesta aula
-
-| Ação | Atalho | Uso |
-|---|---|---|
-| Reformatar código | `Ctrl + Alt + L` | Ver indentação real |
-| Renomear variável | `Shift + F6` | Nomear regras booleanas |
-| Terminal integrado | `Alt + F12` | Compilar e executar |
-| Rodar programa | `Shift + F10` | Executar no IntelliJ |
-| Debug | `Shift + F9` | Ver qual bloco executa |
-| Step Over | `F8` em muitos keymaps | Avançar linha por linha |
-| Project | `Alt + 1` | Navegar arquivos |
-| Buscar ação | `Ctrl + Shift + A` | Encontrar ações |
-| Recent Files | `Ctrl + E` | Alternar arquivos |
-| Commit | `Ctrl + K` | Revisar alterações |
-
-Se algum atalho variar, use:
-
-```text
-Ctrl + Shift + A
-```
-
-e procure a ação pelo nome.
-
----
-
 ## Debug para if aninhado
 
 Use debug para comparar os dois estilos.
@@ -1727,82 +1540,6 @@ Esse exercício ajuda a sentir a diferença.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 036 — Ifs aninhados e simplificação
-
-### O que aprendi
-Aprendi que `if` aninhado é um `if` dentro de outro `if`, e que ele pode funcionar, mas pode deixar o código difícil de ler quando cria muitos níveis de indentação.
-
-### O que pratiquei
-Comparei versões aninhadas e simplificadas de regras para cliente, pedido, OS, autorização, status e validações independentes.
-
-### Conceitos principais
-- if aninhado
-- simplificação
-- indentação excessiva
-- regra nomeada
-- variável booleana intermediária
-- validações independentes
-- caminhos exclusivos
-- ordem de bloqueio
-- preparação para guard clauses
-- escada de if
-- fluxo principal
-- mensagens específicas
-
-### Arquivos criados
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/Main.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/ClienteAninhado.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/ClienteSimplificado.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/ClienteRegraNomeada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/PedidoAninhado.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/PedidoSimplificado.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/PedidoRegraNomeada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/OrdemServicoAninhada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/OrdemServicoSimplificada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/AutorizacaoAninhada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/AutorizacaoSimplificada.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/ClienteValidacoesIndependentes.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/FluxoStatusSimplificado.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/PedidoSimplificadoConsole.java`
-- `labs/m1/aula-036-ifs-aninhados-simplificacao/ClienteValidacoesConsole.java`
-
-### Comandos usados
-```powershell
-javac Main.java
-java Main
-javac ClienteAninhado.java
-java ClienteAninhado
-javac ClienteSimplificado.java
-java ClienteSimplificado
-javac PedidoAninhado.java
-java PedidoAninhado
-javac PedidoSimplificado.java
-java PedidoSimplificado
-```
-
-### Erros que quero evitar
-- criar escada de `if` sem necessidade;
-- simplificar demais e perder mensagem específica;
-- usar `else if` quando preciso mostrar vários erros;
-- usar `if` separados quando a regra é exclusiva;
-- nomear regra de forma genérica;
-- criar condição gigante sem quebrar;
-- ignorar ordem de bloqueio;
-- esconder fluxo principal no último nível;
-- achar que todo aninhamento é errado;
-- não testar combinações.
-
-### Próximo passo
-Estudar `switch` tradicional.
-```
-
----
-
 ## Commit recomendado
 
 Valide:
@@ -1840,26 +1577,7 @@ Se `.class` aparecer, corrija `.gitignore`.
 
 ---
 
-## Perguntas de fixação
-
-Responda no diário.
-
-```text
-1. O que é um if aninhado?
-2. Por que if aninhado demais pode atrapalhar a leitura?
-3. Quando faz sentido combinar condições com `&&`?
-4. Para que servem variáveis booleanas intermediárias?
-5. Quando usar `if` separados em vez de `else if`?
-6. Quando usar `else if` em vez de vários `if` separados?
-7. O que é uma escada de if?
-8. O que é a ideia de guard clause?
-9. Por que a ordem dos bloqueios importa?
-10. Como decidir entre regra nomeada e mensagens específicas?
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

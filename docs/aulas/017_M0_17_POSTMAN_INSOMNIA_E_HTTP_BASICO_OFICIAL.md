@@ -17,65 +17,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Estamos seguindo a ordem oficial do Módulo 0.
-
-Até aqui, a preparação já cobriu:
-
-```text
-M0.01 — mapa da formação;
-M0.02 — diagnóstico inicial;
-M0.03 — organização do Windows;
-M0.04 — PowerShell e comandos básicos;
-M0.05 — JDK, JRE e JVM;
-M0.06 — compilação manual com javac;
-M0.07 — IntelliJ IDEA Community;
-M0.08 — debug inicial;
-M0.09 — Git instalação e configuração global;
-M0.10 — Git local;
-M0.11 — GitHub e repositório remoto;
-M0.12 — Markdown para documentação técnica;
-M0.13 — diário de bordo e rastreabilidade;
-M0.14 — Codex/IA no IntelliJ com ética e método;
-M0.15 — Maven instalação e validação inicial;
-M0.16 — PostgreSQL e DBeaver preparação.
-```
-
-Agora vamos preparar ferramentas e conceitos para testar APIs.
-
-Ainda não estamos criando uma API Java com Spring Boot.
-
-Ainda não estamos estudando REST profundamente.
-
-Ainda não estamos automatizando testes de API.
-
-Esta aula é preparação.
-
-O objetivo é que, quando a primeira API aparecer, a pessoa já saiba o que é:
-
-```text
-request;
-response;
-URL;
-método HTTP;
-header;
-body;
-JSON;
-status code;
-query parameter;
-path parameter;
-Postman;
-Insomnia;
-collection;
-environment;
-erro de conexão;
-erro de autenticação;
-erro de contrato.
-```
-
----
-
 ## Hoje a aula é sobre aprender a conversar com APIs
 
 Backend moderno conversa muito por HTTP.
@@ -1448,45 +1389,6 @@ Documentação técnica começa a ficar prática.
 
 ---
 
-## Diagnóstico básico de erro em API
-
-Quando uma request falhar, não chute.
-
-Observe:
-
-```text
-URL;
-método;
-headers;
-body;
-status code;
-response body;
-tempo de resposta;
-ambiente selecionado;
-variáveis;
-logs do backend, quando existir.
-```
-
-Perguntas:
-
-```text
-a URL está correta?
-a porta está correta?
-a API está rodando?
-o método está correto?
-o body é JSON válido?
-o Content-Type está correto?
-o token está presente?
-o token expirou?
-o ID existe?
-a regra de negócio permite essa ação?
-a resposta é 4xx ou 5xx?
-```
-
-Diagnóstico começa pela camada HTTP.
-
----
-
 ## Erros comuns
 
 ### Erro 1 — API não está rodando
@@ -1695,7 +1597,7 @@ Ainda não significa domínio completo de REST.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Crie uma collection chamada:
 
@@ -1759,19 +1661,6 @@ Use:
 ````markdown
 # HTTP básico
 
-## Conceitos
-
-- Request
-- Response
-- URL
-- Método HTTP
-- Header
-- Body
-- JSON
-- Status code
-- Query parameter
-- Path parameter
-
 ## Métodos
 
 | Método | Uso comum |
@@ -1821,74 +1710,7 @@ Esse arquivo será útil depois.
 
 ---
 
-## Registro no diário de bordo
-
-Use este bloco:
-
-```markdown
-## Aula 017 — Postman/Insomnia e HTTP básico
-
-### O que aprendi
-Aprendi que Postman e Insomnia são clientes HTTP usados para montar, enviar e analisar requisições para APIs.
-
-### Conceitos principais
-- HTTP
-- Request
-- Response
-- URL
-- Endpoint
-- GET
-- POST
-- PUT
-- PATCH
-- DELETE
-- Header
-- Body
-- JSON
-- Status code
-- Query parameter
-- Path parameter
-- Collection
-- Environment
-
-### O que pratiquei
-Criei uma collection de estudo, um environment local com `base_url` e requests conceituais para endpoints de exemplo.
-
-### Status codes revisados
-- `200 OK`
-- `201 Created`
-- `204 No Content`
-- `400 Bad Request`
-- `401 Unauthorized`
-- `403 Forbidden`
-- `404 Not Found`
-- `409 Conflict`
-- `500 Internal Server Error`
-
-### Atalhos úteis
-- `Ctrl + Enter` — enviar request, conforme ferramenta/keymap.
-- `Ctrl + S` — salvar request, conforme ferramenta/keymap.
-- `Alt + F12` — terminal integrado.
-- `Ctrl + Shift + A` — buscar ação.
-- `Ctrl + K` — Commit.
-
-### Erros que quero evitar
-- usar método HTTP errado;
-- esquecer `Content-Type: application/json`;
-- enviar JSON inválido;
-- chamar porta errada;
-- usar environment errado;
-- salvar token real;
-- confundir 401 com 403;
-- tratar todo erro como bug do backend sem diagnosticar request.
-
-### Próximo passo
-Preparar Docker Desktop e WSL2.
-```
-
----
-
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

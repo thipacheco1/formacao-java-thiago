@@ -1,81 +1,5 @@
 # 033 — M1.13 — Operadores lógicos
 
-## Pré-requisito de ambiente
-
-Esta aula não exige instalação nova.
-
-Ela depende do ambiente validado no Módulo 0:
-
-```text
-JDK instalado;
-IntelliJ IDEA Community configurado;
-terminal funcionando;
-Git funcionando;
-repositório organizado.
-```
-
-Antes de começar, valide:
-
-```powershell
-java -version
-javac -version
-git --version
-```
-
-A prática desta aula será feita em:
-
-```text
-labs/m1/aula-033-operadores-logicos
-```
-
----
-
-## Onde estamos na formação
-
-Até aqui, já estudamos:
-
-```text
-variáveis;
-tipos primitivos;
-boolean;
-String;
-entrada com Scanner;
-operadores aritméticos;
-operadores relacionais.
-```
-
-Operadores relacionais criam perguntas simples:
-
-```java
-idade >= 18
-valor > 0
-quantidade == 10
-status != 0
-```
-
-Essas expressões retornam:
-
-```text
-true
-false
-```
-
-Agora vamos combinar várias perguntas em uma regra maior.
-
-Exemplo:
-
-```java
-idade >= 18 && possuiDocumento
-```
-
-Aqui, o programa não avalia apenas uma condição.
-
-Ele avalia uma combinação.
-
-Essa é a função dos operadores lógicos.
-
----
-
 ## A pergunta central da aula
 
 Como representar regras como estas?
@@ -735,31 +659,6 @@ Use `.equals`.
 
 ---
 
-## Diagnóstico
-
-Quando uma condição lógica falhar:
-
-```text
-1. Quebre a condição em booleanos menores.
-2. Imprima cada booleano.
-3. Verifique se usou `&&` ou `||` corretamente.
-4. Confira parênteses.
-5. Confira negações.
-6. Confira ordem para evitar null.
-7. Confira comparação de String.
-```
-
-Exemplo:
-
-```java
-System.out.println("clienteInformado: " + clienteInformado);
-System.out.println("valorPositivo: " + valorPositivo);
-System.out.println("quantidadePositiva: " + quantidadePositiva);
-System.out.println("podeProcessar: " + podeProcessar);
-```
-
----
-
 ## Debug recomendado
 
 Use debug em:
@@ -788,24 +687,7 @@ por que o if entra ou não entra.
 
 ---
 
-## Quebrando de propósito
-
-Faça estes testes:
-
-```text
-cliente null;
-valor zero;
-período inválido;
-usuário bloqueado;
-parênteses removidos;
-String comparada com ==.
-```
-
-Explique cada resultado.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Crie a pasta:
 
@@ -857,75 +739,6 @@ java ValidacaoAuditoria
 
 ---
 
-## README recomendado da aula
-
-```markdown
-# Aula 033 — Operadores lógicos
-
-## Objetivo
-
-Aprender a combinar condições com `&&`, `||` e `!`.
-
-## Conceitos
-
-- `&&` exige todas as condições verdadeiras.
-- `||` exige pelo menos uma condição verdadeira.
-- `!` inverte boolean.
-- Java usa curto-circuito.
-- Ordem da condição pode evitar NullPointerException.
-- Parênteses melhoram clareza.
-- Condições grandes devem ser quebradas em booleanos nomeados.
-
-## Comandos
-
-```powershell
-javac OperadoresLogicosBasico.java
-java OperadoresLogicosBasico
-javac ValidacaoPedido.java
-java ValidacaoPedido
-```
-```
-
----
-
-## Registro no diário de bordo
-
-```markdown
-## Aula 033 — Operadores lógicos
-
-### O que aprendi
-
-Aprendi a usar `&&`, `||` e `!` para combinar condições booleanas.
-
-### O que pratiquei
-
-Criei validações de pedido, OS, pagamento, acesso, mensageria e auditoria.
-
-### Conceitos principais
-
-- boolean
-- `&&`
-- `||`
-- `!`
-- curto-circuito
-- parênteses
-- ordem das condições
-- NullPointerException
-- variáveis booleanas nomeadas
-
-### Erros que quero evitar
-
-- usar `&` no lugar de `&&`;
-- usar `|` no lugar de `||`;
-- esquecer parênteses;
-- criar condição gigante;
-- inverter condição com `!` de forma confusa;
-- chamar método em String null;
-- comparar String com `==`.
-```
-
----
-
 ## Commit recomendado
 
 ```bash
@@ -937,29 +750,7 @@ git status
 
 ---
 
-## Perguntas de fixação
-
-```text
-1. Para que serve `&&`?
-2. Para que serve `||`?
-3. Para que serve `!`?
-4. Quando uma expressão com `&&` retorna true?
-5. Quando uma expressão com `||` retorna true?
-6. O que é curto-circuito?
-7. Por que a ordem das condições importa?
-8. Como evitar NullPointerException com String?
-9. Por que usar parênteses em condições compostas?
-10. Por que condição gigante é ruim?
-11. Como variáveis booleanas nomeadas ajudam?
-12. Qual diferença entre `bloqueado` e `!bloqueado`?
-13. Por que evitar negação dupla?
-14. Como validar status AGENDADO ou REAGENDADO?
-15. Como validar cliente ativo e pagamento confirmado?
-```
-
----
-
-## Critério de aprovação
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

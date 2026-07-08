@@ -14,53 +14,6 @@
 
 ---
 
-## Onde estamos na formação
-
-Até aqui, o Git já deixou de ser uma ideia abstrata.
-
-Na aula anterior, criamos um repositório local do zero e entendemos:
-
-```text
-git init
-git status
-git add
-git commit
-git log
-git diff
-git restore
-.gitignore
-```
-
-Isso é a base.
-
-Agora vamos conectar essa base a um repositório remoto.
-
-A palavra importante aqui é:
-
-```text
-remoto
-```
-
-Um repositório remoto é uma cópia hospedada fora da sua máquina local.
-
-Pode estar no GitHub, GitLab, Bitbucket, Azure DevOps ou em outro servidor Git.
-
-Nesta formação, vamos usar GitHub como referência porque é uma plataforma muito comum para estudo, portfólio, colaboração e projetos open source.
-
-Mas o conceito principal não é “decorar GitHub”.
-
-O conceito principal é entender:
-
-```text
-meu repositório local pode se conectar a um endereço remoto;
-eu posso enviar commits para esse remoto;
-eu posso baixar commits desse remoto;
-outras pessoas podem colaborar;
-o histórico pode ser compartilhado.
-```
-
----
-
 ## Hoje a aula é sobre sair do Git local para o Git remoto
 
 Git local responde:
@@ -1340,89 +1293,6 @@ Prevenção é melhor do que correção.
 
 ---
 
-## Diagnóstico quando algo falhar
-
-### Ver estado local
-
-```bash
-git status
-```
-
-### Ver histórico local
-
-```bash
-git log --oneline
-```
-
-### Ver remoto
-
-```bash
-git remote -v
-```
-
-### Ver branch atual
-
-```bash
-git branch
-```
-
-### Ver se há commits para enviar
-
-```bash
-git status
-```
-
-O Git costuma dizer algo como:
-
-```text
-Your branch is ahead of 'origin/main'
-```
-
-Isso significa que há commits locais ainda não enviados.
-
-### Ver se está atualizado
-
-```bash
-git pull
-```
-
-### Enviar
-
-```bash
-git push
-```
-
-### Se autenticação falhar
-
-Verifique:
-
-```text
-URL remota;
-tipo de URL: HTTPS ou SSH;
-conta usada;
-permissão no repositório;
-token/credencial;
-chave SSH, se estiver usando SSH.
-```
-
-### Se aparecer erro estranho
-
-Leia a mensagem.
-
-Não copie comandos perigosos da internet sem entender.
-
-Principalmente comandos com:
-
-```text
---force
-reset --hard
-clean -fd
-```
-
-Esses podem apagar ou sobrescrever trabalho.
-
----
-
 ## Exemplo aplicado ao projeto da formação
 
 Uma estrutura inicial poderia ser:
@@ -1541,7 +1411,7 @@ fetch consulta remoto sem integrar automaticamente.
 
 ---
 
-## Prática recomendada
+## Atividade guiada
 
 Faça esta prática quando tiver uma conta e um repositório criado no GitHub.
 
@@ -1624,13 +1494,6 @@ Essa prática ensina a trazer um projeto remoto para a máquina.
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 011 — GitHub e repositório remoto
-
 ## O que aprendi
 Aprendi que Git é local e GitHub é uma plataforma remota para hospedar repositórios Git.
 
@@ -1677,7 +1540,7 @@ Commit salva localmente. Push publica no remoto.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 

@@ -1141,60 +1141,7 @@ A formação vai corrigir isso.
 
 ---
 
-## Diagnóstico quando algo der errado
-
-Quando um comando não funciona, não tente corrigir no escuro.
-
-Siga esta sequência.
-
-### 1. Ver onde está
-
-```powershell
-pwd
-```
-
-### 2. Ver arquivos da pasta
-
-```powershell
-ls
-```
-
-### 3. Ver se o projeto está no lugar esperado
-
-```text
-C:\dev\projects\nome-do-projeto
-```
-
-### 4. Ver se o arquivo existe
-
-Se quer compilar `Main.java`, ele precisa aparecer no `ls`.
-
-### 5. Ver se não está em pasta errada
-
-Muitas vezes o erro é simples:
-
-```text
-terminal está na pasta pai;
-arquivo está em src;
-comando foi rodado na raiz errada.
-```
-
-### 6. Ler a mensagem de erro
-
-Erro de caminho costuma falar coisas como:
-
-```text
-file not found
-cannot find
-path not found
-access denied
-```
-
-Essas mensagens são pistas.
-
----
-
-## Prática recomendada
+## Atividade guiada
 
 Esta prática faz sentido porque ambiente precisa ser executado, não apenas entendido.
 
@@ -1258,13 +1205,6 @@ O objetivo é saber explicar a estrutura criada.
 
 ---
 
-## Registro no diário de bordo
-
-Registre:
-
-```markdown
-# Aula 003 — Organização do Windows para desenvolvimento
-
 ## O que aprendi
 Aprendi que ambiente organizado reduz erro e melhora minha autonomia como desenvolvedor.
 
@@ -1297,7 +1237,7 @@ Ele cria compromisso com o padrão.
 
 ---
 
-## Critério de aprovação desta aula
+## Critério de conclusão
 
 Esta aula está concluída quando a pessoa consegue:
 
