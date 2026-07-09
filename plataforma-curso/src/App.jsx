@@ -315,7 +315,7 @@ function App() {
               </button>
             )}
 
-            <div className="content-scroll-area">
+            <div className={`content-scroll-area ${selectedLesson ? 'lesson-reading-scroll' : 'home-scroll'}`}>
               {selectedLesson ? (
                 <MarkdownViewer 
                   lesson={selectedLesson} 

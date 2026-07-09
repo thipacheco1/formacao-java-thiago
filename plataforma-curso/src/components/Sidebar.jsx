@@ -1,34 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search, Lock } from 'lucide-react';
+import { ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search, Lock } from 'lucide-react';
 import javaLogo from '../assets/java_logo.png';
+import {
+  COURSE_MODULES,
+  COURSE_MODULE_COUNT,
+  COURSE_PHASES,
+  COURSE_TOTAL_LESSONS,
+  getModuleFromLessonTitle
+} from '../data/coursePlan';
 
-const moduleTitles = {
-  'P0': 'Aula de Abertura',
-  'M0': 'M0: Ambiente e Método',
-  'M1': 'M1: Fundamentos Absolutos',
-  'M2': 'M2: Java Core Profundo',
-  'M3': 'M3: Organização Procedural',
-  'M4': 'M4: Orientação a Objetos',
-  'M5': 'M5: Collections & Java Moderno',
-  'M6': 'M6: SOLID & Design Patterns',
-  'M7': 'M7: Build & Ferramentas',
-  'M8': 'M8: Testes Profissionais',
-  'M9': 'M9: SQL & Banco de Dados',
-  'M10': 'M10: Persistência com JPA/Hibernate',
-  'M11': 'M11: Spring Boot REST APIs',
-  'M12': 'M12: Segurança de Aplicações',
-  'M13': 'M13: Integrações & Mensageria',
-  'M14': 'M14: Docker & CI/CD Pipelines',
-  'M15': 'M15: Observabilidade & Produção',
-  'M16': 'M16: Arquitetura & DDD',
-  'M17': 'M17: Projeto Final & Carreira'
-};
+const moduleTitles = COURSE_MODULES.reduce((acc, module) => {
+  acc[module.id] = module.id === 'P0' ? module.title : `${module.label}: ${module.shortTitle}`;
+  return acc;
+}, { Outros: 'Outros' });
 
-const phases = [
-  { id: 1, name: 'Fase 1: Fundações & Core', modules: ['P0', 'M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'Outros'] },
-  { id: 2, name: 'Fase 2: Testes & Spring Boot', modules: ['M7', 'M8', 'M9', 'M10', 'M11', 'M12'] },
-  { id: 3, name: 'Fase 3: DevOps & Arquitetura', modules: ['M13', 'M14', 'M15', 'M16', 'M17'] }
-];
+const phases = COURSE_PHASES.map((phase, index) => ({
+  id: phase.id,
+  name: phase.name,
+  modules: index === 0 ? [...phase.modules, 'Outros'] : phase.modules
+}));
 
 const parseModuleHeader = (module, rawTitle) => {
   if (module === 'P0') {
@@ -103,7 +93,7 @@ const Sidebar = ({
   onLogout,
   onOpenAuthModal
 }) => {
-  const [openPhase, setOpenPhase] = useState(1);
+  const [openPhase, setOpenPhase] = useState(COURSE_PHASES[0].id);
   const [openGroup, setOpenGroup] = useState(null);
   const lessonRefs = useRef({});
   const [searchTerm, setSearchTerm] = useState('');
@@ -125,7 +115,8 @@ const Sidebar = ({
   };
 
   // Calculate Progress Stats
-  const totalCount = lessons.length;
+  const availableLessonsCount = lessons.length;
+  const totalCount = COURSE_TOTAL_LESSONS;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
@@ -134,14 +125,8 @@ const Sidebar = ({
     return acc + estimateReadingTime(lesson.content);
   }, 0);
   
-  const totalSectionsCount = Object.keys(lessons.reduce((acc, lesson) => {
-    let module;
-    if (lesson.title.startsWith('000_')) {
-      module = 'P0';
-    } else {
-      const parts = lesson.title.split('_');
-      module = parts.length >= 4 ? parts[1] : 'Outros';
-    }
+  const availableSectionsCount = Object.keys(lessons.reduce((acc, lesson) => {
+    const module = getModuleFromLessonTitle(lesson.title);
     acc[module] = true;
     return acc;
   }, {})).length;
@@ -157,13 +142,7 @@ const Sidebar = ({
 
   // Group filtered lessons by module
   const groupedLessons = filteredLessons.reduce((acc, lesson) => {
-    let module;
-    if (lesson.title.startsWith('000_')) {
-      module = 'P0';
-    } else {
-      const parts = lesson.title.split('_');
-      module = parts.length >= 4 ? parts[1] : 'Outros';
-    }
+    const module = getModuleFromLessonTitle(lesson.title);
     
     if (!acc[module]) acc[module] = [];
     acc[module].push(lesson);
@@ -173,13 +152,7 @@ const Sidebar = ({
   // Auto-open phase and module when a lesson is selected
   useEffect(() => {
     if (selectedLesson) {
-      let module;
-      if (selectedLesson.title.startsWith('000_')) {
-        module = 'P0';
-      } else {
-        const parts = selectedLesson.title.split('_');
-        module = parts.length >= 4 ? parts[1] : 'Outros';
-      }
+      const module = getModuleFromLessonTitle(selectedLesson.title);
       setOpenGroup(module);
       
       const parentPhase = phases.find(p => p.modules.includes(module));
@@ -331,7 +304,7 @@ const Sidebar = ({
           <div className="progress-bar-fill" style={{ width: `${progressPercent}%` }}></div>
         </div>
         <div className="progress-stats-footer">
-          <span>{totalSectionsCount} seções • {totalCount} aulas • Duração total: {formatDurationForCourse(totalCourseMinutes)}</span>
+          <span>{availableSectionsCount}/{COURSE_MODULE_COUNT} modulos com aulas - {availableLessonsCount} liberadas - Duracao liberada: {formatDurationForCourse(totalCourseMinutes)}</span>
         </div>
       </div>
 
@@ -399,6 +372,8 @@ const Sidebar = ({
                       <button 
                         className={`module-group-header ${isModuleOpen ? 'active' : ''} ${isModuleCompleted ? 'completed' : ''}`} 
                         onClick={() => toggleGroup(module)}
+                        title={title}
+                        aria-expanded={isModuleOpen}
                       >
                         <div className="module-info-container">
                           <span className={`module-badge ${module === 'P0' ? 'start-badge' : ''} ${module === 'Outros' ? 'extra-badge' : ''}`}>
@@ -436,6 +411,7 @@ const Sidebar = ({
                               <li key={lesson.id} className="lesson-item-container" ref={el => lessonRefs.current[lesson.id] = el}>
                                 <button
                                   className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} ${!isUnlocked ? 'locked' : ''}`}
+                                  title={lesson.title.replace(/_/g, ' ').replace(/\.md$/, '')}
                                   onClick={() => {
                                     if (!isUnlocked) {
                                       alert("Atenção: Você precisa concluir as aulas anteriores para acessar esta aula!");

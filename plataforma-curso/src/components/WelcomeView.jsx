@@ -1,31 +1,134 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import javaLogo from '../assets/java_logo.png';
 import CertificateModal from './CertificateModal';
 import AdminReport from './AdminReport';
-import { 
-  Play, BookOpen, Award, Zap, Shield, Database, Cpu, 
-  Globe, Terminal, Box, UserCheck, Settings, CheckSquare, Activity,
-  Layers, ArrowRight, Clock, Sparkles, Trophy, CheckCircle2
+import {
+  Activity,
+  ArrowRight,
+  Award,
+  BookOpen,
+  Box,
+  CheckCircle2,
+  CheckSquare,
+  Clock,
+  Cpu,
+  Database,
+  Globe,
+  Layers,
+  Play,
+  Settings,
+  Shield,
+  Sparkles,
+  Terminal,
+  Trophy,
+  UserCheck,
+  Zap
 } from 'lucide-react';
+import {
+  COURSE_MODULES,
+  COURSE_MODULE_COUNT,
+  COURSE_PHASES,
+  COURSE_TOTAL_LESSONS,
+  getModuleFromLessonTitle,
+  getPhaseForModule
+} from '../data/coursePlan';
+
+const moduleIcons = {
+  P0: Zap,
+  M0: Settings,
+  M1: BookOpen,
+  M2: Cpu,
+  M3: Terminal,
+  M4: Layers,
+  M5: Layers,
+  M6: CheckSquare,
+  M7: Activity,
+  M8: Shield,
+  M9: Award,
+  M10: Cpu,
+  M11: Settings,
+  M12: Database,
+  M13: Database,
+  M14: Globe,
+  M15: Shield,
+  M16: Globe,
+  M17: Box,
+  M18: Activity,
+  M19: Cpu,
+  M20: UserCheck
+};
+
+const getPhaseRangeLabel = (modules) => {
+  if (!modules.length) return '';
+
+  const firstStart = modules[0].range.split('-')[0];
+  const lastRangeParts = modules[modules.length - 1].range.split('-');
+  const lastEnd = lastRangeParts[lastRangeParts.length - 1];
+
+  return `${firstStart}-${lastEnd}`;
+};
 
 const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, onOpenAuthModal }) => {
-  const totalCount = lessons.length;
+  const availableCount = lessons.length;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
-  const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+  const fullCourseProgress = COURSE_TOTAL_LESSONS > 0
+    ? Math.min(100, Math.round((completedCount / COURSE_TOTAL_LESSONS) * 100))
+    : 0;
+  const availableProgress = availableCount > 0
+    ? Math.min(100, Math.round((completedCount / availableCount) * 100))
+    : 0;
+  const generatedProgress = COURSE_TOTAL_LESSONS > 0
+    ? Math.min(100, Math.round((availableCount / COURSE_TOTAL_LESSONS) * 100))
+    : 0;
 
-  const [activePhase, setActivePhase] = useState(1);
+  const [activePhaseId, setActivePhaseId] = useState(COURSE_PHASES[0].id);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [isCertPreviewMode, setIsCertPreviewMode] = useState(false);
-  const [currentTab, setCurrentTab] = useState('course'); // 'course' | 'admin'
+  const [currentTab, setCurrentTab] = useState('course');
 
   const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
+  const showCertificateBanner = completedCount >= COURSE_TOTAL_LESSONS && isAuthorizedAdmin;
 
   useEffect(() => {
     if (!isAuthorizedAdmin) {
       setCurrentTab('course');
     }
   }, [isAuthorizedAdmin]);
-  const showCertificateBanner = progressPercent === 100 && isAuthorizedAdmin;
+
+  useEffect(() => {
+    if (lessons.length === 0) return;
+
+    const nextLesson = lessons.find(lesson => !completedLessons[lesson.id]) || lessons[0];
+    const moduleId = getModuleFromLessonTitle(nextLesson.title);
+    const phase = getPhaseForModule(moduleId);
+
+    if (phase) {
+      setActivePhaseId(phase.id);
+    }
+  }, [lessons, completedLessons]);
+
+  const moduleStats = useMemo(() => (
+    lessons.reduce((acc, lesson) => {
+      const moduleId = getModuleFromLessonTitle(lesson.title);
+
+      if (!acc[moduleId]) {
+        acc[moduleId] = { available: 0, completed: 0 };
+      }
+
+      acc[moduleId].available += 1;
+      if (completedLessons[lesson.id]) {
+        acc[moduleId].completed += 1;
+      }
+
+      return acc;
+    }, {})
+  ), [lessons, completedLessons]);
+
+  const activePhase = COURSE_PHASES.find(phase => phase.id === activePhaseId) || COURSE_PHASES[0];
+  const activeModules = COURSE_MODULES.filter(module => activePhase.modules.includes(module.id));
+  const activePhasePlannedLessons = activeModules.reduce((sum, module) => sum + module.lessons, 0);
+  const activePhaseAvailableLessons = activeModules.reduce((sum, module) => sum + (moduleStats[module.id]?.available || 0), 0);
+  const activePhaseRange = getPhaseRangeLabel(activeModules);
 
   const handleOpenCertificate = (preview = false) => {
     if (!isAuthorizedAdmin) return;
@@ -38,227 +141,29 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
       onOpenAuthModal();
       return;
     }
+
     if (lessons.length === 0) return;
-    const nextLesson = lessons.find(l => !completedLessons[l.id]) || lessons[0];
+    const nextLesson = lessons.find(lesson => !completedLessons[lesson.id]) || lessons[0];
     onSelectLesson(nextLesson);
   };
-
-  const phases = [
-    {
-      id: 1,
-      name: 'Fase 1: Fundações & Core',
-      shortName: 'Fase 1',
-      subtitle: 'Do zero aos segredos da JVM, Orientação a Objetos, Coleções e Padrões de Projeto.',
-      modules: ['P0', 'M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
-    },
-    {
-      id: 2,
-      name: 'Fase 2: Testes & Spring Boot',
-      shortName: 'Fase 2',
-      subtitle: 'Qualidade com testes automatizados, modelagem SQL profunda e APIs REST seguras.',
-      modules: ['M7', 'M8', 'M9', 'M10', 'M11', 'M12']
-    },
-    {
-      id: 3,
-      name: 'Fase 3: DevOps & Arquitetura',
-      shortName: 'Fase 3',
-      subtitle: 'Escalabilidade com Docker/Kubernetes, tracing distribuído, DDD e projeto final.',
-      modules: ['M13', 'M14', 'M15', 'M16', 'M17']
-    }
-  ];
-
-  useEffect(() => {
-    if (completedCount > 0 && lessons.length > 0) {
-      const nextLesson = lessons.find(l => !completedLessons[l.id]);
-      if (nextLesson) {
-        let currentModule;
-        if (nextLesson.title.startsWith('000_')) {
-          currentModule = 'P0';
-        } else {
-          const parts = nextLesson.title.split('_');
-          currentModule = parts.length >= 4 ? parts[1] : 'Outros';
-        }
-        
-        const phaseIndex = phases.findIndex(p => p.modules.includes(currentModule));
-        if (phaseIndex !== -1) {
-          setActivePhase(phases[phaseIndex].id);
-        }
-      }
-    }
-  }, [lessons, completedLessons, completedCount]);
-
-  const moduleStats = lessons.reduce((acc, lesson) => {
-    let module;
-    if (lesson.title.startsWith('000_')) {
-      module = 'P0';
-    } else {
-      const parts = lesson.title.split('_');
-      module = parts.length >= 4 ? parts[1] : 'Outros';
-    }
-    
-    if (!acc[module]) {
-      acc[module] = { total: 0, completed: 0 };
-    }
-    acc[module].total += 1;
-    if (completedLessons[lesson.id]) {
-      acc[module].completed += 1;
-    }
-    return acc;
-  }, {});
-
-  const modulesList = [
-    { 
-      id: 'P0', 
-      title: 'Aula de Abertura', 
-      description: 'O caminho completo para se tornar Engenheiro Java Backend e Arquiteto de Sistemas — mentalidade, método e visão de carreira.', 
-      icon: Zap,
-      topics: ['Por que esta formação existe', 'Como estudar sem virar colecionador de aulas', 'Pacto da Mentoria', 'Uso correto de IA', 'Diário de Bordo', 'Critérios Junior → Engenheiro → Arquiteto']
-    },
-    { 
-      id: 'M0', 
-      title: 'M0: Ambiente e Método', 
-      description: 'Preparação do ambiente completo (JDK, Git, GitHub, Docker, WSL2) e organização de rotina.', 
-      icon: Settings,
-      topics: ['JDK LTS & javac', 'IntelliJ & Debug', 'Git & GitHub do zero', 'Maven', 'Docker & WSL2', 'PostgreSQL & DBeaver']
-    },
-    { 
-      id: 'M1', 
-      title: 'M1: Fundamentos Absolutos', 
-      description: 'Sintaxe Java de alto nível, variáveis primitivas, lógica aplicada, arrays, laços e métodos.', 
-      icon: BookOpen,
-      topics: ['Tipos de Variáveis', 'Lógica & Condicionais', 'Loops (while, for)', 'Arrays & Matrizes', 'Métodos & Sobrecarga', 'Projeto Calculadora']
-    },
-    { 
-      id: 'M2', 
-      title: 'M2: Java Core Profundo', 
-      description: 'Arquitetura interna da JVM, alocação de memória (Stack/Heap), referências, Garbage Collector e String Pool.', 
-      icon: Cpu,
-      topics: ['JVM por baixo (Stack/Heap)', 'Garbage Collector', 'BigDecimal & Java Time API', 'Records, Enums & Sealed', 'Exceptions', 'I/O & Pacotes']
-    },
-    { 
-      id: 'M3', 
-      title: 'M3: Organização Procedural', 
-      description: 'Quebra de responsabilidades em funções pequenas, modularização e projetos práticos console.', 
-      icon: Terminal,
-      topics: ['Assinaturas Coesas', 'Evitando Parâmetros Excessivos', 'Refatoração no IntelliJ', 'Mini-arquitetura Procedural', 'Projeto OS Console']
-    },
-    { 
-      id: 'M4', 
-      title: 'M4: Orientação a Objetos', 
-      description: 'Modelagem orientada a objetos profissional, encapsulamento forte, construtores e objetos válidos.', 
-      icon: Code,
-      topics: ['Classes & Objetos', 'Encapsulamento & Imutabilidade', 'Polimorfismo & Interfaces', 'Services & Repositories', 'Projeto Pedidos OO']
-    },
-    { 
-      id: 'M5', 
-      title: 'M5: Collections & Java Moderno', 
-      description: 'Generics, estruturas de dados, API de Streams, expressões lambda, record classes e performance.', 
-      icon: Layers,
-      topics: ['List, Set & Map (Big O)', 'Generics & Wildcards', 'Optional com Critério', 'Stream API (Filter, Map, Collect)', 'Concurrent Collections']
-    },
-    { 
-      id: 'M6', 
-      title: 'M6: SOLID & Design Patterns', 
-      description: 'Refatoração, Clean Code, princípios SOLID fundamentais e padrões de projeto aplicados.', 
-      icon: Award,
-      topics: ['Clean Code & Smell', 'SOLID de A a Z', 'Design Patterns GoF', 'Mappers Manuais & DTOs', 'Strategy, Factory & Builder']
-    },
-    { 
-      id: 'M7', 
-      title: 'M7: Build & Ferramentas', 
-      description: 'Maven, Gradle, gestão de dependências, empacotamento, qualidade estática e linting.', 
-      icon: Settings,
-      topics: ['Maven Lifecycle & POM', 'Projetos Multi-módulo', 'Git Flow & Branching', 'Conventional Commits', 'Sonar & Linter']
-    },
-    { 
-      id: 'M8', 
-      title: 'M8: Testes Profissionais', 
-      description: 'Testes unitários e de integração utilizando JUnit 5, Mockito e boas práticas de TDD.', 
-      icon: CheckSquare,
-      topics: ['JUnit 5 & AssertJ', 'Mockito Mocks', 'TDD Pragmático', 'Cobertura JaCoCo', 'Testcontainers & WireMock']
-    },
-    { 
-      id: 'M9', 
-      title: 'M9: SQL & Banco de Dados', 
-      description: 'Modelagem relacional, consultas SQL, joins, transações e performance em PostgreSQL.', 
-      icon: Database,
-      topics: ['Modelagem Relacional', 'Joins & CTEs', 'Índices & Explain Analyze', 'Transações ACID & Locks', 'Paginação SQL']
-    },
-    { 
-      id: 'M10', 
-      title: 'M10: Persistência com JPA/Hibernate', 
-      description: 'Mapeamento objeto-relacional de verdade, JDBC, ciclo de vida do JPA e otimizações com Spring Data.', 
-      icon: Database,
-      topics: ['JDBC vs JPA/Hibernate', 'Mapeamento & Flyway', 'Performance N+1', 'JPQL & Criteria', 'Locks Otimista/Pessimista']
-    },
-    { 
-      id: 'M11', 
-      title: 'M11: Spring Boot REST APIs', 
-      description: 'Construção de APIs corporativas, injeção de dependência, DTOs, controllers, tratamento global de erros.', 
-      icon: Globe,
-      topics: ['DI & Injeção de Beans', 'Bean Validation', 'Tratamento de Erros Global', 'Redis Caching & Rate Limit', 'OpenAPI/Swagger']
-    },
-    { 
-      id: 'M12', 
-      title: 'M12: Segurança de Aplicações', 
-      description: 'Autenticação e autorização com Spring Security, JWT, OAuth2, LGPD e práticas contra ataques OWASP.', 
-      icon: Shield,
-      topics: ['OWASP Top 10', 'Spring Security & Filters', 'JWT & Refresh Tokens', 'OAuth2 & Keycloak', 'Secrets Management']
-    },
-    { 
-      id: 'M13', 
-      title: 'M13: Integrações & Mensageria', 
-      description: 'Webhooks, APIs externas, eventos assíncronos com Message Queues (RabbitMQ/Kafka) e resiliência.', 
-      icon: Globe,
-      topics: ['Circuit Breaker & Retry', 'RabbitMQ vs Apache Kafka', 'DLQ & Poison Message', 'Outbox & Inbox Patterns', 'Padrão SAGA']
-    },
-    { 
-      id: 'M14', 
-      title: 'M14: Docker & CI/CD Pipelines', 
-      description: 'Containerização, orquestração Kubernetes, pipelines do GitHub Actions e deploy em nuvem.', 
-      icon: Box,
-      topics: ['Dockerfile Multi-stage', 'Docker Compose', 'Kubernetes Probes & Pods', 'GitHub Actions CI/CD', 'Deploy na AWS']
-    },
-    { 
-      id: 'M15', 
-      title: 'M15: Observabilidade & Produção', 
-      description: 'Métricas, logs centralizados, tracing de requisições, concorrência no Java e JVM tuning.', 
-      icon: Activity,
-      topics: ['Logs & Trace ID', 'Prometheus & Grafana', 'OpenTelemetry Tracing', 'Virtual Threads', 'Thread/Heap Dumps']
-    },
-    { 
-      id: 'M16', 
-      title: 'M16: Arquitetura & DDD', 
-      description: 'Arquitetura Hexagonal, Clean Architecture, princípios DDD de modelagem de domínio e sistemas distribuídos.', 
-      icon: Cpu,
-      topics: ['Clean & Hexagonal', 'Monólitos Modulares', 'Domain-Driven Design (DDD)', 'CQRS & Event Sourcing', 'Sistemas Distribuídos & CAP']
-    },
-    { 
-      id: 'M17', 
-      title: 'M17: Projeto Final & Carreira', 
-      description: 'Desenvolvimento do projeto final da formação, defesa técnica, portfólio profissional e preparação de entrevistas.', 
-      icon: UserCheck,
-      topics: ['Projeto Final Real', 'Defesa / Banca Técnica', 'Mock Interviews Java/Spring', 'LinkedIn & Currículo', 'Construção de Portfólio']
-    }
-  ];
 
   return (
     <div className="welcome-view-container">
       {isAuthorizedAdmin && (
         <div className="admin-tab-header">
-          <button 
+          <button
             className={`admin-tab-btn ${currentTab === 'course' ? 'active' : ''}`}
             onClick={() => setCurrentTab('course')}
           >
             <BookOpen size={16} />
             <span>Painel do Aluno</span>
           </button>
-          <button 
+          <button
             className={`admin-tab-btn ${currentTab === 'admin' ? 'active' : ''}`}
             onClick={() => setCurrentTab('admin')}
           >
             <Shield size={16} />
-            <span>Relatório de Alunos (Admin)</span>
+            <span>Relatorio de Alunos</span>
           </button>
         </div>
       )}
@@ -267,299 +172,245 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
         <AdminReport lessons={lessons} />
       ) : (
         <>
-          <div className="welcome-hero">
-        <div className="hero-text-col">
-          <div className="hero-tag-badge">
-            <Sparkles size={12} className="tag-icon" />
-            <span>FORMAÇÃO PREMIUM</span>
-          </div>
-          <h1 className="welcome-title">Formação Java Backend</h1>
-          <p className="welcome-subtitle">
-            Uma jornada profunda do zero ao nível de Engenheiro e Arquiteto de Sistemas backend de nível corporativo.
-          </p>
-          
-          <div className="hero-features-list">
-            <div className="feature-item">
-              <div className="feature-icon-bullet">
-                <Layers size={14} />
+          <section className="welcome-hero">
+            <div className="hero-text-col">
+              <div className="hero-tag-badge">
+                <Sparkles size={12} className="tag-icon" />
+                <span>FORMACAO JAVA BACKEND COMPLETA</span>
               </div>
-              <div className="feature-text">
-                <strong>18 Módulos Completos:</strong> Da lógica aos microsserviços.
-              </div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon-bullet">
-                <Shield size={14} />
-              </div>
-              <div className="feature-text">
-                <strong>Qualidade Enterprise:</strong> Testes automatizados (TDD), SOLID e OWASP.
-              </div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon-bullet">
-                <Cpu size={14} />
-              </div>
-              <div className="feature-text">
-                <strong>Alta Escalabilidade:</strong> Kafka, Docker/K8s, Observabilidade e DDD.
-              </div>
-            </div>
-          </div>
 
-          {completedCount === 0 && (
-            <div style={{ display: 'flex', gap: '12px', marginTop: '16px', flexWrap: 'wrap' }}>
-              <button className="welcome-start-btn" onClick={handleStart}>
-                <Play size={18} fill="currentColor" />
-                <span>Iniciar Formação</span>
-              </button>
-              {isAuthorizedAdmin && (
-                <button 
-                  className="welcome-start-btn" 
-                  onClick={() => handleOpenCertificate(true)}
-                  style={{
-                    background: 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    color: 'var(--text-primary)',
-                    boxShadow: 'none'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-                  }}
-                >
-                  <Award size={18} />
-                  <span>Visualizar Modelo de Certificado</span>
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="hero-logo-col">
-          <div className="welcome-logo-wrapper">
-            <img src={javaLogo} alt="Java Logo" className="welcome-logo-img" />
-            <div className="logo-glow"></div>
-          </div>
-        </div>
-      </div>
-
-      {completedCount > 0 && (
-        <div className={`welcome-dashboard ${showCertificateBanner ? 'completed-dashboard' : ''}`} style={showCertificateBanner ? { border: '1px solid rgba(217, 119, 6, 0.3)', background: 'linear-gradient(135deg, rgba(20, 23, 31, 0.9) 0%, rgba(217, 119, 6, 0.05) 100%)' } : {}}>
-          <div className="dashboard-content">
-            <div className="dashboard-left">
-              <div className="dashboard-badge" style={showCertificateBanner ? { background: 'rgba(217, 119, 6, 0.15)', color: '#fbbf24' } : {}}>
-                <Trophy size={13} className="dashboard-badge-icon" style={showCertificateBanner ? { color: '#fbbf24' } : {}} />
-                <span>{showCertificateBanner ? 'FORMAÇÃO CONCLUÍDA!' : 'SEU PROGRESSO ATUAL'}</span>
-              </div>
-              <h2 className="dashboard-title">
-                {showCertificateBanner ? (
-                  <>Parabéns! Você concluiu <strong>100%</strong> da formação!</>
-                ) : (
-                  <>Você concluiu <strong>{progressPercent}%</strong> da formação!</>
-                )}
-              </h2>
-              <p className="dashboard-subtext">
-                {showCertificateBanner 
-                  ? 'Seu certificado de Engenheiro Java Backend & Arquiteto de Sistemas está pronto para ser emitido!' 
-                  : 'Roteiro avançado com foco prático e arquitetura de nível enterprise.'}
+              <h1 className="welcome-title">Do zero ao engenheiro backend Java</h1>
+              <p className="welcome-subtitle">
+                Uma formacao completa e progressiva para dominar Java, backend profissional,
+                bancos de dados, Spring, seguranca, DevOps, producao, arquitetura e DDD.
               </p>
-              
-              {progressPercent < 100 && isAuthorizedAdmin && (
-                <button 
-                  className="dashboard-preview-cert-btn" 
-                  onClick={() => handleOpenCertificate(true)}
-                  style={{
-                    background: 'transparent',
-                    border: '1px dashed rgba(255, 255, 255, 0.2)',
-                    color: 'var(--text-secondary)',
-                    borderRadius: '6px',
-                    padding: '6px 12px',
-                    fontSize: '0.8rem',
-                    fontWeight: '500',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    cursor: 'pointer',
-                    marginTop: '12px',
-                    transition: 'all 0.2s ease',
-                    width: 'fit-content'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent-color)';
-                    e.currentTarget.style.color = 'var(--text-primary)';
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                    e.currentTarget.style.color = 'var(--text-secondary)';
-                    e.currentTarget.style.background = 'transparent';
-                  }}
-                >
-                  <Award size={14} />
-                  <span>Visualizar Modelo do Certificado</span>
+
+              <div className="hero-actions-row">
+                <button className="welcome-start-btn" onClick={handleStart}>
+                  <Play size={18} fill="currentColor" />
+                  <span>{completedCount > 0 ? 'Continuar estudos' : 'Iniciar formacao'}</span>
                 </button>
-              )}
+
+                {isAuthorizedAdmin && (
+                  <button className="welcome-secondary-btn" onClick={() => handleOpenCertificate(true)}>
+                    <Award size={18} />
+                    <span>Modelo de certificado</span>
+                  </button>
+                )}
+              </div>
             </div>
-            <div className="dashboard-right">
-              {showCertificateBanner ? (
-                <button 
-                  className="dashboard-resume-btn" 
-                  onClick={() => handleOpenCertificate(false)}
-                  style={{
-                    background: 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
-                    boxShadow: '0 4px 12px rgba(217, 119, 6, 0.3)',
-                    border: 'none',
-                    color: '#ffffff'
-                  }}
-                >
-                  <Award size={16} />
-                  <span>Emitir Meu Certificado</span>
-                </button>
-              ) : (
-                <>
-                  <div className="dashboard-metrics">
-                    <div className="metric-box">
-                      <span className="metric-num">{completedCount}</span>
-                      <span className="metric-lbl">Aulas Feitas</span>
+
+            <div className="hero-course-panel">
+              <div className="hero-logo-compact">
+                <img src={javaLogo} alt="Java Logo" className="welcome-logo-img" />
+              </div>
+
+              <div className="course-kpi-grid">
+                <div className="course-kpi-card primary">
+                  <span className="course-kpi-value">{COURSE_TOTAL_LESSONS}</span>
+                  <span className="course-kpi-label">aulas no roteiro</span>
+                </div>
+                <div className="course-kpi-card">
+                  <span className="course-kpi-value">{COURSE_MODULE_COUNT}</span>
+                  <span className="course-kpi-label">modulos no roteiro</span>
+                </div>
+                <div className="course-kpi-card">
+                  <span className="course-kpi-value">{availableCount}</span>
+                  <span className="course-kpi-label">aulas liberadas</span>
+                </div>
+                <div className="course-kpi-card">
+                  <span className="course-kpi-value">{generatedProgress}%</span>
+                  <span className="course-kpi-label">conteudo publicado</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className={`welcome-dashboard ${showCertificateBanner ? 'completed-dashboard' : ''}`}>
+            <div className="dashboard-content">
+              <div className="dashboard-left">
+                <div className="dashboard-badge">
+                  <Trophy size={13} className="dashboard-badge-icon" />
+                  <span>{showCertificateBanner ? 'FORMACAO CONCLUIDA' : 'PROGRESSO DO ALUNO'}</span>
+                </div>
+
+                <h2 className="dashboard-title">
+                  {showCertificateBanner ? (
+                    <>Voce concluiu <strong>100%</strong> da formacao.</>
+                  ) : (
+                    <>Voce concluiu <strong>{fullCourseProgress}%</strong> do roteiro completo.</>
+                  )}
+                </h2>
+
+                <p className="dashboard-subtext">
+                  {completedCount} aulas concluidas de {COURSE_TOTAL_LESSONS} planejadas.
+                  {' '}Das aulas ja liberadas, seu progresso e {availableProgress}%.
+                </p>
+              </div>
+
+              <div className="dashboard-right">
+                {showCertificateBanner ? (
+                  <button className="dashboard-resume-btn certificate-ready" onClick={() => handleOpenCertificate(false)}>
+                    <Award size={16} />
+                    <span>Emitir certificado</span>
+                  </button>
+                ) : (
+                  <>
+                    <div className="dashboard-metrics">
+                      <div className="metric-box">
+                        <span className="metric-num">{completedCount}</span>
+                        <span className="metric-lbl">feitas</span>
+                      </div>
+                      <div className="metric-box">
+                        <span className="metric-num">{COURSE_TOTAL_LESSONS - completedCount}</span>
+                        <span className="metric-lbl">faltam</span>
+                      </div>
                     </div>
-                    <div className="metric-box">
-                      <span className="metric-num">{totalCount - completedCount}</span>
-                      <span className="metric-lbl">Aulas Restantes</span>
-                    </div>
-                  </div>
-                  {progressPercent < 100 && (
                     <button className="dashboard-resume-btn" onClick={handleStart}>
-                      <span>Continuar de Onde Parou</span>
+                      <span>Ir para a proxima aula</span>
                       <ArrowRight size={15} />
                     </button>
-                  )}
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="dashboard-progress-track">
-            <div className="dashboard-progress-fill" style={{ width: `${progressPercent}%`, background: showCertificateBanner ? 'linear-gradient(90deg, #fbbf24, #d97706)' : 'var(--accent-color)' }}></div>
-          </div>
-        </div>
+
+            <div className="dashboard-progress-stack">
+              <div className="dashboard-progress-line">
+                <span>Roteiro completo</span>
+                <strong>{fullCourseProgress}%</strong>
+              </div>
+              <div className="dashboard-progress-track">
+                <div className="dashboard-progress-fill" style={{ width: `${fullCourseProgress}%` }} />
+              </div>
+            </div>
+          </section>
+
+          <section className="welcome-modules-section">
+            <div className="curriculum-header">
+              <div>
+                <h2 className="section-heading">Grade curricular oficial</h2>
+                <p className="section-subheading">
+                  Uma visao objetiva da jornada completa: fundamentos, backend profissional,
+                  producao, arquitetura e projeto final.
+                </p>
+              </div>
+              <div className="curriculum-summary-pill">
+                <Clock size={15} />
+                <span>{activePhaseAvailableLessons}/{activePhasePlannedLessons} aulas desta fase liberadas</span>
+              </div>
+            </div>
+
+            <div className="phase-tabs-container">
+              {COURSE_PHASES.map(phase => {
+                const phaseModules = COURSE_MODULES.filter(module => phase.modules.includes(module.id));
+                const planned = phaseModules.reduce((sum, module) => sum + module.lessons, 0);
+                const available = phaseModules.reduce((sum, module) => sum + (moduleStats[module.id]?.available || 0), 0);
+                const completed = phaseModules.reduce((sum, module) => sum + (moduleStats[module.id]?.completed || 0), 0);
+                const isDone = planned > 0 && completed >= planned;
+
+                return (
+                  <button
+                    key={phase.id}
+                    className={`phase-tab-btn ${activePhaseId === phase.id ? 'active' : ''} ${isDone ? 'completed' : ''}`}
+                    onClick={() => setActivePhaseId(phase.id)}
+                  >
+                    <span className="tab-btn-title">
+                      <span>{phase.shortName}</span>
+                      {isDone && <CheckCircle2 size={12} className="tab-done-icon" />}
+                    </span>
+                    <span className="tab-btn-lbl">{available}/{planned} liberadas</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="phase-info-banner">
+              <div>
+                <h3 className="phase-info-title">{activePhase.name}</h3>
+                <p className="phase-info-desc">{activePhase.subtitle}</p>
+              </div>
+              <span className="phase-range-badge">{activePhaseRange}</span>
+            </div>
+
+            <div className="curriculum-roadmap">
+              {activeModules.map(module => {
+                const IconComponent = moduleIcons[module.id] || BookOpen;
+                const stats = moduleStats[module.id] || { available: 0, completed: 0 };
+                const availablePercent = module.lessons > 0 ? Math.min(100, Math.round((stats.available / module.lessons) * 100)) : 0;
+                const studentPercent = stats.available > 0 ? Math.min(100, Math.round((stats.completed / stats.available) * 100)) : 0;
+
+                let badgeText = 'No roteiro';
+                let badgeClass = 'coming-soon';
+
+                if (stats.available >= module.lessons) {
+                  badgeText = 'Liberado';
+                  badgeClass = 'new';
+                } else if (stats.available > 0) {
+                  badgeText = `${stats.available}/${module.lessons}`;
+                  badgeClass = 'in-progress';
+                }
+
+                if (stats.available > 0 && stats.completed === stats.available) {
+                  badgeText = 'Concluido';
+                  badgeClass = 'completed';
+                }
+
+                return (
+                  <article key={module.id} className={`curriculum-row ${badgeClass} ${stats.completed > 0 ? 'has-progress' : ''}`}>
+                    <div className="curriculum-row-icon">
+                      <IconComponent size={17} />
+                    </div>
+
+                    <div className="curriculum-row-main">
+                      <div className="curriculum-row-titleline">
+                        <span className="module-code-label">{module.label}</span>
+                        <h3>{module.shortTitle}</h3>
+                        <span className={`module-badge ${badgeClass}`}>{badgeText}</span>
+                      </div>
+
+                      <p>{module.focus}</p>
+
+                      <div className="curriculum-row-meta">
+                        <span>{module.range}</span>
+                        <span>{module.lessons} aulas</span>
+                        <span>{stats.available} liberadas</span>
+                      </div>
+                    </div>
+
+                    <div className="curriculum-row-progress">
+                      <div className="card-progress-row">
+                        <span>Publicado</span>
+                        <strong>{availablePercent}%</strong>
+                      </div>
+                      <div className="card-progress-bar">
+                        <div className="card-progress-fill" style={{ width: `${availablePercent}%` }} />
+                      </div>
+
+                      {stats.available > 0 && (
+                        <>
+                          <div className="card-progress-row student-row">
+                            <span>Aluno</span>
+                            <strong>{studentPercent}%</strong>
+                        </div>
+                          <div className="card-progress-bar student-bar">
+                            <div className="card-progress-fill student" style={{ width: `${studentPercent}%` }} />
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        </>
       )}
 
-      <div className="welcome-modules-section">
-        <div className="curriculum-header">
-          <h2 className="section-heading">Grade Curricular da Formação</h2>
-          <p className="section-subheading">
-            Dividida em 3 fases estratégicas para organizar seus estudos e focar nos seus objetivos.
-          </p>
-        </div>
-
-        <div className="phase-tabs-container">
-          {phases.map((p) => {
-            const phaseLessons = lessons.filter(lesson => {
-              let module;
-              if (lesson.title.startsWith('000_')) {
-                module = 'P0';
-              } else {
-                const parts = lesson.title.split('_');
-                module = parts.length >= 4 ? parts[1] : 'Outros';
-              }
-              return p.modules.includes(module);
-            });
-            
-            const totalPhase = phaseLessons.length;
-            const completedPhase = phaseLessons.filter(l => completedLessons[l.id]).length;
-            const isPhaseDone = totalPhase > 0 && completedPhase === totalPhase;
-            
-            return (
-              <button
-                key={p.id}
-                className={`phase-tab-btn ${activePhase === p.id ? 'active' : ''} ${isPhaseDone ? 'completed' : ''}`}
-                onClick={() => setActivePhase(p.id)}
-              >
-                <div className="tab-btn-title">
-                  <span>{p.shortName}</span>
-                  {isPhaseDone && <CheckCircle2 size={12} className="tab-done-icon" />}
-                </div>
-                <span className="tab-btn-lbl">
-                  {completedPhase > 0 ? `${completedPhase}/${totalPhase} Aulas` : `${totalPhase} Aulas`}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="phase-info-banner">
-          <h3 className="phase-info-title">{phases[activePhase - 1].name}</h3>
-          <p className="phase-info-desc">{phases[activePhase - 1].subtitle}</p>
-        </div>
-
-        <div className="modules-grid">
-          {modulesList
-            .filter(mod => phases[activePhase - 1].modules.includes(mod.id))
-            .map((mod) => {
-              const IconComponent = mod.icon;
-              const stats = moduleStats[mod.id] || { total: 0, completed: 0 };
-              const isModuleCompleted = stats.total > 0 && stats.completed === stats.total;
-              const isModuleStarted = stats.completed > 0;
-              const moduleProgressPercent = stats.total > 0 ? Math.round((stats.completed / stats.total) * 100) : 0;
-              
-              let badgeText = 'Em Breve';
-              let badgeClass = 'coming-soon';
-              
-              if (stats.total > 0) {
-                if (isModuleCompleted) {
-                  badgeText = 'Concluído';
-                  badgeClass = 'completed';
-                } else if (isModuleStarted) {
-                  badgeText = `${stats.completed}/${stats.total} Aulas`;
-                  badgeClass = 'in-progress';
-                } else {
-                  badgeText = `${stats.total} Aulas`;
-                  badgeClass = 'new';
-                }
-              }
-              
-              return (
-                <div key={mod.id} className={`module-card ${isModuleCompleted ? 'completed' : ''} ${isModuleStarted && !isModuleCompleted ? 'in-progress' : ''}`}>
-                  <div className="module-card-header">
-                    <div className="module-icon-wrapper">
-                      <IconComponent size={20} />
-                    </div>
-                    <span className={`module-badge ${badgeClass}`}>{badgeText}</span>
-                  </div>
-                  <div className="module-card-body">
-                    <h3 className="module-title">{mod.title}</h3>
-                    <p className="module-desc">{mod.description}</p>
-                    
-                    {stats.total > 0 && isModuleStarted && !isModuleCompleted && (
-                      <div className="card-progress-section">
-                        <div className="card-progress-bar">
-                          <div className="card-progress-fill" style={{ width: `${moduleProgressPercent}%` }}></div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {mod.topics && mod.topics.length > 0 && (
-                      <div className="module-topics">
-                        {mod.topics.map((topic, idx) => (
-                          <span key={idx} className="topic-chip">{topic}</span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-    </>
-  )}
-
       {isAuthorizedAdmin && (
-        <CertificateModal 
-          isOpen={isCertModalOpen} 
-          onClose={() => setIsCertModalOpen(false)} 
+        <CertificateModal
+          isOpen={isCertModalOpen}
+          onClose={() => setIsCertModalOpen(false)}
           currentUser={currentUser}
           isPreviewMode={isCertPreviewMode}
         />
@@ -567,23 +418,5 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
     </div>
   );
 };
-
-const Code = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={props.size || 24}
-    height={props.size || 24}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={props.className}
-  >
-    <polyline points="16 18 22 12 16 6" />
-    <polyline points="8 6 2 12 8 18" />
-  </svg>
-);
 
 export default WelcomeView;

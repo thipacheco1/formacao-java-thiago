@@ -18,6 +18,83 @@ if (!fs.existsSync(backupsDir)) {
 // Parsers & Rebuilder
 // -------------------------------------------------------------
 
+const moduleTitles = {
+  ABERTURA: 'Abertura',
+  M0: 'Ambiente, metodo e ferramentas',
+  M1: 'Java fundamentos absolutos',
+  M2: 'Java Core profundo',
+  M3: 'Metodos, organizacao procedural e projetos console',
+  M4: 'Orientacao a Objetos e dominio',
+  M5: 'Collections Framework',
+  M6: 'Generics e Optional',
+  M7: 'Functional Interfaces, Lambdas e Streams',
+  M8: 'Exceptions, I/O, CSV, Date/Time e utilitarios modernos',
+  M9: 'SOLID',
+  M10: 'Design Patterns aplicados ao backend',
+  M11: 'Ferramentas essenciais do Java Backend profissional'
+};
+
+function getModuleFromLessonFile(fileName) {
+  if (fileName.startsWith('000_')) return 'ABERTURA';
+  const match = fileName.match(/^\d{3}_(M\d+)_/i);
+  return match ? match[1].toUpperCase() : 'GERAL';
+}
+
+function getLessonIdFromFile(fileName) {
+  const match = fileName.match(/^(\d{3})_/);
+  return match ? match[1] : path.basename(fileName, '.md');
+}
+
+function getLessonTitleFromFileContent(fileName, content) {
+  const firstHeading = content.split(/\r?\n/).find(line => line.trim().startsWith('# '));
+  if (!firstHeading) return path.basename(fileName, '.md');
+
+  const title = firstHeading.replace(/^#\s+/, '').trim();
+  const numberMatch = title.match(/^\d{3}\s*[-—–]\s*(.+)$/);
+  return numberMatch ? numberMatch[1].trim() : title;
+}
+
+function parseAulasDirectory(aulasDir) {
+  const modules = [];
+  const moduleMap = new Map();
+
+  const files = fs.readdirSync(aulasDir)
+    .filter(f => f.endsWith('.md'))
+    .filter(f => /^\d{3}_/.test(f))
+    .sort((a, b) => getLessonIdFromFile(a).localeCompare(getLessonIdFromFile(b)));
+
+  for (const file of files) {
+    const filePath = path.join(aulasDir, file);
+    const content = fs.readFileSync(filePath, 'utf8');
+    const moduleId = getModuleFromLessonFile(file);
+
+    if (!moduleMap.has(moduleId)) {
+      const moduleData = {
+        id: moduleId,
+        title: moduleTitles[moduleId] || moduleId,
+        lessons: [],
+        introLines: []
+      };
+      moduleMap.set(moduleId, moduleData);
+      modules.push(moduleData);
+    }
+
+    const lines = content.split(/\r?\n/);
+    const contentLines = lines[0] && lines[0].trim().startsWith('# ')
+      ? lines.slice(1)
+      : lines;
+
+    moduleMap.get(moduleId).lessons.push({
+      id: getLessonIdFromFile(file),
+      title: getLessonTitleFromFileContent(file, content),
+      fileName: file,
+      contentLines
+    });
+  }
+
+  return { introLines: [], modules };
+}
+
 function parseCourse(filePath) {
   const aulasDir = path.join(path.dirname(filePath), 'aulas');
   let content = '';
@@ -25,11 +102,9 @@ function parseCourse(filePath) {
   if (fs.existsSync(aulasDir)) {
     const files = fs.readdirSync(aulasDir)
       .filter(f => f.endsWith('.md'))
-      .sort();
-      
-    if (files.length > 0) {
-      content = files.map(f => fs.readFileSync(path.join(aulasDir, f), 'utf8')).join('\n\n---\n\n');
-    }
+      .filter(f => /^\d{3}_/.test(f));
+
+    if (files.length > 0) return parseAulasDirectory(aulasDir);
   }
   
   if (!content) {
@@ -306,7 +381,13 @@ const server = http.createServer((req, res) => {
         
         if (fs.existsSync(aulasDir)) {
           const files = fs.readdirSync(aulasDir).filter(f => f.endsWith('.md'));
-          const targetFile = files.find(f => f.toLowerCase().startsWith(lessonId.toLowerCase() + '-') || f.toLowerCase() === lessonId.toLowerCase() + '.md');
+          const lessonIdLower = lessonId.toLowerCase();
+          const targetFile = files.find(f => {
+            const lower = f.toLowerCase();
+            return lower.startsWith(lessonIdLower + '_') ||
+                   lower.startsWith(lessonIdLower + '-') ||
+                   lower === lessonIdLower + '.md';
+          });
           
           if (targetFile) {
             const targetFilePath = path.join(aulasDir, targetFile);
@@ -318,22 +399,23 @@ const server = http.createServer((req, res) => {
             backupCreated = path.basename(backupPath);
             cleanOldBackups();
             
-            // Reconstruct the file content preserving module header if it exists
+            // Reconstruct the file content preserving the original lesson H1.
             const fileContent = fs.readFileSync(targetFilePath, 'utf8');
             const fileLines = fileContent.split(/\r?\n/);
-            let moduleHeader = '';
+            let lessonHeader = '';
             for (const line of fileLines) {
-              if (line.trim().startsWith('# Módulo')) {
-                moduleHeader = line.trim();
+              if (line.trim().startsWith('# ')) {
+                lessonHeader = line.trim();
                 break;
               }
             }
             
             let newFileContent = '';
-            if (moduleHeader) {
-              newFileContent += moduleHeader + '\n\n';
+            if (lessonHeader) {
+              newFileContent += lessonHeader + '\n\n';
+            } else {
+              newFileContent += `# ${lessonId} — ${title || 'Sem título'}\n\n`;
             }
-            newFileContent += `## Aula ${lessonId} — ${title || 'Sem título'}\n\n`;
             newFileContent += content;
             
             fs.writeFileSync(targetFilePath, newFileContent, 'utf8');

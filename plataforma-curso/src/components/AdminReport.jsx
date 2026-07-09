@@ -1,16 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Users, UserCheck, BookOpen, Search, CheckCircle2, ChevronDown, 
-  ChevronUp, Trash2, Mail, Phone, Calendar, Clock, BarChart2 
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  BarChart2,
+  BookOpen,
+  Calendar,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Mail,
+  Phone,
+  Search,
+  Trash2,
+  UserCheck,
+  Users
 } from 'lucide-react';
+import {
+  COURSE_TOTAL_LESSONS,
+  getModuleFromLessonTitle,
+  getModulePlan,
+  sortModulesByPlan
+} from '../data/coursePlan';
 
 const AdminReport = ({ lessons }) => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'active' | 'inactive'
-  const [expandedUser, setExpandedUser] = useState(null); // email of expanded user
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [expandedUser, setExpandedUser] = useState(null);
 
-  const totalLessonsCount = lessons.length;
+  const availableLessonsCount = lessons.length;
 
   useEffect(() => {
     loadUsers();
@@ -22,35 +39,34 @@ const AdminReport = ({ lessons }) => {
       if (res.ok) {
         const usersList = await res.json();
         setUsers(usersList);
-        
-        // Fetch progress for each user asynchronously
+
         usersList.forEach(async (user) => {
           try {
             const progressRes = await fetch(`/api/progress?email=${user.email}`);
             if (progressRes.ok) {
               const progress = await progressRes.json();
-              setUsers(prevUsers => prevUsers.map(u => 
-                u.email.toLowerCase() === user.email.toLowerCase()
-                  ? { ...u, completedLessons: progress }
-                  : u
+              setUsers(prevUsers => prevUsers.map(currentUser =>
+                currentUser.email.toLowerCase() === user.email.toLowerCase()
+                  ? { ...currentUser, completedLessons: progress }
+                  : currentUser
               ));
             }
-          } catch (err) {
-            console.error("Failed to load progress for admin user", user.email, err);
+          } catch (progressError) {
+            console.error('Failed to load progress for admin user', user.email, progressError);
           }
         });
         return;
-      } else {
-        const data = await res.json();
-        if (data.error && data.error.includes('Database environment variables not configured')) {
-          throw new Error('KV_NOT_CONFIGURED');
-        }
       }
-    } catch (err) {
-      // Fallback to local storage
+
+      const data = await res.json();
+      if (data.error && data.error.includes('Database environment variables not configured')) {
+        throw new Error('KV_NOT_CONFIGURED');
+      }
+    } catch (loadError) {
+      console.warn('Using local users fallback for admin report', loadError);
       const storedUsers = localStorage.getItem('users');
       const usersList = storedUsers ? JSON.parse(storedUsers) : [];
-      
+
       const usersWithLocalProgress = usersList.map(user => {
         const progressKey = `completedLessons_${user.email.toLowerCase()}`;
         const saved = localStorage.getItem(progressKey);
@@ -63,150 +79,110 @@ const AdminReport = ({ lessons }) => {
     }
   };
 
-  const getCompletedLessonsForUser = (email) => {
-    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-    return user && user.completedLessons ? user.completedLessons : {};
-  };
-
   const handleDeleteUser = async (email) => {
-    if (window.confirm(`Tem certeza de que deseja remover o usuário ${email}? Isso apagará também seu progresso.`)) {
-      try {
-        const res = await fetch('/api/users', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'delete', email })
-        });
-        if (res.ok) {
-          setUsers(prev => prev.filter(u => u.email.toLowerCase() !== email.toLowerCase()));
-          if (expandedUser === email) {
-            setExpandedUser(null);
-          }
-          return;
-        } else {
-          const data = await res.json();
-          if (data.error && data.error.includes('Database environment variables not configured')) {
-            throw new Error('KV_NOT_CONFIGURED');
-          }
-          alert(data.error || 'Erro ao remover usuário.');
-        }
-      } catch (err) {
-        // Fallback to local storage
-        const storedUsers = localStorage.getItem('users');
-        const usersList = storedUsers ? JSON.parse(storedUsers) : [];
-        const updatedUsers = usersList.filter(u => u.email.toLowerCase() !== email.toLowerCase());
-        localStorage.setItem('users', JSON.stringify(updatedUsers));
-        localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
-        setUsers(prev => prev.filter(u => u.email.toLowerCase() !== email.toLowerCase()));
-        if (expandedUser === email) {
-          setExpandedUser(null);
-        }
+    if (!window.confirm(`Tem certeza de que deseja remover o usuario ${email}? Isso apagara tambem seu progresso.`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'delete', email })
+      });
+
+      if (res.ok) {
+        setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
+        if (expandedUser === email) setExpandedUser(null);
+        return;
       }
+
+      const data = await res.json();
+      if (data.error && data.error.includes('Database environment variables not configured')) {
+        throw new Error('KV_NOT_CONFIGURED');
+      }
+      alert(data.error || 'Erro ao remover usuario.');
+    } catch (deleteError) {
+      console.warn('Removing user from local fallback only', deleteError);
+      const storedUsers = localStorage.getItem('users');
+      const usersList = storedUsers ? JSON.parse(storedUsers) : [];
+      const updatedUsers = usersList.filter(user => user.email.toLowerCase() !== email.toLowerCase());
+
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
+      localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
+      setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
+      if (expandedUser === email) setExpandedUser(null);
     }
   };
 
-  // Group lessons by module helper
-  const groupLessonsByModule = (userCompleted) => {
-    return lessons.reduce((acc, lesson) => {
-      let module;
-      if (lesson.title.startsWith('000_')) {
-        module = 'P0';
-      } else {
-        const parts = lesson.title.split('_');
-        module = parts.length >= 4 ? parts[1] : 'Outros';
-      }
-      
-      if (!acc[module]) {
-        acc[module] = {
-          id: module,
-          lessons: [],
-          completedCount: 0
-        };
-      }
-      
-      const isCompleted = !!userCompleted[lesson.id];
-      acc[module].lessons.push({
-        ...lesson,
-        completed: isCompleted
-      });
-      
-      if (isCompleted) {
-        acc[module].completedCount += 1;
-      }
-      
+  const groupedLessonsByModule = useMemo(() => (
+    lessons.reduce((acc, lesson) => {
+      const moduleId = getModuleFromLessonTitle(lesson.title);
+      if (!acc[moduleId]) acc[moduleId] = [];
+      acc[moduleId].push(lesson);
       return acc;
-    }, {});
-  };
+    }, {})
+  ), [lessons]);
 
-  const moduleTitles = {
-    'P0': 'Aula de Abertura',
-    'M0': 'M0: Ambiente e Método',
-    'M1': 'M1: Fundamentos Absolutos',
-    'M2': 'M2: Java Core Profundo',
-    'M3': 'M3: Organização Procedural',
-    'M4': 'M4: Orientação a Objetos',
-    'M5': 'M5: Collections & Java Moderno',
-    'M6': 'M6: SOLID & Design Patterns',
-    'M7': 'M7: Build & Ferramentas',
-    'M8': 'M8: Testes Profissionais',
-    'M9': 'M9: SQL & Banco de Dados',
-    'M10': 'M10: Persistência com JPA/Hibernate',
-    'M11': 'M11: Spring Boot REST APIs',
-    'M12': 'M12: Segurança de Aplicações',
-    'M13': 'M13: Integrações & Mensageria',
-    'M14': 'M14: Docker & CI/CD Pipelines',
-    'M15': 'M15: Observabilidade & Produção',
-    'M16': 'M16: Arquitetura & DDD',
-    'M17': 'M17: Projeto Final & Carreira',
-    'Outros': 'Outros'
-  };
-
-  // Process users data
   const processedUsers = users.map(user => {
     const completedLessons = user.completedLessons || {};
     const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
-    const progressPercent = totalLessonsCount > 0 ? Math.round((completedCount / totalLessonsCount) * 100) : 0;
-    
+    const fullProgressPercent = COURSE_TOTAL_LESSONS > 0
+      ? Math.min(100, Math.round((completedCount / COURSE_TOTAL_LESSONS) * 100))
+      : 0;
+    const availableProgressPercent = availableLessonsCount > 0
+      ? Math.min(100, Math.round((completedCount / availableLessonsCount) * 100))
+      : 0;
+
     let studyStatus = 'not-started';
-    let studyStatusText = 'Não Iniciou';
-    
-    if (progressPercent === 100) {
+    let studyStatusText = 'Nao iniciou';
+
+    if (completedCount >= COURSE_TOTAL_LESSONS) {
       studyStatus = 'completed';
-      studyStatusText = 'Concluído';
+      studyStatusText = 'Concluido';
     } else if (completedCount > 0) {
       studyStatus = 'active';
-      studyStatusText = 'Em Andamento';
+      studyStatusText = 'Em andamento';
     }
 
     return {
       ...user,
       completedCount,
-      progressPercent,
+      fullProgressPercent,
+      availableProgressPercent,
       studyStatus,
       studyStatusText,
       completedLessons
     };
   });
 
-  // Filter users
   const filteredUsers = processedUsers.filter(user => {
-    const matchesSearch = 
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (user.phone && user.phone.includes(searchTerm));
-    
-    const matchesStatus = 
+    const normalizedTerm = searchTerm.toLowerCase().trim();
+    const matchesSearch =
+      !normalizedTerm ||
+      user.name.toLowerCase().includes(normalizedTerm) ||
+      user.email.toLowerCase().includes(normalizedTerm) ||
+      (user.phone && user.phone.includes(normalizedTerm));
+
+    const matchesStatus =
       statusFilter === 'all' ||
-      (statusFilter === 'active' && (user.studyStatus === 'active' || user.studyStatus === 'completed')) ||
+      (statusFilter === 'active' && user.studyStatus === 'active') ||
+      (statusFilter === 'completed' && user.studyStatus === 'completed') ||
       (statusFilter === 'inactive' && user.studyStatus === 'not-started');
 
     return matchesSearch && matchesStatus;
   });
 
-  // Calculate global dashboard metrics
   const totalUsers = processedUsers.length;
-  const inProgressUsers = processedUsers.filter(u => u.studyStatus === 'active' || u.studyStatus === 'completed').length;
-  const averageProgress = totalUsers > 0 
-    ? Math.round(processedUsers.reduce((sum, u) => sum + u.progressPercent, 0) / totalUsers) 
+  const activeUsers = processedUsers.filter(user => user.studyStatus === 'active').length;
+  const completedUsers = processedUsers.filter(user => user.studyStatus === 'completed').length;
+  const notStartedUsers = processedUsers.filter(user => user.studyStatus === 'not-started').length;
+  const averageProgress = totalUsers > 0
+    ? Math.round(processedUsers.reduce((sum, user) => sum + user.fullProgressPercent, 0) / totalUsers)
+    : 0;
+
+  const generatedProgress = COURSE_TOTAL_LESSONS > 0
+    ? Math.round((availableLessonsCount / COURSE_TOTAL_LESSONS) * 100)
     : 0;
 
   const toggleExpandUser = (email) => {
@@ -215,251 +191,265 @@ const AdminReport = ({ lessons }) => {
 
   const formatLessonTitle = (title) => {
     if (!title) return '';
+
     const parts = title.split('_');
     if (parts.length >= 4) {
       const moduleStr = parts[1] + '.' + parts[2];
       const text = parts.slice(3).join(' ').replace(/\.md$/, '');
-      return `${moduleStr} - ${text.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase())}`;
+      return `${moduleStr} - ${text.toLowerCase().replace(/(?:^|\s)\S/g, letter => letter.toUpperCase())}`;
     }
+
     return title.replace(/_/g, ' ').replace(/\.md$/, '');
   };
+
+  const getUserModuleRows = (user) => (
+    Object.keys(groupedLessonsByModule)
+      .sort(sortModulesByPlan)
+      .map(moduleId => {
+        const moduleLessons = groupedLessonsByModule[moduleId] || [];
+        const plan = getModulePlan(moduleId);
+        const completedLessons = moduleLessons.filter(lesson => user.completedLessons[lesson.id]);
+        const availablePercent = moduleLessons.length > 0
+          ? Math.round((completedLessons.length / moduleLessons.length) * 100)
+          : 0;
+
+        return {
+          moduleId,
+          title: plan ? plan.shortTitle : moduleId,
+          planned: plan ? plan.lessons : moduleLessons.length,
+          available: moduleLessons.length,
+          completed: completedLessons.length,
+          availablePercent,
+          lessons: moduleLessons.map(lesson => ({
+            ...lesson,
+            completed: !!user.completedLessons[lesson.id]
+          }))
+        };
+      })
+  );
 
   return (
     <div className="admin-report-container">
       <div className="admin-header-section">
-        <h2 className="admin-title">Relatório de Alunos Cadastrados</h2>
-        <p className="admin-subtitle">Acompanhe quem está estudando, o progresso no curso e as aulas concluídas.</p>
+        <div>
+          <span className="admin-eyebrow">Painel administrativo</span>
+          <h2 className="admin-title">Relatorio de alunos</h2>
+          <p className="admin-subtitle">
+            Acompanhe alunos cadastrados, progresso geral e aulas concluidas por modulo.
+          </p>
+        </div>
+        <div className="admin-course-health">
+          <BookOpen size={16} />
+          <span>{availableLessonsCount}/{COURSE_TOTAL_LESSONS} aulas liberadas</span>
+          <strong>{generatedProgress}%</strong>
+        </div>
       </div>
 
-      {/* KPI Stats Cards */}
       <div className="admin-metrics-grid">
         <div className="metric-card-admin">
           <div className="metric-icon-bg">
-            <Users size={22} className="metric-icon" />
+            <Users size={20} className="metric-icon" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Total de Alunos</span>
+            <span className="metric-label">Alunos</span>
             <span className="metric-value">{totalUsers}</span>
           </div>
         </div>
 
         <div className="metric-card-admin">
           <div className="metric-icon-bg active">
-            <UserCheck size={22} className="metric-icon active" />
+            <UserCheck size={20} className="metric-icon active" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Alunos em Andamento</span>
-            <span className="metric-value">{inProgressUsers}</span>
+            <span className="metric-label">Em andamento</span>
+            <span className="metric-value">{activeUsers}</span>
+          </div>
+        </div>
+
+        <div className="metric-card-admin">
+          <div className="metric-icon-bg completed">
+            <CheckCircle2 size={20} className="metric-icon completed" />
+          </div>
+          <div className="metric-info">
+            <span className="metric-label">Concluidos</span>
+            <span className="metric-value">{completedUsers}</span>
           </div>
         </div>
 
         <div className="metric-card-admin">
           <div className="metric-icon-bg progress-icon">
-            <BarChart2 size={22} className="metric-icon progress-icon" />
+            <BarChart2 size={20} className="metric-icon progress-icon" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Média de Progresso</span>
+            <span className="metric-label">Media geral</span>
             <span className="metric-value">{averageProgress}%</span>
           </div>
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
       <div className="admin-filter-bar">
         <div className="search-input-wrapper-admin">
           <Search size={16} className="search-icon-admin" />
-          <input 
-            type="text" 
-            placeholder="Buscar por nome, e-mail ou telefone..." 
+          <input
+            type="text"
+            placeholder="Buscar por nome, email ou telefone..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(event) => setSearchTerm(event.target.value)}
             className="search-input-admin"
           />
         </div>
+
         <div className="status-tabs-admin">
-          <button 
-            className={`status-tab-btn-admin ${statusFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setStatusFilter('all')}
-          >
+          <button className={`status-tab-btn-admin ${statusFilter === 'all' ? 'active' : ''}`} onClick={() => setStatusFilter('all')}>
             Todos ({processedUsers.length})
           </button>
-          <button 
-            className={`status-tab-btn-admin ${statusFilter === 'active' ? 'active' : ''}`}
-            onClick={() => setStatusFilter('active')}
-          >
-            Em Andamento ({processedUsers.filter(u => u.studyStatus === 'active' || u.studyStatus === 'completed').length})
+          <button className={`status-tab-btn-admin ${statusFilter === 'active' ? 'active' : ''}`} onClick={() => setStatusFilter('active')}>
+            Ativos ({activeUsers})
           </button>
-          <button 
-            className={`status-tab-btn-admin ${statusFilter === 'inactive' ? 'active' : ''}`}
-            onClick={() => setStatusFilter('inactive')}
-          >
-            Não Iniciaram ({processedUsers.filter(u => u.studyStatus === 'not-started').length})
+          <button className={`status-tab-btn-admin ${statusFilter === 'completed' ? 'active' : ''}`} onClick={() => setStatusFilter('completed')}>
+            Concluidos ({completedUsers})
+          </button>
+          <button className={`status-tab-btn-admin ${statusFilter === 'inactive' ? 'active' : ''}`} onClick={() => setStatusFilter('inactive')}>
+            Nao iniciaram ({notStartedUsers})
           </button>
         </div>
       </div>
 
-      {/* Users List */}
-      <div className="admin-users-table-container">
-        {filteredUsers.length === 0 ? (
-          <div className="admin-empty-state">
-            <p>Nenhum aluno encontrado correspondente aos filtros aplicados.</p>
+      {filteredUsers.length === 0 ? (
+        <div className="admin-empty-state">
+          <p>Nenhum aluno encontrado para os filtros aplicados.</p>
+        </div>
+      ) : (
+        <div className="admin-student-list">
+          <div className="admin-student-list-header">
+            <span>Aluno</span>
+            <span>Contato principal</span>
+            <span>Progresso</span>
+            <span>Acoes</span>
           </div>
-        ) : (
-          <div className="admin-table-wrapper">
-            <table className="admin-users-table">
-              <thead>
-                <tr>
-                  <th>Aluno</th>
-                  <th>Contato</th>
-                  <th>Idade</th>
-                  <th>Progresso Geral</th>
-                  <th>Status</th>
-                  <th style={{ textAlign: 'right' }}>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredUsers.map((user) => {
-                  const isExpanded = expandedUser === user.email;
-                  const groupedModules = isExpanded ? groupLessonsByModule(user.completedLessons) : {};
 
-                  return (
-                    <React.Fragment key={user.email}>
-                      <tr className={`user-row ${isExpanded ? 'expanded' : ''}`}>
-                        <td>
-                          <div className="user-profile-cell">
-                            <div className="user-avatar-admin">
-                              {user.name ? user.name.charAt(0).toUpperCase() : '?'}
-                            </div>
-                            <div className="user-name-wrapper">
-                              <span className="user-name-title">{user.name}</span>
-                              <span className="user-role-label">Aluno</span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="user-contact-info">
-                            <div className="contact-item">
-                              <Mail size={12} />
-                              <span>{user.email}</span>
-                            </div>
-                            <div className="contact-item">
-                              <Phone size={12} />
-                              <span>{user.phone || 'Sem telefone'}</span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span className="user-age-badge">{user.age ? `${user.age} anos` : '-'}</span>
-                        </td>
-                        <td>
-                          <div className="user-progress-column">
-                            <div className="progress-text-row">
-                              <span className="progress-percentage">{user.progressPercent}%</span>
-                              <span className="progress-ratio">{user.completedCount} de {totalLessonsCount} aulas</span>
-                            </div>
-                            <div className="progress-bar-admin-bg">
-                              <div 
-                                className="progress-bar-admin-fill" 
-                                style={{ width: `${user.progressPercent}%` }}
-                              ></div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span className={`status-badge-admin ${user.studyStatus}`}>
-                            {user.studyStatusText}
-                          </span>
-                        </td>
-                        <td>
-                          <div className="user-actions-cell">
-                            <button 
-                              className={`toggle-details-btn ${isExpanded ? 'active' : ''}`}
-                              onClick={() => toggleExpandUser(user.email)}
-                              title={isExpanded ? 'Recolher detalhes' : 'Ver aulas concluídas'}
-                            >
-                              <span>Aulas</span>
-                              {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                            </button>
-                            <button 
-                              className="delete-user-btn"
-                              onClick={() => handleDeleteUser(user.email)}
-                              title="Remover Aluno"
-                            >
-                              <Trash2 size={14} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+          {filteredUsers.map(user => {
+            const isExpanded = expandedUser === user.email;
+            const moduleRows = isExpanded ? getUserModuleRows(user) : [];
 
-                      {/* Expandable row for lesson details */}
-                      {isExpanded && (
-                        <tr className="details-row">
-                          <td colSpan="6">
-                            <div className="details-expanded-container">
-                              <h4 className="details-section-title">Aulas Concluídas por Módulo</h4>
-                              {user.completedCount === 0 ? (
-                                <p className="no-progress-text">O aluno ainda não iniciou o curso (nenhuma aula marcada como concluída).</p>
-                              ) : (
-                                <div className="details-modules-grid">
-                                  {Object.keys(groupedModules).sort((a, b) => {
-                                    if (a === 'P0') return -1;
-                                    if (b === 'P0') return 1;
-                                    if (a === 'Outros') return 1;
-                                    if (b === 'Outros') return -1;
-                                    const numA = parseInt(a.replace('M', ''), 10);
-                                    const numB = parseInt(b.replace('M', ''), 10);
-                                    return numA - numB;
-                                  }).map(moduleId => {
-                                    const moduleData = groupedModules[moduleId];
-                                    const title = moduleTitles[moduleId] || moduleId;
-                                    const completedPercent = moduleData.lessons.length > 0 
-                                      ? Math.round((moduleData.completedCount / moduleData.lessons.length) * 100) 
-                                      : 0;
+            return (
+              <article key={user.email} className={`admin-student-card ${isExpanded ? 'expanded' : ''}`}>
+                <div className="student-card-main">
+                  <div className="student-identity">
+                    <div className="user-avatar-admin">
+                      {user.name ? user.name.charAt(0).toUpperCase() : '?'}
+                    </div>
+                    <div className="user-name-wrapper">
+                      <span className="user-name-title">{user.name}</span>
+                      <span className="user-role-label">Aluno cadastrado</span>
+                    </div>
+                  </div>
 
-                                    return (
-                                      <div key={moduleId} className="details-module-card">
-                                        <div className="details-module-header">
-                                          <div className="module-info-admin">
-                                            <span className="details-module-badge">{moduleId}</span>
-                                            <span className="details-module-title">{title}</span>
-                                          </div>
-                                          <span className="details-module-progress">
-                                            {moduleData.completedCount}/{moduleData.lessons.length} ({completedPercent}%)
-                                          </span>
-                                        </div>
-                                        <ul className="details-lessons-list">
-                                          {moduleData.lessons.map(lesson => (
-                                            <li key={lesson.id} className={`details-lesson-item ${lesson.completed ? 'completed' : ''}`}>
-                                              <div className="lesson-status-indicator">
-                                                {lesson.completed ? (
-                                                  <CheckCircle2 size={13} className="done-icon" />
-                                                ) : (
-                                                  <span className="todo-bullet"></span>
-                                                )}
-                                              </div>
-                                              <span className="details-lesson-title-text">
-                                                {formatLessonTitle(lesson.title)}
-                                              </span>
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    );
-                                  })}
+                  <div className="student-contact-panel">
+                    <span className="contact-line contact-email" title={user.email}>
+                      <Mail size={13} />
+                      <span>{user.email}</span>
+                    </span>
+
+                    <div className="contact-inline-row">
+                      <span className="contact-line">
+                        <Phone size={13} />
+                        <span>{user.phone || 'Sem telefone'}</span>
+                      </span>
+                      <span className="contact-line">
+                        <Calendar size={13} />
+                        <span>{user.age ? `${user.age} anos` : 'Idade nao informada'}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="student-progress-panel">
+                    <div className="progress-text-row">
+                      <span className="progress-percentage">{user.fullProgressPercent}% do roteiro</span>
+                      <span className="progress-ratio">{user.completedCount}/{COURSE_TOTAL_LESSONS}</span>
+                    </div>
+                    <div className="progress-bar-admin-bg">
+                      <div className="progress-bar-admin-fill" style={{ width: `${user.fullProgressPercent}%` }} />
+                    </div>
+                    <span className="student-progress-note">
+                      {user.availableProgressPercent}% das aulas ja liberadas
+                    </span>
+                  </div>
+
+                  <div className="student-actions">
+                    <span className={`status-badge-admin ${user.studyStatus}`}>{user.studyStatusText}</span>
+                    <button
+                      className={`toggle-details-btn ${isExpanded ? 'active' : ''}`}
+                      onClick={() => toggleExpandUser(user.email)}
+                      title={isExpanded ? 'Recolher detalhes' : 'Ver progresso por modulo'}
+                    >
+                      <span>Modulos</span>
+                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                    <button
+                      className="delete-user-btn"
+                      onClick={() => handleDeleteUser(user.email)}
+                      title="Remover aluno"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+
+                {isExpanded && (
+                  <div className="student-details-panel">
+                    {user.completedCount === 0 ? (
+                      <p className="no-progress-text">O aluno ainda nao marcou nenhuma aula como concluida.</p>
+                    ) : (
+                      <>
+                        <div className="details-section-heading">
+                          <Clock size={15} />
+                          <span>Progresso por modulo liberado</span>
+                        </div>
+
+                        <div className="admin-module-progress-list">
+                          {moduleRows.map(module => (
+                            <div key={module.moduleId} className="admin-module-progress-row">
+                              <div className="module-info-admin">
+                                <span className="details-module-badge">{module.moduleId}</span>
+                                <span className="details-module-title">{module.title}</span>
+                              </div>
+                              <div className="module-progress-admin">
+                                <span>{module.completed}/{module.available} liberadas</span>
+                                <div className="progress-bar-admin-bg compact">
+                                  <div className="progress-bar-admin-fill" style={{ width: `${module.availablePercent}%` }} />
                                 </div>
-                              )}
+                              </div>
                             </div>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
+                          ))}
+                        </div>
+
+                        <div className="details-lessons-summary">
+                          {moduleRows
+                            .filter(module => module.completed > 0)
+                            .map(module => (
+                              <div key={`${module.moduleId}-lessons`} className="details-lessons-group">
+                                <span className="details-lessons-group-title">{module.moduleId} - {module.title}</span>
+                                <ul className="details-lessons-list">
+                                  {module.lessons.filter(lesson => lesson.completed).map(lesson => (
+                                    <li key={lesson.id} className="details-lesson-item completed">
+                                      <CheckCircle2 size={13} className="done-icon" />
+                                      <span className="details-lesson-title-text">{formatLessonTitle(lesson.title)}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

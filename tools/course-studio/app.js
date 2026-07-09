@@ -30,6 +30,8 @@ const emptyStateEl = document.getElementById('empty-state');
 
 const tabReaderPanel = document.getElementById('tab-reader');
 const readerOutputEl = document.getElementById('reader-output');
+const tabComplementPanel = document.getElementById('tab-complement');
+const complementOutputEl = document.getElementById('complement-output');
 
 const tabEditorPanel = document.getElementById('tab-editor');
 const markdownInputEl = document.getElementById('markdown-input');
@@ -217,18 +219,15 @@ function selectLesson(lesson, moduleId) {
   // Update layout header
   activeLessonTagEl.textContent = `Aula ${lesson.id}`;
   activeLessonTitleEl.textContent = lesson.title;
-  statusControlContainerEl.style.display = 'flex';
+  if (statusControlContainerEl) {
+    statusControlContainerEl.style.display = 'none';
+  }
   tabNavbarEl.style.display = 'flex';
   emptyStateEl.style.display = 'none';
 
-  // Load Status dropdown
-  const status = courseData.diaryStatus[lesson.id] || 'Pendente';
-  lessonStatusSelectEl.value = status;
-
   // Load contents into panels
   renderReaderView();
-  loadEditorView();
-  runAnalysis();
+  renderComplementView();
   renderExplainerView();
 
   // Show active tab panel
@@ -236,6 +235,10 @@ function selectLesson(lesson, moduleId) {
 }
 
 function switchTab(tabId) {
+  if (tabId === 'editor' || tabId === 'analyzer') {
+    tabId = 'reader';
+  }
+
   activeTab = tabId;
   
   // Toggle tab buttons
@@ -250,13 +253,15 @@ function switchTab(tabId) {
   // Toggle tab panels
   document.querySelectorAll('.tab-panel').forEach(panel => {
     panel.style.display = 'none';
+    panel.classList.remove('active');
   });
 
   const activePanel = document.getElementById('tab-' + tabId);
   if (activePanel) {
-    activePanel.style.display = 'block';
+    activePanel.style.display = 'flex';
+    activePanel.classList.add('active');
     if (tabId === 'editor') {
-      markdownInputEl.focus();
+      markdownInputEl?.focus();
     }
   }
 }
@@ -268,20 +273,104 @@ function switchTab(tabId) {
 function renderReaderView() {
   if (!activeLesson) return;
   const rawMarkdown = activeLesson.contentLines.join('\n');
-  
-  // Custom marked parsing and styling
-  const html = marked.parse(rawMarkdown);
-  readerOutputEl.innerHTML = html;
-  
+  const split = splitLessonContent(rawMarkdown);
+  renderMarkdownInto(readerOutputEl, split.main || rawMarkdown);
+}
+
+function renderComplementView() {
+  if (!activeLesson) return;
+  const rawMarkdown = activeLesson.contentLines.join('\n');
+  const split = splitLessonContent(rawMarkdown);
+
+  if (!split.complement.trim()) {
+    renderMarkdownInto(complementOutputEl, [
+      '# Material complementar',
+      '',
+      'Nenhum material complementar separado automaticamente nesta aula.',
+      '',
+      'Use esta aba para mover futuramente checklists longos, perguntas, simulados, gabaritos, desafios extras e anotações que não precisam interromper a aula principal.'
+    ].join('\n'));
+    return;
+  }
+
+  renderMarkdownInto(complementOutputEl, [
+    '# Material complementar',
+    '',
+    split.complement
+  ].join('\n'));
+}
+
+function splitLessonContent(rawMarkdown) {
+  const lines = rawMarkdown.split(/\r?\n/);
+  const explicitIndex = lines.findIndex(line => /^#{1,2}\s+Material complementar\s*$/i.test(line.trim()));
+
+  if (explicitIndex !== -1) {
+    return {
+      main: lines.slice(0, explicitIndex).join('\n').trim(),
+      complement: lines.slice(explicitIndex + 1).join('\n').trim()
+    };
+  }
+
+  const main = [];
+  const complement = [];
+  let target = 'main';
+  let complementLevel = Number.POSITIVE_INFINITY;
+  let inFence = false;
+
+  for (const line of lines) {
+    if (line.trim().startsWith('```')) {
+      (target === 'complement' ? complement : main).push(line);
+      inFence = !inFence;
+      continue;
+    }
+
+    if (!inFence) {
+      const heading = line.match(/^(#{1,6})\s+(.+)$/);
+      if (heading) {
+        const level = heading[1].length;
+        const title = heading[2].trim();
+
+        if (isComplementHeading(title)) {
+          target = 'complement';
+          complementLevel = level;
+        } else if (isMainResumeHeading(title) || (target === 'complement' && level <= complementLevel)) {
+          target = 'main';
+          complementLevel = Number.POSITIVE_INFINITY;
+        }
+      }
+    }
+
+    (target === 'complement' ? complement : main).push(line);
+  }
+
+  return {
+    main: main.join('\n').trim(),
+    complement: complement.join('\n').trim()
+  };
+}
+
+function isComplementHeading(title) {
+  return /^(material complementar|complementos|registro r[aá]pido|perguntas? de revis[aã]o|perguntas?|simulado|gabarito|desafio extra|desafios? opcionais?|exerc[ií]cios complementares|checklist da aula|checkpoint final|crit[eé]rios? de aceite|crit[eé]rio de conclus[aã]o|anota[cç][oõ]es|relat[oó]rio|material de apoio)/i.test(title) ||
+         /\b(simulado|gabarito|desafio extra|perguntas de revis[aã]o|registro r[aá]pido|material complementar)\b/i.test(title);
+}
+
+function isMainResumeHeading(title) {
+  return /^(commit recomendado|fechamento|fechamento da aula|exerc[ií]cio pr[aá]tico principal|atividade guiada|m[aã]o na massa guiada|laborat[oó]rio guiado)/i.test(title);
+}
+
+function renderMarkdownInto(container, markdown) {
+  const html = marked.parse(markdown);
+  container.innerHTML = html;
+
   // Code syntax highlighting
   if (typeof hljs !== 'undefined') {
-    readerOutputEl.querySelectorAll('pre code').forEach((block) => {
+    container.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block);
     });
   }
 
   // Inject header & copy buttons for pre blocks
-  readerOutputEl.querySelectorAll('pre').forEach((pre) => {
+  container.querySelectorAll('pre').forEach((pre) => {
     const codeBlock = pre.querySelector('code');
     const codeText = codeBlock ? codeBlock.innerText : '';
     
@@ -379,35 +468,35 @@ function runAnalysis() {
   fillParagraphsEl.style.width = `${Math.min(100, paragraphs * 10)}%`;
   fillListsEl.style.width = `${Math.min(100, lists * 8)}%`;
 
-  // 2. Structural Elements Checklist
-  const hasObjective = /###\s*Objetivo/i.test(content);
-  const hasConcept = /###\s*(Conceito|O que é|Explicação)/i.test(content) || paragraphs > 2;
-  const hasCode = /```(java|bash|text)/i.test(content);
-  const hasLearnings = /###\s*(Aprendizado|Erros corrigidos)/i.test(content);
+  // 2. Structural Elements Checklist - Aula V2
+  const hasObjective = /#{1,3}\s*(Objetivo|Apresentação|Apresentacao|Hoje a aula|Onde estamos)/i.test(content);
+  const hasConcept = /#{1,3}\s*(Conceito|O que é|O que e|Por que|Entendendo|A ideia central)/i.test(content) || paragraphs > 6;
+  const hasPractice = /```(java|bash|powershell|text|sql|xml|yaml|dockerfile|properties)/i.test(content) || /Mão na massa|Mao na massa|Laboratório|Laboratorio|Exercício guiado|Exercicio guiado|Atividade guiada/i.test(content);
+  const hasClosure = /Commit recomendado|git commit|Fechamento|Checkpoint final|Critério de conclusão|Criterio de conclusao/i.test(content);
 
   const checklistItems = structureChecklistEl.querySelectorAll('li');
   
   updateChecklistItem(checklistItems[0], hasObjective);
   updateChecklistItem(checklistItems[1], hasConcept);
-  updateChecklistItem(checklistItems[2], hasCode);
-  updateChecklistItem(checklistItems[3], hasLearnings);
+  updateChecklistItem(checklistItems[2], hasPractice);
+  updateChecklistItem(checklistItems[3], hasClosure);
 
   // 3. Quality Score Gauge
   let score = 100;
   let warnings = 0;
   const suggestions = [];
 
-  if (!hasObjective) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Falta seção "Objetivo". Diga claramente ao aluno o que ele aprenderá nesta aula.' }); }
-  if (!hasConcept) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Conteúdo explicativo escasso. Considere expandir os parágrafos de explicação teórica.' }); }
-  if (!hasCode) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Sem exemplos de código. Um bom curso de backend precisa de exemplos práticos em blocos de código.' }); }
-  if (!hasLearnings) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Falta seção "Aprendizado" ou "Erros corrigidos" no final para consolidar o estudo.' }); }
+  if (!hasObjective) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Falta apresentação ou objetivo claro. Diga o que o aluno fará e por que isso importa.' }); }
+  if (!hasConcept) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Conceito essencial pouco claro. Explique o que é, por que existe e quando usar.' }); }
+  if (!hasPractice) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Falta prática guiada. A aula precisa de comandos, código, laboratório ou atividade executável.' }); }
+  if (!hasClosure) { score -= 20; warnings++; suggestions.push({ type: 'warning', text: 'Falta commit, fechamento ou checkpoint final para consolidar a aula.' }); }
 
-  if (words < 100) {
+  if (words < 800) {
     score -= 15;
     warnings++;
-    suggestions.push({ type: 'warning', text: 'Texto muito curto. Escreva pelo menos 150 palavras para detalhar o conteúdo.' });
-  } else if (words > 800) {
-    suggestions.push({ type: 'info', text: 'Aula longa. Considere dividir em duas aulas menores se houver muitos tópicos independentes.' });
+    suggestions.push({ type: 'warning', text: 'Aula curta para o padrão da formação. Verifique se há contexto, prática e entendimento suficientes.' });
+  } else if (words > 5000) {
+    suggestions.push({ type: 'info', text: 'Aula extensa. Considere mover checklists, perguntas, simulados e desafios para Material complementar.' });
   }
 
   score = Math.max(0, score);
@@ -488,14 +577,15 @@ function setupEventListeners() {
     });
   });
 
-  // Editor typing preview
-  markdownInputEl.addEventListener('input', () => {
-    updateEditorPreview();
-    runAnalysis();
-  });
+  // Editor features are intentionally hidden in the course reader experience.
+  if (markdownInputEl) {
+    markdownInputEl.addEventListener('input', () => {
+      updateEditorPreview();
+    });
+  }
 
   // Status Select change
-  lessonStatusSelectEl.addEventListener('change', () => {
+  if (lessonStatusSelectEl) lessonStatusSelectEl.addEventListener('change', () => {
     if (!activeLesson) return;
     const newStatus = lessonStatusSelectEl.value;
     
@@ -503,14 +593,14 @@ function setupEventListeners() {
   });
 
   // Save Lesson Button
-  saveLessonBtn.addEventListener('click', saveActiveLesson);
+  if (saveLessonBtn) saveLessonBtn.addEventListener('click', saveActiveLesson);
 
   // Keyboard shortcut Ctrl+S
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
       e.preventDefault();
       if (activeLesson && activeTab === 'editor') {
-        saveActiveLesson();
+        // Editing is hidden in the course reader, so Ctrl+S is ignored here.
       }
     }
   });
@@ -521,10 +611,10 @@ function setupEventListeners() {
   });
 
   // Helper inserts
-  helperObjBtn.addEventListener('click', () => insertTextAtCursor('### Objetivo\n\n[O que o aluno aprenderá nesta aula...]\n\n'));
-  helperCodeBtn.addEventListener('click', () => insertTextAtCursor('### Código praticado\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        // Escreva seu código aqui\n    }\n}\n```\n\n'));
-  helperLearningBtn.addEventListener('click', () => insertTextAtCursor('### Aprendizado\n\n- [Insira o aprendizado importante 1]\n- [Insira o aprendizado importante 2]\n\n'));
-  helperWarningBtn.addEventListener('click', () => insertTextAtCursor('> **Atenção:** [Insira sua observação ou aviso técnico aqui]\n\n'));
+  if (helperObjBtn) helperObjBtn.addEventListener('click', () => insertTextAtCursor('### Objetivo\n\n[O que o aluno aprenderá nesta aula...]\n\n'));
+  if (helperCodeBtn) helperCodeBtn.addEventListener('click', () => insertTextAtCursor('### Código praticado\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        // Escreva seu código aqui\n    }\n}\n```\n\n'));
+  if (helperLearningBtn) helperLearningBtn.addEventListener('click', () => insertTextAtCursor('### Aprendizado\n\n- [Insira o aprendizado importante 1]\n- [Insira o aprendizado importante 2]\n\n'));
+  if (helperWarningBtn) helperWarningBtn.addEventListener('click', () => insertTextAtCursor('> **Atenção:** [Insira sua observação ou aviso técnico aqui]\n\n'));
 
   // Copy code blocks (global event listener)
   document.addEventListener('click', (e) => {
@@ -648,25 +738,58 @@ function showToast(message, type = 'success') {
 // Code Explainer Interactivity
 // -------------------------------------------------------------
 
-function extractJavaCodeBlocks(content) {
-  const codeBlockRegex = /```java\r?\n([\s\S]*?)```/g;
+function extractCodeBlocks(content) {
+  const codeBlockRegex = /```([^\r\n`]*)\r?\n([\s\S]*?)```/g;
   const blocks = [];
   let match;
-  let index = 1;
   while ((match = codeBlockRegex.exec(content)) !== null) {
+    const language = normalizeCodeLanguage(match[1]);
+    const code = match[2];
+    if (!code.trim()) continue;
+
     blocks.push({
-      id: index++,
-      title: index === 2 ? "Código Praticado / Exemplo Principal" : `Código Praticado #${index - 1}`,
-      code: match[1]
+      id: blocks.length + 1,
+      language,
+      title: `Bloco ${blocks.length + 1} - ${getCodeLanguageLabel(language)}`,
+      code
     });
   }
   return blocks;
 }
 
+function normalizeCodeLanguage(language) {
+  const clean = (language || 'text').trim().toLowerCase();
+  if (!clean) return 'text';
+  if (clean === 'sh' || clean === 'shell' || clean === 'terminal') return 'bash';
+  if (clean === 'ps' || clean === 'pwsh') return 'powershell';
+  if (clean === 'yml') return 'yaml';
+  if (clean === 'env') return 'properties';
+  if (clean === 'docker') return 'dockerfile';
+  if (clean === 'plaintext' || clean === 'txt') return 'text';
+  return clean.replace(/[^\w+-]/g, '');
+}
+
+function getCodeLanguageLabel(language) {
+  const labels = {
+    bash: 'Terminal',
+    cmd: 'CMD',
+    dockerfile: 'Dockerfile',
+    java: 'Java',
+    json: 'JSON',
+    properties: 'Properties / .env',
+    powershell: 'PowerShell',
+    sql: 'SQL',
+    text: 'Texto',
+    xml: 'XML',
+    yaml: 'YAML'
+  };
+  return labels[language] || language.toUpperCase();
+}
+
 function renderExplainerView() {
   if (!activeLesson) return;
   const rawText = activeLesson.contentLines.join('\n');
-  const codeBlocks = extractJavaCodeBlocks(rawText);
+  const codeBlocks = extractCodeBlocks(rawText);
 
   explainerCodeListEl.innerHTML = '';
   
@@ -678,7 +801,7 @@ function renderExplainerView() {
     explainerCodeListEl.innerHTML = `
       <div style="padding: 40px; color: var(--text-muted); text-align: center;">
         <i data-lucide="code-2" style="width: 48px; height: 48px; stroke-width: 1.5; margin-bottom: 12px; color: var(--text-muted);"></i>
-        <p>Esta aula não possui exemplos de código Java estruturados para explicação interativa.</p>
+        <p>Esta aula não possui blocos de código ou comandos estruturados para explicação interativa.</p>
       </div>
     `;
     lucide.createIcons();
@@ -692,7 +815,7 @@ function renderExplainerView() {
     // Add title
     const titleDiv = document.createElement('div');
     titleDiv.className = 'explainer-code-title';
-    titleDiv.innerHTML = `<i data-lucide="code-2"></i> ${block.title}`;
+    titleDiv.innerHTML = `<i data-lucide="terminal-square"></i> ${block.title}`;
     blockDiv.appendChild(titleDiv);
 
     // Split code lines
@@ -703,7 +826,7 @@ function renderExplainerView() {
       const lineDiv = document.createElement('div');
       lineDiv.className = 'explainer-line';
       
-      const explanation = getLineExplanation(lineText);
+      const explanation = getLineExplanation(lineText) || getGenericLineExplanation(lineText, block.language);
       if (explanation) {
         lineDiv.classList.add('has-explanation');
       }
@@ -722,20 +845,14 @@ function renderExplainerView() {
         explainerDetailEmptyEl.style.display = 'none';
         explainerDetailContentEl.style.display = 'block';
 
-        if (explanation) {
-          explainerLineTitleEl.textContent = explanation.title;
-          explainerLineCodeEl.textContent = lineText.trim();
-          explainerLineDescEl.innerHTML = explanation.desc;
-        } else {
-          explainerLineTitleEl.textContent = "Instrução Java";
-          explainerLineCodeEl.textContent = lineText.trim();
-          explainerLineDescEl.innerHTML = `
-            <p>Esta linha faz parte da estrutura lógica do seu programa Java.</p>
-            <p>Dica: Clique nas linhas marcadas com uma borda lateral ciano para obter uma explicação didática dos conceitos-chave representados.</p>
-          `;
-        }
+        explainerLineTitleEl.textContent = explanation.title;
+        explainerLineCodeEl.className = `language-${block.language}`;
+        explainerLineCodeEl.textContent = lineText.trim();
+        explainerLineDescEl.innerHTML = explanation.desc;
         
         if (typeof hljs !== 'undefined') {
+          delete explainerLineCodeEl.dataset.highlighted;
+          explainerLineCodeEl.removeAttribute('data-highlighted');
           hljs.highlightElement(explainerLineCodeEl);
         }
       });
@@ -747,6 +864,160 @@ function renderExplainerView() {
   });
 
   lucide.createIcons();
+}
+
+function getGenericLineExplanation(lineText, language) {
+  const trimmed = lineText.trim();
+  const label = getCodeLanguageLabel(language);
+
+  if (!trimmed) {
+    return {
+      title: "Linha em branco",
+      desc: "<p>Esta linha separa visualmente partes do bloco para melhorar a leitura.</p>"
+    };
+  }
+
+  if (language === 'bash' || language === 'powershell' || language === 'cmd') {
+    return getShellLineExplanation(trimmed, label);
+  }
+
+  if (language === 'yaml') {
+    return getYamlLineExplanation(trimmed);
+  }
+
+  if (language === 'properties') {
+    return getPropertiesLineExplanation(trimmed);
+  }
+
+  if (language === 'dockerfile') {
+    return getDockerfileLineExplanation(trimmed);
+  }
+
+  if (language === 'sql') {
+    return getSqlLineExplanation(trimmed);
+  }
+
+  if (language === 'json') {
+    return {
+      title: "Estrutura JSON",
+      desc: `<p>Esta linha faz parte de um documento JSON, usado para representar dados estruturados em chaves e valores.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+    };
+  }
+
+  if (language === 'xml') {
+    return {
+      title: "Estrutura XML",
+      desc: `<p>Esta linha pertence a um documento XML, formato comum em configuracoes Java, Maven e ferramentas corporativas.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+    };
+  }
+
+  return {
+    title: `Linha de ${label}`,
+    desc: `<p>Esta linha faz parte do bloco de ${label}. Leia junto com as linhas vizinhas para entender o efeito completo do trecho.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function getShellLineExplanation(trimmed, label) {
+  const command = trimmed.split(/\s+/)[0];
+  const common = {
+    cd: "troca o diretorio atual do terminal.",
+    code: "abre o projeto ou arquivo no Visual Studio Code.",
+    docker: "executa uma operacao do Docker, como criar imagem, subir servicos ou consultar containers.",
+    git: "executa uma operacao de versionamento no Git.",
+    java: "executa a JVM ou comandos relacionados ao Java.",
+    javac: "compila arquivos Java para bytecode.",
+    mkdir: "cria um novo diretorio.",
+    mvn: "executa uma tarefa do Maven, como build, teste ou execucao.",
+    psql: "abre ou executa comandos no cliente PostgreSQL.",
+    'redis-cli': "abre ou executa comandos no cliente Redis."
+  };
+
+  return {
+    title: `Comando ${label}`,
+    desc: `<p>Esta linha deve ser executada no ${label}. ${common[command] || 'Ela automatiza uma acao pratica necessaria para a aula.'}</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function getYamlLineExplanation(trimmed) {
+  if (trimmed.startsWith('- ')) {
+    return {
+      title: "Item de lista YAML",
+      desc: `<p>O hifen indica um item dentro de uma lista YAML, muito usado em Docker Compose, GitHub Actions e arquivos de configuracao.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+    };
+  }
+
+  const keyMatch = trimmed.match(/^([A-Za-z0-9_.-]+):/);
+  if (keyMatch) {
+    return {
+      title: `Chave YAML: ${keyMatch[1]}`,
+      desc: `<p>Define uma chave de configuracao. Em YAML, a indentacao mostra quem pertence a quem, por isso o recuo desta linha e importante.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+    };
+  }
+
+  return {
+    title: "Linha YAML",
+    desc: `<p>Esta linha complementa a configuracao YAML acima dela. Observe o recuo para entender o bloco ao qual ela pertence.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function getPropertiesLineExplanation(trimmed) {
+  const match = trimmed.match(/^([A-Za-z0-9_.-]+)\s*=\s*(.*)$/);
+  if (match) {
+    return {
+      title: `Propriedade: ${match[1]}`,
+      desc: `<p>Define uma configuracao no formato chave=valor. Esse padrao aparece em arquivos <code>.env</code>, <code>.properties</code> e configuracoes de backend.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+    };
+  }
+
+  return {
+    title: "Linha de configuracao",
+    desc: `<p>Esta linha faz parte de um arquivo simples de configuracao textual.</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function getDockerfileLineExplanation(trimmed) {
+  const instruction = trimmed.split(/\s+/)[0].toUpperCase();
+  const meanings = {
+    FROM: "define a imagem base que sera usada para construir a imagem final.",
+    WORKDIR: "define o diretorio de trabalho dentro da imagem.",
+    COPY: "copia arquivos do projeto para dentro da imagem.",
+    RUN: "executa comandos durante o build da imagem.",
+    EXPOSE: "documenta a porta usada pela aplicacao dentro do container.",
+    CMD: "define o comando padrao executado quando o container inicia.",
+    ENTRYPOINT: "define o processo principal do container."
+  };
+
+  return {
+    title: `Dockerfile: ${instruction}`,
+    desc: `<p>${meanings[instruction] || 'Instrucao usada durante a montagem ou execucao da imagem Docker.'}</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function getSqlLineExplanation(trimmed) {
+  const keyword = trimmed.split(/\s+/)[0].toUpperCase();
+  const meanings = {
+    SELECT: "consulta dados em uma ou mais tabelas.",
+    INSERT: "insere novos registros em uma tabela.",
+    UPDATE: "altera registros existentes.",
+    DELETE: "remove registros de uma tabela.",
+    CREATE: "cria estruturas no banco, como tabelas, indices ou schemas.",
+    ALTER: "altera uma estrutura ja existente no banco.",
+    DROP: "remove uma estrutura do banco."
+  };
+
+  return {
+    title: `SQL: ${keyword}`,
+    desc: `<p>${meanings[keyword] || 'Linha de comando SQL usada para consultar ou modificar o banco de dados.'}</p><p><code>${escapeHtml(trimmed)}</code></p>`
+  };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function getLineExplanation(lineText) {
@@ -990,4 +1261,3 @@ const CODE_EXPLANATIONS = {
     desc: "<p>Fecha o leitor <code>Scanner</code> e libera os recursos do sistema operacional associados à entrada padrão.</p><p>É uma boa prática indispensável para desenvolvedores backend para evitar <strong>Memory Leaks</strong> (vazamentos de recursos de memória).</p>"
   }
 };
-

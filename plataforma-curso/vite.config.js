@@ -8,6 +8,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true, // Abre o navegador automaticamente ao iniciar
+    proxy: {
+      '/api': 'http://127.0.0.1:5174'
+    },
     fs: {
       // Permitir acesso ao diretório pai para ler os markdowns
       allow: ['..']

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Java Course Studio - Thiago</title>
+  <title>Formação Java Backend - Leitor</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +25,8 @@
       <div class="brand">
         <div class="logo-icon">☕</div>
         <div>
-          <h1>Java Course Studio</h1>
-          <span class="subbrand">Thiago Pacheco • Content Studio & Dashboard</span>
+          <h1>Formação Java Backend</h1>
+          <span class="subbrand">Leitor do curso • Aula, complementos e explicação de código</span>
         </div>
       </div>
       
@@ -43,7 +43,7 @@
       
       <div class="header-actions">
         <span class="status-indicator-connected" title="Conectado ao servidor local">
-          <i data-lucide="wifi"></i> Local Server Active
+          <i data-lucide="wifi"></i> Curso local ativo
         </span>
       </div>
     </header>
@@ -78,31 +78,18 @@
             <span class="lesson-tag" id="active-lesson-tag">Aula 1.1</span>
             <h2 id="active-lesson-title">Selecione uma aula no menu lateral</h2>
           </div>
-          
-          <div class="lesson-status-control" id="status-control-container" style="display: none;">
-            <label for="lesson-status-select">Status da Aula:</label>
-            <select id="lesson-status-select">
-              <option value="Pendente">🔴 Pendente</option>
-              <option value="Em andamento">🟡 Em andamento</option>
-              <option value="Concluída">🟢 Concluída</option>
-            </select>
-          </div>
         </div>
 
         <!-- Tab Nav -->
         <div class="tab-navbar" id="tab-navbar" style="display: none;">
           <button class="tab-btn active" data-tab="reader">
-            <i data-lucide="book-open"></i> Leitor
+            <i data-lucide="book-open"></i> Aula
           </button>
-          <button class="tab-btn" data-tab="editor">
-            <i data-lucide="edit-3"></i> Editor Visual (Split)
+          <button class="tab-btn" data-tab="complement">
+            <i data-lucide="list-checks"></i> Material complementar
           </button>
           <button class="tab-btn" data-tab="explainer">
-            <i data-lucide="help-circle"></i> Explicação de Código
-          </button>
-          <button class="tab-btn" data-tab="analyzer">
-            <i data-lucide="bar-chart-2"></i> Analisador & Qualidade
-            <span class="badge" id="analyzer-warning-badge" style="display:none;">0</span>
+            <i data-lucide="terminal-square"></i> Código e comandos
           </button>
         </div>
 
@@ -113,7 +100,7 @@
           <div id="empty-state" class="empty-state">
             <div class="empty-icon">📖</div>
             <h3>Nenhuma aula selecionada</h3>
-            <p>Selecione uma aula ou módulo no menu à esquerda para ler, revisar, editar e avaliar a escrita.</p>
+            <p>Selecione uma aula ou módulo no menu à esquerda para estudar o conteúdo principal, consultar complementos e entender códigos.</p>
           </div>
 
           <!-- Reader Panel -->
@@ -123,137 +110,28 @@
             </article>
           </div>
 
-          <!-- Editor Panel -->
-          <div id="tab-editor" class="tab-panel" style="display: none;">
-            <div class="editor-split-container">
-              <!-- Code input -->
-              <div class="editor-pane">
-                <div class="pane-header">
-                  <span>Markdown Editor</span>
-                  <div class="editor-helpers">
-                    <button class="helper-btn" id="helper-obj" title="Inserir Objetivo"><i data-lucide="target"></i> Objetivo</button>
-                    <button class="helper-btn" id="helper-code" title="Inserir Bloco de Código Java"><i data-lucide="code"></i> Código</button>
-                    <button class="helper-btn" id="helper-learning" title="Inserir Aprendizados"><i data-lucide="lightbulb"></i> Aprendizado</button>
-                    <button class="helper-btn" id="helper-warning" title="Inserir Destaque de Alerta"><i data-lucide="alert-triangle"></i> Alerta</button>
-                  </div>
-                </div>
-                <textarea id="markdown-input" placeholder="Escreva o conteúdo da aula em Markdown..."></textarea>
-                <div class="editor-footer">
-                  <span class="editor-info-text">Dica: Use Ctrl+S para salvar</span>
-                  <button class="btn btn-primary" id="save-lesson-btn">
-                    <i data-lucide="save"></i> Salvar Alterações
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Live Preview -->
-              <div class="preview-pane">
-                <div class="pane-header">Live Preview</div>
-                <div class="preview-content markdown-body" id="preview-output"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Analyzer Panel -->
-          <div id="tab-analyzer" class="tab-panel" style="display: none;">
-            <div class="analyzer-grid">
-              
-              <!-- Gauge Score Card -->
-              <div class="analyzer-card score-card">
-                <h3>Score de Qualidade</h3>
-                <div class="gauge-container">
-                  <svg viewBox="0 0 100 100" class="gauge">
-                    <circle cx="50" cy="50" r="45" class="gauge-bg"></circle>
-                    <circle cx="50" cy="50" r="45" class="gauge-fill" id="gauge-fill" style="stroke-dasharray: 283; stroke-dashoffset: 283;"></circle>
-                    <text x="50" y="55" class="gauge-text" id="gauge-score-value">0%</text>
-                  </svg>
-                </div>
-                <p class="score-desc" id="score-desc">Avaliação de estrutura e conteúdo da aula.</p>
-              </div>
-
-              <!-- Stats Detail Card -->
-              <div class="analyzer-card stats-card">
-                <h3>Métricas de Texto</h3>
-                <div class="stats-row">
-                  <div class="stat-box">
-                    <span class="stat-val" id="val-words">0</span>
-                    <span class="stat-lbl">Palavras</span>
-                  </div>
-                  <div class="stat-box">
-                    <span class="stat-val" id="val-time">0m</span>
-                    <span class="stat-lbl">Tempo Leitura</span>
-                  </div>
-                  <div class="stat-box">
-                    <span class="stat-val" id="val-code">0</span>
-                    <span class="stat-lbl">Blocos Código</span>
-                  </div>
-                </div>
-                <div class="density-bars">
-                  <div class="density-bar-item">
-                    <span>Parágrafos</span>
-                    <div class="density-progress"><div class="density-fill" id="fill-paragraphs" style="width: 0%;"></div></div>
-                    <span class="density-num" id="num-paragraphs">0</span>
-                  </div>
-                  <div class="density-bar-item">
-                    <span>Tópicos (Listas)</span>
-                    <div class="density-progress"><div class="density-fill" id="fill-lists" style="width: 0%;"></div></div>
-                    <span class="density-num" id="num-lists">0</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Structural Elements Checklist -->
-              <div class="analyzer-card checklist-card">
-                <h3>Estrutura Obrigatória</h3>
-                <ul class="checklist" id="structure-checklist">
-                  <li>
-                    <i data-lucide="circle" class="check-icon status-pending"></i>
-                    Seção "Objetivo" (Explica o que o aluno vai aprender)
-                  </li>
-                  <li>
-                    <i data-lucide="circle" class="check-icon status-pending"></i>
-                    Seção de Conceito Principal ou Explicações
-                  </li>
-                  <li>
-                    <i data-lucide="circle" class="check-icon status-pending"></i>
-                    Exemplo de Código Prático (`java`)
-                  </li>
-                  <li>
-                    <i data-lucide="circle" class="check-icon status-pending"></i>
-                    Seção "Aprendizado" ou "Erros Corrigidos"
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Recommendations Card -->
-              <div class="analyzer-card recommendations-card">
-                <h3>Sugestões de Melhoria</h3>
-                <div class="suggestions-list" id="suggestions-list">
-                  <div class="suggestion-item info">
-                    <i data-lucide="sparkles"></i>
-                    <span>Tudo pronto! Carregando análise de texto...</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          <!-- Complementary Material Panel -->
+          <div id="tab-complement" class="tab-panel" style="display: none;">
+            <article class="reader-view markdown-body" id="complement-output">
+              <!-- Complementary content injected dynamically -->
+            </article>
           </div>
 
           <!-- Code Explainer Panel -->
           <div id="tab-explainer" class="tab-panel" style="display: none;">
             <div class="explainer-container">
               <div class="explainer-header">
-                <h3><i data-lucide="help-circle"></i> Explicação de Código Java</h3>
-                <p>Veja e analise o código da aula de forma didática. Clique em qualquer linha destacada para entender o que a instrução faz por baixo dos panos.</p>
+                <h3><i data-lucide="terminal-square"></i> Código e comandos da aula</h3>
+                <p>Veja os blocos práticos da aula de forma didática. Clique em uma linha para entender a função daquela instrução no contexto do estudo.</p>
               </div>
               <div class="explainer-split">
                 <div class="explainer-code-view" id="explainer-code-list">
-                  <!-- Java codes injected here with line-by-line hover -->
+                  <!-- Code and command blocks injected here with line-by-line hover -->
                 </div>
                 <div class="explainer-detail-card" id="explainer-detail-card">
                   <div class="detail-empty" id="explainer-detail-empty">
                     <i data-lucide="mouse-pointer"></i>
-                    <p>Clique em qualquer linha de código à esquerda para ver a explicação didática detalhada.</p>
+                    <p>Clique em qualquer linha à esquerda para ver a explicação didática detalhada.</p>
                   </div>
                   <div class="detail-content" id="explainer-detail-content" style="display: none;">
                     <h4 id="explainer-line-title">Instrução</h4>

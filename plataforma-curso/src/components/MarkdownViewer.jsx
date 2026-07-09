@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CheckCircle2, Circle, Copy, Check, Volume2, Play, Pause, Square, ChevronRight, ChevronLeft, Clock, BookOpen } from 'lucide-react';
+import { CheckCircle2, Copy, Check, Play, Pause, ChevronRight, ChevronLeft, Clock, BookOpen, ListChecks } from 'lucide-react';
 
 const CodeBlockWithCopy = ({ match, className, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -39,411 +39,6 @@ const CodeBlockWithCopy = ({ match, className, children, ...props }) => {
         >
           {codeString}
         </SyntaxHighlighter>
-      </div>
-    </div>
-  );
-};
-
-// Translates technical code structures into readable Portuguese explanations for TTS
-const cleanCodeForSpeech = (codeLines, lang) => {
-  if (codeLines.length === 0) return "";
-
-  // For plain text blocks, read them verbatim line by line
-  if (lang === 'text' || lang === 'plaintext' || lang === 'txt' || !lang) {
-    return codeLines.join('. ') + '.';
-  }
-  
-  const cleanLines = [];
-  
-  for (let line of codeLines) {
-    let cleanLine = line.trim();
-    
-    // Skip empty or simple bracket lines
-    if (!cleanLine || cleanLine === '{' || cleanLine === '}' || cleanLine === '(' || cleanLine === ')') {
-      continue;
-    }
-    
-    // Ignore imports/package statements
-    if (cleanLine.startsWith('import ') || cleanLine.startsWith('package ')) {
-      continue;
-    }
-    
-    // Clean up typical programming syntax to read naturally
-    cleanLine = cleanLine
-      .replace(/[{};()]/g, ' ')                                  // Omit braces, semicolons, parentheses
-      .replace(/\/\//g, 'Comentário: ')                          // Read double slash comments
-      .replace(/\/\*.*?\*\//g, '')                               // Remove multiline comments
-      .replace(/==/g, ' igual a ')
-      .replace(/!=/g, ' diferente de ')
-      .replace(/&&/g, ' e ')
-      .replace(/\|\|/g, ' ou ')
-      .replace(/<=/g, ' menor ou igual a ')
-      .replace(/>=/g, ' maior ou igual a ')
-      .replace(/\bSystem\.out\.println\b/gi, 'escrever na tela') // Convert java print to natural statement
-      .replace(/\bpublic class\b/gi, 'classe pública')
-      .replace(/\bpublic static void main\b/gi, 'método principal main')
-      .replace(/\bprivate\b/gi, 'privado')
-      .replace(/\bpublic\b/gi, 'público')
-      .replace(/\bvoid\b/gi, 'sem retorno void')
-      .replace(/\bString\[\] args\b/gi, 'argumentos')
-      .replace(/\s+/g, ' ');                                     // Collapse spaces
-
-    if (cleanLine.trim()) {
-      cleanLines.push(cleanLine.trim());
-    }
-  }
-
-  if (cleanLines.length === 0) return "";
-  
-  // Format based on type
-  if (lang === 'powershell' || lang === 'bash' || lang === 'cmd' || lang === 'shell') {
-    return `Executar comando: ${cleanLines.join('. ')}.`;
-  }
-  
-  return `Trecho de código ${lang}: ${cleanLines.join('. ')}.`;
-};
-
-// Helper function to split text into short natural chunks (around 150-200 chars)
-const chunkTextForSpeech = (text) => {
-  if (!text) return [];
-  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) || [text];
-  const chunks = [];
-  let currentChunk = "";
-  
-  for (let i = 0; i < sentences.length; i++) {
-    const sentence = sentences[i];
-    if (sentence.length > 200) {
-      if (currentChunk) {
-        chunks.push(currentChunk.trim());
-        currentChunk = "";
-      }
-      const subParts = sentence.split(/[,;]/);
-      for (let part of subParts) {
-        if ((currentChunk + part).length > 200) {
-          if (currentChunk) chunks.push(currentChunk.trim());
-          currentChunk = part;
-        } else {
-          currentChunk += (currentChunk ? ", " : "") + part;
-        }
-      }
-    } else if ((currentChunk + sentence).length > 200) {
-      if (currentChunk) chunks.push(currentChunk.trim());
-      currentChunk = sentence;
-    } else {
-      currentChunk += sentence;
-    }
-  }
-  if (currentChunk) chunks.push(currentChunk.trim());
-  return chunks.filter(c => c.length > 0);
-};
-
-const DynamicTTSPlayer = ({ text }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [rate, setRate] = useState(1.0); // Speech speed
-  const [voices, setVoices] = useState([]);
-  const [selectedVoiceName, setSelectedVoiceName] = useState('');
-  
-  const synthRef = useRef(window.speechSynthesis);
-  const utteranceRef = useRef(null);
-  
-  // Refs to manage speaking queue without stale React state
-  const chunksRef = useRef([]);
-  const currentChunkIdxRef = useRef(0);
-  const isPlayingRef = useRef(false);
-  const rateRef = useRef(1.0);
-  const selectedVoiceNameRef = useRef('');
-  const isChangingSettingsRef = useRef(false);
-
-  // Keep refs in sync with state
-  useEffect(() => { isPlayingRef.current = isPlaying; }, [isPlaying]);
-  useEffect(() => { rateRef.current = rate; }, [rate]);
-  useEffect(() => { selectedVoiceNameRef.current = selectedVoiceName; }, [selectedVoiceName]);
-
-  const updateVoices = () => {
-    if (!synthRef.current) return;
-    const allVoices = synthRef.current.getVoices();
-    const ptVoices = allVoices.filter(v => v.lang.toLowerCase().startsWith('pt'));
-    setVoices(ptVoices);
-    
-    if (ptVoices.length > 0 && !selectedVoiceNameRef.current) {
-      const bestVoice = ptVoices.find(v => 
-        v.name.toLowerCase().includes('google') || 
-        v.name.toLowerCase().includes('online') || 
-        v.name.toLowerCase().includes('natural')
-      ) || ptVoices[0];
-      setSelectedVoiceName(bestVoice.name);
-    }
-  };
-
-  useEffect(() => {
-    updateVoices();
-    if (synthRef.current) {
-      synthRef.current.onvoiceschanged = updateVoices;
-    }
-    return () => {
-      if (synthRef.current) {
-        synthRef.current.cancel();
-      }
-    };
-  }, [text]); // Re-init when text changes (new topic step)
-
-  const speakCurrentChunk = () => {
-    if (!synthRef.current || chunksRef.current.length === 0) return;
-
-    const idx = currentChunkIdxRef.current;
-    if (idx >= chunksRef.current.length) {
-      // Clear last highlight
-      const prevActive = document.querySelector('.speaking-highlight');
-      if (prevActive) prevActive.classList.remove('speaking-highlight');
-
-      setIsPlaying(false);
-      setIsPaused(false);
-      return;
-    }
-
-    const { element, text: chunk } = chunksRef.current[idx];
-
-    // Manage DOM highlighting and scrolling
-    if (element) {
-      // Clear previous highlight
-      const prevActive = document.querySelector('.speaking-highlight');
-      if (prevActive && prevActive !== element) {
-        prevActive.classList.remove('speaking-highlight');
-      }
-
-      // Add current highlight
-      element.classList.add('speaking-highlight');
-
-      // Scroll element to center of container smoothly
-      const scrollContainer = document.querySelector('.content-scroll-area');
-      if (scrollContainer) {
-        const containerHeight = scrollContainer.clientHeight;
-        const elementTop = element.offsetTop;
-        const elementHeight = element.clientHeight;
-        
-        const targetScroll = elementTop - (containerHeight / 2) + (elementHeight / 2);
-        
-        scrollContainer.scrollTo({
-          top: Math.max(0, targetScroll),
-          behavior: 'smooth'
-        });
-      }
-    }
-
-    const utterance = new SpeechSynthesisUtterance(chunk);
-    
-    const activeVoice = voices.find(v => v.name === selectedVoiceNameRef.current);
-    if (activeVoice) {
-      utterance.voice = activeVoice;
-    }
-    
-    utterance.rate = rateRef.current;
-    utterance.lang = activeVoice ? activeVoice.lang : 'pt-BR';
-
-    utterance.onend = () => {
-      if (isChangingSettingsRef.current) return;
-      
-      if (isPlayingRef.current) {
-        currentChunkIdxRef.current += 1;
-        speakCurrentChunk();
-      }
-    };
-
-    utterance.onerror = (e) => {
-      if (isChangingSettingsRef.current) return;
-      
-      if (e.error !== 'interrupted') {
-        console.error("SpeechSynthesis utterance error:", e);
-        handleStop();
-      }
-    };
-
-    utteranceRef.current = utterance;
-    synthRef.current.speak(utterance);
-  };
-
-  const handlePlay = () => {
-    if (!synthRef.current) return;
-
-    if (isPaused) {
-      synthRef.current.resume();
-      setIsPlaying(true);
-      setIsPaused(false);
-      return;
-    }
-
-    synthRef.current.cancel();
-
-    const speakableElements = Array.from(
-      document.querySelectorAll(
-        '.markdown-viewer h1, .markdown-viewer h2, .markdown-viewer h3, .markdown-viewer h4, .markdown-viewer p, .markdown-viewer li, .markdown-viewer pre'
-      )
-    ).filter(el => {
-      if (el.tagName === 'P' && el.closest('li')) return false;
-      return true;
-    });
-
-    const queue = [];
-    for (let el of speakableElements) {
-      let rawText = "";
-      
-      if (el.tagName === 'PRE') {
-        const codeEl = el.querySelector('code');
-        const codeText = codeEl ? codeEl.innerText : el.innerText;
-        const className = codeEl ? codeEl.className : '';
-        const match = /language-(\w+)/.exec(className);
-        const lang = match ? match[1] : 'código';
-        rawText = cleanCodeForSpeech(codeText.split('\n'), lang);
-      } else {
-        let textVal = el.innerText.trim();
-        if (!textVal) continue;
-        
-        if (el.tagName.startsWith('H')) {
-          rawText = `Tópico: ${textVal}.`;
-        } else if (el.tagName === 'LI') {
-          rawText = `Item: ${textVal}.`;
-        } else {
-          rawText = textVal;
-        }
-      }
-
-      if (rawText) {
-        const sentences = chunkTextForSpeech(rawText);
-        for (let sentence of sentences) {
-          queue.push({
-            element: el,
-            text: sentence
-          });
-        }
-      }
-    }
-
-    chunksRef.current = queue;
-    currentChunkIdxRef.current = 0;
-
-    if (chunksRef.current.length > 0) {
-      setIsPlaying(true);
-      setIsPaused(false);
-      setTimeout(() => {
-        speakCurrentChunk();
-      }, 50);
-    }
-  };
-
-  const handlePause = () => {
-    if (synthRef.current && isPlaying) {
-      synthRef.current.pause();
-      setIsPlaying(false);
-      setIsPaused(true);
-    }
-  };
-
-  const handleStop = () => {
-    if (synthRef.current) {
-      synthRef.current.cancel();
-      
-      const prevActive = document.querySelector('.speaking-highlight');
-      if (prevActive) prevActive.classList.remove('speaking-highlight');
-
-      setIsPlaying(false);
-      setIsPaused(false);
-      currentChunkIdxRef.current = 0;
-    }
-  };
-
-  const changeSettingsAndRestart = (newRate, newVoiceName) => {
-    if (!synthRef.current) return;
-    
-    isChangingSettingsRef.current = true;
-    synthRef.current.cancel();
-    
-    setTimeout(() => {
-      isChangingSettingsRef.current = false;
-      if (isPlayingRef.current || isPaused) {
-        speakCurrentChunk();
-      }
-    }, 100);
-  };
-
-  const handleSpeedChange = (newRate) => {
-    setRate(newRate);
-    if (isPlaying || isPaused) {
-      changeSettingsAndRestart(newRate, selectedVoiceName);
-    }
-  };
-
-  const handleVoiceChange = (newVoiceName) => {
-    setSelectedVoiceName(newVoiceName);
-    if (isPlaying || isPaused) {
-      changeSettingsAndRestart(rate, newVoiceName);
-    }
-  };
-
-  const formatVoiceName = (name) => {
-    let cleanName = name.replace('Microsoft ', '').replace(' Desktop', '');
-    if (name.toLowerCase().includes('google') || name.toLowerCase().includes('online') || name.toLowerCase().includes('natural')) {
-      return `${cleanName} (Natural/Online)`;
-    }
-    return cleanName;
-  };
-
-  return (
-    <div className="custom-audio-player tts-player">
-      <div className="audio-player-icon">
-        <Volume2 size={24} />
-      </div>
-      <div className="audio-player-content">
-        <h4 className="audio-title">Assistente de Voz (Leitura da Aula)</h4>
-        <div className="audio-controls">
-          {!isPlaying ? (
-            <button onClick={handlePlay} className="play-pause-btn" title="Ouvir">
-              <Play size={18} className="play-icon-fix" />
-            </button>
-          ) : (
-            <button onClick={handlePause} className="play-pause-btn" title="Pausar">
-              <Pause size={18} />
-            </button>
-          )}
-          
-          {(isPlaying || isPaused) && (
-            <button onClick={handleStop} className="stop-btn" title="Parar">
-              <Square size={16} />
-            </button>
-          )}
-
-          {voices.length > 1 && (
-            <div className="voice-control">
-              <span className="control-label">Voz:</span>
-              <select 
-                value={selectedVoiceName} 
-                onChange={(e) => handleVoiceChange(e.target.value)}
-                className="control-select"
-              >
-                {voices.map(v => (
-                  <option key={v.name} value={v.name}>
-                    {formatVoiceName(v.name)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          <div className="speed-control">
-            <span className="control-label">Velocidade:</span>
-            <select 
-              value={rate} 
-              onChange={(e) => handleSpeedChange(parseFloat(e.target.value))}
-              className="control-select"
-            >
-              <option value="0.8">0.8x</option>
-              <option value="1.0">1.0x (Normal)</option>
-              <option value="1.2">1.2x</option>
-              <option value="1.5">1.5x</option>
-              <option value="1.8">1.8x</option>
-            </select>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -499,7 +94,94 @@ const parseMarkdownIntoSections = (markdown) => {
   return { mainTitle, sections };
 };
 
-const MarkdownViewer = ({ 
+const isComplementHeading = (title) => {
+  return /^(material complementar|complementos|registro r[aá]pido|perguntas? de revis[aã]o|perguntas?|simulado|gabarito|desafio extra|desafios? opcionais?|exerc[ií]cios complementares|checklist da aula|checkpoint final|crit[eé]rios? de aceite|crit[eé]rio de conclus[aã]o|anota[cç][oõ]es|relat[oó]rio|material de apoio)/i.test(title) ||
+    /\b(simulado|gabarito|desafio extra|perguntas de revis[aã]o|registro r[aá]pido|material complementar)\b/i.test(title);
+};
+
+const isMainResumeHeading = (title) => {
+  return /^(commit recomendado|fechamento|fechamento da aula|exerc[ií]cio pr[aá]tico principal|atividade guiada|m[aã]o na massa guiada|laborat[oó]rio guiado)/i.test(title);
+};
+
+const splitLessonContent = (rawMarkdown) => {
+  const lines = rawMarkdown.split(/\r?\n/);
+  const explicitIndex = lines.findIndex(line => /^#{1,2}\s+Material complementar\s*$/i.test(line.trim()));
+
+  if (explicitIndex !== -1) {
+    return {
+      main: lines.slice(0, explicitIndex).join('\n').trim(),
+      complement: lines.slice(explicitIndex + 1).join('\n').trim()
+    };
+  }
+
+  const main = [];
+  const complement = [];
+  let target = 'main';
+  let complementLevel = Number.POSITIVE_INFINITY;
+  let inFence = false;
+
+  for (const line of lines) {
+    if (line.trim().startsWith('```')) {
+      (target === 'complement' ? complement : main).push(line);
+      inFence = !inFence;
+      continue;
+    }
+
+    if (!inFence) {
+      const heading = line.match(/^(#{1,6})\s+(.+)$/);
+      if (heading) {
+        const level = heading[1].length;
+        const title = heading[2].trim();
+
+        if (isComplementHeading(title)) {
+          target = 'complement';
+          complementLevel = level;
+        } else if (isMainResumeHeading(title) || (target === 'complement' && level <= complementLevel)) {
+          target = 'main';
+          complementLevel = Number.POSITIVE_INFINITY;
+        }
+      }
+    }
+
+    (target === 'complement' ? complement : main).push(line);
+  }
+
+  return {
+    main: main.join('\n').trim(),
+    complement: complement.join('\n').trim()
+  };
+};
+
+const MarkdownSections = ({ sections }) => (
+  <>
+    {sections.map((sec, idx) => (
+      <div key={`${sec.title}-${idx}`} className="continuous-section-wrapper">
+        {idx > 0 && sec.title && <h2 className="section-step-title">{sec.title}</h2>}
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            code({ inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline && match ? (
+                <CodeBlockWithCopy match={match} className={className} {...props}>
+                  {children}
+                </CodeBlockWithCopy>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            }
+          }}
+        >
+          {sec.content}
+        </ReactMarkdown>
+      </div>
+    ))}
+  </>
+);
+
+const LegacyMarkdownViewer = ({ 
   lesson, 
   isCompleted, 
   onToggleCompleted,
@@ -834,8 +516,6 @@ const MarkdownViewer = ({
           <div className="markdown-viewer">
             {isContinuousMode ? (
               <>
-                {/* Voice player reads entire lesson */}
-                <DynamicTTSPlayer text={fullLessonText} />
                 {sections.map((sec, idx) => (
                   <div key={idx} className="continuous-section-wrapper">
                     {idx > 0 && sec.title && <h2 className="section-step-title">{sec.title}</h2>}
@@ -862,9 +542,6 @@ const MarkdownViewer = ({
             ) : (
               activeSection && (
                 <>
-                  {/* Voice player reads active section text */}
-                  <DynamicTTSPlayer text={activeSection.content} />
-                  
                   {/* Section Title as a H2 */}
                   {currentSectionIdx > 0 && <h2 className="section-step-title">{activeSection.title}</h2>}
                   
@@ -958,4 +635,338 @@ const MarkdownViewer = ({
   );
 };
 
-export default MarkdownViewer;
+void LegacyMarkdownViewer;
+
+const MarkdownViewerV2 = ({
+  lesson,
+  isCompleted,
+  onToggleCompleted,
+  onNextLesson,
+  onPrevLesson,
+  hasNextLesson,
+  hasPrevLesson
+}) => {
+  const [parsedData, setParsedData] = useState({ mainTitle: '', sections: [] });
+  const [complementData, setComplementData] = useState({ mainTitle: 'Material complementar', sections: [] });
+  const [hasComplement, setHasComplement] = useState(false);
+  const [activeContentTab, setActiveContentTab] = useState('lesson');
+  const [loading, setLoading] = useState(false);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [scrollSpeed, setScrollSpeed] = useState(1.0);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const scrollIntervalRef = useRef(null);
+
+  const resetContentScroll = () => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    if (scrollContainer) {
+      scrollContainer.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  };
+
+  const changeContentTab = (tab) => {
+    setActiveContentTab(tab);
+    setIsAutoScrolling(false);
+    setTimeout(resetContentScroll, 0);
+  };
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      setShowStickyHeader(scrollContainer.scrollTop > 180);
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isAutoScrolling) {
+      const scrollContainer = document.querySelector('.content-scroll-area');
+      if (!scrollContainer) return undefined;
+
+      const delay = Math.round(35 / (scrollSpeed || 1.0));
+      scrollIntervalRef.current = setInterval(() => {
+        const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        if (scrollContainer.scrollTop >= maxScroll - 2) {
+          setIsAutoScrolling(false);
+        } else {
+          scrollContainer.scrollTop += 1;
+        }
+      }, delay);
+    } else if (scrollIntervalRef.current) {
+      clearInterval(scrollIntervalRef.current);
+    }
+
+    return () => {
+      if (scrollIntervalRef.current) {
+        clearInterval(scrollIntervalRef.current);
+      }
+    };
+  }, [isAutoScrolling, scrollSpeed]);
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    if (!scrollContainer) return undefined;
+
+    if (isAutoScrolling) {
+      scrollContainer.classList.add('autoscrolling-active');
+    } else {
+      scrollContainer.classList.remove('autoscrolling-active');
+    }
+
+    return () => {
+      scrollContainer.classList.remove('autoscrolling-active');
+    };
+  }, [isAutoScrolling]);
+
+  useEffect(() => {
+    if (!loading && parsedData.mainTitle) {
+      resetContentScroll();
+      const timer = setTimeout(resetContentScroll, 60);
+      return () => clearTimeout(timer);
+    }
+    return undefined;
+  }, [loading, parsedData.mainTitle, activeContentTab]);
+
+  useEffect(() => {
+    if (!lesson) {
+      setParsedData({ mainTitle: '', sections: [] });
+      setComplementData({ mainTitle: 'Material complementar', sections: [] });
+      setHasComplement(false);
+      return;
+    }
+
+    setLoading(true);
+    setActiveContentTab('lesson');
+    setIsAutoScrolling(false);
+    resetContentScroll();
+
+    lesson.loadContent().then((text) => {
+      const split = splitLessonContent(text);
+      const complementMarkdown = split.complement.trim();
+
+      setParsedData(parseMarkdownIntoSections(split.main || text));
+      setHasComplement(Boolean(complementMarkdown));
+      setComplementData(
+        complementMarkdown
+          ? parseMarkdownIntoSections(`# Material complementar\n\n${complementMarkdown}`)
+          : { mainTitle: 'Material complementar', sections: [] }
+      );
+      setLoading(false);
+    }).catch((err) => {
+      console.error("Failed to load lesson content", err);
+      setParsedData({ mainTitle: 'Erro', sections: [{ title: 'Erro', content: '### Erro ao carregar o conteúdo.' }] });
+      setComplementData({ mainTitle: 'Material complementar', sections: [] });
+      setHasComplement(false);
+      setLoading(false);
+    });
+  }, [lesson]);
+
+  if (!lesson) {
+    return (
+      <div className="empty-state">
+        <div className="empty-state-icon">📚</div>
+        <h2>Selecione uma aula</h2>
+        <p>Escolha um tópico no menu lateral para começar a estudar.</p>
+      </div>
+    );
+  }
+
+  const { mainTitle, sections } = parsedData;
+  const activeSections = activeContentTab === 'complement' ? complementData.sections : sections;
+  const activeText = activeSections.map(section => section.content).join('\n');
+
+  const getReadingTime = (text) => {
+    if (!text) return 1;
+    const words = text.split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(words / 180));
+  };
+
+  const activeTitle = activeContentTab === 'lesson'
+    ? mainTitle
+    : `${mainTitle} - Material complementar`;
+
+  const metaLabel = activeContentTab === 'lesson'
+    ? `Aula (${sections.length} tópicos)`
+    : (hasComplement ? `Complementar (${complementData.sections.length} tópicos)` : 'Complementar vazio');
+
+  return (
+    <div className="markdown-viewer-container">
+      {loading ? (
+        <div className="loader-container">
+          <div className="loader"></div>
+          <p>Carregando aula...</p>
+        </div>
+      ) : (
+        <>
+          {showStickyHeader && (
+            <div className="sticky-lesson-header">
+              <div className="sticky-header-left">
+                <span className="sticky-lesson-title">{activeTitle}</span>
+                <span className="sticky-lesson-step">{metaLabel}</span>
+              </div>
+
+              <div className="sticky-header-right">
+                <div className="auto-scroll-widget">
+                  <span className="widget-label">Rolagem Auto</span>
+                  <button
+                    className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
+                    onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                    title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                  >
+                    {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
+                  </button>
+                  <select
+                    value={scrollSpeed}
+                    onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
+                    className="auto-scroll-speed-select"
+                  >
+                    <option value={0.2}>0.2x</option>
+                    <option value={0.3}>0.3x</option>
+                    <option value={0.4}>0.4x</option>
+                    <option value={0.5}>0.5x</option>
+                    <option value={0.6}>0.6x</option>
+                    <option value={0.8}>0.8x</option>
+                    <option value={1.0}>1.0x</option>
+                    <option value={1.2}>1.2x</option>
+                    <option value={1.5}>1.5x</option>
+                    <option value={2.0}>2.0x</option>
+                  </select>
+                </div>
+
+                <div className={`sticky-status-badge ${isCompleted ? 'completed' : ''}`}>
+                  {isCompleted ? 'Concluída' : 'Lendo'}
+                </div>
+              </div>
+            </div>
+          )}
+
+          <header className="lesson-dashboard">
+            <h1 className="lesson-main-title">{mainTitle}</h1>
+            <div className="lesson-meta-bar">
+              <div className="meta-item">
+                <BookOpen size={16} />
+                <span>{metaLabel}</span>
+              </div>
+
+              <div className="meta-item">
+                <Clock size={16} />
+                <span>Leitura: ~{getReadingTime(activeText)} min</span>
+              </div>
+
+              <div className={`meta-status-badge ${isCompleted ? 'completed' : ''}`}>
+                {isCompleted ? 'Concluída' : 'Em Andamento'}
+              </div>
+
+              <div className="auto-scroll-widget">
+                <span className="widget-label">Rolagem Auto</span>
+                <button
+                  className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
+                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                >
+                  {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
+                </button>
+                <select
+                  value={scrollSpeed}
+                  onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
+                  className="auto-scroll-speed-select"
+                >
+                  <option value={0.2}>0.2x</option>
+                  <option value={0.3}>0.3x</option>
+                  <option value={0.4}>0.4x</option>
+                  <option value={0.5}>0.5x</option>
+                  <option value={0.6}>0.6x</option>
+                  <option value={0.8}>0.8x</option>
+                  <option value={1.0}>1.0x</option>
+                  <option value={1.2}>1.2x</option>
+                  <option value={1.5}>1.5x</option>
+                  <option value={2.0}>2.0x</option>
+                </select>
+              </div>
+
+              <div className="view-mode-toggle">
+                <button
+                  className={`view-mode-btn ${activeContentTab === 'lesson' ? 'active' : ''}`}
+                  onClick={() => changeContentTab('lesson')}
+                  title="Ver apenas a aula principal"
+                >
+                  <BookOpen size={13} />
+                  <span>Aula</span>
+                </button>
+                <button
+                  className={`view-mode-btn ${activeContentTab === 'complement' ? 'active' : ''}`}
+                  onClick={() => changeContentTab('complement')}
+                  title="Ver checklists, simulados, gabaritos e materiais de apoio"
+                >
+                  <ListChecks size={13} />
+                  <span>Complementar</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <div className="markdown-viewer">
+            {activeContentTab === 'lesson' && <MarkdownSections sections={sections} />}
+
+            {activeContentTab === 'complement' && (
+              hasComplement ? (
+                <MarkdownSections sections={complementData.sections} />
+              ) : (
+                <div className="lesson-empty-panel">
+                  <ListChecks size={34} />
+                  <h3>Nenhum material complementar separado nesta aula</h3>
+                  <p>Quando houver checklist, simulado, gabarito, perguntas, anotações ou desafios extras, eles aparecerão aqui sem interromper a aula principal.</p>
+                </div>
+              )
+            )}
+
+          </div>
+
+          <div className="lesson-footer-nav">
+            <button
+              onClick={onPrevLesson}
+              disabled={!hasPrevLesson}
+              className="nav-step-btn prev"
+              title="Aula Anterior"
+            >
+              <ChevronLeft size={18} />
+              <span>Aula Anterior</span>
+            </button>
+
+            <button
+              onClick={onToggleCompleted}
+              className="nav-step-btn next finish"
+              style={{ minWidth: '180px', justifyContent: 'center' }}
+            >
+              {isCompleted ? (
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <CheckCircle2 size={18} />
+                  Aula Concluída
+                </span>
+              ) : (
+                <span>Concluir Aula</span>
+              )}
+            </button>
+
+            <button
+              onClick={onNextLesson}
+              disabled={!hasNextLesson}
+              className="nav-step-btn next"
+              title="Próxima Aula"
+            >
+              <span>Próxima Aula</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default MarkdownViewerV2;
