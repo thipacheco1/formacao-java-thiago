@@ -1437,7 +1437,7 @@ body {
   .markdown-viewer p,
   .markdown-viewer li {
     font-size: 0.95rem !important;
-    line-height: 1.6 !important;
+    line-height: 1.48 !important;
   }
   
   /* Lesson Meta Bar adjustments */
@@ -5028,9 +5028,9 @@ body {
 .lesson-reading-scroll .lesson-dashboard {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 14px;
-  margin: 0 0 26px;
-  padding: 0 0 18px;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 0 0 14px;
   background: transparent;
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
@@ -5087,17 +5087,17 @@ body {
 }
 
 .lesson-reading-scroll .markdown-viewer {
-  padding-bottom: 50px;
+  padding-bottom: 32px;
 }
 
 .lesson-reading-scroll .continuous-section-wrapper {
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 }
 
 .lesson-reading-scroll .continuous-section-wrapper .section-step-title {
-  margin-top: 38px !important;
-  margin-bottom: 18px;
-  padding-top: 24px;
+  margin-top: 28px !important;
+  margin-bottom: 12px;
+  padding-top: 18px;
   border-top-color: rgba(255, 255, 255, 0.055);
 }
 
@@ -5112,33 +5112,46 @@ body {
 .lesson-reading-scroll .markdown-viewer li {
   max-width: 920px;
   color: #aebbd0;
-  font-size: 1.03rem;
-  line-height: 1.72;
+  font-size: 1rem;
+  line-height: 1.48;
 }
 
 .lesson-reading-scroll .markdown-viewer p {
-  margin-bottom: 0.95em;
+  margin-bottom: 0.48em;
+}
+
+.lesson-reading-scroll .markdown-viewer p + p {
+  margin-top: 0;
 }
 
 .lesson-reading-scroll .markdown-viewer ul,
 .lesson-reading-scroll .markdown-viewer ol {
   max-width: 920px;
-  margin-bottom: 1em;
+  margin-top: 0.35em;
+  margin-bottom: 0.7em;
+}
+
+.lesson-reading-scroll .markdown-viewer li {
+  margin-bottom: 0.18em;
 }
 
 .lesson-reading-scroll .markdown-viewer h2 {
   font-size: 1.45rem;
+  margin-top: 1.05em;
+  margin-bottom: 0.42em;
   letter-spacing: 0;
 }
 
 .lesson-reading-scroll .markdown-viewer h3 {
   font-size: 1.18rem;
+  margin-top: 0.95em;
+  margin-bottom: 0.35em;
   letter-spacing: 0;
 }
 
 .lesson-reading-scroll .markdown-viewer blockquote {
   max-width: 940px;
-  margin: 1.2em 0;
+  margin: 0.85em 0;
   background: rgba(99, 102, 241, 0.045);
   border-left-width: 3px;
 }
@@ -5149,7 +5162,7 @@ body {
 
 .lesson-reading-scroll .code-block-window {
   max-width: 100%;
-  margin: 1.05em 0 1.35em;
+  margin: 0.75em 0 0.95em;
   border-radius: 8px;
   background: rgba(8, 10, 14, 0.88);
   border-color: rgba(255, 255, 255, 0.055);
@@ -5182,13 +5195,13 @@ body {
 }
 
 .lesson-reading-scroll .code-block-highlighter {
-  padding: 1.05em 1.2em !important;
-  font-size: 0.92rem !important;
-  line-height: 1.65 !important;
+  padding: 0.85em 1em !important;
+  font-size: 0.9rem !important;
+  line-height: 1.42 !important;
 }
 
 .lesson-reading-scroll .lesson-footer-nav {
-  margin: 32px 0 64px;
+  margin: 24px 0 42px;
 }
 
 .lesson-reading-scroll .sticky-lesson-header {
@@ -5236,7 +5249,12 @@ body {
 
   .lesson-reading-scroll .markdown-viewer p,
   .lesson-reading-scroll .markdown-viewer li {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
+    line-height: 1.45 !important;
+  }
+
+  .lesson-reading-scroll .markdown-viewer p {
+    margin-bottom: 0.42em;
   }
 
   .lesson-reading-scroll .sticky-lesson-header {
@@ -5267,16 +5285,16 @@ body {
   }
 
   .lesson-reading-scroll .lesson-dashboard {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   .lesson-reading-scroll .continuous-section-wrapper {
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
 
   .lesson-reading-scroll .continuous-section-wrapper .section-step-title {
-    margin-top: 28px !important;
-    padding-top: 20px;
+    margin-top: 22px !important;
+    padding-top: 15px;
   }
 
   .lesson-reading-scroll .code-block-window {
@@ -5285,12 +5303,13 @@ body {
   }
 
   .lesson-reading-scroll .code-block-highlighter {
-    padding: 0.85em 0.95em !important;
-    font-size: 0.84rem !important;
+    padding: 0.72em 0.85em !important;
+    font-size: 0.82rem !important;
+    line-height: 1.38 !important;
   }
 
   .lesson-reading-scroll .lesson-footer-nav {
-    margin-bottom: 44px !important;
+    margin-bottom: 34px !important;
   }
 
   .lesson-reading-scroll .sticky-lesson-header {
