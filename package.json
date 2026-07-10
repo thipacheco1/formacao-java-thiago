@@ -1,0 +1,8 @@
+{
+  "name": "formacao-java-thiago-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "plataforma-curso"
+  ]
+}
