@@ -158,7 +158,9 @@ criterios de aceite.
 
 ## Regra para as proximas aulas
 
-A partir da aula 261, gerar no formato V2.
+A partir da aula 271, gerar no formato V2.
+
+As aulas 261 a 270 ja foram geradas e nao devem ser reescritas apenas por causa desta regra. A V2 controla a continuidade nova e revisoes editoriais planejadas.
 
 Nao deixar a aula rasa.
 
@@ -167,3 +169,13 @@ Nao transformar a aula em resumo.
 O objetivo e reduzir atrito, nao reduzir rigor.
 
 Cada aula ainda precisa formar mentalidade de Java Backend profissional, engenheiro e arquiteto.
+
+## Regra de espacamento e leitura
+
+Evitar transformar cada frase em um paragrafo isolado.
+
+Agrupar ideias relacionadas em paragrafos compactos, sem blocos gigantes.
+
+Usar listas quando elas deixarem a leitura mais objetiva.
+
+O objetivo e reduzir rolagem e cansaco visual sem cortar conteudo essencial.

@@ -644,7 +644,8 @@ const MarkdownViewerV2 = ({
   onNextLesson,
   onPrevLesson,
   hasNextLesson,
-  hasPrevLesson
+  hasPrevLesson,
+  isNavigationOverlayOpen = false
 }) => {
   const [parsedData, setParsedData] = useState({ mainTitle: '', sections: [] });
   const [complementData, setComplementData] = useState({ mainTitle: 'Material complementar', sections: [] });
@@ -722,6 +723,12 @@ const MarkdownViewerV2 = ({
       scrollContainer.classList.remove('autoscrolling-active');
     };
   }, [isAutoScrolling]);
+
+  useEffect(() => {
+    if (isNavigationOverlayOpen) {
+      setIsAutoScrolling(false);
+    }
+  }, [isNavigationOverlayOpen]);
 
   useEffect(() => {
     if (!loading && parsedData.mainTitle) {

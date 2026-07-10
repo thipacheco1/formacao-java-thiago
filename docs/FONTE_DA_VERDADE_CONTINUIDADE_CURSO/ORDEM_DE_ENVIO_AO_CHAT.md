@@ -1,69 +1,94 @@
-# Ordem de envio ao chat
+# Ordem de envio ao novo chat
 
-Esta e a sequencia dos arquivos que voce deve enviar ao novo chat para ele se atualizar e continuar a formacao Java Backend corretamente.
+Esta e a sequencia correta dos arquivos para atualizar um novo chat e continuar a formacao Java Backend a partir da aula 271.
 
-Envie apenas os arquivos desta pasta:
+Use esta pasta como pacote de contexto:
 
 ```text
 docs/FONTE_DA_VERDADE_CONTINUIDADE_CURSO
 ```
 
-## Sequencia recomendada
+## Sequencia obrigatoria
+
+Envie nesta ordem:
 
 1. `ORDEM_DE_ENVIO_AO_CHAT.md`
 
-   Este arquivo. Serve para o novo chat entender a ordem de leitura.
+   Este arquivo. Ele diz ao novo chat em que ordem ler o pacote.
 
 2. `LEIA_PRIMEIRO_FONTE_DA_VERDADE.md`
 
-   Explica o que e a fonte da verdade, o estado validado do curso e as regras que nao podem ser quebradas.
+   Define o estado atual validado: aulas reais de `000` a `270`, M11 concluido e proxima aula `271`.
 
 3. `PROMPT_MESTRE_CONTINUAR_CURSO_JAVA.md`
 
-   Prompt principal para colar no novo chat. Define o ponto exato de retomada e a proxima aula.
+   Prompt principal para colar no novo chat. Ele explica o ponto exato de retomada, a aula 271 e as regras que nao podem ser quebradas.
 
 4. `ROTEIRO_OPERACIONAL_RECONSTRUIDO_COMPLETO.md`
 
-   Explica o roteiro completo, os modulos, o que ja foi feito e o que ainda falta fazer.
+   Roteiro macro e operacional do curso inteiro, incluindo o que ja foi feito e o que ainda falta ate o nivel engenheiro/arquiteto.
 
-5. `GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA.csv`
+5. `GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_270.csv`
 
-   Grade operacional reconstruida de `000` a `720`, com status, modulo, titulo, arquivo e regra de continuidade.
+   Grade operacional atualizada. Esta e a CSV correta para continuar agora. Ela marca `000` a `270` como aulas ja geradas e deixa `271` como a proxima aula planejada.
 
-6. `ANALISE_GRADES_E_ROTEIRO_CONTINUIDADE_POS_259.md`
+6. `270_M11_26_FECHAMENTO_DO_M11_E_TRANSICAO_PARA_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_OFICIAL.md`
 
-   Auditoria das grades antigas e justificativa de por que a nova fonte da verdade deve ser seguida.
+   Ultima aula real gerada. Ela fecha oficialmente o M11 e faz a ponte direta para o M12.
 
-7. `259_M11_15_DOCKER_JAVA_BACKEND_CONTAINERS_IMAGENS_DOCKERFILE_COMPOSE_OFICIAL.md`
+7. `REVISAO_EDITORIAL_V2/PADRAO_EDITORIAL_AULA_V2.md`
 
-   Ultima aula real gerada. Ela faz a ponte direta para a aula `260`.
+   Novo padrao editorial: aula principal mais focada, pratica e estudavel, com material complementar separado.
 
-8. `REVISAO_EDITORIAL_V2/PADRAO_EDITORIAL_AULA_V2.md`
+8. `ANALISE_GRADES_E_ROTEIRO_CONTINUIDADE_POS_259.md`
 
-   Define o novo formato editorial: aula principal mais objetiva e material complementar separado.
+   Auditoria historica das grades antigas. Use como contexto de decisao, nao como ponto atual de retomada.
 
-9. `REVISAO_EDITORIAL_V2/M0_PLANO_DE_REVISAO_EDITORIAL.md`
+## Arquivos historicos ou opcionais
 
-   Inicia a curadoria do Modulo 0 e mostra como separar AULA de MATERIAL COMPLEMENTAR sem perder conteudo.
+Estes arquivos podem continuar na pasta, mas nao definem mais o ponto atual:
 
-## O que pedir ao novo chat
+```text
+HISTORICO_GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATE_259.csv
+259_M11_15_DOCKER_JAVA_BACKEND_CONTAINERS_IMAGENS_DOCKERFILE_COMPOSE_OFICIAL.md
+REVISAO_EDITORIAL_V2/M0_PLANO_DE_REVISAO_EDITORIAL.md
+REVISAO_EDITORIAL_V2/M0_AUDITORIA_EDITORIAL.csv
+```
 
-Depois de enviar os arquivos acima, envie esta mensagem:
+Regra:
+
+```text
+Se houver divergencia entre arquivos historicos e os documentos atualizados pos-aula 270,
+vence a versao atualizada pos-aula 270.
+```
+
+## Mensagem para mandar ao novo chat
+
+Depois de anexar os arquivos, envie:
 
 ```text
 Leia os arquivos enviados na ordem indicada em ORDEM_DE_ENVIO_AO_CHAT.md.
 
 Use estes arquivos como fonte da verdade para continuar a formacao Java Backend.
 
-Use tambem o Padrao Editorial Aula V2 para gerar as proximas aulas com menos repeticao e mais foco em pratica, sem perder profundidade.
+Estado atual obrigatorio:
+- as aulas reais ja geradas vao de 000 ate 270;
+- a aula 270 fecha oficialmente o M11;
+- a proxima aula e a 271;
+- a aula 271 inicia o M12: SQL, PostgreSQL e modelagem relacional;
+- nao reescreva aulas antigas;
+- nao renumere arquivos;
+- nao mude nomes de modulos;
+- nao pule assuntos;
+- nao avance para JDBC, JPA, Hibernate, Spring Boot ou APIs REST ainda.
 
-Nao reescreva aulas antigas.
-Nao renumere arquivos.
-Nao mude nomes de modulos.
-Nao pule assuntos.
-Nao avance para Spring Boot ainda.
-
-Continue somente a partir da aula 260.
+Use o Padrao Editorial Aula V2:
+- aula principal com foco em aprender, executar, entender e commitar;
+- material complementar separado no final;
+- sem checklists gigantes na aula principal;
+- sem simulado longo em toda aula;
+- sem excesso de paragrafos de uma linha;
+- sem perder profundidade tecnica.
 
 Antes de gerar a aula, confirme:
 1. qual e o ultimo arquivo valido;
@@ -72,17 +97,21 @@ Antes de gerar a aula, confirme:
 4. qual e o tema da proxima aula;
 5. quais regras voce nao pode quebrar.
 
-Depois aguarde meu comando GERAR_AULA_260.
+Depois aguarde meu comando GERAR_AULA_271.
 ```
 
 ## Proxima aula correta
 
 ```text
-260_M11_16_DOCKER_COMPOSE_PROFISSIONAL_POSTGRESQL_REDIS_REDES_VOLUMES_HEALTHCHECK_AMBIENTE_LOCAL_BACKEND_OFICIAL.md
-```
+Arquivo:
+271_M12_01_INTRODUCAO_AO_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_PARA_JAVA_BACKEND_OFICIAL.md
 
-Titulo:
+H1:
+# 271 - M12.01 - Introducao ao SQL, PostgreSQL e modelagem relacional para Java Backend
 
-```text
-# 260 - M11.16 - Docker Compose profissional com PostgreSQL, Redis, redes, volumes, healthcheck e ambiente local de backend
+Modulo:
+M12 - SQL, PostgreSQL e modelagem relacional
+
+Laboratorio recomendado:
+labs/m12/aula-271-introducao-sql-postgresql-modelagem-relacional
 ```

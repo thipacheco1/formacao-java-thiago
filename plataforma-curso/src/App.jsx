@@ -325,6 +325,7 @@ function App() {
                   onPrevLesson={goToPrevLesson}
                   hasNextLesson={hasNextLesson}
                   hasPrevLesson={hasPrevLesson}
+                  isNavigationOverlayOpen={isMobileSidebarOpen}
                 />
               ) : (
                 <WelcomeView 
