@@ -932,18 +932,18 @@ select {
   position: absolute;
   z-index: 4;
   display: flex;
-  min-width: 112px;
-  min-height: 42px;
-  padding: 5px 9px 5px 5px;
+  flex-direction: column;
   align-items: center;
-  gap: 7px;
+  width: 82px;
+  padding: 12px 4px;
+  gap: 8px;
   color: #dfe8fb;
-  background: rgba(9, 18, 35, 0.76);
+  background: rgba(9, 18, 35, 0.72);
   border: 1px solid rgba(163, 190, 248, 0.22);
-  border-radius: 999px;
+  border-radius: 12px;
   box-shadow: 0 10px 22px rgba(2, 8, 20, 0.24);
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   backdrop-filter: blur(9px);
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -954,32 +954,23 @@ select {
   background: rgba(30, 57, 108, 0.92);
   border-color: rgba(171, 201, 255, 0.62);
   box-shadow: 0 12px 27px rgba(3, 10, 25, 0.34), 0 0 24px rgba(99, 139, 232, 0.14);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-.constellation-phase-1 { top: 119px; left: 12px; }
-.constellation-phase-2 { top: 25px; left: 55px; }
-.constellation-phase-3 { top: 25px; right: 55px; flex-direction: row-reverse; padding: 5px 5px 5px 9px; }
-.constellation-phase-4 { top: 119px; right: 12px; flex-direction: row-reverse; padding: 5px 5px 5px 9px; }
-.constellation-phase-5 {
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+.constellation-phase-1 { left: 25px; top: 75px; }
+.constellation-phase-2 { left: 122px; top: 75px; }
+.constellation-phase-3 { left: 219px; top: 75px; }
+.constellation-phase-4 { left: 316px; top: 75px; }
+.constellation-phase-5 { left: 413px; top: 75px; }
+
+.constellation-phase-copy {
+  display: flex;
+  min-width: 0;
   flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  border-radius: 12px;
-}
-
-.constellation-phase-5 .constellation-phase-copy {
+  gap: 2px;
   align-items: center;
 }
 
-.constellation-phase-5:hover,
-.constellation-phase-5.is-active {
-  transform: translateX(-50%) translateY(-2px);
-}
 
 .constellation-planet {
   position: relative;
@@ -1047,24 +1038,24 @@ select {
   display: flex;
   min-width: 0;
   flex-direction: column;
-  gap: 1px;
+  gap: 1.5px;
+  align-items: center;
 }
 
 .constellation-phase-copy strong {
-  overflow: hidden;
   color: inherit;
-  font-size: 0.57rem;
+  font-size: 0.6rem;
   font-weight: 750;
   line-height: 1.2;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-align: center;
+  word-break: break-word;
 }
 
 .constellation-phase-copy small {
   color: #8297bd;
-  font-size: 0.45rem;
+  font-size: 0.48rem;
   font-weight: 650;
-  white-space: nowrap;
+  text-align: center;
 }
 
 .constellation-phase.is-active .constellation-phase-copy small {
