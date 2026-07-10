@@ -19,6 +19,7 @@
   <url><loc>https://formacao-java-thiago.vercel.app/modulos/ferramentas-java-backend</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/modulos/sql-postgresql-modelagem-de-dados</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/modulos/jdbc-jpa-hibernate-spring-data</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/spring-boot-api-rest</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/001-m0-01-mapa-da-formacao-completa-e-niveis-de-carreira-java</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/002-m0-02-diagnostico-inicial-tecnico-e-plano-de-estudo</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/003-m0-03-organizacao-do-windows-para-desenvolvimento</loc></url>
@@ -362,4 +363,17 @@
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/341-m13-31-paginacao-e-ordenacao-com-jpa</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/342-m13-32-lock-otimista</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/343-m13-33-lock-pessimista</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/344-m13-34-auditoria-createdat-updatedat-usuario</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/345-m13-35-spring-data-repository-conceitos</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/346-m13-36-queries-derivadas</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/347-m13-37-query-annotation-native-query-e-jpql</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/348-m13-38-transacoes-com-spring-data</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/349-m13-39-testes-de-repository-com-testcontainers</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/350-m13-40-migrations-integradas-com-persistencia</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/351-m13-41-projeto-persistencia-os-parte-1</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/352-m13-42-projeto-persistencia-os-parte-2</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/353-m13-43-revisao-tecnica-jdbc-jpa-hibernate-spring-data</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/354-m13-44-prova-pratica-persistencia</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/355-m13-45-fechamento-do-modulo-13-persistencia-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/356-m14-01-spring-boot-visao-geral</loc></url>
 </urlset>
