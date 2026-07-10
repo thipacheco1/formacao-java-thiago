@@ -1099,8 +1099,8 @@ select {
 
 .course-share-strip {
   display: flex;
-  width: min(1240px, calc(100% - 56px));
-  margin: 0 auto 18px;
+  width: 100%;
+  margin: 0 0 18px;
   padding: 14px 16px;
   align-items: center;
   justify-content: space-between;
@@ -1112,7 +1112,9 @@ select {
   border: 1px solid rgba(177, 197, 239, 0.15);
   border-radius: 16px;
   box-shadow: 0 15px 34px rgba(17, 27, 46, 0.14);
+  box-sizing: border-box;
 }
+
 
 .course-share-copy,
 .course-share-actions,
@@ -1213,7 +1215,6 @@ select {
 
 @media (max-width: 767px) {
   .course-share-strip {
-    width: calc(100% - 24px);
     margin-bottom: 12px;
     padding: 13px;
     border-radius: 14px;
