@@ -646,6 +646,7 @@ function App() {
                   completedLessons={completedLessons}
                   onSelectLesson={setSelectedLesson}
                   currentUser={currentUser}
+                  onLogout={handleLogout}
                   onOpenAuthModal={(lesson = null) => {
                     setPendingLesson(lesson);
                     setIsAuthModalOpen(true);

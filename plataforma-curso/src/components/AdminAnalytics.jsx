@@ -117,17 +117,19 @@ const RankedList = ({ items, labels = {}, emptyText, formatName = null }) => {
   );
 };
 
-const AdminAnalytics = () => {
+const AdminAnalytics = ({ onRelogin }) => {
   const [rangeDays, setRangeDays] = useState(30);
   const [analytics, setAnalytics] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
+  const [isSessionExpired, setIsSessionExpired] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const loadAnalytics = useCallback(async ({ quiet = false } = {}) => {
     if (quiet) setIsRefreshing(true);
     else setIsLoading(true);
     setLoadError('');
+    setIsSessionExpired(false);
 
     try {
       const response = await fetch(`/api/analytics?days=${rangeDays}`, {
@@ -138,7 +140,8 @@ const AdminAnalytics = () => {
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
         if (response.status === 401 || response.status === 403) {
-          throw new Error('Sua sessão administrativa expirou. Saia e entre novamente para ver os acessos.');
+          setIsSessionExpired(true);
+          throw new Error('O cookie de sessão administrativa não foi encontrado ou expirou.');
         }
         throw new Error(payload.error || `Não foi possível carregar os acessos (${response.status}).`);
       }
@@ -211,8 +214,25 @@ const AdminAnalytics = () => {
 
       {loadError ? (
         <div className="admin-empty-state admin-load-error" role="alert">
-          <p>{loadError}</p>
-          <button type="button" onClick={() => loadAnalytics()}>Tentar novamente</button>
+          {isSessionExpired ? (
+            <>
+              <p><strong>Sessão administrativa não encontrada.</strong></p>
+              <p style={{ marginTop: '6px', fontSize: '0.85rem', opacity: 0.8 }}>
+                Isso acontece quando você estava logado antes do sistema de sessão ser ativado.
+                Clique no botão abaixo para sair e entrar novamente — o cookie será criado automaticamente.
+              </p>
+              {onRelogin && (
+                <button type="button" onClick={onRelogin} style={{ marginTop: '12px' }}>
+                  Sair e entrar novamente
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <p>{loadError}</p>
+              <button type="button" onClick={() => loadAnalytics()}>Tentar novamente</button>
+            </>
+          )}
         </div>
       ) : isLoading && !analytics ? (
         <div className="admin-empty-state" role="status">

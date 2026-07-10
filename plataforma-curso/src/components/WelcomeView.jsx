@@ -85,7 +85,7 @@ const formatLessonDisplayTitle = (lesson) => {
     .replace(/(?:^|\s)\p{L}/gu, letter => letter.toLocaleUpperCase('pt-BR'));
 };
 
-const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, onOpenAuthModal }) => {
+const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, onOpenAuthModal, onLogout }) => {
   const availableCount = lessons.length;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const availableProgress = availableCount > 0
@@ -216,7 +216,12 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
       {currentTab === 'admin' && isAuthorizedAdmin ? (
         <AdminReport lessons={lessons} />
       ) : currentTab === 'analytics' && isAuthorizedAdmin ? (
-        <AdminAnalytics />
+        <AdminAnalytics
+          onRelogin={() => {
+            if (onLogout) onLogout();
+            window.setTimeout(() => onOpenAuthModal && onOpenAuthModal(), 80);
+          }}
+        />
       ) : (
         <>
           <section className="welcome-hero">
