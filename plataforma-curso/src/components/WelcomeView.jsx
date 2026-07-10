@@ -101,7 +101,7 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
 
   const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
   const hasEarnedCertificate = Boolean(
-    currentUser
+    isAuthorizedAdmin
     && completedCount >= COURSE_TOTAL_LESSONS
   );
   const showCertificateBanner = hasEarnedCertificate;

@@ -122,6 +122,27 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
     window.print();
   };
 
+  const handleAddToLinkedIn = () => {
+    const courseName = encodeURIComponent('Engenheiro Java Backend & Arquiteto de Sistemas');
+    const orgName = encodeURIComponent('Formação Java Backend — Thiago Rodrigues');
+    const certUrl = encodeURIComponent(`https://formacao-java-thiago.vercel.app/validar?codigo=${verificationCode}`);
+    const certId = encodeURIComponent(verificationCode);
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+    const url = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${courseName}&organizationName=${orgName}&certUrl=${certUrl}&certId=${certId}&issueYear=${year}&issueMonth=${month}`;
+    window.open(url, '_blank');
+  };
+
+  const handleSharePost = () => {
+    const shareText = encodeURIComponent(
+      `Conquista desbloqueada! 🎉 Acabei de concluir a Formação Java Backend & Arquiteto de Sistemas ministrada pelo instrutor Thiago Rodrigues. \n\nForam 500 horas de muito conteúdo prático abrangendo Java Core, SOLID, Design Patterns, Spring Boot APIs, banco de dados relacional, testes de integração com Testcontainers, segurança, DevOps com Docker e Kubernetes, mensageria com Kafka e modelagem com DDD.\n\nMais um grande passo rumo à especialização técnica! 🚀👨‍💻\n\nConfira a formação de forma gratuita em: https://formacao-java-thiago.vercel.app/`
+    );
+    const shareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${shareText}`;
+    window.open(shareUrl, '_blank');
+  };
+
   return (
     <div className="certificate-modal-overlay" role="presentation">
       <div
@@ -176,10 +197,22 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
             />
           </div>
           
-          <button type="button" className="print-action-btn" onClick={handlePrint}>
-            <Printer size={18} aria-hidden="true" />
-            <span>Imprimir / Salvar como PDF</span>
-          </button>
+          <div className="certificate-actions-row">
+            <button type="button" className="print-action-btn" onClick={handlePrint}>
+              <Printer size={18} aria-hidden="true" />
+              <span>Imprimir / Salvar como PDF</span>
+            </button>
+            <button type="button" className="linkedin-action-btn outline" onClick={handleAddToLinkedIn} title="Adicionar certificado ao seu perfil do LinkedIn">
+              <Award size={18} aria-hidden="true" />
+              <span>Adicionar ao LinkedIn</span>
+            </button>
+            <button type="button" className="linkedin-action-btn fill" onClick={handleSharePost} title="Compartilhar conquista na sua timeline do LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+              <span>Compartilhar Conquista</span>
+            </button>
+          </div>
         </div>
 
         {/* Printable Certificate Area */}

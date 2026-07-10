@@ -2865,6 +2865,48 @@ body {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
+.certificate-actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.linkedin-action-btn {
+  background: transparent;
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+}
+
+.linkedin-action-btn.fill {
+  background: #0077b5; /* LinkedIn Blue */
+  color: white;
+  border-color: #0077b5;
+}
+
+.linkedin-action-btn.fill:hover {
+  background: #005987;
+  border-color: #005987;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.25);
+}
+
+.linkedin-action-btn.outline:hover {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: var(--accent-color);
+  color: white;
+  transform: translateY(-1px);
+}
+
 /* Certificate Layout Details */
 .certificate-print-wrapper {
   padding: 24px;

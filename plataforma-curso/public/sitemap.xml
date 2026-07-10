@@ -344,4 +344,22 @@
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/323-m13-13-jpa-conceitos-fundamentais</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/324-m13-14-hibernate-como-implementacao-jpa</loc></url>
   <url><loc>https://formacao-java-thiago.vercel.app/aulas/325-m13-15-entity-id-generatedvalue-column</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/326-m13-16-embeddable-e-objetos-de-valor-persistidos</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/327-m13-17-entitymanager-persist-find-merge-remove</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/328-m13-18-ciclo-de-vida-da-entidade</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/329-m13-19-persistence-context-e-identidade</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/330-m13-20-dirty-checking</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/331-m13-21-flush-clear-detach-e-refresh</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/332-m13-22-relacionamento-manytoone</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/333-m13-23-relacionamento-onetomany</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/334-m13-24-manytomany-com-criterio</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/335-m13-25-cascade-orphanremoval-e-responsabilidade</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/336-m13-26-fetch-lazy-eager-e-proxy</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/337-m13-27-problema-n-mais-um</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/338-m13-28-jpql-select-join-fetch</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/339-m13-29-criteria-api-e-specifications</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/340-m13-30-projections-dto-interface-e-record</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/341-m13-31-paginacao-e-ordenacao-com-jpa</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/342-m13-32-lock-otimista</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/aulas/343-m13-33-lock-pessimista</loc></url>
 </urlset>
