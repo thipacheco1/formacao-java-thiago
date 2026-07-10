@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import CertificateModal from './CertificateModal';
 import AdminReport from './AdminReport';
+import AdminAnalytics from './AdminAnalytics';
 import BrandMark from './BrandMark';
+import CourseShare from './CourseShare';
 import {
   Activity,
   ArrowRight,
@@ -198,13 +200,23 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
             aria-pressed={currentTab === 'admin'}
           >
             <Shield size={16} />
-            <span>Relatório de alunos</span>
+            <span>Alunos</span>
+          </button>
+          <button
+            className={`admin-tab-btn ${currentTab === 'analytics' ? 'active' : ''}`}
+            onClick={() => setCurrentTab('analytics')}
+            aria-pressed={currentTab === 'analytics'}
+          >
+            <Activity size={16} />
+            <span>Acessos</span>
           </button>
         </div>
       )}
 
       {currentTab === 'admin' && isAuthorizedAdmin ? (
         <AdminReport lessons={lessons} />
+      ) : currentTab === 'analytics' && isAuthorizedAdmin ? (
+        <AdminAnalytics />
       ) : (
         <>
           <section className="welcome-hero">
@@ -331,6 +343,8 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
             </div>
           </section>
 
+          <CourseShare />
+
           <section className={`welcome-dashboard ${showCertificateBanner ? 'completed-dashboard' : ''}`}>
             <div className="dashboard-content">
               <div className="dashboard-left">
@@ -398,6 +412,10 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
                   Explore a jornada por fases. Cada etapa foi pensada para transformar conhecimento
                   em repertório técnico e segurança profissional.
                 </p>
+                <a className="public-curriculum-link" href="/trilhas">
+                  Conheça a grade pública do curso
+                  <ArrowRight size={14} aria-hidden="true" />
+                </a>
               </div>
               <div className="curriculum-summary-pill">
                 <Clock size={15} />

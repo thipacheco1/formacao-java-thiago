@@ -1,6 +1,18 @@
+const {
+  clearAdminSessionCookie,
+  isAdminEmail,
+  requireAdminSession,
+  setAdminSessionCookie
+} = require('./_lib/admin-session');
+
 module.exports = async function handler(req, res) {
   const kvUrl = process.env.KV_REST_API_URL;
   const kvToken = process.env.KV_REST_API_TOKEN;
+
+  if (req.method === 'POST' && req.body?.action === 'logout') {
+    clearAdminSessionCookie(req, res);
+    return res.status(200).json({ success: true });
+  }
 
   if (!kvUrl || !kvToken) {
     return res.status(500).json({ error: 'Database environment variables not configured (Vercel KV not connected)' });
@@ -37,6 +49,8 @@ module.exports = async function handler(req, res) {
     // GET: List all users
     // ----------------------------------------------------
     if (req.method === 'GET') {
+      if (!requireAdminSession(req, res)) return;
+
       const data = await runKvCommand(['HGETALL', 'users_hash']);
       const usersList = [];
       
@@ -76,10 +90,18 @@ module.exports = async function handler(req, res) {
           return res.status(401).json({ error: 'E-mail ou senha incorretos.' });
         }
 
+        if (isAdminEmail(cleanEmail)) {
+          setAdminSessionCookie(req, res, cleanEmail);
+        } else {
+          clearAdminSessionCookie(req, res);
+        }
+
         return res.status(200).json({ success: true, user: withoutPassword(user) });
       }
 
       if (action === 'delete') {
+        if (!requireAdminSession(req, res)) return;
+
         // Delete a user
         if (!email) {
           return res.status(400).json({ error: 'Email is required to delete user' });

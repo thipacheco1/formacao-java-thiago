@@ -40,47 +40,15 @@ const AdminReport = ({ lessons }) => {
     setLoadError('');
     setLoadWarning('');
 
-    const readLocalProgress = (email) => {
-      try {
-        const saved = localStorage.getItem(`completedLessons_${email.toLowerCase()}`);
-        if (!saved) return null;
-
-        const progress = JSON.parse(saved);
-        return progress && typeof progress === 'object' && !Array.isArray(progress)
-          ? progress
-          : null;
-      } catch (progressError) {
-        console.warn('Failed to read local progress for admin report', progressError);
-        return null;
-      }
-    };
-
-    const readLocalUsers = () => {
-      try {
-        const storedUsers = localStorage.getItem('users');
-        const parsedUsers = storedUsers ? JSON.parse(storedUsers) : [];
-        if (!Array.isArray(parsedUsers)) return [];
-
-        return parsedUsers.filter(user => user && typeof user === 'object').map(user => {
-          const { password, ...safeUser } = user;
-          void password;
-
-          return {
-            ...safeUser,
-            completedLessons: readLocalProgress(String(user.email || '')) || {},
-            progressLoadFailed: false
-          };
-        });
-      } catch (usersError) {
-        console.warn('Failed to read local users for admin report', usersError);
-        return [];
-      }
-    };
-
     try {
-      const res = await fetch('/api/users');
+      const res = await fetch('/api/users', {
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
       if (!res.ok) {
-        let message = `Falha ao carregar alunos (${res.status}).`;
+        let message = res.status === 401
+          ? 'Sua sessão administrativa expirou. Saia e entre novamente para atualizar o painel.'
+          : `Falha ao carregar alunos (${res.status}).`;
 
         try {
           const data = await res.json();
@@ -101,7 +69,10 @@ const AdminReport = ({ lessons }) => {
         const email = String(user.email || '');
 
         try {
-          const progressRes = await fetch(`/api/progress?email=${encodeURIComponent(email)}`);
+          const progressRes = await fetch(`/api/progress?email=${encodeURIComponent(email)}`, {
+            credentials: 'same-origin',
+            cache: 'no-store'
+          });
           if (!progressRes.ok) {
             throw new Error(`Falha ao carregar progresso (${progressRes.status}).`);
           }
@@ -119,19 +90,16 @@ const AdminReport = ({ lessons }) => {
           };
         } catch (progressError) {
           console.warn('Failed to load progress for an admin user', progressError);
-          const localProgress = readLocalProgress(email);
 
           return {
             ...user,
-            completedLessons: localProgress || {},
-            progressLoadFailed: localProgress === null,
-            progressFromLocalCache: localProgress !== null
+            completedLessons: {},
+            progressLoadFailed: true
           };
         }
       }));
 
       const unavailableProgressCount = usersWithProgress.filter(user => user.progressLoadFailed).length;
-      const localProgressCount = usersWithProgress.filter(user => user.progressFromLocalCache).length;
 
       setUsers(usersWithProgress);
 
@@ -141,22 +109,13 @@ const AdminReport = ({ lessons }) => {
             ? 'O progresso de 1 aluno não pôde ser carregado. Esse dado não entra nas métricas.'
             : `O progresso de ${unavailableProgressCount} alunos não pôde ser carregado. Esses dados não entram nas métricas.`
         );
-      } else if (localProgressCount > 0) {
-        setLoadWarning(
-          `Exibindo o progresso salvo neste navegador para ${localProgressCount} ${localProgressCount === 1 ? 'aluno' : 'alunos'}.`
-        );
       }
-    } catch (loadError) {
-      console.warn('Using local users fallback for admin report', loadError);
-      const usersWithLocalProgress = readLocalUsers();
-
-      if (usersWithLocalProgress.length > 0) {
-        setUsers(usersWithLocalProgress);
-        setLoadWarning('Não foi possível sincronizar com o servidor. Exibindo os dados salvos neste navegador.');
-      } else {
-        setUsers([]);
-        setLoadError('Não foi possível carregar os alunos. Verifique a conexão com o servidor e tente novamente.');
-      }
+    } catch (error) {
+      console.warn('Failed to load the central admin report', error);
+      setUsers([]);
+      setLoadError(
+        error?.message || 'Não foi possível carregar os alunos. Verifique a conexão com o servidor e tente novamente.'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -186,6 +145,7 @@ const AdminReport = ({ lessons }) => {
     try {
       const res = await fetch('/api/users', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'delete', email })
       });
@@ -198,37 +158,10 @@ const AdminReport = ({ lessons }) => {
       }
 
       const data = await res.json().catch(() => ({}));
-      if (data.error && data.error.includes('Database environment variables not configured')) {
-        throw new Error('KV_NOT_CONFIGURED');
-      }
       setActionFeedback({ type: 'error', message: data.error || 'Não foi possível remover o aluno.' });
     } catch (deleteError) {
-      console.warn('Removing user from local fallback only', deleteError);
-      try {
-        const storedUsers = localStorage.getItem('users');
-        const usersList = storedUsers ? JSON.parse(storedUsers) : [];
-        const hasLocalUsers = Array.isArray(usersList);
-
-        if (!hasLocalUsers) {
-          throw new Error('INVALID_LOCAL_USERS');
-        }
-
-        const updatedUsers = usersList.filter(user =>
-          String(user?.email || '').toLowerCase() !== email.toLowerCase()
-        );
-
-        localStorage.setItem('users', JSON.stringify(updatedUsers));
-        localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
-        setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
-        if (expandedUser === email) setExpandedUser(null);
-        setActionFeedback({
-          type: 'warning',
-          message: 'Aluno removido apenas dos dados locais. Não foi possível sincronizar com o servidor.'
-        });
-      } catch (localDeleteError) {
-        console.warn('Failed to remove local admin user', localDeleteError);
-        setActionFeedback({ type: 'error', message: 'Não foi possível remover o aluno. Tente novamente.' });
-      }
+      console.warn('Failed to remove the user from the central database', deleteError);
+      setActionFeedback({ type: 'error', message: 'Não foi possível remover o aluno. Tente novamente.' });
     } finally {
       setDeletingEmail(null);
       setPendingDeleteUser(null);

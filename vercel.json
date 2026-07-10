@@ -1,9 +1,22 @@
 {
   "framework": "vite",
+  "trailingSlash": false,
   "installCommand": "npm ci --prefix plataforma-curso",
   "buildCommand": "npm run build --prefix plataforma-curso",
   "outputDirectory": "plataforma-curso/dist",
   "rewrites": [
+    {
+      "source": "/trilhas",
+      "destination": "/trilhas/index.html"
+    },
+    {
+      "source": "/trilhas/:slug",
+      "destination": "/trilhas/:slug/index.html"
+    },
+    {
+      "source": "/modulos/:slug",
+      "destination": "/modulos/:slug/index.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

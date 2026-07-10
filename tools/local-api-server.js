@@ -38,6 +38,7 @@ loadEnvFile(path.join(rootDir, 'plataforma-curso', '.env.local'));
 const routes = {
   '/api/users': require(path.join(rootDir, 'api', 'users.js')),
   '/api/progress': require(path.join(rootDir, 'api', 'progress.js')),
+  '/api/analytics': require(path.join(rootDir, 'api', 'analytics.js')),
   '/api/send-email': require(path.join(rootDir, 'api', 'send-email.js'))
 };
 
@@ -74,6 +75,12 @@ function createResponse(res) {
       this.headers[name] = value;
       return this;
     },
+    get headersSent() {
+      return res.headersSent;
+    },
+    get writableEnded() {
+      return res.writableEnded;
+    },
     json(payload) {
       const body = JSON.stringify(payload);
       res.writeHead(this.statusCode, {
@@ -87,6 +94,11 @@ function createResponse(res) {
       const body = typeof payload === 'string' ? payload : String(payload);
       res.writeHead(this.statusCode, this.headers);
       res.end(body);
+      return this;
+    },
+    end(payload) {
+      if (!res.headersSent) res.writeHead(this.statusCode, this.headers);
+      res.end(payload);
       return this;
     }
   };

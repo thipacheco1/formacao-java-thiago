@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://formacao-java-thiago.vercel.app/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://formacao-java-thiago.vercel.app/</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/trilhas</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/trilhas/java-do-zero</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/trilhas/java-moderno-solid-design-patterns</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/trilhas/backend-java-spring-boot-banco-de-dados</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/ambiente-e-ferramentas-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/java-para-iniciantes</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/java-core</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/metodos-e-projetos-console-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/orientacao-a-objetos-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/collections-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/generics-e-optional-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/lambdas-e-streams-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/exceptions-io-date-time-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/solid-java</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/design-patterns-java-backend</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/ferramentas-java-backend</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/sql-postgresql-modelagem-de-dados</loc></url>
+  <url><loc>https://formacao-java-thiago.vercel.app/modulos/jdbc-jpa-hibernate-spring-data</loc></url>
 </urlset>

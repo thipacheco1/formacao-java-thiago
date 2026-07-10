@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { loadLessons } from './utils/lessonLoader';
 import Sidebar from './components/Sidebar';
 import MarkdownViewer from './components/MarkdownViewer';
 import WelcomeView from './components/WelcomeView';
 import AuthModal from './components/AuthModal';
 import { Menu, ChevronRight } from 'lucide-react';
+import { trackPageView, trackPresence } from './utils/analytics';
 
 const LEGACY_VISITOR_EMAIL = 'visitante@preview.local';
 const LEGACY_VISITOR_PROGRESS_KEY = 'completedLessons_visitor';
@@ -34,6 +35,16 @@ const getProgressStorageKey = (user) => (
   user?.email ? `completedLessons_${user.email.toLowerCase()}` : null
 );
 
+const normalizeProgress = (progress) => {
+  if (!progress || typeof progress !== 'object' || Array.isArray(progress)) return {};
+
+  return Object.fromEntries(
+    Object.entries(progress).filter(([lessonId, completed]) => (
+      completed === true && /^[A-Za-z0-9_.-]{1,220}$/.test(lessonId)
+    ))
+  );
+};
+
 const readStoredProgress = (user) => {
   const progressKey = getProgressStorageKey(user);
   if (!progressKey) return {};
@@ -41,10 +52,50 @@ const readStoredProgress = (user) => {
   try {
     const saved = localStorage.getItem(progressKey);
     const parsed = saved ? JSON.parse(saved) : {};
-    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    return normalizeProgress(parsed);
   } catch {
     return {};
   }
+};
+
+const getProgressMutationKey = (email) => `progressMutations_${email.toLowerCase()}`;
+const getProgressMigrationKey = (email) => `progressCentralMigrationV2_${email.toLowerCase()}`;
+
+const readProgressMutations = (email) => {
+  try {
+    const saved = localStorage.getItem(getProgressMutationKey(email));
+    const parsed = saved ? JSON.parse(saved) : [];
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.filter(mutation => (
+      mutation
+      && typeof mutation.id === 'string'
+      && /^[A-Za-z0-9_.-]{1,220}$/.test(String(mutation.lessonId || ''))
+      && typeof mutation.completed === 'boolean'
+    ));
+  } catch {
+    return [];
+  }
+};
+
+const writeProgressMutations = (email, mutations) => {
+  const key = getProgressMutationKey(email);
+  if (mutations.length === 0) localStorage.removeItem(key);
+  else localStorage.setItem(key, JSON.stringify(mutations));
+};
+
+const enqueueProgressMutation = (email, lessonId, completed) => {
+  const mutations = readProgressMutations(email)
+    .filter(mutation => mutation?.lessonId !== lessonId);
+  const mutation = {
+    id: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`,
+    lessonId,
+    completed,
+    createdAt: new Date().toISOString()
+  };
+  mutations.push(mutation);
+  writeProgressMutations(email, mutations);
+  return mutation;
 };
 
 function App() {
@@ -64,13 +115,159 @@ function App() {
   });
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
+  const analyticsPageId = selectedLesson ? `lesson:${selectedLesson.id}` : 'home';
+  const isAdminUser = currentUser?.email?.toLowerCase() === 'thipacheco1@gmail.com';
+
   // State for completed lessons using user-specific localStorage key
   const [completedLessons, setCompletedLessons] = useState(() => readStoredProgress(readStoredUser()));
+  const progressRef = useRef(completedLessons);
+  const progressMutationVersionRef = useRef(0);
+  const progressSyncChainRef = useRef(Promise.resolve());
+  const progressMutatedLessonsRef = useRef(new Map());
+  const activeUserEmailRef = useRef(currentUser?.email?.toLowerCase() || null);
+
+  const applyProgressState = useCallback((progress, user = null) => {
+    const normalizedProgress = normalizeProgress(progress);
+    progressRef.current = normalizedProgress;
+    setCompletedLessons(normalizedProgress);
+
+    const progressKey = getProgressStorageKey(user);
+    if (progressKey) {
+      localStorage.setItem(progressKey, JSON.stringify(normalizedProgress));
+    }
+  }, []);
+
+  const queueProgressTask = useCallback((task) => {
+    const queuedTask = progressSyncChainRef.current
+      .catch(() => undefined)
+      .then(task);
+
+    progressSyncChainRef.current = queuedTask;
+    return queuedTask;
+  }, []);
+
+  const flushProgressMutations = useCallback((email) => queueProgressTask(async () => {
+    while (true) {
+      const [mutation] = readProgressMutations(email);
+      if (!mutation) return;
+
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          lessonId: mutation.lessonId,
+          completed: mutation.completed
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Progress update failed (${response.status})`);
+      }
+
+      const remainingMutations = readProgressMutations(email)
+        .filter(pendingMutation => pendingMutation.id !== mutation.id);
+      writeProgressMutations(email, remainingMutations);
+    }
+  }), [queueProgressTask]);
+
+  const migrateLegacyProgress = useCallback(async (user) => {
+    const email = user?.email?.toLowerCase();
+    if (!email || localStorage.getItem(getProgressMigrationKey(email))) return;
+
+    const changedLessons = progressMutatedLessonsRef.current.get(email) || new Set();
+    const legacyProgress = Object.fromEntries(
+      Object.entries(readStoredProgress(user))
+        .filter(([lessonId, completed]) => completed === true && !changedLessons.has(lessonId))
+    );
+
+    if (Object.keys(legacyProgress).length === 0) {
+      localStorage.setItem(getProgressMigrationKey(email), 'true');
+      return;
+    }
+
+    await queueProgressTask(async () => {
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, completedLessons: legacyProgress })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Legacy progress migration failed (${response.status})`);
+      }
+    });
+
+    localStorage.setItem(getProgressMigrationKey(email), 'true');
+  }, [queueProgressTask]);
+
+  const reconcileProgress = useCallback(async (user, signal) => {
+    const email = user?.email?.toLowerCase();
+    if (!email) return;
+
+    await migrateLegacyProgress(user);
+
+    // A toggle can happen while the GET is in flight. Retrying after the queued
+    // writes guarantees that an older response never replaces a newer click.
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      await flushProgressMutations(email);
+      const mutationVersion = progressMutationVersionRef.current;
+      const response = await fetch(`/api/progress?email=${encodeURIComponent(email)}`, {
+        credentials: 'same-origin',
+        cache: 'no-store',
+        signal
+      });
+
+      if (!response.ok) {
+        throw new Error(`Progress request failed (${response.status})`);
+      }
+
+      const serverProgress = normalizeProgress(await response.json());
+      const isStillCurrentUser = activeUserEmailRef.current === email;
+      const hasNewerMutation = mutationVersion !== progressMutationVersionRef.current
+        || readProgressMutations(email).length > 0;
+
+      if (isStillCurrentUser && !hasNewerMutation) {
+        applyProgressState(serverProgress, user);
+        return;
+      }
+    }
+  }, [applyProgressState, flushProgressMutations, migrateLegacyProgress]);
 
   // Remove data created by the discontinued visitor mode.
   useEffect(() => {
     localStorage.removeItem(LEGACY_VISITOR_PROGRESS_KEY);
   }, []);
+
+  useEffect(() => {
+    activeUserEmailRef.current = currentUser?.email?.toLowerCase() || null;
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (loading || isAdminUser) return;
+    void trackPageView(analyticsPageId);
+  }, [analyticsPageId, isAdminUser, loading]);
+
+  useEffect(() => {
+    if (loading || isAdminUser) return undefined;
+
+    const sendPresence = () => {
+      if (document.visibilityState === 'visible') {
+        void trackPresence(analyticsPageId);
+      }
+    };
+
+    sendPresence();
+    const interval = window.setInterval(sendPresence, 50_000);
+    document.addEventListener('visibilitychange', sendPresence);
+
+    return () => {
+      window.clearInterval(interval);
+      document.removeEventListener('visibilitychange', sendPresence);
+    };
+  }, [analyticsPageId, isAdminUser, loading]);
 
   // Force migration of old localStorage users to central DB
   useEffect(() => {
@@ -79,69 +276,100 @@ function App() {
       // Clear old local users list and force logout
       localStorage.removeItem('users');
       localStorage.removeItem('currentUser');
+      activeUserEmailRef.current = null;
       setCurrentUser(null);
-      setCompletedLessons({});
+      applyProgressState({});
       localStorage.setItem(migrationKey, 'true');
     }
-  }, []);
+  }, [applyProgressState]);
 
-  // Load progress from API when currentUser is set
+  // The central store is authoritative. Pending offline mutations are replayed
+  // in order before applying the latest server state.
   useEffect(() => {
-    if (!currentUser) return;
-    
-    const loadProgress = async () => {
-      try {
-        const res = await fetch(`/api/progress?email=${currentUser.email}`);
-        if (res.ok) {
-          const dbProgress = await res.json();
-          setCompletedLessons(dbProgress || {});
-        }
-      } catch (e) {
-        console.error("Failed to load progress from Vercel KV:", e);
-      }
-    };
-    
-    loadProgress();
-  }, [currentUser]);
+    if (!currentUser) return undefined;
 
-  // Save to localStorage and database whenever it changes, linked to the active user profile
+    const abortController = new AbortController();
+    void reconcileProgress(currentUser, abortController.signal).catch(error => {
+      if (error.name !== 'AbortError') {
+        console.error('Failed to synchronize progress with the central database:', error);
+      }
+    });
+
+    return () => {
+      abortController.abort();
+    };
+  }, [currentUser, reconcileProgress]);
+
+  // Retry offline changes and pull progress completed on another device when
+  // the app returns to the foreground or the connection comes back.
+  useEffect(() => {
+    if (!currentUser) return undefined;
+
+    let activeController = null;
+    const synchronize = () => {
+      if (document.visibilityState !== 'visible') return;
+      activeController?.abort();
+      activeController = new AbortController();
+      void reconcileProgress(currentUser, activeController.signal).catch(error => {
+        if (error.name !== 'AbortError') {
+          console.error('Failed to retry progress synchronization:', error);
+        }
+      });
+    };
+
+    window.addEventListener('online', synchronize);
+    window.addEventListener('focus', synchronize);
+    document.addEventListener('visibilitychange', synchronize);
+
+    return () => {
+      activeController?.abort();
+      window.removeEventListener('online', synchronize);
+      window.removeEventListener('focus', synchronize);
+      document.removeEventListener('visibilitychange', synchronize);
+    };
+  }, [currentUser, reconcileProgress]);
+
+  // Keep an offline cache. Database writes are sent per lesson by
+  // toggleLessonCompleted, avoiding whole-object last-write-wins conflicts.
   useEffect(() => {
     if (!currentUser) return;
 
     const progressKey = getProgressStorageKey(currentUser);
     if (!progressKey) return;
     localStorage.setItem(progressKey, JSON.stringify(completedLessons));
-
-    const syncProgress = async () => {
-      try {
-        await fetch('/api/progress', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: currentUser.email,
-            completedLessons
-          })
-        });
-      } catch (e) {
-        console.error("Failed to sync progress with Vercel KV:", e);
-      }
-    };
-    syncProgress();
   }, [completedLessons, currentUser]);
 
   const toggleLessonCompleted = (lessonId) => {
-    setCompletedLessons(prev => ({
-      ...prev,
-      [lessonId]: !prev[lessonId]
-    }));
+    const completed = !progressRef.current[lessonId];
+    const nextProgress = { ...progressRef.current };
+
+    if (completed) nextProgress[lessonId] = true;
+    else delete nextProgress[lessonId];
+
+    applyProgressState(nextProgress, currentUser);
+
+    if (!currentUser?.email) return;
+    const email = currentUser.email.toLowerCase();
+    progressMutationVersionRef.current += 1;
+
+    const changedLessons = progressMutatedLessonsRef.current.get(email) || new Set();
+    changedLessons.add(lessonId);
+    progressMutatedLessonsRef.current.set(email, changedLessons);
+
+    enqueueProgressMutation(email, lessonId, completed);
+    void flushProgressMutations(email).catch(error => {
+      // The mutation remains in localStorage and will be replayed on reconnect.
+      console.error('Lesson progress queued for a later retry:', error);
+    });
   };
 
   const handleLoginSuccess = (user) => {
+    activeUserEmailRef.current = user?.email?.toLowerCase() || null;
     setCurrentUser(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
     
     // Quick local preview
-    setCompletedLessons(readStoredProgress(user));
+    applyProgressState(readStoredProgress(user), user);
 
     if (pendingLesson) {
       setSelectedLesson(pendingLesson);
@@ -161,9 +389,19 @@ function App() {
   };
 
   const handleLogout = () => {
+    void fetch('/api/users', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'logout' })
+    }).catch(() => {
+      // Local logout must still succeed if the API is temporarily unavailable.
+    });
+
+    activeUserEmailRef.current = null;
     setCurrentUser(null);
     localStorage.removeItem('currentUser');
-    setCompletedLessons({});
+    applyProgressState({});
     
     // Return to landing page on logout
     setSelectedLesson(null);

@@ -4,9 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "seo:generate": "node ../tools/generate-seo-pages.mjs",
+    "predev": "npm run seo:generate",
     "dev": "node ../tools/dev-course.js",
     "dev:web": "vite",
     "dev:api": "node ../tools/local-api-server.js",
+    "prebuild": "npm run seo:generate",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"
