@@ -25,6 +25,14 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-color);
@@ -40,6 +48,8 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
   background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 40%),
               radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.05), transparent 40%);
 }
@@ -388,6 +398,7 @@ body {
   flex: 1;
   min-height: 0;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 40px 60px;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
@@ -1285,7 +1296,7 @@ body {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: 999;
+  z-index: 3000;
   animation: fadeInEffect 0.25s ease-out;
 }
 
@@ -1340,7 +1351,7 @@ body {
     height: 100dvh; /* Dynamic viewport height prevents cut-off on mobile browsers */
     width: min(92vw, 360px) !important;
     max-width: 360px;
-    z-index: 1000;
+    z-index: 3100;
     background: #0f1115; /* Solid background */
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
     transform: translateX(-100%);
@@ -1381,7 +1392,7 @@ body {
     gap: 12px;
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    z-index: 10;
+    z-index: 900;
     flex-shrink: 0;
   }
   
@@ -5008,6 +5019,9 @@ body {
 /* Lesson reading experience refresh */
 .content-scroll-area.lesson-reading-scroll {
   padding: 34px clamp(24px, 4vw, 56px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 260px),
     radial-gradient(circle at 70% 0%, rgba(99, 102, 241, 0.055), transparent 34%);
@@ -5015,7 +5029,9 @@ body {
 
 .lesson-reading-scroll .markdown-viewer-container {
   width: min(100%, 1120px);
+  max-width: 100%;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .lesson-reading-scroll .lesson-dashboard,
@@ -5023,6 +5039,8 @@ body {
 .lesson-reading-scroll .lesson-footer-nav {
   max-width: none;
   width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .lesson-reading-scroll .lesson-dashboard {
@@ -5114,6 +5132,8 @@ body {
   color: #aebbd0;
   font-size: 1rem;
   line-height: 1.48;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .lesson-reading-scroll .markdown-viewer p {
@@ -5158,15 +5178,19 @@ body {
 
 .lesson-reading-scroll .markdown-viewer table {
   max-width: 100%;
+  display: block;
+  overflow-x: auto;
 }
 
 .lesson-reading-scroll .code-block-window {
+  width: 100%;
   max-width: 100%;
   margin: 0.75em 0 0.95em;
   border-radius: 8px;
   background: rgba(8, 10, 14, 0.88);
   border-color: rgba(255, 255, 255, 0.055);
   box-shadow: none;
+  overflow: hidden;
 }
 
 .lesson-reading-scroll .code-block-window-header {
@@ -5191,10 +5215,14 @@ body {
 }
 
 .lesson-reading-scroll .code-block-wrapper {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .lesson-reading-scroll .code-block-highlighter {
+  max-width: 100%;
   padding: 0.85em 1em !important;
   font-size: 0.9rem !important;
   line-height: 1.42 !important;
@@ -5212,6 +5240,10 @@ body {
   padding-left: clamp(24px, 4vw, 56px);
 }
 
+.mobile-sidebar-open .sticky-lesson-header {
+  display: none !important;
+}
+
 @media (min-width: 1500px) {
   .lesson-reading-scroll .markdown-viewer-container {
     width: min(100%, 1180px);
@@ -5221,6 +5253,8 @@ body {
 @media (max-width: 900px) {
   .content-scroll-area.lesson-reading-scroll {
     padding: 24px 18px;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .lesson-reading-scroll .lesson-main-title {
@@ -5269,6 +5303,8 @@ body {
 @media (max-width: 560px) {
   .content-scroll-area.lesson-reading-scroll {
     padding: 18px 14px;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .lesson-reading-scroll .lesson-meta-bar {
@@ -5298,8 +5334,13 @@ body {
   }
 
   .lesson-reading-scroll .code-block-window {
-    margin-right: -4px;
-    margin-left: -4px;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .lesson-reading-scroll .code-block-wrapper {
+    overflow-x: hidden;
   }
 
   .lesson-reading-scroll .code-block-highlighter {
@@ -5308,15 +5349,83 @@ body {
     line-height: 1.38 !important;
   }
 
+  .lesson-reading-scroll .code-block-highlighter,
+  .lesson-reading-scroll .code-block-highlighter pre,
+  .lesson-reading-scroll .code-block-highlighter code {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
   .lesson-reading-scroll .lesson-footer-nav {
     margin-bottom: 34px !important;
   }
 
   .lesson-reading-scroll .sticky-lesson-header {
-    margin-left: -14px;
-    margin-right: -14px;
-    padding-right: 14px;
-    padding-left: 14px;
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sticky-lesson-header,
+  .lesson-reading-scroll .sticky-lesson-header {
+    display: none !important;
+  }
+
+  .content-scroll-area,
+  .content-scroll-area.lesson-reading-scroll {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none;
+  }
+
+  .content-scroll-area.lesson-reading-scroll {
+    touch-action: pan-y;
+  }
+
+  .lesson-reading-scroll .markdown-viewer-container,
+  .lesson-reading-scroll .markdown-viewer,
+  .lesson-reading-scroll .continuous-section-wrapper,
+  .lesson-reading-scroll .lesson-dashboard,
+  .lesson-reading-scroll .lesson-footer-nav {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .lesson-reading-scroll .lesson-main-title,
+  .lesson-reading-scroll .section-step-title,
+  .lesson-reading-scroll .markdown-viewer h1,
+  .lesson-reading-scroll .markdown-viewer h2,
+  .lesson-reading-scroll .markdown-viewer h3,
+  .lesson-reading-scroll .markdown-viewer p,
+  .lesson-reading-scroll .markdown-viewer li {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .lesson-reading-scroll .code-block-window {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .lesson-reading-scroll .code-block-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .lesson-reading-scroll .code-block-highlighter,
+  .lesson-reading-scroll .code-block-highlighter pre,
+  .lesson-reading-scroll .code-block-highlighter code {
+    max-width: 100%;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
   }
 }
 
