@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="background" x1="80" y1="26" x2="1128" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17233A"/>
+      <stop offset=".5" stop-color="#101827"/>
+      <stop offset="1" stop-color="#0B111D"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="116" y1="96" x2="262" y2="266" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7199F4"/>
+      <stop offset=".52" stop-color="#3E6DD2"/>
+      <stop offset="1" stop-color="#203B6C"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(1037 61) rotate(128) scale(642 622)">
+      <stop stop-color="#416FDC" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#416FDC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="69" y="53" width="252" height="252" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#050A13" flood-opacity=".42"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" rx="0" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#halo)"/>
+  <path d="M744 0h456v630H947c55-83 70-175 46-276C969 251 887 132 744 0Z" fill="#203B6C" fill-opacity=".13"/>
+  <ellipse cx="979" cy="315" rx="316" ry="173" transform="rotate(-17 979 315)" stroke="#8FB0FA" stroke-opacity=".16" stroke-width="2"/>
+  <ellipse cx="979" cy="315" rx="242" ry="298" transform="rotate(39 979 315)" stroke="#8FB0FA" stroke-opacity=".11" stroke-width="2" stroke-dasharray="7 12"/>
+  <circle cx="1054" cy="118" r="7" fill="#BCD0FF"/>
+  <circle cx="1092" cy="450" r="5" fill="#7199F4"/>
+  <circle cx="861" cy="516" r="4" fill="#D8E3FF" fill-opacity=".74"/>
+  <path d="M100 535h1000" stroke="#DCE6FF" stroke-opacity=".12"/>
+
+  <g filter="url(#shadow)">
+    <rect x="101" y="75" width="188" height="188" rx="52" fill="url(#brand)"/>
+    <rect x="103" y="77" width="184" height="184" rx="50" stroke="#E2EAFF" stroke-opacity=".34" stroke-width="3"/>
+    <path d="M206 112v66c0 25-14 41-37 41-14 0-24-6-32-16l18-15c4 6 8 8 14 8 9 0 15-7 15-19v-65" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M227 127h22v70h-25M224 162h25" stroke="#BFD0FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="249" cy="127" r="9" fill="#F0F4FF"/>
+    <circle cx="249" cy="162" r="9" fill="#8FB4FF" stroke="#F0F4FF" stroke-width="3"/>
+    <circle cx="224" cy="197" r="9" fill="#F0F4FF"/>
+  </g>
+
+  <rect x="339" y="83" width="248" height="38" rx="19" fill="#7297E8" fill-opacity=".13" stroke="#A8C1FA" stroke-opacity=".28"/>
+  <text x="463" y="108" fill="#BFD0F5" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2" text-anchor="middle">FORMAÇÃO 100% GRATUITA</text>
+
+  <text x="100" y="361" fill="#F4F7FC" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="-3">JAVA BACKEND</text>
+  <text x="104" y="418" fill="#AFC0DE" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="500">Do primeiro código à arquitetura de sistemas.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">
+    <rect x="101" y="462" width="126" height="43" rx="12" fill="#EEF3FF" fill-opacity=".1"/>
+    <text x="164" y="490" fill="#DCE7FF" text-anchor="middle">Java Core</text>
+    <rect x="239" y="462" width="124" height="43" rx="12" fill="#EEF3FF" fill-opacity=".1"/>
+    <text x="301" y="490" fill="#DCE7FF" text-anchor="middle">Spring</text>
+    <rect x="375" y="462" width="112" height="43" rx="12" fill="#EEF3FF" fill-opacity=".1"/>
+    <text x="431" y="490" fill="#DCE7FF" text-anchor="middle">Dados</text>
+    <rect x="499" y="462" width="153" height="43" rx="12" fill="#EEF3FF" fill-opacity=".1"/>
+    <text x="575" y="490" fill="#DCE7FF" text-anchor="middle">Arquitetura</text>
+  </g>
+
+  <text x="101" y="578" fill="#8192AE" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing=".8">FORMAÇÃO JAVA BACKEND</text>
+  <text x="1099" y="578" fill="#91A9D6" font-family="ui-monospace, Consolas, monospace" font-size="17" text-anchor="end">formacao-java-thiago.vercel.app</text>
+</svg>

@@ -25,6 +25,13 @@ module.exports = async function handler(req, res) {
     return await response.json();
   }
 
+  function withoutPassword(user) {
+    if (!user || typeof user !== 'object') return user;
+    const { password, ...safeUser } = user;
+    void password;
+    return safeUser;
+  }
+
   try {
     // ----------------------------------------------------
     // GET: List all users
@@ -37,7 +44,7 @@ module.exports = async function handler(req, res) {
         // HGETALL returns alternating [key, value, key, value...]
         for (let i = 0; i < data.result.length; i += 2) {
           try {
-            usersList.push(JSON.parse(data.result[i + 1]));
+            usersList.push(withoutPassword(JSON.parse(data.result[i + 1])));
           } catch (e) {
             console.error("Failed to parse user JSON", e);
           }
@@ -50,7 +57,27 @@ module.exports = async function handler(req, res) {
     // POST: Create a user
     // ----------------------------------------------------
     if (req.method === 'POST') {
-      const { action, name, age, email, phone, password } = req.body;
+      const { action, name, age, email, phone, password } = req.body || {};
+
+      if (action === 'login') {
+        if (!email || !password) {
+          return res.status(400).json({ error: 'E-mail e senha são obrigatórios.' });
+        }
+
+        const cleanEmail = email.toLowerCase();
+        const existing = await runKvCommand(['HGET', 'users_hash', cleanEmail]);
+
+        if (existing.result === null) {
+          return res.status(401).json({ error: 'E-mail ou senha incorretos.' });
+        }
+
+        const user = JSON.parse(existing.result);
+        if (user.password !== password) {
+          return res.status(401).json({ error: 'E-mail ou senha incorretos.' });
+        }
+
+        return res.status(200).json({ success: true, user: withoutPassword(user) });
+      }
 
       if (action === 'delete') {
         // Delete a user
@@ -100,7 +127,7 @@ module.exports = async function handler(req, res) {
             body: JSON.stringify({
               embeds: [{
                 title: "🚀 Novo Aluno Cadastrado na Plataforma!",
-                color: 65280, // Green
+                color: 3892177, // Azul mineral da identidade da plataforma
                 fields: [
                   { name: "Nome", value: name, inline: true },
                   { name: "Idade", value: String(age) + " anos", inline: true },
@@ -145,7 +172,7 @@ module.exports = async function handler(req, res) {
         }
       }
 
-      return res.status(200).json({ success: true, user: newUser });
+      return res.status(200).json({ success: true, user: withoutPassword(newUser) });
     }
 
     // ----------------------------------------------------

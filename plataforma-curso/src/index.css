@@ -2353,23 +2353,6 @@ body {
   background: linear-gradient(135deg, #6d70f2 0%, #5b53e6 100%);
 }
 
-.auth-visitor-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.auth-visitor-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
 .auth-link-btn {
   background: transparent;
   border: none;
@@ -2398,31 +2381,6 @@ body {
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-secondary);
-}
-
-.auth-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.auth-divider::before {
-  margin-right: .5em;
-}
-
-.auth-divider::after {
-  margin-left: .5em;
 }
 
 .auth-alert {
@@ -3999,20 +3957,6 @@ body {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
-.hero-logo-compact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 88px;
-}
-
-.hero-logo-compact .welcome-logo-img {
-  width: 84px;
-  height: 84px;
-  animation: none;
-  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.38));
-}
-
 .course-kpi-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5378,10 +5322,13 @@ body {
 @media (max-width: 767px) {
   .lesson-reading-scroll .sticky-lesson-header {
     display: flex !important;
-    top: -20px;
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: 14px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
     padding: 7px 10px 7px 12px;
     min-height: 48px;
     gap: 8px;

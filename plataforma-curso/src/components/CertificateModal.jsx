@@ -1,8 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { X, Printer, Award, ShieldCheck } from 'lucide-react';
+import { COURSE_TOTAL_LESSONS } from '../data/coursePlan';
+
+const CERTIFICATE_NAMESPACE = 'java-backend-arquitetura:v1';
+const formatCertificateDate = () => new Date().toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+});
+
+const normalizeCodePart = (value) => value
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-zA-Z0-9]/g, '')
+  .toUpperCase();
+
+const generateVerificationCode = (identity, recipientName) => {
+  const recipientSeed = normalizeCodePart(recipientName || 'ALUNO')
+    .slice(0, 4)
+    .padEnd(4, 'X');
+  const source = `${CERTIFICATE_NAMESPACE}:${normalizeCodePart(identity || recipientName || 'ALUNO')}`;
+  let hash = 2166136261;
+
+  for (let index = 0; index < source.length; index += 1) {
+    hash ^= source.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  const hashSeed = (hash >>> 0).toString(36).toUpperCase().padStart(7, '0');
+  return `JAVA-${recipientSeed}-${hashSeed}`;
+};
 
 const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false }) => {
   const [studentName, setStudentName] = useState('');
+  const [currentDate, setCurrentDate] = useState(formatCertificateDate);
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const titleId = useId();
+  const descriptionId = useId();
   
   // Set default name from logged-in user or localStorage, default to placeholder
   useEffect(() => {
@@ -21,9 +56,65 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
           console.error(e);
         }
       }
-      setStudentName('Thiago Pacheco'); // Default placeholder name for preview
+      setStudentName(isPreviewMode ? 'Nome do Aluno' : '');
     }
-  }, [currentUser, isOpen]);
+  }, [currentUser, isOpen, isPreviewMode]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const previouslyFocusedElement = document.activeElement;
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+
+      const focusableElements = Array.from(dialogRef.current.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+      ));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocusedElement?.focus?.();
+    };
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (isOpen) setCurrentDate(formatCertificateDate());
+  }, [isOpen]);
+
+  const verificationIdentity = isPreviewMode
+    ? studentName
+    : currentUser?.email || currentUser?.id || studentName;
+  const verificationCode = useMemo(
+    () => generateVerificationCode(verificationIdentity, studentName),
+    [verificationIdentity, studentName]
+  );
 
   if (!isOpen) return null;
 
@@ -31,40 +122,40 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
     window.print();
   };
 
-  // Generate a mock unique hash code for validation
-  const generateVerificationCode = () => {
-    const nameSeed = studentName.replace(/\s+/g, '').toUpperCase().slice(0, 4);
-    const dateSeed = new Date().getFullYear().toString();
-    const hash = Math.random().toString(36).substring(2, 8).toUpperCase();
-    return `JAVA-${nameSeed}-${dateSeed}-${hash}`;
-  };
-
-  const verificationCode = generateVerificationCode();
-  const currentDate = new Date().toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  });
-
   return (
-    <div className="certificate-modal-overlay">
-      <div className="certificate-modal-container">
+    <div className="certificate-modal-overlay" role="presentation">
+      <div
+        ref={dialogRef}
+        className="certificate-modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        aria-describedby={descriptionId}
+        tabIndex={-1}
+      >
         
         {/* Controls header */}
         <div className="certificate-modal-header no-print">
           <div className="modal-header-left">
-            <Award className="header-icon" size={24} style={{ color: '#6366f1' }} />
+            <Award className="header-icon" size={24} aria-hidden="true" />
             <div>
-              <h3>{isPreviewMode ? 'Visualizar Modelo de Certificado' : 'Seu Certificado Conquistado!'}</h3>
-              <p className="subtitle">
+              <h3 id={titleId}>{isPreviewMode ? 'Visualizar Modelo de Certificado' : 'Seu Certificado Conquistado!'}</h3>
+              <p id={descriptionId} className="subtitle">
                 {isPreviewMode 
                   ? 'Demonstração de como ficará o certificado após concluir o curso.' 
                   : 'Parabéns pela conclusão de todas as etapas da formação!'}
               </p>
             </div>
           </div>
-          <button className="close-modal-btn" onClick={onClose} title="Fechar modal">
-            <X size={20} />
+          <button
+            ref={closeButtonRef}
+            type="button"
+            className="close-modal-btn"
+            onClick={onClose}
+            aria-label="Fechar certificado"
+            title="Fechar certificado"
+          >
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
 
@@ -79,26 +170,29 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
               onChange={(e) => setStudentName(e.target.value)} 
               placeholder="Digite seu nome exatamente como quer no certificado"
               maxLength={60}
+              autoComplete="name"
+              readOnly={!isPreviewMode}
+              aria-readonly={!isPreviewMode}
             />
           </div>
           
-          <button className="print-action-btn" onClick={handlePrint}>
-            <Printer size={18} />
+          <button type="button" className="print-action-btn" onClick={handlePrint}>
+            <Printer size={18} aria-hidden="true" />
             <span>Imprimir / Salvar como PDF</span>
           </button>
         </div>
 
         {/* Printable Certificate Area */}
-        <div className="certificate-print-wrapper">
+        <div className="certificate-print-wrapper" role="document" aria-label={`Certificado de conclusão de ${studentName || 'Nome do Aluno'}`}>
           <div className="certificate-sheet">
             <div className="certificate-frame">
               <div className="certificate-inner-frame">
                 
                 {/* Decorative corners */}
-                <div className="cert-corner top-left"></div>
-                <div className="cert-corner top-right"></div>
-                <div className="cert-corner bottom-left"></div>
-                <div className="cert-corner bottom-right"></div>
+                <div className="cert-corner top-left" aria-hidden="true"></div>
+                <div className="cert-corner top-right" aria-hidden="true"></div>
+                <div className="cert-corner bottom-left" aria-hidden="true"></div>
+                <div className="cert-corner bottom-right" aria-hidden="true"></div>
 
                 {/* Certificate Content */}
                 <div className="certificate-content">
@@ -129,7 +223,7 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
                     </h3>
                     
                     <p className="cert-details">
-                      Uma trilha profunda de estudos contendo mais de <strong>500 aulas teóricas e práticas</strong>, cobrindo todo o ecossistema moderno:
+                      Uma trilha profunda de estudos com <strong>{COURSE_TOTAL_LESSONS} aulas teóricas e práticas</strong>, cobrindo todo o ecossistema moderno:
                       lógica aplicada, Java Core (JVM, Stack/Heap, Garbage Collector, Memory Allocation), Orientação a Objetos, Coleções Avançadas, 
                       SOLID, Design Patterns, Testes de Integração e TDD, SQL Profundo, JPA/Hibernate, Spring Boot REST APIs, Segurança (JWT/Spring Security),
                       DevOps com Docker & Kubernetes, Observabilidade (Grafana/Prometheus), Mensageria (Kafka/RabbitMQ) e Modelagem com Domain-Driven Design (DDD).
@@ -146,9 +240,9 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
                     </div>
 
                     <div className="footer-col badge-col">
-                      <div className="cert-gold-badge">
-                        <Award size={40} className="gold-icon" />
-                        <div className="badge-text-circular">APPROVED</div>
+                      <div className="cert-seal-badge">
+                        <Award size={40} className="seal-icon" aria-hidden="true" />
+                        <div className="badge-text-circular">CONCLUÍDO</div>
                       </div>
                     </div>
 
@@ -180,7 +274,7 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
         {/* Disclaimer for mockup view */}
         {isPreviewMode && (
           <div className="certificate-preview-warning no-print">
-            <ShieldCheck size={16} />
+            <ShieldCheck size={16} aria-hidden="true" />
             <span>Este é um <strong>modelo de pré-visualização</strong> para testes de layout e impressão antes da publicação final.</span>
           </div>
         )}

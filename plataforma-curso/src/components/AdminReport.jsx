@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   BarChart2,
   BookOpen,
@@ -26,63 +26,162 @@ const AdminReport = ({ lessons }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [expandedUser, setExpandedUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [loadWarning, setLoadWarning] = useState('');
+  const [deletingEmail, setDeletingEmail] = useState(null);
+  const [actionFeedback, setActionFeedback] = useState(null);
+  const [pendingDeleteUser, setPendingDeleteUser] = useState(null);
 
   const availableLessonsCount = lessons.length;
 
-  useEffect(() => {
-    loadUsers();
-  }, []);
+  const loadUsers = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError('');
+    setLoadWarning('');
 
-  const loadUsers = async () => {
+    const readLocalProgress = (email) => {
+      try {
+        const saved = localStorage.getItem(`completedLessons_${email.toLowerCase()}`);
+        if (!saved) return null;
+
+        const progress = JSON.parse(saved);
+        return progress && typeof progress === 'object' && !Array.isArray(progress)
+          ? progress
+          : null;
+      } catch (progressError) {
+        console.warn('Failed to read local progress for admin report', progressError);
+        return null;
+      }
+    };
+
+    const readLocalUsers = () => {
+      try {
+        const storedUsers = localStorage.getItem('users');
+        const parsedUsers = storedUsers ? JSON.parse(storedUsers) : [];
+        if (!Array.isArray(parsedUsers)) return [];
+
+        return parsedUsers.filter(user => user && typeof user === 'object').map(user => {
+          const { password, ...safeUser } = user;
+          void password;
+
+          return {
+            ...safeUser,
+            completedLessons: readLocalProgress(String(user.email || '')) || {},
+            progressLoadFailed: false
+          };
+        });
+      } catch (usersError) {
+        console.warn('Failed to read local users for admin report', usersError);
+        return [];
+      }
+    };
+
     try {
       const res = await fetch('/api/users');
-      if (res.ok) {
-        const usersList = await res.json();
-        setUsers(usersList);
+      if (!res.ok) {
+        let message = `Falha ao carregar alunos (${res.status}).`;
 
-        usersList.forEach(async (user) => {
-          try {
-            const progressRes = await fetch(`/api/progress?email=${user.email}`);
-            if (progressRes.ok) {
-              const progress = await progressRes.json();
-              setUsers(prevUsers => prevUsers.map(currentUser =>
-                currentUser.email.toLowerCase() === user.email.toLowerCase()
-                  ? { ...currentUser, completedLessons: progress }
-                  : currentUser
-              ));
-            }
-          } catch (progressError) {
-            console.error('Failed to load progress for admin user', user.email, progressError);
-          }
-        });
-        return;
+        try {
+          const data = await res.json();
+          if (data?.error) message = data.error;
+        } catch {
+          // Keep the status-based message when the server did not return JSON.
+        }
+
+        throw new Error(message);
       }
 
-      const data = await res.json();
-      if (data.error && data.error.includes('Database environment variables not configured')) {
-        throw new Error('KV_NOT_CONFIGURED');
+      const usersList = await res.json();
+      if (!Array.isArray(usersList)) {
+        throw new Error('A resposta de alunos veio em um formato inesperado.');
+      }
+
+      const usersWithProgress = await Promise.all(usersList.map(async user => {
+        const email = String(user.email || '');
+
+        try {
+          const progressRes = await fetch(`/api/progress?email=${encodeURIComponent(email)}`);
+          if (!progressRes.ok) {
+            throw new Error(`Falha ao carregar progresso (${progressRes.status}).`);
+          }
+
+          const progress = await progressRes.json();
+          if (!progress || typeof progress !== 'object' || Array.isArray(progress)) {
+            throw new Error('O progresso veio em um formato inesperado.');
+          }
+
+          return {
+            ...user,
+            completedLessons: progress,
+            progressLoadFailed: false,
+            progressFromLocalCache: false
+          };
+        } catch (progressError) {
+          console.warn('Failed to load progress for an admin user', progressError);
+          const localProgress = readLocalProgress(email);
+
+          return {
+            ...user,
+            completedLessons: localProgress || {},
+            progressLoadFailed: localProgress === null,
+            progressFromLocalCache: localProgress !== null
+          };
+        }
+      }));
+
+      const unavailableProgressCount = usersWithProgress.filter(user => user.progressLoadFailed).length;
+      const localProgressCount = usersWithProgress.filter(user => user.progressFromLocalCache).length;
+
+      setUsers(usersWithProgress);
+
+      if (unavailableProgressCount > 0) {
+        setLoadWarning(
+          unavailableProgressCount === 1
+            ? 'O progresso de 1 aluno não pôde ser carregado. Esse dado não entra nas métricas.'
+            : `O progresso de ${unavailableProgressCount} alunos não pôde ser carregado. Esses dados não entram nas métricas.`
+        );
+      } else if (localProgressCount > 0) {
+        setLoadWarning(
+          `Exibindo o progresso salvo neste navegador para ${localProgressCount} ${localProgressCount === 1 ? 'aluno' : 'alunos'}.`
+        );
       }
     } catch (loadError) {
       console.warn('Using local users fallback for admin report', loadError);
-      const storedUsers = localStorage.getItem('users');
-      const usersList = storedUsers ? JSON.parse(storedUsers) : [];
+      const usersWithLocalProgress = readLocalUsers();
 
-      const usersWithLocalProgress = usersList.map(user => {
-        const progressKey = `completedLessons_${user.email.toLowerCase()}`;
-        const saved = localStorage.getItem(progressKey);
-        return {
-          ...user,
-          completedLessons: saved ? JSON.parse(saved) : {}
-        };
-      });
-      setUsers(usersWithLocalProgress);
+      if (usersWithLocalProgress.length > 0) {
+        setUsers(usersWithLocalProgress);
+        setLoadWarning('Não foi possível sincronizar com o servidor. Exibindo os dados salvos neste navegador.');
+      } else {
+        setUsers([]);
+        setLoadError('Não foi possível carregar os alunos. Verifique a conexão com o servidor e tente novamente.');
+      }
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadUsers();
+  }, [loadUsers]);
+
+  useEffect(() => {
+    if (!pendingDeleteUser) return undefined;
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape' && !deletingEmail) {
+        setPendingDeleteUser(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [pendingDeleteUser, deletingEmail]);
 
   const handleDeleteUser = async (email) => {
-    if (!window.confirm(`Tem certeza de que deseja remover o usuario ${email}? Isso apagara tambem seu progresso.`)) {
-      return;
-    }
+    setDeletingEmail(email);
+    setActionFeedback(null);
 
     try {
       const res = await fetch('/api/users', {
@@ -94,24 +193,45 @@ const AdminReport = ({ lessons }) => {
       if (res.ok) {
         setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
         if (expandedUser === email) setExpandedUser(null);
+        setActionFeedback({ type: 'success', message: 'Aluno removido com sucesso.' });
         return;
       }
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (data.error && data.error.includes('Database environment variables not configured')) {
         throw new Error('KV_NOT_CONFIGURED');
       }
-      alert(data.error || 'Erro ao remover usuario.');
+      setActionFeedback({ type: 'error', message: data.error || 'Não foi possível remover o aluno.' });
     } catch (deleteError) {
       console.warn('Removing user from local fallback only', deleteError);
-      const storedUsers = localStorage.getItem('users');
-      const usersList = storedUsers ? JSON.parse(storedUsers) : [];
-      const updatedUsers = usersList.filter(user => user.email.toLowerCase() !== email.toLowerCase());
+      try {
+        const storedUsers = localStorage.getItem('users');
+        const usersList = storedUsers ? JSON.parse(storedUsers) : [];
+        const hasLocalUsers = Array.isArray(usersList);
 
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
-      setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
-      if (expandedUser === email) setExpandedUser(null);
+        if (!hasLocalUsers) {
+          throw new Error('INVALID_LOCAL_USERS');
+        }
+
+        const updatedUsers = usersList.filter(user =>
+          String(user?.email || '').toLowerCase() !== email.toLowerCase()
+        );
+
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        localStorage.removeItem(`completedLessons_${email.toLowerCase()}`);
+        setUsers(prev => prev.filter(user => user.email.toLowerCase() !== email.toLowerCase()));
+        if (expandedUser === email) setExpandedUser(null);
+        setActionFeedback({
+          type: 'warning',
+          message: 'Aluno removido apenas dos dados locais. Não foi possível sincronizar com o servidor.'
+        });
+      } catch (localDeleteError) {
+        console.warn('Failed to remove local admin user', localDeleteError);
+        setActionFeedback({ type: 'error', message: 'Não foi possível remover o aluno. Tente novamente.' });
+      }
+    } finally {
+      setDeletingEmail(null);
+      setPendingDeleteUser(null);
     }
   };
 
@@ -135,11 +255,14 @@ const AdminReport = ({ lessons }) => {
       : 0;
 
     let studyStatus = 'not-started';
-    let studyStatusText = 'Nao iniciou';
+    let studyStatusText = 'Não iniciou';
 
-    if (completedCount >= COURSE_TOTAL_LESSONS) {
+    if (user.progressLoadFailed) {
+      studyStatus = 'unavailable';
+      studyStatusText = 'Indisponível';
+    } else if (completedCount >= COURSE_TOTAL_LESSONS) {
       studyStatus = 'completed';
-      studyStatusText = 'Concluido';
+      studyStatusText = 'Concluído';
     } else if (completedCount > 0) {
       studyStatus = 'active';
       studyStatusText = 'Em andamento';
@@ -158,11 +281,14 @@ const AdminReport = ({ lessons }) => {
 
   const filteredUsers = processedUsers.filter(user => {
     const normalizedTerm = searchTerm.toLowerCase().trim();
+    const normalizedName = String(user.name || '').toLowerCase();
+    const normalizedEmail = String(user.email || '').toLowerCase();
+    const normalizedPhone = String(user.phone || '').toLowerCase();
     const matchesSearch =
       !normalizedTerm ||
-      user.name.toLowerCase().includes(normalizedTerm) ||
-      user.email.toLowerCase().includes(normalizedTerm) ||
-      (user.phone && user.phone.includes(normalizedTerm));
+      normalizedName.includes(normalizedTerm) ||
+      normalizedEmail.includes(normalizedTerm) ||
+      normalizedPhone.includes(normalizedTerm);
 
     const matchesStatus =
       statusFilter === 'all' ||
@@ -177,8 +303,12 @@ const AdminReport = ({ lessons }) => {
   const activeUsers = processedUsers.filter(user => user.studyStatus === 'active').length;
   const completedUsers = processedUsers.filter(user => user.studyStatus === 'completed').length;
   const notStartedUsers = processedUsers.filter(user => user.studyStatus === 'not-started').length;
-  const averageProgress = totalUsers > 0
-    ? Math.round(processedUsers.reduce((sum, user) => sum + user.fullProgressPercent, 0) / totalUsers)
+  const usersWithAvailableProgress = processedUsers.filter(user => !user.progressLoadFailed);
+  const averageProgress = usersWithAvailableProgress.length > 0
+    ? Math.round(
+      usersWithAvailableProgress.reduce((sum, user) => sum + user.fullProgressPercent, 0)
+      / usersWithAvailableProgress.length
+    )
     : 0;
 
   const generatedProgress = COURSE_TOTAL_LESSONS > 0
@@ -229,16 +359,16 @@ const AdminReport = ({ lessons }) => {
   );
 
   return (
-    <div className="admin-report-container">
+    <div className="admin-report-container" aria-busy={isLoading}>
       <div className="admin-header-section">
         <div>
           <span className="admin-eyebrow">Painel administrativo</span>
-          <h2 className="admin-title">Relatorio de alunos</h2>
+          <h2 className="admin-title">Relatório de alunos</h2>
           <p className="admin-subtitle">
-            Acompanhe alunos cadastrados, progresso geral e aulas concluidas por modulo.
+            Acompanhe alunos cadastrados, progresso geral e aulas concluídas por módulo.
           </p>
         </div>
-        <div className="admin-course-health">
+        <div className="admin-course-health" aria-label={`${availableLessonsCount} de ${COURSE_TOTAL_LESSONS} aulas liberadas, ${generatedProgress}% do curso disponível`}>
           <BookOpen size={16} />
           <span>{availableLessonsCount}/{COURSE_TOTAL_LESSONS} aulas liberadas</span>
           <strong>{generatedProgress}%</strong>
@@ -252,7 +382,7 @@ const AdminReport = ({ lessons }) => {
           </div>
           <div className="metric-info">
             <span className="metric-label">Alunos</span>
-            <span className="metric-value">{totalUsers}</span>
+            <span className="metric-value">{isLoading || loadError ? '—' : totalUsers}</span>
           </div>
         </div>
 
@@ -262,7 +392,7 @@ const AdminReport = ({ lessons }) => {
           </div>
           <div className="metric-info">
             <span className="metric-label">Em andamento</span>
-            <span className="metric-value">{activeUsers}</span>
+            <span className="metric-value">{isLoading || loadError ? '—' : activeUsers}</span>
           </div>
         </div>
 
@@ -271,8 +401,8 @@ const AdminReport = ({ lessons }) => {
             <CheckCircle2 size={20} className="metric-icon completed" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Concluidos</span>
-            <span className="metric-value">{completedUsers}</span>
+            <span className="metric-label">Concluídos</span>
+            <span className="metric-value">{isLoading || loadError ? '—' : completedUsers}</span>
           </div>
         </div>
 
@@ -281,56 +411,124 @@ const AdminReport = ({ lessons }) => {
             <BarChart2 size={20} className="metric-icon progress-icon" />
           </div>
           <div className="metric-info">
-            <span className="metric-label">Media geral</span>
-            <span className="metric-value">{averageProgress}%</span>
+            <span className="metric-label">Média geral</span>
+            <span className="metric-value">{isLoading || loadError ? '—' : `${averageProgress}%`}</span>
           </div>
         </div>
       </div>
+
+      {loadWarning && (
+        <div className="admin-data-notice" role="status" aria-live="polite">
+          <span>{loadWarning}</span>
+          <button type="button" onClick={loadUsers} disabled={isLoading}>
+            Tentar sincronizar novamente
+          </button>
+        </div>
+      )}
+
+      {actionFeedback && (
+        <div
+          className={`admin-action-feedback ${actionFeedback.type}`}
+          role={actionFeedback.type === 'error' ? 'alert' : 'status'}
+          aria-live={actionFeedback.type === 'error' ? 'assertive' : 'polite'}
+        >
+          <span>{actionFeedback.message}</span>
+          <button
+            type="button"
+            onClick={() => setActionFeedback(null)}
+            aria-label="Fechar aviso"
+          >
+            Fechar
+          </button>
+        </div>
+      )}
 
       <div className="admin-filter-bar">
         <div className="search-input-wrapper-admin">
           <Search size={16} className="search-icon-admin" />
           <input
-            type="text"
-            placeholder="Buscar por nome, email ou telefone..."
+            type="search"
+            placeholder="Buscar por nome, e-mail ou telefone..."
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
             className="search-input-admin"
+            aria-label="Buscar alunos por nome, e-mail ou telefone"
+            disabled={isLoading || !!loadError || users.length === 0}
           />
         </div>
 
-        <div className="status-tabs-admin">
-          <button className={`status-tab-btn-admin ${statusFilter === 'all' ? 'active' : ''}`} onClick={() => setStatusFilter('all')}>
+        <div className="status-tabs-admin" role="group" aria-label="Filtrar alunos por situação">
+          <button
+            type="button"
+            className={`status-tab-btn-admin ${statusFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('all')}
+            aria-pressed={statusFilter === 'all'}
+            disabled={isLoading || !!loadError || users.length === 0}
+          >
             Todos ({processedUsers.length})
           </button>
-          <button className={`status-tab-btn-admin ${statusFilter === 'active' ? 'active' : ''}`} onClick={() => setStatusFilter('active')}>
+          <button
+            type="button"
+            className={`status-tab-btn-admin ${statusFilter === 'active' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('active')}
+            aria-pressed={statusFilter === 'active'}
+            disabled={isLoading || !!loadError || users.length === 0}
+          >
             Ativos ({activeUsers})
           </button>
-          <button className={`status-tab-btn-admin ${statusFilter === 'completed' ? 'active' : ''}`} onClick={() => setStatusFilter('completed')}>
-            Concluidos ({completedUsers})
+          <button
+            type="button"
+            className={`status-tab-btn-admin ${statusFilter === 'completed' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('completed')}
+            aria-pressed={statusFilter === 'completed'}
+            disabled={isLoading || !!loadError || users.length === 0}
+          >
+            Concluídos ({completedUsers})
           </button>
-          <button className={`status-tab-btn-admin ${statusFilter === 'inactive' ? 'active' : ''}`} onClick={() => setStatusFilter('inactive')}>
-            Nao iniciaram ({notStartedUsers})
+          <button
+            type="button"
+            className={`status-tab-btn-admin ${statusFilter === 'inactive' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('inactive')}
+            aria-pressed={statusFilter === 'inactive'}
+            disabled={isLoading || !!loadError || users.length === 0}
+          >
+            Não iniciaram ({notStartedUsers})
           </button>
         </div>
       </div>
 
-      {filteredUsers.length === 0 ? (
+      {isLoading ? (
+        <div className="admin-empty-state" role="status" aria-live="polite">
+          <p>Carregando alunos e progresso...</p>
+        </div>
+      ) : loadError ? (
+        <div className="admin-empty-state admin-load-error" role="alert">
+          <p>{loadError}</p>
+          <button type="button" onClick={loadUsers}>
+            Tentar novamente
+          </button>
+        </div>
+      ) : filteredUsers.length === 0 ? (
         <div className="admin-empty-state">
-          <p>Nenhum aluno encontrado para os filtros aplicados.</p>
+          <p>
+            {users.length === 0
+              ? 'Ainda não há alunos cadastrados.'
+              : 'Nenhum aluno encontrado para os filtros aplicados.'}
+          </p>
         </div>
       ) : (
-        <div className="admin-student-list">
+        <div className="admin-student-list" aria-label="Lista de alunos">
           <div className="admin-student-list-header">
             <span>Aluno</span>
             <span>Contato principal</span>
             <span>Progresso</span>
-            <span>Acoes</span>
+            <span>Ações</span>
           </div>
 
-          {filteredUsers.map(user => {
+          {filteredUsers.map((user, userIndex) => {
             const isExpanded = expandedUser === user.email;
             const moduleRows = isExpanded ? getUserModuleRows(user) : [];
+            const detailsId = `student-details-${userIndex}`;
 
             return (
               <article key={user.email} className={`admin-student-card ${isExpanded ? 'expanded' : ''}`}>
@@ -364,32 +562,55 @@ const AdminReport = ({ lessons }) => {
                   </div>
 
                   <div className="student-progress-panel">
-                    <div className="progress-text-row">
-                      <span className="progress-percentage">{user.fullProgressPercent}% do roteiro</span>
-                      <span className="progress-ratio">{user.completedCount}/{COURSE_TOTAL_LESSONS}</span>
-                    </div>
-                    <div className="progress-bar-admin-bg">
-                      <div className="progress-bar-admin-fill" style={{ width: `${user.fullProgressPercent}%` }} />
-                    </div>
-                    <span className="student-progress-note">
-                      {user.availableProgressPercent}% das aulas ja liberadas
-                    </span>
+                    {user.progressLoadFailed ? (
+                      <span className="student-progress-note" role="status">
+                        Progresso não carregado
+                      </span>
+                    ) : (
+                      <>
+                        <div className="progress-text-row">
+                          <span className="progress-percentage">{user.fullProgressPercent}% do roteiro</span>
+                          <span className="progress-ratio">{user.completedCount}/{COURSE_TOTAL_LESSONS}</span>
+                        </div>
+                        <div
+                          className="progress-bar-admin-bg"
+                          role="progressbar"
+                          aria-label={`Progresso de ${user.name || 'aluno'}`}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-valuenow={user.fullProgressPercent}
+                        >
+                          <div className="progress-bar-admin-fill" style={{ width: `${user.fullProgressPercent}%` }} />
+                        </div>
+                        <span className="student-progress-note">
+                          {user.availableProgressPercent}% das aulas já liberadas
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <div className="student-actions">
                     <span className={`status-badge-admin ${user.studyStatus}`}>{user.studyStatusText}</span>
                     <button
+                      type="button"
                       className={`toggle-details-btn ${isExpanded ? 'active' : ''}`}
                       onClick={() => toggleExpandUser(user.email)}
-                      title={isExpanded ? 'Recolher detalhes' : 'Ver progresso por modulo'}
+                      title={isExpanded ? 'Recolher detalhes' : 'Ver progresso por módulo'}
+                      aria-label={`${isExpanded ? 'Recolher' : 'Exibir'} progresso por módulo de ${user.name || 'aluno'}`}
+                      aria-expanded={isExpanded}
+                      aria-controls={detailsId}
+                      disabled={user.progressLoadFailed}
                     >
-                      <span>Modulos</span>
+                      <span>Módulos</span>
                       {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                     </button>
                     <button
+                      type="button"
                       className="delete-user-btn"
-                      onClick={() => handleDeleteUser(user.email)}
+                      onClick={() => setPendingDeleteUser(user)}
                       title="Remover aluno"
+                      aria-label={`Remover ${user.name || 'aluno'}`}
+                      disabled={deletingEmail !== null}
                     >
                       <Trash2 size={14} />
                     </button>
@@ -397,14 +618,19 @@ const AdminReport = ({ lessons }) => {
                 </div>
 
                 {isExpanded && (
-                  <div className="student-details-panel">
+                  <div
+                    id={detailsId}
+                    className="student-details-panel"
+                    role="region"
+                    aria-label={`Detalhes do progresso de ${user.name || 'aluno'}`}
+                  >
                     {user.completedCount === 0 ? (
-                      <p className="no-progress-text">O aluno ainda nao marcou nenhuma aula como concluida.</p>
+                      <p className="no-progress-text">O aluno ainda não marcou nenhuma aula como concluída.</p>
                     ) : (
                       <>
                         <div className="details-section-heading">
                           <Clock size={15} />
-                          <span>Progresso por modulo liberado</span>
+                          <span>Progresso por módulo liberado</span>
                         </div>
 
                         <div className="admin-module-progress-list">
@@ -416,7 +642,14 @@ const AdminReport = ({ lessons }) => {
                               </div>
                               <div className="module-progress-admin">
                                 <span>{module.completed}/{module.available} liberadas</span>
-                                <div className="progress-bar-admin-bg compact">
+                                <div
+                                  className="progress-bar-admin-bg compact"
+                                  role="progressbar"
+                                  aria-label={`Progresso no ${module.moduleId}: ${module.title}`}
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                  aria-valuenow={module.availablePercent}
+                                >
                                   <div className="progress-bar-admin-fill" style={{ width: `${module.availablePercent}%` }} />
                                 </div>
                               </div>
@@ -448,6 +681,55 @@ const AdminReport = ({ lessons }) => {
               </article>
             );
           })}
+        </div>
+      )}
+
+      {pendingDeleteUser && (
+        <div
+          className="admin-confirm-overlay"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget && !deletingEmail) {
+              setPendingDeleteUser(null);
+            }
+          }}
+        >
+          <div
+            className="admin-confirm-dialog"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="admin-confirm-title"
+            aria-describedby="admin-confirm-description"
+          >
+            <div className="admin-confirm-icon" aria-hidden="true">
+              <Trash2 size={20} />
+            </div>
+            <div>
+              <span className="admin-confirm-eyebrow">Ação permanente</span>
+              <h3 id="admin-confirm-title">Remover este aluno?</h3>
+              <p id="admin-confirm-description">
+                O perfil de <strong>{pendingDeleteUser.name || pendingDeleteUser.email}</strong> e todo o progresso associado serão apagados.
+              </p>
+            </div>
+            <div className="admin-confirm-actions">
+              <button
+                type="button"
+                className="admin-confirm-cancel"
+                onClick={() => setPendingDeleteUser(null)}
+                disabled={Boolean(deletingEmail)}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="admin-confirm-delete"
+                onClick={() => handleDeleteUser(pendingDeleteUser.email)}
+                disabled={Boolean(deletingEmail)}
+              >
+                {deletingEmail ? 'Removendo...' : 'Remover aluno'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

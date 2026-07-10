@@ -3,9 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CheckCircle2, Copy, Check, Play, Pause, ChevronRight, ChevronLeft, Clock, BookOpen, ListChecks } from 'lucide-react';
+import { CheckCircle2, Copy, Check, Play, Pause, ChevronRight, ChevronLeft, Clock, BookOpen, ListChecks, Menu } from 'lucide-react';
 
-const CodeBlockWithCopy = ({ match, className, children, ...props }) => {
+const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
   const codeString = String(children).replace(/\n$/, '');
   const lang = match ? match[1] : 'code';
@@ -19,13 +19,13 @@ const CodeBlockWithCopy = ({ match, className, children, ...props }) => {
   return (
     <div className="code-block-window">
       <div className="code-block-window-header">
-        <div className="window-dots">
+        <div className="window-dots" aria-hidden="true">
           <span className="dot red"></span>
           <span className="dot yellow"></span>
-          <span className="dot green"></span>
+          <span className="dot blue"></span>
         </div>
         <span className="window-title">{lang.toUpperCase()}</span>
-        <button className="copy-button-window" onClick={handleCopy} title="Copiar código">
+        <button type="button" className="copy-button-window" onClick={handleCopy} title="Copiar código" aria-label="Copiar código">
           {copied ? <Check size={14} className="copy-icon-success" /> : <Copy size={14} className="copy-icon" />}
         </button>
       </div>
@@ -44,53 +44,92 @@ const CodeBlockWithCopy = ({ match, className, children, ...props }) => {
   );
 };
 
-// Split Markdown into Sections by '##' headers
+const getFenceMarker = (line) => {
+  const marker = line.match(/^\s*(`{3,}|~{3,})/)?.[1];
+  return marker || null;
+};
+
+const isFenceClosingLine = (line, character, minimumLength) => {
+  const trimmed = line.trim();
+  const marker = getFenceMarker(trimmed);
+
+  return Boolean(
+    marker
+    && marker[0] === character
+    && marker.length >= minimumLength
+    && trimmed.slice(marker.length).trim() === ''
+  );
+};
+
+// Split Markdown into sections by level-two headings, ignoring headings inside code fences.
 const parseMarkdownIntoSections = (markdown) => {
   if (!markdown) return { mainTitle: '', sections: [] };
 
   const cleanMd = markdown.replace(/\r\n/g, '\n');
-  const parts = ('\n' + cleanMd).split(/\n##\s+/);
+  const lines = cleanMd.split('\n');
   const sections = [];
-  
-  let intro = parts[0].trim();
-  let mainTitle = "Introdução";
-  
-  const h1Match = intro.match(/^#\s+(.+)/m);
-  if (h1Match) {
-    mainTitle = h1Match[1];
-    intro = intro.replace(/^#\s+.+$/m, '').trim();
-  }
-  
-  if (intro.startsWith('\n')) intro = intro.substring(1);
-  
-  if (intro) {
-    sections.push({
-      title: "Introdução",
-      content: intro
-    });
-  }
-  
-  for (let i = 1; i < parts.length; i++) {
-    const lines = parts[i].split('\n');
-    const title = lines[0].trim();
-    const content = lines.slice(1).join('\n').trim();
-    if (title || content) {
-      // Skip "Cobertura da Grade Operacional" and "Progresso Geral do Curso" topics
-      const cleanTitle = title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if (
-        cleanTitle.includes("cobertura da grade operacional") || 
-        cleanTitle.includes("progresso geral do curso")
-      ) {
-        continue;
-      }
+  let mainTitle = 'Introdução';
+  let foundMainTitle = false;
+  let currentTitle = 'Introdução';
+  let currentLines = [];
+  let fenceCharacter = null;
+  let fenceLength = 0;
 
-      sections.push({
-        title: title,
-        content: content
-      });
+  const shouldSkipSection = (title) => {
+    const cleanTitle = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return cleanTitle.includes('cobertura da grade operacional')
+      || cleanTitle.includes('progresso geral do curso');
+  };
+
+  const pushCurrentSection = () => {
+    const content = currentLines.join('\n').trim();
+    if ((currentTitle || content) && !shouldSkipSection(currentTitle)) {
+      sections.push({ title: currentTitle, content });
     }
+    currentLines = [];
+  };
+
+  for (const line of lines) {
+    if (fenceCharacter) {
+      if (isFenceClosingLine(line, fenceCharacter, fenceLength)) {
+        fenceCharacter = null;
+        fenceLength = 0;
+      }
+      currentLines.push(line);
+      continue;
+    }
+
+    const marker = getFenceMarker(line);
+    if (marker) {
+      fenceCharacter = marker[0];
+      fenceLength = marker.length;
+      currentLines.push(line);
+      continue;
+    }
+
+    const h1Match = line.match(/^#\s+(.+)$/);
+    if (h1Match && !foundMainTitle) {
+      mainTitle = h1Match[1].trim();
+      foundMainTitle = true;
+      continue;
+    }
+
+    const h2Match = line.match(/^##\s+(.+)$/);
+    if (h2Match) {
+      if (currentLines.some(currentLine => currentLine.trim())) {
+        pushCurrentSection();
+      }
+      currentTitle = h2Match[1].trim();
+      continue;
+    }
+
+    currentLines.push(line);
   }
-  
+
+  if (currentLines.some(line => line.trim())) {
+    pushCurrentSection();
+  }
+
   return { mainTitle, sections };
 };
 
@@ -118,28 +157,38 @@ const splitLessonContent = (rawMarkdown) => {
   const complement = [];
   let target = 'main';
   let complementLevel = Number.POSITIVE_INFINITY;
-  let inFence = false;
+  let fenceCharacter = null;
+  let fenceLength = 0;
 
   for (const line of lines) {
-    if (line.trim().startsWith('```')) {
+    if (fenceCharacter) {
       (target === 'complement' ? complement : main).push(line);
-      inFence = !inFence;
+      if (isFenceClosingLine(line, fenceCharacter, fenceLength)) {
+        fenceCharacter = null;
+        fenceLength = 0;
+      }
       continue;
     }
 
-    if (!inFence) {
-      const heading = line.match(/^(#{1,6})\s+(.+)$/);
-      if (heading) {
-        const level = heading[1].length;
-        const title = heading[2].trim();
+    const marker = getFenceMarker(line);
+    if (marker) {
+      fenceCharacter = marker[0];
+      fenceLength = marker.length;
+      (target === 'complement' ? complement : main).push(line);
+      continue;
+    }
 
-        if (isComplementHeading(title)) {
-          target = 'complement';
-          complementLevel = level;
-        } else if (isMainResumeHeading(title) || (target === 'complement' && level <= complementLevel)) {
-          target = 'main';
-          complementLevel = Number.POSITIVE_INFINITY;
-        }
+    const heading = line.match(/^(#{1,6})\s+(.+)$/);
+    if (heading) {
+      const level = heading[1].length;
+      const title = heading[2].trim();
+
+      if (isComplementHeading(title)) {
+        target = 'complement';
+        complementLevel = level;
+      } else if (isMainResumeHeading(title) || (target === 'complement' && level <= complementLevel)) {
+        target = 'main';
+        complementLevel = Number.POSITIVE_INFINITY;
       }
     }
 
@@ -152,31 +201,83 @@ const splitLessonContent = (rawMarkdown) => {
   };
 };
 
+const getSectionId = (title = 'topico', index = 0) => {
+  const slug = title
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 72);
+
+  return `topico-${index + 1}-${slug || 'conteudo'}`;
+};
+
+const getLessonIdentity = (lesson) => {
+  const title = lesson?.title || '';
+  const sequence = title.match(/^(\d{3})_/)?.[1] || '000';
+  const moduleMatch = title.match(/^\d{3}_(M\d+)_([0-9]+)_/i);
+
+  if (!moduleMatch) {
+    return { sequence, module: 'Abertura', lessonNumber: 'Boas-vindas' };
+  }
+
+  return {
+    sequence,
+    module: `Módulo ${moduleMatch[1].replace(/M/i, '')}`,
+    lessonNumber: `Aula ${moduleMatch[2]}`
+  };
+};
+
+const markdownRenderers = {
+  pre({ node: _node, children, ...props }) {
+    const childElements = React.Children.toArray(children);
+    const codeElement = childElements.find(child => React.isValidElement(child));
+
+    if (codeElement) {
+      const className = codeElement.props.className || '';
+      const match = /language-(\w+)/.exec(className);
+      return (
+        <CodeBlockWithCopy match={match} {...props}>
+          {codeElement.props.children}
+        </CodeBlockWithCopy>
+      );
+    }
+
+    return <pre {...props}>{children}</pre>;
+  },
+  code({ node: _node, className, children, ...props }) {
+    return (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  },
+  table({ node: _node, children, ...props }) {
+    return (
+      <div className="markdown-table-scroll" role="region" aria-label="Tabela com rolagem horizontal" tabIndex={0}>
+        <table {...props}>{children}</table>
+      </div>
+    );
+  }
+};
+
 const MarkdownSections = ({ sections }) => (
   <>
     {sections.map((sec, idx) => (
-      <div key={`${sec.title}-${idx}`} className="continuous-section-wrapper">
-        {idx > 0 && sec.title && <h2 className="section-step-title">{sec.title}</h2>}
+      <section
+        id={getSectionId(sec.title, idx)}
+        key={`${sec.title}-${idx}`}
+        className="continuous-section-wrapper"
+      >
+        {sec.title && sec.title !== 'Introdução' && <h2 className="section-step-title">{sec.title}</h2>}
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          components={{
-            code({ inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <CodeBlockWithCopy match={match} className={className} {...props}>
-                  {children}
-                </CodeBlockWithCopy>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            }
-          }}
+          components={markdownRenderers}
         >
           {sec.content}
         </ReactMarkdown>
-      </div>
+      </section>
     ))}
   </>
 );
@@ -522,10 +623,10 @@ const LegacyMarkdownViewer = ({
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{
-                        code({ node, inline, className, children, ...props }) {
+                        code({ node: _node, inline, className, children, ...props }) {
                           const match = /language-(\w+)/.exec(className || '');
                           return !inline && match ? (
-                            <CodeBlockWithCopy match={match} className={className} children={children} {...props} />
+                            <CodeBlockWithCopy match={match} {...props}>{children}</CodeBlockWithCopy>
                           ) : (
                             <code className={className} {...props}>
                               {children}
@@ -548,10 +649,10 @@ const LegacyMarkdownViewer = ({
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-                      code({ node, inline, className, children, ...props }) {
+                      code({ node: _node, inline, className, children, ...props }) {
                         const match = /language-(\w+)/.exec(className || '');
                         return !inline && match ? (
-                          <CodeBlockWithCopy match={match} className={className} children={children} {...props} />
+                          <CodeBlockWithCopy match={match} {...props}>{children}</CodeBlockWithCopy>
                         ) : (
                           <code className={className} {...props}>
                             {children}
@@ -645,7 +746,8 @@ const MarkdownViewerV2 = ({
   onPrevLesson,
   hasNextLesson,
   hasPrevLesson,
-  isNavigationOverlayOpen = false
+  isNavigationOverlayOpen = false,
+  onOpenNavigation
 }) => {
   const [parsedData, setParsedData] = useState({ mainTitle: '', sections: [] });
   const [complementData, setComplementData] = useState({ mainTitle: 'Material complementar', sections: [] });
@@ -655,6 +757,7 @@ const MarkdownViewerV2 = ({
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [scrollSpeed, setScrollSpeed] = useState(1.0);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [readingProgress, setReadingProgress] = useState(0);
   const scrollIntervalRef = useRef(null);
 
   const resetContentScroll = () => {
@@ -672,16 +775,40 @@ const MarkdownViewerV2 = ({
     setTimeout(resetContentScroll, 0);
   };
 
+  const scrollToSection = (section, index) => {
+    const scrollContainer = document.querySelector('.content-scroll-area');
+    const target = document.getElementById(getSectionId(section.title, index));
+    if (!scrollContainer || !target) return;
+
+    const targetTop = target.getBoundingClientRect().top
+      - scrollContainer.getBoundingClientRect().top
+      + scrollContainer.scrollTop
+      - 24;
+
+    scrollContainer.scrollTo({ top: targetTop, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const scrollContainer = document.querySelector('.content-scroll-area');
-    if (!scrollContainer) return;
+    if (!scrollContainer) return undefined;
 
     const handleScroll = () => {
-      setShowStickyHeader(scrollContainer.scrollTop > 180);
+      const pageScrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const containerScrollTop = scrollContainer.scrollTop || 0;
+      setShowStickyHeader(Math.max(pageScrollTop, containerScrollTop) > 180);
+
+      const maxScroll = Math.max(1, scrollContainer.scrollHeight - scrollContainer.clientHeight);
+      setReadingProgress(Math.min(100, Math.max(0, (containerScrollTop / maxScroll) * 100)));
     };
 
-    scrollContainer.addEventListener('scroll', handleScroll);
-    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -800,6 +927,7 @@ const MarkdownViewerV2 = ({
   const metaLabel = activeContentTab === 'lesson'
     ? `Aula (${sections.length} tópicos)`
     : (hasComplement ? `Complementar (${complementData.sections.length} tópicos)` : 'Complementar vazio');
+  const lessonIdentity = getLessonIdentity(lesson);
 
   return (
     <div className="markdown-viewer-container">
@@ -810,8 +938,17 @@ const MarkdownViewerV2 = ({
         </div>
       ) : (
         <>
-          {showStickyHeader && (
+          {(showStickyHeader || isAutoScrolling) && !isNavigationOverlayOpen && (
             <div className="sticky-lesson-header">
+              <button
+                type="button"
+                className="sticky-mobile-menu"
+                onClick={onOpenNavigation}
+                aria-label="Abrir menu de aulas"
+                title="Abrir menu de aulas"
+              >
+                <Menu size={19} />
+              </button>
               <div className="sticky-header-left">
                 <span className="sticky-lesson-title">{activeTitle}</span>
                 <span className="sticky-lesson-step">{metaLabel}</span>
@@ -819,11 +956,13 @@ const MarkdownViewerV2 = ({
 
               <div className="sticky-header-right">
                 <div className="auto-scroll-widget">
-                  <span className="widget-label">Rolagem Auto</span>
+                  <span className="widget-label">Rolagem automática</span>
                   <button
                     className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
                     onClick={() => setIsAutoScrolling(!isAutoScrolling)}
                     title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                    aria-label={isAutoScrolling ? 'Pausar rolagem automática' : 'Iniciar rolagem automática'}
+                    aria-pressed={isAutoScrolling}
                   >
                     {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
                   </button>
@@ -831,6 +970,7 @@ const MarkdownViewerV2 = ({
                     value={scrollSpeed}
                     onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
                     className="auto-scroll-speed-select"
+                    aria-label="Velocidade da rolagem automática"
                   >
                     <option value={0.2}>0.2x</option>
                     <option value={0.3}>0.3x</option>
@@ -849,93 +989,145 @@ const MarkdownViewerV2 = ({
                   {isCompleted ? 'Concluída' : 'Lendo'}
                 </div>
               </div>
+              <div className="sticky-reading-progress" aria-hidden="true">
+                <span style={{ width: `${readingProgress}%` }} />
+              </div>
             </div>
           )}
 
-          <header className="lesson-dashboard">
-            <h1 className="lesson-main-title">{mainTitle}</h1>
-            <div className="lesson-meta-bar">
-              <div className="meta-item">
-                <BookOpen size={16} />
-                <span>{metaLabel}</span>
-              </div>
-
-              <div className="meta-item">
-                <Clock size={16} />
-                <span>Leitura: ~{getReadingTime(activeText)} min</span>
-              </div>
-
-              <div className={`meta-status-badge ${isCompleted ? 'completed' : ''}`}>
-                {isCompleted ? 'Concluída' : 'Em Andamento'}
-              </div>
-
-              <div className="auto-scroll-widget">
-                <span className="widget-label">Rolagem Auto</span>
-                <button
-                  className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
-                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
-                >
-                  {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
-                </button>
-                <select
-                  value={scrollSpeed}
-                  onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
-                  className="auto-scroll-speed-select"
-                >
-                  <option value={0.2}>0.2x</option>
-                  <option value={0.3}>0.3x</option>
-                  <option value={0.4}>0.4x</option>
-                  <option value={0.5}>0.5x</option>
-                  <option value={0.6}>0.6x</option>
-                  <option value={0.8}>0.8x</option>
-                  <option value={1.0}>1.0x</option>
-                  <option value={1.2}>1.2x</option>
-                  <option value={1.5}>1.5x</option>
-                  <option value={2.0}>2.0x</option>
-                </select>
-              </div>
-
-              <div className="view-mode-toggle">
-                <button
-                  className={`view-mode-btn ${activeContentTab === 'lesson' ? 'active' : ''}`}
-                  onClick={() => changeContentTab('lesson')}
-                  title="Ver apenas a aula principal"
-                >
-                  <BookOpen size={13} />
-                  <span>Aula</span>
-                </button>
-                <button
-                  className={`view-mode-btn ${activeContentTab === 'complement' ? 'active' : ''}`}
-                  onClick={() => changeContentTab('complement')}
-                  title="Ver checklists, simulados, gabaritos e materiais de apoio"
-                >
-                  <ListChecks size={13} />
-                  <span>Complementar</span>
-                </button>
-              </div>
-            </div>
-          </header>
-
-          <div className="markdown-viewer">
-            {activeContentTab === 'lesson' && <MarkdownSections sections={sections} />}
-
-            {activeContentTab === 'complement' && (
-              hasComplement ? (
-                <MarkdownSections sections={complementData.sections} />
-              ) : (
-                <div className="lesson-empty-panel">
-                  <ListChecks size={34} />
-                  <h3>Nenhum material complementar separado nesta aula</h3>
-                  <p>Quando houver checklist, simulado, gabarito, perguntas, anotações ou desafios extras, eles aparecerão aqui sem interromper a aula principal.</p>
+          <article className="lesson-reading-surface">
+            <header className="lesson-dashboard">
+              <div className="lesson-title-block">
+                <div className="lesson-eyebrow">
+                  <span className="lesson-sequence">{lessonIdentity.sequence}</span>
+                  <span>{lessonIdentity.module}</span>
+                  <span aria-hidden="true">•</span>
+                  <span>{lessonIdentity.lessonNumber}</span>
                 </div>
-              )
-            )}
+                <h1 className="lesson-main-title">{mainTitle}</h1>
+              </div>
 
-          </div>
+              <div className="lesson-meta-bar">
+                <div className="lesson-meta-summary">
+                  <div className="meta-item">
+                    <BookOpen size={16} />
+                    <span>{activeSections.length} tópicos</span>
+                  </div>
 
-          <div className="lesson-footer-nav">
+                  <div className="meta-item">
+                    <Clock size={16} />
+                    <span>~{getReadingTime(activeText)} min de leitura</span>
+                  </div>
+
+                  <div className={`meta-status-badge ${isCompleted ? 'completed' : ''}`}>
+                    {isCompleted ? 'Concluída' : 'Em andamento'}
+                  </div>
+                </div>
+
+                <div className="lesson-reader-tools">
+                  <div className="auto-scroll-widget">
+                    <span className="widget-label">Rolagem automática</span>
+                    <button
+                      className={`auto-scroll-play-btn ${isAutoScrolling ? 'active' : ''}`}
+                      onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                      title={isAutoScrolling ? 'Pausar rolagem' : 'Iniciar rolagem'}
+                      aria-label={isAutoScrolling ? 'Pausar rolagem automática' : 'Iniciar rolagem automática'}
+                      aria-pressed={isAutoScrolling}
+                    >
+                      {isAutoScrolling ? <Pause size={12} /> : <Play size={12} className="play-icon-fix" />}
+                    </button>
+                    <select
+                      value={scrollSpeed}
+                      onChange={(e) => setScrollSpeed(parseFloat(e.target.value))}
+                      className="auto-scroll-speed-select"
+                      aria-label="Velocidade da rolagem automática"
+                    >
+                      <option value={0.2}>0.2x</option>
+                      <option value={0.3}>0.3x</option>
+                      <option value={0.4}>0.4x</option>
+                      <option value={0.5}>0.5x</option>
+                      <option value={0.6}>0.6x</option>
+                      <option value={0.8}>0.8x</option>
+                      <option value={1.0}>1.0x</option>
+                      <option value={1.2}>1.2x</option>
+                      <option value={1.5}>1.5x</option>
+                      <option value={2.0}>2.0x</option>
+                    </select>
+                  </div>
+
+                  <div className="view-mode-toggle" role="tablist" aria-label="Conteúdo da aula">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={activeContentTab === 'lesson'}
+                      className={`view-mode-btn ${activeContentTab === 'lesson' ? 'active' : ''}`}
+                      onClick={() => changeContentTab('lesson')}
+                      title="Ver apenas a aula principal"
+                    >
+                      <BookOpen size={13} />
+                      <span>Aula</span>
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={activeContentTab === 'complement'}
+                      className={`view-mode-btn ${activeContentTab === 'complement' ? 'active' : ''}`}
+                      onClick={() => changeContentTab('complement')}
+                      title="Ver checklists, simulados, gabaritos e materiais de apoio"
+                    >
+                      <ListChecks size={13} />
+                      <span>Complementar</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {activeSections.length > 1 && (
+                <details className="lesson-outline">
+                  <summary>
+                    <span><ListChecks size={17} /> Sumário da aula</span>
+                    <span>{activeSections.length} tópicos <ChevronRight size={16} /></span>
+                  </summary>
+                  <ol>
+                    {activeSections.map((section, index) => (
+                      <li key={`${section.title}-${index}`}>
+                        <a
+                          href={`#${getSectionId(section.title, index)}`}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            scrollToSection(section, index);
+                          }}
+                        >
+                          <span>{String(index + 1).padStart(2, '0')}</span>
+                          {section.title || `Tópico ${index + 1}`}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
+              )}
+            </header>
+
+            <div className="markdown-viewer">
+              {activeContentTab === 'lesson' && <MarkdownSections sections={sections} />}
+
+              {activeContentTab === 'complement' && (
+                hasComplement ? (
+                  <MarkdownSections sections={complementData.sections} />
+                ) : (
+                  <div className="lesson-empty-panel">
+                    <ListChecks size={34} />
+                    <h3>Nenhum material complementar separado nesta aula</h3>
+                    <p>Quando houver checklist, simulado, gabarito, perguntas, anotações ou desafios extras, eles aparecerão aqui sem interromper a aula principal.</p>
+                  </div>
+                )
+              )}
+            </div>
+          </article>
+
+          <nav className="lesson-footer-nav" aria-label="Navegação entre aulas">
             <button
+              type="button"
               onClick={onPrevLesson}
               disabled={!hasPrevLesson}
               className="nav-step-btn prev"
@@ -946,12 +1138,13 @@ const MarkdownViewerV2 = ({
             </button>
 
             <button
+              type="button"
               onClick={onToggleCompleted}
-              className="nav-step-btn next finish"
-              style={{ minWidth: '180px', justifyContent: 'center' }}
+              className={`nav-step-btn lesson-complete-btn ${isCompleted ? 'is-completed' : ''}`}
+              aria-pressed={isCompleted}
             >
               {isCompleted ? (
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span className="complete-button-label">
                   <CheckCircle2 size={18} />
                   Aula Concluída
                 </span>
@@ -961,6 +1154,7 @@ const MarkdownViewerV2 = ({
             </button>
 
             <button
+              type="button"
               onClick={onNextLesson}
               disabled={!hasNextLesson}
               className="nav-step-btn next"
@@ -969,7 +1163,7 @@ const MarkdownViewerV2 = ({
               <span>Próxima Aula</span>
               <ChevronRight size={18} />
             </button>
-          </div>
+          </nav>
         </>
       )}
     </div>

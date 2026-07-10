@@ -6,23 +6,58 @@ import WelcomeView from './components/WelcomeView';
 import AuthModal from './components/AuthModal';
 import { Menu, ChevronRight } from 'lucide-react';
 
+const LEGACY_VISITOR_EMAIL = 'visitante@preview.local';
+const LEGACY_VISITOR_PROGRESS_KEY = 'completedLessons_visitor';
+
+const readStoredUser = () => {
+  const saved = localStorage.getItem('currentUser');
+  if (!saved) return null;
+
+  try {
+    const user = JSON.parse(saved);
+    const isLegacyVisitor = user?.isVisitor
+      || user?.email?.toLowerCase() === LEGACY_VISITOR_EMAIL;
+
+    if (!user?.email || isLegacyVisitor) {
+      localStorage.removeItem('currentUser');
+      return null;
+    }
+
+    return user;
+  } catch {
+    localStorage.removeItem('currentUser');
+    return null;
+  }
+};
+
+const getProgressStorageKey = (user) => (
+  user?.email ? `completedLessons_${user.email.toLowerCase()}` : null
+);
+
+const readStoredProgress = (user) => {
+  const progressKey = getProgressStorageKey(user);
+  if (!progressKey) return {};
+
+  try {
+    const saved = localStorage.getItem(progressKey);
+    const parsed = saved ? JSON.parse(saved) : {};
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+};
+
 function App() {
   const [lessons, setLessons] = useState([]);
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
   
   // User Authentication State
-  const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem('currentUser');
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [currentUser, setCurrentUser] = useState(readStoredUser);
   
-  // State for sidebar width & collapse
-  const [sidebarWidth, setSidebarWidth] = useState(() => {
-    const saved = localStorage.getItem('sidebarWidth');
-    return saved ? parseInt(saved, 10) : 320;
-  });
+  // State for sidebar collapse
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
     const saved = localStorage.getItem('isSidebarCollapsed');
     return saved ? JSON.parse(saved) : false;
@@ -30,15 +65,12 @@ function App() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // State for completed lessons using user-specific localStorage key
-  const [completedLessons, setCompletedLessons] = useState(() => {
-    const savedUser = localStorage.getItem('currentUser');
-    const user = savedUser ? JSON.parse(savedUser) : null;
-    const progressKey = user 
-      ? `completedLessons_${user.email.toLowerCase()}` 
-      : 'completedLessons_visitor';
-    const saved = localStorage.getItem(progressKey);
-    return saved ? JSON.parse(saved) : {};
-  });
+  const [completedLessons, setCompletedLessons] = useState(() => readStoredProgress(readStoredUser()));
+
+  // Remove data created by the discontinued visitor mode.
+  useEffect(() => {
+    localStorage.removeItem(LEGACY_VISITOR_PROGRESS_KEY);
+  }, []);
 
   // Force migration of old localStorage users to central DB
   useEffect(() => {
@@ -74,28 +106,27 @@ function App() {
 
   // Save to localStorage and database whenever it changes, linked to the active user profile
   useEffect(() => {
-    const progressKey = currentUser 
-      ? `completedLessons_${currentUser.email.toLowerCase()}` 
-      : 'completedLessons_visitor';
+    if (!currentUser) return;
+
+    const progressKey = getProgressStorageKey(currentUser);
+    if (!progressKey) return;
     localStorage.setItem(progressKey, JSON.stringify(completedLessons));
 
-    if (currentUser) {
-      const syncProgress = async () => {
-        try {
-          await fetch('/api/progress', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email: currentUser.email,
-              completedLessons
-            })
-          });
-        } catch (e) {
-          console.error("Failed to sync progress with Vercel KV:", e);
-        }
-      };
-      syncProgress();
-    }
+    const syncProgress = async () => {
+      try {
+        await fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: currentUser.email,
+            completedLessons
+          })
+        });
+      } catch (e) {
+        console.error("Failed to sync progress with Vercel KV:", e);
+      }
+    };
+    syncProgress();
   }, [completedLessons, currentUser]);
 
   const toggleLessonCompleted = (lessonId) => {
@@ -110,9 +141,13 @@ function App() {
     localStorage.setItem('currentUser', JSON.stringify(user));
     
     // Quick local preview
-    const progressKey = `completedLessons_${user.email.toLowerCase()}`;
-    const saved = localStorage.getItem(progressKey);
-    setCompletedLessons(saved ? JSON.parse(saved) : {});
+    setCompletedLessons(readStoredProgress(user));
+
+    if (pendingLesson) {
+      setSelectedLesson(pendingLesson);
+      setPendingLesson(null);
+      return;
+    }
 
     // Redirect to the lesson in URL if present and lessons loaded
     const params = new URLSearchParams(window.location.search);
@@ -128,10 +163,7 @@ function App() {
   const handleLogout = () => {
     setCurrentUser(null);
     localStorage.removeItem('currentUser');
-    
-    // Load visitor progress
-    const saved = localStorage.getItem('completedLessons_visitor');
-    setCompletedLessons(saved ? JSON.parse(saved) : {});
+    setCompletedLessons({});
     
     // Return to landing page on logout
     setSelectedLesson(null);
@@ -155,6 +187,8 @@ function App() {
 
   // Sync selectedLesson state with the URL query parameter
   useEffect(() => {
+    if (loading || lessons.length === 0) return;
+
     const params = new URLSearchParams(window.location.search);
     const currentParam = params.get('aula');
     
@@ -171,7 +205,7 @@ function App() {
         window.history.pushState({}, '', `${window.location.pathname}${suffix}`);
       }
     }
-  }, [selectedLesson]);
+  }, [selectedLesson, loading, lessons.length]);
 
   // Listen to browser back/forward navigation
   useEffect(() => {
@@ -201,7 +235,20 @@ function App() {
   }, [lessons, currentUser]);
 
   useEffect(() => {
-    loadLessons().then(loadedLessons => {
+    let cancelled = false;
+
+    const waitForBrowserIdle = () => new Promise(resolve => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(resolve, { timeout: 800 });
+      } else {
+        window.setTimeout(resolve, 50);
+      }
+    });
+
+    const initializeLessons = async () => {
+      const loadedLessons = await loadLessons();
+      if (cancelled) return;
+
       setLessons(loadedLessons);
       setLoading(false);
 
@@ -222,29 +269,54 @@ function App() {
         }
       }
 
-      // Preload all lesson contents in the background for search index
-      Promise.all(
-        loadedLessons.map(async (lesson) => {
-          try {
-            const content = await lesson.loadContent();
-            lesson.content = content;
-          } catch (e) {
-            console.error("Failed to load content for search index:", lesson.title, e);
-          }
-        })
-      ).then(() => {
-        // Trigger a state update once all contents are cached
-        setLessons([...loadedLessons]);
-      });
+      // Build the full-text search index gradually, without flooding the browser
+      // with hundreds of requests during the first render.
+      const preloadSearchIndex = async () => {
+        await new Promise(resolve => window.setTimeout(resolve, 700));
+
+        const batchSize = 6;
+        for (let index = 0; index < loadedLessons.length; index += batchSize) {
+          if (cancelled) return;
+
+          const batch = loadedLessons.slice(index, index + batchSize);
+          await Promise.all(batch.map(async (lesson) => {
+            try {
+              const content = await lesson.loadContent();
+              lesson.content = content;
+            } catch (e) {
+              console.error("Failed to load content for search index:", lesson.title, e);
+            }
+          }));
+
+          await waitForBrowserIdle();
+        }
+
+        if (!cancelled) {
+          // One update after indexing avoids rebuilding the navigation per batch.
+          setLessons([...loadedLessons]);
+        }
+      };
+
+      void preloadSearchIndex();
+    };
+
+    initializeLessons().catch(error => {
+      console.error('Failed to initialize lessons:', error);
+      if (!cancelled) setLoading(false);
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const formatNavbarTitle = (title) => {
     if (!title) return '';
+    if (title.startsWith('000_')) return 'Aula de abertura';
     const parts = title.split('_');
     if (parts.length >= 4) {
       const moduleStr = parts[1] + '.' + parts[2];
-      const text = parts.slice(3).join(' ').replace(/\.md$/, '');
+      const text = parts.slice(3).join(' ').replace(/_?OFICIAL(?:\.md)?$/i, '').replace(/\.md$/, '').trim();
       const prettyText = text.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase());
       return `${moduleStr} - ${prettyText}`;
     }
@@ -270,6 +342,7 @@ function App() {
             selectedLesson={selectedLesson} 
             onSelectLesson={(lesson) => {
               if (lesson && !currentUser) {
+                setPendingLesson(lesson);
                 setIsAuthModalOpen(true);
                 return;
               }
@@ -277,8 +350,6 @@ function App() {
               setIsMobileSidebarOpen(false); // Close sidebar on mobile after selecting
             }}
             completedLessons={completedLessons}
-            sidebarWidth={sidebarWidth}
-            setSidebarWidth={setSidebarWidth}
             isCollapsed={isSidebarCollapsed}
             setIsCollapsed={(collapsed) => {
               setIsSidebarCollapsed(collapsed);
@@ -288,7 +359,10 @@ function App() {
             setIsMobileOpen={setIsMobileSidebarOpen}
             currentUser={currentUser}
             onLogout={handleLogout}
-            onOpenAuthModal={() => setIsAuthModalOpen(true)}
+            onOpenAuthModal={() => {
+              setPendingLesson(null);
+              setIsAuthModalOpen(true);
+            }}
           />
           <main className="main-content">
             {/* Mobile Header Navbar */}
@@ -326,6 +400,7 @@ function App() {
                   hasNextLesson={hasNextLesson}
                   hasPrevLesson={hasPrevLesson}
                   isNavigationOverlayOpen={isMobileSidebarOpen}
+                  onOpenNavigation={() => setIsMobileSidebarOpen(true)}
                 />
               ) : (
                 <WelcomeView 
@@ -333,7 +408,10 @@ function App() {
                   completedLessons={completedLessons}
                   onSelectLesson={setSelectedLesson}
                   currentUser={currentUser}
-                  onOpenAuthModal={() => setIsAuthModalOpen(true)}
+                  onOpenAuthModal={(lesson = null) => {
+                    setPendingLesson(lesson);
+                    setIsAuthModalOpen(true);
+                  }}
                 />
               )}
             </div>
@@ -341,7 +419,10 @@ function App() {
 
           <AuthModal 
             isOpen={isAuthModalOpen} 
-            onClose={() => setIsAuthModalOpen(false)} 
+            onClose={() => {
+              setIsAuthModalOpen(false);
+              setPendingLesson(null);
+            }}
             onLoginSuccess={handleLoginSuccess}
           />
         </>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, Lock, Mail, User, Phone, Calendar, ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { X, Lock, Mail, User, Phone, Calendar, ArrowLeft, Eye, EyeOff, CheckCircle2, ShieldCheck } from 'lucide-react';
+import BrandMark from './BrandMark';
 
 const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [view, setView] = useState('login'); // 'login' | 'register' | 'recover' | 'reset-password'
@@ -16,6 +17,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
   
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Track user to reset
   const [userToReset, setUserToReset] = useState(null);
@@ -25,6 +27,12 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const handleClose = () => {
     setError('');
     setSuccess('');
+    setView('login');
+    setShowPassword(false);
+    setPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setUserToReset(null);
     onClose();
   };
 
@@ -35,6 +43,13 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
   const saveUsers = (users) => {
     localStorage.setItem('users', JSON.stringify(users));
+  };
+
+  const toSessionUser = (user) => {
+    if (!user) return user;
+    const { password: storedPassword, ...sessionUser } = user;
+    void storedPassword;
+    return sessionUser;
   };
 
   const sendWebhookNotification = async (userData) => {
@@ -51,7 +66,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
         body: JSON.stringify({
           embeds: [{
             title: "🚀 Novo Aluno Cadastrado na Plataforma!",
-            color: 65280, // Green
+            color: 3892177, // Azul mineral da identidade da plataforma
             fields: [
               { name: "Nome", value: userData.name, inline: true },
               { name: "Idade", value: String(userData.age) + " anos", inline: true },
@@ -62,7 +77,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
           }]
         })
       });
-    } catch (err) {
+    } catch {
       console.error("Failed to send webhook notification:", err);
     }
   };
@@ -79,7 +94,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
           phone: userData.phone
         })
       });
-    } catch (err) {
+    } catch {
       console.error("Failed to send email notification:", err);
     }
   };
@@ -93,39 +108,42 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
-      const res = await fetch('/api/users');
-      if (res.ok) {
-        const users = await res.json();
-        const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      const res = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'login', email, password })
+      });
+      const data = await res.json();
 
-        if (!user || user.password !== password) {
-          setError('E-mail ou senha incorretos.');
-          return;
-        }
-
-        onLoginSuccess(user);
-        handleClose();
-        return;
-      } else {
-        const data = await res.json();
-        if (data.error && data.error.includes('Database environment variables not configured')) {
-          throw new Error('KV_NOT_CONFIGURED');
+      if (!res.ok) {
+        if (res.status >= 500) {
+          throw new Error(data.error || 'API_UNAVAILABLE');
         }
         setError(data.error || 'Erro ao realizar login.');
+        return;
       }
-    } catch (err) {
+
+      onLoginSuccess(data.user);
+      handleClose();
+    } catch {
       // Fallback to local storage
       const users = getStoredUsers();
       const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
 
       if (!user || user.password !== password) {
-        setError('E-mail ou senha incorretos.');
+        setError(import.meta.env.DEV
+          ? 'A API local não está disponível. Inicie o projeto com npm run dev e tente novamente.'
+          : 'E-mail ou senha incorretos.');
         return;
       }
 
-      onLoginSuccess(user);
+      onLoginSuccess(toSessionUser(user));
       handleClose();
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -173,7 +191,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
         setError(data.error || 'Erro ao realizar cadastro.');
         return;
       }
-    } catch (err) {
+    } catch {
       // Fallback to local storage
       const users = getStoredUsers();
       const emailExists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
@@ -190,7 +208,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       await sendWebhookNotification(newUser);
       await sendEmailNotification(newUser);
 
-      onLoginSuccess(newUser);
+      onLoginSuccess(toSessionUser(newUser));
       setSuccess('Cadastro realizado com sucesso!');
       setTimeout(() => {
         handleClose();
@@ -228,7 +246,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
         }
         setError(data.error || 'Erro de conexão.');
       }
-    } catch (err) {
+    } catch {
       // Fallback to local storage
       const users = getStoredUsers();
       const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.phone === phone);
@@ -287,7 +305,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
         }
         setError(data.error || 'Erro ao redefinir senha.');
       }
-    } catch (err) {
+    } catch {
       // Fallback to local storage
       const users = getStoredUsers();
       const updatedUsers = users.map(u => {
@@ -312,17 +330,40 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
   return (
     <div className="auth-overlay">
-      <div className="auth-card">
-        <button className="auth-close-btn" onClick={handleClose} title="Fechar">
-          <X size={20} />
-        </button>
+      <div className="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+        <aside className="auth-brand-panel">
+          <div className="auth-brand-logo">
+            <BrandMark size={46} decorative />
+            <span>Java Backend</span>
+          </div>
+          <div className="auth-brand-message">
+            <span className="auth-brand-eyebrow">Sua jornada continua aqui</span>
+            <h3>Estude com clareza, avance com consistência.</h3>
+            <p>Acompanhe sua evolução em uma trilha construída do primeiro código à arquitetura.</p>
+          </div>
+          <div className="auth-brand-benefits">
+            <span><CheckCircle2 size={15} /> Progresso salvo por aula</span>
+            <span><CheckCircle2 size={15} /> Jornada organizada em fases</span>
+            <span><CheckCircle2 size={15} /> Acesso em qualquer dispositivo</span>
+          </div>
+          <div className="auth-brand-security">
+            <ShieldCheck size={16} />
+            <span>Seus dados de estudo permanecem vinculados ao seu perfil.</span>
+          </div>
+        </aside>
+
+        <div className="auth-form-panel">
+          <button className="auth-close-btn" onClick={handleClose} title="Fechar" aria-label="Fechar autenticação">
+            <X size={20} />
+          </button>
 
         {view === 'login' && (
           <form onSubmit={handleLogin} className="auth-form">
-            <h2 className="auth-title">Acessar Plataforma</h2>
+            <span className="auth-form-eyebrow">Bem-vindo de volta</span>
+            <h2 className="auth-title" id="auth-modal-title">Acessar plataforma</h2>
             <p className="auth-subtitle">Faça login para salvar e sincronizar seu progresso de estudos.</p>
 
-            {error && <div className="auth-alert error">{error}</div>}
+            {error && <div className="auth-alert error" role="alert">{error}</div>}
             
             <div className="input-group">
               <label htmlFor="login-email">E-mail</label>
@@ -331,6 +372,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type="email" 
                   id="login-email" 
+                  name="email"
+                  autoComplete="email"
                   placeholder="seu@email.com" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -355,6 +398,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   id="login-pass" 
+                  name="password"
+                  autoComplete="current-password"
                   placeholder="******" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -364,13 +409,17 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                   type="button" 
                   className="password-toggle-btn"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  aria-pressed={showPassword}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
-            <button type="submit" className="auth-submit-btn">Entrar</button>
+            <button type="submit" className="auth-submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Conectando...' : 'Entrar'}
+            </button>
 
             <div className="auth-footer-links">
               <span>Novo por aqui? </span>
@@ -383,21 +432,17 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
               </button>
             </div>
 
-            <div className="auth-divider">ou</div>
-
-            <button type="button" className="auth-visitor-btn" onClick={handleClose}>
-              Entrar como Visitante
-            </button>
           </form>
         )}
 
         {view === 'register' && (
           <form onSubmit={handleRegister} className="auth-form">
-            <h2 className="auth-title">Criar Conta</h2>
+            <span className="auth-form-eyebrow">Comece sua jornada</span>
+            <h2 className="auth-title" id="auth-modal-title">Criar conta</h2>
             <p className="auth-subtitle">Crie seu perfil e salve seu progresso nas aulas de Java.</p>
 
-            {error && <div className="auth-alert error">{error}</div>}
-            {success && <div className="auth-alert success">{success}</div>}
+            {error && <div className="auth-alert error" role="alert">{error}</div>}
+            {success && <div className="auth-alert success" role="status">{success}</div>}
 
             <div className="input-group">
               <label htmlFor="reg-name">Nome Completo</label>
@@ -406,6 +451,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type="text" 
                   id="reg-name" 
+                  name="name"
+                  autoComplete="name"
                   placeholder="Seu Nome" 
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -422,6 +469,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                   <input 
                     type="number" 
                     id="reg-age" 
+                    name="age"
                     placeholder="18" 
                     min="1" 
                     max="120"
@@ -439,6 +487,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                   <input 
                     type="tel" 
                     id="reg-phone" 
+                    name="tel"
+                    autoComplete="tel"
                     placeholder="(00) 00000-0000" 
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -455,6 +505,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type="email" 
                   id="reg-email" 
+                  name="email"
+                  autoComplete="email"
                   placeholder="seu@email.com" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -470,6 +522,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   id="reg-pass" 
+                  name="new-password"
+                  autoComplete="new-password"
                   placeholder="Crie uma senha forte" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -479,6 +533,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                   type="button" 
                   className="password-toggle-btn"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  aria-pressed={showPassword}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -508,14 +564,15 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 className="back-btn" 
                 onClick={() => { setView('login'); setError(''); }}
                 title="Voltar ao login"
+                aria-label="Voltar ao login"
               >
                 <ArrowLeft size={18} />
               </button>
-              <h2 className="auth-title thin">Recuperar Senha</h2>
+              <h2 className="auth-title thin" id="auth-modal-title">Recuperar senha</h2>
             </div>
             <p className="auth-subtitle">Confirme o seu E-mail e o número de Telefone cadastrados para redefinir sua senha.</p>
 
-            {error && <div className="auth-alert error">{error}</div>}
+            {error && <div className="auth-alert error" role="alert">{error}</div>}
 
             <div className="input-group">
               <label htmlFor="rec-email">E-mail Cadastrado</label>
@@ -524,6 +581,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type="email" 
                   id="rec-email" 
+                  name="email"
+                  autoComplete="email"
                   placeholder="seu@email.com" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -539,6 +598,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type="tel" 
                   id="rec-phone" 
+                  name="tel"
+                  autoComplete="tel"
                   placeholder="(00) 00000-0000" 
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -553,11 +614,12 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
         {view === 'reset-password' && (
           <form onSubmit={handleResetPassword} className="auth-form">
-            <h2 className="auth-title">Nova Senha</h2>
+            <span className="auth-form-eyebrow">Proteja seu acesso</span>
+            <h2 className="auth-title" id="auth-modal-title">Nova senha</h2>
             <p className="auth-subtitle">Defina a sua nova senha de acesso.</p>
 
-            {error && <div className="auth-alert error">{error}</div>}
-            {success && <div className="auth-alert success">{success}</div>}
+            {error && <div className="auth-alert error" role="alert">{error}</div>}
+            {success && <div className="auth-alert success" role="status">{success}</div>}
 
             <div className="input-group">
               <label htmlFor="reset-pass">Nova Senha</label>
@@ -566,6 +628,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   id="reset-pass" 
+                  name="new-password"
+                  autoComplete="new-password"
                   placeholder="Nova senha" 
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
@@ -575,6 +639,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                   type="button" 
                   className="password-toggle-btn"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  aria-pressed={showPassword}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -588,6 +654,8 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   id="reset-confirm" 
+                  name="confirm-password"
+                  autoComplete="new-password"
                   placeholder="Confirme a nova senha" 
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -599,6 +667,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
             <button type="submit" className="auth-submit-btn">Salvar Nova Senha</button>
           </form>
         )}
+        </div>
       </div>
     </div>
   );

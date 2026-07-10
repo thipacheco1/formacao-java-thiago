@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://formacao-java-thiago.vercel.app/sitemap.xml

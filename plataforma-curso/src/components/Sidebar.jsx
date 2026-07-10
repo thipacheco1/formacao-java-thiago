@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search, Lock } from 'lucide-react';
-import javaLogo from '../assets/java_logo.png';
+import BrandMark from './BrandMark';
 import {
   COURSE_MODULES,
-  COURSE_MODULE_COUNT,
   COURSE_PHASES,
   COURSE_TOTAL_LESSONS,
   getModuleFromLessonTitle
@@ -17,6 +16,8 @@ const moduleTitles = COURSE_MODULES.reduce((acc, module) => {
 const phases = COURSE_PHASES.map((phase, index) => ({
   id: phase.id,
   name: phase.name,
+  shortName: phase.shortName,
+  number: String(index + 1).padStart(2, '0'),
   modules: index === 0 ? [...phase.modules, 'Outros'] : phase.modules
 }));
 
@@ -58,7 +59,7 @@ const estimateReadingTime = (content) => {
   if (!content) return 5;
   const cleanContent = content.replace(/[#*`\-_[\]()|]/g, ' ');
   const words = cleanContent.trim().split(/\s+/).filter(w => w.length > 0).length;
-  const wpm = 110; 
+  const wpm = 180;
   const minutes = Math.ceil(words / wpm);
   return Math.max(2, minutes);
 };
@@ -78,13 +79,18 @@ const formatDurationForCourse = (totalMinutes) => {
   return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
 };
 
+const getSidebarWidthLimit = () => {
+  const viewportWidth = typeof window === 'undefined' ? 1200 : window.innerWidth;
+  return Math.min(480, Math.max(240, viewportWidth - 420));
+};
+
+const clampSidebarWidth = (width) => Math.min(getSidebarWidthLimit(), Math.max(240, width));
+
 const Sidebar = ({ 
   lessons, 
   selectedLesson, 
   onSelectLesson, 
   completedLessons,
-  sidebarWidth,
-  setSidebarWidth,
   isCollapsed,
   setIsCollapsed,
   isMobileOpen,
@@ -97,18 +103,41 @@ const Sidebar = ({
   const [openGroup, setOpenGroup] = useState(null);
   const lessonRefs = useRef({});
   const [searchTerm, setSearchTerm] = useState('');
+  const deferredSearchTerm = useDeferredValue(searchTerm);
   const [isResizing, setIsResizing] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState(() => {
+    const savedWidth = Number.parseInt(localStorage.getItem('sidebarWidth'), 10);
+    return clampSidebarWidth(Number.isFinite(savedWidth) ? savedWidth : 320);
+  });
+  const sidebarRef = useRef(null);
+  const resizeFrameRef = useRef(0);
+  const pendingWidthRef = useRef(sidebarWidth);
 
   const isAuthorizedAdmin = currentUser && currentUser.email && currentUser.email.toLowerCase() === 'thipacheco1@gmail.com';
 
-  const getGlobalLessonIndex = (lessonId) => {
-    return lessons.findIndex(l => l.id === lessonId);
-  };
+  const lessonMeta = useMemo(() => {
+    const indexById = new Map();
+    const minutesById = new Map();
+    const minutesByModule = new Map();
+    let totalMinutes = 0;
+
+    lessons.forEach((lesson, index) => {
+      const minutes = estimateReadingTime(lesson.content);
+      const module = getModuleFromLessonTitle(lesson.title);
+
+      indexById.set(lesson.id, index);
+      minutesById.set(lesson.id, minutes);
+      minutesByModule.set(module, (minutesByModule.get(module) || 0) + minutes);
+      totalMinutes += minutes;
+    });
+
+    return { indexById, minutesById, minutesByModule, totalMinutes };
+  }, [lessons]);
 
   const isLessonUnlocked = (lessonId) => {
     if (!currentUser) return true; // Let App.jsx handle the prompt
     if (isAuthorizedAdmin) return true;
-    const globalIdx = getGlobalLessonIndex(lessonId);
+    const globalIdx = lessonMeta.indexById.get(lessonId) ?? -1;
     if (globalIdx <= 0) return true;
     const prevLesson = lessons[globalIdx - 1];
     return !!completedLessons[prevLesson.id];
@@ -121,33 +150,25 @@ const Sidebar = ({
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
   // Calculate course duration and section count
-  const totalCourseMinutes = lessons.reduce((acc, lesson) => {
-    return acc + estimateReadingTime(lesson.content);
-  }, 0);
+  const totalCourseMinutes = lessonMeta.totalMinutes;
   
-  const availableSectionsCount = Object.keys(lessons.reduce((acc, lesson) => {
-    const module = getModuleFromLessonTitle(lesson.title);
-    acc[module] = true;
-    return acc;
-  }, {})).length;
-
   // Filter lessons based on search (in title or content)
-  const filteredLessons = lessons.filter(lesson => {
-    const term = searchTerm.trim().toLowerCase();
+  const filteredLessons = useMemo(() => lessons.filter(lesson => {
+    const term = deferredSearchTerm.trim().toLowerCase();
     if (!term) return true;
     const matchesTitle = lesson.title.replace(/_/g, ' ').toLowerCase().includes(term);
     const matchesContent = lesson.content && lesson.content.toLowerCase().includes(term);
     return matchesTitle || matchesContent;
-  });
+  }), [deferredSearchTerm, lessons]);
 
   // Group filtered lessons by module
-  const groupedLessons = filteredLessons.reduce((acc, lesson) => {
+  const groupedLessons = useMemo(() => filteredLessons.reduce((acc, lesson) => {
     const module = getModuleFromLessonTitle(lesson.title);
-    
+
     if (!acc[module]) acc[module] = [];
     acc[module].push(lesson);
     return acc;
-  }, {});
+  }, {}), [filteredLessons]);
 
   // Auto-open phase and module when a lesson is selected
   useEffect(() => {
@@ -181,60 +202,85 @@ const Sidebar = ({
         targetLesson = groupLessons[0];
       }
 
-      if (targetLesson && lessonRefs.current[targetLesson.id]) {
-        setTimeout(() => {
+      if (targetLesson) {
+        const timer = window.setTimeout(() => {
           lessonRefs.current[targetLesson.id]?.scrollIntoView({
             behavior: 'smooth',
             block: 'nearest'
           });
         }, 150);
+
+        return () => window.clearTimeout(timer);
       }
     }
-  }, [openGroup, groupedLessons, selectedLesson, completedLessons]);
+    return undefined;
+  }, [openGroup, groupedLessons, selectedLesson?.id, completedLessons]);
 
-  const handleMouseDown = (e) => {
-    e.preventDefault();
+  const paintSidebarWidth = () => {
+    sidebarRef.current?.style.setProperty('--sidebar-width', `${pendingWidthRef.current}px`);
+    resizeFrameRef.current = 0;
+  };
+
+  const handlePointerDown = (event) => {
+    event.preventDefault();
+    pendingWidthRef.current = sidebarRef.current?.getBoundingClientRect().width || sidebarWidth;
     setIsResizing(true);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    event.currentTarget.setPointerCapture(event.pointerId);
     document.body.style.userSelect = 'none';
     document.body.style.cursor = 'col-resize';
   };
 
-  const handleMouseMove = (e) => {
-    const newWidth = e.clientX;
-    if (newWidth > 240 && newWidth < 480) {
-      setSidebarWidth(newWidth);
+  const handlePointerMove = (event) => {
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+
+    pendingWidthRef.current = clampSidebarWidth(event.clientX);
+    if (!resizeFrameRef.current) {
+      resizeFrameRef.current = window.requestAnimationFrame(paintSidebarWidth);
     }
   };
 
-  const handleMouseUp = (e) => {
+  const finishResize = (event) => {
+    if (resizeFrameRef.current) {
+      window.cancelAnimationFrame(resizeFrameRef.current);
+    }
+    paintSidebarWidth();
     setIsResizing(false);
     document.body.style.userSelect = '';
     document.body.style.cursor = '';
-    const finalWidth = e.clientX;
-    if (finalWidth > 240 && finalWidth < 480) {
-      localStorage.setItem('sidebarWidth', finalWidth);
+    setSidebarWidth(pendingWidthRef.current);
+    localStorage.setItem('sidebarWidth', String(pendingWidthRef.current));
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
     }
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
   };
+
+  useEffect(() => () => {
+    if (resizeFrameRef.current) {
+      window.cancelAnimationFrame(resizeFrameRef.current);
+    }
+    document.body.style.userSelect = '';
+    document.body.style.cursor = '';
+  }, []);
 
   const formatTitle = (lesson) => {
     const title = lesson.title;
-    const term = searchTerm.trim();
+    const term = deferredSearchTerm.trim();
     const snippet = term ? getSearchSnippet(lesson.content, term) : null;
     const isTitleMatch = term ? title.replace(/_/g, ' ').toLowerCase().includes(term.toLowerCase()) : true;
     const isContentMatch = snippet && !isTitleMatch;
     
     const parts = title.split('_');
     if (parts.length >= 4) {
-      const moduleStr = parts[1] + '.' + parts[2];
-      const text = parts.slice(3).join(' '); 
+      const titleParts = parts.slice(3);
+      if (titleParts.at(-1)?.replace(/\.md$/i, '').toUpperCase() === 'OFICIAL') {
+        titleParts.pop();
+      }
+      const text = titleParts.join(' ');
       const prettyText = text.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
       return (
         <span className="lesson-item-text">
-          <span className="lesson-item-badge">{moduleStr}</span>
+          <span className="lesson-item-badge">{parts[0]}</span>
           <span className="lesson-item-title">{prettyText}</span>
           {isContentMatch && (
             <span className="lesson-search-snippet">{snippet}</span>
@@ -256,25 +302,29 @@ const Sidebar = ({
 
   return (
     <aside 
+      ref={sidebarRef}
       className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''} ${isResizing ? 'is-resizing' : ''}`}
-      style={{ width: isCollapsed ? 0 : sidebarWidth }}
+      style={{ '--sidebar-width': `${sidebarWidth}px` }}
     >
       <div className="sidebar-header">
-        <div 
+        <button
+          type="button"
           className="logo-container" 
           onClick={() => {
             onSelectLesson(null);
             setIsMobileOpen(false);
           }}
-          style={{ cursor: 'pointer' }}
           title="Ir para a página inicial"
+          aria-label="Ir para a página inicial"
         >
-          <img src={javaLogo} alt="Java Logo" className="logo-image-sidebar" />
-          <div>
-            <h1 className="logo-text">Java</h1>
-            <p className="subtitle">Formação Completa</p>
+          <span className="sidebar-brand-mark">
+            <BrandMark size={42} decorative />
+          </span>
+          <div className="sidebar-brand-copy">
+            <span className="logo-text">Java Backend</span>
+            <span className="subtitle">Formação profissional</span>
           </div>
-        </div>
+        </button>
 
         <div className="header-actions">
           <button 
@@ -297,14 +347,26 @@ const Sidebar = ({
 
       <div className="sidebar-progress">
         <div className="progress-header">
-          <span>Progresso Geral</span>
-          <span>{completedCount}/{totalCount} ({progressPercent}%)</span>
+          <div className="progress-title-group">
+            <span className="progress-eyebrow">Sua jornada</span>
+            <strong>Progresso geral</strong>
+          </div>
+          <strong className="progress-percentage">{progressPercent}%</strong>
         </div>
-        <div className="progress-bar-container">
+        <div
+          className="progress-bar-container"
+          role="progressbar"
+          aria-label="Progresso geral da formação"
+          aria-valuemin="0"
+          aria-valuemax={totalCount}
+          aria-valuenow={completedCount}
+        >
           <div className="progress-bar-fill" style={{ width: `${progressPercent}%` }}></div>
         </div>
         <div className="progress-stats-footer">
-          <span>{availableSectionsCount}/{COURSE_MODULE_COUNT} modulos com aulas - {availableLessonsCount} liberadas - Duracao liberada: {formatDurationForCourse(totalCourseMinutes)}</span>
+          <span><strong>{completedCount}</strong> concluídas</span>
+          <span><strong>{availableLessonsCount}</strong> disponíveis</span>
+          <span><strong>{formatDurationForCourse(totalCourseMinutes)}</strong> leitura</span>
         </div>
       </div>
 
@@ -317,8 +379,25 @@ const Sidebar = ({
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
+            aria-label="Pesquisar nas aulas"
           />
+          {searchTerm && (
+            <button
+              type="button"
+              className="search-clear-btn"
+              onClick={() => setSearchTerm('')}
+              aria-label="Limpar pesquisa"
+              title="Limpar pesquisa"
+            >
+              <X size={13} />
+            </button>
+          )}
         </div>
+        {searchTerm.trim() && (
+          <span className="search-result-count">
+            {filteredLessons.length} {filteredLessons.length === 1 ? 'aula encontrada' : 'aulas encontradas'}
+          </span>
+        )}
       </div>
       
       <div className="sidebar-content">
@@ -342,15 +421,20 @@ const Sidebar = ({
               <button 
                 className={`phase-accordion-header ${isPhaseOpen ? 'active' : ''} ${isPhaseCompleted ? 'completed' : ''}`}
                 onClick={() => setOpenPhase(prev => prev === phase.id ? null : phase.id)}
+                aria-expanded={isPhaseOpen}
+                title={phase.name}
               >
-                <span className="phase-title">{phase.name}</span>
+                <span className="phase-heading-copy">
+                  <span className="phase-number">{phase.number}</span>
+                  <span className="phase-title">{phase.shortName}</span>
+                </span>
                 <div className="phase-header-actions">
                   <span className="phase-progress-text">{completedPhaseCount}/{totalPhaseCount}</span>
                   <ChevronDown size={14} className={`phase-chevron ${!isPhaseOpen ? 'collapsed' : ''}`} />
                 </div>
               </button>
               
-              <div className={`phase-modules-container ${!isPhaseOpen ? 'hidden' : ''}`}>
+              {isPhaseOpen && <div className="phase-modules-container">
                 {phaseModules.map(module => {
                   const { badge, title } = parseModuleHeader(module, moduleTitles[module]);
                   const moduleLessons = groupedLessons[module];
@@ -360,9 +444,7 @@ const Sidebar = ({
                   
                   const isModuleOpen = openGroup === module || searchTerm.trim() !== '';
 
-                  const totalModuleMinutes = moduleLessons.reduce((acc, lesson) => {
-                    return acc + estimateReadingTime(lesson.content);
-                  }, 0);
+                  const totalModuleMinutes = lessonMeta.minutesByModule.get(module) || 0;
 
                   return (
                     <div 
@@ -386,8 +468,9 @@ const Sidebar = ({
                         
                         <div className="module-header-actions">
                           <span className="module-stats-right">
-                            {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'} • {formatDurationForModule(totalModuleMinutes)}
+                            {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'}
                           </span>
+                          <span className="module-duration">{formatDurationForModule(totalModuleMinutes)}</span>
                           {isModuleCompleted ? (
                             <CheckCircle2 className="module-check-icon" size={14} />
                           ) : completedModuleCount > 0 ? (
@@ -400,7 +483,7 @@ const Sidebar = ({
                         </div>
                       </button>
                       
-                      <div className={`module-lessons ${!isModuleOpen ? 'hidden' : ''}`}>
+                      {isModuleOpen && <div className="module-lessons">
                         <ul className="lesson-list">
                           {moduleLessons.map((lesson) => {
                             const isCompleted = !!completedLessons[lesson.id];
@@ -412,9 +495,10 @@ const Sidebar = ({
                                 <button
                                   className={`lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} ${!isUnlocked ? 'locked' : ''}`}
                                   title={lesson.title.replace(/_/g, ' ').replace(/\.md$/, '')}
+                                  aria-current={isActive ? 'page' : undefined}
                                   onClick={() => {
                                     if (!isUnlocked) {
-                                      alert("Atenção: Você precisa concluir as aulas anteriores para acessar esta aula!");
+                                      alert("Atenção: você precisa concluir as aulas anteriores para acessar esta aula!");
                                       return;
                                     }
                                     onSelectLesson(lesson);
@@ -423,7 +507,7 @@ const Sidebar = ({
                                   {formatTitle(lesson)}
                                   
                                   <div className="lesson-item-actions">
-                                    <span className="lesson-duration-badge">{estimateReadingTime(lesson.content)} min</span>
+                                    <span className="lesson-duration-badge">{lessonMeta.minutesById.get(lesson.id) || 2} min</span>
                                     {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
                                     {!isUnlocked ? (
                                       <Lock className="lock-icon-sidebar" size={12} />
@@ -436,11 +520,11 @@ const Sidebar = ({
                             );
                           })}
                         </ul>
-                      </div>
+                      </div>}
                     </div>
                   );
                 })}
-              </div>
+              </div>}
             </div>
           );
         })}
@@ -480,7 +564,16 @@ const Sidebar = ({
       {!isCollapsed && (
         <div 
           className="sidebar-resizer" 
-          onMouseDown={handleMouseDown}
+          role="separator"
+          aria-label="Redimensionar menu lateral"
+          aria-orientation="vertical"
+          aria-valuemin={240}
+          aria-valuemax={getSidebarWidthLimit()}
+          aria-valuenow={sidebarWidth}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={finishResize}
+          onPointerCancel={finishResize}
         />
       )}
     </aside>
