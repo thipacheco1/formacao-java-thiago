@@ -1,6 +1,8 @@
 const crypto = require('crypto');
-const adminSession = require('./_lib/admin-session.js');
-const requireAdminRequest = adminSession.requireAdminRequest || adminSession.requireAdminSession;
+const { requireAdminSession } = require('./_lib/admin-session.js');
+
+const requireAdminRequest = requireAdminSession;
+
 
 const BASE_NAMESPACE = 'analytics:v1';
 const ANALYTICS_TIME_ZONE = 'America/Sao_Paulo';
