@@ -289,15 +289,15 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
                   <circle cx="260" cy="140" r="120" fill="url(#constellation-core-glow)" />
 
                   {/* Network topology hub connections (central controller to nodes) */}
-                  <line x1="260" y1="140" x2="117" y2="188" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <line x1="260" y1="140" x2="181" y2="74" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <line x1="260" y1="140" x2="337" y2="67" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <line x1="260" y1="140" x2="435" y2="151" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <line x1="260" y1="140" x2="302" y2="234" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="32" y2="140" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="76" y2="46" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="444" y2="46" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="488" y2="140" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="260" y2="231" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
 
-                  {/* CI/CD Pipeline flow connections (1 -> 2 -> 3 -> 4 -> 5) */}
-                  <path d="M117 188 L181 74 L337 67 L435 151 L302 234" fill="none" stroke="rgba(99, 102, 241, 0.3)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path className="tech-pipeline-flow" d="M117 188 L181 74 L337 67 L435 151 L302 234" fill="none" stroke="#2dd4bf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="8 12" />
+                  {/* CI/CD Pipeline flow connections (1 -> 2 -> 3 -> 4 -> 5 -> 1) */}
+                  <path d="M 32 140 L 76 46 L 444 46 L 488 140 L 260 231 Z" fill="none" stroke="rgba(99, 102, 241, 0.3)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path className="tech-pipeline-flow" d="M 32 140 L 76 46 L 444 46 L 488 140 L 260 231 Z" fill="none" stroke="#2dd4bf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="8 12" />
                 </svg>
 
                 <div className="constellation-core">
