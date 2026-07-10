@@ -273,26 +273,31 @@ const WelcomeView = ({ lessons, completedLessons, onSelectLesson, currentUser, o
               <div className="hero-constellation" aria-label="Mapa das cinco fases da formação">
                 <svg className="constellation-art" viewBox="0 0 520 280" aria-hidden="true">
                   <defs>
-                    <linearGradient id="constellation-orbit-gradient" x1="62" y1="55" x2="468" y2="229" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#A9C1FF" stopOpacity="0.18" />
-                      <stop offset="0.5" stopColor="#7EA2F4" stopOpacity="0.78" />
-                      <stop offset="1" stopColor="#A9C1FF" stopOpacity="0.12" />
-                    </linearGradient>
                     <radialGradient id="constellation-core-glow">
-                      <stop stopColor="#7FA5FF" stopOpacity="0.32" />
-                      <stop offset="1" stopColor="#7FA5FF" stopOpacity="0" />
+                      <stop stopColor="#6366f1" stopOpacity="0.32" />
+                      <stop offset="1" stopColor="#6366f1" stopOpacity="0" />
                     </radialGradient>
-                    <pattern id="constellation-stars" width="32" height="32" patternUnits="userSpaceOnUse">
-                      <circle cx="4" cy="7" r="1" fill="#C8D7FF" fillOpacity="0.28" />
-                      <circle cx="24" cy="22" r="0.7" fill="#8CA9E8" fillOpacity="0.3" />
+                    <pattern id="tech-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(99, 102, 241, 0.05)" strokeWidth="1"/>
+                      <circle cx="24" cy="0" r="1.2" fill="rgba(99, 102, 241, 0.15)"/>
                     </pattern>
                   </defs>
-                  <rect width="520" height="280" fill="url(#constellation-stars)" />
-                  <circle cx="260" cy="140" r="106" fill="url(#constellation-core-glow)" />
-                  <ellipse className="constellation-orbit constellation-orbit-a" cx="260" cy="140" rx="205" ry="83" fill="none" stroke="url(#constellation-orbit-gradient)" strokeWidth="1.5" />
-                  <ellipse className="constellation-orbit constellation-orbit-b" cx="260" cy="140" rx="164" ry="112" fill="none" stroke="#89A9F0" strokeOpacity="0.28" strokeWidth="1.2" strokeDasharray="5 8" />
-                  <path className="constellation-path" d="M73 144C126 54 201 35 271 53C354 74 415 90 454 139C417 214 342 241 262 226C179 211 117 198 73 144Z" fill="none" stroke="#A9C1FF" strokeOpacity="0.2" strokeWidth="1" />
-                  <path d="M117 188L181 74L337 67L435 151L302 234" fill="none" stroke="#7297E8" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="2 7" />
+                  {/* Technology blueprint grid background */}
+                  <rect width="520" height="280" fill="url(#tech-grid)" />
+                  
+                  {/* Central server glow */}
+                  <circle cx="260" cy="140" r="120" fill="url(#constellation-core-glow)" />
+
+                  {/* Network topology hub connections (central controller to nodes) */}
+                  <line x1="260" y1="140" x2="117" y2="188" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="181" y2="74" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="337" y2="67" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="435" y2="151" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <line x1="260" y1="140" x2="302" y2="234" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 3" />
+
+                  {/* CI/CD Pipeline flow connections (1 -> 2 -> 3 -> 4 -> 5) */}
+                  <path d="M117 188 L181 74 L337 67 L435 151 L302 234" fill="none" stroke="rgba(99, 102, 241, 0.3)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path className="tech-pipeline-flow" d="M117 188 L181 74 L337 67 L435 151 L302 234" fill="none" stroke="#2dd4bf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="8 12" />
                 </svg>
 
                 <div className="constellation-core">
