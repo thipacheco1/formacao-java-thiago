@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VARARGS | Aula do Curso de Java Backend</title><meta name="description" content="079 — M2.18 — Varargs Compare estes métodos: Se precisar somar quatro, cinco ou dez números, você criaria vários métodos? Não. Com varargs: Uso: Por dentro..."><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://formacao-java-thiago.vercel.app/aulas/079-m2-18-varargs"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Formação Java Backend"><meta property="og:title" content="VARARGS | Aula do Curso de Java Backend"><meta property="og:description" content="079 — M2.18 — Varargs Compare estes métodos: Se precisar somar quatro, cinco ou dez números, você criaria vários métodos? Não. Com varargs: Uso: Por dentro..."><meta property="og:url" content="https://formacao-java-thiago.vercel.app/aulas/079-m2-18-varargs"><meta property="og:image" content="https://formacao-java-thiago.vercel.app/social-card.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#111827">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://formacao-java-thiago.vercel.app/"},{"@type":"ListItem","position":2,"name":"Trilhas","item":"https://formacao-java-thiago.vercel.app/trilhas"},{"@type":"ListItem","position":3,"name":"Java do Zero: fundamentos e Orientação a Objetos","item":"https://formacao-java-thiago.vercel.app/trilhas/java-do-zero"},{"@type":"ListItem","position":4,"name":"Java Core: JVM, memória, exceptions e I/O","item":"https://formacao-java-thiago.vercel.app/modulos/java-core"},{"@type":"ListItem","position":5,"name":"VARARGS","item":"https://formacao-java-thiago.vercel.app/aulas/079-m2-18-varargs"}]},{"@type":"LearningResource","name":"VARARGS","description":"079 — M2.18 — Varargs Compare estes métodos: Se precisar somar quatro, cinco ou dez números, você criaria vários métodos? Não. Com varargs: Uso: Por dentro...","url":"https://formacao-java-thiago.vercel.app/aulas/079-m2-18-varargs","inLanguage":"pt-BR","isAccessibleForFree":true,"learningResourceType":"Aula de curso","isPartOf":{"@type":"Course","name":"Formação Java Backend","url":"https://formacao-java-thiago.vercel.app/"}}]}</script><style>
+  :root{color-scheme:light;--ink:#172238;--copy:#4f5d72;--muted:#78859a;--line:#dde3ed;--blue:#315bb9;--soft:#edf2ff;--dark:#111b2e}
+  *{box-sizing:border-box}html{background:#eef2f7}body{margin:0;color:var(--copy);background:radial-gradient(circle at 90% 0,rgba(71,108,201,.12),transparent 28rem),#eef2f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+  a{color:var(--blue)}.top{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.09)}.top-inner{width:min(1100px,calc(100% - 32px));margin:auto;padding:15px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;color:#f3f6fc;text-decoration:none;font-weight:800}.brand img{width:38px;height:38px}.top small{color:#91a2bf}
+  .page{width:min(1100px,calc(100% - 32px));margin:28px auto 64px}.crumbs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;color:var(--muted);font-size:.78rem}.crumbs a{text-decoration:none}.hero{padding:clamp(26px,5vw,56px);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 22px 56px rgba(39,52,80,.08)}.eyebrow{display:inline-flex;padding:5px 9px;color:#31549e;background:var(--soft);border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{max-width:850px;margin:17px 0 14px;color:var(--ink);font-size:clamp(2rem,6vw,4rem);line-height:1.05;letter-spacing:-.05em}.lead{max-width:790px;margin:0;color:var(--copy);font-size:clamp(1rem,2vw,1.2rem)}.facts{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0;padding:0;list-style:none}.facts li{padding:8px 11px;color:#536176;background:#f5f7fb;border:1px solid #e1e6ee;border-radius:10px;font-size:.78rem}.cta-row,.share{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.cta,.share a{display:inline-flex;min-height:42px;padding:9px 14px;align-items:center;justify-content:center;border-radius:10px;font-size:.78rem;font-weight:750;text-decoration:none}.cta{color:#fff;background:#365fbe;border:1px solid #416ac5}.cta.secondary{color:#43516a;background:#f4f6fa;border:1px solid #dde3ec}.share a{min-height:36px;padding:7px 11px;color:#5a6880;background:#f7f9fc;border:1px solid #e1e6ee}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.panel{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 34px rgba(39,52,80,.055)}.panel.wide{grid-column:1/-1}.panel h2{margin:0 0 12px;color:var(--ink);font-size:1.25rem;letter-spacing:-.025em}.panel p{margin:0}.topic-list,.lesson-list,.card-list{margin:0;padding-left:21px}.topic-list li,.lesson-list li{padding:5px 0}.lesson-list{columns:2;column-gap:34px}.lesson-list li{break-inside:avoid;font-size:.82rem}.card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0;gap:10px;list-style:none}.card{display:block;height:100%;padding:17px;color:inherit;background:#f8f9fc;border:1px solid #e2e7ef;border-radius:13px;text-decoration:none}.card:hover{border-color:#bfcbe3;background:#f3f6fd}.card strong{display:block;color:var(--ink);font-size:.9rem}.card span{display:block;margin-top:5px;color:var(--muted);font-size:.72rem}.card.disabled{opacity:.66}.nav-next{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.nav-next a{max-width:48%;padding:11px 13px;background:#fff;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:.75rem}.footer{margin-top:28px;color:#8793a5;font-size:.72rem;text-align:center}
+  @media(max-width:720px){.grid,.card-list{grid-template-columns:1fr}.lesson-list{columns:1}.panel.wide{grid-column:auto}.top small{display:none}.hero{border-radius:18px}.nav-next{flex-direction:column}.nav-next a{max-width:100%}}
+</style></head><body>
+<header class="top"><div class="top-inner"><a class="brand" href="/"><img src="/favicon.svg" alt=""><span>Java Backend</span></a><small>Formação gratuita e progressiva</small></div></header>
+<main class="page"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Início</a><span>/</span><a href="/trilhas">Trilhas</a><span>/</span><a href="/trilhas/java-do-zero">Base Java</a><span>/</span><a href="/modulos/java-core">M2</a><span>/</span><span>Aula 079</span></nav>
+<section class="hero">
+  <span class="eyebrow">Aula 079 · Módulo M2</span>
+  <h1>VARARGS</h1>
+  <p class="lead">Esta é uma aula pública de visualização da Formação Java Backend.</p>
+  <ul class="facts">
+    <li>Módulo: <a href="/modulos/java-core" style="color: inherit; text-decoration: underline;">Java Core: JVM, memória, exceptions e I/O</a></li>
+    <li>Trilha: <a href="/trilhas/java-do-zero" style="color: inherit; text-decoration: underline;">Java do Zero: fundamentos e Orientação a Objetos</a></li>
+    <li>Estudo 100% online e gratuito</li>
+  </ul>
+  <div class="cta-row">
+    <a class="cta" href="/?aula=079_M2_18_VARARGS_OFICIAL.md&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_079-m2-18-varargs">Assistir na Plataforma</a>
+    <a class="cta secondary" href="/modulos/java-core">Ver todas as aulas</a>
+  </div>
+  <div class="share" aria-label="Compartilhar"><a href="https://wa.me/?text=Veja%20este%20conte%C3%BAdo%20gratuito%20de%20Java%20Backend%3A%20https%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F079-m2-18-varargs%0Ahttps%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F079-m2-18-varargs%3Futm_source%3Dwhatsapp%26utm_medium%3Dorganic_social%26utm_campaign%3Dformacao_java_backend%26utm_content%3Daula_079-m2-18-varargs" rel="noreferrer">WhatsApp</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F079-m2-18-varargs%3Futm_source%3Dlinkedin%26utm_medium%3Dorganic_social%26utm_campaign%3Dformacao_java_backend%26utm_content%3Daula_079-m2-18-varargs" rel="noreferrer">LinkedIn</a><a href="https://formacao-java-thiago.vercel.app/aulas/079-m2-18-varargs?utm_source=copy_link&amp;utm_medium=organic_social&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_079-m2-18-varargs">Link rastreável</a></div>
+</section>
+
+<div class="grid">
+  <section class="panel wide" style="background: #fff; padding: clamp(20px, 4vw, 40px);">
+    <h2>Prévia do conteúdo escrito</h2>
+    <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 24px;" />
+    <div class="lesson-preview" style="position: relative; max-height: 450px; overflow: hidden; line-height: 1.75; font-size: 0.95rem;">
+      <p># 079 — M2.18 — Varargs</p><h3>A pergunta central da aula</h3><p>Compare estes métodos:</p><pre><code>public static int somarDois(int a, int b) {
+    return a + b;
+}
+
+public static int somarTres(int a, int b, int c) {
+    return a + b + c;
+}
+</code></pre><p>Se precisar somar quatro, cinco ou dez números, você criaria vários métodos?</p><p>Não.</p><p>Com varargs:</p><pre><code>public static int somar(int... numeros) {
+    int total = 0;
+
+    for (int numero : numeros) {
+        total += numero;
+    }
+
+    return total;
+}
+</code></pre><p>Uso:</p><pre><code>somar(1, 2);
+somar(1, 2, 3);
+somar(1, 2, 3, 4);
+</code></pre><p>Por dentro, o Java trata <code>numeros</code> como um array.</p><p>Esse é o ponto mais importante:</p><pre><code>varargs é açúcar sintático para array.
+</code></pre><p>---</p><h3>O que é varargs</h3><p>Varargs significa:</p><pre><code>variable arguments;
+argumentos variáveis;
+quantidade variável de parâmetros.
+</code></pre><p>Em Java, usamos reticências:</p><pre><code>int... numeros
+String... nomes
+BigDecimal... valores
+StatusPedido... status
+</code></pre><p>Exemplo:</p><pre><code>public static void imprimir(String... textos) {
+}
+</code></pre><p>Esse método pode ser chamado assim:</p><pre><code>imprimir();
+imprimir(&quot;Ana&quot;);
+imprimir(&quot;Ana&quot;, &quot;Bruno&quot;);
+imprimir(&quot;Ana&quot;, &quot;Bruno&quot;, &quot;Carla&quot;);
+</code></pre><p>Dentro do método, <code>textos</code> é tratado como:</p><pre><code>String[]
+</code></pre><p>---</p><h3>Varargs por dentro é array</h3><p>Este método:</p><pre><code>public static void imprimir(String... textos) {
+    System.out.println(textos.length);
+}
+</code></pre><p>é muito parecido com:</p><pre><code>public static void imprimir(String[] textos) {
+    System.out.println(textos.length);
+}
+</code></pre><p>A diferença principal é na chamada.</p><p>Com varargs:</p><pre><code>imprimir(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;);
+</code></pre><p>Com array:</p><pre><code>imprimir(new String[]{&quot;A&quot;, &quot;B&quot;, &quot;C&quot;});
+
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, #ffffff); pointer-events: none;"></div>
+    </div>
+    
+    <div style="margin-top: 24px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
+      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">Gostou da prévia? Assista ao conteúdo completo!</h3>
+      <p style="margin: 0 0 20px; color: var(--copy); font-size: 0.88rem; max-width: 650px; margin-inline: auto;">
+        Esta página é uma versão resumida para motores de busca. Na plataforma você terá acesso ao reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático completo para download e acompanhamento de progresso.
+      </p>
+      <a class="cta" href="/?aula=079_M2_18_VARARGS_OFICIAL.md&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_079-m2-18-varargs">Acessar Plataforma de Estudos</a>
+    </div>
+  </section>
+</div>
+<nav class="nav-next" aria-label="Aulas próximas"><a href="/aulas/078-m2-17-var-com-criterio">← Aula Anterior</a><a href="/aulas/080-m2-19-annotations-basicas">Próxima Aula →</a></nav>
+<p class="footer">Formação Java Backend · conteúdo gratuito · estudo no seu ritmo</p></main><script src="/seo-analytics.js" data-page="public:aula:079-m2-18-varargs" defer></script></body></html>

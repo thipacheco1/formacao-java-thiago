@@ -10,6 +10,7 @@ const lessonsDir = join(rootDir, 'docs', 'aulas');
 const publicDir = join(rootDir, 'plataforma-curso', 'public');
 const trailsDir = join(publicDir, 'trilhas');
 const modulesDir = join(publicDir, 'modulos');
+const lessonsSeoDir = join(publicDir, 'aulas');
 
 const assertGeneratedPath = (target) => {
   const resolved = resolve(target);
@@ -34,6 +35,115 @@ const escapeHtml = (value) => String(value ?? '')
   .replace(/'/g, '&#039;');
 
 const safeJson = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
+
+const cleanSlug = (str) => {
+  return str
+    .toLowerCase()
+    .replace(/\.md$/i, '')
+    .replace(/_oficial$/i, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+};
+
+const parseInlineMarkdown = (text) => {
+  return escapeHtml(text)
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`(.*?)`/g, '<code>$1</code>');
+};
+
+const extractDescription = (filePath, fallback) => {
+  try {
+    const raw = readFileSync(filePath, 'utf8');
+    let text = raw.replace(/^#\s+.+$/m, '');
+    text = text.replace(/^##+\s+.+$/gm, '');
+    text = text.replace(/```[\s\S]*?```/g, '');
+    text = text.replace(/[*_`#]/g, '')
+               .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+               .replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+    text = text.replace(/\s+/g, ' ').trim();
+    if (text.length > 5) {
+      return text.slice(0, 155) + '...';
+    }
+  } catch (err) {
+    console.error(`Failed to extract description for ${filePath}:`, err);
+  }
+  return fallback;
+};
+
+const markdownToPreviewHtml = (filePath) => {
+  try {
+    const raw = readFileSync(filePath, 'utf8');
+    const lines = raw.split(/\r?\n/);
+    let html = '';
+    let inCodeBlock = false;
+    let paragraph = [];
+    let charCount = 0;
+    const maxChars = 1500;
+
+    for (const line of lines) {
+      if (charCount > maxChars) {
+        break;
+      }
+      charCount += line.length;
+
+      if (line.startsWith('```')) {
+        if (inCodeBlock) {
+          html += '</code></pre>';
+          inCodeBlock = false;
+        } else {
+          html += '<pre><code>';
+          inCodeBlock = true;
+        }
+        continue;
+      }
+
+      if (inCodeBlock) {
+        html += escapeHtml(line) + '\n';
+        continue;
+      }
+
+      if (line.startsWith('#')) {
+        if (paragraph.length > 0) {
+          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
+          paragraph = [];
+        }
+        const level = line.match(/^#+/)[0].length;
+        const text = line.replace(/^#+\s+/, '');
+        html += `<h${level + 1}>${escapeHtml(text)}</h${level + 1}>`;
+        continue;
+      }
+
+      if (line.trim() === '') {
+        if (paragraph.length > 0) {
+          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
+          paragraph = [];
+        }
+        continue;
+      }
+
+      if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
+        if (paragraph.length > 0) {
+          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
+          paragraph = [];
+        }
+        html += `<li>${parseInlineMarkdown(line.trim().substring(2))}</li>`;
+        continue;
+      }
+
+      paragraph.push(line.trim());
+    }
+
+    if (paragraph.length > 0) {
+      html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
+    }
+
+    return html;
+  } catch (err) {
+    console.error(`Failed to parse preview for ${filePath}:`, err);
+    return '';
+  }
+};
 
 const formatLessonTitle = (fileName) => {
   const filePath = join(lessonsDir, fileName);
@@ -128,6 +238,7 @@ const writePage = (directory, html) => {
 
 resetGeneratedDirectory(trailsDir);
 resetGeneratedDirectory(modulesDir);
+resetGeneratedDirectory(lessonsSeoDir);
 
 const sitemapUrls = [`${SITE_URL}/`];
 
@@ -184,7 +295,7 @@ for (const [index, module] of publishedModules.entries()) {
   const previous = publishedModules[index - 1];
   const next = publishedModules[index + 1];
   const topics = module.highlights.map(topic => `<li>${escapeHtml(topic)}</li>`).join('');
-  const lessons = module.publishedLessons.map(lesson => `<li>${escapeHtml(lesson.title)}</li>`).join('');
+  const lessons = module.publishedLessons.map(lesson => `<li><a href="/aulas/${cleanSlug(lesson.fileName)}" style="color: inherit; text-decoration: none;">${escapeHtml(lesson.title)}</a></li>`).join('');
   const items = [{ name: 'Início', url: `${SITE_URL}/` }, { name: 'Trilhas', url: hubCanonical }, { name: phase.name, url: `${SITE_URL}/trilhas/${phase.slug}` }, { name: module.name, url: canonical }];
   const navigation = `<nav class="nav-next" aria-label="Módulos próximos">${previous ? `<a href="/modulos/${previous.slug}">← ${escapeHtml(previous.name)}</a>` : '<span></span>'}${next ? `<a href="/modulos/${next.slug}">${escapeHtml(next.name)} →</a>` : ''}</nav>`;
 
@@ -200,7 +311,112 @@ for (const [index, module] of publishedModules.entries()) {
   sitemapUrls.push(canonical);
 }
 
+// Flat list of all published lessons to generate static preview pages with previous/next controls
+const allLessons = [];
+for (const module of publishedModules) {
+  const phase = publishedPhases.find(item => item.modules.includes(module.id));
+  for (const lesson of module.publishedLessons) {
+    allLessons.push({
+      ...lesson,
+      module,
+      phase
+    });
+  }
+}
+
+for (const [index, lesson] of allLessons.entries()) {
+  const { fileName, title, module, phase } = lesson;
+  const slug = cleanSlug(fileName);
+  const canonical = `${SITE_URL}/aulas/${slug}`;
+  const previous = allLessons[index - 1];
+  const next = allLessons[index + 1];
+  
+  const filePath = join(lessonsDir, fileName);
+  const description = extractDescription(filePath, `Aprenda ${title} gratuitamente na aula do módulo ${module.name} da Formação Java Backend.`);
+  const previewHtml = markdownToPreviewHtml(filePath);
+  
+  const breadcrumbs = `<a href="/">Início</a><span>/</span><a href="/trilhas">Trilhas</a><span>/</span><a href="/trilhas/${phase.slug}">${escapeHtml(phase.shortName)}</a><span>/</span><a href="/modulos/${module.slug}">${escapeHtml(module.id)}</a><span>/</span><span>Aula ${fileName.slice(0, 3)}</span>`;
+  
+  const items = [
+    { name: 'Início', url: `${SITE_URL}/` },
+    { name: 'Trilhas', url: hubCanonical },
+    { name: phase.name, url: `${SITE_URL}/trilhas/${phase.slug}` },
+    { name: module.name, url: `${SITE_URL}/modulos/${module.slug}` },
+    { name: title, url: canonical }
+  ];
+  
+  const navigation = `<nav class="nav-next" aria-label="Aulas próximas">${previous ? `<a href="/aulas/${cleanSlug(previous.fileName)}">← Aula Anterior</a>` : '<span></span>'}${next ? `<a href="/aulas/${cleanSlug(next.fileName)}">Próxima Aula →</a>` : ''}</nav>`;
+  
+  const body = `
+<section class="hero">
+  <span class="eyebrow">Aula ${fileName.slice(0, 3)} · Módulo ${escapeHtml(module.id)}</span>
+  <h1>${escapeHtml(title)}</h1>
+  <p class="lead">Esta é uma aula pública de visualização da Formação Java Backend.</p>
+  <ul class="facts">
+    <li>Módulo: <a href="/modulos/${module.slug}" style="color: inherit; text-decoration: underline;">${escapeHtml(module.name)}</a></li>
+    <li>Trilha: <a href="/trilhas/${phase.slug}" style="color: inherit; text-decoration: underline;">${escapeHtml(phase.name)}</a></li>
+    <li>Estudo 100% online e gratuito</li>
+  </ul>
+  <div class="cta-row">
+    <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_${slug}">Assistir na Plataforma</a>
+    <a class="cta secondary" href="/modulos/${module.slug}">Ver todas as aulas</a>
+  </div>
+  ${shareLinks(canonical, `aula_${slug}`)}
+</section>
+
+<div class="grid">
+  <section class="panel wide" style="background: #fff; padding: clamp(20px, 4vw, 40px);">
+    <h2>Prévia do conteúdo escrito</h2>
+    <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 24px;" />
+    <div class="lesson-preview" style="position: relative; max-height: 450px; overflow: hidden; line-height: 1.75; font-size: 0.95rem;">
+      ${previewHtml}
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, #ffffff); pointer-events: none;"></div>
+    </div>
+    
+    <div style="margin-top: 24px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
+      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">Gostou da prévia? Assista ao conteúdo completo!</h3>
+      <p style="margin: 0 0 20px; color: var(--copy); font-size: 0.88rem; max-width: 650px; margin-inline: auto;">
+        Esta página é uma versão resumida para motores de busca. Na plataforma você terá acesso ao reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático completo para download e acompanhamento de progresso.
+      </p>
+      <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_${slug}">Acessar Plataforma de Estudos</a>
+    </div>
+  </section>
+</div>
+${navigation}
+`;
+
+  writePage(join(lessonsSeoDir, slug), renderDocument({
+    title: `${title} | Aula do Curso de Java Backend`,
+    description,
+    canonical,
+    pageId: `public:aula:${slug}`,
+    breadcrumbs,
+    body,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbJson(items),
+        {
+          '@type': 'LearningResource',
+          'name': title,
+          'description': description,
+          'url': canonical,
+          'inLanguage': 'pt-BR',
+          'isAccessibleForFree': true,
+          'learningResourceType': 'Aula de curso',
+          'isPartOf': {
+            '@type': 'Course',
+            'name': 'Formação Java Backend',
+            'url': `${SITE_URL}/`
+          }
+        }
+      ]
+    }
+  }));
+  sitemapUrls.push(canonical);
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url><loc>${escapeHtml(url)}</loc></url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(publicDir, 'sitemap.xml'), sitemap, 'utf8');
 
-console.log(`SEO pages generated: ${publishedPhases.length} trails, ${publishedModules.length} modules, ${sitemapUrls.length} sitemap URLs.`);
+console.log(`SEO pages generated: ${publishedPhases.length} trails, ${publishedModules.length} modules, ${allLessons.length} lessons, ${sitemapUrls.length} sitemap URLs.`);

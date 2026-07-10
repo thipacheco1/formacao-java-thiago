@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>315 - M13.05 - DAO inicial com responsabilidade clara | Aula do Curso de Java Backend</title><meta name="description" content="Na aula 314, você aprofundou o uso de ResultSet e transformou linhas do PostgreSQL em records Java. O laboratório anterior tornou explícitas estas responsa..."><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://formacao-java-thiago.vercel.app/aulas/315-m13-05-dao-inicial-com-responsabilidade-clara"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Formação Java Backend"><meta property="og:title" content="315 - M13.05 - DAO inicial com responsabilidade clara | Aula do Curso de Java Backend"><meta property="og:description" content="Na aula 314, você aprofundou o uso de ResultSet e transformou linhas do PostgreSQL em records Java. O laboratório anterior tornou explícitas estas responsa..."><meta property="og:url" content="https://formacao-java-thiago.vercel.app/aulas/315-m13-05-dao-inicial-com-responsabilidade-clara"><meta property="og:image" content="https://formacao-java-thiago.vercel.app/social-card.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#111827">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://formacao-java-thiago.vercel.app/"},{"@type":"ListItem","position":2,"name":"Trilhas","item":"https://formacao-java-thiago.vercel.app/trilhas"},{"@type":"ListItem","position":3,"name":"Backend Java com Spring Boot, REST, SQL e JPA","item":"https://formacao-java-thiago.vercel.app/trilhas/backend-java-spring-boot-banco-de-dados"},{"@type":"ListItem","position":4,"name":"JDBC, JPA, Hibernate e Spring Data","item":"https://formacao-java-thiago.vercel.app/modulos/jdbc-jpa-hibernate-spring-data"},{"@type":"ListItem","position":5,"name":"315 - M13.05 - DAO inicial com responsabilidade clara","item":"https://formacao-java-thiago.vercel.app/aulas/315-m13-05-dao-inicial-com-responsabilidade-clara"}]},{"@type":"LearningResource","name":"315 - M13.05 - DAO inicial com responsabilidade clara","description":"Na aula 314, você aprofundou o uso de ResultSet e transformou linhas do PostgreSQL em records Java. O laboratório anterior tornou explícitas estas responsa...","url":"https://formacao-java-thiago.vercel.app/aulas/315-m13-05-dao-inicial-com-responsabilidade-clara","inLanguage":"pt-BR","isAccessibleForFree":true,"learningResourceType":"Aula de curso","isPartOf":{"@type":"Course","name":"Formação Java Backend","url":"https://formacao-java-thiago.vercel.app/"}}]}</script><style>
+  :root{color-scheme:light;--ink:#172238;--copy:#4f5d72;--muted:#78859a;--line:#dde3ed;--blue:#315bb9;--soft:#edf2ff;--dark:#111b2e}
+  *{box-sizing:border-box}html{background:#eef2f7}body{margin:0;color:var(--copy);background:radial-gradient(circle at 90% 0,rgba(71,108,201,.12),transparent 28rem),#eef2f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+  a{color:var(--blue)}.top{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.09)}.top-inner{width:min(1100px,calc(100% - 32px));margin:auto;padding:15px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;color:#f3f6fc;text-decoration:none;font-weight:800}.brand img{width:38px;height:38px}.top small{color:#91a2bf}
+  .page{width:min(1100px,calc(100% - 32px));margin:28px auto 64px}.crumbs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;color:var(--muted);font-size:.78rem}.crumbs a{text-decoration:none}.hero{padding:clamp(26px,5vw,56px);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 22px 56px rgba(39,52,80,.08)}.eyebrow{display:inline-flex;padding:5px 9px;color:#31549e;background:var(--soft);border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{max-width:850px;margin:17px 0 14px;color:var(--ink);font-size:clamp(2rem,6vw,4rem);line-height:1.05;letter-spacing:-.05em}.lead{max-width:790px;margin:0;color:var(--copy);font-size:clamp(1rem,2vw,1.2rem)}.facts{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0;padding:0;list-style:none}.facts li{padding:8px 11px;color:#536176;background:#f5f7fb;border:1px solid #e1e6ee;border-radius:10px;font-size:.78rem}.cta-row,.share{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.cta,.share a{display:inline-flex;min-height:42px;padding:9px 14px;align-items:center;justify-content:center;border-radius:10px;font-size:.78rem;font-weight:750;text-decoration:none}.cta{color:#fff;background:#365fbe;border:1px solid #416ac5}.cta.secondary{color:#43516a;background:#f4f6fa;border:1px solid #dde3ec}.share a{min-height:36px;padding:7px 11px;color:#5a6880;background:#f7f9fc;border:1px solid #e1e6ee}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.panel{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 34px rgba(39,52,80,.055)}.panel.wide{grid-column:1/-1}.panel h2{margin:0 0 12px;color:var(--ink);font-size:1.25rem;letter-spacing:-.025em}.panel p{margin:0}.topic-list,.lesson-list,.card-list{margin:0;padding-left:21px}.topic-list li,.lesson-list li{padding:5px 0}.lesson-list{columns:2;column-gap:34px}.lesson-list li{break-inside:avoid;font-size:.82rem}.card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0;gap:10px;list-style:none}.card{display:block;height:100%;padding:17px;color:inherit;background:#f8f9fc;border:1px solid #e2e7ef;border-radius:13px;text-decoration:none}.card:hover{border-color:#bfcbe3;background:#f3f6fd}.card strong{display:block;color:var(--ink);font-size:.9rem}.card span{display:block;margin-top:5px;color:var(--muted);font-size:.72rem}.card.disabled{opacity:.66}.nav-next{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.nav-next a{max-width:48%;padding:11px 13px;background:#fff;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:.75rem}.footer{margin-top:28px;color:#8793a5;font-size:.72rem;text-align:center}
+  @media(max-width:720px){.grid,.card-list{grid-template-columns:1fr}.lesson-list{columns:1}.panel.wide{grid-column:auto}.top small{display:none}.hero{border-radius:18px}.nav-next{flex-direction:column}.nav-next a{max-width:100%}}
+</style></head><body>
+<header class="top"><div class="top-inner"><a class="brand" href="/"><img src="/favicon.svg" alt=""><span>Java Backend</span></a><small>Formação gratuita e progressiva</small></div></header>
+<main class="page"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Início</a><span>/</span><a href="/trilhas">Trilhas</a><span>/</span><a href="/trilhas/backend-java-spring-boot-banco-de-dados">Backend core</a><span>/</span><a href="/modulos/jdbc-jpa-hibernate-spring-data">M13</a><span>/</span><span>Aula 315</span></nav>
+<section class="hero">
+  <span class="eyebrow">Aula 315 · Módulo M13</span>
+  <h1>315 - M13.05 - DAO inicial com responsabilidade clara</h1>
+  <p class="lead">Esta é uma aula pública de visualização da Formação Java Backend.</p>
+  <ul class="facts">
+    <li>Módulo: <a href="/modulos/jdbc-jpa-hibernate-spring-data" style="color: inherit; text-decoration: underline;">JDBC, JPA, Hibernate e Spring Data</a></li>
+    <li>Trilha: <a href="/trilhas/backend-java-spring-boot-banco-de-dados" style="color: inherit; text-decoration: underline;">Backend Java com Spring Boot, REST, SQL e JPA</a></li>
+    <li>Estudo 100% online e gratuito</li>
+  </ul>
+  <div class="cta-row">
+    <a class="cta" href="/?aula=315_M13_05_DAO_INICIAL_COM_RESPONSABILIDADE_CLARA_OFICIAL.md&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_315-m13-05-dao-inicial-com-responsabilidade-clara">Assistir na Plataforma</a>
+    <a class="cta secondary" href="/modulos/jdbc-jpa-hibernate-spring-data">Ver todas as aulas</a>
+  </div>
+  <div class="share" aria-label="Compartilhar"><a href="https://wa.me/?text=Veja%20este%20conte%C3%BAdo%20gratuito%20de%20Java%20Backend%3A%20https%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F315-m13-05-dao-inicial-com-responsabilidade-clara%0Ahttps%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F315-m13-05-dao-inicial-com-responsabilidade-clara%3Futm_source%3Dwhatsapp%26utm_medium%3Dorganic_social%26utm_campaign%3Dformacao_java_backend%26utm_content%3Daula_315-m13-05-dao-inicial-com-responsabilidade-clara" rel="noreferrer">WhatsApp</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fformacao-java-thiago.vercel.app%2Faulas%2F315-m13-05-dao-inicial-com-responsabilidade-clara%3Futm_source%3Dlinkedin%26utm_medium%3Dorganic_social%26utm_campaign%3Dformacao_java_backend%26utm_content%3Daula_315-m13-05-dao-inicial-com-responsabilidade-clara" rel="noreferrer">LinkedIn</a><a href="https://formacao-java-thiago.vercel.app/aulas/315-m13-05-dao-inicial-com-responsabilidade-clara?utm_source=copy_link&amp;utm_medium=organic_social&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_315-m13-05-dao-inicial-com-responsabilidade-clara">Link rastreável</a></div>
+</section>
+
+<div class="grid">
+  <section class="panel wide" style="background: #fff; padding: clamp(20px, 4vw, 40px);">
+    <h2>Prévia do conteúdo escrito</h2>
+    <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 24px;" />
+    <div class="lesson-preview" style="position: relative; max-height: 450px; overflow: hidden; line-height: 1.75; font-size: 0.95rem;">
+      <h2>315 - M13.05 - DAO inicial com responsabilidade clara</h2><h3>Apresentacao da aula</h3><p>Na aula 314, você aprofundou o uso de <code>ResultSet</code> e transformou linhas do PostgreSQL em records Java.</p><p>O laboratório anterior tornou explícitas estas responsabilidades:</p><pre><code>abrir a conexão;
+
+preparar o SQL;
+
+executar a consulta;
+
+percorrer o cursor;
+
+ler labels;
+
+converter tipos;
+
+preservar SQL NULL;
+
+criar objetos Java;
+
+fechar ResultSet, PreparedStatement e Connection.
+</code></pre><p>Todo esse trabalho estava concentrado em uma classe didática chamada:</p><pre><code>ResultSetLab.
+</code></pre><p>Ela foi adequada para estudar o cursor, os getters e os tipos.</p><p>Entretanto, uma aplicação backend precisa organizar o código de persistência de modo que outras partes não conheçam detalhes como:</p><li>SQL;</li><li><code>PreparedStatement</code>;</li><li><code>ResultSet</code>;</li><li>aliases;</li><li>parâmetros JDBC;</li><li>ciclo de conexão;</li><li>mapeamento de linhas.</li><p>Nesta aula, você criará seu primeiro DAO.</p><p>DAO significa:</p><pre><code>Data Access Object.
+</code></pre><p>Um DAO encapsula o acesso a uma fonte de dados para uma responsabilidade específica.</p><p>No laboratório, a responsabilidade será:</p><pre><code>acessar dados de Cliente no PostgreSQL por JDBC.
+</code></pre><p>A classe <code>ClienteDao</code> oferecerá <code>findById</code>, <code>findByCode</code>, <code>findAllActive</code> e <code>countAll</code>.</p><p>Quem chama o DAO não precisará saber:</p><li>qual tabela foi consultada;</li><li>qual SQL foi usado;</li><li>como os parâmetros foram associados;</li><li>como o <code>ResultSet</code> foi percorrido;</li><li>como os tipos foram convertidos;</li><li>como os recursos foram fechados.</li><p>O chamador receberá:</p><pre><code>Optional&lt;Cliente&gt;;
+
+List&lt;Cliente&gt;;
+
+long.
+</code></pre><p>A aula separará <code>ClienteMapper</code>, responsável por transformar a linha atual em <code>Cliente</code>. O DAO coordena JDBC; o <code>Main</code> apenas monta objetos e exibe resultados. Essa divisão evita misturar persistência, regra de negócio e apresentação.</p>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, #ffffff); pointer-events: none;"></div>
+    </div>
+    
+    <div style="margin-top: 24px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
+      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">Gostou da prévia? Assista ao conteúdo completo!</h3>
+      <p style="margin: 0 0 20px; color: var(--copy); font-size: 0.88rem; max-width: 650px; margin-inline: auto;">
+        Esta página é uma versão resumida para motores de busca. Na plataforma você terá acesso ao reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático completo para download e acompanhamento de progresso.
+      </p>
+      <a class="cta" href="/?aula=315_M13_05_DAO_INICIAL_COM_RESPONSABILIDADE_CLARA_OFICIAL.md&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_315-m13-05-dao-inicial-com-responsabilidade-clara">Acessar Plataforma de Estudos</a>
+    </div>
+  </section>
+</div>
+<nav class="nav-next" aria-label="Aulas próximas"><a href="/aulas/314-m13-04-resultset-mapeamento-manual-e-tipos">← Aula Anterior</a><a href="/aulas/316-m13-06-repository-pattern-sem-spring">Próxima Aula →</a></nav>
+<p class="footer">Formação Java Backend · conteúdo gratuito · estudo no seu ritmo</p></main><script src="/seo-analytics.js" data-page="public:aula:315-m13-05-dao-inicial-com-responsabilidade-clara" defer></script></body></html>

@@ -18,6 +18,10 @@
       "destination": "/modulos/:slug/index.html"
     },
     {
+      "source": "/aulas/:slug",
+      "destination": "/aulas/:slug/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

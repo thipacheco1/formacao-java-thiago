@@ -9,6 +9,33 @@ const npmExecPath = process.env.npm_execpath;
 const webCommand = npmExecPath ? process.execPath : npmCommand;
 const webArgs = npmExecPath ? [npmExecPath, ...viteArgs] : viteArgs;
 
+const fs = require('fs');
+const lessonsDir = path.join(rootDir, 'docs', 'aulas');
+const seoScript = path.join(rootDir, 'tools', 'generate-seo-pages.mjs');
+
+let watchTimeout = null;
+const runSeoGenerate = () => {
+  console.log('[Watcher] Arquivos de aulas (.md) alterados. Regenerando páginas estáticas de SEO e sitemap...');
+  const child = spawn(process.execPath, [seoScript], {
+    cwd: rootDir,
+    stdio: 'inherit'
+  });
+  child.on('error', (err) => {
+    console.error('[Watcher] Erro ao regenerar páginas SEO:', err);
+  });
+};
+
+if (fs.existsSync(lessonsDir)) {
+  fs.watch(lessonsDir, (eventType, filename) => {
+    if (filename && filename.endsWith('.md')) {
+      if (watchTimeout) clearTimeout(watchTimeout);
+      watchTimeout = setTimeout(runSeoGenerate, 300);
+    }
+  });
+  console.log(`[Watcher] Monitorando novos arquivos de aulas em: ${lessonsDir}`);
+}
+
+
 const api = spawn(process.execPath, [path.join(rootDir, 'tools', 'local-api-server.js')], {
   cwd: rootDir,
   env: process.env,
