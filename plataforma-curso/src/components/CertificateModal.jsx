@@ -125,7 +125,7 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
   const handleAddToLinkedIn = () => {
     const courseName = encodeURIComponent('Engenheiro Java Backend & Arquiteto de Sistemas');
     const orgName = encodeURIComponent('Formação Java Backend — Thiago Rodrigues');
-    const certUrl = encodeURIComponent(`https://formacao-java-thiago.vercel.app/validar?codigo=${verificationCode}`);
+    const certUrl = encodeURIComponent(`https://formacao-java.vercel.app/validar?codigo=${verificationCode}`);
     const certId = encodeURIComponent(verificationCode);
     const date = new Date();
     const year = date.getFullYear();
@@ -137,7 +137,7 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
 
   const handleSharePost = () => {
     const shareText = encodeURIComponent(
-      `Conquista desbloqueada! 🎉 Acabei de concluir a Formação Java Backend & Arquiteto de Sistemas ministrada pelo instrutor Thiago Rodrigues. \n\nForam 500 horas de muito conteúdo prático abrangendo Java Core, SOLID, Design Patterns, Spring Boot APIs, banco de dados relacional, testes de integração com Testcontainers, segurança, DevOps com Docker e Kubernetes, mensageria com Kafka e modelagem com DDD.\n\nMais um grande passo rumo à especialização técnica! 🚀👨‍💻\n\nConfira a formação de forma gratuita em: https://formacao-java-thiago.vercel.app/`
+      `Conquista desbloqueada! 🎉 Acabei de concluir a Formação Java Backend & Arquiteto de Sistemas ministrada pelo instrutor Thiago Rodrigues. \n\nForam 500 horas de muito conteúdo prático abrangendo Java Core, SOLID, Design Patterns, Spring Boot APIs, banco de dados relacional, testes de integração com Testcontainers, segurança, DevOps com Docker e Kubernetes, mensageria com Kafka e modelagem com DDD.\n\nMais um grande passo rumo à especialização técnica! 🚀👨‍💻\n\nConfira a formação de forma gratuita em: https://formacao-java.vercel.app/`
     );
     const shareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${shareText}`;
     window.open(shareUrl, '_blank');
@@ -294,7 +294,7 @@ const CertificateModal = ({ isOpen, onClose, currentUser, isPreviewMode = false 
                       Código de Autenticidade: <strong>{verificationCode}</strong>
                     </span>
                     <span className="verification-text">
-                      Verificável em formacao.thiagopacheco.com.br/validar
+                      Verificável em formacao-java.vercel.app/validar
                     </span>
                   </div>
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { COURSE_MODULES, COURSE_PHASES } from '../plataforma-curso/src/data/coursePlan.js';
 import { MODULE_SEO, PHASE_SEO } from '../plataforma-curso/src/data/seoCatalog.js';
 
-const SITE_URL = 'https://formacao-java-thiago.vercel.app';
+const SITE_URL = 'https://formacao-java.vercel.app';
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const lessonsDir = join(rootDir, 'docs', 'aulas');
 const publicDir = join(rootDir, 'plataforma-curso', 'public');

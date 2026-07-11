@@ -1,4 +1,4 @@
-# Prompt mestre para continuar a formacao Java Backend a partir da aula 271
+# Prompt mestre para continuar a formacao Java Backend a partir da aula 388
 
 Este documento existe para retomar a geracao das aulas em outro chat sem perder sequencia, estilo, nomes, diretorios, profundidade e raciocinio pedagogico.
 
@@ -8,205 +8,212 @@ Use este prompt junto com:
 ORDEM_DE_ENVIO_AO_CHAT.md
 LEIA_PRIMEIRO_FONTE_DA_VERDADE.md
 ROTEIRO_OPERACIONAL_RECONSTRUIDO_COMPLETO.md
-GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_270.csv
-270_M11_26_FECHAMENTO_DO_M11_E_TRANSICAO_PARA_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_OFICIAL.md
+GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_387.csv
+387_M14_32_ASYNC_NO_SPRING_OFICIAL.md
 REVISAO_EDITORIAL_V2/PADRAO_EDITORIAL_AULA_V2.md
 ```
 
 ## Diagnostico do estado atual
 
 - A fonte da verdade das aulas ja geradas e `docs/aulas`.
-- Existem 271 arquivos Markdown reais.
-- A numeracao real vai de `000` a `270`.
-- Nao ha aula `271` real em `docs/aulas` no momento desta atualizacao.
-- A aula `270` e a ultima aula valida gerada.
-- A aula `270` fecha oficialmente o M11.
-- A proxima aula deve iniciar o M12.
-- O M12 e sobre SQL, PostgreSQL e modelagem relacional.
+- Existem 388 arquivos Markdown reais.
+- A numeracao real vai de `000` a `387`.
+- Nao ha aula `388` real em `docs/aulas` no momento desta atualizacao.
+- A aula `387` e a ultima aula valida gerada.
+- A aula `387` tratou de Async no Spring.
+- A proxima aula deve continuar o M14.
+- O M14 e sobre Spring Boot, REST APIs e backend profissional.
 - A grade operacional correta para continuar agora e:
-  - `GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_270.csv`
-- A CSV antiga `HISTORICO_GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATE_259.csv` pode existir na pasta, mas nao e a versao operacional atual da retomada pos-aula 270.
+  - `GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_387.csv`
+- Arquivos `POS_270` e `ATE_259` sao historicos. Nao usar como ponto atual de retomada.
 
 ## Ultimo arquivo valido
 
 ```text
-270_M11_26_FECHAMENTO_DO_M11_E_TRANSICAO_PARA_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_OFICIAL.md
+387_M14_32_ASYNC_NO_SPRING_OFICIAL.md
 ```
 
 H1:
 
 ```text
-# 270 - M11.26 - Fechamento do M11 e transicao para SQL, PostgreSQL e modelagem relacional
+# 387 - M14.32 - Async no Spring
 ```
 
-A aula 270 registra que:
+A aula 387 consolidou:
 
 ```text
-O M11 esta concluido.
-A proxima fase sera banco de dados.
-Sem SQL, JPA vira magica.
-Sem PostgreSQL, Spring Data vira dependencia cega de framework.
-O proximo modulo deve ser M12 - SQL, PostgreSQL e modelagem relacional.
+@EnableAsync;
+@Async por proxy;
+self-invocation;
+executor nomeado e limitado;
+ThreadPoolTaskExecutor;
+pool, queue, rejection e shutdown;
+TaskDecorator com propagacao controlada de MDC;
+AsyncUncaughtExceptionHandler;
+CompletableFuture;
+transaction REQUIRES_NEW em outro bean;
+bridge AFTER_COMMIT;
+tasks em memoria nao duraveis;
+limites de async;
+sem Redis, sem cache, sem broker, sem outbox e sem promessa de entrega duravel.
+```
+
+Ela termina apontando que a proxima aula e:
+
+```text
+Cache com Spring Redis.
 ```
 
 ## Proxima aula obrigatoria
 
 ```text
 Numero global:
-271
+388
 
 Codigo interno:
-M12.01
+M14.33
 
 Arquivo:
-271_M12_01_INTRODUCAO_AO_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_PARA_JAVA_BACKEND_OFICIAL.md
+388_M14_33_CACHE_COM_SPRING_REDIS_OFICIAL.md
 
 H1:
-# 271 - M12.01 - Introducao ao SQL, PostgreSQL e modelagem relacional para Java Backend
+# 388 - M14.33 - Cache com Spring Redis
 
 Modulo:
-M12 - SQL, PostgreSQL e modelagem relacional
+M14 - Spring Boot, REST APIs e backend profissional
 
-Laboratorio recomendado:
-labs/m12/aula-271-introducao-sql-postgresql-modelagem-relacional
+Projeto:
+formacao-java-backend-api
 ```
 
 ## Sequencia real ja produzida
 
 - `000`: abertura da formacao.
-- `001` a `020` - M0: ambiente, metodo, Windows, PowerShell, JDK, javac, IntelliJ, debug, Git, GitHub, Markdown, diario de bordo, IA, Maven, PostgreSQL, Postman/Insomnia, Docker Desktop/WSL2, estrutura do repositorio e checklist.
-- `021` a `061` - M1: fundamentos absolutos de Java, variaveis, tipos, operadores, condicionais, lacos, arrays, matrizes, metodos, escopo, referencias, entrada, debug e mini-projeto.
-- `062` a `089` - M2: Java Core profundo, JVM, bytecode, stack/heap, GC, default values, null, String, wrappers, BigDecimal, Locale, java.time, enum, records, var, annotations, reflection, sealed, pattern matching, exceptions e documentacao.
-- `090` a `104` - M3: organizacao procedural, main menor, metodos pequenos, coesao, parametros, validacao, reuso, debug, Extract Method e mini-arquitetura procedural.
-- `105` a `145` - M4: orientacao a objetos, modelagem, encapsulamento, imutabilidade, composicao, objetos de valor, entidades, identidade, equals/hashCode, invariantes, servicos de dominio, factories, builder, agregados e mini-projeto.
-- `146` a `171` - M5: Collections Framework, List, Set, Map, Queue, Deque, Comparator, equals/hashCode, ordenacao, mini-projeto e projeto final.
-- `172` a `185` - M6: Generics, bounded types, wildcards, PECS, type erasure, Optional, map/flatMap, Repository/Resultado e revisao.
-- `186` a `200` - M7: Functional Interfaces, lambdas, method reference, Streams, collectors, match/find/count, sorted/distinct/limit/skip, min/max/reduce, grouping, partitioning, flatMap e fechamento.
-- `201` a `214` - M8: exceptions, checked vs unchecked, exceptions proprias, try-with-resources, erro por camada, I/O, Path/Files, CSV, Date/Time, UUID, Random/SecureRandom e fechamento.
-- `215` a `222` - M9: SOLID, SRP, OCP, LSP, ISP, DIP, refatoracao guiada e simulado.
-- `223` a `244` - M10: Design Patterns aplicados ao backend, Strategy, Factory, Builder, Adapter, Facade, Template Method, Chain of Responsibility, State, Command, Observer, Decorator, Proxy, Composite, Flyweight, Bridge, Mediator, Memento, Iterator, Visitor, Interpreter e revisao tecnica.
-- `245` a `270` - M11 completo: ferramentas profissionais do Java Backend, JDK/JVM/JRE, Maven, Gradle, Git profissional, IDE, debug, JUnit 5, Mockito, AssertJ, TDD, JaCoCo, SonarQube, Docker, Docker Compose, GitHub Actions, pipelines, Checkstyle, Spotless, SCA, SBOM, Dependabot, Testcontainers, WireMock, ArchUnit, mini-projeto e fechamento para SQL.
+- `001` a `020` - M0: ambiente, metodo, ferramentas, Git, Maven, PostgreSQL, HTTP, Docker Desktop/WSL2 e rotina profissional.
+- `021` a `061` - M1: fundamentos absolutos de Java.
+- `062` a `089` - M2: Java Core profundo.
+- `090` a `104` - M3: organizacao procedural, metodos e projetos console.
+- `105` a `145` - M4: orientacao a objetos, dominio, encapsulamento, invariantes, agregados e mini-projeto.
+- `146` a `171` - M5: Collections Framework.
+- `172` a `185` - M6: Generics e Optional.
+- `186` a `200` - M7: Functional Interfaces, lambdas e Streams.
+- `201` a `214` - M8: exceptions, I/O, CSV, datas e utilitarios modernos.
+- `215` a `222` - M9: SOLID.
+- `223` a `244` - M10: Design Patterns aplicados ao backend.
+- `245` a `270` - M11: ferramentas profissionais, Maven, Git, testes, qualidade, Docker, CI/CD, Testcontainers, WireMock e ArchUnit.
+- `271` a `310` - M12: SQL, PostgreSQL e modelagem relacional.
+- `311` a `355` - M13: persistencia Java com JDBC, JPA, Hibernate, Spring Data, migrations, repositories, transactions, testes e fechamento.
+- `356` a `387` - M14 ate agora: Spring Boot, Initializr, auto-configuration, properties, profiles, beans, DI, controllers, REST, DTOs, mappers, Bean Validation, exceptions, Problem Details, CRUD, PUT/PATCH, paginacao, filtros, OpenAPI, versionamento, profiles seguros, logging, filters/interceptors, eventos internos e async.
 
-## Aulas reais recentes do M11
+## O que a aula 388 deve fazer
 
-Estas aulas ja existem. Nao gerar de novo:
+A aula 388 deve introduzir cache com Spring e Redis dentro do projeto `formacao-java-backend-api`.
 
-```text
-260 - M11.16 - Docker Compose profissional com PostgreSQL, Redis, redes, volumes, healthcheck e ambiente local de backend
-261 - M11.17 - CI/CD, GitHub Actions e pipeline Java Backend: conceitos, workflow e gatilhos
-262 - M11.18 - Pipeline Maven com testes, JaCoCo, relatorios e artefatos
-263 - M11.19 - Pipeline Docker: build, tags, registry, secrets e imagem versionada
-264 - M11.20 - Checkstyle, Spotless e formatacao automatizada com criterio
-265 - M11.21 - Seguranca de dependencias: SCA, SBOM, Dependabot e supply chain
-266 - M11.22 - Testcontainers com PostgreSQL: testes de integracao reais e descartaveis
-267 - M11.23 - WireMock, contratos HTTP e servicos externos fake
-268 - M11.24 - ArchUnit: regras arquiteturais automatizadas e protecao de camadas
-269 - M11.25 - Mini-projeto ferramentas: pipeline, Docker, Testcontainers, WireMock, ArchUnit e qualidade
-270 - M11.26 - Fechamento do M11 e transicao para SQL, PostgreSQL e modelagem relacional
-```
-
-## O que a aula 271 deve fazer
-
-A aula 271 deve abrir o M12 com calma e profundidade.
-
-Ela deve conectar o fechamento do M11 com o novo bloco:
+Ela deve conectar com a aula 387 assim:
 
 ```text
-Ferramentas profissionais foram consolidadas.
-Agora o aluno entra no pilar de dados.
-Backend sem banco fica superficial.
-JPA sem SQL vira decoracao de annotations.
-Spring Data sem entender banco vira dependencia cega de framework.
+A aula 387 ensinou execucao assincrona e deixou claro que async em memoria nao e cache, nao e fila, nao e entrega duravel e nao usa Redis.
+A aula 388 deve entrar em Redis pelo caminho correto: cache controlado para leitura, performance e reducao de custo de consultas repetidas.
 ```
 
-A aula 271 deve ensinar:
+A aula 388 deve ensinar:
 
 ```text
-o que e banco de dados;
-o que e SGBD;
-o que e banco relacional;
-o que e SQL;
-por que PostgreSQL foi escolhido;
-como uma aplicacao backend depende de dados;
-o que sao tabelas, linhas e colunas;
-o que sao chaves primarias e estrangeiras em nivel conceitual;
-o que sao relacionamentos em nivel conceitual;
-como o dominio de Ordem de Servico pode virar dados;
-como subir ou reutilizar um PostgreSQL local para pratica;
-como executar uma verificacao minima do PostgreSQL;
-como se preparar para a aula 272 sobre DBeaver, psql, schemas e rotina de trabalho.
+o problema que cache resolve;
+o que cache nao resolve;
+cache como otimizacao, nao como fonte da verdade;
+Redis como armazenamento externo de cache;
+Spring Cache abstraction;
+@EnableCaching;
+@Cacheable;
+@CachePut quando fizer sentido;
+@CacheEvict;
+CacheManager;
+RedisCacheManager;
+TTL;
+chaves de cache;
+prefixos;
+serializacao;
+invalidacao;
+cache hit e cache miss;
+risco de dado velho;
+diagnostico basico no Redis;
+limites do cache em API REST;
+quando nao usar cache.
 ```
 
-A aula 271 nao deve aprofundar ainda:
+A aula deve manter o projeto real:
 
 ```text
-DDL completo;
-CREATE TABLE em profundidade;
-ALTER TABLE;
-DROP TABLE;
-tipos PostgreSQL em profundidade;
-joins;
-indices;
-transacoes;
-locks;
-JDBC;
-JPA;
-Hibernate;
-Spring Data;
-Spring Boot;
-API REST;
-Flyway;
-Liquibase.
+formacao-java-backend-api
 ```
 
-Esses temas aparecem depois no M12, M13 e M14.
-
-## Direcao pratica da aula 271
-
-Laboratorio recomendado:
+Direcao pratica sugerida:
 
 ```text
-labs/m12/aula-271-introducao-sql-postgresql-modelagem-relacional
+1. revisar rapidamente o ponto da aula 387;
+2. explicar cache como leitura otimizada;
+3. adicionar dependencias necessarias para Redis/cache;
+4. preparar Redis local de forma simples;
+5. configurar propriedades de cache;
+6. habilitar cache;
+7. criar cache em uma consulta de leitura que faça sentido;
+8. mostrar cache hit/miss por log ou diagnostico simples;
+9. invalidar cache em escrita relevante;
+10. configurar TTL;
+11. documentar riscos e limites;
+12. testar manualmente com chamadas HTTP;
+13. recomendar commit.
 ```
 
-O laboratorio pode conter:
+## O que a aula 388 nao deve fazer
+
+Nao antecipar:
 
 ```text
-README.md
-docker-compose.yml ou compose.yaml
-.env.example
-sql/README.md
+Rate limiting;
+upload/download;
+scheduler;
+email;
+MockMvc;
+testes de service em Spring;
+testes de integracao completos;
+testes de contrato;
+Actuator e observabilidade profunda;
+Dockerizacao completa da API;
+Compose final API + PostgreSQL + Redis;
+colecao Postman profissional;
+projeto API OS final;
+mensageria;
+broker;
+outbox;
+pub/sub;
+fila;
+lock distribuido;
+SAGA;
+arquitetura de cache distribuido avancada.
 ```
 
-O laboratorio deve ser simples.
-
-Nao transformar a aula 271 em aula avancada de Docker Compose. Isso ja foi tratado no M11.
-
-Sugestao de pratica guiada:
+Redis nesta aula deve ser tratado como:
 
 ```text
-1. criar pasta do laboratorio;
-2. criar um compose simples com PostgreSQL;
-3. subir o banco;
-4. verificar se o container esta saudavel;
-5. conectar de forma minima via psql ou docker exec;
-6. executar SELECT version();
-7. listar bancos de forma simples;
-8. explicar o que foi feito;
-9. deixar a rotina completa de ferramenta visual, psql e schemas para a aula 272.
+cache externo para a API Spring.
 ```
 
-Se usar SQL, usar blocos `sql`.
+Nao tratar Redis como:
 
-Se usar comandos, usar blocos `powershell` e, quando util, `bash`.
+```text
+broker;
+fila duravel;
+banco principal;
+substituto de PostgreSQL;
+solucao magica de performance;
+garantia de consistencia.
+```
 
-Se usar YAML, usar bloco `yaml`.
+## Padrao editorial obrigatorio
 
-Nao usar pacote Java nesta aula se nao houver codigo Java. M12 comeca por banco; Java volta depois com JDBC/JPA no M13.
-
-## Padrao editorial obrigatorio a partir da aula 271
-
-Usar o Padrao Editorial Aula V2.
+Continuar usando o Padrao Editorial Aula V2.
 
 A aula deve ter duas camadas:
 
@@ -230,7 +237,7 @@ conectar com a proxima aula.
 Estrutura recomendada:
 
 ```text
-# 271 - M12.01 - Introducao ao SQL, PostgreSQL e modelagem relacional para Java Backend
+# 388 - M14.33 - Cache com Spring Redis
 
 ## Apresentacao da aula
 ## Onde estamos na formacao
@@ -241,6 +248,7 @@ Estrutura recomendada:
 ## Erros comuns importantes
 ## Comandos uteis
 ## Exercicio guiado
+## Criterios de aceite
 ## Commit recomendado
 ## Fechamento e ponte para a proxima aula
 
@@ -249,10 +257,12 @@ Estrutura recomendada:
 # Material complementar
 
 ## Checkpoint final
+## Troubleshooting adicional
 ## Perguntas de revisao
+## Roteiro de resposta
 ## Desafio opcional
-## Gabarito ou roteiro de resposta, se fizer sentido
-## Anotacoes sugeridas
+## Atualizacao do diario de bordo
+## Referencia tecnica curta
 ```
 
 Regras editoriais:
@@ -270,67 +280,34 @@ Regras editoriais:
 - Manter o tom de mentor tecnico.
 - Preservar profundidade de formacao senior/arquiteto.
 
-## Regras de continuidade
+## Sequencia planejada imediata
 
-- Nao reescrever aulas antigas.
-- Nao renomear arquivos antigos.
-- Nao mudar numeracao global.
-- Nao gerar mais de uma aula por vez.
-- Nao voltar para aula 260.
-- Nao tratar a aula 259 como ultimo ponto.
-- Nao mudar o M12 para Spring Boot.
-- Nao antecipar JDBC, JPA, Hibernate ou Spring Data.
-- Nao pular a base de SQL e modelagem.
-- Ler a aula 270 antes de gerar a aula 271.
-- Usar a CSV atualizada pos-270 como roteiro operacional.
-- Se houver conflito entre grade antiga e aula real, vence a aula real.
-- Se houver conflito entre CSV antiga e CSV atualizada pos-270, vence a CSV atualizada pos-270.
-
-## Sequencia planejada do M12
-
-Depois da aula 271, continuar nesta ordem:
+Depois da aula 388, continuar nesta ordem:
 
 ```text
-271 M12.01 Introducao ao SQL, PostgreSQL e modelagem relacional para Java Backend
-272 M12.02 DBeaver psql schemas e rotina de trabalho
-273 M12.03 Tipos de dados PostgreSQL com criterio
-274 M12.04 DDL create table alter table drop table
-275 M12.05 Primary key foreign key e integridade referencial
-276 M12.06 Constraints not null unique check default
-277 M12.07 Insert update delete e retorno de dados
-278 M12.08 Select where order by limit offset
-279 M12.09 Operadores filtros like between in is null
-280 M12.10 Joins inner left right full e cross com criterio
-281 M12.11 Modelagem conceitual entidades atributos relacionamentos
-282 M12.12 Modelagem logica cardinalidade e chaves
-283 M12.13 Normalizacao primeira segunda e terceira forma normal
-284 M12.14 Relacionamento um para muitos
-285 M12.15 Relacionamento muitos para muitos com tabela associativa
-286 M12.16 Group by having e agregacoes
-287 M12.17 Subqueries correlacionadas e nao correlacionadas
-288 M12.18 CTE common table expressions
-289 M12.19 Views e materialized views conceitual
-290 M12.20 Funcoes de data texto numeros e case when
-291 M12.21 Indices btree unique e criterios de uso
-292 M12.22 Explain explain analyze e leitura de plano
-293 M12.23 Transacoes ACID begin commit rollback
-294 M12.24 Isolamento read committed repeatable read serializable
-295 M12.25 Locks deadlocks e diagnostico inicial
-296 M12.26 Paginacao SQL offset keyset e tradeoffs
-297 M12.27 Modelagem OS cliente atividade produto e pagamento
-298 M12.28 Consultas de relatorio para backend
-299 M12.29 Performance inicial de SQL
-300 M12.30 Scripts versionados e migracoes conceituais
-301 M12.31 Flyway conceitual antes do Spring
-302 M12.32 Carga de massa seed e dados de teste
-303 M12.33 Backup restore e cuidados locais
-304 M12.34 Usuarios permissoes e seguranca basica no PostgreSQL
-305 M12.35 Funcoes window introducao para relatorios
-306 M12.36 JSONB no PostgreSQL quando usar e quando evitar
-307 M12.37 Projeto banco OS parte 1 modelo fisico
-308 M12.38 Projeto banco OS parte 2 consultas e relatorios
-309 M12.39 Revisao tecnica SQL PostgreSQL e simulado
-310 M12.40 Fechamento do Modulo 12 SQL PostgreSQL
+388 M14.33 Cache com Spring Redis
+389 M14.34 Rate limiting
+390 M14.35 Upload download
+391 M14.36 Scheduler
+392 M14.37 Email e notificacao simples
+393 M14.38 Testes de controller com MockMvc
+394 M14.39 Testes de service em Spring
+395 M14.40 Testes de integracao Spring com Testcontainers
+396 M14.41 Testes de contrato introducao
+397 M14.42 Observabilidade inicial com Actuator
+398 M14.43 Health readiness liveness
+399 M14.44 Dockerizando API Spring
+400 M14.45 Compose API PostgreSQL Redis
+401 M14.46 Colecao Postman Insomnia profissional
+402 M14.47 Documentacao tecnica da API
+403 M14.48 Erros comuns em API REST
+404 M14.49 Checklist de producao inicial
+405 M14.50 Projeto API OS parte 1 dominio e CRUD
+406 M14.51 Projeto API OS parte 2 validacoes e erros
+407 M14.52 Projeto API OS parte 3 persistencia e filtros
+408 M14.53 Projeto API OS parte 4 testes e documentacao
+409 M14.54 Revisao tecnica Spring Boot APIs
+410 M14.55 Fechamento do Modulo 14 Spring Boot
 ```
 
 ## Prompt para colar no novo chat
@@ -343,57 +320,46 @@ continuar a geracao do curso a partir do ponto exato em que ele parou, sem mudar
 
 Fonte da verdade:
 - Aulas reais ja geradas: docs/aulas
-- Grade operacional atualizada: GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_270.csv
-- Ultima aula real: 270_M11_26_FECHAMENTO_DO_M11_E_TRANSICAO_PARA_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_OFICIAL.md
+- Grade operacional atualizada: GRADE_OPERACIONAL_RECONSTRUIDA_COMPLETA_ATUALIZADA_POS_387.csv
+- Ultima aula real: 387_M14_32_ASYNC_NO_SPRING_OFICIAL.md
 - Padrao editorial: REVISAO_EDITORIAL_V2/PADRAO_EDITORIAL_AULA_V2.md
 
 Estado atual validado:
-- Existem 271 aulas reais, numeradas de 000 a 270.
-- Nao gere aula 260, 261, 262, 263, 264, 265, 266, 267, 268, 269 ou 270.
-- A aula 270 fecha o M11.
-- A proxima aula e 271.
-- A aula 271 inicia o M12.
-- M12 e SQL, PostgreSQL e modelagem relacional.
+- Existem 388 aulas reais, numeradas de 000 a 387.
+- Nao gere aula 387 ou anteriores.
+- A aula 387 tratou de Async no Spring.
+- A proxima aula e 388.
+- A aula 388 continua o M14.
+- M14 e Spring Boot, REST APIs e backend profissional.
 
 Ultima aula valida:
-270_M11_26_FECHAMENTO_DO_M11_E_TRANSICAO_PARA_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_OFICIAL.md
+387_M14_32_ASYNC_NO_SPRING_OFICIAL.md
 
 Proxima aula a gerar:
-271_M12_01_INTRODUCAO_AO_SQL_POSTGRESQL_E_MODELAGEM_RELACIONAL_PARA_JAVA_BACKEND_OFICIAL.md
+388_M14_33_CACHE_COM_SPRING_REDIS_OFICIAL.md
 
 H1 da proxima aula:
-# 271 - M12.01 - Introducao ao SQL, PostgreSQL e modelagem relacional para Java Backend
+# 388 - M14.33 - Cache com Spring Redis
 
-Laboratorio:
-labs/m12/aula-271-introducao-sql-postgresql-modelagem-relacional
+Projeto:
+formacao-java-backend-api
 
-Direcao da aula 271:
-- abrir o M12;
-- explicar banco de dados, SGBD, banco relacional, SQL e PostgreSQL;
-- conectar backend Java com a necessidade de dados;
-- apresentar tabelas, linhas, colunas, chaves e relacionamentos em nivel conceitual;
-- usar exemplos ligados ao dominio de Ordem de Servico;
-- preparar ambiente minimo de PostgreSQL para pratica;
-- nao aprofundar DDL, tipos, joins, indices, transacoes, JDBC, JPA, Hibernate, Spring Data, Spring Boot ou API REST ainda;
-- preparar a ponte para a aula 272: DBeaver, psql, schemas e rotina de trabalho.
-
-Padrao editorial obrigatorio:
-- usar Aula V2;
-- aula principal focada em aprender, executar, entender e commitar;
-- material complementar separado no final;
-- checkpoint curto, nao checklist gigante;
-- simulados longos apenas em fechamento ou revisao;
-- nao escrever cada frase como um paragrafo solto;
-- manter profundidade tecnica, sem transformar em resumo.
+Direcao da aula 388:
+- introduzir cache com Spring e Redis;
+- explicar cache como otimizacao e nao como fonte da verdade;
+- usar Redis como cache externo;
+- cobrir Spring Cache, @EnableCaching, @Cacheable, @CacheEvict, CacheManager, RedisCacheManager, TTL, chaves, invalidacao, serializacao, cache hit/miss e diagnostico;
+- conectar com a aula 387, deixando claro que async em memoria nao e cache nem entrega duravel;
+- nao antecipar rate limiting, upload/download, scheduler, email, testes, observabilidade profunda, Dockerizacao, Compose final, mensageria, broker, outbox ou arquitetura distribuida completa.
 
 Antes de gerar conteudo, responda apenas:
 1. Ultimo arquivo valido.
 2. Proximo numero global.
-3. Modulo que inicia agora.
+3. Modulo atual.
 4. Arquivo exato da proxima aula.
 5. Tres coisas que voce nao pode fazer para nao quebrar a continuidade.
 
-Depois aguarde meu comando GERAR_AULA_271.
+Depois aguarde meu comando GERAR_AULA_388.
 ```
 
 ## Comando de geracao
@@ -401,7 +367,7 @@ Depois aguarde meu comando GERAR_AULA_271.
 Quando o novo chat confirmar corretamente o entendimento, envie:
 
 ```text
-GERAR_AULA_271
+GERAR_AULA_388
 ```
 
-Ele deve gerar somente a aula 271 completa, pronta para salvar no arquivo indicado.
+Ele deve gerar somente a aula 388 completa, pronta para salvar no arquivo indicado.

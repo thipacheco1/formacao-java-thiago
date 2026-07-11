@@ -160,6 +160,8 @@ criterios de aceite.
 
 A partir da aula 271, gerar no formato V2.
 
+Na retomada atual pos-aula 387, esta regra continua valendo para a aula 388 e todas as aulas seguintes.
+
 As aulas 261 a 270 ja foram geradas e nao devem ser reescritas apenas por causa desta regra. A V2 controla a continuidade nova e revisoes editoriais planejadas.
 
 Nao deixar a aula rasa.
