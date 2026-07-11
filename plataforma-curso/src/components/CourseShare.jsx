@@ -13,12 +13,12 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const SHARE_TITLE = 'Curso gratuito de Java Backend — do zero à arquitetura';
-const SHARE_TEXT = 'Conheça esta formação gratuita e completa de Java Backend, com uma trilha progressiva do primeiro código à arquitetura de sistemas.';
+const SHARE_TITLE = 'Formação Java Backend — Do Zero à Arquitetura (Gratuito)';
+const SHARE_TEXT = 'Formação Java Backend: Do zero à arquitetura de sistemas.\n\nUma trilha de aprendizagem 100% gratuita voltada à especialização prática de desenvolvedores.\n\nDestaques da formação:\n• Do nível básico até conceitos avançados de arquitetura\n• Conteúdo prático voltado para as necessidades do mercado\n• Emissão de certificado de conclusão gratuito\n\nConfira o programa completo e participe pelo link:';
 
 const getCanonicalUrl = () => (
   document.querySelector('link[rel="canonical"]')?.href
-  || `${window.location.origin}/`
+  || 'https://formacao-java.vercel.app/'
 );
 
 const buildTrackedUrl = (source) => {
