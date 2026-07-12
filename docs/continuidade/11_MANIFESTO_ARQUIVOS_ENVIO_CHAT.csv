@@ -1,0 +1,16 @@
+ordem;arquivo;obrigatorio;finalidade
+0;00_ORDEM_DE_ENVIO_AO_CHAT.md;sim;Define a ordem de envio e a regra de recuperar 398 antes de 475
+1;01_LEIA_PRIMEIRO_FONTE_DA_VERDADE.md;sim;Explica o estado atual real e a lacuna da aula 398
+2;02_AUDITORIA_ESTADO_ATUAL_POS_474.md;sim;Registra a auditoria de docs/aulas e as evidencias da lacuna
+3;03_PADRAO_EDITORIAL_AULA_V2.md;sim;Mantem o padrao editorial vigente das aulas
+4;06_FORMATO_OFICIAL_DAS_AULAS.md;sim;Resume a estrutura obrigatoria de cada nova aula
+5;04_GRADE_OPERACIONAL_ATUALIZADA_POS_474_COM_RECUPERACAO_398.csv;sim;Grade operacional atualizada com status real
+6;05_INVENTARIO_AULAS_REAIS_DOCS_AULAS_POS_474.csv;sim;Inventario dos arquivos reais encontrados
+7;397_M14_42_OBSERVABILIDADE_INICIAL_COM_ACTUATOR_OFICIAL.md;sim;Contexto anterior para reconstruir a aula 398
+8;399_M14_44_DOCKERIZANDO_API_SPRING_OFICIAL.md;sim;Contexto posterior que confirma a saida esperada da aula 398
+9;474_M16_19_TESTES_DE_CONTRATO_OFICIAL.md;sim;Ultima aula real salva para continuar depois da recuperacao
+10;07_ROTEIRO_OPERACIONAL_CONTINUIDADE_POS_474.md;sim;Roteiro operacional resumido da continuidade
+11;08_PROMPT_MESTRE_NOVO_CHAT.md;sim;Prompt mestre para inicializar o novo chat
+12;09_PROMPT_RECUPERAR_AULA_398.md;sim;Prompt especifico para gerar a aula faltante
+13;10_PROMPT_CONTINUAR_AULA_475.md;sim;Prompt para continuar apos a recuperacao
+14;11_MANIFESTO_ARQUIVOS_ENVIO_CHAT.csv;opcional;Resumo tabular do pacote
