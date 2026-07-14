@@ -79,10 +79,12 @@ const markdownToPreviewHtml = (filePath) => {
     let inCodeBlock = false;
     let paragraph = [];
     let charCount = 0;
-    const maxChars = 1500;
+    const maxChars = 5000;
+    let hasBeenCut = false;
 
     for (const line of lines) {
       if (charCount > maxChars) {
+        hasBeenCut = true;
         break;
       }
       charCount += line.length;
@@ -134,14 +136,18 @@ const markdownToPreviewHtml = (filePath) => {
       paragraph.push(line.trim());
     }
 
+    if (inCodeBlock) {
+      html += '</code></pre>';
+    }
+
     if (paragraph.length > 0) {
       html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
     }
 
-    return html;
+    return { html, hasBeenCut };
   } catch (err) {
     console.error(`Failed to parse preview for ${filePath}:`, err);
-    return '';
+    return { html: '', hasBeenCut: false };
   }
 };
 
@@ -333,7 +339,7 @@ for (const [index, lesson] of allLessons.entries()) {
   
   const filePath = join(lessonsDir, fileName);
   const description = extractDescription(filePath, `Aprenda ${title} gratuitamente na aula do módulo ${module.name} da Formação Java Backend.`);
-  const previewHtml = markdownToPreviewHtml(filePath);
+  const { html: previewHtml, hasBeenCut } = markdownToPreviewHtml(filePath);
   
   const breadcrumbs = `<a href="/">Início</a><span>/</span><a href="/trilhas">Trilhas</a><span>/</span><a href="/trilhas/${phase.slug}">${escapeHtml(phase.shortName)}</a><span>/</span><a href="/modulos/${module.slug}">${escapeHtml(module.id)}</a><span>/</span><span>Aula ${fileName.slice(0, 3)}</span>`;
   
@@ -347,6 +353,12 @@ for (const [index, lesson] of allLessons.entries()) {
   
   const navigation = `<nav class="nav-next" aria-label="Aulas próximas">${previous ? `<a href="/aulas/${cleanSlug(previous.fileName)}">← Aula Anterior</a>` : '<span></span>'}${next ? `<a href="/aulas/${cleanSlug(next.fileName)}">Próxima Aula →</a>` : ''}</nav>`;
   
+  const bannerTitle = hasBeenCut ? 'Você chegou ao fim da prévia da aula' : 'Gostou do conteúdo? Estude na plataforma!';
+  const bannerDescription = hasBeenCut 
+    ? 'Esta página é uma versão resumida para motores de busca. Na plataforma de estudos você terá acesso ao conteúdo de texto completo, reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático para download e acompanhamento de progresso.' 
+    : 'O texto completo desta aula está disponível acima. Acesse a plataforma oficial para registrar seu progresso, obter certificado de conclusão gratuito, fazer o download dos códigos-fonte e assistir às explicações em vídeo!';
+  const bannerButtonText = hasBeenCut ? 'Acessar Conteúdo Completo na Plataforma' : 'Acessar Plataforma de Estudos';
+
   const body = `
 <section class="hero">
   <span class="eyebrow">Aula ${fileName.slice(0, 3)} · Módulo ${escapeHtml(module.id)}</span>
@@ -368,17 +380,16 @@ for (const [index, lesson] of allLessons.entries()) {
   <section class="panel wide" style="background: #fff; padding: clamp(20px, 4vw, 40px);">
     <h2>Prévia do conteúdo escrito</h2>
     <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 24px;" />
-    <div class="lesson-preview" style="position: relative; max-height: 450px; overflow: hidden; line-height: 1.75; font-size: 0.95rem;">
+    <div class="lesson-preview" style="line-height: 1.75; font-size: 0.95rem; color: var(--copy);">
       ${previewHtml}
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, #ffffff); pointer-events: none;"></div>
     </div>
     
-    <div style="margin-top: 24px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
-      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">Gostou da prévia? Assista ao conteúdo completo!</h3>
+    <div style="margin-top: 28px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
+      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">${escapeHtml(bannerTitle)}</h3>
       <p style="margin: 0 0 20px; color: var(--copy); font-size: 0.88rem; max-width: 650px; margin-inline: auto;">
-        Esta página é uma versão resumida para motores de busca. Na plataforma você terá acesso ao reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático completo para download e acompanhamento de progresso.
+        ${escapeHtml(bannerDescription)}
       </p>
-      <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_${slug}">Acessar Plataforma de Estudos</a>
+      <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_${slug}">${escapeHtml(bannerButtonText)}</a>
     </div>
   </section>
 </div>
