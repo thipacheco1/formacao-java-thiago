@@ -1,0 +1,16 @@
+ordem;arquivo;obrigatorio;finalidade
+0;00_ORDEM_DE_ENVIO_AO_CHAT.md;sim;Define a ordem de envio e o primeiro comando GERAR_AULA_636
+1;01_LEIA_PRIMEIRO_CONTINUIDADE_FINAL.md;sim;Explica o estado real pos-635 e a reta final
+2;02_AUDITORIA_ESTADO_ATUAL_POS_635.md;sim;Registra a auditoria de docs/aulas
+3;03_PADRAO_EDITORIAL_AULA_V2.md;sim;Mantem o padrao editorial vigente
+4;04_GRADE_OPERACIONAL_FINAL_POS_635.csv;sim;Grade operacional completa atualizada
+5;05_INVENTARIO_AULAS_REAIS_DOCS_AULAS_POS_635.csv;sim;Inventario dos arquivos reais
+6;06_ROTEIRO_RESTANTE_636_A_720.csv;sim;Roteiro compacto das 85 aulas restantes
+7;634_M19_24_CONSISTENCIA_EVENTUAL_OFICIAL.md;sim;Contexto de consistencia eventual antes de CAP
+8;635_M19_25_CAP_OFICIAL.md;sim;Ultima aula real e ponte direta para PACELC
+9;07_ROTEIRO_OPERACIONAL_FINAL_636_A_720.md;sim;Resumo macro da reta final
+10;08_PROMPT_MESTRE_NOVO_CHAT_FINAL.md;sim;Prompt mestre para inicializar o novo chat
+11;09_PROMPT_GERAR_AULA_636.md;sim;Prompt especifico da aula 636
+12;10_PROMPT_VALIDACAO_AULA_GERADA.md;sim;Checklist de validacao para cada nova aula
+13;scripts/validar_sequencia_aulas.ps1;opcional;Valida buracos, duplicados e nomes sujos em docs/aulas
+14;scripts/validar_aula_nova.ps1;opcional;Valida H1, tamanho e problemas comuns da aula nova

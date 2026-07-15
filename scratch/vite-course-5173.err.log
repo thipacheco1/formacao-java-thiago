@@ -1,0 +1,10 @@
+[2m19:44:17[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/progress?email=thipacheco1%40gmail.com[39m
+Error: connect ECONNREFUSED 127.0.0.1:5174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[2m19:44:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (502)
+    at http://127.0.0.1:5173/src/App.jsx:174:11
+[2m19:44:28[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/progress?email=thipacheco1%40gmail.com[39m
+Error: connect ECONNREFUSED 127.0.0.1:5174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[2m19:44:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (502)
+    at http://127.0.0.1:5173/src/App.jsx:174:11

@@ -133,7 +133,20 @@ const parseMarkdownIntoSections = (markdown) => {
   return { mainTitle, sections };
 };
 
+const normalizeHeadingTitle = (title = '') => {
+  return title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+};
+
+const isAlwaysComplementHeading = (title) => {
+  return /^erros comuns\b/.test(normalizeHeadingTitle(title));
+};
+
 const isComplementHeading = (title) => {
+  if (isAlwaysComplementHeading(title)) return true;
+
   return /^(material complementar|complementos|registro r[aá]pido|perguntas? de revis[aã]o|perguntas?|simulado|gabarito|desafio extra|desafios? opcionais?|exerc[ií]cios complementares|checklist da aula|checkpoint final|crit[eé]rios? de aceite|crit[eé]rio de conclus[aã]o|anota[cç][oõ]es|relat[oó]rio|material de apoio)/i.test(title) ||
     /\b(simulado|gabarito|desafio extra|perguntas de revis[aã]o|registro r[aá]pido|material complementar)\b/i.test(title);
 };
@@ -142,14 +155,67 @@ const isMainResumeHeading = (title) => {
   return /^(commit recomendado|fechamento|fechamento da aula|exerc[ií]cio pr[aá]tico principal|atividade guiada|m[aã]o na massa guiada|laborat[oó]rio guiado)/i.test(title);
 };
 
+const splitAlwaysComplementSections = (markdown) => {
+  const lines = markdown.split(/\r?\n/);
+  const main = [];
+  const complement = [];
+  let target = 'main';
+  let complementLevel = Number.POSITIVE_INFINITY;
+  let fenceCharacter = null;
+  let fenceLength = 0;
+
+  for (const line of lines) {
+    if (fenceCharacter) {
+      (target === 'complement' ? complement : main).push(line);
+      if (isFenceClosingLine(line, fenceCharacter, fenceLength)) {
+        fenceCharacter = null;
+        fenceLength = 0;
+      }
+      continue;
+    }
+
+    const marker = getFenceMarker(line);
+    if (marker) {
+      fenceCharacter = marker[0];
+      fenceLength = marker.length;
+      (target === 'complement' ? complement : main).push(line);
+      continue;
+    }
+
+    const heading = line.match(/^(#{1,6})\s+(.+)$/);
+    if (heading) {
+      const level = heading[1].length;
+      const title = heading[2].trim();
+
+      if (isAlwaysComplementHeading(title)) {
+        target = 'complement';
+        complementLevel = level;
+      } else if (target === 'complement' && level <= complementLevel) {
+        target = 'main';
+        complementLevel = Number.POSITIVE_INFINITY;
+      }
+    }
+
+    (target === 'complement' ? complement : main).push(line);
+  }
+
+  return {
+    main: main.join('\n').trim(),
+    complement: complement.join('\n').trim()
+  };
+};
+
 const splitLessonContent = (rawMarkdown) => {
   const lines = rawMarkdown.split(/\r?\n/);
   const explicitIndex = lines.findIndex(line => /^#{1,2}\s+Material complementar\s*$/i.test(line.trim()));
 
   if (explicitIndex !== -1) {
+    const splitMain = splitAlwaysComplementSections(lines.slice(0, explicitIndex).join('\n'));
+    const explicitComplement = lines.slice(explicitIndex + 1).join('\n').trim();
+
     return {
-      main: lines.slice(0, explicitIndex).join('\n').trim(),
-      complement: lines.slice(explicitIndex + 1).join('\n').trim()
+      main: splitMain.main,
+      complement: [splitMain.complement, explicitComplement].filter(Boolean).join('\n\n').trim()
     };
   }
 
