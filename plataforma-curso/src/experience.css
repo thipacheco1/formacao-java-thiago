@@ -1805,20 +1805,20 @@ select {
   animation: none;
   font-family: var(--course-reading);
   font-size: 1.075rem;
-  line-height: 1.74;
+  line-height: 1.58;
 }
 
 .lesson-reading-scroll .continuous-section-wrapper {
   min-width: 0;
   max-width: 100%;
-  margin-bottom: 46px;
+  margin-bottom: 10px;
   scroll-margin-top: 92px;
 }
 
 .lesson-reading-scroll .continuous-section-wrapper .section-step-title,
 .lesson-reading-scroll .section-step-title,
 .lesson-reading-scroll .markdown-viewer h2 {
-  margin: 2.15em 0 0.75em !important;
+  margin: 1.15em 0 0.48em !important;
   padding: 0;
   color: var(--course-ink);
   border: 0;
@@ -1834,7 +1834,7 @@ select {
 }
 
 .lesson-reading-scroll .markdown-viewer h3 {
-  margin: 1.7em 0 0.55em;
+  margin: 1.05em 0 0.38em;
   color: #29364e;
   font-family: var(--course-ui);
   font-size: 1.18rem;
@@ -1860,19 +1860,19 @@ select {
 }
 
 .lesson-reading-scroll .markdown-viewer p {
-  margin: 0 0 1.08em;
+  margin: 0 0 0.46em;
 }
 
 .lesson-reading-scroll .markdown-viewer ul,
 .lesson-reading-scroll .markdown-viewer ol {
   max-width: none;
-  margin: 0.5em 0 1.15em;
+  margin: 0.35em 0 0.68em;
   padding-left: 1.4em;
   color: var(--course-copy);
 }
 
 .lesson-reading-scroll .markdown-viewer li {
-  margin-bottom: 0.38em;
+  margin-bottom: 0.16em;
   padding-left: 0.15em;
 }
 
@@ -1891,7 +1891,7 @@ select {
 
 .lesson-reading-scroll .markdown-viewer blockquote {
   max-width: none;
-  margin: 1.45em 0;
+  margin: 0.85em 0;
   padding: 18px 20px;
   color: #3f4d65;
   background: #edf2ff;
@@ -1902,7 +1902,7 @@ select {
 }
 
 .lesson-reading-scroll .markdown-viewer hr {
-  margin: 2.4em 0;
+  margin: 1.05em 0 0.9em;
   background: #dce1e9;
 }
 
@@ -1946,7 +1946,7 @@ select {
 .lesson-reading-scroll .code-block-window {
   width: 100%;
   max-width: 100%;
-  margin: 1.4em 0 1.65em;
+  margin: 0.68em 0 0.76em;
   overflow: hidden;
   background: #111827;
   border: 1px solid #26354f;
@@ -1981,10 +1981,10 @@ select {
 }
 
 .lesson-reading-scroll .code-block-highlighter {
-  padding: 1.1em 1.25em !important;
+  padding: 0.82em 1.08em !important;
   font-family: var(--course-mono) !important;
   font-size: 0.84rem !important;
-  line-height: 1.6 !important;
+  line-height: 1.45 !important;
 }
 
 .lesson-reading-scroll .code-block-window code {
@@ -1999,7 +1999,7 @@ select {
 .lesson-reading-scroll .markdown-table-scroll {
   width: 100%;
   max-width: 100%;
-  margin: 1.5em 0 1.7em;
+  margin: 0.85em 0 0.95em;
   overflow-x: auto;
   border: 1px solid #dce1e9;
   border-radius: 12px;
@@ -4355,17 +4355,17 @@ select {
     width: 100%;
     max-width: 100%;
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.58;
   }
 
   .lesson-reading-scroll .markdown-viewer p,
   .lesson-reading-scroll .markdown-viewer li {
     font-size: 1rem !important;
-    line-height: 1.7 !important;
+    line-height: 1.58 !important;
   }
 
   .lesson-reading-scroll .continuous-section-wrapper {
-    margin-bottom: 38px;
+    margin-bottom: 10px;
     overflow: visible;
   }
 
