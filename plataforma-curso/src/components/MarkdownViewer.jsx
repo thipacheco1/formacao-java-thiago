@@ -43,6 +43,7 @@ import GuidedIfElseDecisionLesson035 from './GuidedIfElseDecisionLesson035';
 import GuidedNestedIfsSimplificationLesson036 from './GuidedNestedIfsSimplificationLesson036';
 import GuidedSwitchTradicionalLesson037 from './GuidedSwitchTradicionalLesson037';
 import GuidedSwitchModernoLesson038 from './GuidedSwitchModernoLesson038';
+import GuidedWhileLesson039 from './GuidedWhileLesson039';
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1430,6 +1431,10 @@ const MarkdownViewerV2 = (props) => {
 
   if (props.lesson?.id?.startsWith('038_')) {
     return <GuidedSwitchModernoLesson038 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('039_')) {
+    return <GuidedWhileLesson039 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

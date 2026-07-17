@@ -870,3 +870,6 @@ Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-
 }
 
 Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m14:07:22[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784305524871:228:11
