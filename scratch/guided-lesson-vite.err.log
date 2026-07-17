@@ -1,0 +1,36 @@
+[2m21:42:29[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx:168:27
+[2m21:53:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784249553991:168:27
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+[2m22:23:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+[2m22:23:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+[2m22:27:05[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784251462740:168:27
+[2m22:27:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784251462740:168:27
+[2m22:29:41[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784251710353:168:27
+[2m22:30:25[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784251710353:168:27
+[2m22:31:49[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
+    at http://127.0.0.1:5173/src/App.jsx?t=1784251710353:168:27

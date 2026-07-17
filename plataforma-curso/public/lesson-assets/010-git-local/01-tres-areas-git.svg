@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+  <title id="title">As três áreas do Git</title>
+  <desc id="desc">Diagrama mostrando working tree, staging area e repository, conectados por git add, git commit, git restore staged e git restore.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#172554"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#020617" flood-opacity=".35"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="560" rx="28" fill="url(#bg)"/>
+  <text x="64" y="66" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">O caminho de uma mudança no Git</text>
+  <text x="64" y="98" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="18">Cada comando move ou registra a mudança; o arquivo continua na mesma pasta do Windows.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="158" width="320" height="250" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
+    <circle cx="112" cy="207" r="22" fill="#1d4ed8"/>
+    <text x="112" y="214" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial" font-size="20" font-weight="700">1</text>
+    <text x="148" y="214" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="25" font-weight="700">Working tree</text>
+    <text x="96" y="266" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="18">Você cria e edita arquivos.</text>
+    <rect x="96" y="294" width="256" height="76" rx="12" fill="#0b1220" stroke="#334155"/>
+    <text x="116" y="325" fill="#93c5fd" font-family="Consolas, monospace" font-size="17"> M README.md</text>
+    <text x="116" y="352" fill="#94a3b8" font-family="Segoe UI, Arial" font-size="15">modificado, ainda não preparado</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="480" y="158" width="320" height="250" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
+    <circle cx="528" cy="207" r="22" fill="#7c3aed"/>
+    <text x="528" y="214" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial" font-size="20" font-weight="700">2</text>
+    <text x="564" y="214" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="25" font-weight="700">Staging area</text>
+    <text x="512" y="266" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="18">Seleção para o próximo commit.</text>
+    <rect x="512" y="294" width="256" height="76" rx="12" fill="#0b1220" stroke="#334155"/>
+    <text x="532" y="325" fill="#c4b5fd" font-family="Consolas, monospace" font-size="17">M  README.md</text>
+    <text x="532" y="352" fill="#94a3b8" font-family="Segoe UI, Arial" font-size="15">mudança preparada</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="896" y="158" width="320" height="250" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
+    <circle cx="944" cy="207" r="22" fill="#047857"/>
+    <text x="944" y="214" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial" font-size="20" font-weight="700">3</text>
+    <text x="980" y="214" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="25" font-weight="700">Repository</text>
+    <text x="928" y="266" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="18">Histórico salvo em commits.</text>
+    <rect x="928" y="294" width="256" height="76" rx="12" fill="#0b1220" stroke="#334155"/>
+    <text x="948" y="325" fill="#6ee7b7" font-family="Consolas, monospace" font-size="17">4f2c8a1 README inicial</text>
+    <text x="948" y="352" fill="#94a3b8" font-family="Segoe UI, Arial" font-size="15">ponto registrado no histórico</text>
+  </g>
+
+  <line x1="384" y1="238" x2="466" y2="238" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="425" y="220" text-anchor="middle" fill="#bfdbfe" font-family="Consolas, monospace" font-size="16">git add</text>
+  <line x1="800" y1="238" x2="882" y2="238" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="841" y="220" text-anchor="middle" fill="#bfdbfe" font-family="Consolas, monospace" font-size="16">git commit</text>
+
+  <path d="M480 354 C445 354 420 354 394 354" fill="none" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrowAmber)"/>
+  <text x="437" y="385" text-anchor="middle" fill="#fde68a" font-family="Consolas, monospace" font-size="14">git restore --staged</text>
+
+  <rect x="64" y="450" width="1152" height="66" rx="16" fill="#0b1220" stroke="#334155"/>
+  <text x="92" y="490" fill="#fbbf24" font-family="Consolas, monospace" font-size="18">git restore arquivo</text>
+  <text x="319" y="490" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="18">descarta uma alteração não commitada; leia o diff antes.</text>
+</svg>
+

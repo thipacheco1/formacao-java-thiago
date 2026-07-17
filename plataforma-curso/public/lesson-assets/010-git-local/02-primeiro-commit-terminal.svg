@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Primeiro ciclo de commit no terminal</title>
+  <desc id="desc">Mock de PowerShell mostrando git init, status, git add, commit, log e working tree clean.</desc>
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="1" stop-color="#0b1120"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#020617" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" rx="28" fill="#e9eef7"/>
+  <text x="64" y="62" fill="#172033" font-family="Segoe UI, Arial" font-size="30" font-weight="700">Primeiro ciclo completo — o que você deve reconhecer</text>
+  <g filter="url(#shadow)">
+    <rect x="64" y="94" width="1152" height="570" rx="18" fill="url(#frame)"/>
+    <rect x="64" y="94" width="1152" height="48" rx="18" fill="#1f2a3d"/>
+    <rect x="64" y="124" width="1152" height="18" fill="#1f2a3d"/>
+    <circle cx="94" cy="118" r="7" fill="#fb7185"/>
+    <circle cx="120" cy="118" r="7" fill="#fbbf24"/>
+    <circle cx="146" cy="118" r="7" fill="#34d399"/>
+    <text x="640" y="124" text-anchor="middle" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="15">Windows PowerShell — git-local-do-zero</text>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="18">
+    <text x="94" y="184" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="184" fill="#f8fafc">git init</text>
+    <text x="94" y="214" fill="#a7f3d0">Initialized empty Git repository in C:/dev/labs/git-local-do-zero/.git/</text>
+
+    <text x="94" y="260" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="260" fill="#f8fafc">git status --short</text>
+    <text x="94" y="290" fill="#fcd34d">?? README.md</text>
+    <text x="300" y="290" fill="#94a3b8">não rastreado</text>
+
+    <text x="94" y="336" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="336" fill="#f8fafc">git add README.md</text>
+    <text x="94" y="366" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="366" fill="#f8fafc">git status --short</text>
+    <text x="94" y="396" fill="#c4b5fd">A  README.md</text>
+    <text x="300" y="396" fill="#94a3b8">preparado na staging area</text>
+
+    <text x="94" y="442" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="442" fill="#f8fafc">git commit -m "Adiciona README inicial"</text>
+    <text x="94" y="472" fill="#a7f3d0">[main (root-commit) 4f2c8a1] Adiciona README inicial</text>
+    <text x="94" y="502" fill="#cbd5e1"> 1 file changed, 3 insertions(+)</text>
+
+    <text x="94" y="548" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="548" fill="#f8fafc">git log --oneline</text>
+    <text x="94" y="578" fill="#a7f3d0">4f2c8a1 (HEAD -&gt; main) Adiciona README inicial</text>
+
+    <text x="94" y="624" fill="#93c5fd">PS C:\dev\labs\git-local-do-zero&gt;</text><text x="520" y="624" fill="#f8fafc">git status --short</text>
+    <text x="875" y="624" fill="#94a3b8">nenhuma saída = área limpa</text>
+  </g>
+</svg>
+

@@ -4,6 +4,10 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CheckCircle2, Copy, Check, Play, Pause, ChevronRight, ChevronLeft, Clock, BookOpen, ListChecks, Menu } from 'lucide-react';
+import GuidedCourseOpeningLesson000 from './GuidedCourseOpeningLesson000';
+import GuidedCourseMapLesson001 from './GuidedCourseMapLesson001';
+import GuidedIntelliJLesson008 from './GuidedIntelliJLesson008';
+import GuidedGitLesson010 from './GuidedGitLesson010';
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -804,7 +808,7 @@ const LegacyMarkdownViewer = ({
 
 void LegacyMarkdownViewer;
 
-const MarkdownViewerV2 = ({
+const StandardMarkdownViewer = ({
   lesson,
   isCompleted,
   onToggleCompleted,
@@ -1234,6 +1238,26 @@ const MarkdownViewerV2 = ({
       )}
     </div>
   );
+};
+
+const MarkdownViewerV2 = (props) => {
+  if (props.lesson?.id?.startsWith('000_')) {
+    return <GuidedCourseOpeningLesson000 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('001_')) {
+    return <GuidedCourseMapLesson001 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('008_')) {
+    return <GuidedIntelliJLesson008 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('010_')) {
+    return <GuidedGitLesson010 {...props} />;
+  }
+
+  return <StandardMarkdownViewer {...props} />;
 };
 
 export default MarkdownViewerV2;

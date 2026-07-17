@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-16",
+  "statusDefinitions": {
+    "pendente": "A aula ainda não passou pelo processo completo do blueprint.",
+    "em_revisao": "A auditoria ou a reconstrução começou, mas a aula ainda não foi aprovada.",
+    "refeita": "A experiência nova foi implementada, validada e aprovada pelo responsável pelo curso.",
+    "bloqueada": "Existe uma dependência explícita que impede a continuação."
+  },
+  "lessons": {
+    "000_AULA_DE_ABERTURA_O_CAMINHO_PARA_SE_TORNAR_ENGENHEIRO_JAVA_BACKEND_ARQUITETO_JAVA": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-16",
+      "archetype": "orientacao-interativa-e-pacto-de-estudo",
+      "summary": "Abertura guiada em revisão, com fluxo de backend explorável, cinco fases atuais, ciclo de estudo, diário copiável, laboratório de decisões sobre IA, evolução profissional e pacto verificável.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/000_AULA_DE_ABERTURA.md",
+        "plataforma-curso/src/components/GuidedCourseOpeningLesson000.jsx",
+        "plataforma-curso/src/components/guidedCourseOpeningLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "001_M0_01_MAPA_DA_FORMACAO_COMPLETA_E_NIVEIS_DE_CARREIRA_JAVA": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-16",
+      "archetype": "mentoria-de-mapa-tecnico-interativo",
+      "summary": "Mapa guiado em revisão com os 21 módulos atuais, rotas de dependência, propósito, tópicos, riscos e evidências por módulo, lentes de responsabilidade e prática pessoal de percurso.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/001_MAPA_FORMACAO_E_CARREIRA.md",
+        "plataforma-curso/src/components/GuidedCourseMapLesson001.jsx",
+        "plataforma-curso/src/components/guidedCourseMapLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "008_M0_08_DEBUG_INICIAL_NO_INTELLIJ": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-16",
+      "archetype": "laboratorio-ide-interativo",
+      "summary": "Debug guiado em uma simulação funcional do IntelliJ, com breakpoint, linha atual, Step Over, Step Into, Step Out, Resume, Variables, Watches, Call Stack e Console.",
+      "referenceFiles": [
+        "plataforma-curso/src/components/GuidedIntelliJLesson008.jsx",
+        "plataforma-curso/src/components/guidedIntelliJLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "010_M0_10_GIT_LOCAL_DO_ZERO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-16",
+      "archetype": "laboratorio-terminal-guiado",
+      "summary": "Laboratório de Git local com comandos, saídas esperadas, leitura de estado, recuperação segura, diagramas e desafio verificável.",
+      "referenceFiles": [
+        "docs/aulas/010_M0_10_GIT_LOCAL_DO_ZERO.md",
+        "plataforma-curso/src/components/GuidedGitLesson010.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/public/lesson-assets/010-git-local/01-tres-areas-git.svg",
+        "plataforma-curso/public/lesson-assets/010-git-local/02-primeiro-commit-terminal.svg",
+        "plataforma-curso/public/lesson-assets/010-git-local/03-restore-com-seguranca.svg",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    }
+  }
+}

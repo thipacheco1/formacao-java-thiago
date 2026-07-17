@@ -1,564 +1,489 @@
-﻿# 010 — M0.10 — Git Local do Zero
+# 010 — M0.10 — Git local do zero: seu primeiro repositório, passo a passo
 
-## Hoje a aula é sobre transformar pasta em repositório
+## O que você vai construir
 
-Uma pasta comum guarda arquivos.
+Nesta aula você transformará uma pasta comum em um repositório Git e acompanhará, no terminal, cada mudança de estado até formar um pequeno histórico.
 
-Um repositório Git guarda arquivos com histórico.
-
-Essa é a diferença.
-
-Antes do Git:
+Ao final, o laboratório terá esta estrutura:
 
 ```text
-tenho uma pasta com arquivos.
+git-local-do-zero/
+├── .git/          pasta interna criada pelo Git
+├── .gitignore     regras para arquivos que não serão versionados
+├── Main.class     arquivo de teste ignorado
+└── README.md      documentação versionada
 ```
 
-Depois do Git:
+E o histórico terá quatro commits pequenos:
 
 ```text
-tenho uma pasta com arquivos e histórico controlado.
+Configura arquivos ignorados do projeto
+Explica que Git local não depende de remoto
+Documenta objetivo do laboratorio
+Adiciona README inicial
 ```
 
-Isso significa que o Git passa a conseguir responder:
+Você não precisa decorar comandos. O objetivo é enxergar o ciclo acontecendo e entender o que o Git informa depois de cada ação.
 
-```text
-o que mudou?
-quais arquivos estão novos?
-quais arquivos foram alterados?
-o que está pronto para commit?
-qual foi o último commit?
-qual é o histórico?
-qual diferença existe entre agora e o último ponto salvo?
-```
+> As saídas mostradas são modelos reais. O caminho da sua pasta, a versão do Git, a data e os códigos dos commits serão diferentes.
 
-Esse poder começa com um comando:
+## Antes de começar: valide o ambiente
 
-```bash
-git init
-```
+Abra o **PowerShell**. Não use o console do navegador nem o campo de busca do Windows.
 
-Mas não se engane.
-
-O comando é simples.
-
-O conceito é profundo.
-
----
-
-## Git local não depende de GitHub
-
-Antes de seguir, fixe isso:
-
-```text
-Git local funciona sem GitHub.
-```
-
-Você pode criar um repositório local, fazer commits, ver histórico e controlar versões sem internet.
-
-GitHub entra depois, quando queremos:
-
-```text
-subir o repositório para remoto;
-colaborar com outras pessoas;
-abrir pull request;
-ter backup remoto;
-integrar pipeline;
-exibir portfólio.
-```
-
-Nesta aula, não precisamos de remoto.
-
-Vamos aprender o núcleo.
-
-Quem não entende Git local sofre no GitHub.
-
-Quem entende Git local aprende GitHub com muito mais clareza.
-
----
-
-## O ciclo mental do Git
-
-O Git tem um fluxo básico.
-
-Pense em três áreas:
-
-```text
-Working tree
-Staging area
-Repository
-```
-
-Vamos traduzir.
-
-### Working tree
-
-É a sua área de trabalho.
-
-É onde você edita arquivos.
-
-Exemplo:
-
-```text
-criou Main.java;
-alterou README.md;
-editou diario-de-bordo.md;
-apagou arquivo temporário.
-```
-
-Essas mudanças existem na pasta, mas ainda não foram preparadas para commit.
-
----
-
-### Staging area
-
-É a área de preparação.
-
-Quando você usa:
-
-```bash
-git add
-```
-
-você diz ao Git:
-
-```text
-esta mudança deve entrar no próximo commit.
-```
-
-O `git add` não cria commit.
-
-Ele prepara.
-
-É como separar documentos em cima da mesa antes de arquivar oficialmente.
-
----
-
-### Repository
-
-É o histórico salvo.
-
-Quando você usa:
-
-```bash
-git commit
-```
-
-você cria um ponto no histórico.
-
-O commit registra um conjunto de mudanças preparadas.
-
-Então o fluxo é:
-
-```text
-edita arquivo
-↓
-git status
-↓
-git add
-↓
-git status
-↓
-git commit
-↓
-git log
-```
-
-Esse ciclo será repetido centenas de vezes ao longo da formação e da vida profissional.
-
----
-
-## `git init`
-
-O comando:
-
-```bash
-git init
-```
-
-inicia um repositório Git na pasta atual.
-
-Ele cria uma pasta oculta:
-
-```text
-.git
-```
-
-Essa pasta guarda os dados internos do Git.
-
-Você normalmente não edita `.git` manualmente.
-
-Ela é o coração do repositório.
-
-Sem `.git`, a pasta é só uma pasta.
-
-Com `.git`, a pasta vira repositório.
-
----
-
-## Cuidado com onde roda `git init`
-
-Este é um erro muito comum.
-
-Se você roda:
-
-```bash
-git init
-```
-
-na pasta errada, transforma a pasta errada em repositório.
-
-Antes de rodar:
-
-```bash
-git init
-```
-
-sempre confira:
+Execute um comando por vez:
 
 ```powershell
-pwd
-ls
+git --version
+git config --global user.name
+git config --global user.email
+git config --global init.defaultBranch
 ```
 
-Se a pasta atual é:
+Uma configuração válida se parece com esta:
 
 ```text
-C:\dev\projects\formacao-java-backend
+git version 2.50.1.windows.1
+Thiago Silva
+thiago@example.com
+main
 ```
 
-e esse é o projeto, tudo bem.
+O nome, o e-mail e a versão serão os seus. A última linha deve ser `main`, conforme configurado na aula anterior.
 
-Se a pasta atual é:
+Se `git --version` produzir a mensagem abaixo, o Git não está disponível nesse terminal:
 
 ```text
-C:\dev
+git : O termo 'git' não é reconhecido como nome de cmdlet...
 ```
 
-talvez você esteja prestes a transformar a raiz de desenvolvimento inteira em um repositório, o que não é desejado.
+Feche o PowerShell, abra novamente e teste. Se continuar, retorne à aula 009 e valide a instalação antes de prosseguir.
 
-Regra:
+Se nome ou e-mail não aparecerem, configure-os com seus dados reais:
+
+```powershell
+git config --global user.name "Seu Nome"
+git config --global user.email "seu-email@example.com"
+git config --global init.defaultBranch main
+```
+
+## Entenda o mapa antes de digitar comandos
+
+Durante a aula, um arquivo poderá estar em três lugares lógicos:
+
+![Diagrama das três áreas do Git: working tree, staging area e repository](/lesson-assets/010-git-local/01-tres-areas-git.svg)
+
+- **Working tree:** os arquivos que você está editando na pasta.
+- **Staging area:** as mudanças escolhidas para o próximo commit.
+- **Repository:** os commits já registrados dentro da pasta `.git`.
+
+Os quatro movimentos principais serão:
 
 ```text
-um projeto = um repositório
+git add                 working tree → staging area
+git commit              staging area → repository
+git restore --staged    staging area → working tree
+git restore             descarta mudança não commitada do working tree
 ```
 
-Não transforme `C:\dev` inteiro em repositório se dentro dele existem vários projetos.
+O Git local funciona sem GitHub e sem internet. GitHub será assunto da próxima aula.
 
----
+## Passo 1 — Crie uma pasta exclusiva para o laboratório
 
-## `git status`
+Primeiro, garanta que a pasta de laboratórios existe:
 
-Se existe um comando que deve virar hábito, é este:
+```powershell
+New-Item -ItemType Directory -Path C:\dev\labs -Force | Out-Null
+Set-Location C:\dev\labs
+```
 
-```bash
+Crie a pasta desta aula e entre nela:
+
+```powershell
+New-Item -ItemType Directory -Path git-local-do-zero | Out-Null
+Set-Location git-local-do-zero
+```
+
+Confirme onde você está:
+
+```powershell
+Get-Location
+Get-ChildItem
+```
+
+Saída esperada do primeiro comando:
+
+```text
+Path
+----
+C:\dev\labs\git-local-do-zero
+```
+
+`Get-ChildItem` ainda não deve listar arquivos. Isso é esperado: a pasta acabou de ser criada.
+
+> Se aparecer “o item já existe”, não sobrescreva nem apague nada. Use outro nome, como `git-local-do-zero-2`, e continue nele.
+
+## Passo 2 — Transforme a pasta em repositório
+
+Confira mais uma vez o caminho exibido no prompt. Ele deve terminar com:
+
+```text
+C:\dev\labs\git-local-do-zero
+```
+
+Agora inicialize o repositório:
+
+```powershell
+git init
+```
+
+Saída esperada:
+
+```text
+Initialized empty Git repository in C:/dev/labs/git-local-do-zero/.git/
+```
+
+Essa frase confirma duas coisas:
+
+1. um repositório vazio foi iniciado;
+2. os dados internos estão em `.git/`.
+
+A pasta `.git` é oculta. Para visualizá-la no PowerShell:
+
+```powershell
+Get-ChildItem -Force
+```
+
+Saída resumida:
+
+```text
+Mode   Name
+----   ----
+d--h-  .git
+```
+
+Não edite nem apague `.git`. Ela contém o histórico e a configuração local do repositório.
+
+## Passo 3 — Leia o primeiro `git status`
+
+Execute:
+
+```powershell
 git status
 ```
 
-Ele mostra o estado atual do repositório.
-
-Ele responde:
+Saída esperada:
 
 ```text
-em qual branch estou?
-há arquivos novos?
-há arquivos modificados?
-há arquivos preparados para commit?
-há algo para commitar?
-o working tree está limpo?
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
 ```
 
-Use `git status` o tempo todo.
+Leia linha por linha:
 
-Antes de adicionar.
+- `On branch main`: você está na branch `main`.
+- `No commits yet`: ainda não existe histórico.
+- `nothing to commit`: não existe mudança para registrar.
 
-Depois de adicionar.
+O `git status` não modifica nada. Ele apenas descreve o estado atual e pode ser usado sempre que você estiver em dúvida.
 
-Antes de commit.
+## Passo 4 — Crie e edite o primeiro arquivo
 
-Depois de commit.
+Crie um arquivo vazio chamado `README.md`:
 
-Antes de mexer em algo sensível.
+```powershell
+New-Item -ItemType File -Path README.md | Out-Null
+```
 
-Depois de resolver erro.
+Abra-o no Bloco de Notas:
 
-`git status` é o painel do Git.
+```powershell
+notepad README.md
+```
 
----
+Cole exatamente este conteúdo:
 
-## `git add`
+```markdown
+# Git Local do Zero
 
-O comando `git add` coloca mudanças na staging area.
+Laboratório para aprender Git local.
+```
 
-Exemplo:
+Salve com `Ctrl+S` e feche o Bloco de Notas. De volta ao PowerShell, confirme o arquivo:
 
-```bash
+```powershell
+Get-Content README.md
+```
+
+Saída esperada:
+
+```text
+# Git Local do Zero
+
+Laboratório para aprender Git local.
+```
+
+Agora pergunte ao Git o que mudou:
+
+```powershell
+git status
+```
+
+Trecho importante da saída:
+
+```text
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present
+```
+
+`Untracked` significa **não rastreado**. O arquivo existe na pasta, mas ainda não faz parte do histórico Git.
+
+Uma visão compacta mostra a mesma informação:
+
+```powershell
+git status --short
+```
+
+Saída:
+
+```text
+?? README.md
+```
+
+Os dois pontos de interrogação significam “arquivo ainda não rastreado”.
+
+## Passo 5 — Prepare o arquivo para o primeiro commit
+
+Adicione apenas o README à staging area:
+
+```powershell
 git add README.md
 ```
 
-Isso prepara o arquivo `README.md` para o próximo commit.
+O comando normalmente não imprime nada quando funciona. Confirme o novo estado:
 
-Para adicionar uma pasta:
-
-```bash
-git add docs
-```
-
-Para adicionar tudo que mudou:
-
-```bash
-git add .
-```
-
-Mas cuidado com `git add .`.
-
-Ele é prático, mas pode adicionar lixo se o `.gitignore` estiver ruim ou se você não conferiu o estado antes.
-
-Boa prática:
-
-```bash
-git status
-git add .
+```powershell
 git status
 ```
 
-O segundo `git status` confirma o que foi preparado.
-
----
-
-## `git commit`
-
-O comando `git commit` cria um ponto no histórico.
-
-Exemplo:
-
-```bash
-git commit -m "Adiciona estrutura inicial do projeto"
-```
-
-A mensagem precisa explicar a intenção da mudança.
-
-Não escreva mensagens vazias como:
+Trecho esperado:
 
 ```text
-ajuste
-teste
-alterações
-coisas
-final
-commit
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
 ```
 
-Essas mensagens não ajudam ninguém.
+Agora o arquivo está preparado, mas ainda não foi commitado.
 
-Prefira:
+Na visão curta:
+
+```powershell
+git status --short
+```
+
+Saída:
 
 ```text
-Adiciona estrutura inicial do projeto
-Documenta comandos basicos do terminal
-Adiciona exemplo de compilacao manual
-Corrige validacao de entrada do usuario
+A  README.md
 ```
 
-Uma boa mensagem responde:
+O `A` na primeira coluna significa que a adição está na staging area.
 
-```text
-o que este commit faz?
-```
+Antes do commit, veja exatamente o que está preparado:
 
-Mais tarde, veremos padrões mais formais como Conventional Commits.
-
-Agora, o foco é clareza.
-
----
-
-## `git log`
-
-O comando:
-
-```bash
-git log
-```
-
-mostra o histórico de commits.
-
-Ele exibe informações como:
-
-```text
-hash do commit;
-autor;
-data;
-mensagem.
-```
-
-Exemplo:
-
-```text
-commit a1b2c3...
-Author: Nome <email@exemplo.com>
-Date: ...
-
-    Adiciona estrutura inicial do projeto
-```
-
-Para uma visão mais curta:
-
-```bash
-git log --oneline
-```
-
-Exemplo:
-
-```text
-a1b2c3d Adiciona estrutura inicial do projeto
-```
-
-O `git log` mostra que o Git está guardando história.
-
-Sem log, não há memória.
-
----
-
-## `git diff`
-
-O comando:
-
-```bash
-git diff
-```
-
-mostra diferenças entre o que foi alterado no working tree e o que estava no último estado conhecido.
-
-Exemplo:
-
-```bash
-git diff
-```
-
-Se você alterou `README.md`, o Git mostra linhas removidas e adicionadas.
-
-Isso ajuda a revisar antes de commitar.
-
-Um desenvolvedor cuidadoso não commita no escuro.
-
-Ele olha:
-
-```bash
-git status
-git diff
-```
-
-Depois decide o que adicionar.
-
-Também existe:
-
-```bash
+```powershell
 git diff --staged
 ```
 
-Esse mostra o que já foi preparado com `git add`.
+Parte da saída:
 
-Ou seja:
+```diff
+diff --git a/README.md b/README.md
+new file mode 100644
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,3 @@
++# Git Local do Zero
++
++Laboratório para aprender Git local.
+```
+
+Linhas iniciadas por `+` serão adicionadas pelo próximo commit. Cabeçalhos como `+++ b/README.md` pertencem ao formato do diff; eles não são conteúdo do arquivo.
+
+## Passo 6 — Crie o primeiro commit
+
+Registre a mudança preparada:
+
+```powershell
+git commit -m "Adiciona README inicial"
+```
+
+Saída semelhante a esta confirma o commit:
 
 ```text
-git diff          → mudanças ainda não preparadas
-git diff --staged → mudanças preparadas para commit
+[main (root-commit) 4f2c8a1] Adiciona README inicial
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md
 ```
 
-No começo, pratique os dois.
+- `main`: branch que recebeu o commit;
+- `root-commit`: primeiro commit do repositório;
+- `4f2c8a1`: identificador curto, diferente em cada máquina;
+- `1 file changed`: um arquivo foi afetado;
+- `3 insertions`: três linhas foram adicionadas.
 
----
+Veja o histórico resumido:
 
-## `git restore`
-
-O comando:
-
-```bash
-git restore arquivo
+```powershell
+git log --oneline
 ```
 
-descarta alterações locais de um arquivo que ainda não foram commitadas.
+Saída:
 
-Exemplo:
-
-```bash
-git restore README.md
+```text
+4f2c8a1 (HEAD -> main) Adiciona README inicial
 ```
 
-Isso volta o arquivo ao estado do último commit.
+`HEAD -> main` indica que você está no ponto mais recente da branch `main`.
 
-Cuidado: alterações descartadas com `git restore` podem ser perdidas.
+Confirme que a área de trabalho ficou limpa:
 
-Antes de usar:
+```powershell
+git status
+```
 
-```bash
+Saída esperada:
+
+```text
+On branch main
+nothing to commit, working tree clean
+```
+
+![Mock de terminal mostrando o primeiro ciclo completo do Git](/lesson-assets/010-git-local/02-primeiro-commit-terminal.svg)
+
+Você completou o primeiro ciclo:
+
+```text
+criar → verificar → preparar → revisar → commitar → consultar histórico
+```
+
+## Passo 7 — Altere um arquivo e aprenda a ler o `diff`
+
+Abra novamente o README:
+
+```powershell
+notepad README.md
+```
+
+Acrescente no final:
+
+```markdown
+
+## Objetivo
+
+Praticar o ciclo básico do Git.
+```
+
+Salve e feche. Consulte o estado compacto:
+
+```powershell
+git status --short
+```
+
+Saída:
+
+```text
+ M README.md
+```
+
+O `M` na segunda coluna significa que o arquivo foi modificado no working tree, mas ainda não está na staging area.
+
+Veja a alteração:
+
+```powershell
 git diff
 ```
 
-Veja o que será descartado.
+Trecho esperado:
 
-Git dá poder.
+```diff
+@@ -1,3 +1,7 @@
+ # Git Local do Zero
 
-Poder exige atenção.
-
----
-
-## `git restore --staged`
-
-Se você adicionou um arquivo com `git add`, mas quer tirar da staging area sem perder a alteração, use:
-
-```bash
-git restore --staged arquivo
+ Laboratório para aprender Git local.
++
++## Objetivo
++
++Praticar o ciclo básico do Git.
 ```
 
-Exemplo:
+Se aparecer um aviso sobre `LF` e `CRLF`, não significa que o conteúdo foi perdido. Ele se refere ao padrão de quebra de linha usado pelo Windows e pelo Git.
 
-```bash
-git restore --staged README.md
+Prepare e revise a mudança:
+
+```powershell
+git add README.md
+git diff --staged
 ```
 
-Isso não apaga sua alteração.
+Crie o segundo commit:
 
-Só remove da área preparada para commit.
+```powershell
+git commit -m "Documenta objetivo do laboratorio"
+```
 
-Pense assim:
+Valide:
+
+```powershell
+git log --oneline
+git status
+```
+
+O log agora deve mostrar dois commits, o mais recente em cima:
 
 ```text
-git restore --staged = tire da mesa do próximo commit
-git restore = descarte a mudança no arquivo
+91ac730 (HEAD -> main) Documenta objetivo do laboratorio
+4f2c8a1 Adiciona README inicial
 ```
 
-São coisas diferentes.
+## Passo 8 — Configure o `.gitignore` e prove que ele funciona
 
----
+Crie um arquivo que representa um artefato compilado de Java:
 
-## `.gitignore`
+```powershell
+New-Item -ItemType File -Path Main.class | Out-Null
+git status --short
+```
 
-O `.gitignore` diz ao Git quais arquivos devem ser ignorados.
-
-Isso é essencial.
-
-Sem `.gitignore`, o Git pode mostrar arquivos que não deveriam ser versionados:
+Saída:
 
 ```text
-.class
-out/
-target/
-.idea/
-*.iml
-arquivos temporários
-logs locais
+?? Main.class
 ```
 
-Um `.gitignore` inicial para esta formação pode ser:
+Esse arquivo não deve ser versionado. Crie o `.gitignore`:
+
+```powershell
+New-Item -ItemType File -Path .gitignore | Out-Null
+notepad .gitignore
+```
+
+Cole:
 
 ```gitignore
-# Java
+# Java e ferramentas de build
 *.class
 out/
 target/
 
-# IntelliJ
+# IntelliJ IDEA
 .idea/
 *.iml
 
@@ -566,841 +491,409 @@ target/
 .DS_Store
 Thumbs.db
 
-# Temporários
+# Arquivos temporários gerados localmente
 *.tmp
 *.log
 ```
 
-Mas cuidado: ignorar `*.log` pode ser bom para logs gerados, mas ruim se você tiver um arquivo de exemplo intencional.
+Salve e feche. Consulte o estado:
 
-O `.gitignore` precisa refletir o projeto.
+```powershell
+git status --short
+```
 
----
-
-## Arquivo ignorado não some do computador
-
-Quando um arquivo está no `.gitignore`, ele não é apagado.
-
-Ele apenas deixa de aparecer como candidato ao versionamento.
-
-Exemplo:
+Saída esperada:
 
 ```text
-Main.class continua existindo na pasta.
-Git apenas não tenta versionar.
+?? .gitignore
 ```
 
-Isso é importante.
+`Main.class` sumiu da lista porque corresponde à regra `*.class`. O arquivo continua no computador. Confira:
 
-`.gitignore` não limpa projeto.
+```powershell
+Test-Path Main.class
+```
 
-Ele orienta o Git.
-
----
-
-## Se o arquivo já foi versionado, `.gitignore` não remove sozinho
-
-Esse é um erro comum.
-
-Se um arquivo já entrou em um commit, colocar no `.gitignore` não faz o Git parar automaticamente de rastrear esse arquivo.
-
-O `.gitignore` atua principalmente sobre arquivos ainda não rastreados.
-
-Se algo já foi versionado por engano, precisa remover do rastreamento com cuidado.
-
-Mais tarde veremos isso melhor.
-
-Por enquanto, a regra é:
+Saída:
 
 ```text
-crie .gitignore cedo.
+True
 ```
 
-Antes de commitar lixo.
-
----
-
-## Exemplo mínimo: criando um repositório local
-
-Vamos criar um laboratório.
-
-No PowerShell:
+Descubra qual regra o ignorou:
 
 ```powershell
-cd C:\dev\labs
-mkdir git-local-do-zero
-cd git-local-do-zero
+git check-ignore -v Main.class
 ```
 
-Confira:
-
-```powershell
-pwd
-ls
-```
-
-Inicie o Git:
-
-```bash
-git init
-```
-
-Veja o estado:
-
-```bash
-git status
-```
-
-Crie um arquivo:
-
-```powershell
-New-Item README.md
-```
-
-Abra o arquivo e coloque:
-
-```markdown
-# Git Local do Zero
-
-Laboratório para aprender Git local.
-```
-
-Agora:
-
-```bash
-git status
-```
-
-Você deve ver `README.md` como arquivo não rastreado.
-
-Adicione:
-
-```bash
-git add README.md
-```
-
-Veja:
-
-```bash
-git status
-```
-
-Crie o commit:
-
-```bash
-git commit -m "Adiciona README inicial"
-```
-
-Veja o histórico:
-
-```bash
-git log --oneline
-```
-
-Esse é o primeiro ciclo completo:
+Saída semelhante:
 
 ```text
-criar arquivo
-ver status
-adicionar
-ver status
-commitar
-ver log
+.gitignore:2:*.class    Main.class
 ```
 
----
-
-## Segundo ciclo: alterando arquivo
-
-Agora altere o `README.md`:
-
-```markdown
-# Git Local do Zero
-
-Laboratório para aprender Git local.
-
-## Terceiro ciclo: usando `.gitignore`
-
-Crie um arquivo que não deve ser versionado:
+Agora versione apenas a regra:
 
 ```powershell
-New-Item Main.class
-```
-
-Veja:
-
-```bash
-git status
-```
-
-O Git provavelmente mostra `Main.class` como não rastreado.
-
-Agora crie `.gitignore`:
-
-```powershell
-New-Item .gitignore
-```
-
-Conteúdo:
-
-```gitignore
-*.class
-out/
-target/
-.idea/
-*.iml
-.DS_Store
-Thumbs.db
-```
-
-Veja:
-
-```bash
-git status
-```
-
-Agora `Main.class` deve sumir da lista.
-
-Mas `.gitignore` deve aparecer.
-
-Adicione e commite:
-
-```bash
 git add .gitignore
-git commit -m "Adiciona gitignore inicial"
+git diff --staged
+git commit -m "Configura arquivos ignorados do projeto"
 ```
 
-Veja:
+O `.gitignore` deve ser criado cedo. Se um arquivo já foi commitado, adicionar uma regra não o remove automaticamente do histórico. Nessa situação, não apague nada no impulso; primeiro confirme o arquivo e use, com intenção, `git rm --cached NOME_DO_ARQUIVO` em uma correção separada.
 
-```bash
-git log --oneline
+> A regra `*.log` é adequada para logs gerados pela aplicação. Se o projeto tiver um arquivo `.log` criado intencionalmente como exemplo didático, será necessário criar uma exceção ou escolher outro formato.
+
+## Passo 9 — Descarte uma alteração local com segurança
+
+Agora você praticará um comando que pode apagar trabalho não commitado.
+
+Abra o README:
+
+```powershell
+notepad README.md
 ```
 
-Isso ensina que Git não precisa versionar tudo.
+Acrescente no final:
 
-Precisa versionar o que importa.
-
----
-
-## Quarto ciclo: usando `restore` com cuidado
-
-Altere `README.md` adicionando uma linha ruim:
-
-```markdown
+```text
 linha errada qualquer
 ```
 
-Veja:
+Salve e feche. Antes de descartar, veja exatamente o que mudou:
 
-```bash
+```powershell
 git diff
 ```
 
-Agora descarte a alteração:
+Você deverá encontrar:
 
-```bash
+```diff
++linha errada qualquer
+```
+
+Como essa linha foi criada de propósito e não deve permanecer, restaure o arquivo para o último commit:
+
+```powershell
 git restore README.md
 ```
 
-Veja:
+O comando normalmente não imprime nada. Confirme de duas maneiras:
 
-```bash
-git status
+```powershell
+git status --short
+Get-Content README.md
 ```
 
-Abra o arquivo e confirme que a linha sumiu.
+`git status --short` não deve imprimir nada, e a linha errada não deve aparecer no conteúdo.
 
-Esse comando é útil, mas precisa de cuidado.
+![Fluxo seguro para decidir entre git add, git restore --staged e git restore](/lesson-assets/010-git-local/03-restore-com-seguranca.svg)
 
-Regra:
+Regra de segurança:
 
 ```text
-antes de restore, veja diff.
+antes de git restore, execute git diff e leia o que será perdido
 ```
 
----
+## Passo 10 — Retire uma mudança da staging sem apagá-la
 
-## Quinto ciclo: tirando arquivo da staging area
+Abra o README novamente:
 
-Altere `README.md` de novo com uma linha boa:
+```powershell
+notepad README.md
+```
+
+Acrescente:
 
 ```markdown
+
 ## Observação
 
 Git local registra histórico sem depender de remoto.
 ```
 
-Adicione:
+Salve, feche e prepare a alteração:
 
-```bash
+```powershell
 git add README.md
+git status --short
 ```
 
-Veja:
+Saída:
 
-```bash
-git status
+```text
+M  README.md
 ```
 
-Agora tire da staging area sem perder a alteração:
+Agora o `M` está na primeira coluna: a mudança está na staging area.
 
-```bash
+Retire-a da staging sem apagar o texto:
+
+```powershell
 git restore --staged README.md
+git status --short
 ```
 
-Veja:
+Saída:
 
-```bash
-git status
+```text
+ M README.md
 ```
 
-A alteração continua no arquivo, mas não está mais preparada.
+O `M` voltou para a segunda coluna. Confira que o texto continua no arquivo:
 
-Adicione de novo e commite:
+```powershell
+Get-Content README.md
+```
 
-```bash
+Prepare novamente e finalize:
+
+```powershell
 git add README.md
-git commit -m "Explica que Git local nao depende de remoto"
+git diff --staged
+git commit -m "Explica que Git local não depende de remoto"
 ```
 
-Esse fluxo ensina uma diferença importante:
+A diferença agora está clara:
 
 ```text
-unstage não é apagar alteração.
+git restore --staged README.md  → mantém o texto e apenas desfaz o git add
+git restore README.md           → descarta a alteração local não commitada
 ```
 
----
+## Passo 11 — Faça a inspeção final
 
-## Exemplo aplicado ao projeto da formação
+Execute:
 
-Agora pense no repositório da formação.
+```powershell
+git status
+git log --oneline
+Get-ChildItem -Force
+```
 
-Ele pode ter:
+O estado final deve incluir:
 
 ```text
-docs/diagnostico-inicial.md
-docs/diario-de-bordo.md
-docs/atalhos.md
-src/Main.java
+On branch main
+nothing to commit, working tree clean
+```
+
+O log terá quatro commits. Os códigos serão diferentes:
+
+```text
+e12ba77 (HEAD -> main) Explica que Git local não depende de remoto
+bd8c104 Configura arquivos ignorados do projeto
+91ac730 Documenta objetivo do laboratorio
+4f2c8a1 Adiciona README inicial
+```
+
+Na pasta você verá `.git`, `.gitignore`, `Main.class` e `README.md`. O arquivo `Main.class` existe, mas não aparece no status porque está ignorado.
+
+## O que você acabou de aprender
+
+Você executou o ciclo essencial do Git local:
+
+```text
+arquivo novo
+→ untracked
+→ git add
+→ staged
+→ git commit
+→ histórico
+```
+
+Também praticou dois caminhos de retorno:
+
+```text
+staged → git restore --staged → modificado, mas preservado
+modificado → git restore → alteração descartada
+```
+
+Em um projeto da formação, o mesmo raciocínio será aplicado a arquivos reais:
+
+```text
 README.md
-.gitignore
+docs/diario-de-bordo.md
+src/Main.java
+pom.xml
+testes
+configurações versionáveis
 ```
 
-Um bom primeiro commit poderia ser:
-
-```bash
-git add README.md .gitignore docs src
-git commit -m "Adiciona estrutura inicial da formacao Java Backend"
-```
-
-Depois, ao concluir uma aula:
-
-```bash
-git add docs/diario-de-bordo.md
-git commit -m "Registra aprendizado sobre terminal e PowerShell"
-```
-
-Depois, ao criar um exemplo Java:
-
-```bash
-git add src/Main.java
-git commit -m "Adiciona primeiro programa Java"
-```
-
-Perceba que os commits contam uma história.
-
-Não são cópias aleatórias.
-
-São pontos de evolução.
-
----
-
-## Exemplo aplicado ao domínio corporativo
-
-Imagine um backend de ordem de serviço.
-
-Você precisa alterar uma regra:
+Um commit deve representar uma intenção compreensível. Exemplos:
 
 ```text
-atividade só pode ser reagendada se estiver em status AGENDADO ou REAGENDADO
+Adiciona primeiro programa Java
+Documenta comandos básicos do terminal
+Corrige validação de entrada do usuário
+Configura gitignore para projeto Maven
 ```
 
-Um commit ruim seria:
+Evite mensagens como `ajuste`, `teste`, `coisas` e `final`, porque elas não explicam a mudança.
 
-```text
-ajuste
-```
-
-Um commit melhor:
+Em um sistema corporativo de ordens de serviço, por exemplo, prefira:
 
 ```text
 Valida status permitido no reagendamento de atividade
 ```
 
-Por quê?
-
-Porque, no futuro, alguém pode olhar o histórico e entender:
+em vez de:
 
 ```text
-esse commit mexeu na regra de status do reagendamento.
+ajuste
 ```
 
-Se der bug nessa regra, o histórico ajuda.
+Commits pequenos facilitam revisão, investigação e reversão. Não misture documentação, código, configuração e arquivos gerados sem uma razão clara.
 
-Git não é só salvar.
+## Exercício prático principal
 
-Git é comunicação técnica.
+Sem copiar o roteiro anterior linha por linha, crie um arquivo chamado `anotacoes-git.md` com:
+
+```markdown
+# Minhas anotações de Git
+
+## Working tree
+
+## Staging area
+
+## Repository
+```
+
+Seu desafio é:
+
+1. criar e editar o arquivo;
+2. confirmar que está `untracked`;
+3. adicioná-lo à staging area;
+4. revisar com `git diff --staged`;
+5. criar o commit `Adiciona anotacoes sobre as areas do Git`;
+6. acrescentar uma explicação em cada seção;
+7. revisar com `git diff`;
+8. criar o commit `Explica as tres areas do Git`;
+9. terminar com `working tree clean`.
+
+Não avance se o estado final não estiver limpo. Use `git status` para descobrir o que falta.
+
+## Fechamento e próxima aula
+
+O Git já controla o histórico dentro da sua máquina. Nenhum commit foi enviado para a internet.
+
+Na aula 011, você criará uma conta no GitHub, abrirá um repositório remoto vazio, copiará a URL correta, autenticará a máquina e publicará este histórico com `git push`.
 
 ---
 
-## Mensagens de commit coerentes
+# Material complementar
 
-Uma mensagem boa deve ser curta, clara e específica.
+## Tabela de consulta rápida
 
-Prefira verbos no presente:
+| Comando | O que faz | Altera arquivos? |
+|---|---|---|
+| `git init` | Cria a estrutura interna do repositório | Cria `.git` |
+| `git status` | Mostra o estado atual | Não |
+| `git status --short` | Mostra o estado de forma compacta | Não |
+| `git add arquivo` | Prepara uma mudança | Não altera o conteúdo |
+| `git diff` | Mostra mudanças fora da staging | Não |
+| `git diff --staged` | Mostra mudanças preparadas | Não |
+| `git commit -m "..."` | Registra as mudanças preparadas | Cria histórico |
+| `git log --oneline` | Mostra o histórico resumido | Não |
+| `git restore --staged arquivo` | Desfaz o `git add` | Preserva o conteúdo |
+| `git restore arquivo` | Descarta alteração não commitada | Sim, pode perder trabalho |
+| `git check-ignore -v arquivo` | Explica qual regra ignora o arquivo | Não |
 
-```text
-Adiciona
-Corrige
-Remove
-Atualiza
-Documenta
-Refatora
-Implementa
-Configura
-```
+## Como ler `git status --short`
 
-Exemplos bons:
-
-```text
-Adiciona README inicial
-Configura gitignore para projeto Java
-Documenta comandos basicos do terminal
-Implementa exemplo de calculo com debug
-Corrige nome da classe principal
-```
-
-Exemplos ruins:
+As duas primeiras colunas representam staging area e working tree:
 
 ```text
-teste
-aula
-ok
-final
-alteracoes
-subindo
-corrigido
+?? README.md   arquivo não rastreado
+A  README.md   arquivo novo preparado
+ M README.md   arquivo modificado fora da staging
+M  README.md   modificação preparada
 ```
 
-Uma boa mensagem ajuda você do futuro.
+## Erros comuns e correções
 
-E ajuda o time.
+### `fatal: not a git repository`
 
----
+Você provavelmente está na pasta errada.
 
-## Commits pequenos
-
-Evite fazer um commit gigante com tudo misturado.
-
-Ruim:
-
-```text
-adiciona README, muda código, apaga arquivo, cria classe, altera docs, configura Git, mexe em teste
+```powershell
+Get-Location
+Get-ChildItem -Force
 ```
 
-Melhor:
+Entre na pasta que contém `.git` e tente novamente.
 
-```text
-Adiciona estrutura inicial
-Documenta diagnóstico técnico
-Adiciona exemplo de compilação manual
-Configura gitignore para Java
+### `Author identity unknown`
+
+Nome ou e-mail não foram configurados:
+
+```powershell
+git config --global user.name "Seu Nome"
+git config --global user.email "seu-email@example.com"
 ```
 
-Commits pequenos facilitam:
+Depois repita o commit.
 
-```text
-review;
-rollback;
-investigação;
-entendimento;
-histórico limpo.
+### `pathspec ... did not match any files`
+
+O nome informado não existe na pasta ou foi digitado incorretamente:
+
+```powershell
+Get-ChildItem
+git status
 ```
 
-No começo, não precisa ser perfeito.
+Copie o nome correto e repita o comando.
 
-Mas precisa começar com intenção.
+### `nothing to commit, working tree clean`
 
----
+Isso não é erro. Significa que não há mudança pendente.
+
+### O arquivo ignorado não aparece
+
+Esse é o comportamento esperado. Confirme a regra:
+
+```powershell
+git check-ignore -v NOME_DO_ARQUIVO
+```
+
+### Rodei `git init` na pasta errada
+
+Pare antes de executar outros comandos. Não apague `.git` de forma impulsiva, pois ela pode conter um histórico existente. Confira `Get-Location`, veja o conteúdo com `Get-ChildItem -Force` e procure orientação antes de remover qualquer repositório.
 
 ## O que não deve entrar em commit
 
-Normalmente, não entram:
+Normalmente não são versionados:
 
-```text
-.class;
-out/;
-target/;
-logs locais;
-arquivos temporários;
-credenciais;
-senhas;
-tokens;
-configurações pessoais da IDE;
-arquivos grandes sem necessidade;
-cópias manuais do projeto.
-```
+- `.class`, `out/` e `target/`;
+- configurações pessoais da IDE;
+- logs e temporários gerados;
+- cópias manuais do projeto;
+- senhas, tokens e chaves privadas;
+- `.env` real com credenciais;
+- dados reais de clientes.
 
-Em backend real, esse cuidado é ainda mais sério.
+Antes de cada commit profissional, use esta sequência:
 
-Nunca commite segredo.
-
-Nunca commite senha.
-
-Nunca commite token.
-
-Nunca commite arquivo `.env` real com credenciais sensíveis.
-
-Mais tarde, em segurança e DevOps, isso será aprofundado.
-
-Mas a consciência começa agora.
-
----
-
-## `git status` antes de todo commit
-
-Antes de commitar, faça:
-
-```bash
+```powershell
 git status
-```
-
-Leia o que está em staging.
-
-Depois:
-
-```bash
+git diff
+git add ARQUIVOS_ESCOLHIDOS
 git diff --staged
-```
-
-Confira o conteúdo preparado.
-
-Só então:
-
-```bash
 git commit -m "Mensagem clara"
 ```
 
-Isso evita commit acidental.
-
-Profissional bom não commita no escuro.
-
----
-
-## Erros comuns
-
-### Erro 1 — Rodar `git init` na pasta errada
-
-Sintoma:
-
-```text
-Git aparece monitorando coisa demais.
-```
-
-Diagnóstico:
-
-```powershell
-pwd
-ls
-git status
-```
-
-Correção depende do caso.
-
-Por isso, antes de `git init`:
-
-```powershell
-pwd
-```
-
----
-
-### Erro 2 — Não usar `git status`
-
-Sem `git status`, você não sabe o estado.
-
-Correção:
-
-```bash
-git status
-```
-
-Use sempre.
-
----
-
-### Erro 3 — Usar `git add .` sem olhar
-
-Pode adicionar lixo.
-
-Correção:
-
-```bash
-git status
-git add .
-git status
-```
-
-E mantenha `.gitignore` correto.
-
----
-
-### Erro 4 — Commit com mensagem ruim
-
-Ruim:
-
-```text
-teste
-```
-
-Melhor:
-
-```text
-Adiciona README inicial
-```
-
----
-
-### Erro 5 — Achar que `git add` salva no histórico
-
-`git add` só prepara.
-
-Quem salva no histórico é:
-
-```bash
-git commit
-```
-
----
-
-### Erro 6 — Achar que `git commit` manda para GitHub
-
-Commit é local.
-
-Para remoto, no futuro, usamos:
-
-```bash
-git push
-```
-
-Nesta aula, não há remoto.
-
----
-
-### Erro 7 — Versionar `.class`
-
-Correção:
-
-```gitignore
-*.class
-```
-
-E crie `.gitignore` cedo.
-
----
-
-### Erro 8 — Usar `git restore` sem olhar o diff
-
-Pode perder alteração.
-
-Correção:
-
-```bash
-git diff
-git restore arquivo
-```
-
----
-
-### Erro 9 — Confundir `restore` com `restore --staged`
-
-```text
-git restore arquivo
-```
-
-descarta alteração do arquivo.
-
-```text
-git restore --staged arquivo
-```
-
-tira da staging area, mantendo a alteração no arquivo.
-
----
-
-### Erro 10 — Criar cópias manuais mesmo usando Git
-
-Ruim:
-
-```text
-projeto-final
-projeto-final-copia
-projeto-final-certo
-```
-
-Correção:
-
-```text
-usar commits para histórico.
-```
-
----
-
-## Atividade guiada
-
-Faça o laboratório completo.
-
-```powershell
-cd C:\dev\labs
-mkdir git-local-do-zero
-cd git-local-do-zero
-
-pwd
-ls
-
-git init
-git status
-
-New-Item README.md
-```
-
-Conteúdo do `README.md`:
-
-```markdown
-# Git Local do Zero
-
-Laboratório para aprender Git local.
-```
-
-Comandos:
-
-```bash
-git status
-git add README.md
-git status
-git commit -m "Adiciona README inicial"
-git log --oneline
-```
-
-Depois altere o README:
-
-```markdown
-# Git Local do Zero
-
-Laboratório para aprender Git local.
-
-## O que aprendi
-Aprendi que Git local transforma uma pasta em repositório com histórico e que o ciclo básico é editar, verificar status, adicionar, commitar e consultar log.
-
-## Comandos praticados
-- git init
-- git status
-- git add
-- git commit
-- git log
-- git log --oneline
-- git diff
-- git diff --staged
-- git restore
-- git restore --staged
-
-## Mensagens de commit usadas
--
-
-## Erros que quero evitar
-- rodar git init na pasta errada;
-- usar git add . sem conferir;
-- commitar com mensagem ruim;
-- versionar .class;
-- usar git restore sem olhar diff;
-- confundir commit local com push para remoto.
-
-## Frase principal
-Git não é cópia de segurança manual. Git é histórico técnico controlado.
-```
-
----
-
-## Critério de conclusão
-
-Esta aula está concluída quando a pessoa consegue:
-
-```text
-explicar a diferença entre pasta comum e repositório Git;
-explicar que Git local não depende de GitHub;
-usar git init na pasta correta;
-entender o papel da pasta .git;
-usar git status;
-explicar working tree, staging area e repository;
-usar git add;
-usar git commit com mensagem clara;
-usar git log e git log --oneline;
-usar git diff;
-usar git diff --staged;
-criar .gitignore;
-entender que .gitignore não apaga arquivo;
-entender que .class não deve ser versionado;
-usar git restore com cuidado;
-usar git restore --staged;
-evitar git add . sem verificar;
-explicar por que commits pequenos ajudam;
-relacionar Git com rastreabilidade profissional.
-```
-
-Não precisa ainda saber branch, merge, rebase ou remoto.
-
-Isso virá em etapas próprias.
-
-Agora o objetivo é dominar o ciclo local básico.
-
----
-
-## Fechamento da aula
-
-Git local é o começo da maturidade de versionamento.
-
-A partir daqui, a formação deixa de ser apenas leitura e prática solta.
-
-Ela pode virar história.
-
-Cada arquivo criado, cada exemplo Java, cada diário de bordo, cada ajuste relevante pode ser registrado.
-
-Isso cria uma postura profissional:
-
-```text
-eu sei o que mudei;
-eu sei por que mudei;
-eu sei quando mudei;
-eu sei voltar e revisar;
-eu não dependo de cópia manual;
-eu trabalho com histórico.
-```
-
-Na próxima aula, vamos ligar esse repositório local ao mundo externo:
-
-```text
-GitHub;
-repositório remoto;
-remote;
-push;
-pull;
-clone;
-README;
-visibilidade;
-tokens e credenciais;
-organização de portfólio.
-```
-
-Git local é a base.
-
-Git remoto amplia essa base para colaboração, backup e exposição profissional.
+`git add .` é válido, mas adiciona tudo que não estiver ignorado. No começo, prefira informar os arquivos conscientemente. Se usar `git add .`, confira imediatamente com `git status` e `git diff --staged`.
+
+## Checkpoint final
+
+- [ ] Validei versão, nome, e-mail e branch padrão.
+- [ ] Criei o laboratório na pasta correta.
+- [ ] Vi a pasta `.git` com `Get-ChildItem -Force`.
+- [ ] Interpretei estados `untracked`, `staged` e `clean`.
+- [ ] Criei commits com mensagens claras.
+- [ ] Comparei `git diff` e `git diff --staged`.
+- [ ] Provei uma regra com `git check-ignore -v`.
+- [ ] Usei `git restore` somente depois de ler o diff.
+- [ ] Usei `git restore --staged` sem perder o conteúdo.
+- [ ] Concluí o exercício com `working tree clean`.

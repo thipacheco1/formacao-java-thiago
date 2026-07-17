@@ -1,6 +1,23 @@
 import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronRight, ChevronLeft, CheckCircle2, ChevronDown, X, Search, Lock } from 'lucide-react';
+import {
+  BookOpen,
+  CheckCircle2,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Circle,
+  Clock3,
+  Layers3,
+  ListFilter,
+  Lock,
+  Play,
+  Search,
+  Sparkles,
+  Trophy,
+  X
+} from 'lucide-react';
 import BrandMark from './BrandMark';
+import './sidebarNavigator.css';
 import {
   COURSE_MODULES,
   COURSE_PHASES,
@@ -84,7 +101,14 @@ const getSidebarWidthLimit = () => {
   return Math.min(480, Math.max(240, viewportWidth - 420));
 };
 
-const clampSidebarWidth = (width) => Math.min(getSidebarWidthLimit(), Math.max(240, width));
+const clampSidebarWidth = (width) => Math.min(getSidebarWidthLimit(), Math.max(280, width));
+
+const getPrettyLessonTitle = (title = '') => {
+  const parts = title.replace(/\.md$/i, '').split('_');
+  const contentParts = title.startsWith('000_') ? parts.slice(1) : parts.length >= 4 ? parts.slice(3) : parts;
+  if (contentParts.at(-1)?.toUpperCase() === 'OFICIAL') contentParts.pop();
+  return contentParts.join(' ').toLowerCase().replace(/(?:^|\s)\S/g, letter => letter.toUpperCase());
+};
 
 const Sidebar = ({ 
   lessons, 
@@ -103,11 +127,12 @@ const Sidebar = ({
   const [openGroup, setOpenGroup] = useState(null);
   const lessonRefs = useRef({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [lessonFilter, setLessonFilter] = useState('all');
   const deferredSearchTerm = useDeferredValue(searchTerm);
   const [isResizing, setIsResizing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(() => {
     const savedWidth = Number.parseInt(localStorage.getItem('sidebarWidth'), 10);
-    return clampSidebarWidth(Number.isFinite(savedWidth) ? savedWidth : 320);
+    return clampSidebarWidth(Number.isFinite(savedWidth) ? savedWidth : 360);
   });
   const sidebarRef = useRef(null);
   const resizeFrameRef = useRef(0);
@@ -148,18 +173,27 @@ const Sidebar = ({
   const totalCount = COURSE_TOTAL_LESSONS;
   const completedCount = Object.keys(completedLessons).filter(id => completedLessons[id]).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+  const remainingCount = Math.max(0, availableLessonsCount - completedCount);
 
   // Calculate course duration and section count
   const totalCourseMinutes = lessonMeta.totalMinutes;
   
   // Filter lessons based on search (in title or content)
   const filteredLessons = useMemo(() => lessons.filter(lesson => {
+    if (lessonFilter === 'pending' && completedLessons[lesson.id]) return false;
+    if (lessonFilter === 'completed' && !completedLessons[lesson.id]) return false;
+
     const term = deferredSearchTerm.trim().toLowerCase();
     if (!term) return true;
     const matchesTitle = lesson.title.replace(/_/g, ' ').toLowerCase().includes(term);
     const matchesContent = lesson.content && lesson.content.toLowerCase().includes(term);
     return matchesTitle || matchesContent;
-  }), [deferredSearchTerm, lessons]);
+  }), [completedLessons, deferredSearchTerm, lessonFilter, lessons]);
+
+  const continueLesson = useMemo(() => {
+    if (selectedLesson && !completedLessons[selectedLesson.id]) return selectedLesson;
+    return lessons.find(lesson => !completedLessons[lesson.id]) || null;
+  }, [completedLessons, lessons, selectedLesson]);
 
   // Group filtered lessons by module
   const groupedLessons = useMemo(() => filteredLessons.reduce((acc, lesson) => {
@@ -169,6 +203,13 @@ const Sidebar = ({
     acc[module].push(lesson);
     return acc;
   }, {}), [filteredLessons]);
+
+  const allGroupedLessons = useMemo(() => lessons.reduce((acc, lesson) => {
+    const module = getModuleFromLessonTitle(lesson.title);
+    if (!acc[module]) acc[module] = [];
+    acc[module].push(lesson);
+    return acc;
+  }, {}), [lessons]);
 
   // Auto-open phase and module when a lesson is selected
   useEffect(() => {
@@ -272,12 +313,7 @@ const Sidebar = ({
     
     const parts = title.split('_');
     if (parts.length >= 4) {
-      const titleParts = parts.slice(3);
-      if (titleParts.at(-1)?.replace(/\.md$/i, '').toUpperCase() === 'OFICIAL') {
-        titleParts.pop();
-      }
-      const text = titleParts.join(' ');
-      const prettyText = text.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+      const prettyText = getPrettyLessonTitle(title);
       return (
         <span className="lesson-item-text">
           <span className="lesson-item-badge">{parts[0]}</span>
@@ -289,7 +325,7 @@ const Sidebar = ({
       );
     }
     
-    const prettyText = title.replace(/_/g, ' ');
+    const prettyText = getPrettyLessonTitle(title);
     return (
       <span className="lesson-item-text">
         <span className="lesson-item-title">{prettyText}</span>
@@ -303,7 +339,7 @@ const Sidebar = ({
   return (
     <aside 
       ref={sidebarRef}
-      className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''} ${isResizing ? 'is-resizing' : ''}`}
+      className={`sidebar course-navigator ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''} ${isResizing ? 'is-resizing' : ''}`}
       style={{ '--sidebar-width': `${sidebarWidth}px` }}
     >
       <div className="sidebar-header">
@@ -321,8 +357,9 @@ const Sidebar = ({
             <BrandMark size={42} decorative />
           </span>
           <div className="sidebar-brand-copy">
+            <span className="sidebar-brand-kicker"><Sparkles size={11} /> Formação completa</span>
             <span className="logo-text">Java Backend</span>
-            <span className="subtitle">Formação profissional</span>
+            <span className="subtitle">Do zero à arquitetura</span>
           </div>
         </button>
 
@@ -346,29 +383,36 @@ const Sidebar = ({
       </div>
 
       <div className="sidebar-progress">
-        <div className="progress-header">
+        <div className="sidebar-progress-overview">
+          <div className="sidebar-progress-ring" style={{ '--course-progress': `${progressPercent * 3.6}deg` }} aria-hidden="true">
+            <span>{progressPercent}%</span>
+          </div>
           <div className="progress-title-group">
             <span className="progress-eyebrow">Sua jornada</span>
-            <strong>Progresso geral</strong>
+            <strong>{completedCount > 0 ? 'Continue avançando' : 'Comece sua formação'}</strong>
+            <span>{completedCount} de {totalCount} aulas concluídas</span>
           </div>
-          <strong className="progress-percentage">{progressPercent}%</strong>
-        </div>
-        <div
-          className="progress-bar-container"
-          role="progressbar"
-          aria-label="Progresso geral da formação"
-          aria-valuemin="0"
-          aria-valuemax={totalCount}
-          aria-valuenow={completedCount}
-        >
-          <div className="progress-bar-fill" style={{ width: `${progressPercent}%` }}></div>
         </div>
         <div className="progress-stats-footer">
-          <span><strong>{completedCount}</strong> concluídas</span>
-          <span><strong>{availableLessonsCount}</strong> disponíveis</span>
-          <span><strong>{formatDurationForCourse(totalCourseMinutes)}</strong> leitura</span>
+          <span><CheckCircle2 size={13} /><span><strong>{completedCount}</strong> concluídas</span></span>
+          <span><BookOpen size={13} /><span><strong>{remainingCount}</strong> restantes</span></span>
+          <span><Clock3 size={13} /><span><strong>{formatDurationForCourse(totalCourseMinutes)}</strong> estimadas</span></span>
         </div>
+        <div className="sidebar-progress-sr" role="progressbar" aria-label="Progresso geral da formação" aria-valuemin="0" aria-valuemax={totalCount} aria-valuenow={completedCount} />
       </div>
+
+      {continueLesson ? (
+        <button type="button" className="sidebar-continue-card" onClick={() => onSelectLesson(continueLesson)}>
+          <span className="continue-icon"><Play size={15} fill="currentColor" /></span>
+          <span className="continue-copy">
+            <small>{selectedLesson?.id === continueLesson.id ? 'Você está estudando' : 'Continuar jornada'}</small>
+            <strong>{getPrettyLessonTitle(continueLesson.title)}</strong>
+          </span>
+          <ChevronRight size={16} />
+        </button>
+      ) : (
+        <div className="sidebar-course-complete"><Trophy size={18} /><span><strong>Formação concluída</strong><small>721 aulas finalizadas</small></span></div>
+      )}
 
       <div className="sidebar-search">
         <div className="search-input-wrapper">
@@ -398,6 +442,16 @@ const Sidebar = ({
             {filteredLessons.length} {filteredLessons.length === 1 ? 'aula encontrada' : 'aulas encontradas'}
           </span>
         )}
+        <div className="sidebar-filters" aria-label="Filtrar aulas">
+          <ListFilter size={13} aria-hidden="true" />
+          {[
+            ['all', 'Todas'],
+            ['pending', 'Pendentes'],
+            ['completed', 'Concluídas']
+          ].map(([value, label]) => (
+            <button type="button" key={value} className={lessonFilter === value ? 'active' : ''} aria-pressed={lessonFilter === value} onClick={() => setLessonFilter(value)}>{label}</button>
+          ))}
+        </div>
       </div>
       
       <div className="sidebar-content">
@@ -411,8 +465,9 @@ const Sidebar = ({
           let totalPhaseCount = 0;
           let completedPhaseCount = 0;
           phaseModules.forEach(mod => {
-            totalPhaseCount += groupedLessons[mod].length;
-            completedPhaseCount += groupedLessons[mod].filter(l => completedLessons[l.id]).length;
+            const allModuleLessons = allGroupedLessons[mod] || [];
+            totalPhaseCount += allModuleLessons.length;
+            completedPhaseCount += allModuleLessons.filter(l => completedLessons[l.id]).length;
           });
           const isPhaseCompleted = totalPhaseCount > 0 && completedPhaseCount === totalPhaseCount;
 
@@ -425,21 +480,26 @@ const Sidebar = ({
                 title={phase.name}
               >
                 <span className="phase-heading-copy">
-                  <span className="phase-number">{phase.number}</span>
-                  <span className="phase-title">{phase.shortName}</span>
+                  <span className="phase-number"><Layers3 size={13} /> {phase.number}</span>
+                  <span className="phase-heading-text">
+                    <span className="phase-kicker">Fase {Number(phase.number)}</span>
+                    <span className="phase-title">{phase.shortName}</span>
+                  </span>
                 </span>
                 <div className="phase-header-actions">
-                  <span className="phase-progress-text">{completedPhaseCount}/{totalPhaseCount}</span>
+                  <span className="phase-progress-text">{Math.round((completedPhaseCount / totalPhaseCount) * 100)}%</span>
                   <ChevronDown size={14} className={`phase-chevron ${!isPhaseOpen ? 'collapsed' : ''}`} />
                 </div>
+                <span className="phase-progress-track" aria-hidden="true"><span style={{ width: `${(completedPhaseCount / totalPhaseCount) * 100}%` }} /></span>
               </button>
               
               {isPhaseOpen && <div className="phase-modules-container">
                 {phaseModules.map(module => {
                   const { badge, title } = parseModuleHeader(module, moduleTitles[module]);
                   const moduleLessons = groupedLessons[module];
-                  const completedModuleCount = moduleLessons.filter(l => completedLessons[l.id]).length;
-                  const totalModuleCount = moduleLessons.length;
+                  const allModuleLessons = allGroupedLessons[module] || moduleLessons;
+                  const completedModuleCount = allModuleLessons.filter(l => completedLessons[l.id]).length;
+                  const totalModuleCount = allModuleLessons.length;
                   const isModuleCompleted = completedModuleCount === totalModuleCount;
                   
                   const isModuleOpen = openGroup === module || searchTerm.trim() !== '';
@@ -461,26 +521,24 @@ const Sidebar = ({
                           <span className={`module-badge ${module === 'P0' ? 'start-badge' : ''} ${module === 'Outros' ? 'extra-badge' : ''}`}>
                             {badge}
                           </span>
-                          <h3 className="section-title">
-                            {title}
-                          </h3>
+                          <span className="module-heading-copy">
+                            <h3 className="section-title">{title}</h3>
+                            <small>{completedModuleCount} de {totalModuleCount} concluídas · {formatDurationForModule(totalModuleMinutes)}</small>
+                          </span>
                         </div>
                         
                         <div className="module-header-actions">
-                          <span className="module-stats-right">
-                            {totalModuleCount} {totalModuleCount === 1 ? 'aula' : 'aulas'}
-                          </span>
-                          <span className="module-duration">{formatDurationForModule(totalModuleMinutes)}</span>
                           {isModuleCompleted ? (
                             <CheckCircle2 className="module-check-icon" size={14} />
                           ) : completedModuleCount > 0 ? (
-                            <span className="module-progress-text">{completedModuleCount}/{totalModuleCount}</span>
+                            <span className="module-progress-text">{Math.round((completedModuleCount / totalModuleCount) * 100)}%</span>
                           ) : null}
                           <ChevronDown 
                             size={14} 
                             className={`module-chevron ${!isModuleOpen ? 'collapsed' : ''}`} 
                           />
                         </div>
+                        <span className="module-progress-track" aria-hidden="true"><span style={{ width: `${(completedModuleCount / totalModuleCount) * 100}%` }} /></span>
                       </button>
                       
                       {isModuleOpen && <div className="module-lessons">
@@ -504,16 +562,14 @@ const Sidebar = ({
                                     onSelectLesson(lesson);
                                   }}
                                 >
+                                  <span className="lesson-state-marker" aria-hidden="true">
+                                    {isCompleted ? <CheckCircle2 size={16} /> : !isUnlocked ? <Lock size={14} /> : isActive ? <Play size={13} fill="currentColor" /> : <Circle size={14} />}
+                                  </span>
                                   {formatTitle(lesson)}
                                   
                                   <div className="lesson-item-actions">
                                     <span className="lesson-duration-badge">{lessonMeta.minutesById.get(lesson.id) || 2} min</span>
-                                    {isCompleted && <CheckCircle2 className="check-icon" size={14} />}
-                                    {!isUnlocked ? (
-                                      <Lock className="lock-icon-sidebar" size={12} />
-                                    ) : (
-                                      <ChevronRight className="chevron-icon" size={14} />
-                                    )}
+                                    <ChevronRight className="chevron-icon" size={14} />
                                   </div>
                                 </button>
                               </li>
@@ -529,8 +585,11 @@ const Sidebar = ({
           );
         })}
         {filteredLessons.length === 0 && (
-          <div className="empty-state" style={{ padding: '20px 0' }}>
-            <p style={{ fontSize: '0.85rem' }}>Nenhuma aula encontrada.</p>
+          <div className="sidebar-empty-state">
+            <Search size={20} />
+            <strong>Nenhuma aula encontrada</strong>
+            <p>Tente outro termo ou altere o filtro.</p>
+            <button type="button" onClick={() => { setSearchTerm(''); setLessonFilter('all'); }}>Limpar filtros</button>
           </div>
         )}
       </div>
@@ -567,7 +626,7 @@ const Sidebar = ({
           role="separator"
           aria-label="Redimensionar menu lateral"
           aria-orientation="vertical"
-          aria-valuemin={240}
+          aria-valuemin={280}
           aria-valuemax={getSidebarWidthLimit()}
           aria-valuenow={sidebarWidth}
           onPointerDown={handlePointerDown}
