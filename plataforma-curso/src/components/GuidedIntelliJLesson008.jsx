@@ -25,6 +25,7 @@ import {
   TerminalSquare
 } from 'lucide-react';
 import './guidedLesson.css';
+import GuidedLessonFacts from './GuidedLessonFacts';
 import './guidedIntelliJLesson.css';
 
 const LESSON_STORAGE_KEY = 'guided-intellij-lesson-008-progress';
@@ -704,7 +705,7 @@ export default function GuidedIntelliJLesson008({
 
   const selectStep = index => {
     setActiveIndex(index);
-    document.querySelector('.content-scroll-area')?.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.guided-layout')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleActiveStep = () => {
@@ -730,6 +731,7 @@ export default function GuidedIntelliJLesson008({
         <div className="guided-progress-track" aria-label={`Progresso: ${progress}%`}><span style={{ width: `${progress}%` }} /></div>
       </header>
 
+      <GuidedLessonFacts ariaLabel="Resultado do laboratório" items={[{ value: 1, label: 'defeito investigado' }, { value: steps.length, label: 'etapas guiadas' }, { value: 3, label: 'fontes de evidência' }]} />
       <div className="guided-layout">
         <nav className="guided-step-nav" aria-label="Etapas da aula">
           <div className="guided-step-nav-title"><ListChecks size={18} /> Roteiro prático</div>

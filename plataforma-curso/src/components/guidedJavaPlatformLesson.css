@@ -1,0 +1,211 @@
+.guided-java-platform-lesson {
+  --jdk-ink: #17233b;
+  --jdk-muted: #64748b;
+  --jdk-line: #d9e2ee;
+  --jdk-blue: #315fb6;
+  --jdk-violet: #6c4ac5;
+  --jdk-cyan: #087f8c;
+  --jdk-green: #087a5a;
+  --jdk-amber: #a05e08;
+  --jdk-red: #b53b4c;
+  --jdk-dark: #101827;
+}
+
+.guided-java-platform-lesson,
+.guided-java-platform-lesson * { min-width: 0; }
+
+.guided-java-platform-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 25%, rgba(167, 139, 250, .2), transparent 24%),
+    radial-gradient(circle at 62% 115%, rgba(45, 212, 191, .18), transparent 38%),
+    linear-gradient(135deg, #151a33, #293264 58%, #23566a);
+}
+
+.jdk-facts {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--jdk-line);
+  border-radius: 0 0 18px 18px;
+  color: var(--jdk-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: -1px 22px 22px;
+  padding: 12px 18px;
+}
+.jdk-facts strong { color: var(--jdk-ink); }
+.jdk-facts i { background: #cbd6e5; border-radius: 50%; height: 4px; width: 4px; }
+
+.jdk-java-map,
+.jdk-platform-layers,
+.jdk-portability,
+.jdk-compile-pipeline,
+.jdk-source-mode,
+.jdk-lts-timeline,
+.jdk-validation-lab,
+.jdk-directory,
+.jdk-windows-mock,
+.jdk-environment-cases,
+.jdk-first-program,
+.jdk-stale-bytecode,
+.jdk-error-clinic,
+.jdk-professional-map,
+.jdk-environment-matrix {
+  border: 1px solid var(--jdk-line);
+  border-radius: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.jdk-code-window { background: var(--jdk-dark); border: 1px solid #293953; border-radius: 12px; max-width: 100%; overflow: hidden; }
+.jdk-code-window > header { align-items: center; background: #19253a; color: #dce6f3; display: flex; font-size: .72rem; font-weight: 740; gap: 7px; padding: 7px 9px 7px 12px; }
+.jdk-code-window > header .guided-copy { margin-left: auto; }
+.jdk-code-window pre { max-width: 100%; overflow-x: auto; }
+
+.jdk-java-map { display: grid; grid-template-columns: minmax(180px, .45fr) minmax(0, 1.55fr); }
+.jdk-java-map > div[role="tablist"] { background: #f3f6fa; border-right: 1px solid var(--jdk-line); display: flex; flex-direction: column; gap: 5px; padding: 9px; }
+.jdk-java-map > div button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 9px; color: #596980; cursor: pointer; display: flex; font: inherit; font-size: .76rem; gap: 8px; padding: 12px; }
+.jdk-java-map > div button.active { background: #fff; border-left-color: var(--jdk-violet); color: var(--jdk-violet); }
+.jdk-java-map > article { padding: 20px; }
+.jdk-java-map article header, .jdk-platform-layers article header { align-items: center; color: var(--jdk-violet); display: flex; gap: 10px; }
+.jdk-java-map article header small, .jdk-platform-layers article header small { color: var(--jdk-violet); display: block; font-size: .65rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.jdk-java-map h3, .jdk-platform-layers h3 { color: var(--jdk-ink); margin: 3px 0 0; }
+.jdk-map-examples { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0; }
+.jdk-map-examples code { background: #eef1fb; border-radius: 6px; color: #5140a2; font-size: .71rem; padding: 5px 8px; }
+.jdk-java-map article p { color: var(--jdk-muted); font-size: .76rem; line-height: 1.55; margin: 8px 0; }
+.jdk-java-map > footer { align-items: center; background: #111b2d; color: #cbd8e8; display: flex; flex-wrap: wrap; font-size: .69rem; gap: 7px; grid-column: 1 / -1; justify-content: center; padding: 13px; }
+.jdk-java-map > footer svg { color: #8bbff5; flex: 0 0 auto; }
+
+.jdk-platform-layers { display: grid; grid-template-columns: minmax(210px, .65fr) minmax(0, 1.35fr); }
+.jdk-layer-stack { background: #f3f6fa; display: flex; flex-direction: column; gap: 7px; padding: 12px; }
+.jdk-layer-stack button { align-items: center; background: #fff; border: 1px solid #d6dfeb; border-left: 4px solid #96a9c6; border-radius: 10px; color: #516178; cursor: pointer; display: flex; font: inherit; gap: 9px; padding: 12px; text-align: left; }
+.jdk-layer-stack button.runtime { margin-left: 12px; }.jdk-layer-stack button.jvm { margin-left: 24px; }
+.jdk-layer-stack button.active { background: #ece9fb; border-color: #9e8bdb; color: #513aa5; }
+.jdk-layer-stack button span { display: flex; flex-direction: column; gap: 2px; }
+.jdk-layer-stack strong { font-size: .76rem; }.jdk-layer-stack small { color: inherit; font-size: .64rem; opacity: .78; }
+.jdk-platform-layers > article { padding: 22px; }
+.jdk-platform-layers article > p { color: var(--jdk-muted); font-size: .78rem; line-height: 1.6; }
+.jdk-platform-layers article > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.jdk-platform-layers article > div span { align-items: center; background: #f0f3f8; border-radius: 7px; color: #506078; display: flex; font-size: .69rem; gap: 5px; padding: 6px 8px; }
+.jdk-platform-layers blockquote { border-left: 3px solid #a996dd; color: #594c7c; font-size: .78rem; font-weight: 720; margin: 18px 0 0; padding: 9px 12px; }
+
+.jdk-portability > header { align-items: center; background: #f3f6fa; border-bottom: 1px solid var(--jdk-line); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; padding: 12px 15px; }
+.jdk-portability header > strong { color: var(--jdk-ink); font-size: .77rem; }
+.jdk-portability header > div { display: flex; gap: 4px; }
+.jdk-portability header button, .jdk-source-mode > div button, .jdk-windows-tabs button { background: transparent; border: 0; border-radius: 7px; color: #5c6b81; cursor: pointer; font: inherit; font-size: .7rem; font-weight: 740; padding: 7px 9px; }
+.jdk-portability header button.active, .jdk-source-mode > div button.active, .jdk-windows-tabs button.active { background: #fff; box-shadow: 0 2px 8px rgba(25, 40, 67, .09); color: var(--jdk-blue); }
+.jdk-portability > div { align-items: stretch; display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); padding: 20px; }
+.jdk-portability article { align-items: center; background: #f6f8fb; border-bottom: 3px solid #94a9c8; display: flex; flex-direction: column; gap: 5px; padding: 16px; text-align: center; }
+.jdk-portability article.selected { background: #eeeafa; border-color: var(--jdk-violet); }
+.jdk-portability article svg { color: var(--jdk-violet); }.jdk-portability article strong { color: var(--jdk-ink); font-size: .74rem; }.jdk-portability article span { color: var(--jdk-muted); font-size: .66rem; }
+.jdk-portability > div > svg { align-self: center; color: #9aa8ba; }
+.jdk-portability > footer, .jdk-directory > footer, .jdk-windows-mock > footer, .jdk-stale-bytecode > footer, .jdk-environment-matrix > footer { background: #edf5f7; color: #4e6870; font-size: .71rem; line-height: 1.5; padding: 11px 14px; }
+
+.jdk-pipeline-track { align-items: stretch; background: #f3f6fa; display: grid; gap: 7px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); padding: 14px; }
+.jdk-pipeline-track button { align-items: flex-start; background: #fff; border: 1px solid #d7e0eb; border-radius: 10px; color: #596880; cursor: pointer; display: flex; flex-direction: column; font: inherit; gap: 4px; padding: 10px; text-align: left; }
+.jdk-pipeline-track button.active { border-color: #8a73ce; box-shadow: 0 0 0 2px #ebe6fb; color: var(--jdk-violet); }
+.jdk-pipeline-track button.done { background: #eef8f5; border-color: #b7dfd3; }
+.jdk-pipeline-track button > span { align-items: center; background: #e6ebf2; border-radius: 50%; display: flex; font-size: .65rem; font-weight: 850; height: 23px; justify-content: center; width: 23px; }
+.jdk-pipeline-track button.done > span { background: var(--jdk-green); color: #fff; }
+.jdk-pipeline-track button strong { font-size: .7rem; }.jdk-pipeline-track button small { color: var(--jdk-muted); font-size: .62rem; line-height: 1.3; }
+.jdk-pipeline-track > svg { align-self: center; color: #9eaabc; }
+.jdk-pipeline-stage { display: grid; gap: 16px; grid-template-columns: minmax(180px, .55fr) minmax(0, 1.45fr); padding: 20px; }
+.jdk-pipeline-stage > article { border-left: 3px solid #9d8bd4; padding: 12px 15px; }
+.jdk-pipeline-stage article small { color: var(--jdk-violet); font-size: .64rem; font-weight: 840; letter-spacing: .07em; text-transform: uppercase; }
+.jdk-pipeline-stage article strong { color: var(--jdk-ink); display: block; font-size: 1rem; margin-top: 5px; }
+.jdk-pipeline-stage article p { color: var(--jdk-muted); font-size: .74rem; line-height: 1.55; }
+.jdk-artifact-preview { max-width: 100%; }
+.jdk-bytecode, .jdk-launch, .jdk-console { align-items: center; background: var(--jdk-dark); border-radius: 12px; color: #dce7f4; display: flex; flex-direction: column; gap: 8px; justify-content: center; min-height: 180px; padding: 20px; text-align: center; }
+.jdk-bytecode svg, .jdk-launch svg { color: #9bcbff; }.jdk-bytecode strong, .jdk-launch code { color: #d7bcff; font: 700 .78rem Consolas, monospace; }.jdk-bytecode span, .jdk-launch span { color: #97a8be; font-size: .68rem; }
+.jdk-console { align-items: flex-start; color: #a8f0d5; font: .76rem/1.6 Consolas, monospace; }
+.jdk-compile-pipeline > footer { align-items: center; background: #f3f6fa; display: flex; gap: 8px; justify-content: space-between; padding: 11px 14px; }
+.jdk-compile-pipeline footer button { align-items: center; background: #fff; border: 1px solid #cdd8e5; border-radius: 8px; color: #526179; cursor: pointer; display: flex; font: inherit; font-size: .69rem; font-weight: 740; gap: 5px; padding: 8px 10px; }
+.jdk-compile-pipeline footer button.primary { background: var(--jdk-violet); border-color: var(--jdk-violet); color: #fff; }.jdk-compile-pipeline footer button:disabled { cursor: not-allowed; opacity: .4; }
+.jdk-compile-pipeline footer > span { color: var(--jdk-muted); font-size: .69rem; text-align: center; }
+
+.jdk-source-mode > div[role="tablist"] { background: #f3f6fa; border-bottom: 1px solid var(--jdk-line); display: flex; gap: 5px; padding: 8px; }
+.jdk-source-mode > article { display: grid; gap: 16px; grid-template-columns: minmax(0, 1.2fr) minmax(180px, .8fr); padding: 18px; }
+.jdk-source-mode article p { align-self: center; color: var(--jdk-muted); font-size: .75rem; line-height: 1.65; margin: 0; }
+
+.jdk-version-line { align-items: flex-start; background: #111b2d; display: flex; justify-content: space-between; padding: 22px clamp(12px, 4vw, 35px); position: relative; }
+.jdk-version-line::before { background: #40516d; content: ''; height: 2px; left: 8%; position: absolute; right: 8%; top: 42px; }
+.jdk-version-line button { align-items: center; background: transparent; border: 0; color: #aab8cb; cursor: pointer; display: flex; flex-direction: column; font: inherit; gap: 5px; position: relative; z-index: 1; }
+.jdk-version-line button > span { align-items: center; background: #17253c; border: 2px solid #70819a; border-radius: 50%; display: flex; font-size: .76rem; font-weight: 850; height: 42px; justify-content: center; width: 42px; }
+.jdk-version-line button.active > span { background: #694ac0; border-color: #c5b6f4; color: #fff; }.jdk-version-line button.baseline > span { box-shadow: 0 0 0 4px rgba(45, 212, 191, .18); }
+.jdk-version-line button small { font-size: .62rem; }.jdk-version-line button em { background: #0f766e; border-radius: 999px; color: #fff; font-size: .55rem; font-style: normal; padding: 2px 5px; }
+.jdk-lts-timeline > article { padding: 18px; }
+.jdk-lts-timeline article > header { align-items: center; display: flex; gap: 8px; }.jdk-lts-timeline article > header span { color: var(--jdk-ink); font-size: 1.05rem; font-weight: 800; }.jdk-lts-timeline article > header strong { background: #e9e5f8; border-radius: 999px; color: #6045ae; font-size: .62rem; padding: 5px 8px; }
+.jdk-lts-timeline article > p { color: var(--jdk-muted); font-size: .76rem; line-height: 1.55; }
+.jdk-lts-decision { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.jdk-lts-decision section { align-items: center; background: #f5f7fa; display: flex; gap: 8px; padding: 11px; }.jdk-lts-decision section svg { color: var(--jdk-violet); flex: 0 0 auto; }.jdk-lts-decision section span { display: flex; flex-direction: column; gap: 2px; }.jdk-lts-decision strong { color: var(--jdk-ink); font-size: .7rem; }.jdk-lts-decision small { color: var(--jdk-muted); font-size: .62rem; line-height: 1.35; }
+
+.jdk-validation-lab { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr); }
+.jdk-validation-lab .ps-terminal > div { max-height: 560px; min-height: 430px; overflow: auto; }
+.jdk-validation-lab > aside { background: #f6f8fb; display: flex; flex-direction: column; gap: 11px; padding: 15px; }
+.jdk-validation-lab aside > small, .jdk-program-terminal aside > small { color: var(--jdk-violet); font-size: .65rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.jdk-output-reading { border-left: 3px solid #a693db; padding-left: 10px; }.jdk-output-reading strong { color: var(--jdk-ink); display: block; font-size: .7rem; }.jdk-output-reading p { color: var(--jdk-muted); font-size: .67rem; line-height: 1.45; margin: 3px 0 9px; }
+.jdk-audit-complete { align-items: center; color: var(--jdk-green); display: grid; gap: 5px; grid-template-columns: auto 1fr; padding: 12px 2px; }.jdk-audit-complete svg { grid-row: 1 / 3; }.jdk-audit-complete strong { font-size: .76rem; }.jdk-audit-complete p { color: var(--jdk-muted); font-size: .67rem; margin: 0; }
+
+.jdk-directory > header { align-items: center; background: #f3f6fa; border-bottom: 1px solid var(--jdk-line); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; padding: 13px 15px; }.jdk-directory header > div { align-items: center; display: flex; gap: 8px; }.jdk-directory header span { display: flex; flex-direction: column; gap: 2px; }.jdk-directory header strong { color: var(--jdk-ink); font-size: .75rem; }.jdk-directory header code { color: var(--jdk-violet); font-size: .65rem; overflow-wrap: anywhere; }.jdk-directory header button { background: #fff; border: 1px solid #cfd9e5; border-radius: 8px; color: #57667d; cursor: pointer; font: inherit; font-size: .67rem; padding: 7px 9px; }
+.jdk-directory-tree { color: #526179; display: flex; flex-direction: column; font-size: .72rem; gap: 3px; padding: 17px 22px; }.jdk-directory-tree span { align-items: center; display: flex; gap: 6px; padding: 4px 7px; }.jdk-directory-tree .root { background: #ece8fa; border-radius: 7px; color: #5e43a8; font-weight: 760; }.jdk-directory-tree span:not(.root) { margin-left: 20px; }.jdk-directory-tree .file { margin-left: 42px; }.jdk-directory-tree em { color: var(--jdk-green); font-size: .62rem; font-style: normal; margin-left: auto; }
+
+.jdk-windows-mock > header { align-items: center; background: #eef2f7; border-bottom: 1px solid var(--jdk-line); color: var(--jdk-ink); display: flex; font-size: .75rem; font-weight: 760; gap: 7px; padding: 11px 14px; }.jdk-windows-mock > header span { color: var(--jdk-muted); font-size: .62rem; margin-left: auto; }
+.jdk-windows-tabs { background: #f7f8fa; display: flex; gap: 5px; padding: 8px; }
+.jdk-variable-table, .jdk-path-editor { display: grid; gap: 16px; grid-template-columns: minmax(0, 1.25fr) minmax(200px, .75fr); padding: 17px; }.jdk-variable-table > div, .jdk-path-editor > div { background: #fff; border: 1px solid #cbd6e3; display: grid; grid-template-columns: minmax(90px, .35fr) minmax(0, .65fr); padding: 9px; }.jdk-variable-table div strong, .jdk-path-editor div strong { color: var(--jdk-ink); font-size: .72rem; grid-column: 1 / -1; margin-bottom: 8px; }.jdk-variable-table div span { background: #edf1f6; color: #5b6a80; font-size: .65rem; font-weight: 740; padding: 6px; }.jdk-variable-table div b, .jdk-variable-table div code, .jdk-path-editor div span { border-bottom: 1px solid #e2e7ed; color: #46566f; font-size: .66rem; overflow-wrap: anywhere; padding: 7px 6px; }.jdk-path-editor > div { display: flex; flex-direction: column; }.jdk-path-editor div span.selected { background: #e7f0fd; color: var(--jdk-blue); }.jdk-variable-table ol, .jdk-path-editor ol { color: var(--jdk-muted); font-size: .7rem; line-height: 1.5; margin: 0; padding-left: 19px; }.jdk-variable-table li, .jdk-path-editor li { margin-bottom: 6px; }
+
+.jdk-environment-cases { display: grid; grid-template-columns: minmax(170px, .4fr) minmax(0, 1.6fr); }.jdk-environment-cases > div { background: #f3f6fa; border-right: 1px solid var(--jdk-line); display: flex; flex-direction: column; gap: 4px; padding: 8px; }.jdk-environment-cases > div button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #56667d; cursor: pointer; display: flex; font: inherit; font-size: .72rem; font-weight: 740; gap: 8px; padding: 10px; text-align: left; }.jdk-environment-cases > div button.active { background: #fff; border-left-color: var(--jdk-violet); color: var(--jdk-violet); }.jdk-environment-cases button > span { border-radius: 50%; height: 8px; width: 8px; }.jdk-environment-cases .good { background: #15a476; }.jdk-environment-cases .danger { background: #d24a5c; }.jdk-environment-cases .warning { background: #d88b20; }.jdk-environment-cases .info { background: #4d83d5; }
+.jdk-environment-cases > article { padding: 17px; }.jdk-coherence-grid { display: grid; gap: 7px; grid-template-columns: repeat(4, minmax(0, 1fr)); }.jdk-coherence-grid section { background: #f5f7fa; padding: 10px; }.jdk-coherence-grid small { color: var(--jdk-muted); display: block; font-size: .61rem; margin-bottom: 4px; text-transform: uppercase; }.jdk-coherence-grid strong { color: var(--jdk-ink); font-size: .7rem; overflow-wrap: anywhere; }
+.jdk-environment-cases article > header { align-items: center; border-left: 4px solid #4d83d5; display: flex; gap: 8px; margin-top: 13px; padding: 10px 12px; }.jdk-environment-cases article > header.good { background: #eef8f4; border-color: #21a67c; color: #087457; }.jdk-environment-cases article > header.danger { background: #fff1f2; border-color: #d34c5d; color: #a32d3e; }.jdk-environment-cases article > header.warning { background: #fff7e9; border-color: #d98a20; color: #8b5409; }.jdk-environment-cases article > header.info { background: #eef4fc; color: #315f9f; }.jdk-environment-cases article > header span { display: flex; flex-direction: column; gap: 2px; }.jdk-environment-cases article > header strong { font-size: .76rem; }.jdk-environment-cases article > header small { color: inherit; font-size: .66rem; line-height: 1.4; }.jdk-environment-cases article > footer { align-items: flex-start; color: var(--jdk-muted); display: flex; font-size: .7rem; gap: 7px; line-height: 1.5; padding: 12px 3px 0; }.jdk-environment-cases article > footer svg { flex: 0 0 auto; margin-top: 2px; }
+
+.jdk-program-workbench { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(180px, .5fr); }.jdk-program-workbench .jdk-code-window { border: 0; border-radius: 0; }.jdk-program-side { background: #f3f6fa; border-left: 1px solid var(--jdk-line); padding: 12px; }.jdk-program-side > header { align-items: center; color: var(--jdk-ink); display: flex; font-size: .7rem; font-weight: 760; gap: 6px; margin-bottom: 9px; }.jdk-program-tree { color: #53627a; display: flex; flex-direction: column; font-size: .69rem; gap: 5px; }.jdk-program-tree span { align-items: center; display: flex; gap: 6px; padding: 5px 6px; }.jdk-program-tree .one { margin-left: 17px; }.jdk-program-tree .generated { background: #e8f4f0; border-radius: 7px; color: var(--jdk-green); font-weight: 750; }
+.jdk-program-terminal { border-top: 1px solid var(--jdk-line); display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(240px, .55fr); }.jdk-program-terminal .ps-terminal > div { max-height: 520px; min-height: 410px; overflow: auto; }.jdk-program-terminal > aside { background: #f6f8fb; display: flex; flex-direction: column; gap: 11px; padding: 14px; }.jdk-last-proof { border-left: 3px solid #9b87d3; color: var(--jdk-muted); font-size: .68rem; line-height: 1.45; margin: 0; padding-left: 9px; }
+
+.jdk-source-bytecode { align-items: stretch; display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); padding: 16px; }.jdk-source-bytecode > article { background: #f4f6fa; overflow: hidden; }.jdk-source-bytecode article > header { align-items: center; color: var(--jdk-ink); display: flex; font-size: .71rem; gap: 6px; padding: 9px 11px; }.jdk-source-bytecode article > header span { color: var(--jdk-muted); font-size: .61rem; margin-left: auto; }.jdk-source-bytecode > svg { align-self: center; color: #9da9ba; }.jdk-source-bytecode article .jdk-code-window { border: 0; border-radius: 0; }.jdk-source-bytecode article .jdk-code-window > header { display: none; }.jdk-source-bytecode article > div.stale, .jdk-source-bytecode article > div.fresh { align-items: center; background: #fff2ed; color: var(--jdk-amber); display: flex; flex-direction: column; gap: 7px; justify-content: center; min-height: 250px; padding: 18px; text-align: center; }.jdk-source-bytecode article > div.fresh { background: #ebf8f3; color: var(--jdk-green); }.jdk-source-bytecode article > div strong { font-size: .72rem; }.jdk-source-bytecode article > div small { color: var(--jdk-muted); font-size: .65rem; }
+.jdk-stale-console { align-items: center; background: var(--jdk-dark); display: grid; gap: 8px; grid-template-columns: auto minmax(0, 1fr) auto; padding: 14px; }.jdk-stale-console > code { color: #94c7ff; font-size: .72rem; }.jdk-stale-console > pre { color: #a7ebd1; font: .7rem/1.55 Consolas, monospace; margin: 0; overflow-x: auto; white-space: pre; }.jdk-stale-console > button { align-items: center; background: #6a4cbd; border: 0; border-radius: 8px; color: #fff; cursor: pointer; display: flex; font: inherit; font-size: .68rem; font-weight: 750; gap: 6px; padding: 9px 10px; }
+
+.jdk-error-clinic { display: grid; grid-template-columns: minmax(210px, .65fr) minmax(0, 1.35fr); }.jdk-error-clinic > div { background: #f3f6fa; border-right: 1px solid var(--jdk-line); display: flex; flex-direction: column; gap: 3px; padding: 8px; }.jdk-error-clinic > div button { background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #59687e; cursor: pointer; font: inherit; font-size: .66rem; line-height: 1.4; padding: 9px; text-align: left; }.jdk-error-clinic > div button.active { background: #fff; border-left-color: var(--jdk-red); color: var(--jdk-red); }.jdk-error-clinic > article { padding: 18px; }.jdk-error-clinic article > header { align-items: center; color: var(--jdk-red); display: flex; gap: 8px; }.jdk-error-clinic header small { color: var(--jdk-red); font-size: .61rem; font-weight: 830; letter-spacing: .08em; text-transform: uppercase; }.jdk-error-clinic h3 { color: var(--jdk-ink); margin: 2px 0 0; }.jdk-error-clinic blockquote { background: #fff1f2; border-left: 4px solid #d45161; color: #923242; font: .69rem/1.5 Consolas, monospace; margin: 13px 0; overflow-wrap: anywhere; padding: 11px; }.jdk-error-clinic article > div { display: grid; gap: 7px; grid-template-columns: repeat(3, minmax(0, 1fr)); }.jdk-error-clinic section { background: #f5f7fa; padding: 10px; }.jdk-error-clinic section > span { align-items: center; background: #e1e8f2; border-radius: 50%; color: #506079; display: flex; font-size: .62rem; font-weight: 850; height: 22px; justify-content: center; width: 22px; }.jdk-error-clinic section strong { color: var(--jdk-ink); display: block; font-size: .67rem; margin: 7px 0 4px; }.jdk-error-clinic section code, .jdk-error-clinic section p { color: var(--jdk-muted); font-size: .64rem; line-height: 1.4; margin: 0; overflow-wrap: anywhere; }
+
+.jdk-professional-map { display: grid; grid-template-columns: minmax(180px, .45fr) minmax(0, 1.55fr); }.jdk-professional-map > div { background: #f3f6fa; border-right: 1px solid var(--jdk-line); display: flex; flex-direction: column; gap: 4px; padding: 8px; }.jdk-professional-map > div button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #56667e; cursor: pointer; display: flex; font: inherit; font-size: .71rem; font-weight: 740; gap: 7px; padding: 10px; }.jdk-professional-map > div button.active { background: #fff; border-left-color: var(--jdk-violet); color: var(--jdk-violet); }.jdk-professional-map > article { padding: 19px; }.jdk-professional-map article > header { align-items: center; color: var(--jdk-violet); display: flex; gap: 8px; }.jdk-professional-map h3 { color: var(--jdk-ink); margin: 0; }.jdk-professional-map article > div { align-items: stretch; display: grid; gap: 8px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); margin: 14px 0; }.jdk-professional-map section { background: #f5f7fa; padding: 12px; }.jdk-professional-map section small { color: var(--jdk-violet); font-size: .62rem; font-weight: 830; text-transform: uppercase; }.jdk-professional-map section p { color: var(--jdk-muted); font-size: .69rem; line-height: 1.5; }.jdk-professional-map article > div > svg { align-self: center; color: #9ca8b9; }.jdk-professional-map article > footer { align-items: flex-start; background: #fff6e8; color: #825214; display: flex; font-size: .68rem; gap: 7px; line-height: 1.45; padding: 10px; }.jdk-professional-map article > footer svg { flex: 0 0 auto; }
+
+.jdk-environment-matrix > header { align-items: center; background: #edf2fb; color: var(--jdk-ink); display: flex; font-size: .76rem; gap: 8px; padding: 12px 14px; }.jdk-environment-matrix > div[role="table"] { overflow-x: auto; }.jdk-environment-matrix div[role="row"] { display: grid; grid-template-columns: minmax(130px, .7fr) minmax(210px, 1.1fr) minmax(190px, 1fr); min-width: 600px; }.jdk-environment-matrix div[role="row"] span { border-bottom: 1px solid var(--jdk-line); color: var(--jdk-muted); font-size: .67rem; line-height: 1.4; padding: 9px 11px; }.jdk-environment-matrix div[role="row"].head span { background: #f3f6fa; color: var(--jdk-ink); font-size: .64rem; font-weight: 800; text-transform: uppercase; }
+.jdk-diary { background: var(--jdk-dark); border-color: #293953; }.jdk-diary .guided-file-title { background: #19253a; color: #e1eaf6; }
+
+@media (max-width: 920px) {
+  .jdk-java-map, .jdk-platform-layers, .jdk-validation-lab, .jdk-environment-cases, .jdk-error-clinic, .jdk-professional-map { grid-template-columns: 1fr; }
+  .jdk-java-map > div[role="tablist"], .jdk-environment-cases > div, .jdk-error-clinic > div, .jdk-professional-map > div { border-bottom: 1px solid var(--jdk-line); border-right: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .jdk-platform-layers .jdk-layer-stack { flex-direction: row; }.jdk-layer-stack button.runtime, .jdk-layer-stack button.jvm { margin-left: 0; }
+  .jdk-program-terminal { grid-template-columns: 1fr; }
+  .jdk-lts-decision { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .jdk-pipeline-track, .jdk-portability > div, .jdk-source-bytecode, .jdk-professional-map article > div { grid-template-columns: 1fr; }
+  .jdk-pipeline-track > svg, .jdk-portability > div > svg, .jdk-source-bytecode > svg, .jdk-professional-map article > div > svg { margin: 0 auto; transform: rotate(90deg); }
+  .jdk-pipeline-stage, .jdk-source-mode > article, .jdk-variable-table, .jdk-path-editor, .jdk-program-workbench { grid-template-columns: 1fr; }
+  .jdk-program-side { border-left: 0; border-top: 1px solid var(--jdk-line); }
+  .jdk-coherence-grid, .jdk-error-clinic article > div { grid-template-columns: 1fr 1fr; }
+  .jdk-stale-console { grid-template-columns: 1fr; }.jdk-stale-console > button { justify-self: start; }
+}
+
+@media (max-width: 520px) {
+  .guided-java-platform-lesson { width: calc(100% - 16px); }
+  .jdk-facts { margin-left: 8px; margin-right: 8px; }
+  .jdk-java-map > div[role="tablist"], .jdk-environment-cases > div, .jdk-error-clinic > div, .jdk-professional-map > div { display: flex; overflow-x: auto; }
+  .jdk-java-map > div button, .jdk-environment-cases > div button, .jdk-error-clinic > div button, .jdk-professional-map > div button { flex: 0 0 min(180px, 75vw); }
+  .jdk-platform-layers .jdk-layer-stack { flex-direction: column; }
+  .jdk-version-line { overflow-x: auto; gap: 22px; justify-content: flex-start; }.jdk-version-line::before { display: none; }.jdk-version-line button { flex: 0 0 auto; }
+  .jdk-coherence-grid, .jdk-error-clinic article > div { grid-template-columns: 1fr; }
+  .jdk-compile-pipeline > footer { align-items: stretch; flex-direction: column; }.jdk-compile-pipeline footer button { justify-content: center; }.jdk-compile-pipeline footer > span { order: -1; }
+  .jdk-directory > header { align-items: flex-start; flex-direction: column; }.jdk-directory header button { width: 100%; }
+  .jdk-portability > header { align-items: flex-start; flex-direction: column; }.jdk-portability header > div { width: 100%; }.jdk-portability header button { flex: 1; }
+  .jdk-windows-tabs { overflow-x: auto; }.jdk-windows-tabs button { flex: 0 0 auto; }
+}
+
+@media (max-width: 360px) {
+  .jdk-facts { align-items: flex-start; flex-direction: column; }.jdk-facts i { display: none; }
+  .jdk-java-map > article, .jdk-platform-layers > article, .jdk-lts-timeline > article, .jdk-environment-cases > article, .jdk-error-clinic > article, .jdk-professional-map > article { padding: 12px; }
+  .jdk-pipeline-stage, .jdk-portability > div, .jdk-source-bytecode { padding-left: 10px; padding-right: 10px; }
+  .jdk-directory-tree em { display: block; margin-left: 0; }
+  .jdk-variable-table, .jdk-path-editor { padding: 10px; }
+}

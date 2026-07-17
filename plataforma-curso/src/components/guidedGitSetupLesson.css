@@ -1,0 +1,666 @@
+.guided-git-setup-lesson {
+  --git9-blue: #2563eb;
+  --git9-deep: #0b1f3a;
+  --git9-green: #059669;
+  --git9-ink: #14233a;
+  --git9-line: #d8e2ef;
+  --git9-muted: #61718a;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.guided-git-setup-lesson *,
+.guided-git-setup-lesson *::before,
+.guided-git-setup-lesson *::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.guided-git-setup-lesson button,
+.guided-git-setup-lesson input {
+  font: inherit;
+}
+
+.guided-git-setup-lesson code,
+.guided-git-setup-lesson pre,
+.guided-git-setup-lesson p,
+.guided-git-setup-lesson span,
+.guided-git-setup-lesson strong,
+.guided-git-setup-lesson dd {
+  overflow-wrap: anywhere;
+}
+
+.guided-git-setup-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 87% 20%, rgba(52, 211, 153, .18), transparent 23%),
+    linear-gradient(135deg, #0a2442, #123b65 66%, #145a67);
+}
+
+.guided-git-setup-lesson .guided-progress-track span {
+  background: linear-gradient(90deg, #60a5fa, #34d399);
+}
+
+.git9-facts {
+  align-items: center;
+  background: #f6f9fd;
+  border: 1px solid var(--git9-line);
+  color: var(--git9-muted);
+  display: flex;
+  font-size: .76rem;
+  gap: 18px;
+  justify-content: center;
+  margin: 18px 28px;
+  padding: 11px 16px;
+}
+
+.git9-facts strong { color: var(--git9-blue); font-size: .9rem; }
+.git9-facts i { background: #cbd8e8; height: 18px; width: 1px; }
+
+.git9-map,
+.git9-download,
+.git9-installer,
+.git9-path-audit,
+.git9-scopes,
+.git9-identity,
+.git9-defaults,
+.git9-eol,
+.git9-terminal-audit,
+.git9-diagnosis,
+.git9-report,
+.git9-recovery,
+.git9-command {
+  border: 1px solid var(--git9-line);
+  border-radius: 14px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.git9-map {
+  align-items: center;
+  background: #f8fbff;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  padding: 16px;
+}
+
+.git9-copy-chaos,
+.git9-history {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.git9-copy-chaos small,
+.git9-history small {
+  color: var(--git9-muted);
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.git9-copy-chaos span {
+  background: #fff;
+  border: 1px solid #e1e7ef;
+  color: #607089;
+  font: .68rem/1.35 Consolas, monospace;
+  padding: 7px 9px;
+}
+
+.git9-history span {
+  align-items: center;
+  color: #344963;
+  display: flex;
+  font-size: .69rem;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+.git9-history i {
+  background: var(--git9-green);
+  border: 3px solid #d1fae5;
+  border-radius: 50%;
+  height: 13px;
+  position: relative;
+  width: 13px;
+}
+
+.git9-history i::after {
+  background: #a7dfc9;
+  content: "";
+  height: 17px;
+  left: 3px;
+  position: absolute;
+  top: 10px;
+  width: 1px;
+}
+
+.git9-history span:last-child i::after { display: none; }
+
+.git9-map-controls {
+  display: flex;
+  gap: 7px;
+  grid-column: 1 / -1;
+}
+
+.git9-map-controls button,
+.git9-download [role="tablist"] button,
+.git9-identity [role="tablist"] button,
+.git9-defaults [role="tablist"] button,
+.git9-eol > [role="tablist"] button {
+  align-items: center;
+  background: #edf2f8;
+  border: 0;
+  border-radius: 8px;
+  color: #53657e;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+}
+
+.git9-map-controls button.active,
+.git9-download [role="tablist"] button.active,
+.git9-identity [role="tablist"] button.active,
+.git9-defaults [role="tablist"] button.active,
+.git9-eol > [role="tablist"] button.active {
+  background: #dbeafe;
+  color: #174ea6;
+}
+
+.git9-map > article {
+  align-items: flex-start;
+  background: #eaf4ff;
+  color: var(--git9-ink);
+  display: flex;
+  gap: 10px;
+  grid-column: 1 / -1;
+  padding: 12px;
+}
+
+.git9-map > article svg { color: var(--git9-blue); flex: 0 0 auto; }
+.git9-map article p { color: var(--git9-muted); font-size: .71rem; line-height: 1.5; margin: 4px 0 8px; }
+.git9-map article span { align-items: center; color: #27634f; display: flex; font-size: .67rem; gap: 5px; }
+
+.git9-download {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+}
+
+.git9-browser { background: #152235; }
+.git9-browser > header {
+  align-items: center;
+  background: #243246;
+  color: #d6e0ec;
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+}
+.git9-browser > header > span { background: #738096; border-radius: 50%; height: 8px; width: 8px; }
+.git9-browser > header > code { background: #172335; border-radius: 5px; flex: 1; font-size: .64rem; margin-left: 4px; padding: 5px 8px; }
+.git9-browser > header > em,
+.git9-installer-window > header > em,
+.git9-terminal > header > em {
+  color: #aebdd0;
+  font-size: .56rem;
+  font-style: normal;
+  font-weight: 750;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.git9-browser > main {
+  align-items: center;
+  color: #e8eef7;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: 30px 18px;
+  text-align: center;
+}
+.git9-logo { align-items: center; color: #f97316; display: flex; font-size: 1.2rem; font-weight: 850; gap: 7px; }
+.git9-browser main > small { color: #7dd3fc; font-size: .62rem; margin-top: 16px; text-transform: uppercase; }
+.git9-browser h3 { font-size: 1.25rem; margin: 5px 0; }
+.git9-browser p { color: #aab8ca; font-size: .7rem; line-height: 1.5; }
+.git9-browser [role="tablist"] { display: flex; gap: 6px; margin: 10px 0; }
+.git9-browser button.download {
+  align-items: center;
+  background: #ea580c;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  gap: 6px;
+  padding: 9px 14px;
+}
+.git9-download > article { padding: 18px; }
+.git9-download article h3 { align-items: center; color: var(--git9-ink); display: flex; gap: 7px; margin: 0 0 13px; }
+.git9-download article ul { display: flex; flex-direction: column; gap: 10px; list-style: none; padding: 0; }
+.git9-download article li { align-items: flex-start; color: var(--git9-muted); display: flex; font-size: .68rem; gap: 6px; line-height: 1.45; }
+.git9-download article li svg { color: var(--git9-green); flex: 0 0 auto; margin-top: 2px; }
+.git9-download article a { align-items: center; color: var(--git9-blue); display: inline-flex; font-size: .69rem; gap: 5px; margin-top: 12px; }
+
+.git9-installer {
+  display: grid;
+  grid-template-columns: minmax(150px, .32fr) minmax(0, 1.68fr);
+}
+.git9-installer > nav {
+  background: #f0f4f8;
+  border-right: 1px solid var(--git9-line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+}
+.git9-installer > nav button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  color: #5e6e83;
+  cursor: pointer;
+  display: grid;
+  font-size: .64rem;
+  gap: 7px;
+  grid-template-columns: 22px 1fr;
+  padding: 7px;
+  text-align: left;
+}
+.git9-installer > nav button > span {
+  align-items: center;
+  background: #dbe3ed;
+  border-radius: 50%;
+  display: flex;
+  font-size: .55rem;
+  height: 21px;
+  justify-content: center;
+  width: 21px;
+}
+.git9-installer > nav button.active { background: #dceafe; color: #174ea6; }
+.git9-installer > nav button.active > span { background: var(--git9-blue); color: #fff; }
+.git9-installer > nav button.done > span { background: var(--git9-green); color: #fff; }
+.git9-installer-window { background: #f8fafc; }
+.git9-installer-window > header {
+  align-items: center;
+  background: #1d2b3e;
+  color: #dde6f1;
+  display: flex;
+  font-size: .67rem;
+  gap: 8px;
+  padding: 9px 11px;
+}
+.git9-installer-window > header > em { margin-left: auto; }
+.git9-installer-window > header > span { color: #92a0b3; }
+.git9-installer-window > main { min-height: 360px; padding: 25px; }
+.git9-installer-window > main > small { color: var(--git9-blue); font-size: .61rem; font-weight: 800; text-transform: uppercase; }
+.git9-installer-window h3 { color: var(--git9-ink); margin: 7px 0 18px; }
+.git9-selected-option {
+  align-items: center;
+  background: #e8f6f0;
+  border: 1px solid #bce4d4;
+  color: #145b45;
+  display: flex;
+  gap: 9px;
+  padding: 12px;
+}
+.git9-selected-option span { display: flex; flex-direction: column; gap: 3px; }
+.git9-selected-option small { font-size: .58rem; text-transform: uppercase; }
+.git9-selected-option strong { font-size: .72rem; }
+.git9-installer-options { display: flex; flex-direction: column; gap: 8px; margin: 18px 0; }
+.git9-installer-options span { align-items: flex-start; color: var(--git9-muted); display: flex; font-size: .67rem; gap: 7px; line-height: 1.45; }
+.git9-installer-options i { border: 1px solid #9cacc0; height: 12px; margin-top: 2px; width: 12px; }
+.git9-installer-window main > p { color: #42546c; font-size: .7rem; line-height: 1.55; }
+.git9-installer-window > footer {
+  background: #edf2f7;
+  border-top: 1px solid var(--git9-line);
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.git9-installer-window > footer button {
+  background: #fff;
+  border: 1px solid #bdc9d8;
+  color: #506077;
+  padding: 6px 14px;
+}
+.git9-installer-window > footer button.primary { background: var(--git9-blue); border-color: var(--git9-blue); color: #fff; }
+.git9-installer-window > footer button:disabled { opacity: .45; }
+
+.git9-path-audit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(230px, .55fr);
+}
+.git9-terminal { background: #101827; color: #d7e1ee; }
+.git9-terminal > header {
+  align-items: center;
+  background: #1d293b;
+  border-bottom: 1px solid #334155;
+  display: flex;
+  font-size: .65rem;
+  gap: 7px;
+  padding: 9px 11px;
+}
+.git9-terminal > header > em { margin-left: auto; }
+.git9-terminal > main { min-height: 330px; padding: 14px; }
+.git9-terminal p { font: .67rem/1.55 Consolas, monospace; margin: 4px 0; }
+.git9-terminal p > span { color: #7dd3fc; }
+.git9-terminal pre {
+  color: #b7c6d9;
+  font: .65rem/1.55 Consolas, monospace;
+  margin: 4px 0 14px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+.git9-terminal pre.error { color: #fda4af; }
+.git9-path-audit > article {
+  align-items: center;
+  background: #f7f9fc;
+  color: var(--git9-muted);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+}
+.git9-path-audit > article svg { color: #d97706; }
+.git9-path-audit > article.success svg { color: var(--git9-green); }
+.git9-path-audit h3 { color: var(--git9-ink); margin: 9px 0 4px; }
+.git9-path-audit p { font-size: .68rem; line-height: 1.5; }
+.git9-path-audit button {
+  background: #e5edf7;
+  border: 0;
+  border-radius: 8px;
+  color: #34506f;
+  cursor: pointer;
+  margin-top: 7px;
+  padding: 8px 10px;
+}
+
+.git9-command { background: #111827; color: #dce5f1; }
+.git9-command > header {
+  align-items: center;
+  background: #1e293b;
+  display: flex;
+  font-size: .68rem;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+.git9-command > header > span { align-items: center; display: flex; gap: 6px; }
+.git9-command-output { background: #0a1220; border-top: 1px solid #293548; padding: 12px 15px; }
+.git9-command-output small { color: #7dd3fc; font-size: .57rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.git9-command-output pre { color: #b9c7d8; font: .66rem/1.55 Consolas, monospace; margin: 7px 0 0; overflow-x: auto; white-space: pre-wrap; }
+.git9-command > footer {
+  align-items: flex-start;
+  background: #e9f7f1;
+  color: #32624f;
+  display: flex;
+  font-size: .67rem;
+  gap: 7px;
+  line-height: 1.5;
+  padding: 10px 12px;
+}
+.git9-command > footer svg { color: var(--git9-green); flex: 0 0 auto; margin-top: 2px; }
+
+.git9-scopes {
+  display: grid;
+  grid-template-columns: minmax(190px, .55fr) minmax(0, 1.45fr);
+}
+.git9-scope-stack {
+  align-items: stretch;
+  background: #eef3f9;
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
+}
+.git9-scope-stack button {
+  background: #fff;
+  border: 1px solid #d3deeb;
+  color: #52637a;
+  cursor: pointer;
+  display: grid;
+  gap: 3px 8px;
+  grid-template-columns: 25px 1fr;
+  padding: 9px;
+  text-align: left;
+}
+.git9-scope-stack button + button { border-top: 0; }
+.git9-scope-stack button > span { align-items: center; background: #e4ebf3; border-radius: 50%; display: flex; grid-row: 1 / 3; height: 23px; justify-content: center; width: 23px; }
+.git9-scope-stack button strong { font-size: .7rem; }
+.git9-scope-stack button small { font-size: .58rem; }
+.git9-scope-stack button.active { background: #dbeafe; border-color: #93c5fd; color: #174ea6; }
+.git9-scope-stack > svg { align-self: center; color: #7990aa; margin: 7px; }
+.git9-effective { align-self: center; background: var(--git9-deep); color: #fff; font-size: .63rem; padding: 6px 12px; }
+.git9-scopes > article { padding: 18px; }
+.git9-scopes article > header { align-items: center; color: var(--git9-blue); display: flex; gap: 9px; }
+.git9-scopes header small { color: var(--git9-muted); font-size: .57rem; text-transform: uppercase; }
+.git9-scopes h3 { color: var(--git9-ink); margin: 1px 0; }
+.git9-scopes dl { display: flex; flex-direction: column; margin: 14px 0; }
+.git9-scopes dl > div { border-bottom: 1px solid #e5ebf2; display: grid; gap: 9px; grid-template-columns: 80px 1fr; padding: 9px 0; }
+.git9-scopes dt { color: var(--git9-muted); font-size: .63rem; }
+.git9-scopes dd { color: var(--git9-ink); font-size: .67rem; margin: 0; }
+.git9-scopes article > p { color: var(--git9-muted); font-size: .68rem; line-height: 1.5; }
+.git9-scopes aside { align-items: flex-start; background: #fff7e8; color: #7a5413; display: flex; font-size: .65rem; gap: 6px; line-height: 1.45; padding: 9px; }
+.git9-scopes aside svg { flex: 0 0 auto; }
+
+.git9-identity {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.git9-identity-form { background: #f4f7fb; display: flex; flex-direction: column; gap: 11px; padding: 17px; }
+.git9-identity-form label { color: #43546c; display: flex; flex-direction: column; font-size: .65rem; font-weight: 750; gap: 5px; }
+.git9-identity-form input { background: #fff; border: 1px solid #cbd7e5; color: var(--git9-ink); padding: 9px 10px; width: 100%; }
+.git9-identity-form > small { color: var(--git9-muted); font-size: .6rem; line-height: 1.45; }
+.git9-identity > article { padding: 17px; }
+.git9-identity [role="tablist"] { display: flex; gap: 6px; }
+.git9-author-card { background: #eaf7f2; color: #245c49; margin-top: 14px; padding: 15px; }
+.git9-author-card.auth { background: #eaf2ff; color: #244e86; }
+.git9-author-card small { display: block; font-size: .58rem; text-transform: uppercase; }
+.git9-author-card strong { display: block; font: .7rem/1.5 Consolas, monospace; margin: 7px 0; }
+.git9-author-card p { font-size: .65rem; line-height: 1.5; margin: 0; }
+
+.git9-defaults { display: grid; grid-template-columns: 1fr 1fr; }
+.git9-defaults > article { padding: 16px; }
+.git9-defaults > article + article { border-left: 1px solid var(--git9-line); }
+.git9-defaults article > header { align-items: center; color: var(--git9-blue); display: flex; gap: 7px; margin-bottom: 11px; }
+.git9-defaults [role="tablist"] { display: flex; flex-wrap: wrap; gap: 5px; }
+.git9-defaults [role="tablist"] button.wrong.active { background: #fff0e0; color: #9a5300; }
+.git9-defaults article > code { background: #142033; color: #cde2f5; display: block; font-size: .65rem; margin: 12px 0; padding: 10px; }
+.git9-defaults .proof { align-items: flex-start; background: #f1f5f9; color: #506179; display: flex; gap: 7px; padding: 10px; }
+.git9-defaults .proof.success { background: #eaf7f2; color: #23604a; }
+.git9-defaults .proof.warning { background: #fff5e7; color: #7f5717; }
+.git9-defaults .proof span { display: flex; flex-direction: column; font-size: .64rem; gap: 3px; line-height: 1.4; }
+.git9-defaults .proof svg { flex: 0 0 auto; }
+
+.git9-eol { padding: 15px; }
+.git9-eol > [role="tablist"] { display: flex; flex-wrap: wrap; gap: 6px; }
+.git9-eol-flow {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, .8fr);
+  margin-top: 15px;
+}
+.git9-eol-flow article {
+  align-items: center;
+  background: #f2f6fa;
+  color: var(--git9-ink);
+  display: flex;
+  flex-direction: column;
+  min-height: 145px;
+  padding: 14px;
+  text-align: center;
+}
+.git9-eol-flow article svg { color: var(--git9-blue); }
+.git9-eol-flow article small { color: var(--git9-muted); font-size: .59rem; margin-top: 6px; text-transform: uppercase; }
+.git9-eol-flow article strong { margin: 4px 0 9px; }
+.git9-eol-flow article code { background: #182439; color: #c7d9eb; font-size: .61rem; padding: 7px; }
+.git9-eol-flow > span { align-items: center; color: var(--git9-muted); display: flex; flex-direction: column; font-size: .57rem; gap: 3px; }
+.git9-eol > p { align-items: flex-start; color: var(--git9-muted); display: flex; font-size: .68rem; gap: 6px; line-height: 1.5; margin: 13px 0 0; }
+.git9-eol > p svg { color: var(--git9-blue); flex: 0 0 auto; margin-top: 2px; }
+
+.git9-terminal-audit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+}
+.git9-terminal.large > main { max-height: 640px; min-height: 540px; overflow: auto; }
+.git9-terminal-entry { border-bottom: 1px solid #202c3e; padding-bottom: 5px; }
+.git9-terminal p.cursor i { animation: git9-blink 1s step-end infinite; background: #d7e1ee; display: inline-block; height: 13px; margin-left: 4px; width: 6px; }
+.git9-terminal-done { align-items: center; color: #6ee7b7; display: flex; font-size: .68rem; gap: 6px; margin-top: 10px; }
+.git9-terminal-audit > aside { background: #f4f7fb; display: flex; flex-direction: column; gap: 10px; padding: 13px; }
+.git9-terminal-audit > aside > small { color: var(--git9-blue); font-size: .58rem; font-weight: 850; text-transform: uppercase; }
+.git9-terminal-audit > aside .git9-command { margin: 0; }
+.git9-terminal-audit > aside .git9-command > header,
+.git9-terminal-audit > aside .git9-command > footer { display: none; }
+.git9-terminal-audit > aside > button {
+  align-items: center;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 9px;
+}
+.git9-terminal-audit button.run { background: var(--git9-blue); color: #fff; }
+.git9-terminal-audit button.reset { background: #e4ebf3; color: #4d6077; }
+.git9-terminal-audit button:disabled { cursor: not-allowed; opacity: .4; }
+.git9-terminal-audit > aside > p { border-left: 3px solid #93c5fd; color: var(--git9-muted); font-size: .64rem; line-height: 1.45; padding-left: 8px; }
+.git9-audit-success { align-items: center; background: #e8f7f1; color: #28604c; display: flex; flex-direction: column; gap: 5px; padding: 18px; text-align: center; }
+
+.git9-recovery { padding: 12px; }
+.git9-recovery > [role="tablist"] { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.git9-recovery > [role="tablist"] button { background: #edf2f8; border: 0; border-radius: 7px; color: #52647c; cursor: pointer; padding: 8px 10px; }
+.git9-recovery > [role="tablist"] button.active { background: #dbeafe; color: #174ea6; }
+.git9-recovery .git9-command { margin: 0; }
+
+.git9-diagnosis { display: grid; grid-template-columns: minmax(220px, .62fr) minmax(0, 1.38fr); }
+.git9-diagnosis > nav { background: #f1f5f9; display: flex; flex-direction: column; gap: 2px; padding: 8px; }
+.git9-diagnosis > nav button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid transparent;
+  color: #56677e;
+  cursor: pointer;
+  display: grid;
+  font-size: .62rem;
+  gap: 6px;
+  grid-template-columns: 21px 1fr;
+  line-height: 1.35;
+  padding: 8px;
+  text-align: left;
+}
+.git9-diagnosis > nav button > span { align-items: center; background: #dce5ef; border-radius: 50%; display: flex; height: 20px; justify-content: center; width: 20px; }
+.git9-diagnosis > nav button.active { background: #fff; border-left-color: var(--git9-blue); color: #174ea6; }
+.git9-diagnosis > article { padding: 17px; }
+.git9-diagnosis article > header { align-items: center; color: var(--git9-blue); display: flex; gap: 8px; }
+.git9-diagnosis header small { color: var(--git9-muted); font-size: .58rem; text-transform: uppercase; }
+.git9-diagnosis h3 { color: var(--git9-ink); margin: 2px 0; }
+.git9-diagnosis article > div { display: grid; gap: 7px; grid-template-columns: 1fr 1fr; margin-top: 14px; }
+.git9-diagnosis article section { background: #f4f7fa; padding: 10px; }
+.git9-diagnosis article section > svg { color: var(--git9-blue); }
+.git9-diagnosis article section strong { color: var(--git9-ink); display: block; font-size: .65rem; margin: 5px 0 3px; }
+.git9-diagnosis article section p { color: var(--git9-muted); font-size: .62rem; line-height: 1.45; margin: 0; }
+
+.git9-report { background: #0d1726; border-color: #283950; color: #dbe6f2; }
+.git9-report > header {
+  align-items: center;
+  background: #19263a;
+  display: flex;
+  font-size: .68rem;
+  gap: 7px;
+  padding: 9px 11px;
+}
+.git9-report > header .guided-copy { margin-left: auto; }
+.git9-report > footer { align-items: flex-start; background: #eaf7f2; color: #2c604e; display: flex; font-size: .65rem; gap: 6px; line-height: 1.45; padding: 9px 11px; }
+.git9-report > footer svg { flex: 0 0 auto; }
+
+@keyframes git9-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .git9-terminal p.cursor i { animation: none; }
+}
+
+@media (max-width: 1040px) {
+  .git9-terminal-audit { grid-template-columns: 1fr; }
+  .git9-terminal.large > main { min-height: 390px; }
+}
+
+@media (max-width: 900px) {
+  .git9-download,
+  .git9-path-audit,
+  .git9-scopes,
+  .git9-identity,
+  .git9-defaults,
+  .git9-diagnosis { grid-template-columns: 1fr; }
+  .git9-defaults > article + article { border-left: 0; border-top: 1px solid var(--git9-line); }
+  .git9-path-audit > article { min-height: 230px; }
+  .git9-scope-stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .git9-scope-stack > svg,
+  .git9-effective { display: none; }
+}
+
+@media (max-width: 760px) {
+  .git9-installer { grid-template-columns: 1fr; }
+  .git9-installer > nav {
+    border-bottom: 1px solid var(--git9-line);
+    border-right: 0;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .git9-installer > nav button { flex: 0 0 128px; }
+  .git9-eol-flow { grid-template-columns: 1fr; }
+  .git9-eol-flow > span { flex-direction: row; justify-content: center; }
+  .git9-eol-flow > span svg { transform: rotate(90deg); }
+  .git9-eol-flow article { min-height: 120px; }
+  .git9-map { grid-template-columns: 1fr; }
+  .git9-map > svg { justify-self: center; transform: rotate(90deg); }
+  .git9-map-controls,
+  .git9-map > article { grid-column: 1; }
+}
+
+@media (max-width: 560px) {
+  .guided-git-setup-lesson { width: calc(100% - 16px); }
+  .git9-facts { align-items: flex-start; flex-direction: column; gap: 5px; margin-left: 8px; margin-right: 8px; }
+  .git9-facts i { display: none; }
+  .git9-browser > header > em,
+  .git9-installer-window > header > em,
+  .git9-terminal > header > em { font-size: 0; }
+  .git9-browser > header > em::after,
+  .git9-installer-window > header > em::after,
+  .git9-terminal > header > em::after { content: "Simulação"; font-size: .56rem; }
+  .git9-map-controls,
+  .git9-download [role="tablist"],
+  .git9-identity [role="tablist"],
+  .git9-defaults [role="tablist"],
+  .git9-eol > [role="tablist"] { overflow-x: auto; }
+  .git9-map-controls button,
+  .git9-download [role="tablist"] button,
+  .git9-identity [role="tablist"] button,
+  .git9-defaults [role="tablist"] button,
+  .git9-eol > [role="tablist"] button { flex: 0 0 auto; }
+  .git9-recovery > [role="tablist"] { flex-wrap: nowrap; overflow-x: auto; }
+  .git9-recovery > [role="tablist"] button { flex: 0 0 auto; }
+  .git9-scope-stack { display: flex; flex-direction: row; overflow-x: auto; }
+  .git9-scope-stack button { flex: 0 0 150px; }
+  .git9-scopes dl > div { grid-template-columns: 1fr; }
+  .git9-diagnosis > nav { flex-direction: row; overflow-x: auto; }
+  .git9-diagnosis > nav button { flex: 0 0 185px; }
+  .git9-diagnosis article > div { grid-template-columns: 1fr; }
+  .git9-installer-window > main { padding: 16px; }
+  .git9-installer-window > footer button { flex: 1; }
+}
+
+@media (max-width: 360px) {
+  .git9-browser > header > code { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .git9-browser > main { padding: 24px 12px; }
+  .git9-terminal > main,
+  .git9-scopes > article,
+  .git9-identity-form,
+  .git9-identity > article,
+  .git9-defaults > article,
+  .git9-diagnosis > article { padding: 11px; }
+  .git9-installer-window > header > span { display: none; }
+  .git9-command > header { align-items: flex-start; flex-direction: column; gap: 7px; }
+}

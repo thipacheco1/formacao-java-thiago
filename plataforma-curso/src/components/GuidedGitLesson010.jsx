@@ -18,6 +18,7 @@ import {
   TerminalSquare
 } from 'lucide-react';
 import './guidedLesson.css';
+import GuidedLessonFacts from './GuidedLessonFacts';
 
 const LESSON_STORAGE_KEY = 'guided-git-lesson-010-progress';
 
@@ -600,7 +601,7 @@ export default function GuidedGitLesson010({
 
   const selectStep = (index) => {
     setActiveIndex(index);
-    document.querySelector('.content-scroll-area')?.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.guided-layout')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleActiveStep = () => {
@@ -632,6 +633,7 @@ export default function GuidedGitLesson010({
         </div>
       </header>
 
+      <GuidedLessonFacts ariaLabel="Resultado do laboratório" items={[{ value: 3, label: 'áreas do Git' }, { value: 4, label: 'commits construídos' }, { value: steps.length, label: 'etapas guiadas' }]} />
       <div className="guided-layout">
         <nav className="guided-step-nav" aria-label="Etapas da aula">
           <div className="guided-step-nav-title"><ListChecks size={18} /> Roteiro prático</div>

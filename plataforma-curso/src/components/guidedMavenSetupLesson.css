@@ -1,0 +1,331 @@
+.guided-maven-setup-lesson {
+  --maven15-blue: #2563eb;
+  --maven15-navy: #14213d;
+  --maven15-cyan: #0891b2;
+  --maven15-green: #059669;
+  --maven15-amber: #b45309;
+  --maven15-red: #c2413d;
+  --maven15-ink: #17243b;
+  --maven15-muted: #63748b;
+  --maven15-line: #d9e3ef;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.guided-maven-setup-lesson *,
+.guided-maven-setup-lesson *::before,
+.guided-maven-setup-lesson *::after { box-sizing: border-box; min-width: 0; }
+
+.guided-maven-setup-lesson button,
+.guided-maven-setup-lesson select { font: inherit; }
+
+.guided-maven-setup-lesson p,
+.guided-maven-setup-lesson span,
+.guided-maven-setup-lesson strong,
+.guided-maven-setup-lesson code,
+.guided-maven-setup-lesson pre,
+.guided-maven-setup-lesson a { overflow-wrap: anywhere; }
+
+.guided-maven-setup-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(34, 211, 238, .22), transparent 25%),
+    radial-gradient(circle at 65% 105%, rgba(59, 130, 246, .26), transparent 32%),
+    linear-gradient(135deg, #10182c, #1c315e 56%, #0f6371);
+}
+
+.guided-maven-setup-lesson .guided-progress-track span { background: linear-gradient(90deg, #67e8f9, #60a5fa); }
+
+.maven15-pipeline,
+.maven15-audit,
+.maven15-download,
+.maven15-explorer,
+.maven15-env,
+.maven15-version-proof,
+.maven15-intellij,
+.maven15-layers,
+.maven15-errors,
+.maven15-docs,
+.maven15-delivery,
+.maven15-code-window {
+  border: 1px solid var(--maven15-line);
+  border-radius: 14px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.maven15-copy {
+  align-items: center;
+  background: #26374f;
+  border: 1px solid #465973;
+  border-radius: 6px;
+  color: #e7eef8;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: .6rem;
+  gap: 5px;
+  padding: 5px 8px;
+}
+
+.maven15-code-window { background: #101826; }
+.maven15-code-window > header {
+  align-items: center;
+  background: #1d2a3d;
+  color: #dce7f5;
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 12px;
+}
+.maven15-code-window > header > span { align-items: center; display: flex; font-size: .66rem; gap: 7px; }
+.maven15-output { background: #0c1421; border-top: 1px solid #29384e; color: #d7e2f1; padding: 12px 15px; }
+.maven15-output small { color: #7f93ad; display: block; font-size: .55rem; letter-spacing: .05em; margin-bottom: 8px; }
+.maven15-output pre { color: #c6d4e6; font-size: .65rem; line-height: 1.6; margin: 0; overflow-x: auto; white-space: pre-wrap; }
+.maven15-code-window > footer { align-items: flex-start; background: #eaf4ff; color: #355375; display: flex; font-size: .66rem; gap: 8px; line-height: 1.5; padding: 11px 13px; }
+.maven15-code-window > footer svg { color: var(--maven15-blue); flex: 0 0 auto; }
+.maven15-code-window > footer.warning { background: #fff7e9; color: #754d20; }
+.maven15-code-window > footer.warning svg { color: var(--maven15-amber); }
+
+.maven15-pipeline { background: #f6f9fd; padding: 14px; }
+.maven15-pipeline-track { align-items: center; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr; }
+.maven15-pipeline-track > svg { color: #9aabc0; }
+.maven15-pipeline-track button {
+  align-items: center; background: transparent; border: 0; color: #60738a; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 8px 3px;
+}
+.maven15-pipeline-track button span { align-items: center; background: #dfe7f1; border-radius: 50%; display: flex; height: 29px; justify-content: center; width: 29px; }
+.maven15-pipeline-track button strong { font-size: .62rem; }
+.maven15-pipeline-track button.active { color: #174ea6; }
+.maven15-pipeline-track button.active span { background: var(--maven15-blue); color: #fff; }
+.maven15-pipeline > article { align-items: center; background: #fff; border: 1px solid #dae4ef; display: flex; gap: 14px; margin-top: 9px; padding: 19px; }
+.maven15-pipeline > article > svg { color: var(--maven15-cyan); flex: 0 0 auto; }
+.maven15-pipeline article div { display: flex; flex-direction: column; gap: 5px; }
+.maven15-pipeline article small { color: var(--maven15-muted); font-size: .56rem; }
+.maven15-pipeline article code { color: #174ea6; font-size: .78rem; font-weight: 700; }
+.maven15-pipeline article p { color: #566a82; font-size: .68rem; line-height: 1.55; margin: 0; }
+.maven15-boundaries { display: grid; gap: 7px; grid-template-columns: repeat(3, 1fr); margin-top: 9px; }
+.maven15-boundaries span { align-items: center; background: #eaf0f7; color: #52677f; display: flex; flex-wrap: wrap; font-size: .62rem; gap: 5px; padding: 10px; }
+.maven15-boundaries svg { color: var(--maven15-blue); flex: 0 0 auto; }
+
+.maven15-audit { background: #f7f9fc; padding: 12px; }
+.maven15-audit > nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.maven15-audit > nav button { align-items: center; background: #e8eef5; border: 1px solid transparent; border-radius: 7px; color: #5a6d83; cursor: pointer; display: flex; font-size: .63rem; gap: 6px; padding: 8px 10px; }
+.maven15-audit > nav button.active { background: #e0edff; border-color: #a8c9f7; color: #174ea6; }
+.maven15-mentor { align-items: flex-start; background: #eef6ff; color: #3a5878; display: flex; font-size: .67rem; gap: 9px; line-height: 1.55; margin: 0; padding: 12px; }
+.maven15-mentor svg { color: var(--maven15-blue); flex: 0 0 auto; }
+.maven15-mentor span { display: flex; flex-direction: column; }
+
+.maven15-download { background: #f5f7fa; }
+.maven15-browser-chrome { align-items: center; background: #233149; color: #d9e5f4; display: flex; font-size: .59rem; gap: 12px; padding: 9px 12px; }
+.maven15-browser-chrome .dots { color: #7f91a8; letter-spacing: 2px; }
+.maven15-simulation { background: #33455f; border-radius: 99px; color: #aebed1; margin-left: auto; padding: 4px 8px; }
+.maven15-download-page { padding: 18px; }
+.maven15-download-page > header { align-items: center; display: flex; gap: 14px; justify-content: space-between; }
+.maven15-download-page > header span { color: #335f9c; font-size: .55rem; font-weight: 800; letter-spacing: .08em; }
+.maven15-download-page h3 { color: var(--maven15-ink); margin: 4px 0; }
+.maven15-download-page header p { color: var(--maven15-muted); font-size: .64rem; margin: 0; }
+.maven15-download-page header a { align-items: center; background: var(--maven15-blue); border-radius: 7px; color: #fff; display: flex; flex: 0 0 auto; font-size: .63rem; gap: 6px; padding: 9px 11px; text-decoration: none; }
+.maven15-artifact-choice { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin: 17px 0; }
+.maven15-artifact-choice button { align-items: center; background: #fff; border: 1px solid #d8e2ed; border-radius: 9px; color: #587087; cursor: pointer; display: flex; gap: 10px; padding: 13px; text-align: left; }
+.maven15-artifact-choice button > svg:first-child { color: #71859b; flex: 0 0 auto; }
+.maven15-artifact-choice button > svg:last-child { color: var(--maven15-green); margin-left: auto; }
+.maven15-artifact-choice button span { display: flex; flex-direction: column; gap: 3px; }
+.maven15-artifact-choice button strong { color: var(--maven15-ink); font-size: .68rem; }
+.maven15-artifact-choice button small { font-size: .58rem; line-height: 1.45; }
+.maven15-artifact-choice button.selected { background: #ecfdf5; border-color: #7dd3b4; }
+.maven15-artifact-choice button.selected.danger { background: #fff4f1; border-color: #f0a99d; }
+.maven15-checksum { background: #fff; border: 1px solid #d9e3ed; padding: 13px; }
+.maven15-checksum > div:first-child { align-items: center; color: #4f647d; display: flex; gap: 9px; }
+.maven15-checksum > div:first-child svg { color: var(--maven15-green); flex: 0 0 auto; }
+.maven15-checksum > div:first-child span { display: flex; flex-direction: column; }
+.maven15-checksum strong { color: var(--maven15-ink); font-size: .68rem; }
+.maven15-checksum small { font-size: .59rem; }
+.maven15-checksum-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.maven15-checksum-actions button { background: #edf2f7; border: 0; border-radius: 6px; color: #4c637d; cursor: pointer; font-size: .59rem; padding: 7px 9px; }
+.maven15-checksum p { font-size: .63rem; margin: 10px 0 0; padding: 8px 10px; }
+.maven15-checksum p.match { background: #e9fbf3; color: #087557; }
+.maven15-checksum p.mismatch { background: #fff0ed; color: #a33b31; }
+
+.maven15-explorer { background: #f5f7fa; }
+.maven15-explorer > header { align-items: center; background: #eef2f7; border-bottom: 1px solid #d5dfeb; color: #4b6179; display: flex; font-size: .63rem; gap: 8px; padding: 10px 13px; }
+.maven15-explorer > header span { background: #fff; border: 1px solid #d8e1eb; flex: 1; padding: 6px 9px; }
+.maven15-explorer > header em { color: #7a8da3; font-size: .53rem; font-style: normal; }
+.maven15-explorer-body { display: grid; grid-template-columns: 155px 1fr; min-height: 280px; }
+.maven15-explorer-body aside { background: #edf2f7; border-right: 1px solid #d4deea; color: #60748a; display: flex; flex-direction: column; font-size: .62rem; gap: 9px; padding: 15px; }
+.maven15-explorer-body main { background: #fff; padding: 14px; }
+.maven15-address { border: 1px solid #d6e0eb; color: #576c83; font-size: .61rem; padding: 8px; }
+.maven15-tree { color: #4e637b; font-family: Consolas, monospace; font-size: .67rem; line-height: 1.8; padding: 18px 10px; }
+.maven15-tree span, .maven15-tree strong { align-items: center; display: flex; gap: 6px; }
+.maven15-tree > span { color: #244c7d; font-weight: 700; }
+.maven15-tree > div { border-left: 1px solid #ccd7e4; margin-left: 8px; padding-left: 21px; }
+.maven15-tree > div strong { color: #087557; }
+.maven15-tree > div.wrong strong { color: var(--maven15-red); }
+.maven15-explorer > footer { align-items: center; background: #eef3f8; display: flex; flex-wrap: wrap; gap: 7px; padding: 10px 12px; }
+.maven15-explorer > footer button { background: #dfe8f1; border: 0; border-radius: 6px; color: #52677e; cursor: pointer; font-size: .59rem; padding: 7px 9px; }
+.maven15-explorer > footer button.active { background: var(--maven15-blue); color: #fff; }
+.maven15-explorer > footer span { flex: 1 1 260px; font-size: .61rem; line-height: 1.45; margin-left: 4px; }
+.maven15-explorer > footer span.ok { color: #087557; }
+.maven15-explorer > footer span.bad { color: #a74437; }
+
+.maven15-env { background: #f5f7fa; }
+.maven15-env > header { align-items: center; background: #26374e; color: #e4edf8; display: flex; gap: 8px; padding: 10px 13px; }
+.maven15-env > header strong { font-size: .66rem; }
+.maven15-env > header em { color: #aabbd0; font-size: .52rem; font-style: normal; margin-left: auto; }
+.maven15-env-grid { display: grid; gap: 10px; grid-template-columns: 1.12fr .88fr; padding: 13px; }
+.maven15-env-dialog, .maven15-env-rules { background: #fff; border: 1px solid #d8e2ed; padding: 13px; }
+.maven15-env h4 { color: var(--maven15-ink); font-size: .7rem; margin: 0 0 10px; }
+.env-row { display: grid; gap: 6px; grid-template-columns: 100px 1fr; padding: 9px; }
+.env-row:nth-of-type(odd) { background: #f3f6f9; }
+.env-row.selected { background: #e9f4ff; outline: 1px solid #9bc4f4; }
+.env-row span, .env-row code { color: #556b83; font-size: .61rem; }
+.maven15-env-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.maven15-env-actions button { background: #e7edf4; border: 0; border-radius: 6px; color: #4e657d; cursor: pointer; font-size: .58rem; padding: 7px 8px; }
+.maven15-env-rules p { align-items: flex-start; color: #586e85; display: flex; font-size: .61rem; gap: 8px; line-height: 1.5; margin: 9px 0; }
+.maven15-env-rules p > svg { color: var(--maven15-blue); flex: 0 0 auto; }
+.maven15-env-rules p span { display: flex; flex-direction: column; gap: 3px; }
+.maven15-process-line { align-items: stretch; display: flex; gap: 8px; justify-content: center; padding: 4px 13px 13px; }
+.maven15-process-line > svg { align-self: center; color: #8ca0b5; flex: 0 0 auto; }
+.maven15-process-line button { align-items: center; background: #e4ebf3; border: 1px solid transparent; border-radius: 8px; color: #526980; display: grid; flex: 1; font-size: .63rem; gap: 2px 7px; grid-template-columns: auto 1fr; padding: 10px; text-align: left; }
+.maven15-process-line button svg { grid-row: span 2; }
+.maven15-process-line button span { font-size: .55rem; }
+.maven15-process-line button.active { background: #e1edff; border-color: #a7c7f3; color: #174ea6; }
+.maven15-state { font-size: .64rem; margin: 0; padding: 10px 13px; text-align: center; }
+.maven15-state.ok { background: #e9fbf3; color: #087557; }
+.maven15-state.waiting { background: #fff7e9; color: #835722; }
+
+.maven15-version-proof { background: #f5f7fa; padding: 12px; }
+.maven15-terminal-split { display: grid; gap: 10px; grid-template-columns: 1.25fr .75fr; }
+.maven15-terminal-split .maven15-code-window { margin: 0; }
+.maven15-terminal-split > aside { background: #fff; border: 1px solid #d9e3ed; display: flex; flex-direction: column; padding: 11px; }
+.maven15-terminal-split > aside > small { color: var(--maven15-muted); font-size: .53rem; margin-bottom: 7px; }
+.maven15-terminal-split aside button { background: transparent; border: 0; border-left: 3px solid transparent; color: #5c7188; cursor: pointer; padding: 6px 7px; text-align: left; }
+.maven15-terminal-split aside button code { font-size: .56rem; }
+.maven15-terminal-split aside button.active { background: #edf5ff; border-left-color: var(--maven15-blue); color: #174ea6; }
+.maven15-terminal-split aside > p { align-items: flex-start; background: #eef6ff; color: #3b5979; display: flex; font-size: .61rem; gap: 7px; line-height: 1.5; margin: auto 0 0; padding: 10px; }
+.maven15-terminal-split aside > p svg { flex: 0 0 auto; }
+.maven15-precedence { align-items: stretch; display: grid; gap: 8px; grid-template-columns: 190px 1fr; margin-top: 10px; }
+.maven15-precedence > button { align-items: center; background: #e5edf5; border: 0; color: #4f667f; display: flex; font-size: .61rem; gap: 7px; padding: 11px; text-align: left; }
+.maven15-precedence > div { padding: 9px 11px; }
+.maven15-precedence > div strong, .maven15-precedence > div span { display: block; font-family: Consolas, monospace; font-size: .59rem; }
+.maven15-precedence > div p { font-size: .59rem; line-height: 1.45; margin: 5px 0 0; }
+.maven15-precedence .ok { background: #e9fbf3; color: #087557; }
+.maven15-precedence .bad { background: #fff0ed; color: #a33d34; }
+
+.maven15-intellij { background: #222936; color: #ced8e5; }
+.maven15-intellij > header { align-items: center; background: #161c27; display: flex; font-size: .62rem; justify-content: space-between; padding: 10px 13px; }
+.maven15-intellij > header em { color: #7f91a8; font-size: .5rem; font-style: normal; }
+.maven15-ide-body { display: grid; grid-template-columns: 205px 1fr; min-height: 300px; }
+.maven15-ide-body > aside { background: #252e3d; border-right: 1px solid #394457; display: flex; flex-direction: column; font-size: .59rem; gap: 8px; padding: 14px; }
+.maven15-ide-body > aside b { background: #3e4d64; color: #fff; padding: 7px; }
+.maven15-ide-body > main { padding: 19px; }
+.maven15-ide-body h3 { color: #fff; margin: 0 0 18px; }
+.maven15-ide-body label { color: #b8c5d5; display: flex; flex-direction: column; font-size: .59rem; gap: 6px; margin-bottom: 14px; }
+.maven15-ide-body select { background: #303a4a; border: 1px solid #4b596e; border-radius: 5px; color: #e7edf6; padding: 8px; width: 100%; }
+.maven15-ide-note { align-items: flex-start; background: #283c54; border-left: 3px solid #60a5fa; color: #bcd2e9; display: flex; font-size: .61rem; gap: 8px; line-height: 1.5; padding: 10px; }
+.maven15-ide-note svg { color: #60a5fa; flex: 0 0 auto; }
+.maven15-ide-note span { display: flex; flex-direction: column; }
+.maven15-ide-terminal { background: #111824; border-top: 1px solid #3a4558; padding: 11px 13px; }
+.maven15-ide-terminal > span { align-items: center; color: #9fb0c5; display: flex; font-size: .57rem; gap: 6px; }
+.maven15-ide-terminal code { color: #d5e3f5; display: block; font-size: .64rem; margin: 10px 0; }
+.maven15-ide-terminal p { color: #91a5bd; font-size: .58rem; line-height: 1.5; margin: 0; }
+
+.maven15-layers { background: #f5f7fa; padding: 12px; }
+.maven15-layers > nav { display: grid; gap: 7px; grid-template-columns: repeat(3, 1fr); }
+.maven15-layers > nav button { align-items: center; background: #e8eef5; border: 1px solid transparent; color: #587087; display: flex; flex-direction: column; gap: 4px; padding: 11px; }
+.maven15-layers > nav button strong { font-size: .65rem; }
+.maven15-layers > nav button small { font-size: .55rem; }
+.maven15-layers > nav button.active { background: #e0edff; border-color: #a8c9f7; color: #174ea6; }
+.maven15-layers > article { align-items: center; background: #fff; border: 1px solid #d9e3ee; display: flex; gap: 16px; margin: 8px 0; padding: 17px; }
+.maven15-layers > article > svg { color: var(--maven15-cyan); flex: 0 0 auto; }
+.maven15-layers article small { color: var(--maven15-muted); font-size: .53rem; }
+.maven15-layers article h3 { color: var(--maven15-ink); margin: 3px 0 8px; }
+.maven15-layers article p { color: #586e85; font-size: .63rem; margin: 4px 0; }
+.maven15-layer-boundary { display: grid; gap: 7px; grid-template-columns: repeat(3, 1fr); }
+.maven15-layer-boundary > div { align-items: flex-start; background: #eaf0f6; color: #536980; display: grid; font-size: .6rem; gap: 2px 7px; grid-template-columns: auto 1fr; padding: 10px; }
+.maven15-layer-boundary svg { color: var(--maven15-blue); grid-row: span 2; }
+.maven15-layer-boundary span { line-height: 1.45; }
+
+.maven15-errors { background: #f5f7fa; display: grid; grid-template-columns: 210px 1fr; }
+.maven15-errors > nav { background: #e9eef4; display: flex; flex-direction: column; padding: 8px; }
+.maven15-errors > nav button { align-items: center; background: transparent; border: 0; color: #5b7087; display: flex; font-size: .59rem; gap: 7px; padding: 8px; text-align: left; }
+.maven15-errors > nav button span { align-items: center; background: #d6e0eb; border-radius: 50%; display: flex; flex: 0 0 auto; height: 22px; justify-content: center; width: 22px; }
+.maven15-errors > nav button.active { background: #fff; color: #174ea6; }
+.maven15-errors > nav button.active span { background: var(--maven15-blue); color: #fff; }
+.maven15-errors > article { background: #fff; padding: 17px; }
+.maven15-errors > article > header { align-items: flex-start; display: flex; gap: 10px; }
+.maven15-errors > article > header > svg { color: var(--maven15-amber); flex: 0 0 auto; }
+.maven15-errors header small, .maven15-diagnostic-grid small { color: var(--maven15-muted); font-size: .52rem; }
+.maven15-errors h3 { color: var(--maven15-ink); margin: 2px 0; }
+.maven15-errors header p { color: #63788e; font-size: .63rem; margin: 4px 0 12px; }
+.maven15-diagnostic-grid { display: grid; gap: 7px; grid-template-columns: 1fr 1fr 1fr; }
+.maven15-diagnostic-grid > section { background: #f2f5f8; display: flex; flex-direction: column; gap: 7px; padding: 10px; }
+.maven15-diagnostic-grid p, .maven15-diagnostic-grid code { color: #536a82; font-size: .59rem; line-height: 1.5; margin: 0; }
+
+.maven15-docs { background: #111824; }
+.maven15-docs > header { align-items: center; background: #1f2b3d; color: #dbe6f4; display: flex; justify-content: space-between; padding: 9px 12px; }
+.maven15-docs > header > span { align-items: center; display: flex; font-size: .63rem; gap: 7px; }
+.maven15-docs > header > div { display: flex; flex-wrap: wrap; gap: 5px; }
+.maven15-docs > header > div > button:not(.maven15-copy) { background: transparent; border: 0; border-bottom: 2px solid transparent; color: #9eafc4; font-size: .58rem; padding: 6px 7px; }
+.maven15-docs > header > div > button.active { border-bottom-color: #60a5fa; color: #fff; }
+.maven15-doc-preview { background: #fff; color: #526980; min-height: 330px; padding: 22px; }
+.maven15-doc-preview h2, .maven15-doc-preview h3 { color: var(--maven15-ink); }
+.maven15-doc-preview h2 { margin-top: 0; }
+.maven15-doc-preview h3 { font-size: .75rem; margin: 16px 0 5px; }
+.maven15-doc-preview li { font-size: .65rem; line-height: 1.6; }
+.maven15-docs > footer { align-items: flex-start; background: #eaf4ff; color: #3d5a79; display: flex; font-size: .63rem; gap: 9px; line-height: 1.5; padding: 11px 13px; }
+.maven15-docs > footer svg { color: var(--maven15-blue); flex: 0 0 auto; }
+.maven15-docs > footer span { display: flex; flex-direction: column; }
+
+.maven15-delivery { background: #f5f7fa; padding: 12px; }
+.maven15-delivery > nav { display: grid; grid-template-columns: repeat(4, 1fr); }
+.maven15-delivery > nav button { align-items: center; background: #e5ecf4; border: 0; color: #5b7087; display: flex; font-size: .58rem; gap: 6px; justify-content: center; padding: 9px 5px; }
+.maven15-delivery > nav button span { align-items: center; background: #d2deea; border-radius: 50%; display: flex; height: 22px; justify-content: center; width: 22px; }
+.maven15-delivery > nav button.active { background: #ddecff; color: #174ea6; }
+.maven15-delivery > nav button.done span { background: var(--maven15-green); color: #fff; }
+.maven15-defense { align-items: flex-start; background: #eef6ff; color: #3f5d7c; display: flex; gap: 10px; padding: 12px; }
+.maven15-defense > svg { color: var(--maven15-blue); flex: 0 0 auto; }
+.maven15-defense > div { display: flex; flex-direction: column; }
+.maven15-defense small { color: var(--maven15-muted); font-size: .52rem; }
+.maven15-defense strong { color: var(--maven15-ink); font-size: .68rem; margin: 2px 0; }
+.maven15-defense span { font-size: .61rem; line-height: 1.5; }
+.maven15-next-action { align-items: center; background: var(--maven15-blue); border: 0; border-radius: 7px; color: #fff; display: flex; gap: 6px; margin: 10px 0 0 auto; padding: 8px 11px; }
+.maven15-next-action:disabled { cursor: not-allowed; opacity: .4; }
+
+@media (max-width: 900px) {
+  .maven15-terminal-split, .maven15-env-grid { grid-template-columns: 1fr; }
+  .maven15-errors { grid-template-columns: 175px 1fr; }
+  .maven15-diagnostic-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .maven15-pipeline-track { grid-template-columns: 1fr; gap: 4px; }
+  .maven15-pipeline-track > svg { display: none; }
+  .maven15-pipeline-track button { flex-direction: row; justify-content: flex-start; }
+  .maven15-boundaries, .maven15-artifact-choice, .maven15-layers > nav, .maven15-layer-boundary { grid-template-columns: 1fr; }
+  .maven15-explorer-body, .maven15-ide-body { grid-template-columns: 1fr; }
+  .maven15-explorer-body aside, .maven15-ide-body > aside { border-bottom: 1px solid #d4deea; border-right: 0; flex-direction: row; flex-wrap: wrap; min-height: auto; }
+  .maven15-process-line { flex-direction: column; }
+  .maven15-process-line > svg { rotate: 90deg; }
+  .maven15-precedence { grid-template-columns: 1fr; }
+  .maven15-errors { grid-template-columns: 1fr; }
+  .maven15-errors > nav { display: grid; grid-template-columns: 1fr 1fr; }
+  .maven15-delivery > nav { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .maven15-download-page, .maven15-ide-body > main, .maven15-errors > article { padding: 12px; }
+  .maven15-download-page > header { align-items: stretch; flex-direction: column; }
+  .maven15-download-page header a { justify-content: center; }
+  .maven15-browser-chrome { align-items: flex-start; flex-wrap: wrap; }
+  .maven15-simulation { margin-left: 0; }
+  .maven15-explorer > header, .maven15-env > header, .maven15-intellij > header, .maven15-docs > header { align-items: flex-start; flex-direction: column; }
+  .maven15-explorer > header span, .maven15-docs > header > div { width: 100%; }
+  .env-row { grid-template-columns: 1fr; }
+  .maven15-errors > nav, .maven15-delivery > nav { grid-template-columns: 1fr; }
+  .maven15-layers > article, .maven15-pipeline > article { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 360px) {
+  .maven15-audit, .maven15-version-proof, .maven15-layers, .maven15-delivery { padding: 8px; }
+  .maven15-checksum-actions, .maven15-env-actions { flex-direction: column; }
+  .maven15-checksum-actions button, .maven15-env-actions button { width: 100%; }
+  .maven15-copy { max-width: 100%; }
+}

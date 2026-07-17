@@ -1,0 +1,481 @@
+.guided-intellij-setup-lesson {
+  --idea7-violet: #6546bd;
+  --idea7-blue: #3271bc;
+  --idea7-cyan: #0b7f8c;
+  --idea7-green: #087a5a;
+  --idea7-amber: #9d610d;
+  --idea7-red: #b53e50;
+  --idea7-ink: #17233b;
+  --idea7-muted: #64748b;
+  --idea7-line: #d8e1ed;
+  --idea7-dark: #1e222c;
+}
+
+.guided-intellij-setup-lesson,
+.guided-intellij-setup-lesson * { min-width: 0; }
+
+.guided-intellij-setup-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 87% 8%, rgba(45, 212, 191, .25), transparent 25rem),
+    radial-gradient(circle at 8% 100%, rgba(139, 92, 246, .25), transparent 25rem),
+    linear-gradient(135deg, #101626, #2a1f52 60%, #17465c);
+}
+
+.idea7-facts {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--idea7-line);
+  border-radius: 0 0 18px 18px;
+  color: var(--idea7-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: -1px 22px 22px;
+  padding: 12px 18px;
+}
+.idea7-facts strong { color: var(--idea7-ink); }
+.idea7-facts i { background: #cbd6e5; border-radius: 50%; height: 4px; width: 4px; }
+
+.idea7-product-map,
+.idea7-install-flow,
+.idea7-welcome-open,
+.idea7-project-structure,
+.idea7-env-matrix,
+.idea7-sources-root,
+.idea7-workspace,
+.idea7-run-config,
+.idea7-working-directory,
+.idea7-terminal-audit,
+.idea7-editing-toolkit,
+.idea7-diagnosis,
+.idea7-hygiene {
+  border: 1px solid var(--idea7-line);
+  border-radius: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.idea7-code-window { max-width: 100%; }
+
+.idea7-product-history {
+  align-items: stretch;
+  background: #111827;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  padding: 18px;
+}
+.idea7-product-history > svg { align-self: center; color: #8b98ad; }
+.idea7-product-history article { background: #1d293d; color: #b7c2d2; display: grid; gap: 6px; grid-template-columns: 1fr 1fr; padding: 14px; }
+.idea7-product-history article strong { color: #d9e2ef; font-size: .7rem; grid-column: 1 / -1; }
+.idea7-product-history article span { background: #29364a; font-size: .65rem; padding: 7px; text-align: center; }
+.idea7-product-history article.current { align-content: center; background: linear-gradient(135deg, #4e3999, #216f7a); grid-template-columns: 1fr; text-align: center; }
+.idea7-product-history article.current span { background: transparent; color: #fff; font-size: .88rem; font-weight: 800; }
+.idea7-product-history article.current small { color: #c6e7e5; font-size: .62rem; }
+.idea7-product-tabs { background: #f3f6fa; display: flex; gap: 5px; padding: 8px; }
+.idea7-product-tabs button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: #586880;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 740;
+  gap: 6px;
+  padding: 9px 10px;
+}
+.idea7-product-tabs button.active { background: #fff; box-shadow: 0 2px 8px rgba(25, 40, 67, .09); color: var(--idea7-violet); }
+.idea7-product-detail { padding: 17px; }
+.idea7-product-detail > header { align-items: center; color: var(--idea7-violet); display: flex; gap: 8px; }
+.idea7-product-detail h3 { color: var(--idea7-ink); margin: 0; }
+.idea7-product-detail > p { color: var(--idea7-muted); font-size: .74rem; line-height: 1.55; }
+.idea7-product-detail > footer { align-items: flex-start; background: #f0edfb; color: #54467d; display: flex; font-size: .68rem; gap: 6px; line-height: 1.45; padding: 9px 10px; }
+.idea7-product-detail footer svg { flex: 0 0 auto; margin-top: 2px; }
+.idea7-under-run {
+  align-items: center;
+  background: #edf5f7;
+  color: #506a72;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .67rem;
+  gap: 6px;
+  justify-content: center;
+  padding: 11px;
+}
+.idea7-under-run svg { flex: 0 0 auto; }
+
+.idea7-install-flow { display: grid; grid-template-columns: minmax(180px, .45fr) minmax(0, .95fr) minmax(230px, .6fr); }
+.idea7-install-track { background: #f3f6fa; border-right: 1px solid var(--idea7-line); display: flex; flex-direction: column; gap: 5px; padding: 8px; }
+.idea7-install-track button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  color: #56667e;
+  cursor: pointer;
+  display: grid;
+  font: inherit;
+  gap: 7px;
+  grid-template-columns: auto 1fr;
+  padding: 10px;
+  text-align: left;
+}
+.idea7-install-track button > span { align-items: center; background: #dfe6ef; border-radius: 50%; display: flex; font-size: .6rem; font-weight: 850; height: 23px; justify-content: center; width: 23px; }
+.idea7-install-track button strong { font-size: .66rem; line-height: 1.35; }
+.idea7-install-track button.active { background: #fff; border-left-color: var(--idea7-violet); color: var(--idea7-violet); }
+.idea7-install-track button.done > span { background: var(--idea7-green); color: #fff; }
+.idea7-install-screen { background: #1e222c; min-height: 345px; }
+.idea7-window-title, .idea7-dialog-title {
+  align-items: center;
+  background: #272c37;
+  border-bottom: 1px solid #383f4d;
+  color: #d6dce6;
+  display: flex;
+  font-size: .68rem;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 10px;
+}
+.idea7-window-title::after,
+.idea7-dialog-title::after,
+.idea7-welcome > header::after,
+.idea7-idea-title::after,
+.idea7-terminal-window > header::after {
+  color: #aeb8c7;
+  content: "Simulação didática";
+  font-size: .55rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .035em;
+  margin-left: auto;
+  order: 2;
+  white-space: nowrap;
+}
+.idea7-window-title > span:last-child, .idea7-dialog-title > span { color: #8d98a8; margin-left: 8px; order: 3; }
+.idea7-download, .idea7-installer, .idea7-license {
+  align-items: center;
+  color: #dce2eb;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  min-height: 300px;
+  padding: 20px;
+  text-align: center;
+}
+.idea7-download svg, .idea7-installer svg, .idea7-license svg { color: #8f7df1; }
+.idea7-download h3, .idea7-license h3 { margin: 0; }
+.idea7-download p, .idea7-license p { color: #99a6b7; font-size: .68rem; }
+.idea7-download button, .idea7-installer button, .idea7-license button, .idea7-welcome-mini button {
+  background: #6a4dc7;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: .66rem;
+  font-weight: 750;
+  padding: 8px 14px;
+}
+.idea7-installer code { background: #111722; color: #bdc7d6; font-size: .65rem; max-width: 100%; overflow-wrap: anywhere; padding: 8px; }
+.idea7-installer > div { display: flex; flex-direction: column; gap: 5px; }
+.idea7-installer span { color: #98a6b8; font-size: .63rem; }.idea7-installer span.checked { color: #9ee0c5; }
+.idea7-welcome-mini { align-items: stretch; display: flex; flex-direction: column; gap: 7px; margin: 45px auto 0; max-width: 230px; text-align: center; }
+.idea7-welcome-mini .idea-app-mark { align-self: center; }
+.idea7-welcome-mini h3 { color: #e0e5ed; font-size: .82rem; }
+.idea7-welcome-mini button { background: #303745; border: 1px solid #454d5c; }
+.idea7-install-flow > article { display: flex; flex-direction: column; gap: 9px; justify-content: center; padding: 16px; }
+.idea7-install-flow > article small { color: var(--idea7-violet); font-size: .61rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.idea7-install-flow > article h3 { color: var(--idea7-ink); font-size: .85rem; margin: 0; }
+.idea7-install-flow > article p { color: var(--idea7-muted); font-size: .68rem; line-height: 1.5; }
+.idea7-install-flow > article > div { display: flex; gap: 7px; justify-content: space-between; }
+.idea7-install-flow > article > div button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccd7e4;
+  border-radius: 8px;
+  color: #526179;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: .66rem;
+  gap: 5px;
+  padding: 8px;
+}
+.idea7-install-flow > article > div button:disabled { cursor: not-allowed; opacity: .4; }
+
+.idea7-welcome-open { display: grid; grid-template-columns: minmax(250px, .65fr) minmax(0, 1.35fr); }
+.idea7-welcome { background: #1e222c; color: #dce2eb; padding: 18px; }
+.idea7-welcome > header { align-items: center; display: flex; font-size: .73rem; gap: 8px; margin-bottom: 18px; }
+.idea7-welcome > div { display: flex; flex-direction: column; gap: 7px; }
+.idea7-welcome button {
+  align-items: center;
+  background: #2d3441;
+  border: 1px solid #414a59;
+  border-radius: 8px;
+  color: #cbd3df;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: .68rem;
+  gap: 7px;
+  padding: 10px;
+}
+.idea7-welcome button.primary { background: #6548bb; border-color: #7f66cf; color: #fff; }
+.idea7-welcome > footer { color: #8f9caf; font-size: .63rem; line-height: 1.45; margin-top: 17px; }
+.idea7-folder-picker { padding: 16px; }
+.idea7-folder-picker > header { align-items: center; color: var(--idea7-ink); display: flex; font-size: .75rem; font-weight: 760; gap: 7px; }
+.idea7-folder-picker > div[role="tablist"] { display: flex; gap: 5px; margin: 12px 0; }
+.idea7-folder-picker > div[role="tablist"] button {
+  background: #f0f3f7;
+  border: 0;
+  border-radius: 7px;
+  color: #596980;
+  cursor: pointer;
+  font: inherit;
+  font-size: .65rem;
+  padding: 7px 8px;
+}
+.idea7-folder-picker > div[role="tablist"] button.active { background: #e8e2fa; color: var(--idea7-violet); }
+.idea7-folder-picker > code { background: #f3f6fa; color: #4d5e76; display: block; font-size: .66rem; overflow-wrap: anywhere; padding: 9px; }
+.idea7-picked-tree { color: #53627a; display: flex; flex-direction: column; font-size: .67rem; gap: 4px; padding: 10px 4px; }
+.idea7-picked-tree span { align-items: center; display: flex; gap: 6px; }
+.idea7-folder-picker > footer { border-left: 4px solid #d28a22; display: flex; flex-direction: column; gap: 3px; padding: 10px; }
+.idea7-folder-picker > footer.good { background: #edf8f4; border-color: #1b9b73; color: #087257; }
+.idea7-folder-picker > footer.bad { background: #fff1f2; border-color: #d14d5e; color: #9b3140; }
+.idea7-folder-picker > footer.warning { background: #fff7e9; color: #87540c; }
+.idea7-folder-picker footer strong { font-size: .71rem; }.idea7-folder-picker footer span { color: inherit; font-size: .65rem; line-height: 1.4; }.idea7-folder-picker footer code { color: inherit; font-size: .62rem; overflow-wrap: anywhere; }
+
+.idea7-project-structure, .idea7-run-config { background: #f7f8fa; }
+.idea7-dialog-title { background: #272c37; }
+.idea7-dialog-body { display: grid; grid-template-columns: minmax(155px, .35fr) minmax(0, 1.65fr); min-height: 360px; }
+.idea7-dialog-body > nav, .idea7-run-config-body > aside { background: #eef1f5; border-right: 1px solid #cfd8e3; display: flex; flex-direction: column; gap: 3px; padding: 9px; }
+.idea7-dialog-body > nav strong { color: #59677b; font-size: .61rem; margin: 7px 6px 3px; text-transform: uppercase; }
+.idea7-dialog-body > nav button, .idea7-run-config-body > aside button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #526178;
+  cursor: pointer;
+  font: inherit;
+  font-size: .67rem;
+  padding: 8px;
+  text-align: left;
+}
+.idea7-dialog-body > nav button.active, .idea7-run-config-body > aside button.active { background: #dce8f6; color: #2f619f; }
+.idea7-dialog-body > main { padding: 18px; }
+.idea7-dialog-body main > header { align-items: center; border-bottom: 1px solid #d8e0e9; display: flex; justify-content: space-between; margin-bottom: 14px; padding-bottom: 9px; }
+.idea7-dialog-body h3 { color: var(--idea7-ink); margin: 0; }.idea7-dialog-body header span { color: var(--idea7-muted); font-size: .62rem; }
+.idea7-dialog-body label, .idea7-run-config label { color: #4d5d74; display: block; font-size: .64rem; font-weight: 760; margin: 12px 0 5px; }
+.idea7-sdk-options, .idea7-choice-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.idea7-sdk-options button, .idea7-choice-row button {
+  background: #fff;
+  border: 1px solid #cdd7e3;
+  border-radius: 7px;
+  color: #56667e;
+  cursor: pointer;
+  font: inherit;
+  font-size: .65rem;
+  padding: 8px 9px;
+}
+.idea7-sdk-options button.active, .idea7-choice-row button.active { background: #e8e2fa; border-color: #a692dd; color: var(--idea7-violet); }
+.idea7-field, .idea7-run-config input { background: #fff; border: 1px solid #cbd6e2; color: #4d5d74; font: .65rem/1.4 inherit; padding: 8px; width: 100%; }
+.idea7-dialog-body main > aside { align-items: flex-start; background: #edf3fb; color: #315f9c; display: flex; font-size: .65rem; gap: 7px; margin-top: 14px; padding: 10px; }
+.idea7-dialog-body main > aside svg { flex: 0 0 auto; }.idea7-dialog-body main > aside span { display: flex; flex-direction: column; gap: 4px; }.idea7-dialog-body main > aside code { overflow-wrap: anywhere; }
+.idea7-dialog-body main > p { color: var(--idea7-muted); font-size: .68rem; line-height: 1.5; }
+.idea7-project-structure > footer, .idea7-run-config > footer {
+  align-items: center;
+  background: #eef1f5;
+  border-top: 1px solid #cfd8e3;
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  padding: 9px;
+}
+.idea7-project-structure > footer > div, .idea7-run-config > footer > div { align-items: center; display: grid; gap: 2px 7px; grid-template-columns: auto 1fr; margin-right: auto; }
+.idea7-project-structure > footer > div svg, .idea7-run-config > footer > div svg { grid-row: 1 / 3; }
+.idea7-project-structure > footer .healthy, .idea7-run-config > footer .healthy { color: var(--idea7-green); }
+.idea7-project-structure > footer .warning, .idea7-run-config > footer .warning { color: var(--idea7-amber); }
+.idea7-project-structure footer strong, .idea7-run-config footer strong { font-size: .67rem; }
+.idea7-project-structure footer small, .idea7-run-config footer small { color: var(--idea7-muted); font-size: .6rem; }
+.idea7-project-structure > footer > button, .idea7-run-config > footer > button {
+  background: #fff;
+  border: 1px solid #c8d2de;
+  border-radius: 7px;
+  color: #53627a;
+  font: inherit;
+  font-size: .64rem;
+  padding: 7px 10px;
+}
+.idea7-project-structure > footer > button.primary, .idea7-run-config > footer > button.primary { background: #5e7fa8; border-color: #5e7fa8; color: #fff; }
+
+.idea7-env-matrix > header { align-items: center; background: #edf2fb; color: var(--idea7-ink); display: flex; font-size: .74rem; gap: 7px; padding: 11px 13px; }
+.idea7-env-matrix > div[role="table"] { overflow-x: auto; }
+.idea7-env-matrix div[role="row"] { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(210px, 1fr) minmax(260px, 1.3fr); min-width: 650px; }
+.idea7-env-matrix div[role="row"] span { border-bottom: 1px solid var(--idea7-line); color: var(--idea7-muted); font-size: .66rem; line-height: 1.4; padding: 9px 11px; }
+.idea7-env-matrix div[role="row"].head span { background: #f3f6fa; color: var(--idea7-ink); font-size: .61rem; font-weight: 800; text-transform: uppercase; }
+
+.idea7-sources-root { display: grid; grid-template-columns: minmax(210px, .55fr) minmax(180px, .45fr) minmax(0, 1fr); }
+.idea7-project-tree { background: #232833; color: #afb8c7; display: flex; flex-direction: column; font-size: .66rem; gap: 4px; padding: 12px 9px; }
+.idea7-project-tree > header { color: #e1e6ee; font-weight: 760; margin-bottom: 5px; }
+.idea7-project-tree span, .idea7-project-tree button { align-items: center; background: transparent; border: 0; color: inherit; display: flex; font: inherit; gap: 5px; padding: 5px; text-align: left; }
+.idea7-project-tree button { cursor: pointer; }
+.idea7-project-tree .source { background: #2d4e66; border-radius: 4px; color: #78c8ff; }
+.idea7-project-tree .child { margin-left: 25px; }.idea7-project-tree .generated { color: #8893a4; margin-left: 15px; }
+.idea7-project-tree em { background: #405f78; border-radius: 999px; font-size: .55rem; font-style: normal; margin-left: auto; padding: 2px 5px; }
+.idea7-context-menu { background: #eef1f5; display: flex; flex-direction: column; gap: 3px; padding: 10px; }
+.idea7-context-menu small { color: var(--idea7-muted); font-size: .6rem; margin: 4px; }
+.idea7-context-menu button { align-items: center; background: #fff; border: 0; border-radius: 5px; color: #53627a; cursor: pointer; display: flex; font: inherit; font-size: .64rem; justify-content: space-between; padding: 7px; text-align: left; }
+.idea7-context-menu button.selected { background: #dce8f6; color: #2e639f; }
+.idea7-sources-root > article { align-content: center; display: grid; justify-items: center; padding: 18px; text-align: center; }
+.idea7-sources-root > article.good { background: #edf8f4; color: var(--idea7-green); }.idea7-sources-root > article.warning { background: #fff7e9; color: var(--idea7-amber); }
+.idea7-sources-root article h3 { color: inherit; font-size: .83rem; }.idea7-sources-root article p { color: #5d6c80; font-size: .68rem; line-height: 1.5; }
+.idea7-sources-root article > div { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.idea7-sources-root article span { align-items: center; color: #53627a; display: flex; font-size: .64rem; gap: 5px; }
+
+.idea7-workspace { background: #1e222c; color: #d8dee9; margin: 0; }
+.idea7-idea-title { align-items: center; background: #202530; border-bottom: 1px solid #343b49; display: flex; font-size: .68rem; gap: 8px; min-height: 38px; padding: 6px 11px; }
+.idea7-idea-title > span:last-child { color: #8792a3; margin-left: 8px; order: 3; }
+.idea7-idea-toolbar { align-items: center; background: #272c37; border-bottom: 1px solid #353c49; display: flex; gap: 6px; min-height: 43px; padding: 6px 9px; }
+.idea7-idea-toolbar button { align-items: center; background: #333946; border: 1px solid #434b5a; border-radius: 6px; color: #d4dae5; cursor: pointer; display: flex; font: inherit; font-size: .62rem; gap: 4px; padding: 6px 7px; }
+.idea7-idea-toolbar button:disabled { cursor: not-allowed; opacity: .35; }
+.idea7-idea-toolbar button.run svg { color: #66cf89; }.idea7-idea-toolbar button.debug svg { color: #d28ee9; }
+.idea7-run-name { align-items: center; background: #202530; border-radius: 6px; color: #c4ccd8; display: flex; font-size: .62rem; gap: 5px; padding: 7px 8px; }
+.idea7-idea-toolbar .status { color: #9da8b8; font-size: .59rem; margin-left: auto; }
+.idea7-idea-main { display: grid; grid-template-columns: 155px minmax(0, 1fr); min-height: 420px; }
+.idea7-idea-main > aside { background: #232833; border-right: 1px solid #343b49; color: #adb6c5; display: flex; flex-direction: column; font-size: .62rem; gap: 3px; padding: 9px; }
+.idea7-idea-main > aside header { color: #e0e5ed; font-weight: 760; margin: 3px 0 7px; }
+.idea7-idea-main aside span { align-items: center; display: flex; gap: 4px; padding: 4px; }.idea7-idea-main aside .one { margin-left: 11px; }.idea7-idea-main aside .two { margin-left: 27px; }
+.idea7-idea-main aside .source { color: #72c6f9; }.idea7-idea-main aside .active { background: #3a4352; border-radius: 4px; color: #fff; }.idea7-idea-main aside .generated { color: #7e899a; }
+.idea7-idea-main > main { display: flex; flex-direction: column; overflow: hidden; }
+.idea7-idea-main > main > header { align-items: center; background: #292e39; border-bottom: 1px solid #3a414e; display: flex; font-size: .62rem; min-height: 32px; padding: 0 10px; }
+.idea7-editor { min-height: 280px; overflow-x: auto; position: relative; }
+.idea7-editor > pre { min-width: 570px; }
+.idea7-editor .gutter-run { align-items: center; background: #2d6847; border: 1px solid #58b37e; border-radius: 50%; color: #9de7b9; cursor: pointer; display: flex; height: 20px; justify-content: center; left: 13px; padding: 0; position: absolute; top: 50px; width: 20px; z-index: 3; }
+.idea7-empty-editor { align-items: center; color: #8591a3; display: flex; flex: 1; flex-direction: column; gap: 8px; justify-content: center; padding: 20px; text-align: center; }
+.idea7-empty-editor strong { color: #c0c8d4; font-size: .72rem; }.idea7-empty-editor button { background: #6048a9; border: 0; border-radius: 7px; color: #fff; cursor: pointer; font: inherit; font-size: .64rem; padding: 8px 10px; }
+.idea7-run-panel { background: #232833; border-top: 1px solid #3a414e; min-height: 118px; }
+.idea7-run-panel > header { align-items: center; border-bottom: 1px solid #343b49; display: flex; font-size: .62rem; gap: 5px; padding: 7px 10px; }.idea7-run-panel header svg { color: #6bd08c; }.idea7-run-panel header span { color: #8e99aa; margin-left: auto; }
+.idea7-run-panel pre { color: #cbd4df; font: .65rem/1.55 Consolas, monospace; margin: 0; overflow-x: auto; padding: 11px; white-space: pre-wrap; }
+.idea7-run-panel > button { background: #6048a9; border: 0; border-radius: 6px; color: #fff; font: inherit; font-size: .61rem; margin: 0 10px 10px; padding: 6px 8px; }
+.idea7-tool-tabs { background: #202530; border-top: 1px solid #343b49; color: #8793a4; display: flex; font-size: .59rem; gap: 17px; padding: 7px 10px; }
+.idea7-workspace figcaption { background: #202530; border-top: 1px solid #343b49; color: #aeb8c7; font-size: .68rem; line-height: 1.45; padding: 10px 13px; }
+.idea7-workspace-controls { align-items: center; background: #f3f6fa; color: #526179; display: flex; gap: 8px; justify-content: space-between; padding: 9px 12px; }
+.idea7-workspace-controls button { align-items: center; background: #fff; border: 1px solid #ccd7e3; border-radius: 7px; color: #526179; cursor: pointer; display: flex; font: inherit; font-size: .65rem; gap: 5px; padding: 7px 9px; }.idea7-workspace-controls button:disabled { cursor: not-allowed; opacity: .4; }.idea7-workspace-controls span { font-size: .64rem; }
+
+.idea7-run-config-body { display: grid; grid-template-columns: minmax(155px, .35fr) minmax(0, 1.65fr); min-height: 390px; }
+.idea7-run-config-body > aside button { align-items: center; display: flex; gap: 5px; }
+.idea7-run-config-body > main { padding: 17px; }
+.idea7-run-equivalent { align-items: stretch; background: #111827; color: #c8d3e1; display: grid; gap: 9px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); padding: 13px; }
+.idea7-run-equivalent > svg { align-self: center; color: #8290a4; }
+.idea7-run-equivalent section { background: #1c293d; padding: 10px; }.idea7-run-equivalent small { color: #8fa1b7; display: block; font-size: .58rem; margin-bottom: 4px; text-transform: uppercase; }.idea7-run-equivalent code { color: #cbb9ff; font-size: .64rem; overflow-wrap: anywhere; }
+
+.idea7-working-directory { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); }
+.idea7-working-directory .idea7-code-window { border: 0; border-radius: 0; }
+.idea7-working-directory > article { padding: 16px; }
+.idea7-working-directory article > header { align-items: center; color: var(--idea7-violet); display: flex; gap: 7px; }.idea7-working-directory header strong { color: var(--idea7-ink); font-size: .73rem; }
+.idea7-working-directory article > div[role="tablist"] { display: flex; gap: 5px; margin: 14px 0; }
+.idea7-working-directory article > div[role="tablist"] button { background: #eef2f6; border: 0; border-radius: 7px; color: #596980; cursor: pointer; font: inherit; font-size: .63rem; padding: 7px; }.idea7-working-directory article > div[role="tablist"] button.active { background: #e7e2f8; color: var(--idea7-violet); }
+.idea7-path-result { align-items: center; background: #f4f6fa; display: grid; gap: 6px; grid-template-columns: auto auto minmax(0, 1fr); padding: 9px; }.idea7-path-result span { color: var(--idea7-muted); font-size: .61rem; }.idea7-path-result svg { color: #9aa7b9; }.idea7-path-result code { color: #526179; font-size: .62rem; overflow-wrap: anywhere; }
+.idea7-working-directory article > p { color: var(--idea7-muted); font-size: .67rem; line-height: 1.5; }
+
+.idea7-terminal-audit { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(240px, .55fr); }
+.idea7-terminal-window { background: #1e222c; color: #d8dee9; }
+.idea7-terminal-window > header { align-items: center; background: #272c37; border-bottom: 1px solid #373f4d; display: flex; font-size: .63rem; gap: 10px; padding: 8px 10px; }.idea7-terminal-window > header strong { border-bottom: 2px solid #8b7cf6; padding-bottom: 6px; }.idea7-terminal-window > header button { background: #343a47; border: 1px solid #444c5b; color: #cbd3df; margin-left: 0; order: 3; }
+.idea7-terminal-window > div { max-height: 540px; min-height: 430px; overflow: auto; padding: 10px; }
+.idea7-terminal-window .ps-entry p, .idea7-terminal-window .ps-cursor { color: #d5dde8; font: .67rem/1.5 Consolas, monospace; }.idea7-terminal-window .ps-entry p span, .idea7-terminal-window .ps-cursor span { color: #83c5ff; }.idea7-terminal-window .ps-entry pre { color: #b7c5d8; font: .64rem/1.5 Consolas, monospace; overflow-x: auto; white-space: pre-wrap; }
+.idea7-terminal-window > footer { background: #202530; border-top: 1px solid #343b49; color: #8793a4; display: flex; font-size: .59rem; gap: 18px; padding: 7px 10px; }.idea7-terminal-window > footer strong { color: #e1e5ec; }
+.idea7-terminal-audit > aside { background: #f6f8fb; display: flex; flex-direction: column; gap: 10px; padding: 14px; }.idea7-terminal-audit > aside > small { color: var(--idea7-violet); font-size: .62rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.idea7-terminal-proof { border-left: 3px solid #9a87d3; color: var(--idea7-muted); font-size: .67rem; line-height: 1.5; margin: 0; padding-left: 9px; }
+.idea7-audit-ok { align-items: center; color: var(--idea7-green); display: grid; gap: 3px 7px; grid-template-columns: auto 1fr; padding: 12px 0; }.idea7-audit-ok svg { grid-row: 1 / 3; }.idea7-audit-ok strong { font-size: .73rem; }.idea7-audit-ok span { color: var(--idea7-muted); font-size: .64rem; }
+
+.idea7-editing-toolkit { display: grid; grid-template-columns: minmax(170px, .38fr) minmax(0, 1.62fr); }
+.idea7-editing-toolkit > div[role="tablist"] { background: #f3f6fa; border-right: 1px solid var(--idea7-line); display: flex; flex-direction: column; gap: 4px; padding: 8px; }
+.idea7-editing-toolkit > div[role="tablist"] button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #56667e; cursor: pointer; display: flex; font: inherit; font-size: .68rem; font-weight: 740; gap: 6px; padding: 10px; }.idea7-editing-toolkit > div[role="tablist"] button.active { background: #fff; border-left-color: var(--idea7-violet); color: var(--idea7-violet); }
+.idea7-editing-toolkit > article { padding: 16px; }
+.idea7-editing-toolkit article > header { align-items: center; color: var(--idea7-violet); display: grid; gap: 4px 8px; grid-template-columns: auto 1fr auto; }.idea7-editing-toolkit header svg { grid-row: 1 / 3; }.idea7-editing-toolkit header small { font-size: .59rem; font-weight: 830; text-transform: uppercase; }.idea7-editing-toolkit h3 { color: var(--idea7-ink); font-size: .78rem; margin: 0; }.idea7-editing-toolkit kbd { background: #eee9fc; border: 1px solid #d5cafa; border-radius: 5px; color: var(--idea7-violet); font-size: .62rem; padding: 4px 6px; }
+.idea7-editor-tool { background: #1e222c; border: 1px solid #303747; border-radius: 11px; margin: 14px 0; overflow: hidden; position: relative; }
+.idea7-editor-tool > div { min-height: 160px; padding: 15px; position: relative; }.idea7-editor-tool small { color: #8d99aa; font-size: .59rem; text-transform: uppercase; }.idea7-editor-tool pre { color: #d8dee9; font: .7rem/1.6 Consolas, monospace; overflow-x: auto; white-space: pre-wrap; }
+.idea7-editor-tool > button { align-items: center; background: #323946; border: 0; border-top: 1px solid #414957; color: #d6dce5; cursor: pointer; display: flex; font: inherit; font-size: .65rem; gap: 5px; padding: 9px 12px; width: 100%; }
+.idea7-completion-popup, .idea7-rename-preview { background: #2b3240; border: 1px solid #4a5363; box-shadow: 0 8px 20px rgba(0, 0, 0, .3); color: #b9c4d3; display: flex; flex-direction: column; font: .62rem/1.5 Consolas, monospace; gap: 3px; left: 25px; max-width: calc(100% - 50px); padding: 7px; position: absolute; top: 70px; }.idea7-completion-popup strong, .idea7-rename-preview strong { background: #4c3d82; color: #fff; padding: 3px; }.idea7-rename-preview { left: auto; right: 18px; top: 55px; }
+.idea7-editing-toolkit article > footer { align-items: flex-start; background: #edf8f4; color: #4c6c62; display: flex; font-size: .66rem; gap: 6px; line-height: 1.45; padding: 9px; }.idea7-editing-toolkit footer svg { color: var(--idea7-green); flex: 0 0 auto; margin-top: 2px; }
+
+.idea7-diagnosis { display: grid; grid-template-columns: minmax(230px, .68fr) minmax(0, 1.32fr); }
+.idea7-diagnosis > div[role="tablist"] { background: #f3f6fa; border-right: 1px solid var(--idea7-line); display: flex; flex-direction: column; gap: 3px; padding: 8px; }
+.idea7-diagnosis > div[role="tablist"] button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #59687e; cursor: pointer; display: grid; font: inherit; font-size: .63rem; gap: 6px; grid-template-columns: auto 1fr; line-height: 1.35; padding: 8px; text-align: left; }.idea7-diagnosis > div[role="tablist"] button > span { align-items: center; background: #dfe6ef; border-radius: 50%; display: flex; font-size: .57rem; font-weight: 850; height: 20px; justify-content: center; width: 20px; }.idea7-diagnosis > div[role="tablist"] button.active { background: #fff; border-left-color: var(--idea7-red); color: var(--idea7-red); }
+.idea7-diagnosis > article { padding: 17px; }.idea7-diagnosis article > header { align-items: center; color: var(--idea7-violet); display: flex; gap: 8px; }.idea7-diagnosis header small { display: block; font-size: .59rem; font-weight: 830; text-transform: uppercase; }.idea7-diagnosis h3 { color: var(--idea7-ink); margin: 2px 0 0; }.idea7-diagnosis blockquote { background: #fff1f2; border-left: 4px solid #d45161; color: #923242; font: .67rem/1.5 Consolas, monospace; margin: 12px 0; overflow-wrap: anywhere; padding: 10px; }
+.idea7-diagnosis article > div { display: grid; gap: 7px; grid-template-columns: repeat(3, minmax(0, 1fr)); }.idea7-diagnosis article section { background: #f5f7fa; padding: 10px; }.idea7-diagnosis article section > svg { color: var(--idea7-violet); }.idea7-diagnosis section strong { color: var(--idea7-ink); display: block; font-size: .66rem; margin: 5px 0 3px; }.idea7-diagnosis section p { color: var(--idea7-muted); font-size: .63rem; line-height: 1.45; margin: 0; }
+
+.idea7-hygiene-columns { display: grid; grid-template-columns: 1fr 1fr; }
+.idea7-hygiene-columns article { display: flex; flex-direction: column; gap: 6px; padding: 15px; }.idea7-hygiene-columns article.ignore { background: #f4f6fa; border-left: 1px solid var(--idea7-line); }
+.idea7-hygiene-columns article > header { align-items: center; color: var(--idea7-green); display: flex; font-size: .7rem; gap: 6px; margin-bottom: 3px; }.idea7-hygiene-columns article.ignore > header { color: var(--idea7-blue); }.idea7-hygiene-columns article > span { align-items: center; color: #53627a; display: flex; font-size: .66rem; gap: 5px; }.idea7-hygiene-columns article > p { color: var(--idea7-muted); font-size: .63rem; line-height: 1.45; margin-top: auto; }
+.idea7-policy { border-top: 1px solid var(--idea7-line); padding: 12px; }.idea7-policy > div { display: flex; gap: 5px; }.idea7-policy button { background: #eef2f6; border: 0; border-radius: 7px; color: #586880; cursor: pointer; font: inherit; font-size: .65rem; padding: 7px 9px; }.idea7-policy button.active { background: #e7e2f8; color: var(--idea7-violet); }.idea7-policy p { color: var(--idea7-muted); font-size: .67rem; line-height: 1.5; margin: 10px 0 0; }
+.idea7-shortcuts { background: #101827; border-color: #293953; }.idea7-shortcuts .guided-file-title { background: #19253a; color: #e1eaf6; }
+
+@media (max-width: 1040px) {
+  .idea7-install-flow { grid-template-columns: minmax(180px, .45fr) minmax(0, 1fr); }
+  .idea7-install-flow > article { grid-column: 1 / -1; }
+  .idea7-sources-root { grid-template-columns: 1fr 1fr; }
+  .idea7-sources-root > article { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .idea7-editing-toolkit, .idea7-diagnosis { grid-template-columns: 1fr; }
+  .idea7-editing-toolkit > div[role="tablist"], .idea7-diagnosis > div[role="tablist"] { border-bottom: 1px solid var(--idea7-line); border-right: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .idea7-terminal-audit { grid-template-columns: 1fr; }
+  .idea7-working-directory { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .idea7-product-history, .idea7-welcome-open, .idea7-install-flow, .idea7-sources-root, .idea7-dialog-body, .idea7-run-config-body, .idea7-run-equivalent { grid-template-columns: 1fr; }
+  .idea7-product-history > svg, .idea7-run-equivalent > svg { margin: 0 auto; transform: rotate(90deg); }
+  .idea7-install-track { border-bottom: 1px solid var(--idea7-line); border-right: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .idea7-install-flow > article { grid-column: 1; }
+  .idea7-dialog-body > nav, .idea7-run-config-body > aside { border-bottom: 1px solid #cfd8e3; border-right: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .idea7-dialog-body > nav strong { grid-column: 1 / -1; }
+  .idea7-project-structure > footer, .idea7-run-config > footer { flex-wrap: wrap; }
+  .idea7-project-structure > footer > div, .idea7-run-config > footer > div { flex: 1 0 100%; }
+  .idea7-idea-main { grid-template-columns: 1fr; }
+  .idea7-idea-main > aside { display: none; }
+  .idea7-diagnosis article > div { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .guided-intellij-setup-lesson { width: calc(100% - 16px); }
+  .idea7-facts { margin-left: 8px; margin-right: 8px; }
+  .idea7-product-tabs, .idea7-folder-picker > div[role="tablist"], .idea7-choice-row, .idea7-sdk-options, .idea7-policy > div { overflow-x: auto; }
+  .idea7-product-tabs button, .idea7-folder-picker > div[role="tablist"] button, .idea7-choice-row button, .idea7-sdk-options button, .idea7-policy button { flex: 0 0 auto; }
+  .idea7-install-track { display: flex; flex-direction: row; overflow-x: auto; }
+  .idea7-install-track button { flex: 0 0 min(180px, 75vw); }
+  .idea7-editing-toolkit > div[role="tablist"], .idea7-diagnosis > div[role="tablist"] { display: flex; overflow-x: auto; }
+  .idea7-editing-toolkit > div[role="tablist"] button, .idea7-diagnosis > div[role="tablist"] button { flex: 0 0 min(190px, 78vw); }
+  .idea7-diagnosis article > div, .idea7-hygiene-columns { grid-template-columns: 1fr; }
+  .idea7-hygiene-columns article.ignore { border-left: 0; border-top: 1px solid var(--idea7-line); }
+  .idea7-idea-title strong { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .idea7-idea-toolbar { flex-wrap: wrap; }.idea7-idea-toolbar .status { margin-left: 0; width: 100%; }
+  .idea7-workspace-controls { align-items: stretch; flex-direction: column; }.idea7-workspace-controls button { justify-content: center; }.idea7-workspace-controls span { order: -1; text-align: center; }
+  .idea7-path-result { grid-template-columns: 1fr; }.idea7-path-result svg { margin: 0 auto; transform: rotate(90deg); }
+  .idea7-tool-tabs { overflow-x: auto; }
+}
+
+@media (max-width: 430px) {
+  .idea7-window-title::after,
+  .idea7-dialog-title::after,
+  .idea7-welcome > header::after,
+  .idea7-idea-title::after,
+  .idea7-terminal-window > header::after { content: "Simulação"; }
+}
+
+@media (max-width: 360px) {
+  .idea7-facts { align-items: flex-start; flex-direction: column; }.idea7-facts i { display: none; }
+  .idea7-product-detail, .idea7-folder-picker, .idea7-dialog-body > main, .idea7-run-config-body > main, .idea7-editing-toolkit > article, .idea7-diagnosis > article { padding: 11px; }
+  .idea7-dialog-body > nav, .idea7-run-config-body > aside { grid-template-columns: 1fr 1fr; }
+  .idea7-product-history { padding: 10px; }
+  .idea7-project-structure > footer > button, .idea7-run-config > footer > button { flex: 1; }
+  .idea7-completion-popup, .idea7-rename-preview { left: 8px; max-width: calc(100% - 16px); right: auto; }
+}

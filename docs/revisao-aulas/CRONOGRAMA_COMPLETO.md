@@ -2,16 +2,16 @@
 
 > Este arquivo é gerado por `node tools/update-lesson-review-schedule.mjs`. Não altere as marcações manualmente; atualize `STATUS_REVISAO.json` e gere novamente.
 
-Última atualização declarada: **2026-07-16**.
+Última atualização declarada: **2026-07-17**.
 
 ## Resumo geral
 
 - Arquivos de aula encontrados: **721**.
 - Aulas numeradas de 001 a 720: **720**.
 - Aula de abertura 000: **1**.
-- Refeitas e aprovadas: **3**.
+- Refeitas e aprovadas: **24**.
 - Em revisão: **1**.
-- Pendentes: **717**.
+- Pendentes: **696**.
 - Bloqueadas: **0**.
 
 ## Resumo por módulo
@@ -19,8 +19,8 @@
 | Módulo | Total | Refeitas | Em revisão | Pendentes | Bloqueadas | Progresso |
 |---|---:|---:|---:|---:|---:|---:|
 | P0 | 1 | 1 | 0 | 0 | 0 | 100% |
-| M0 | 20 | 2 | 1 | 17 | 0 | 10% |
-| M1 | 41 | 0 | 0 | 41 | 0 | 0% |
+| M0 | 20 | 20 | 0 | 0 | 0 | 100% |
+| M1 | 41 | 3 | 1 | 37 | 0 | 7% |
 | M2 | 28 | 0 | 0 | 28 | 0 | 0% |
 | M3 | 15 | 0 | 0 | 15 | 0 | 0% |
 | M4 | 41 | 0 | 0 | 41 | 0 | 0% |
@@ -65,20 +65,62 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
 
 ## M0 — 20 aulas
 
-- [ ] **Em revisão** — [001 — M0.01 — Mapa da Formação Completa e Níveis de Carreira Java](../aulas/001_M0_01_MAPA_DA_FORMACAO_COMPLETA_E_NIVEIS_DE_CARREIRA_JAVA.md)
-  - Mapa guiado em revisão com os 21 módulos atuais, rotas de dependência, propósito, tópicos, riscos e evidências por módulo, lentes de responsabilidade e prática pessoal de percurso.
+- [x] **Refeita e aprovada** — [001 — M0.01 — Mapa da Formação Completa e Níveis de Carreira Java](../aulas/001_M0_01_MAPA_DA_FORMACAO_COMPLETA_E_NIVEIS_DE_CARREIRA_JAVA.md) · aprovada pelo responsável
+  - Mapa guiado aprovado com os 21 módulos atuais, rotas de dependência, propósito, tópicos, riscos e evidências por módulo, lentes de responsabilidade e prática pessoal de percurso.
   - Referências:
     - [`docs/revisao-aulas/matrizes/001_MAPA_FORMACAO_E_CARREIRA.md`](matrizes/001_MAPA_FORMACAO_E_CARREIRA.md)
     - [`plataforma-curso/src/components/GuidedCourseMapLesson001.jsx`](../../plataforma-curso/src/components/GuidedCourseMapLesson001.jsx)
     - [`plataforma-curso/src/components/guidedCourseMapLesson.css`](../../plataforma-curso/src/components/guidedCourseMapLesson.css)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [002 — M0.02 — Diagnóstico Inicial Técnico e Plano de Estudo](../aulas/002_M0_02_DIAGNOSTICO_INICIAL_TECNICO_E_PLANO_DE_ESTUDO.md)
-- [ ] **Pendente** — [003 — M0.03 — Organização do Windows para Desenvolvimento Java Backend](../aulas/003_M0_03_ORGANIZACAO_DO_WINDOWS_PARA_DESENVOLVIMENTO.md)
-- [ ] **Pendente** — [004 — M0.04 — Terminal, PowerShell e Comandos Básicos para Desenvolvimento Java Backend](../aulas/004_M0_04_TERMINAL_POWERSHELL_E_COMANDOS_BASICOS.md)
-- [ ] **Pendente** — [005 — M0.05 — JDK, JRE, JVM e Escolha de Versão LTS](../aulas/005_M0_05_JDK_JRE_JVM_E_ESCOLHA_DE_VERSAO_LTS.md)
-- [ ] **Pendente** — [006 — M0.06 — Compilação Manual com `javac`](../aulas/006_M0_06_COMPILACAO_MANUAL_COM_JAVAC.md)
-- [ ] **Pendente** — [007 — M0.07 — IntelliJ IDEA Community Completo](../aulas/007_M0_07_INTELLIJ_IDEA_COMMUNITY_COMPLETO.md)
+- [x] **Refeita e aprovada** — [002 — M0.02 — Diagnóstico Inicial Técnico e Plano de Estudo](../aulas/002_M0_02_DIAGNOSTICO_INICIAL_TECNICO_E_PLANO_DE_ESTUDO.md) · aprovada pelo responsável
+  - Diagnóstico guiado aprovado com sete áreas baseadas em evidências, escala calibrada, perfil sem média enganosa, fluxo backend, rotina sustentável, plano de 30/60/90 dias e documento pessoal gerado.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/002_DIAGNOSTICO_INICIAL_E_PLANO.md`](matrizes/002_DIAGNOSTICO_INICIAL_E_PLANO.md)
+    - [`plataforma-curso/src/components/GuidedDiagnosticLesson002.jsx`](../../plataforma-curso/src/components/GuidedDiagnosticLesson002.jsx)
+    - [`plataforma-curso/src/components/guidedDiagnosticLesson.css`](../../plataforma-curso/src/components/guidedDiagnosticLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [003 — M0.03 — Organização do Windows para Desenvolvimento Java Backend](../aulas/003_M0_03_ORGANIZACAO_DO_WINDOWS_PARA_DESENVOLVIMENTO.md) · aprovada pelo responsável
+  - Oficina aprovada com mock do Explorador de Arquivos e do menu do Windows, mapa de pastas, clínica de caminhos, dois laboratórios PowerShell com saídas e árvore sincronizada, arquivos iniciais, encoding, impactos e recuperação.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/003_ORGANIZACAO_WINDOWS.md`](matrizes/003_ORGANIZACAO_WINDOWS.md)
+    - [`plataforma-curso/src/components/GuidedWindowsWorkspaceLesson003.jsx`](../../plataforma-curso/src/components/GuidedWindowsWorkspaceLesson003.jsx)
+    - [`plataforma-curso/src/components/guidedWindowsWorkspaceLesson.css`](../../plataforma-curso/src/components/guidedWindowsWorkspaceLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [004 — M0.04 — Terminal, PowerShell e Comandos Básicos para Desenvolvimento Java Backend](../aulas/004_M0_04_TERMINAL_POWERSHELL_E_COMANDOS_BASICOS.md) · aprovada pelo responsável
+  - Laboratório aprovado com mock de Windows Terminal e IntelliJ, navegação por caminhos, sistema de arquivos sincronizado, criação, cópia, movimento, renomeação, remoção segura, histórico, autocomplete, diagnóstico de PATH e aplicação a Java, Maven e logs.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/004_TERMINAL_POWERSHELL.md`](matrizes/004_TERMINAL_POWERSHELL.md)
+    - [`plataforma-curso/src/components/GuidedPowerShellLesson004.jsx`](../../plataforma-curso/src/components/GuidedPowerShellLesson004.jsx)
+    - [`plataforma-curso/src/components/guidedPowerShellLesson.css`](../../plataforma-curso/src/components/guidedPowerShellLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [005 — M0.05 — JDK, JRE, JVM e Escolha de Versão LTS](../aulas/005_M0_05_JDK_JRE_JVM_E_ESCOLHA_DE_VERSAO_LTS.md) · aprovada pelo responsável
+  - Laboratório aprovado com mapa linguagem/plataforma/ecossistema, camadas JDK/runtime/JVM, portabilidade, pipeline fonte-bytecode-execução, linha LTS atualizada, auditoria do ambiente, mock do Windows, primeiro programa sincronizado e diagnóstico profissional.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/005_JDK_JRE_JVM_LTS.md`](matrizes/005_JDK_JRE_JVM_LTS.md)
+    - [`plataforma-curso/src/components/GuidedJavaPlatformLesson005.jsx`](../../plataforma-curso/src/components/GuidedJavaPlatformLesson005.jsx)
+    - [`plataforma-curso/src/components/guidedJavaPlatformLesson.css`](../../plataforma-curso/src/components/guidedJavaPlatformLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [006 — M0.06 — Compilação Manual com `javac`](../aulas/006_M0_06_COMPILACAO_MANUAL_COM_JAVAC.md) · aprovada pelo responsável
+  - Oficina aprovada com pipeline por fases, editor e terminal sincronizados, leitura visual de diagnósticos do javac, comparação entre compilação e execução, bytecode antigo, duas classes, saída separada, classpath explícito e conexão com IDE, Maven, Git e produção.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/006_COMPILACAO_MANUAL_JAVAC.md`](matrizes/006_COMPILACAO_MANUAL_JAVAC.md)
+    - [`plataforma-curso/src/components/GuidedManualCompilationLesson006.jsx`](../../plataforma-curso/src/components/GuidedManualCompilationLesson006.jsx)
+    - [`plataforma-curso/src/components/guidedManualCompilationLesson.css`](../../plataforma-curso/src/components/guidedManualCompilationLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [007 — M0.07 — IntelliJ IDEA Community Completo](../aulas/007_M0_07_INTELLIJ_IDEA_COMMUNITY_COMPLETO.md) · aprovada pelo responsável
+  - Laboratório aprovado com distribuição unificada atualizada, instalação e Welcome guiados, abertura pela raiz, Project Structure, JDK 21, Sources Root, criação e Run de Main, Run Configuration, working directory, terminal integrado, assistência de edição e higiene do projeto.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/007_INTELLIJ_IDEA_COMPLETO.md`](matrizes/007_INTELLIJ_IDEA_COMPLETO.md)
+    - [`plataforma-curso/src/components/GuidedIntelliJSetupLesson007.jsx`](../../plataforma-curso/src/components/GuidedIntelliJSetupLesson007.jsx)
+    - [`plataforma-curso/src/components/guidedIntelliJSetupLesson.css`](../../plataforma-curso/src/components/guidedIntelliJSetupLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [x] **Refeita e aprovada** — [008 — M0.08 — Debug Inicial no IntelliJ](../aulas/008_M0_08_DEBUG_INICIAL_NO_INTELLIJ.md) · aprovada pelo responsável
   - Debug guiado em uma simulação funcional do IntelliJ, com breakpoint, linha atual, Step Over, Step Into, Step Out, Resume, Variables, Watches, Call Stack e Console.
   - Referências:
@@ -86,7 +128,14 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`plataforma-curso/src/components/guidedIntelliJLesson.css`](../../plataforma-curso/src/components/guidedIntelliJLesson.css)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [009 — M0.09 — Git: Instalação e Configuração Global](../aulas/009_M0_09_GIT_INSTALACAO_E_CONFIGURACAO_GLOBAL.md)
+- [x] **Refeita e aprovada** — [009 — M0.09 — Git: Instalação e Configuração Global](../aulas/009_M0_09_GIT_INSTALACAO_E_CONFIGURACAO_GLOBAL.md) · aprovada pelo responsável
+  - Oficina aprovada com download oficial, instalador do Git for Windows navegado tela a tela, validação correta no PowerShell, escopos e precedência, identidade, branch, editor, finais de linha, auditoria por origem e clínica de configuração.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/009_GIT_INSTALACAO_CONFIGURACAO.md`](matrizes/009_GIT_INSTALACAO_CONFIGURACAO.md)
+    - [`plataforma-curso/src/components/GuidedGitSetupLesson009.jsx`](../../plataforma-curso/src/components/GuidedGitSetupLesson009.jsx)
+    - [`plataforma-curso/src/components/guidedGitSetupLesson.css`](../../plataforma-curso/src/components/guidedGitSetupLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [x] **Refeita e aprovada** — [010 — M0.10 — Git local do zero: seu primeiro repositório, passo a passo](../aulas/010_M0_10_GIT_LOCAL_DO_ZERO.md) · aprovada pelo responsável
   - Laboratório de Git local com comandos, saídas esperadas, leitura de estado, recuperação segura, diagramas e desafio verificável.
   - Referências:
@@ -97,23 +146,133 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`plataforma-curso/public/lesson-assets/010-git-local/02-primeiro-commit-terminal.svg`](../../plataforma-curso/public/lesson-assets/010-git-local/02-primeiro-commit-terminal.svg)
     - [`plataforma-curso/public/lesson-assets/010-git-local/03-restore-com-seguranca.svg`](../../plataforma-curso/public/lesson-assets/010-git-local/03-restore-com-seguranca.svg)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [011 — M0.11 — GitHub e Repositório Remoto](../aulas/011_M0_11_GITHUB_E_REPOSITORIO_REMOTO.md)
-- [ ] **Pendente** — [012 — M0.12 — Markdown para Documentação Técnica](../aulas/012_M0_12_MARKDOWN_PARA_DOCUMENTACAO_TECNICA.md)
-- [ ] **Pendente** — [013 — M0.13 — Diário de Bordo e Rastreabilidade do Aprendizado](../aulas/013_M0_13_DIARIO_DE_BORDO_E_RASTREABILIDADE_DO_APRENDIZADO.md)
-- [ ] **Pendente** — [014 — M0.14 — Codex, IA no IntelliJ, Ética e Método de Uso](../aulas/014_M0_14_CODEX_IA_NO_INTELLIJ_COM_ETICA_E_METODO.md)
-- [ ] **Pendente** — [015 — M0.15 — Maven: Instalação e Validação Inicial](../aulas/015_M0_15_MAVEN_INSTALACAO_E_VALIDACAO_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [016 — M0.16 — PostgreSQL e DBeaver: Preparação](../aulas/016_M0_16_POSTGRESQL_E_DBEAVER_PREPARACAO_OFICIAL.md)
-- [ ] **Pendente** — [017 — M0.17 — Postman, Insomnia e HTTP Básico](../aulas/017_M0_17_POSTMAN_INSOMNIA_E_HTTP_BASICO_OFICIAL.md)
-- [ ] **Pendente** — [018 — M0.18 — Docker Desktop e WSL2: Preparação](../aulas/018_M0_18_DOCKER_DESKTOP_E_WSL2_PREPARACAO_OFICIAL.md)
-- [ ] **Pendente** — [019 — M0.19 — Estrutura Profissional do Repositório de Curso](../aulas/019_M0_19_ESTRUTURA_PROFISSIONAL_DO_REPOSITORIO_DE_CURSO_OFICIAL.md)
-- [ ] **Pendente** — [020 — M0.20 — Checklist Final do Ambiente](../aulas/020_M0_20_CHECKLIST_FINAL_DO_AMBIENTE_OFICIAL.md)
+- [x] **Refeita e aprovada** — [011 — M0.11 — GitHub e Repositório Remoto](../aulas/011_M0_11_GITHUB_E_REPOSITORIO_REMOTO.md) · aprovada pelo responsável
+  - Laboratório aprovado com criação e proteção da conta GitHub, repositório remoto vazio, HTTPS e SSH, autenticação moderna, origin, primeiro push, upstream, segundo ciclo, clone/fetch/pull e recuperação segura de falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/011_GITHUB_REPOSITORIO_REMOTO.md`](matrizes/011_GITHUB_REPOSITORIO_REMOTO.md)
+    - [`plataforma-curso/src/components/GuidedGitHubRemoteLesson011.jsx`](../../plataforma-curso/src/components/GuidedGitHubRemoteLesson011.jsx)
+    - [`plataforma-curso/src/components/guidedGitHubRemoteLesson.css`](../../plataforma-curso/src/components/guidedGitHubRemoteLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [012 — M0.12 — Markdown para Documentação Técnica](../aulas/012_M0_12_MARKDOWN_PARA_DOCUMENTACAO_TECNICA.md) · aprovada pelo responsável
+  - Oficina aprovada com editor e preview sincronizados, hierarquia, texto, listas, checklists, código, links, imagens, tabelas, documentos técnicos, diagnóstico de renderização e entrega versionada.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/012_MARKDOWN_DOCUMENTACAO_TECNICA.md`](matrizes/012_MARKDOWN_DOCUMENTACAO_TECNICA.md)
+    - [`plataforma-curso/src/components/GuidedMarkdownLesson012.jsx`](../../plataforma-curso/src/components/GuidedMarkdownLesson012.jsx)
+    - [`plataforma-curso/src/components/guidedMarkdownLesson.css`](../../plataforma-curso/src/components/guidedMarkdownLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [013 — M0.13 — Diário de Bordo e Rastreabilidade do Aprendizado](../aulas/013_M0_13_DIARIO_DE_BORDO_E_RASTREABILIDADE_DO_APRENDIZADO.md) · aprovada pelo responsável
+  - Mentoria aprovada com sistema de arquivos de aprendizagem, construtor de entrada, registro técnico de erros, revisão ativa espaçada, segurança, histórico Git e rotina sustentável.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/013_DIARIO_BORDO_RASTREABILIDADE.md`](matrizes/013_DIARIO_BORDO_RASTREABILIDADE.md)
+    - [`plataforma-curso/src/components/GuidedLearningJournalLesson013.jsx`](../../plataforma-curso/src/components/GuidedLearningJournalLesson013.jsx)
+    - [`plataforma-curso/src/components/guidedLearningJournalLesson.css`](../../plataforma-curso/src/components/guidedLearningJournalLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [014 — M0.14 — Codex, IA no IntelliJ, Ética e Método de Uso](../aulas/014_M0_14_CODEX_IA_NO_INTELLIJ_COM_ETICA_E_METODO.md) · aprovada pelo responsável
+  - Laboratório aprovado para operar Codex pelo terminal integrado do IntelliJ, construir prompts controlados, proteger contexto, revisar permissões e validar toda alteração por execução, diff e explicação humana.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/014_CODEX_IA_ETICA_METODO.md`](matrizes/014_CODEX_IA_ETICA_METODO.md)
+    - [`plataforma-curso/src/components/GuidedCodexEthicsLesson014.jsx`](../../plataforma-curso/src/components/GuidedCodexEthicsLesson014.jsx)
+    - [`plataforma-curso/src/components/guidedCodexEthicsLesson.css`](../../plataforma-curso/src/components/guidedCodexEthicsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [015 — M0.15 — Maven: Instalação e Validação Inicial](../aulas/015_M0_15_MAVEN_INSTALACAO_E_VALIDACAO_INICIAL_OFICIAL.md) · aprovada pelo responsável
+  - Oficina aprovada com download oficial e integridade, extração visual, PATH e processos, prova linha a linha, comparação entre Maven do sistema, incorporado e Wrapper, IntelliJ sincronizado, clínica de falhas e documentação rastreável.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/015_MAVEN_INSTALACAO_VALIDACAO.md`](matrizes/015_MAVEN_INSTALACAO_VALIDACAO.md)
+    - [`plataforma-curso/src/components/GuidedMavenSetupLesson015.jsx`](../../plataforma-curso/src/components/GuidedMavenSetupLesson015.jsx)
+    - [`plataforma-curso/src/components/guidedMavenSetupLesson.css`](../../plataforma-curso/src/components/guidedMavenSetupLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [016 — M0.16 — PostgreSQL e DBeaver: Preparação](../aulas/016_M0_16_POSTGRESQL_E_DBEAVER_PREPARACAO_OFICIAL.md) · aprovada pelo responsável
+  - Laboratório aprovado com arquitetura cliente-servidor, instalador PostgreSQL guiado, provas de serviço e porta, psql, DBeaver, driver JDBC, conexão visual, consulta de identidade, segurança de credenciais e clínica de falhas por camadas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/016_POSTGRESQL_DBEAVER_PREPARACAO.md`](matrizes/016_POSTGRESQL_DBEAVER_PREPARACAO.md)
+    - [`plataforma-curso/src/components/GuidedPostgresDBeaverLesson016.jsx`](../../plataforma-curso/src/components/GuidedPostgresDBeaverLesson016.jsx)
+    - [`plataforma-curso/src/components/guidedPostgresDBeaverLesson.css`](../../plataforma-curso/src/components/guidedPostgresDBeaverLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [017 — M0.17 — Postman, Insomnia e HTTP Básico](../aulas/017_M0_17_POSTMAN_INSOMNIA_E_HTTP_BASICO_OFICIAL.md) · aprovada pelo responsável
+  - Laboratório aprovado com ciclo HTTP, decomposição de URL, métodos, headers, JSON, simulador de request/response, status, collection, environment, escolha Postman/Insomnia, segurança de segredos, documentação e diagnóstico por camadas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/017_POSTMAN_INSOMNIA_HTTP_BASICO.md`](matrizes/017_POSTMAN_INSOMNIA_HTTP_BASICO.md)
+    - [`plataforma-curso/src/components/GuidedHttpClientLesson017.jsx`](../../plataforma-curso/src/components/GuidedHttpClientLesson017.jsx)
+    - [`plataforma-curso/src/components/guidedHttpClientLesson.css`](../../plataforma-curso/src/components/guidedHttpClientLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [018 — M0.18 — Docker Desktop e WSL2: Preparação](../aulas/018_M0_18_DOCKER_DESKTOP_E_WSL2_PREPARACAO_OFICIAL.md) · aprovada pelo responsável
+  - Laboratório aprovado com arquitetura Windows/WSL2/Docker, instalação guiada, integração por distribuição, provas de cliente e engine, hello-world, imagens, contêineres, portas, volumes, segurança e diagnóstico por camadas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/018_DOCKER_DESKTOP_WSL2_PREPARACAO.md`](matrizes/018_DOCKER_DESKTOP_WSL2_PREPARACAO.md)
+    - [`plataforma-curso/src/components/GuidedDockerWslLesson018.jsx`](../../plataforma-curso/src/components/GuidedDockerWslLesson018.jsx)
+    - [`plataforma-curso/src/components/guidedDockerWslLesson.css`](../../plataforma-curso/src/components/guidedDockerWslLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [019 — M0.19 — Estrutura Profissional do Repositório de Curso](../aulas/019_M0_19_ESTRUTURA_PROFISSIONAL_DO_REPOSITORIO_DE_CURSO_OFICIAL.md) · aprovada pelo responsável
+  - Oficina aprovada com auditoria segura do repositório, árvore interativa, criação guiada em PowerShell, README e docs em preview, src/test/labs, gitignore verificável, nomes profissionais, Git nominal e clínica estrutural.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/019_ESTRUTURA_PROFISSIONAL_REPOSITORIO.md`](matrizes/019_ESTRUTURA_PROFISSIONAL_REPOSITORIO.md)
+    - [`plataforma-curso/src/components/GuidedRepositoryStructureLesson019.jsx`](../../plataforma-curso/src/components/GuidedRepositoryStructureLesson019.jsx)
+    - [`plataforma-curso/src/components/guidedRepositoryStructureLesson.css`](../../plataforma-curso/src/components/guidedRepositoryStructureLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [020 — M0.20 — Checklist Final do Ambiente](../aulas/020_M0_20_CHECKLIST_FINAL_DO_AMBIENTE_OFICIAL.md) · aprovada pelo responsável
+  - Banca aprovada com gate do M1, trinta provas registráveis, criticidade explícita, Windows, terminal, Java/IntelliJ, Git/GitHub, documentação/IA, Maven, banco, HTTP, WSL/Docker, rotina, clínica de falhas e dossiê final.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/020_CHECKLIST_FINAL_AMBIENTE.md`](matrizes/020_CHECKLIST_FINAL_AMBIENTE.md)
+    - [`plataforma-curso/src/components/GuidedEnvironmentGateLesson020.jsx`](../../plataforma-curso/src/components/GuidedEnvironmentGateLesson020.jsx)
+    - [`plataforma-curso/src/components/guidedEnvironmentGateLesson.css`](../../plataforma-curso/src/components/guidedEnvironmentGateLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 
 ## M1 — 41 aulas
 
-- [ ] **Pendente** — [021 — M1.01 — Primeiro Programa Java Destrinchado](../aulas/021_M1_01_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO_OFICIAL.md)
-- [ ] **Pendente** — [022 — M1.02 — Blocos, Chaves, Indentação e Leitura de Código](../aulas/022_M1_02_BLOCOS_CHAVES_INDENTACAO_E_LEITURA_DE_CODIGO_OFICIAL.md)
-- [ ] **Pendente** — [023 — M1.03 — Comentários Úteis e Documentação Inicial](../aulas/023_M1_03_COMENTARIOS_UTEIS_E_DOCUMENTACAO_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [024 — M1.04 — Variáveis e Nomes Profissionais](../aulas/024_M1_04_VARIAVEIS_E_NOMES_PROFISSIONAIS_OFICIAL.md)
+- [x] **Refeita e aprovada** — [021 — M1.01 — Primeiro Programa Java Destrinchado](../aulas/021_M1_01_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO_OFICIAL.md) · aprovada pelo responsável
+  - Oficina aprovada com raio X do código, anatomia de classe e main, println, pipeline terminal, IntelliJ Run/Debug, execução sequencial, programas de domínio, dez erros e entrega Git.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/021_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO.md`](matrizes/021_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO.md)
+    - [`plataforma-curso/src/components/GuidedFirstJavaProgramLesson021.jsx`](../../plataforma-curso/src/components/GuidedFirstJavaProgramLesson021.jsx)
+    - [`plataforma-curso/src/components/guidedFirstJavaProgramLesson.css`](../../plataforma-curso/src/components/guidedFirstJavaProgramLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [022 — M1.02 — Blocos, Chaves, Indentação e Leitura de Código](../aulas/022_M1_02_BLOCOS_CHAVES_INDENTACAO_E_LEITURA_DE_CODIGO_OFICIAL.md) · aprovada pelo responsável
+  - Oficina aprovada com árvores de pertencimento, pares de chaves, leitura em duas direções, indentação comparada, blocos executáveis, fronteiras, mock do IntelliJ, dez falhas e entrega Git.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/022_BLOCOS_CHAVES_INDENTACAO_LEITURA.md`](matrizes/022_BLOCOS_CHAVES_INDENTACAO_LEITURA.md)
+    - [`plataforma-curso/src/components/GuidedCodeStructureLesson022.jsx`](../../plataforma-curso/src/components/GuidedCodeStructureLesson022.jsx)
+    - [`plataforma-curso/src/components/guidedCodeStructureLesson.css`](../../plataforma-curso/src/components/guidedCodeStructureLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [x] **Refeita e aprovada** — [023 — M1.03 — Comentários Úteis e Documentação Inicial](../aulas/023_M1_03_COMENTARIOS_UTEIS_E_DOCUMENTACAO_INICIAL_OFICIAL.md) · aprovada pelo responsável
+  - Oficina aprovada com camadas código/comentário/documentação, sintaxe executável, decisões de revisão, verdade e Git, exemplos de domínio, destino correto, segurança, mock do IntelliJ, dez falhas e entrega documentada.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/023_COMENTARIOS_UTEIS_DOCUMENTACAO.md`](matrizes/023_COMENTARIOS_UTEIS_DOCUMENTACAO.md)
+    - [`plataforma-curso/src/components/GuidedUsefulCommentsLesson023.jsx`](../../plataforma-curso/src/components/GuidedUsefulCommentsLesson023.jsx)
+    - [`plataforma-curso/src/components/guidedUsefulCommentsLesson.css`](../../plataforma-curso/src/components/guidedUsefulCommentsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [024 — M1.04 — Variáveis e Nomes Profissionais](../aulas/024_M1_04_VARIAVEIS_E_NOMES_PROFISSIONAIS_OFICIAL.md)
+  - Oficina em revisão com anatomia de variáveis, ciclo declaração-inicialização-uso-reatribuição, prévia de tipos, nomes profissionais, booleanos, temporárias, domínios, Rename no IntelliJ, dez falhas e entrega Git.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/024_VARIAVEIS_NOMES_PROFISSIONAIS.md`](matrizes/024_VARIAVEIS_NOMES_PROFISSIONAIS.md)
+    - [`plataforma-curso/src/components/GuidedVariablesLesson024.jsx`](../../plataforma-curso/src/components/GuidedVariablesLesson024.jsx)
+    - [`plataforma-curso/src/components/guidedVariablesLesson.css`](../../plataforma-curso/src/components/guidedVariablesLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [ ] **Pendente** — [025 — M1.05 — Tipos Inteiros em Java](../aulas/025_M1_05_TIPOS_INTEIROS_EM_JAVA_OFICIAL.md)
 - [ ] **Pendente** — [026 — M1.06 — Tipos Decimais e Primeiras Limitações](../aulas/026_M1_06_TIPOS_DECIMAIS_E_PRIMEIRAS_LIMITACOES_OFICIAL.md)
 - [ ] **Pendente** — [027 — M1.07 — Boolean e Regras Verdadeiras/Falsas](../aulas/027_M1_07_BOOLEAN_E_REGRAS_VERDADEIRAS_FALSAS_OFICIAL.md)

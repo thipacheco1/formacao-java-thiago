@@ -126,6 +126,72 @@ function App() {
   const progressMutatedLessonsRef = useRef(new Map());
   const activeUserEmailRef = useRef(currentUser?.email?.toLowerCase() || null);
 
+  useEffect(() => {
+    if (!selectedLesson) return undefined;
+
+    const mainContent = document.querySelector('.main-content');
+    if (!mainContent) return undefined;
+
+    const alignGuidedCourseNavigation = () => {
+      const rect = mainContent.getBoundingClientRect();
+      const edge = window.innerWidth <= 640 ? 8 : 12;
+      const navWidth = Math.min(1180, Math.max(0, rect.width - edge * 2));
+      const navLeft = rect.left + (rect.width - navWidth) / 2;
+      mainContent.style.setProperty('--guided-course-nav-left', `${Math.round(navLeft)}px`);
+      mainContent.style.setProperty('--guided-course-nav-right', `${Math.round(window.innerWidth - navLeft - navWidth)}px`);
+    };
+
+    alignGuidedCourseNavigation();
+    const resizeObserver = new ResizeObserver(alignGuidedCourseNavigation);
+    resizeObserver.observe(mainContent);
+    window.addEventListener('resize', alignGuidedCourseNavigation);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', alignGuidedCourseNavigation);
+      mainContent.style.removeProperty('--guided-course-nav-left');
+      mainContent.style.removeProperty('--guided-course-nav-right');
+    };
+  }, [isSidebarCollapsed, selectedLesson]);
+
+  useEffect(() => {
+    if (!selectedLesson) return undefined;
+
+    const stepNavigation = document.querySelector('.guided-step-nav');
+    if (!stepNavigation) return undefined;
+
+    const compactLayout = window.matchMedia('(max-width: 920px)');
+    let focusFrame = 0;
+
+    const focusActiveStep = () => {
+      window.cancelAnimationFrame(focusFrame);
+      if (!compactLayout.matches) return;
+
+      focusFrame = window.requestAnimationFrame(() => {
+        stepNavigation.querySelector('button.active')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      });
+    };
+
+    const activeStepObserver = new MutationObserver(focusActiveStep);
+    activeStepObserver.observe(stepNavigation, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ['class']
+    });
+    compactLayout.addEventListener('change', focusActiveStep);
+    focusActiveStep();
+
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      activeStepObserver.disconnect();
+      compactLayout.removeEventListener('change', focusActiveStep);
+    };
+  }, [selectedLesson]);
+
   const applyProgressState = useCallback((progress, user = null) => {
     const normalizedProgress = normalizeProgress(progress);
     progressRef.current = normalizedProgress;

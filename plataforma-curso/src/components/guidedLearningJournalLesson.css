@@ -1,0 +1,389 @@
+.guided-learning-journal-lesson {
+  --journal13-blue: #2563eb;
+  --journal13-violet: #6d4bd1;
+  --journal13-green: #059669;
+  --journal13-ink: #18243a;
+  --journal13-muted: #64748b;
+  --journal13-line: #d9e2ee;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.guided-learning-journal-lesson *,
+.guided-learning-journal-lesson *::before,
+.guided-learning-journal-lesson *::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.guided-learning-journal-lesson button,
+.guided-learning-journal-lesson textarea,
+.guided-learning-journal-lesson input { font: inherit; }
+
+.guided-learning-journal-lesson code,
+.guided-learning-journal-lesson pre,
+.guided-learning-journal-lesson p,
+.guided-learning-journal-lesson span,
+.guided-learning-journal-lesson strong { overflow-wrap: anywhere; }
+
+.guided-learning-journal-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(167, 139, 250, .23), transparent 25%),
+    linear-gradient(135deg, #14213d, #28376c 62%, #31587a);
+}
+
+.guided-learning-journal-lesson .guided-progress-track span {
+  background: linear-gradient(90deg, #93c5fd, #a78bfa);
+}
+
+.journal13-trace,
+.journal13-system,
+.journal13-workspace,
+.journal13-entry,
+.journal13-document,
+.journal13-classifier,
+.journal13-incident,
+.journal13-git,
+.journal13-review,
+.journal13-safety,
+.journal13-errors,
+.journal13-delivery,
+.journal13-command {
+  border: 1px solid var(--journal13-line);
+  border-radius: 14px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.journal13-trace { background: #f5f8fc; padding: 13px; }
+.journal13-trace > div[role="tablist"],
+.journal13-workspace > nav,
+.journal13-git > nav,
+.journal13-delivery > nav {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.journal13-trace > div button,
+.journal13-workspace > nav button,
+.journal13-git > nav button,
+.journal13-delivery > nav button {
+  align-items: center;
+  background: #e9eef5;
+  border: 0;
+  color: #586980;
+  cursor: pointer;
+  display: flex;
+  font-size: .62rem;
+  gap: 6px;
+  justify-content: center;
+  padding: 8px 6px;
+}
+.journal13-trace > div button > span,
+.journal13-workspace > nav button > span,
+.journal13-git > nav button > span,
+.journal13-delivery > nav button > span,
+.journal13-classifier > nav button > span,
+.journal13-errors > nav button > span {
+  align-items: center;
+  background: #d6e0eb;
+  border-radius: 50%;
+  display: flex;
+  flex: 0 0 auto;
+  height: 21px;
+  justify-content: center;
+  width: 21px;
+}
+.journal13-trace > div button.active,
+.journal13-workspace > nav button.active,
+.journal13-git > nav button.active,
+.journal13-delivery > nav button.active { background: #dbeafe; color: #174ea6; }
+.journal13-trace > div button.done > span,
+.journal13-workspace > nav button.done > span,
+.journal13-git > nav button.done > span,
+.journal13-delivery > nav button.done > span { background: var(--journal13-green); color: #fff; }
+.journal13-trace > article { align-items: center; background: #fff; border: 1px solid #dce5ef; display: flex; flex-direction: column; margin-top: 11px; min-height: 230px; padding: 24px; text-align: center; }
+.journal13-trace > article > svg { color: var(--journal13-violet); }
+.journal13-trace article > small { color: var(--journal13-muted); font-size: .59rem; margin-top: 7px; text-transform: uppercase; }
+.journal13-trace h3 { color: var(--journal13-ink); margin: 5px 0; }
+.journal13-trace p { color: var(--journal13-muted); font-size: .69rem; line-height: 1.5; }
+.journal13-trace article > div { align-items: center; color: #52647b; display: flex; flex-wrap: wrap; font-size: .62rem; gap: 6px; justify-content: center; margin-top: 9px; }
+.journal13-trace article > div svg { color: var(--journal13-blue); }
+.journal13-trace > button,
+.journal13-workspace > button,
+.journal13-git > button,
+.journal13-delivery > button,
+.journal13-entry-controls > button {
+  align-items: center;
+  background: var(--journal13-blue);
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  display: flex;
+  gap: 6px;
+  margin: 10px 0 0 auto;
+  padding: 8px 11px;
+}
+.journal13-trace button:disabled,
+.journal13-workspace button:disabled,
+.journal13-git button:disabled,
+.journal13-delivery button:disabled,
+.journal13-entry button:disabled,
+.journal13-review button:disabled { cursor: not-allowed; opacity: .4; }
+
+.journal13-system { display: grid; grid-template-columns: minmax(190px, .48fr) minmax(0, 1.52fr); }
+.journal13-system > aside { background: #232b3b; color: #d6deea; display: flex; flex-direction: column; padding: 9px; }
+.journal13-system > aside header { align-items: center; border-bottom: 1px solid #3b4658; display: flex; font-size: .65rem; gap: 6px; margin: -9px -9px 9px; padding: 9px; }
+.journal13-system > aside > strong { font-size: .66rem; padding: 5px; }
+.journal13-system > aside button { align-items: center; background: transparent; border: 0; color: #b7c2d1; cursor: pointer; display: flex; font-size: .63rem; gap: 7px; padding: 7px 8px 7px 17px; text-align: left; }
+.journal13-system > aside button.active { background: #31547a; color: #fff; }
+.journal13-system > article { padding: 20px; }
+.journal13-system article > header { align-items: center; color: var(--journal13-blue); display: flex; gap: 9px; }
+.journal13-system article header small { color: var(--journal13-muted); display: block; font-size: .58rem; text-transform: uppercase; }
+.journal13-system h3 { color: var(--journal13-ink); margin: 2px 0; }
+.journal13-system article > p { color: var(--journal13-muted); font-size: .7rem; line-height: 1.55; }
+.journal13-system article > div { background: #eef4fb; color: #3f5874; display: flex; flex-direction: column; font-size: .67rem; gap: 4px; padding: 12px; }
+.journal13-system article > footer { border-top: 1px solid #e1e7ef; color: #708096; font-size: .62rem; margin-top: 15px; padding-top: 10px; }
+
+.journal13-workspace { padding: 13px; }
+.journal13-workspace > nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.journal13-workspace-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(210px, .55fr); margin-top: 11px; }
+.journal13-terminal,
+.journal13-command { background: #0d1117; color: #dce6f2; }
+.journal13-terminal { border-radius: 10px 0 0 10px; overflow: hidden; }
+.journal13-terminal > header,
+.journal13-project > header,
+.journal13-command > header,
+.journal13-document > div > header {
+  align-items: center;
+  background: #1b2533;
+  color: #dce6f2;
+  display: flex;
+  font-size: .67rem;
+  gap: 7px;
+  padding: 9px 11px;
+}
+.journal13-terminal header em,
+.journal13-project header em,
+.journal13-document header em { color: #9ca9ba; font-size: .55rem; font-style: normal; margin-left: auto; white-space: nowrap; }
+.journal13-terminal > div,
+.journal13-command > div { background: #090d12; border-top: 1px solid #30363d; padding: 12px 15px; }
+.journal13-terminal > div small,
+.journal13-command > div small { color: #7dd3fc; font-size: .57rem; font-weight: 800; text-transform: uppercase; }
+.journal13-terminal > div pre,
+.journal13-command > div pre { color: #b9c7d8; font: .66rem/1.55 Consolas, monospace; margin: 7px 0 0; overflow-x: auto; white-space: pre-wrap; }
+.journal13-terminal > footer,
+.journal13-command > footer { align-items: flex-start; background: #eaf7f1; color: #2b614d; display: flex; font-size: .66rem; gap: 7px; line-height: 1.5; padding: 10px 12px; }
+.journal13-terminal > footer svg,
+.journal13-command > footer svg { color: var(--journal13-green); flex: 0 0 auto; }
+.journal13-project { background: #282f3d; color: #d1dae7; display: flex; flex-direction: column; }
+.journal13-project > header { background: #202633; }
+.journal13-project > strong { font-size: .67rem; padding: 13px 12px 5px; }
+.journal13-project > span { font-size: .64rem; padding: 5px 12px 5px 25px; }
+.journal13-project > span.existing { color: #facc15; }
+.journal13-project > span.new { color: #67e8a9; }
+.journal13-project > p { align-items: flex-start; background: #1e2531; color: #a9b6c7; display: flex; font-size: .61rem; gap: 6px; line-height: 1.45; margin: auto 9px 9px; padding: 9px; }
+.journal13-project > p svg { flex: 0 0 auto; }
+
+.journal13-entry { padding: 13px; }
+.journal13-entry > header { align-items: center; display: flex; gap: 10px; justify-content: space-between; }
+.journal13-entry > header > div { display: flex; gap: 6px; }
+.journal13-entry > header button,
+.journal13-incident > nav button,
+.journal13-cadence nav button,
+.journal13-safety > nav button {
+  align-items: center;
+  background: #e9eef5;
+  border: 0;
+  border-radius: 7px;
+  color: #54657c;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+}
+.journal13-entry > header button.active,
+.journal13-incident > nav button.active,
+.journal13-cadence nav button.active,
+.journal13-safety > nav button.active { background: #dbeafe; color: #174ea6; }
+.journal13-entry > header > span { color: var(--journal13-muted); font-size: .62rem; }
+
+.journal13-document { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.journal13-document > div:first-child { background: #0d1117; color: #dce6f2; }
+.journal13-document > div > header { justify-content: space-between; }
+.journal13-document > div > header > span { align-items: center; display: flex; gap: 7px; }
+.journal13-document > div:nth-child(2) { background: #fff; border-left: 1px solid var(--journal13-line); }
+.journal13-document > div:nth-child(2) > header { background: #eef3f8; color: #41536b; justify-content: flex-start; }
+.journal13-document > footer { align-items: flex-start; background: #eaf7f1; color: #2b614d; display: flex; font-size: .67rem; gap: 7px; grid-column: 1 / -1; line-height: 1.5; padding: 10px 12px; }
+.journal13-document > footer svg { color: var(--journal13-green); flex: 0 0 auto; }
+.journal13-rendered { color: #2a374b; font-size: .7rem; line-height: 1.58; min-height: 100%; padding: 16px; }
+.journal13-rendered > :first-child { margin-top: 0; }
+.journal13-rendered h1 { border-bottom: 1px solid #dfe6ee; color: #172033; font-size: 1.15rem; padding-bottom: 7px; }
+.journal13-rendered h2 { color: #1e3d67; font-size: .94rem; margin-top: 17px; }
+.journal13-rendered h3 { color: #365474; font-size: .8rem; margin-top: 14px; }
+.journal13-rendered p { margin: 7px 0; }
+.journal13-rendered ul { padding-left: 21px; }
+.journal13-rendered code:not(pre code) { background: #edf2f7; border: 1px solid #d9e2ec; color: #9d174d; padding: 1px 4px; }
+.journal13-rendered blockquote { border-left: 3px solid #8b5cf6; color: #5a6780; margin: 10px 0; padding-left: 10px; }
+.journal13-entry-controls { align-items: flex-start; display: grid; gap: 10px; grid-template-columns: auto minmax(0, 1fr); }
+.journal13-entry-controls > div { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.journal13-entry-controls > div span { align-items: center; background: #f1f5f9; color: #758397; display: flex; font-size: .58rem; gap: 4px; padding: 6px 8px; }
+.journal13-entry-controls > div span.done { background: #e8f7f1; color: #28604b; }
+
+.journal13-classifier { display: grid; grid-template-columns: minmax(170px, .38fr) minmax(0, 1.62fr); }
+.journal13-classifier > nav,
+.journal13-errors > nav { background: #f1f5f9; display: flex; flex-direction: column; gap: 3px; padding: 8px; }
+.journal13-classifier > nav button,
+.journal13-errors > nav button { align-items: center; background: transparent; border: 0; border-left: 3px solid transparent; color: #56677e; cursor: pointer; display: grid; font-size: .62rem; gap: 7px; grid-template-columns: 22px 1fr; padding: 8px; text-align: left; }
+.journal13-classifier > nav button.active,
+.journal13-errors > nav button.active { background: #fff; border-left-color: var(--journal13-blue); color: #174ea6; }
+.journal13-classifier > article { padding: 18px; }
+.journal13-classifier article > small { color: var(--journal13-muted); font-size: .58rem; text-transform: uppercase; }
+.journal13-classifier blockquote { background: #f5f7fa; border-left: 4px solid #8b5cf6; color: #40516a; font-size: .7rem; line-height: 1.55; margin: 9px 0 14px; padding: 12px; }
+.journal13-classifier article > div { display: flex; flex-wrap: wrap; gap: 5px; }
+.journal13-classifier article > div button { background: #e9eef5; border: 0; border-radius: 7px; color: #53647b; padding: 7px 9px; }
+.journal13-classifier article > div button.correct { background: #dff5e9; color: #1f6748; }
+.journal13-classifier article > div button.wrong { background: #fff0e3; color: #8a5015; }
+.journal13-classifier article > aside { align-items: flex-start; display: flex; gap: 8px; margin-top: 12px; padding: 11px; }
+.journal13-classifier article > aside.good { background: #eaf7f1; color: #2b614d; }
+.journal13-classifier article > aside.danger { background: #fff2e5; color: #865114; }
+.journal13-classifier article > aside svg { flex: 0 0 auto; }
+.journal13-classifier article > aside div { display: flex; flex-direction: column; font-size: .65rem; gap: 3px; line-height: 1.45; }
+
+.journal13-incident { padding: 13px; }
+.journal13-incident > nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.journal13-incident-flow { align-items: center; background: #eef4fb; color: #4d6079; display: flex; flex-wrap: wrap; font-size: .6rem; gap: 5px; justify-content: center; margin: 10px 0; padding: 9px; }
+.journal13-incident-flow svg { color: var(--journal13-blue); }
+.journal13-incident .journal13-document { margin-bottom: 0; }
+
+.journal13-git,
+.journal13-delivery { padding: 13px; }
+.journal13-git > nav,
+.journal13-delivery > nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.journal13-command > header { justify-content: space-between; }
+.journal13-command > header > span { flex: 1; }
+.journal13-git .journal13-command,
+.journal13-delivery .journal13-command { margin-bottom: 0; }
+
+.journal13-review { padding: 13px; }
+.journal13-recall { background: #f3f0ff; border: 1px solid #dcd3fa; padding: 14px; }
+.journal13-recall > header { align-items: center; color: var(--journal13-violet); display: flex; gap: 9px; }
+.journal13-recall header small { color: #786a9f; font-size: .58rem; text-transform: uppercase; }
+.journal13-recall h3 { color: var(--journal13-ink); margin: 2px 0; }
+.journal13-recall textarea { background: #fff; border: 1px solid #cfc5ee; color: #2d3950; display: block; margin: 12px 0; min-height: 105px; padding: 10px; resize: vertical; width: 100%; }
+.journal13-recall > button { align-items: center; background: var(--journal13-violet); border: 0; border-radius: 7px; color: #fff; display: flex; gap: 6px; padding: 8px 10px; }
+.journal13-recall > aside { align-items: flex-start; background: #eaf7f1; color: #2b614d; display: flex; gap: 8px; margin-top: 10px; padding: 10px; }
+.journal13-recall > aside svg { flex: 0 0 auto; }
+.journal13-recall > aside span { display: flex; flex-direction: column; font-size: .64rem; gap: 3px; line-height: 1.45; }
+.journal13-cadence { background: #f5f8fc; padding: 12px; }
+.journal13-cadence nav { display: flex; flex-wrap: wrap; gap: 5px; }
+.journal13-cadence > div { align-items: center; color: #3f5876; display: flex; gap: 9px; margin-top: 11px; }
+.journal13-cadence > div svg { color: var(--journal13-blue); }
+.journal13-cadence > div span { display: flex; flex-direction: column; font-size: .66rem; gap: 3px; }
+.journal13-cadence > p { color: var(--journal13-muted); font-size: .63rem; line-height: 1.5; margin-bottom: 0; }
+
+.journal13-safety { display: grid; grid-template-columns: minmax(190px, .45fr) minmax(0, 1.55fr); }
+.journal13-safety > nav { background: #f1f5f9; display: flex; flex-direction: column; gap: 5px; padding: 9px; }
+.journal13-safety > nav button { text-align: left; }
+.journal13-safety > article { padding: 19px; }
+.journal13-safety > article.danger > svg { color: #b45309; }
+.journal13-safety > article.good > svg { color: var(--journal13-green); }
+.journal13-safety > article small { color: var(--journal13-muted); display: block; font-size: .58rem; margin-top: 6px; text-transform: uppercase; }
+.journal13-safety h3 { color: var(--journal13-ink); margin: 3px 0 9px; }
+.journal13-safety blockquote { background: #f5f7fa; border-left: 4px solid #a8b5c6; color: #4c5d73; font-size: .68rem; line-height: 1.5; margin: 0; padding: 11px; }
+.journal13-safety article > p { color: var(--journal13-muted); font-size: .67rem; line-height: 1.5; }
+.journal13-safety article > footer { background: #eaf7f1; color: #2b614d; font-size: .64rem; line-height: 1.45; padding: 10px; }
+.journal13-safety article.danger > footer { background: #fff2e5; color: #865114; }
+.journal13-business { align-items: center; background: #edf4fc; color: #45607d; display: flex; font-size: .61rem; gap: 6px; grid-column: 1 / -1; justify-content: center; padding: 10px; }
+.journal13-business svg { color: var(--journal13-blue); }
+
+.journal13-errors { display: grid; grid-template-columns: minmax(210px, .58fr) minmax(0, 1.42fr); }
+.journal13-errors > article { padding: 18px; }
+.journal13-errors article > header { align-items: center; color: var(--journal13-blue); display: flex; gap: 9px; }
+.journal13-errors header small { color: var(--journal13-muted); font-size: .58rem; text-transform: uppercase; }
+.journal13-errors h3 { color: var(--journal13-ink); margin: 2px 0; }
+.journal13-errors article > div { display: grid; gap: 8px; grid-template-columns: repeat(3, 1fr); margin-top: 15px; }
+.journal13-errors article section { background: #f4f7fa; padding: 11px; }
+.journal13-errors article section > svg { color: var(--journal13-blue); }
+.journal13-errors article section strong { color: var(--journal13-ink); display: block; font-size: .65rem; margin: 5px 0 3px; }
+.journal13-errors article section p { color: var(--journal13-muted); font-size: .63rem; line-height: 1.48; margin: 0; }
+
+.journal13-delivery > div { margin-top: 10px; }
+.journal13-commitment { align-items: flex-start; background: #f3f0ff; color: #544379; display: flex; gap: 10px; margin-top: 10px; padding: 13px; }
+.journal13-commitment > svg { flex: 0 0 auto; }
+.journal13-commitment > div { display: flex; flex: 1; flex-direction: column; font-size: .65rem; gap: 4px; }
+.journal13-commitment small { text-transform: uppercase; }
+.journal13-commitment input { accent-color: var(--journal13-violet); width: 100%; }
+
+@media (max-width: 1040px) {
+  .journal13-errors article > div { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .journal13-trace > div[role="tablist"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .journal13-workspace-grid { grid-template-columns: 1fr; }
+  .journal13-terminal { border-radius: 10px 10px 0 0; }
+  .journal13-project { min-height: 240px; }
+  .journal13-classifier,
+  .journal13-safety,
+  .journal13-errors { grid-template-columns: 1fr; }
+  .journal13-classifier > nav,
+  .journal13-safety > nav,
+  .journal13-errors > nav { flex-direction: row; overflow-x: auto; }
+  .journal13-classifier > nav button,
+  .journal13-errors > nav button { flex: 0 0 180px; }
+  .journal13-safety > nav button { flex: 0 0 210px; }
+}
+
+@media (max-width: 760px) {
+  .journal13-system { grid-template-columns: 1fr; }
+  .journal13-system > aside { max-height: 260px; overflow-y: auto; }
+  .journal13-document { grid-template-columns: 1fr; }
+  .journal13-document > div:nth-child(2) { border-left: 0; border-top: 1px solid var(--journal13-line); }
+  .journal13-document > footer { grid-column: 1; }
+  .journal13-entry > header { align-items: flex-start; flex-direction: column; }
+  .journal13-entry-controls { grid-template-columns: 1fr; }
+  .journal13-entry-controls > button { margin-left: 0; }
+}
+
+@media (max-width: 640px) {
+  .guided-learning-journal-lesson { width: calc(100% - 12px); }
+  .journal13-trace > div[role="tablist"],
+  .journal13-workspace > nav,
+  .journal13-git > nav,
+  .journal13-delivery > nav { display: flex; overflow-x: auto; }
+  .journal13-trace > div button,
+  .journal13-workspace > nav button,
+  .journal13-git > nav button,
+  .journal13-delivery > nav button { flex: 0 0 135px; }
+  .journal13-entry > header > div,
+  .journal13-incident > nav,
+  .journal13-cadence nav { flex-wrap: nowrap; max-width: 100%; overflow-x: auto; }
+  .journal13-entry > header button,
+  .journal13-incident > nav button,
+  .journal13-cadence nav button { flex: 0 0 auto; }
+  .journal13-incident-flow { align-items: stretch; flex-direction: column; }
+  .journal13-incident-flow svg { align-self: center; transform: rotate(90deg); }
+  .journal13-business { align-items: stretch; flex-direction: column; text-align: center; }
+  .journal13-business svg { align-self: center; transform: rotate(90deg); }
+  .journal13-trace article > div { align-items: stretch; flex-direction: column; }
+  .journal13-trace article > div svg { align-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 360px) {
+  .journal13-terminal > header,
+  .journal13-command > header,
+  .journal13-document > div > header { align-items: flex-start; flex-direction: column; }
+  .journal13-terminal header em,
+  .journal13-project header em,
+  .journal13-document header em { margin-left: 0; }
+  .journal13-trace,
+  .journal13-workspace,
+  .journal13-entry,
+  .journal13-incident,
+  .journal13-git,
+  .journal13-review,
+  .journal13-delivery,
+  .journal13-errors > article,
+  .journal13-safety > article { padding: 10px; }
+}

@@ -1,0 +1,171 @@
+.guided-docker-wsl-lesson { --docker18-blue:#2563eb; --docker18-cyan:#0891b2; --docker18-green:#059669; --docker18-amber:#b45309; --docker18-red:#c2413d; --docker18-violet:#6d4bd1; --docker18-ink:#17243b; --docker18-muted:#63748b; --docker18-line:#d9e3ef; max-width:100%; overflow:visible; }
+.guided-docker-wsl-lesson *, .guided-docker-wsl-lesson *::before, .guided-docker-wsl-lesson *::after { box-sizing:border-box; min-width:0; }
+.guided-docker-wsl-lesson button,.guided-docker-wsl-lesson input,.guided-docker-wsl-lesson select { font:inherit; }
+.guided-docker-wsl-lesson p,.guided-docker-wsl-lesson span,.guided-docker-wsl-lesson strong,.guided-docker-wsl-lesson code,.guided-docker-wsl-lesson pre,.guided-docker-wsl-lesson a { overflow-wrap:anywhere; }
+.guided-docker-wsl-lesson .guided-hero { background:radial-gradient(circle at 83% 20%,rgba(45,212,191,.22),transparent 27%),radial-gradient(circle at 60% 115%,rgba(59,130,246,.22),transparent 36%),linear-gradient(135deg,#10192b,#17335a 57%,#08645f); }
+.guided-docker-wsl-lesson .guided-progress-track span { background:linear-gradient(90deg,#5eead4,#60a5fa); }
+.docker18-architecture,.docker18-requirements,.docker18-wsl,.docker18-installer,.docker18-settings,.docker18-proof,.docker18-objects,.docker18-hello,.docker18-runtime,.docker18-errors,.docker18-delivery,.docker18-code { border:1px solid var(--docker18-line); border-radius:14px; margin:14px 0; overflow:hidden; }
+.docker18-copy { align-items:center; background:#273850; border:1px solid #465a74; border-radius:6px; color:#e4edf8; display:inline-flex; flex:0 0 auto; font-size:.58rem; gap:5px; padding:5px 8px; }
+.docker18-code { background:#101826; }
+.docker18-code>header { align-items:center; background:#1d2a3d; color:#dce7f5; display:flex; justify-content:space-between; padding:9px 12px; }
+.docker18-code>header span { align-items:center; display:flex; font-size:.64rem; gap:7px; }
+.docker18-output { background:#0c1421; border-top:1px solid #29394f; color:#d5e1f0; padding:12px 15px; }
+.docker18-output small { color:#7e91aa; display:block; font-size:.51rem; margin-bottom:7px; }
+.docker18-output pre { font-size:.63rem; line-height:1.6; margin:0; white-space:pre-wrap; }
+.docker18-code>footer { align-items:flex-start; background:#eaf4ff; color:#3b5978; display:flex; font-size:.63rem; gap:8px; line-height:1.5; padding:10px 13px; }
+.docker18-code>footer svg { color:var(--docker18-blue); flex:0 0 auto; }
+.docker18-code>footer.warning { background:#fff3df; color:#89581d; }
+.docker18-code>footer.warning svg { color:var(--docker18-amber); }
+.docker18-official-link { align-items:center; background:#e8f1ff; color:#174ea6; display:flex; font-size:.58rem; gap:6px; justify-content:center; padding:10px; text-decoration:none; }
+
+.docker18-architecture { background:#f5f8fb; padding:14px; }
+.docker18-layer-stack { align-items:center; display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr; }
+.docker18-layer-stack>button { align-items:center; background:#e6edf4; border:1px solid transparent; color:#526a82; display:flex; flex-direction:column; gap:6px; min-height:86px; padding:12px 6px; }
+.docker18-layer-stack>button span { font-size:.59rem; font-weight:800; }
+.docker18-layer-stack>button.active { background:#dff4f1; border-color:#86d7cd; color:#08766d; }
+.docker18-layer-stack>svg { color:#99aabd; }
+.docker18-architecture>article { align-items:center; background:#fff; border-left:4px solid var(--docker18-cyan); display:flex; gap:16px; margin-top:10px; min-height:145px; padding:20px; }
+.docker18-architecture>article>svg { color:var(--docker18-cyan); flex:0 0 auto; }
+.docker18-architecture article small { color:var(--docker18-muted); font-size:.5rem; }
+.docker18-architecture article h3 { color:var(--docker18-ink); margin:3px 0 6px; }
+.docker18-architecture article p { color:#5c7188; font-size:.64rem; line-height:1.55; margin:0; }
+.docker18-compare { display:grid; gap:8px; grid-template-columns:1fr 1fr; margin-top:8px; }
+.docker18-compare section { background:#eaf0f6; display:flex; flex-direction:column; gap:4px; padding:11px; }
+.docker18-compare strong { color:#34516f; font-size:.62rem; }
+.docker18-compare span { color:#60758b; font-size:.56rem; line-height:1.5; }
+.docker18-architecture>p { align-items:flex-start; background:#eaf4ff; color:#3e5c7a; display:flex; font-size:.61rem; gap:8px; line-height:1.5; margin:8px 0 0; padding:10px; }
+.docker18-architecture>p svg { flex:0 0 auto; }
+.docker18-architecture>p span { display:flex; flex-direction:column; }
+
+.docker18-requirements { background:#f5f8fb; padding:13px; }
+.docker18-task-manager { background:#202836; border-radius:9px; color:#dbe5f1; overflow:hidden; }
+.docker18-task-manager>header { align-items:center; background:#141c28; display:flex; font-size:.61rem; justify-content:space-between; padding:9px 12px; }
+.docker18-task-manager>header em { color:#8799af; font-size:.48rem; font-style:normal; }
+.docker18-task-manager>div { display:grid; grid-template-columns:125px 1fr; min-height:215px; }
+.docker18-task-manager aside { background:#293344; display:flex; flex-direction:column; gap:4px; padding:10px; }
+.docker18-task-manager aside span,.docker18-task-manager aside strong { font-size:.57rem; padding:8px; }
+.docker18-task-manager aside strong { background:#34445a; color:#75e2d5; }
+.docker18-task-manager main { padding:14px; }
+.docker18-cpu-chart { align-items:end; background:repeating-linear-gradient(0deg,transparent,transparent 24px,#334155 25px),repeating-linear-gradient(90deg,transparent,transparent 34px,#334155 35px); display:flex; gap:4%; height:105px; padding:8px; }
+.docker18-cpu-chart i { background:#36b6aa; display:block; flex:1; opacity:.75; }
+.docker18-cpu-chart i:nth-child(1){height:20%}.docker18-cpu-chart i:nth-child(2){height:38%}.docker18-cpu-chart i:nth-child(3){height:31%}.docker18-cpu-chart i:nth-child(4){height:62%}.docker18-cpu-chart i:nth-child(5){height:47%}.docker18-cpu-chart i:nth-child(6){height:29%}.docker18-cpu-chart i:nth-child(7){height:40%}.docker18-cpu-chart i:nth-child(8){height:25%}
+.docker18-task-manager dl { display:grid; gap:6px; grid-template-columns:repeat(3,1fr); margin:10px 0 0; }
+.docker18-task-manager dl div { background:#293344; padding:8px; }
+.docker18-task-manager dt { color:#91a4bb; font-size:.49rem; }
+.docker18-task-manager dd { font-size:.62rem; margin:3px 0 0; }
+.docker18-task-manager dd.ok { color:#69dfbd; }
+.docker18-requirement-grid { display:grid; gap:7px; grid-template-columns:repeat(4,1fr); margin:10px 0; }
+.docker18-requirement-grid>button { background:#fff; border:1px solid #d7e2ed; color:#536b83; display:grid; gap:4px; grid-template-columns:auto 1fr; padding:11px; text-align:left; }
+.docker18-requirement-grid>button>span { grid-row:span 4; }
+.docker18-requirement-grid svg { color:#91a4b8; height:20px; width:20px; }
+.docker18-requirement-grid strong { color:var(--docker18-ink); font-size:.61rem; }
+.docker18-requirement-grid small { font-size:.53rem; line-height:1.45; }
+.docker18-requirement-grid b,.docker18-requirement-grid em { font-size:.49rem; }
+.docker18-requirement-grid em { color:#8596a8; font-style:normal; }
+.docker18-requirement-grid>button.ok { background:#ecfaf5; border-color:#a8e2cc; }.docker18-requirement-grid>button.ok svg,.docker18-requirement-grid>button.ok b{color:var(--docker18-green)}
+.docker18-requirement-grid>button.attention { background:#fff3e7; border-color:#efc18b; }.docker18-requirement-grid>button.attention svg,.docker18-requirement-grid>button.attention b{color:var(--docker18-amber)}
+
+.docker18-wsl { background:#f5f8fb; padding:12px; }
+.docker18-wsl>nav { display:grid; grid-template-columns:repeat(4,1fr); }
+.docker18-wsl>nav button { background:#e4ebf3; border:0; color:#5b7188; font-size:.56rem; padding:10px 6px; }
+.docker18-wsl>nav button.active { background:#dcecff; color:#174ea6; font-weight:800; }
+.docker18-linux-user { align-items:flex-start; background:#e9f8f4; color:#436a65; display:flex; gap:10px; padding:12px; }
+.docker18-linux-user>svg { color:var(--docker18-green); flex:0 0 auto; }
+.docker18-linux-user>div { display:flex; flex-direction:column; gap:3px; }
+.docker18-linux-user small { color:#6f8886; font-size:.49rem; }
+.docker18-linux-user strong { color:#154f46; font-size:.65rem; }
+.docker18-linux-user code { background:#d7eee8; color:#285a53; font-size:.58rem; padding:5px 7px; }
+.docker18-linux-user span { font-size:.56rem; line-height:1.45; margin-top:3px; }
+
+.docker18-installer { background:#f3f6fa; }
+.docker18-installer>header { align-items:center; background:#172235; color:#dfe9f4; display:flex; font-size:.61rem; justify-content:space-between; padding:10px 12px; }
+.docker18-installer>header span { align-items:center; display:flex; gap:7px; }
+.docker18-installer>header em { color:#8497ae; font-size:.48rem; font-style:normal; }
+.docker18-installer-body { display:grid; grid-template-columns:190px 1fr; min-height:400px; }
+.docker18-installer-body>aside { background:#e3e9f0; display:flex; flex-direction:column; padding:10px; }
+.docker18-installer-body>aside button { align-items:center; background:transparent; border:0; color:#60758b; display:flex; font-size:.56rem; gap:7px; padding:9px; text-align:left; }
+.docker18-installer-body>aside button span { align-items:center; background:#cbd7e3; border-radius:50%; display:flex; flex:0 0 auto; height:22px; justify-content:center; width:22px; }
+.docker18-installer-body>aside button.active { background:#fff; color:#174ea6; }.docker18-installer-body>aside button.done span{background:var(--docker18-green);color:#fff}
+.docker18-installer-body>main { background:#fff; padding:22px; }
+.docker18-window-logo { align-items:center; background:#dcf4f1; border-radius:50%; color:#087c72; display:flex; height:92px; justify-content:center; margin-bottom:15px; width:92px; }
+.docker18-installer-body main>small { color:var(--docker18-muted); font-size:.5rem; }
+.docker18-installer-body h3 { color:var(--docker18-ink); margin:4px 0 8px; }
+.docker18-installer-body p { color:#5a7087; font-size:.63rem; line-height:1.6; }
+.docker18-installer-body main>button,.docker18-next { align-items:center; background:var(--docker18-blue); border:0; border-radius:7px; color:#fff; display:flex; gap:6px; margin:16px 0 0 auto; padding:8px 11px; }
+.docker18-installer-body main>button:disabled,.docker18-next:disabled { opacity:.42; }
+.docker18-license,.docker18-engine-state { align-items:flex-start; background:#e9f8f4; color:#34675f; display:flex; font-size:.58rem; gap:8px; line-height:1.5; margin-top:12px; padding:10px; }
+.docker18-license svg,.docker18-engine-state svg { color:var(--docker18-green); flex:0 0 auto; }
+.docker18-engine-state span { display:flex; flex-direction:column; }
+.docker18-scope { display:grid; gap:6px; margin-top:12px; }
+.docker18-scope span { border:1px solid #d4dee9; color:#526a82; display:flex; flex-direction:column; font-size:.58rem; padding:10px; }
+.docker18-scope span.selected { background:#e8f1ff; border-color:#9cbfee; color:#174ea6; }
+.docker18-scope b { font-size:.49rem; margin-top:3px; }
+
+.docker18-settings { background:#f4f7fa; }
+.docker18-settings>header { align-items:center; background:#172235; color:#e2ebf5; display:flex; font-size:.61rem; justify-content:space-between; padding:9px 12px; }
+.docker18-settings>header span { align-items:center; display:flex; gap:6px; }.docker18-settings>header .running{color:#70dfbc}.docker18-settings>header .running i{background:#20b486;border-radius:50%;height:8px;width:8px}
+.docker18-settings>div { display:grid; grid-template-columns:145px 1fr; min-height:390px; }
+.docker18-settings>div>aside { background:#e4eaf1; display:flex; flex-direction:column; padding:9px; }
+.docker18-settings>div>aside button { align-items:center; background:transparent; border:0; color:#60758b; display:flex; font-size:.57rem; gap:6px; padding:9px; text-align:left; }.docker18-settings>div>aside button.active{background:#fff;color:#174ea6}
+.docker18-settings>div>main { background:#fff; padding:15px; }
+.docker18-settings main>nav { display:flex; flex-wrap:wrap; gap:5px; }
+.docker18-settings main>nav button { background:#e6edf4; border:0; color:#5b7188; font-size:.56rem; padding:8px; }.docker18-settings main>nav button.active{background:#dcecff;color:#174ea6}
+.docker18-settings main>section { margin-top:18px; }
+.docker18-settings h3 { color:var(--docker18-ink); }
+.docker18-settings main>section>label { align-items:flex-start; border:1px solid #d7e1eb; color:#4e667f; display:flex; gap:9px; padding:12px; }
+.docker18-settings main>section>label span { display:flex; flex-direction:column; }.docker18-settings label strong{font-size:.62rem}.docker18-settings label small{color:#73869a;font-size:.53rem;margin-top:3px}
+.docker18-settings main>section>p { background:#e9f8f4; color:#376a61; font-size:.57rem; line-height:1.5; padding:9px; }.docker18-settings main>section>p.danger{background:#fff0ed;color:#983e34}
+.docker18-distro { align-items:center; border:1px solid #d7e1eb; display:flex; justify-content:space-between; padding:12px; }.docker18-distro>span{align-items:center;display:grid;gap:2px 7px;grid-template-columns:auto 1fr}.docker18-distro>span svg{grid-row:span 2}.docker18-distro b{font-size:.61rem}.docker18-distro small{color:#73869a;font-size:.49rem}
+.docker18-switch input { position:absolute; opacity:0; }.docker18-switch i{background:#b8c6d5;border-radius:12px;display:block;height:22px;position:relative;width:40px}.docker18-switch i::after{background:#fff;border-radius:50%;content:"";height:16px;left:3px;position:absolute;top:3px;transition:.2s;width:16px}.docker18-switch input:checked+i{background:var(--docker18-green)}.docker18-switch input:checked+i::after{left:21px}
+.docker18-settings>footer { align-items:flex-start; background:#eaf4ff; color:#3d5b79; display:flex; font-size:.59rem; gap:8px; line-height:1.5; padding:10px 12px; }.docker18-settings>footer svg{flex:0 0 auto}.docker18-settings>footer span{display:flex;flex-direction:column}
+
+.docker18-proof { background:#f5f8fb; padding:12px; }
+.docker18-proof-toolbar { align-items:center; display:flex; gap:10px; justify-content:space-between; }
+.docker18-proof-toolbar>nav { display:flex; flex-wrap:wrap; gap:4px; }
+.docker18-proof-toolbar button { background:#e4ebf3; border:0; color:#5a7087; font-size:.55rem; padding:8px; }.docker18-proof-toolbar button.active{background:#dcecff;color:#174ea6}
+.docker18-proof-toolbar>label { align-items:center; color:#536a82; display:flex; font-size:.55rem; gap:6px; }
+.docker18-client-engine { align-items:center; display:grid; grid-template-columns:1fr auto 1fr auto 1fr; margin:12px 0; }
+.docker18-client-engine>span { align-items:center; background:#fff; border-bottom:3px solid #9db4cc; color:#4c657e; display:flex; flex-direction:column; gap:5px; padding:14px; }.docker18-client-engine>span b{font-size:.58rem}.docker18-client-engine>span.ok{border-color:var(--docker18-green);color:#087557}.docker18-client-engine>span.broken{background:#fff0ed;border-color:var(--docker18-red);color:#9a3d34}.docker18-client-engine>svg{color:#97a9bc}
+
+.docker18-objects { background:#f5f8fb; padding:13px; }
+.docker18-object-flow { align-items:center; display:grid; grid-template-columns:1fr auto 1fr auto 1fr; }
+.docker18-object-flow button { align-items:center; background:#e5ecf3; border:1px solid transparent; color:#5c7288; display:flex; flex-direction:column; gap:4px; min-height:100px; padding:11px; }.docker18-object-flow button strong{font-size:.62rem}.docker18-object-flow button small{font-size:.5rem}.docker18-object-flow button.active{background:#dff4f1;border-color:#83d4ca;color:#08766d}.docker18-object-flow>svg{color:#9aabbd}
+.docker18-objects>article { align-items:flex-start; background:#fff; display:flex; gap:14px; margin-top:8px; min-height:170px; padding:20px; }.docker18-objects>article>svg{color:var(--docker18-cyan);flex:0 0 auto}.docker18-objects article small{color:var(--docker18-muted);font-size:.5rem}.docker18-objects article h3{color:var(--docker18-ink);margin:3px 0}.docker18-objects article p{color:#5b7188;font-size:.62rem;line-height:1.55}.docker18-objects article code{background:#eaf1f7;color:#31506f;font-size:.61rem;padding:7px}
+.docker18-image-layers { display:flex; flex-direction:column; margin:8px 0; }.docker18-image-layers span{background:#dbeafe;border:1px solid #b8d4f5;color:#315c8d;font-size:.54rem;margin:-1px auto 0;padding:7px;text-align:center}.docker18-image-layers span:nth-child(1){width:62%}.docker18-image-layers span:nth-child(2){width:72%}.docker18-image-layers span:nth-child(3){width:82%}.docker18-image-layers span:nth-child(4){width:92%}
+
+.docker18-hello { background:#f5f8fb; padding:12px; }
+.docker18-hello-timeline { display:grid; grid-template-columns:repeat(6,1fr); }
+.docker18-hello-timeline button { align-items:center; background:#e4ebf3; border:0; color:#5c7188; display:flex; font-size:.52rem; gap:5px; justify-content:center; padding:9px 4px; }.docker18-hello-timeline button span{align-items:center;background:#ccd8e4;border-radius:50%;display:flex;height:20px;justify-content:center;width:20px}.docker18-hello-timeline button.active{background:#dcecff;color:#174ea6}.docker18-hello-timeline button.done span{background:var(--docker18-green);color:#fff}
+.docker18-docker-ui { background:#fff; border:1px solid #d7e2ed; margin-top:12px; }
+.docker18-docker-ui>header { align-items:center; background:#172235; color:#e0e9f4; display:flex; font-size:.59rem; justify-content:space-between; padding:9px 11px; }.docker18-docker-ui>header span{align-items:center;display:flex;gap:6px}.docker18-docker-ui>header em{color:#8799af;font-size:.47rem;font-style:normal}
+.docker18-docker-ui>nav { background:#e7edf3; display:flex; gap:4px; padding:7px; }.docker18-docker-ui>nav button{background:transparent;border:0;color:#60758b;font-size:.55rem;padding:7px}.docker18-docker-ui>nav button.active{background:#fff;color:#174ea6}
+.docker18-docker-ui>main { min-height:100px; padding:12px; }.docker18-docker-ui>main>div{align-items:center;display:grid;gap:7px;grid-template-columns:auto 1fr 1fr auto;padding:10px}.docker18-docker-ui .exited{background:#9aaabd;border-radius:50%;height:9px;width:9px}.docker18-docker-ui main strong,.docker18-docker-ui main code,.docker18-docker-ui main b{color:#506981;font-size:.57rem}
+.docker18-docker-ui>footer { background:#edf3f8; display:grid; font-size:.53rem; gap:5px 10px; grid-template-columns:auto 1fr; padding:10px; }.docker18-docker-ui>footer code{color:#174ea6}.docker18-docker-ui>footer span{color:#64798e}
+
+.docker18-runtime { background:#f5f8fb; padding:13px; }
+.docker18-port-controls { align-items:center; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; }.docker18-port-controls label{align-items:center;color:#536b83;display:flex;font-size:.57rem;gap:7px}.docker18-port-controls select{border:1px solid #cbd8e5;color:#34516f;padding:6px}
+.docker18-port-map { align-items:stretch; display:grid; gap:8px; grid-template-columns:1fr auto 1fr; margin:12px 0; }
+.docker18-port-map>section { align-items:center; background:#fff; color:#4c657e; display:flex; flex-direction:column; gap:4px; padding:15px; text-align:center; }.docker18-port-map>section>svg{color:var(--docker18-cyan)}.docker18-port-map small{color:var(--docker18-muted);font-size:.48rem}.docker18-port-map strong{color:var(--docker18-ink);font-size:.65rem}.docker18-port-map section span{font-size:.52rem}.docker18-port-map section span.ok{color:var(--docker18-green)}.docker18-port-map section span.danger{color:var(--docker18-red)}
+.docker18-port-map>div { align-items:center; color:#537088; display:flex; flex-direction:column; justify-content:center; }.docker18-port-map>div code{background:#172235;color:#75e2d5;font-size:.59rem;padding:7px}.docker18-port-map>div span{font-size:.49rem;margin-top:4px}
+.docker18-runtime-grid { display:grid; gap:8px; grid-template-columns:repeat(3,1fr); }
+.docker18-runtime-grid article { background:#fff; border-top:3px solid #a6c3df; color:#5b7188; padding:12px; }.docker18-runtime-grid article>svg{color:var(--docker18-cyan)}.docker18-runtime-grid strong{color:var(--docker18-ink);display:block;font-size:.62rem;margin:5px 0}.docker18-runtime-grid p{font-size:.56rem;line-height:1.5}.docker18-runtime-grid span{align-items:flex-start;background:#fff3df;color:#89591e;display:flex;font-size:.51rem;gap:5px;line-height:1.4;padding:7px}.docker18-runtime-grid span svg{flex:0 0 auto}
+
+.docker18-errors { background:#f5f7fa; display:grid; grid-template-columns:190px 1fr; }
+.docker18-errors>nav { background:#e8eef4; display:flex; flex-direction:column; padding:8px; }
+.docker18-errors>nav button { align-items:center; background:transparent; border:0; color:#5b7188; display:flex; font-size:.55rem; gap:7px; padding:8px; text-align:left; }.docker18-errors>nav button span{align-items:center;background:#d1dce7;border-radius:50%;display:flex;flex:0 0 auto;height:21px;justify-content:center;width:21px}.docker18-errors>nav button.active{background:#fff;color:#174ea6}.docker18-errors>nav button.active span{background:var(--docker18-blue);color:#fff}
+.docker18-errors>article { background:#fff; padding:17px; }.docker18-errors>article>header{align-items:flex-start;display:flex;gap:9px}.docker18-errors>article>header>svg{color:var(--docker18-amber);flex:0 0 auto}.docker18-errors header small,.docker18-diagnosis small{color:var(--docker18-muted);font-size:.49rem}.docker18-errors h3{color:var(--docker18-ink);margin:3px 0}
+.docker18-diagnosis { align-items:stretch; display:grid; grid-template-columns:1fr auto 1fr; margin:14px 0; }.docker18-diagnosis>svg{align-self:center;color:#96a8bb}.docker18-diagnosis section{background:#f0f4f8;padding:11px}.docker18-diagnosis p{color:#566d84;font-size:.58rem;line-height:1.55;margin:5px 0}
+.docker18-stop-rule { align-items:flex-start; background:#e9f8f4; color:#35685f; display:flex; font-size:.57rem; gap:7px; line-height:1.45; padding:10px; }.docker18-stop-rule svg{flex:0 0 auto}
+.docker18-security { display:grid; gap:7px; grid-column:1/-1; grid-template-columns:repeat(3,1fr); padding:10px; }.docker18-security section{background:#fff;display:grid;gap:3px 7px;grid-template-columns:auto 1fr;padding:11px}.docker18-security section>svg{color:var(--docker18-cyan);grid-row:span 2}.docker18-security strong{color:var(--docker18-ink);font-size:.59rem}.docker18-security span{color:#5e748a;font-size:.53rem;line-height:1.45}
+
+.docker18-delivery { background:#f5f8fb; padding:12px; }
+.docker18-delivery>nav { display:grid; grid-template-columns:repeat(6,1fr); }.docker18-delivery>nav button{align-items:center;background:#e4ebf3;border:0;color:#5a7087;display:flex;font-size:.52rem;gap:5px;justify-content:center;padding:8px 4px}.docker18-delivery>nav button span{align-items:center;background:#d1dde9;border-radius:50%;display:flex;height:20px;justify-content:center;width:20px}.docker18-delivery>nav button.active{background:#ddecff;color:#174ea6}.docker18-delivery>nav button.done span{background:var(--docker18-green);color:#fff}
+.docker18-doc { background:#101826; border-radius:10px; margin:12px 0; overflow:hidden; }.docker18-doc>header{align-items:center;background:#1d2a3d;color:#dce7f5;display:flex;font-size:.6rem;justify-content:space-between;padding:9px 12px}.docker18-doc>header>span{align-items:center;display:flex;gap:6px}.docker18-doc>header>div{display:flex;flex-wrap:wrap;gap:5px}.docker18-doc>header>div>button:not(.docker18-copy){background:transparent;border:0;border-bottom:2px solid transparent;color:#98abc1;font-size:.54rem;padding:6px}.docker18-doc>header>div>button.active{border-bottom-color:#60a5fa;color:#fff}
+.docker18-doc>article { background:#fff; color:#5a7087; min-height:360px; padding:22px; }.docker18-doc article h2,.docker18-doc article h3{color:var(--docker18-ink)}.docker18-doc article h2{margin-top:0}.docker18-doc article h3{font-size:.71rem;margin:14px 0 5px}.docker18-doc article p,.docker18-doc article li{font-size:.6rem;line-height:1.5}
+.docker18-defense { align-items:flex-start; background:#eaf4ff; color:#3e5c7b; display:flex; gap:9px; padding:11px; }.docker18-defense>svg{color:var(--docker18-blue);flex:0 0 auto}.docker18-defense>div{display:flex;flex-direction:column}.docker18-defense small{color:var(--docker18-muted);font-size:.48rem}.docker18-defense strong{color:var(--docker18-ink);font-size:.64rem}.docker18-defense span{font-size:.57rem;line-height:1.5}
+
+@media(max-width:1000px){.docker18-requirement-grid{grid-template-columns:1fr 1fr}.docker18-runtime-grid{grid-template-columns:1fr}.docker18-security{grid-template-columns:1fr}.docker18-delivery>nav{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.docker18-layer-stack{grid-template-columns:1fr}.docker18-layer-stack>svg{justify-self:center}.docker18-layer-stack>button{flex-direction:row;min-height:0}.docker18-requirement-grid{grid-template-columns:1fr 1fr}.docker18-hello-timeline{grid-template-columns:repeat(3,1fr)}.docker18-errors{grid-template-columns:165px 1fr}}
+@media(max-width:720px){.docker18-compare,.docker18-task-manager dl,.docker18-requirement-grid,.docker18-wsl>nav{grid-template-columns:1fr}.docker18-task-manager>div,.docker18-installer-body,.docker18-settings>div,.docker18-errors{grid-template-columns:1fr}.docker18-task-manager aside,.docker18-installer-body>aside,.docker18-settings>div>aside,.docker18-errors>nav{display:grid;grid-template-columns:1fr 1fr}.docker18-proof-toolbar{align-items:flex-start;flex-direction:column}.docker18-object-flow{grid-template-columns:1fr}.docker18-object-flow>svg{justify-self:center;rotate:90deg}.docker18-port-map{grid-template-columns:1fr}.docker18-port-map>div{padding:7px}.docker18-diagnosis{grid-template-columns:1fr}.docker18-diagnosis>svg{justify-self:center;rotate:90deg}.docker18-docker-ui>main>div{grid-template-columns:auto 1fr}.docker18-delivery>nav{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:520px){.docker18-task-manager>header,.docker18-installer>header,.docker18-docker-ui>header,.docker18-doc>header{align-items:flex-start;flex-direction:column;gap:7px}.docker18-task-manager aside,.docker18-installer-body>aside,.docker18-settings>div>aside,.docker18-errors>nav{grid-template-columns:1fr}.docker18-client-engine{grid-template-columns:1fr}.docker18-client-engine>svg{justify-self:center;rotate:90deg}.docker18-hello-timeline,.docker18-delivery>nav{grid-template-columns:1fr 1fr}.docker18-port-controls{align-items:flex-start;flex-direction:column}.docker18-docker-ui>footer{grid-template-columns:1fr}.docker18-doc>header>div{width:100%}}
+@media(max-width:360px){.docker18-architecture,.docker18-requirements,.docker18-wsl,.docker18-proof,.docker18-objects,.docker18-hello,.docker18-runtime,.docker18-delivery{padding:8px}.docker18-hello-timeline,.docker18-delivery>nav{grid-template-columns:1fr}.docker18-copy{max-width:100%}.docker18-installer-body>main{padding:14px}.docker18-settings>div>main{padding:10px}.docker18-port-map>section{padding:10px}.docker18-runtime-grid article{padding:9px}}

@@ -6,8 +6,29 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CheckCircle2, Copy, Check, Play, Pause, ChevronRight, ChevronLeft, Clock, BookOpen, ListChecks, Menu } from 'lucide-react';
 import GuidedCourseOpeningLesson000 from './GuidedCourseOpeningLesson000';
 import GuidedCourseMapLesson001 from './GuidedCourseMapLesson001';
+import GuidedDiagnosticLesson002 from './GuidedDiagnosticLesson002';
+import GuidedWindowsWorkspaceLesson003 from './GuidedWindowsWorkspaceLesson003';
+import GuidedPowerShellLesson004 from './GuidedPowerShellLesson004';
+import GuidedJavaPlatformLesson005 from './GuidedJavaPlatformLesson005';
+import GuidedManualCompilationLesson006 from './GuidedManualCompilationLesson006';
+import GuidedIntelliJSetupLesson007 from './GuidedIntelliJSetupLesson007';
 import GuidedIntelliJLesson008 from './GuidedIntelliJLesson008';
+import GuidedGitSetupLesson009 from './GuidedGitSetupLesson009';
 import GuidedGitLesson010 from './GuidedGitLesson010';
+import GuidedGitHubRemoteLesson011 from './GuidedGitHubRemoteLesson011';
+import GuidedMarkdownLesson012 from './GuidedMarkdownLesson012';
+import GuidedLearningJournalLesson013 from './GuidedLearningJournalLesson013';
+import GuidedCodexEthicsLesson014 from './GuidedCodexEthicsLesson014';
+import GuidedMavenSetupLesson015 from './GuidedMavenSetupLesson015';
+import GuidedPostgresDBeaverLesson016 from './GuidedPostgresDBeaverLesson016';
+import GuidedHttpClientLesson017 from './GuidedHttpClientLesson017';
+import GuidedDockerWslLesson018 from './GuidedDockerWslLesson018';
+import GuidedRepositoryStructureLesson019 from './GuidedRepositoryStructureLesson019';
+import GuidedEnvironmentGateLesson020 from './GuidedEnvironmentGateLesson020';
+import GuidedFirstJavaProgramLesson021 from './GuidedFirstJavaProgramLesson021';
+import GuidedCodeStructureLesson022 from './GuidedCodeStructureLesson022';
+import GuidedUsefulCommentsLesson023 from './GuidedUsefulCommentsLesson023';
+import GuidedVariablesLesson024 from './GuidedVariablesLesson024';
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1249,12 +1270,96 @@ const MarkdownViewerV2 = (props) => {
     return <GuidedCourseMapLesson001 {...props} />;
   }
 
+  if (props.lesson?.id?.startsWith('002_')) {
+    return <GuidedDiagnosticLesson002 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('003_')) {
+    return <GuidedWindowsWorkspaceLesson003 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('004_')) {
+    return <GuidedPowerShellLesson004 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('005_')) {
+    return <GuidedJavaPlatformLesson005 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('006_')) {
+    return <GuidedManualCompilationLesson006 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('007_')) {
+    return <GuidedIntelliJSetupLesson007 {...props} />;
+  }
+
   if (props.lesson?.id?.startsWith('008_')) {
     return <GuidedIntelliJLesson008 {...props} />;
   }
 
+  if (props.lesson?.id?.startsWith('009_')) {
+    return <GuidedGitSetupLesson009 {...props} />;
+  }
+
   if (props.lesson?.id?.startsWith('010_')) {
     return <GuidedGitLesson010 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('011_')) {
+    return <GuidedGitHubRemoteLesson011 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('012_')) {
+    return <GuidedMarkdownLesson012 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('013_')) {
+    return <GuidedLearningJournalLesson013 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('014_')) {
+    return <GuidedCodexEthicsLesson014 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('015_')) {
+    return <GuidedMavenSetupLesson015 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('016_')) {
+    return <GuidedPostgresDBeaverLesson016 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('017_')) {
+    return <GuidedHttpClientLesson017 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('018_')) {
+    return <GuidedDockerWslLesson018 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('019_')) {
+    return <GuidedRepositoryStructureLesson019 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('020_')) {
+    return <GuidedEnvironmentGateLesson020 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('021_')) {
+    return <GuidedFirstJavaProgramLesson021 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('022_')) {
+    return <GuidedCodeStructureLesson022 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('023_')) {
+    return <GuidedUsefulCommentsLesson023 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('024_')) {
+    return <GuidedVariablesLesson024 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

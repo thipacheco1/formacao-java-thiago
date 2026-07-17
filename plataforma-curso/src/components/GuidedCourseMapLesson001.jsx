@@ -28,6 +28,7 @@ import {
   COURSE_TOTAL_LESSONS
 } from '../data/coursePlan';
 import './guidedLesson.css';
+import GuidedLessonFacts from './GuidedLessonFacts';
 import './guidedCourseMapLesson.css';
 
 const LESSON_STORAGE_KEY = 'guided-course-map-lesson-001-progress';
@@ -537,7 +538,7 @@ export default function GuidedCourseMapLesson001({
 
   const selectStep = index => {
     setActiveIndex(index);
-    document.querySelector('.content-scroll-area')?.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.guided-layout')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleActiveStep = () => {
@@ -563,7 +564,7 @@ export default function GuidedCourseMapLesson001({
         <div className="guided-progress-track" aria-label={`Progresso: ${progress}%`}><span style={{ width: `${progress}%` }} /></div>
       </header>
 
-      <div className="map-course-facts" aria-label="Dimensão da formação"><span><strong>{COURSE_MODULE_COUNT}</strong> módulos</span><i /><span><strong>{COURSE_TOTAL_LESSONS - 1}</strong> aulas numeradas</span><i /><span><strong>5</strong> fases conectadas</span></div>
+      <GuidedLessonFacts ariaLabel="Dimensão da formação" items={[{ value: COURSE_MODULE_COUNT, label: 'módulos' }, { value: COURSE_TOTAL_LESSONS - 1, label: 'aulas numeradas' }, { value: 5, label: 'fases conectadas' }]} />
 
       <div className="guided-layout">
         <nav className="guided-step-nav" aria-label="Etapas da aula 001">

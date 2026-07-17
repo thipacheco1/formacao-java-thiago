@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { COURSE_MODULES, COURSE_PHASES, COURSE_TOTAL_LESSONS } from '../data/coursePlan';
 import './guidedLesson.css';
+import GuidedLessonFacts from './GuidedLessonFacts';
 import './guidedCourseOpeningLesson.css';
 
 const LESSON_STORAGE_KEY = 'guided-course-opening-lesson-000-progress';
@@ -532,7 +533,7 @@ export default function GuidedCourseOpeningLesson000({
 
   const selectStep = index => {
     setActiveIndex(index);
-    document.querySelector('.content-scroll-area')?.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.guided-layout')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleActiveStep = () => {
@@ -558,6 +559,7 @@ export default function GuidedCourseOpeningLesson000({
         <div className="guided-progress-track" aria-label={`Progresso: ${progress}%`}><span style={{ width: `${progress}%` }} /></div>
       </header>
 
+      <GuidedLessonFacts ariaLabel="Resultado da abertura" items={[{ value: 5, label: 'fases conectadas' }, { value: steps.length, label: 'etapas guiadas' }, { value: 1, label: 'pacto verificável' }]} />
       <div className="guided-layout">
         <nav className="guided-step-nav" aria-label="Etapas da aula de abertura">
           <div className="guided-step-nav-title"><ListChecks size={18} /> Roteiro de abertura</div>

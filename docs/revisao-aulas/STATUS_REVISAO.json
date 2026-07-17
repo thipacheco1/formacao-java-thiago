@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-16",
+  "updatedAt": "2026-07-17",
   "statusDefinitions": {
     "pendente": "A aula ainda não passou pelo processo completo do blueprint.",
     "em_revisao": "A auditoria ou a reconstrução começou, mas a aula ainda não foi aprovada.",
@@ -23,15 +23,99 @@
       ]
     },
     "001_M0_01_MAPA_DA_FORMACAO_COMPLETA_E_NIVEIS_DE_CARREIRA_JAVA": {
-      "status": "em_revisao",
-      "approvedByUser": false,
+      "status": "refeita",
+      "approvedByUser": true,
       "reviewedAt": "2026-07-16",
       "archetype": "mentoria-de-mapa-tecnico-interativo",
-      "summary": "Mapa guiado em revisão com os 21 módulos atuais, rotas de dependência, propósito, tópicos, riscos e evidências por módulo, lentes de responsabilidade e prática pessoal de percurso.",
+      "summary": "Mapa guiado aprovado com os 21 módulos atuais, rotas de dependência, propósito, tópicos, riscos e evidências por módulo, lentes de responsabilidade e prática pessoal de percurso.",
       "referenceFiles": [
         "docs/revisao-aulas/matrizes/001_MAPA_FORMACAO_E_CARREIRA.md",
         "plataforma-curso/src/components/GuidedCourseMapLesson001.jsx",
         "plataforma-curso/src/components/guidedCourseMapLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "002_M0_02_DIAGNOSTICO_INICIAL_TECNICO_E_PLANO_DE_ESTUDO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-16",
+      "archetype": "consulta-de-mentoria-com-diagnostico-interativo",
+      "summary": "Diagnóstico guiado aprovado com sete áreas baseadas em evidências, escala calibrada, perfil sem média enganosa, fluxo backend, rotina sustentável, plano de 30/60/90 dias e documento pessoal gerado.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/002_DIAGNOSTICO_INICIAL_E_PLANO.md",
+        "plataforma-curso/src/components/GuidedDiagnosticLesson002.jsx",
+        "plataforma-curso/src/components/guidedDiagnosticLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "003_M0_03_ORGANIZACAO_DO_WINDOWS_PARA_DESENVOLVIMENTO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-16",
+      "archetype": "oficina-visual-de-sistema-de-arquivos-e-powershell",
+      "summary": "Oficina aprovada com mock do Explorador de Arquivos e do menu do Windows, mapa de pastas, clínica de caminhos, dois laboratórios PowerShell com saídas e árvore sincronizada, arquivos iniciais, encoding, impactos e recuperação.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/003_ORGANIZACAO_WINDOWS.md",
+        "plataforma-curso/src/components/GuidedWindowsWorkspaceLesson003.jsx",
+        "plataforma-curso/src/components/guidedWindowsWorkspaceLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "004_M0_04_TERMINAL_POWERSHELL_E_COMANDOS_BASICOS": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-powershell-com-sistema-de-arquivos-simulado",
+      "summary": "Laboratório aprovado com mock de Windows Terminal e IntelliJ, navegação por caminhos, sistema de arquivos sincronizado, criação, cópia, movimento, renomeação, remoção segura, histórico, autocomplete, diagnóstico de PATH e aplicação a Java, Maven e logs.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/004_TERMINAL_POWERSHELL.md",
+        "plataforma-curso/src/components/GuidedPowerShellLesson004.jsx",
+        "plataforma-curso/src/components/guidedPowerShellLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "005_M0_05_JDK_JRE_JVM_E_ESCOLHA_DE_VERSAO_LTS": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-visual-da-plataforma-java",
+      "summary": "Laboratório aprovado com mapa linguagem/plataforma/ecossistema, camadas JDK/runtime/JVM, portabilidade, pipeline fonte-bytecode-execução, linha LTS atualizada, auditoria do ambiente, mock do Windows, primeiro programa sincronizado e diagnóstico profissional.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/005_JDK_JRE_JVM_LTS.md",
+        "plataforma-curso/src/components/GuidedJavaPlatformLesson005.jsx",
+        "plataforma-curso/src/components/guidedJavaPlatformLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "006_M0_06_COMPILACAO_MANUAL_COM_JAVAC": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-compilacao-com-artefatos-e-classpath-visiveis",
+      "summary": "Oficina aprovada com pipeline por fases, editor e terminal sincronizados, leitura visual de diagnósticos do javac, comparação entre compilação e execução, bytecode antigo, duas classes, saída separada, classpath explícito e conexão com IDE, Maven, Git e produção.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/006_COMPILACAO_MANUAL_JAVAC.md",
+        "plataforma-curso/src/components/GuidedManualCompilationLesson006.jsx",
+        "plataforma-curso/src/components/guidedManualCompilationLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "007_M0_07_INTELLIJ_IDEA_COMMUNITY_COMPLETO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-de-ambientacao-em-ide-com-estados-sincronizados",
+      "summary": "Laboratório aprovado com distribuição unificada atualizada, instalação e Welcome guiados, abertura pela raiz, Project Structure, JDK 21, Sources Root, criação e Run de Main, Run Configuration, working directory, terminal integrado, assistência de edição e higiene do projeto.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/007_INTELLIJ_IDEA_COMPLETO.md",
+        "plataforma-curso/src/components/GuidedIntelliJSetupLesson007.jsx",
+        "plataforma-curso/src/components/guidedIntelliJSetupLesson.css",
         "plataforma-curso/src/components/guidedLesson.css",
         "plataforma-curso/src/components/MarkdownViewer.jsx"
       ]
@@ -49,6 +133,20 @@
         "plataforma-curso/src/components/MarkdownViewer.jsx"
       ]
     },
+    "009_M0_09_GIT_INSTALACAO_E_CONFIGURACAO_GLOBAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-instalacao-e-auditoria-de-configuracao-git",
+      "summary": "Oficina aprovada com download oficial, instalador do Git for Windows navegado tela a tela, validação correta no PowerShell, escopos e precedência, identidade, branch, editor, finais de linha, auditoria por origem e clínica de configuração.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/009_GIT_INSTALACAO_CONFIGURACAO.md",
+        "plataforma-curso/src/components/GuidedGitSetupLesson009.jsx",
+        "plataforma-curso/src/components/guidedGitSetupLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
     "010_M0_10_GIT_LOCAL_DO_ZERO": {
       "status": "refeita",
       "approvedByUser": true,
@@ -62,6 +160,214 @@
         "plataforma-curso/public/lesson-assets/010-git-local/01-tres-areas-git.svg",
         "plataforma-curso/public/lesson-assets/010-git-local/02-primeiro-commit-terminal.svg",
         "plataforma-curso/public/lesson-assets/010-git-local/03-restore-com-seguranca.svg",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "011_M0_11_GITHUB_E_REPOSITORIO_REMOTO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-visual-de-publicacao-local-remoto-com-autenticacao-segura",
+      "summary": "Laboratório aprovado com criação e proteção da conta GitHub, repositório remoto vazio, HTTPS e SSH, autenticação moderna, origin, primeiro push, upstream, segundo ciclo, clone/fetch/pull e recuperação segura de falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/011_GITHUB_REPOSITORIO_REMOTO.md",
+        "plataforma-curso/src/components/GuidedGitHubRemoteLesson011.jsx",
+        "plataforma-curso/src/components/guidedGitHubRemoteLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "012_M0_12_MARKDOWN_PARA_DOCUMENTACAO_TECNICA": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-markdown-com-editor-preview-e-git-sincronizados",
+      "summary": "Oficina aprovada com editor e preview sincronizados, hierarquia, texto, listas, checklists, código, links, imagens, tabelas, documentos técnicos, diagnóstico de renderização e entrega versionada.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/012_MARKDOWN_DOCUMENTACAO_TECNICA.md",
+        "plataforma-curso/src/components/GuidedMarkdownLesson012.jsx",
+        "plataforma-curso/src/components/guidedMarkdownLesson.css",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "013_M0_13_DIARIO_DE_BORDO_E_RASTREABILIDADE_DO_APRENDIZADO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "mentoria-de-registro-revisao-e-rastreabilidade-com-git",
+      "summary": "Mentoria aprovada com sistema de arquivos de aprendizagem, construtor de entrada, registro técnico de erros, revisão ativa espaçada, segurança, histórico Git e rotina sustentável.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/013_DIARIO_BORDO_RASTREABILIDADE.md",
+        "plataforma-curso/src/components/GuidedLearningJournalLesson013.jsx",
+        "plataforma-curso/src/components/guidedLearningJournalLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "014_M0_14_CODEX_IA_NO_INTELLIJ_COM_ETICA_E_METODO": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-de-ia-supervisionada-com-terminal-diff-e-gates-de-seguranca",
+      "summary": "Laboratório aprovado para operar Codex pelo terminal integrado do IntelliJ, construir prompts controlados, proteger contexto, revisar permissões e validar toda alteração por execução, diff e explicação humana.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/014_CODEX_IA_ETICA_METODO.md",
+        "plataforma-curso/src/components/GuidedCodexEthicsLesson014.jsx",
+        "plataforma-curso/src/components/guidedCodexEthicsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "015_M0_15_MAVEN_INSTALACAO_E_VALIDACAO_INICIAL_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-instalacao-e-auditoria-maven-no-windows-powershell-e-intellij",
+      "summary": "Oficina aprovada com download oficial e integridade, extração visual, PATH e processos, prova linha a linha, comparação entre Maven do sistema, incorporado e Wrapper, IntelliJ sincronizado, clínica de falhas e documentação rastreável.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/015_MAVEN_INSTALACAO_VALIDACAO.md",
+        "plataforma-curso/src/components/GuidedMavenSetupLesson015.jsx",
+        "plataforma-curso/src/components/guidedMavenSetupLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "016_M0_16_POSTGRESQL_E_DBEAVER_PREPARACAO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-visual-de-servidor-servico-cliente-e-conexao-postgresql",
+      "summary": "Laboratório aprovado com arquitetura cliente-servidor, instalador PostgreSQL guiado, provas de serviço e porta, psql, DBeaver, driver JDBC, conexão visual, consulta de identidade, segurança de credenciais e clínica de falhas por camadas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/016_POSTGRESQL_DBEAVER_PREPARACAO.md",
+        "plataforma-curso/src/components/GuidedPostgresDBeaverLesson016.jsx",
+        "plataforma-curso/src/components/guidedPostgresDBeaverLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "017_M0_17_POSTMAN_INSOMNIA_E_HTTP_BASICO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-visual-de-cliente-http-com-request-transito-e-response-sincronizados",
+      "summary": "Laboratório aprovado com ciclo HTTP, decomposição de URL, métodos, headers, JSON, simulador de request/response, status, collection, environment, escolha Postman/Insomnia, segurança de segredos, documentação e diagnóstico por camadas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/017_POSTMAN_INSOMNIA_HTTP_BASICO.md",
+        "plataforma-curso/src/components/GuidedHttpClientLesson017.jsx",
+        "plataforma-curso/src/components/guidedHttpClientLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "018_M0_18_DOCKER_DESKTOP_E_WSL2_PREPARACAO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "laboratorio-visual-de-instalacao-arquitetura-e-cadeia-de-provas-docker-desktop-wsl2",
+      "summary": "Laboratório aprovado com arquitetura Windows/WSL2/Docker, instalação guiada, integração por distribuição, provas de cliente e engine, hello-world, imagens, contêineres, portas, volumes, segurança e diagnóstico por camadas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/018_DOCKER_DESKTOP_WSL2_PREPARACAO.md",
+        "plataforma-curso/src/components/GuidedDockerWslLesson018.jsx",
+        "plataforma-curso/src/components/guidedDockerWslLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "019_M0_19_ESTRUTURA_PROFISSIONAL_DO_REPOSITORIO_DE_CURSO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-arquitetura-de-repositorio-com-arvore-documentos-e-git-sincronizados",
+      "summary": "Oficina aprovada com auditoria segura do repositório, árvore interativa, criação guiada em PowerShell, README e docs em preview, src/test/labs, gitignore verificável, nomes profissionais, Git nominal e clínica estrutural.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/019_ESTRUTURA_PROFISSIONAL_REPOSITORIO.md",
+        "plataforma-curso/src/components/GuidedRepositoryStructureLesson019.jsx",
+        "plataforma-curso/src/components/guidedRepositoryStructureLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "020_M0_20_CHECKLIST_FINAL_DO_AMBIENTE_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "banca-visual-de-prontidao-com-provas-criticidade-e-plano-de-pendencias",
+      "summary": "Banca aprovada com gate do M1, trinta provas registráveis, criticidade explícita, Windows, terminal, Java/IntelliJ, Git/GitHub, documentação/IA, Maven, banco, HTTP, WSL/Docker, rotina, clínica de falhas e dossiê final.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/020_CHECKLIST_FINAL_AMBIENTE.md",
+        "plataforma-curso/src/components/GuidedEnvironmentGateLesson020.jsx",
+        "plataforma-curso/src/components/guidedEnvironmentGateLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "021_M1_01_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-anatomia-execucao-e-diagnostico-do-primeiro-programa-java",
+      "summary": "Oficina aprovada com raio X do código, anatomia de classe e main, println, pipeline terminal, IntelliJ Run/Debug, execução sequencial, programas de domínio, dez erros e entrega Git.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/021_PRIMEIRO_PROGRAMA_JAVA_DESTRINCHADO.md",
+        "plataforma-curso/src/components/GuidedFirstJavaProgramLesson021.jsx",
+        "plataforma-curso/src/components/guidedFirstJavaProgramLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "022_M1_02_BLOCOS_CHAVES_INDENTACAO_E_LEITURA_DE_CODIGO_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-leitura-estrutural-com-arvore-formatacao-ide-e-clinica-de-chaves",
+      "summary": "Oficina aprovada com árvores de pertencimento, pares de chaves, leitura em duas direções, indentação comparada, blocos executáveis, fronteiras, mock do IntelliJ, dez falhas e entrega Git.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/022_BLOCOS_CHAVES_INDENTACAO_LEITURA.md",
+        "plataforma-curso/src/components/GuidedCodeStructureLesson022.jsx",
+        "plataforma-curso/src/components/guidedCodeStructureLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "023_M1_03_COMENTARIOS_UTEIS_E_DOCUMENTACAO_INICIAL_OFICIAL": {
+      "status": "refeita",
+      "approvedByUser": true,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-comunicacao-no-codigo-com-criterio-seguranca-ide-e-documentacao",
+      "summary": "Oficina aprovada com camadas código/comentário/documentação, sintaxe executável, decisões de revisão, verdade e Git, exemplos de domínio, destino correto, segurança, mock do IntelliJ, dez falhas e entrega documentada.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/023_COMENTARIOS_UTEIS_DOCUMENTACAO.md",
+        "plataforma-curso/src/components/GuidedUsefulCommentsLesson023.jsx",
+        "plataforma-curso/src/components/guidedUsefulCommentsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "024_M1_04_VARIAVEIS_E_NOMES_PROFISSIONAIS_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-visual-de-estado-nomeado-com-ciclo-de-vida-refatoracao-segura-e-diagnostico",
+      "summary": "Oficina em revisão com anatomia de variáveis, ciclo declaração-inicialização-uso-reatribuição, prévia de tipos, nomes profissionais, booleanos, temporárias, domínios, Rename no IntelliJ, dez falhas e entrega Git.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/024_VARIAVEIS_NOMES_PROFISSIONAIS.md",
+        "plataforma-curso/src/components/GuidedVariablesLesson024.jsx",
+        "plataforma-curso/src/components/guidedVariablesLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
         "plataforma-curso/src/components/MarkdownViewer.jsx"
       ]
     }

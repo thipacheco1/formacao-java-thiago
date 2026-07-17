@@ -114,4 +114,4 @@ Ao final, o aluno conseguirá localizar qualquer competência da formação nos 
 - [ ] A aula e a próxima aula ficam bloqueadas enquanto houver etapas pendentes.
 - [ ] Existe somente um controle de conclusão geral da aula.
 - [ ] Conteúdo copiável e textos revisados.
-- [ ] Responsável pelo curso aprovou.
+- [x] Responsável pelo curso aprovou.

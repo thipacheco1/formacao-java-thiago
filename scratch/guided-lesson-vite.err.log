@@ -34,3 +34,661 @@ Node.js v24.16.0
     at http://127.0.0.1:5173/src/App.jsx?t=1784251710353:168:27
 [2m22:31:49[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: TypeError: Failed to fetch
     at http://127.0.0.1:5173/src/App.jsx?t=1784251710353:168:27
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+[2m00:41:07[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 2 errors:
+
+[31m[PARSE_ERROR] [0mExpected corresponding JSX closing tag for 'figure'.
+ - Expected `</figure>` in src/components/GuidedIntelliJSetupLesson007.jsx at 28493..28496
+ - Opened here in src/components/GuidedIntelliJSetupLesson007.jsx at 26179..26185
+
+[31m[PARSE_ERROR] [0mAdjacent JSX elements must be wrapped in an enclosing tag.
+ -  in src/components/GuidedIntelliJSetupLesson007.jsx at 28497..28498
+ [38;5;240m │[0m 
+ [38;5;240m │[0m [38;5;115mHelp[0m: Did you want a JSX fragment `<>...</>`?
+[39m
+  Plugin: [35mvite:oxc[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedIntelliJSetupLesson007.jsx[39m
+      at transformWithOxc (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3661:19)
+      at TransformPluginContext.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3732:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29745:51)
+      at async loadAndTransform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:19729:26)
+[2m00:41:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 2 errors:
+
+[31m[PARSE_ERROR] [0mExpected corresponding JSX closing tag for 'figure'.
+ - Expected `</figure>` in src/components/GuidedIntelliJSetupLesson007.jsx at 28493..28496
+ - Opened here in src/components/GuidedIntelliJSetupLesson007.jsx at 26179..26185
+
+[31m[PARSE_ERROR] [0mAdjacent JSX elements must be wrapped in an enclosing tag.
+ -  in src/components/GuidedIntelliJSetupLesson007.jsx at 28497..28498
+ [38;5;240m │[0m 
+ [38;5;240m │[0m [38;5;115mHelp[0m: Did you want a JSX fragment `<>...</>`?
+
+  Plugin: [35mvite:oxc[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedIntelliJSetupLesson007.jsx[39m
+[2m00:41:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+[2m07:42:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] SyntaxError: The requested module '/node_modules/.vite/deps/lucide-react.js?v=38179608' does not provide an export named 'Github'
+[2m07:42:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m08:07:45[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+      at TransformPluginContext._formatLog (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 7)
+      at async TransformPluginContext.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:19729:26)
+[2m08:07:45[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+[2m08:07:45[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+[2m08:07:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m08:08:42[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+      at TransformPluginContext._formatLog (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 7)
+      at async TransformPluginContext.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:19729:26)
+      at async viteTransformMiddleware (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:24160:20)
+[2m08:08:43[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+[2m08:08:44[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./guidedMarkdownLesson.css" from "src/components/GuidedMarkdownLesson012.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLesson012.jsx[39m:14:7
+[33m  6  |  import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, BookOpen, Braces, Check, CheckCircle2, ClipboardCheck, Cloc...
+  7  |  import "./guidedLesson.css";
+  8  |  import "./guidedMarkdownLesson.css";
+     |          ^
+  9  |  var _jsxFileName = "C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedMarkdownLe...
+  10 |  import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";[39m
+Stored progress is invalid; refusing to overwrite it.
+[2m08:14:58[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mLesson progress queued for a later retry: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m08:18:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:19:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:19:30[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:20:36[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:22:13[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+[2m08:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mIn HTML, <figcaption> cannot be a descendant of <p>.
+This will cause a hydration error.
+
+  ...
+    <MarkdownViewerV2 lesson={{id:"012_M0...", ...}} isCompleted={false} onToggleCompleted={function onToggleCompleted} ...>
+      <GuidedMarkdownLesson012 lesson={{id:"012_M0...", ...}} isCompleted={false} ...>
+        <article className="guided-git...">
+          <header>
+          <GuidedLessonFacts>
+          <div className="guided-layout">
+            <nav>
+            <main className="guided-ste...">
+              <div>
+              <div className="guided-blocks">
+                <ContentBlock>
+                <ContentBlock block={{type:"readme"}}>
+                  <ReadmeBuilder>
+                    <section className="md12-builder">
+                      <nav>
+                      <SourcePreview source={"# Formaç..."} caption="Adicione a...">
+                        <section className="md12-workb...">
+                          <div>
+                          <div className="md12-preview">
+                            <header>
+                            <MarkdownPreview source={"# Formaç..."}>
+                              <div className="md12-rendered">
+                                <Markdown remarkPlugins={[...]} components={{...}}>
+                                  <h1>
+                                  <p>
+                                  <h2>
+                                  <ul>
+                                  <h2>
+                                  <pre>
+                                  <h2>
+                                  <pre>
+                                  <h2>
+                                  <ul>
+>                                 <p>
+                                    <img src="docs/image..." alt="Mapa das t..." node={{type:"element", ...}}>
+                                      <figure className="md12-image...">
+                                        <Image>
+>                                       <figcaption>
+                          ...
+                      ...
+              ...
+          ...
+
+[2m08:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m<p> cannot contain a nested <figcaption>.
+See this log for the ancestor stack trace.
+[2m08:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mIn HTML, <figure> cannot be a descendant of <p>.
+This will cause a hydration error.
+
+  ...
+    <MarkdownViewerV2 lesson={{id:"012_M0...", ...}} isCompleted={false} onToggleCompleted={function onToggleCompleted} ...>
+      <GuidedMarkdownLesson012 lesson={{id:"012_M0...", ...}} isCompleted={false} ...>
+        <article className="guided-git...">
+          <header>
+          <GuidedLessonFacts>
+          <div className="guided-layout">
+            <nav>
+            <main className="guided-ste...">
+              <div>
+              <div className="guided-blocks">
+                <ContentBlock>
+                <ContentBlock block={{type:"readme"}}>
+                  <ReadmeBuilder>
+                    <section className="md12-builder">
+                      <nav>
+                      <SourcePreview source={"# Formaç..."} caption="Adicione a...">
+                        <section className="md12-workb...">
+                          <div>
+                          <div className="md12-preview">
+                            <header>
+                            <MarkdownPreview source={"# Formaç..."}>
+                              <div className="md12-rendered">
+                                <Markdown remarkPlugins={[...]} components={{...}}>
+                                  <h1>
+                                  <p>
+                                  <h2>
+                                  <ul>
+                                  <h2>
+                                  <pre>
+                                  <h2>
+                                  <pre>
+                                  <h2>
+                                  <ul>
+>                                 <p>
+                                    <img src="docs/image..." alt="Mapa das t..." node={{type:"element", ...}}>
+>                                     <figure className="md12-image-placeholder">
+                          ...
+                      ...
+              ...
+          ...
+
+[2m08:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m<p> cannot contain a nested <figure>.
+See this log for the ancestor stack trace.
+Stored progress is invalid; refusing to overwrite it.
+[2m08:26:08[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784286609135:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784286609135:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:26:11[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784287456498:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m08:26:11[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784287456498:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784287456498:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:26:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784287456498:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784287456498:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:27:47[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784287456498:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784287456498:166:4
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m08:55:54[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m08:55:54[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:57:50[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m08:57:50[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m08:58:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:02:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:03:15[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:08:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:08:30[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m09:08:30[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:11:26[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:13:16[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784289350778:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784289350778:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:13:59[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m09:13:59[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:23:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:29:09[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:30:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:32:19[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m09:32:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+[2m09:43:30[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] SyntaxError: The requested module '/node_modules/.vite/deps/lucide-react.js?v=38179608' does not provide an export named 'Registry'
+[2m09:43:30[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+Stored progress is invalid; refusing to overwrite it.
+[2m10:07:25[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:07:25[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:11:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:13:19[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:38:54[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:38:54[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784290413208:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784290413208:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:38:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:38:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:42:12[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:42:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:46:16[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:46:16[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:46:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:46:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:46:45[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:47:50[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:48:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:48:39[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784294198690:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784294198690:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:49:19[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:49:20[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784295772156:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:50:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784295772156:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:50:32[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:50:32[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784295772156:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:50:36[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:50:36[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784295772156:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:51:15[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784295772156:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784295772156:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:51:43[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296241441:128:11
+Stored progress is invalid; refusing to overwrite it.
+[2m10:51:43[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296241441:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296241441:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:52:29[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296241441:128:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296241441:166:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:53:18[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296396632:149:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296396632:187:4
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m10:54:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296461990:151:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296461990:189:4
+Stored progress is invalid; refusing to overwrite it.
+[2m10:56:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581574:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581574:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:09:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581574:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:09:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581574:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581574:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:09:20[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:09:20[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:19:02[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:19:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:19:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:20:58[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:23:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:24:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:24:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784296581578:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784296581578:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:24:43[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:25:56[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:27:56[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:29:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:29:05[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:29:05[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:29:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:31:03[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:31:03[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298192733:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298192733:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:31:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298634993:182:11
+Stored progress is invalid; refusing to overwrite it.
+[2m11:31:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298634993:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298634993:220:4
+Stored progress is invalid; refusing to overwrite it.
+[2m11:32:03[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress update failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784298634993:182:11
+    at async http://127.0.0.1:5173/src/App.jsx?t=1784298634993:220:4
+[2m11:32:14[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+[2m11:32:14[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+[2m11:32:17[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+[2m11:32:17[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mFailed to load the central admin report Error: Admin authentication required
+    at http://127.0.0.1:5173/src/components/AdminReport.jsx:35:11
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
