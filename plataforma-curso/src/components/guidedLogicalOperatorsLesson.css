@@ -1,0 +1,185 @@
+.guided-logical-operators-lesson {
+  --log33-teal: #14b8a6;
+  --log33-teal-soft: #f0fdfa;
+  --log33-blue-dark: #1e3a8a;
+  --log33-slate: #475569;
+  --log33-dark: #0f172a;
+  --log33-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-logical-operators-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(20, 184, 166, .25), transparent 23rem),
+    linear-gradient(135deg, #115e59, #14b8a6 58%, #0f172a);
+}
+
+.guided-logical-operators-lesson button { font: inherit; }
+
+.log33-portas, .log33-curto-sim, .log33-refactor-box,
+.log33-errors-clinic, .log33-domains-gallery, .log33-terminal, .log33-code { min-width: 0; }
+
+.log33-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #f0fdfa; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.log33-code { background: var(--log33-dark); }
+.log33-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.log33-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Simulador de Portas Lógicas */
+.log33-portas {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr); gap: 16px;
+  padding: 20px; background: var(--log33-teal-soft); border: 1px solid #99f6e4; border-radius: 16px;
+}
+.log33-circuit-board {
+  display: flex; gap: 24px; align-items: center; justify-content: center; background: #0f172a; padding: 18px; border-radius: 12px; height: 110px;
+}
+.log33-switch-key {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 50px; height: 50px; border: 2px solid #475569; border-radius: 8px; background: #1e293b; cursor: pointer; transition: all 0.2s;
+}
+.log33-switch-key.on { border-color: var(--log33-teal); background: #115e59; }
+.log33-switch-key span.label { font-size: .55rem; color: #94a3b8; font-weight: bold; }
+.log33-switch-key span.state { font-size: .8rem; font-weight: bold; color: #fff; margin-top: 2px; }
+.log33-lamp {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 60px; height: 60px; border-radius: 50%; border: 3px solid #475569; background: #1e293b; transition: all 0.3s;
+}
+.log33-lamp.on { border-color: var(--log33-teal); background: #e11d48; box-shadow: 0 0 16px rgba(225, 29, 72, 0.6); }
+.log33-lamp span { font-size: .62rem; font-weight: bold; color: #fff; }
+
+/* 2. Simulador de Curto-Circuito */
+.log33-curto-sim {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.log33-thread-line {
+  display: flex; gap: 6px; align-items: center; padding: 12px; background: #0f172a; border-radius: 8px; font-family: Consolas, monospace; font-size: .74rem; overflow-x: auto;
+}
+.log33-thread-node {
+  padding: 4px 8px; border-radius: 4px; font-weight: bold;
+}
+.log33-thread-node.eval { background: #115e59; color: #fff; }
+.log33-thread-node.skip { background: #374151; color: #94a3b8; text-decoration: line-through; }
+.log33-bomba-npe {
+  display: flex; gap: 8px; padding: 10px; background: #450a0a; border: 1px solid #7f1d1d; border-radius: 8px; align-items: center; color: #fecdd3; font-size: .7rem;
+}
+
+/* 3. Quebrador de Condições */
+.log33-refactor-box {
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+/* 4. Galeria de Domínios */
+.log33-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.log33-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.log33-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.log33-domains-sidebar button:hover { background: #f8fafc; }
+.log33-domains-sidebar button.active {
+  color: #fff; background: var(--log33-teal); border-color: var(--log33-teal);
+}
+.log33-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.log33-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.log33-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.log33-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #14b8a6;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 5. Clínica de Erros */
+.log33-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.log33-errors-nav { display: grid; gap: 6px; align-content: start; }
+.log33-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.log33-errors-nav button:hover { background: #f8fafc; }
+.log33-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.log33-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.log33-errors-nav button.active span { background: #be123c; }
+
+.log33-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.log33-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.log33-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.log33-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.log33-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.log33-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.log33-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.log33-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.log33-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.log33-error-flow > span svg { color: var(--log33-teal); }
+.log33-error-flow > span strong { color: #0f172a; }
+.log33-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.log33-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 6. Terminal e Entrega */
+.log33-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.log33-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.log33-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.log33-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.log33-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.log33-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.log33-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.log33-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.log33-terminal pre strong { color: #fff; }
+.log33-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.log33-terminal p svg { flex: 0 0 auto; color: #14b8a6; }
+
+.log33-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.log33-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.log33-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.log33-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.log33-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .log33-portas, .log33-curto-sim, .log33-errors-clinic { grid-template-columns: 1fr; }
+  .log33-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .log33-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .log33-domains-gallery { grid-template-columns: 1fr; }
+  .log33-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .log33-error-flow { grid-template-columns: 1fr; }
+  .log33-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .log33-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .log33-errors-nav, .log33-delivery-flow > nav { grid-template-columns: 1fr; }
+  .log33-delivery-actions { flex-direction: column; align-items: stretch; }
+  .log33-delivery-actions button { justify-content: center; }
+  .log33-delivery-actions span { text-align: center; }
+}

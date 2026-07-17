@@ -1,0 +1,187 @@
+.guided-increment-decrement-lesson {
+  --inc34-emerald: #10b981;
+  --inc34-emerald-soft: #ecfdf5;
+  --inc34-lime: #84cc16;
+  --inc34-slate: #475569;
+  --inc34-dark: #0f172a;
+  --inc34-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-increment-decrement-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(16, 185, 129, .25), transparent 23rem),
+    linear-gradient(135deg, #064e3b, #10b981 58%, #0f172a);
+}
+
+.guided-increment-decrement-lesson button { font: inherit; }
+
+.inc34-cpu-sim, .inc34-esteira-container, .inc34-abbrev-grid,
+.inc34-errors-clinic, .inc34-domains-gallery, .inc34-terminal, .inc34-code { min-width: 0; }
+
+.inc34-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #ecfdf5; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.inc34-code { background: var(--inc34-dark); }
+.inc34-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.inc34-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. CPU Step Simulator (Pré vs Pós Incremento) */
+.inc34-cpu-sim {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(230px, .8fr); gap: 16px;
+  padding: 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.inc34-cpu-flow { display: flex; flex-direction: column; gap: 10px; }
+.inc34-cpu-step-btn {
+  padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; background: #fff; cursor: pointer; transition: all 0.2s;
+}
+.inc34-cpu-step-btn:hover { background: #f8fafc; }
+.inc34-cpu-register-box {
+  display: flex; flex-direction: column; gap: 8px; padding: 14px; background: var(--inc34-emerald-soft); border: 1px solid #a7f3d0; border-radius: 12px;
+}
+.inc34-cpu-register-box code { font-family: Consolas, monospace; font-size: .75rem; color: #065f46; font-weight: bold; }
+
+/* 2. Registradora de Esteira (Contador vs Acumulador) */
+.inc34-esteira-container {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px; background: var(--inc34-emerald-soft); border: 1px solid #a7f3d0; border-radius: 16px;
+}
+.inc34-esteira-belt {
+  display: flex; gap: 12px; background: #334155; padding: 12px; border-radius: 8px; min-height: 54px; align-items: center; overflow-x: auto;
+}
+.inc34-esteira-item {
+  padding: 6px 10px; background: #fff; border: 2px solid var(--inc34-emerald); border-radius: 6px; font-size: .65rem; font-weight: bold; color: #0f172a; white-space: nowrap; animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn { from { transform: translateX(-20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.inc34-totalizer-box {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.inc34-totalizer-card {
+  padding: 12px; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px;
+}
+.inc34-totalizer-card h4 { margin: 0 0 4px; font-size: .66rem; color: #475569; text-transform: uppercase; }
+.inc34-totalizer-card .val { font-size: 1.1rem; font-weight: 800; color: #0f172a; font-family: Consolas, monospace; }
+
+/* 3. Operações Abreviadas */
+.inc34-abbrev-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+}
+.inc34-abbrev-btn {
+  padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: bold; font-size: .8rem; background: #fff; cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.inc34-abbrev-btn:hover { background: var(--inc34-emerald-soft); border-color: var(--inc34-emerald); }
+
+/* 4. Galeria de Domínios */
+.inc34-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.inc34-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.inc34-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.inc34-domains-sidebar button:hover { background: #f8fafc; }
+.inc34-domains-sidebar button.active {
+  color: #fff; background: var(--inc34-emerald); border-color: var(--inc34-emerald);
+}
+.inc34-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.inc34-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.inc34-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.inc34-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #34d399;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 5. Clínica de Erros */
+.inc34-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.inc34-errors-nav { display: grid; gap: 6px; align-content: start; }
+.inc34-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.inc34-errors-nav button:hover { background: #f8fafc; }
+.inc34-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.inc34-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.inc34-errors-nav button.active span { background: #be123c; }
+
+.inc34-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.inc34-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.inc34-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.inc34-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.inc34-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.inc34-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.inc34-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.inc34-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.inc34-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.inc34-error-flow > span svg { color: var(--inc34-emerald); }
+.inc34-error-flow > span strong { color: #0f172a; }
+.inc34-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.inc34-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 6. Terminal e Entrega */
+.inc34-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.inc34-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.inc34-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.inc34-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.inc34-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.inc34-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.inc34-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.inc34-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.inc34-terminal pre strong { color: #fff; }
+.inc34-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.inc34-terminal p svg { flex: 0 0 auto; color: #10b981; }
+
+.inc34-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.inc34-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.inc34-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.inc34-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.inc34-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .inc34-cpu-sim, .inc34-esteira-container, .inc34-errors-clinic { grid-template-columns: 1fr; }
+  .inc34-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inc34-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .inc34-domains-gallery { grid-template-columns: 1fr; }
+  .inc34-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .inc34-error-flow { grid-template-columns: 1fr; }
+  .inc34-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .inc34-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .inc34-errors-nav, .inc34-delivery-flow > nav { grid-template-columns: 1fr; }
+  .inc34-delivery-actions { flex-direction: column; align-items: stretch; }
+  .inc34-delivery-actions button { justify-content: center; }
+  .inc34-delivery-actions span { text-align: center; }
+}

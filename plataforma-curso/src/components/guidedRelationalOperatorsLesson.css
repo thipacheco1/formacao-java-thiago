@@ -1,0 +1,196 @@
+.guided-relational-operators-lesson {
+  --rel32-violet: #8b5cf6;
+  --rel32-violet-soft: #f5f3ff;
+  --rel32-indigo: #4f46e5;
+  --rel32-slate: #475569;
+  --rel32-dark: #0f172a;
+  --rel32-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-relational-operators-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(139, 92, 246, .25), transparent 23rem),
+    linear-gradient(135deg, #4c1d95, #8b5cf6 58%, #0f172a);
+}
+
+.guided-relational-operators-lesson button { font: inherit; }
+
+.rel32-general-sim, .rel32-regua-container, .rel32-memoria-sim,
+.rel32-redundancy-box, .rel32-errors-clinic, .rel32-domains-gallery, .rel32-terminal, .rel32-code { min-width: 0; }
+
+.rel32-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #f5f3ff; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.rel32-code { background: var(--rel32-dark); }
+.rel32-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.rel32-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Simulador Geral Relacional */
+.rel32-general-sim {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr); gap: 16px;
+  padding: 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.rel32-sim-controls { display: flex; flex-direction: column; gap: 10px; }
+.rel32-op-btn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.rel32-op-btn-grid button {
+  padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .75rem; font-weight: bold; background: #fff; cursor: pointer; transition: all 0.2s;
+}
+.rel32-op-btn-grid button.active {
+  color: #fff; background: var(--rel32-violet); border-color: var(--rel32-violet);
+}
+
+/* 2. Simulador de Régua de Fronteira */
+.rel32-regua-container {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px; background: var(--rel32-violet-soft); border: 1px solid #ddd6fe; border-radius: 16px;
+}
+.rel32-regua-linha {
+  position: relative; display: flex; align-items: center; justify-content: space-between; height: 38px; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0 20px;
+}
+.rel32-regua-tick {
+  display: flex; flex-direction: column; align-items: center; cursor: pointer;
+}
+.rel32-regua-tick span.num { font-size: .75rem; font-family: Consolas, monospace; font-weight: bold; }
+.rel32-regua-tick span.badge {
+  font-size: .52rem; padding: 2px 4px; border-radius: 4px; font-weight: bold; margin-top: 2px;
+}
+
+/* 3. Comparador Heap vs Stack (Strings) */
+.rel32-memoria-sim {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; padding: 18px; background: #0f172a; border-radius: 12px; align-items: center;
+}
+.rel32-memoria-block {
+  display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 10px;
+}
+.rel32-memoria-block.stack { border: 1px solid #475569; background: #1e293b; }
+.rel32-memoria-block.heap { border: 1px solid #8b5cf6; background: #2e1065; }
+.rel32-memoria-cell {
+  padding: 8px; background: #0f172a; border-radius: 6px; font-family: Consolas, monospace; font-size: .7rem; color: #fff; display: flex; justify-content: space-between;
+}
+.rel32-memoria-cell span.address { color: #8b5cf6; }
+
+/* 4. Painel de Redundância */
+.rel32-redundancy-box {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.rel32-redundancy-card {
+  padding: 12px; border: 1px solid #cbd5e1; border-radius: 12px; background: #fff;
+}
+.rel32-redundancy-card.fixed {
+  border-color: #ddd6fe; background: var(--rel32-violet-soft);
+}
+
+/* 5. Galeria de Domínios */
+.rel32-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.rel32-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.rel32-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.rel32-domains-sidebar button:hover { background: #f8fafc; }
+.rel32-domains-sidebar button.active {
+  color: #fff; background: var(--rel32-violet); border-color: var(--rel32-violet);
+}
+.rel32-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.rel32-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.rel32-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.rel32-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #a78bfa;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 6. Clínica de Erros */
+.rel32-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.rel32-errors-nav { display: grid; gap: 6px; align-content: start; }
+.rel32-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.rel32-errors-nav button:hover { background: #f8fafc; }
+.rel32-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.rel32-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.rel32-errors-nav button.active span { background: #be123c; }
+
+.rel32-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.rel32-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.rel32-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.rel32-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.rel32-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.rel32-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.rel32-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.rel32-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.rel32-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.rel32-error-flow > span svg { color: var(--rel32-violet); }
+.rel32-error-flow > span strong { color: #0f172a; }
+.rel32-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.rel32-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 7. Terminal e Entrega */
+.rel32-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.rel32-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.rel32-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.rel32-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.rel32-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.rel32-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.rel32-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.rel32-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.rel32-terminal pre strong { color: #fff; }
+.rel32-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.rel32-terminal p svg { flex: 0 0 auto; color: #8b5cf6; }
+
+.rel32-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.rel32-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.rel32-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.rel32-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.rel32-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .rel32-general-sim, .rel32-memoria-sim, .rel32-redundancy-box, .rel32-errors-clinic { grid-template-columns: 1fr; }
+  .rel32-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rel32-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .rel32-domains-gallery { grid-template-columns: 1fr; }
+  .rel32-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .rel32-error-flow { grid-template-columns: 1fr; }
+  .rel32-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .rel32-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .rel32-errors-nav, .rel32-delivery-flow > nav { grid-template-columns: 1fr; }
+  .rel32-delivery-actions { flex-direction: column; align-items: stretch; }
+  .rel32-delivery-actions button { justify-content: center; }
+  .rel32-delivery-actions span { text-align: center; }
+}

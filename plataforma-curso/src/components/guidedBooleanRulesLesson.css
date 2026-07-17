@@ -1,0 +1,278 @@
+.guided-boolean-rules-lesson {
+  --bool27-purple: #7c3aed;
+  --bool27-purple-soft: #f5f3ff;
+  --bool27-indigo: #4f46e5;
+  --bool27-indigo-soft: #e0e7ff;
+  --bool27-dark: #0f172a;
+  --bool27-border: #e2e8f0;
+  overflow: visible;
+}
+
+.guided-boolean-rules-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(124, 58, 237, .25), transparent 23rem),
+    linear-gradient(135deg, #311084, #4f46e5 58%, #0f172a);
+}
+
+.guided-boolean-rules-lesson button { font: inherit; }
+
+.bool27-name-builder, .bool27-logic-circuit, .bool27-negation-lens,
+.bool27-compound-builder, .bool27-triagem-game, .bool27-errors-clinic,
+.bool27-terminal, .bool27-console, .bool27-code, .bool27-evidence { min-width: 0; }
+
+.bool27-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #e9d5ff; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.bool27-code, .bool27-evidence { background: var(--bool27-dark); }
+.bool27-code .guided-file-title, .bool27-evidence .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.bool27-code > pre, .bool27-evidence > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Simulador de Nomenclatura */
+.bool27-builder-container {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(230px, .85fr); gap: 16px;
+  padding: 20px; background: var(--bool27-purple-soft); border: 1px solid #ddd6fe; border-radius: 16px; color: #4c1d95;
+}
+.bool27-builder-workspace {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.bool27-builder-row {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: rgba(255, 255, 255, 0.7); padding: 12px; border-radius: 10px; border: 1px solid #e9d5ff;
+}
+.bool27-builder-label { font-size: .7rem; font-weight: bold; color: #6d28d9; width: 100%; margin-bottom: 2px; }
+.bool27-builder-chip {
+  padding: 6px 10px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px;
+  font-size: .72rem; font-weight: bold; color: #475569; cursor: pointer; transition: all 0.2s;
+}
+.bool27-builder-chip:hover { border-color: var(--bool27-purple); background: #fdfeff; }
+.bool27-builder-chip.selected {
+  background: var(--bool27-purple); color: #fff; border-color: var(--bool27-purple);
+}
+.bool27-builder-preview {
+  margin-top: 14px; padding: 14px; background: #0f172a; border-radius: 10px; border: 2px solid #1e293b;
+}
+.bool27-builder-preview code { font-family: Consolas, monospace; font-size: .85rem; color: #a78bfa; font-weight: bold; display: block; overflow-wrap: anywhere; }
+
+/* 2. Lente de Negação */
+.bool27-lens-container {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+  padding: 20px; background: #0f172a; border-radius: 16px; border: 1px solid #1e293b; color: #f8fafc;
+}
+.bool27-lens-control {
+  display: flex; flex-direction: column; gap: 10px; justify-content: center; align-items: center;
+  background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155;
+}
+.bool27-lens-box {
+  display: flex; align-items: center; gap: 14px; margin-top: 10px;
+}
+.bool27-lens-circle {
+  width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: bold; font-size: .85rem; border: 3px solid; transition: all 0.3s;
+}
+.bool27-lens-circle.true { background: #10b981; border-color: #34d399; color: #fff; }
+.bool27-lens-circle.false { background: #ef4444; border-color: #f87171; color: #fff; }
+
+/* 3. Circuitos das Tabelas-Verdade */
+.bool27-circuit-container {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(220px, .75fr); gap: 16px;
+}
+.bool27-circuit-board {
+  display: flex; flex-direction: column; gap: 14px; padding: 20px;
+  background: #1e1b4b; border: 1px solid #312e81; border-radius: 16px; color: #e0e7ff; position: relative;
+}
+.bool27-circuit-switches {
+  display: flex; gap: 40px; justify-content: center; margin: 15px 0;
+}
+.bool27-switch-wrapper {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.bool27-switch-wrapper span { font-size: .65rem; font-weight: bold; color: #a5b4fc; text-transform: uppercase; }
+.bool27-switch-btn {
+  width: 48px; height: 32px; background: #312e81; border: 2px solid #4338ca; border-radius: 16px;
+  position: relative; cursor: pointer; transition: background 0.2s; padding: 0;
+}
+.bool27-switch-btn::before {
+  content: ''; position: absolute; top: 2px; width: 24px; height: 24px;
+  background: #cbd5e1; border-radius: 50%; transition: all 0.2s;
+}
+.bool27-switch-btn.off::before { left: 2px; }
+.bool27-switch-btn.on::before { right: 2px; background: #6366f1; }
+.bool27-switch-btn.on { background: #3730a3; }
+
+.bool27-circuit-diagram {
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px 0;
+}
+.bool27-circuit-wire {
+  height: 6px; background: #312e81; transition: background 0.3s;
+}
+.bool27-circuit-wire.active { background: #facc15; }
+.bool27-switch-node {
+  width: 32px; height: 16px; background: #475569; position: relative; border-radius: 4px;
+  transition: all 0.3s;
+}
+.bool27-switch-node.active { background: #facc15; }
+.bool27-switch-contact {
+  position: absolute; left: 0; top: -8px; width: 32px; height: 4px; background: #94a3b8;
+  transform-origin: left center; transition: transform 0.2s;
+}
+.bool27-switch-contact.open { transform: rotate(-30deg); }
+.bool27-switch-contact.closed { transform: rotate(0deg); background: #facc15; }
+
+.bool27-bulb-container {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.bool27-bulb {
+  width: 54px; height: 54px; border-radius: 50%; border: 3px solid #312e81; background: #1e1b4b;
+  display: grid; place-items: center; color: #475569; transition: all 0.3s;
+}
+.bool27-bulb.lit {
+  background: #fef08a; border-color: #facc15; color: #ca8a04;
+  box-shadow: 0 0 24px rgba(250, 204, 21, 0.6);
+}
+
+/* 4. Construtor de Comparação e Regra Composta */
+.bool27-compound-builder {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(230px, .8fr); gap: 16px;
+}
+.bool27-compound-panel {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px;
+  background: #0f172a; border-radius: 16px; border: 1px solid #1e293b; color: #f8fafc;
+}
+.bool27-compound-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.bool27-compound-nav button {
+  padding: 8px 12px; background: #1e293b; border: 1px solid #334155; color: #94a3b8;
+  border-radius: 8px; font-size: .68rem; font-weight: bold; cursor: pointer;
+}
+.bool27-compound-nav button.active {
+  color: #fff; background: var(--bool27-purple); border-color: var(--bool27-purple);
+}
+.bool27-compound-expression {
+  padding: 16px; background: #030712; border-radius: 12px; border: 1px solid #1f2937;
+  display: flex; flex-direction: column; gap: 8px; font-family: Consolas, monospace;
+}
+.bool27-compound-expression code { font-size: .8rem; color: #e2e8f0; }
+
+/* 5. Jogo de Triagem (Boolean vs Enum) */
+.bool27-triagem-game {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px;
+}
+.bool27-triagem-box {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(240px, .85fr); gap: 16px;
+  padding: 20px; background: #e0e7ff; border: 1px solid #c7d2fe; border-radius: 16px; color: #1e1b4b;
+}
+
+/* 6. Galeria de Domínios */
+.bool27-domains-gallery { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 14px; }
+.bool27-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.bool27-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.bool27-domains-sidebar button:hover { background: #f8fafc; }
+.bool27-domains-sidebar button.active {
+  color: #fff; background: var(--bool27-purple); border-color: var(--bool27-purple);
+}
+.bool27-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.bool27-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.bool27-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.bool27-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #c084fc;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 7. Clínica de Erros */
+.bool27-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.bool27-errors-nav { display: grid; gap: 6px; align-content: start; }
+.bool27-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.bool27-errors-nav button:hover { background: #f8fafc; }
+.bool27-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.bool27-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.bool27-errors-nav button.active span { background: #be123c; }
+
+.bool27-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.bool27-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.bool27-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.bool27-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.bool27-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.bool27-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.bool27-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.bool27-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.bool27-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.bool27-error-flow > span svg { color: var(--bool27-purple); }
+.bool27-error-flow > span strong { color: #0f172a; }
+.bool27-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.bool27-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 8. Terminal e Entrega */
+.bool27-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.bool27-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.bool27-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.bool27-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+.bool27-delivery-flow > nav button.active span { background: #0284c7; }
+.bool27-delivery-flow > nav button.done span { background: #0284c7; }
+
+.bool27-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.bool27-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.bool27-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.bool27-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.bool27-terminal pre strong { color: #fff; }
+.bool27-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.bool27-terminal p svg { flex: 0 0 auto; color: #10b981; }
+
+.bool27-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.bool27-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.bool27-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.bool27-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.bool27-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .bool27-builder-container, .bool27-lens-container, .bool27-circuit-container, .bool27-compound-builder, .bool27-triagem-box, .bool27-errors-clinic { grid-template-columns: 1fr; }
+  .bool27-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bool27-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .bool27-domains-gallery { grid-template-columns: 1fr; }
+  .bool27-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .bool27-error-flow { grid-template-columns: 1fr; }
+  .bool27-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .bool27-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .bool27-errors-nav, .bool27-delivery-flow > nav { grid-template-columns: 1fr; }
+  .bool27-delivery-actions { flex-direction: column; align-items: stretch; }
+  .bool27-delivery-actions button { justify-content: center; }
+  .bool27-delivery-actions span { text-align: center; }
+}

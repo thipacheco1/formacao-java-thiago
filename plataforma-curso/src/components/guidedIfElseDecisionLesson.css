@@ -1,0 +1,176 @@
+.guided-ifelse-decision-lesson {
+  --dec35-fuchsia: #d946ef;
+  --dec35-fuchsia-soft: #fdf4ff;
+  --dec35-purple: #701a75;
+  --dec35-slate: #475569;
+  --dec35-dark: #0f172a;
+  --dec35-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-ifelse-decision-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(217, 70, 239, .25), transparent 23rem),
+    linear-gradient(135deg, #4a044e, #d946ef 58%, #0f172a);
+}
+
+.guided-ifelse-decision-lesson button { font: inherit; }
+
+.dec35-tree-container, .dec35-comp-box, .dec35-semicolon-card,
+.dec35-errors-clinic, .dec35-domains-gallery, .dec35-terminal, .dec35-code { min-width: 0; }
+
+.dec35-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #fdf4ff; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.dec35-code { background: var(--dec35-dark); }
+.dec35-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.dec35-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Árvore de Roteamento Dinâmica */
+.dec35-tree-container {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(230px, .8fr); gap: 16px;
+  padding: 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.dec35-tree-viewport {
+  position: relative; display: flex; flex-direction: column; gap: 14px; background: #0f172a; padding: 20px; border-radius: 12px; min-height: 240px; justify-content: center;
+}
+.dec35-tree-node {
+  position: relative; padding: 10px 14px; border: 2px solid #334155; border-radius: 8px; background: #1e293b; color: #cbd5e1; font-family: Consolas, monospace; font-size: .72rem; transition: all 0.3s;
+}
+.dec35-tree-node.active {
+  border-color: var(--dec35-fuchsia); background: #4a044e; color: #fff; box-shadow: 0 0 10px rgba(217, 70, 239, 0.4);
+}
+.dec35-tree-node.ignored { opacity: 0.3; }
+
+.dec35-glow-dot {
+  position: absolute; width: 8px; height: 8px; background: var(--dec35-fuchsia); border-radius: 50%; box-shadow: 0 0 8px var(--dec35-fuchsia); animation: pulseGlow 1.5s infinite;
+}
+@keyframes pulseGlow { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.4); opacity: 1; } }
+
+/* 2. Comparador de Fluxos (If vs Else If) */
+.dec35-comp-box {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px; background: var(--dec35-fuchsia-soft); border: 1px solid #f5d0fe; border-radius: 16px;
+}
+.dec35-comp-side {
+  display: flex; flex-direction: column; gap: 10px; background: #fff; border: 1px solid #e9d5ff; padding: 14px; border-radius: 12px;
+}
+
+/* 3. Ponto e Vírgula Assassino */
+.dec35-semicolon-card {
+  padding: 16px; background: #fff; border: 1px solid #cbd5e1; border-radius: 12px; display: flex; flex-direction: column; gap: 10px;
+}
+
+/* 4. Galeria de Domínios */
+.dec35-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.dec35-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.dec35-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.dec35-domains-sidebar button:hover { background: #f8fafc; }
+.dec35-domains-sidebar button.active {
+  color: #fff; background: var(--dec35-fuchsia); border-color: var(--dec35-fuchsia);
+}
+.dec35-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.dec35-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.dec35-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.dec35-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #f472b6;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 5. Clínica de Erros */
+.dec35-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.dec35-errors-nav { display: grid; gap: 6px; align-content: start; }
+.dec35-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.dec35-errors-nav button:hover { background: #f8fafc; }
+.dec35-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.dec35-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.dec35-errors-nav button.active span { background: #be123c; }
+
+.dec35-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.dec35-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.dec35-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.dec35-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.dec35-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.dec35-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.dec35-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.dec35-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.dec35-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.dec35-error-flow > span svg { color: var(--dec35-fuchsia); }
+.dec35-error-flow > span strong { color: #0f172a; }
+.dec35-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.dec35-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 6. Terminal e Entrega */
+.dec35-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.dec35-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.dec35-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.dec35-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.dec35-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.dec35-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.dec35-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.dec35-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.dec35-terminal pre strong { color: #fff; }
+.dec35-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.dec35-terminal p svg { flex: 0 0 auto; color: #d946ef; }
+
+.dec35-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.dec35-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.dec35-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.dec35-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.dec35-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .dec35-tree-container, .dec35-comp-box, .dec35-errors-clinic { grid-template-columns: 1fr; }
+  .dec35-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dec35-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .dec35-domains-gallery { grid-template-columns: 1fr; }
+  .dec35-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .dec35-error-flow { grid-template-columns: 1fr; }
+  .dec35-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .dec35-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .dec35-errors-nav, .dec35-delivery-flow > nav { grid-template-columns: 1fr; }
+  .dec35-delivery-actions { flex-direction: column; align-items: stretch; }
+  .dec35-delivery-actions button { justify-content: center; }
+  .dec35-delivery-actions span { text-align: center; }
+}

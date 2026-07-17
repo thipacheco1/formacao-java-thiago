@@ -29,6 +29,20 @@ import GuidedFirstJavaProgramLesson021 from './GuidedFirstJavaProgramLesson021';
 import GuidedCodeStructureLesson022 from './GuidedCodeStructureLesson022';
 import GuidedUsefulCommentsLesson023 from './GuidedUsefulCommentsLesson023';
 import GuidedVariablesLesson024 from './GuidedVariablesLesson024';
+import GuidedIntegerTypesLesson025 from './GuidedIntegerTypesLesson025';
+import GuidedDecimalTypesLesson026 from './GuidedDecimalTypesLesson026';
+import GuidedBooleanRulesLesson027 from './GuidedBooleanRulesLesson027';
+import GuidedCharStringLesson028 from './GuidedCharStringLesson028';
+import GuidedStringBasicsLesson029 from './GuidedStringBasicsLesson029';
+import GuidedScannerInputLesson030 from './GuidedScannerInputLesson030';
+import GuidedArithmeticOperatorsLesson031 from './GuidedArithmeticOperatorsLesson031';
+import GuidedRelationalOperatorsLesson032 from './GuidedRelationalOperatorsLesson032';
+import GuidedLogicalOperatorsLesson033 from './GuidedLogicalOperatorsLesson033';
+import GuidedIncrementDecrementLesson034 from './GuidedIncrementDecrementLesson034';
+import GuidedIfElseDecisionLesson035 from './GuidedIfElseDecisionLesson035';
+import GuidedNestedIfsSimplificationLesson036 from './GuidedNestedIfsSimplificationLesson036';
+import GuidedSwitchTradicionalLesson037 from './GuidedSwitchTradicionalLesson037';
+import GuidedSwitchModernoLesson038 from './GuidedSwitchModernoLesson038';
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1360,6 +1374,62 @@ const MarkdownViewerV2 = (props) => {
 
   if (props.lesson?.id?.startsWith('024_')) {
     return <GuidedVariablesLesson024 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('025_')) {
+    return <GuidedIntegerTypesLesson025 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('026_')) {
+    return <GuidedDecimalTypesLesson026 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('027_')) {
+    return <GuidedBooleanRulesLesson027 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('028_')) {
+    return <GuidedCharStringLesson028 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('029_')) {
+    return <GuidedStringBasicsLesson029 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('030_')) {
+    return <GuidedScannerInputLesson030 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('031_')) {
+    return <GuidedArithmeticOperatorsLesson031 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('032_')) {
+    return <GuidedRelationalOperatorsLesson032 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('033_')) {
+    return <GuidedLogicalOperatorsLesson033 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('034_')) {
+    return <GuidedIncrementDecrementLesson034 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('035_')) {
+    return <GuidedIfElseDecisionLesson035 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('036_')) {
+    return <GuidedNestedIfsSimplificationLesson036 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('037_')) {
+    return <GuidedSwitchTradicionalLesson037 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('038_')) {
+    return <GuidedSwitchModernoLesson038 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

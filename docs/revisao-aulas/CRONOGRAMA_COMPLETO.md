@@ -10,8 +10,8 @@
 - Aulas numeradas de 001 a 720: **720**.
 - Aula de abertura 000: **1**.
 - Refeitas e aprovadas: **24**.
-- Em revisão: **1**.
-- Pendentes: **696**.
+- Em revisão: **15**.
+- Pendentes: **682**.
 - Bloqueadas: **0**.
 
 ## Resumo por módulo
@@ -20,7 +20,7 @@
 |---|---:|---:|---:|---:|---:|---:|
 | P0 | 1 | 1 | 0 | 0 | 0 | 100% |
 | M0 | 20 | 20 | 0 | 0 | 0 | 100% |
-| M1 | 41 | 3 | 1 | 37 | 0 | 7% |
+| M1 | 41 | 3 | 15 | 23 | 0 | 7% |
 | M2 | 28 | 0 | 0 | 28 | 0 | 0% |
 | M3 | 15 | 0 | 0 | 15 | 0 | 0% |
 | M4 | 41 | 0 | 0 | 41 | 0 | 0% |
@@ -273,20 +273,133 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [025 — M1.05 — Tipos Inteiros em Java](../aulas/025_M1_05_TIPOS_INTEIROS_EM_JAVA_OFICIAL.md)
-- [ ] **Pendente** — [026 — M1.06 — Tipos Decimais e Primeiras Limitações](../aulas/026_M1_06_TIPOS_DECIMAIS_E_PRIMEIRAS_LIMITACOES_OFICIAL.md)
-- [ ] **Pendente** — [027 — M1.07 — Boolean e Regras Verdadeiras/Falsas](../aulas/027_M1_07_BOOLEAN_E_REGRAS_VERDADEIRAS_FALSAS_OFICIAL.md)
-- [ ] **Pendente** — [028 — M1.08 — Char e String em Uso Inicial](../aulas/028_M1_08_CHAR_E_STRING_EM_USO_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [029 — M1.09 — String Básica](../aulas/029_M1_09_STRING_BASICA_OFICIAL.md)
-- [ ] **Pendente** — [030 — M1.10 — Entrada de Dados com Scanner](../aulas/030_M1_10_ENTRADA_DE_DADOS_COM_SCANNER_OFICIAL.md)
-- [ ] **Pendente** — [031 — M1.11 — Operadores Aritméticos](../aulas/031_M1_11_OPERADORES_ARITMETICOS_OFICIAL.md)
-- [ ] **Pendente** — [032 — M1.12 — Operadores Relacionais](../aulas/032_M1_12_OPERADORES_RELACIONAIS_OFICIAL.md)
-- [ ] **Pendente** — [033 — M1.13 — Operadores lógicos](../aulas/033_M1_13_OPERADORES_LOGICOS_OFICIAL.md)
-- [ ] **Pendente** — [034 — M1.14 — Incremento, decremento e acumuladores](../aulas/034_M1_14_INCREMENTO_DECREMENTO_E_ACUMULADORES_OFICIAL.md)
-- [ ] **Pendente** — [035 — M1.15 — If, else if e else](../aulas/035_M1_15_IF_ELSE_IF_E_ELSE_OFICIAL.md)
-- [ ] **Pendente** — [036 — M1.16 — Ifs Aninhados e Simplificação](../aulas/036_M1_16_IFS_ANINHADOS_E_SIMPLIFICACAO_OFICIAL.md)
-- [ ] **Pendente** — [037 — M1.17 — Switch Tradicional](../aulas/037_M1_17_SWITCH_TRADICIONAL_OFICIAL.md)
-- [ ] **Pendente** — [038 — M1.18 — Switch Moderno e Expressões](../aulas/038_M1_18_SWITCH_MODERNO_E_EXPRESSOES_OFICIAL.md)
+- [ ] **Em revisão** — [025 — M1.05 — Tipos Inteiros em Java](../aulas/025_M1_05_TIPOS_INTEIROS_EM_JAVA_OFICIAL.md)
+  - Oficina em revisão de tipos inteiros (byte, short, int, long) com bits, literais, sufixo L, underscores de legibilidade, overflow silencioso, exemplos backend e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/025_TIPOS_INTEIROS_EM_JAVA.md`](matrizes/025_TIPOS_INTEIROS_EM_JAVA.md)
+    - [`plataforma-curso/src/components/GuidedIntegerTypesLesson025.jsx`](../../plataforma-curso/src/components/GuidedIntegerTypesLesson025.jsx)
+    - [`plataforma-curso/src/components/guidedIntegerTypesLesson.css`](../../plataforma-curso/src/components/guidedIntegerTypesLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [026 — M1.06 — Tipos Decimais e Primeiras Limitações](../aulas/026_M1_06_TIPOS_DECIMAIS_E_PRIMEIRAS_LIMITACOES_OFICIAL.md)
+  - Oficina em revisão de tipos decimais (double, float) com dízimas binárias, precisão em casas decimais, sufixo F, divisão inteira vs decimal, printf e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/026_TIPOS_DECIMAIS_PRIMEIRAS_LIMITACOES.md`](matrizes/026_TIPOS_DECIMAIS_PRIMEIRAS_LIMITACOES.md)
+    - [`plataforma-curso/src/components/GuidedDecimalTypesLesson026.jsx`](../../plataforma-curso/src/components/GuidedDecimalTypesLesson026.jsx)
+    - [`plataforma-curso/src/components/guidedDecimalTypesLesson.css`](../../plataforma-curso/src/components/guidedDecimalTypesLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [027 — M1.07 — Boolean e Regras Verdadeiras/Falsas](../aulas/027_M1_07_BOOLEAN_E_REGRAS_VERDADEIRAS_FALSAS_OFICIAL.md)
+  - Oficina em revisão cobrindo o tipo boolean, true/false minúsculos, negação lógica, operadores de comparação, operadores lógicos && e || com circuitos elétricos, uso de parênteses e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/027_BOOLEAN_REGRAS_VERDADEIRAS_FALSAS.md`](matrizes/027_BOOLEAN_REGRAS_VERDADEIRAS_FALSAS.md)
+    - [`plataforma-curso/src/components/GuidedBooleanRulesLesson027.jsx`](../../plataforma-curso/src/components/GuidedBooleanRulesLesson027.jsx)
+    - [`plataforma-curso/src/components/guidedBooleanRulesLesson.css`](../../plataforma-curso/src/components/guidedBooleanRulesLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [028 — M1.08 — Char e String em Uso Inicial](../aulas/028_M1_08_CHAR_E_STRING_EM_USO_INICIAL_OFICIAL.md)
+  - Oficina em revisão de tipos textuais (char, String) com comparador de aspas simples vs duplas, modelagem de CEP/CPF textuais, concatenação e precedência, caracteres de escape, imutabilidade física e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/028_CHAR_STRING_USO_INICIAL.md`](matrizes/028_CHAR_STRING_USO_INICIAL.md)
+    - [`plataforma-curso/src/components/GuidedCharStringLesson028.jsx`](../../plataforma-curso/src/components/GuidedCharStringLesson028.jsx)
+    - [`plataforma-curso/src/components/guidedCharStringLesson.css`](../../plataforma-curso/src/components/guidedCharStringLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [029 — M1.09 — String Básica](../aulas/029_M1_09_STRING_BASICA_OFICIAL.md)
+  - Oficina em revisão cobrindo validações (length, isEmpty, isBlank), remoções de espaços (trim), comparações corretas (equals, equalsIgnoreCase) contra ==, buscas simples (contains) com case-sensitivity, encadeamento de métodos e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/029_STRING_BASICA.md`](matrizes/029_STRING_BASICA.md)
+    - [`plataforma-curso/src/components/GuidedStringBasicsLesson029.jsx`](../../plataforma-curso/src/components/GuidedStringBasicsLesson029.jsx)
+    - [`plataforma-curso/src/components/guidedStringBasicsLesson.css`](../../plataforma-curso/src/components/guidedStringBasicsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [030 — M1.10 — Entrada de Dados com Scanner](../aulas/030_M1_10_ENTRADA_DE_DADOS_COM_SCANNER_OFICIAL.md)
+  - Oficina em revisão de entrada de dados com Scanner (System.in), cobrindo leituras textuais e numéricas (nextLine, nextInt, nextDouble), Locale regional, diferença de next vs nextLine, o erro clássico do buffer com quebra de linha (
+) e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/030_ENTRADA_DADOS_SCANNER.md`](matrizes/030_ENTRADA_DADOS_SCANNER.md)
+    - [`plataforma-curso/src/components/GuidedScannerInputLesson030.jsx`](../../plataforma-curso/src/components/GuidedScannerInputLesson030.jsx)
+    - [`plataforma-curso/src/components/guidedScannerInputLesson.css`](../../plataforma-curso/src/components/guidedScannerInputLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [031 — M1.11 — Operadores Aritméticos](../aulas/031_M1_11_OPERADORES_ARITMETICOS_OFICIAL.md)
+  - Oficina em revisão de operadores aritméticos (+, -, *, /, %), cobrindo o comportamento de divisão inteira, o uso do cast double, o operador de resto para lotes e par/ímpar, a árvore de precedência implícita de operadores e parênteses, riscos de divisão por zero e overflow, e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/031_OPERADORES_ARITMETICOS.md`](matrizes/031_OPERADORES_ARITMETICOS.md)
+    - [`plataforma-curso/src/components/GuidedArithmeticOperatorsLesson031.jsx`](../../plataforma-curso/src/components/GuidedArithmeticOperatorsLesson031.jsx)
+    - [`plataforma-curso/src/components/guidedArithmeticOperatorsLesson.css`](../../plataforma-curso/src/components/guidedArithmeticOperatorsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [032 — M1.12 — Operadores Relacionais](../aulas/032_M1_12_OPERADORES_RELACIONAIS_OFICIAL.md)
+  - Oficina em revisão de operadores relacionais (>, <, >=, <=, ==, !=), cobrindo a comparação de tipos numéricos (int, long, double) e de caracteres (char), o perigo de comparação direta de double, a redundância de testes com booleano, a igualdade de strings com equals() vs == em Stack/Heap, parênteses em concatenação e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/032_OPERADORES_RELACIONAIS.md`](matrizes/032_OPERADORES_RELACIONAIS.md)
+    - [`plataforma-curso/src/components/GuidedRelationalOperatorsLesson032.jsx`](../../plataforma-curso/src/components/GuidedRelationalOperatorsLesson032.jsx)
+    - [`plataforma-curso/src/components/guidedRelationalOperatorsLesson.css`](../../plataforma-curso/src/components/guidedRelationalOperatorsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [033 — M1.13 — Operadores lógicos](../aulas/033_M1_13_OPERADORES_LOGICOS_OFICIAL.md)
+  - Oficina em revisão de operadores lógicos (&&, ||, !), cobrindo tabelas-verdade interativas com circuitos elétricos, o curto-circuito na JVM para evitar NullPointerException, ordem das condições com null check, precedência com parênteses, quebra de expressões extensas em booleanos intermediários e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/033_OPERADORES_LOGICOS.md`](matrizes/033_OPERADORES_LOGICOS.md)
+    - [`plataforma-curso/src/components/GuidedLogicalOperatorsLesson033.jsx`](../../plataforma-curso/src/components/GuidedLogicalOperatorsLesson033.jsx)
+    - [`plataforma-curso/src/components/guidedLogicalOperatorsLesson.css`](../../plataforma-curso/src/components/guidedLogicalOperatorsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [034 — M1.14 — Incremento, decremento e acumuladores](../aulas/034_M1_14_INCREMENTO_DECREMENTO_E_ACUMULADORES_OFICIAL.md)
+  - Oficina em revisão de incremento, decremento e acumuladores (++, --, +=, -=), cobrindo o simulador de CPU para pré/pós-incremento, esteira de vendas para contadores vs acumuladores de faturamento com BigDecimal, perigo de add sem atribuição, limites de decremento para login/estoque e clínica de 6 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/034_INCREMENTO_DECREMENTO.md`](matrizes/034_INCREMENTO_DECREMENTO.md)
+    - [`plataforma-curso/src/components/GuidedIncrementDecrementLesson034.jsx`](../../plataforma-curso/src/components/GuidedIncrementDecrementLesson034.jsx)
+    - [`plataforma-curso/src/components/guidedIncrementDecrementLesson.css`](../../plataforma-curso/src/components/guidedIncrementDecrementLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [035 — M1.15 — If, else if e else](../aulas/035_M1_15_IF_ELSE_IF_E_ELSE_OFICIAL.md)
+  - Oficina em revisão de tomada de decisão (if, else if, else), cobrindo o simulador de árvore de roteamento para faixas de valores e ordenação incorreta, comparador de caminhos paralelos vs excludentes, o perigo de ponto e vírgula indevido após a condição e clínica de 7 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/035_IF_ELSE.md`](matrizes/035_IF_ELSE.md)
+    - [`plataforma-curso/src/components/GuidedIfElseDecisionLesson035.jsx`](../../plataforma-curso/src/components/GuidedIfElseDecisionLesson035.jsx)
+    - [`plataforma-curso/src/components/guidedIfElseDecisionLesson.css`](../../plataforma-curso/src/components/guidedIfElseDecisionLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [036 — M1.16 — Ifs Aninhados e Simplificação](../aulas/036_M1_16_IFS_ANINHADOS_E_SIMPLIFICACAO_OFICIAL.md)
+  - Oficina em revisão de ifs aninhados e simplificação, cobrindo o animador de achatamento de código escada para fluxos lineares, o uso de booleanos locais autoexplicativos, o comparador de validações independentes (vários ifs com acumulador de erros) vs exclusivas (else if) e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/036_IFS_ANINHADOS.md`](matrizes/036_IFS_ANINHADOS.md)
+    - [`plataforma-curso/src/components/GuidedNestedIfsSimplificationLesson036.jsx`](../../plataforma-curso/src/components/GuidedNestedIfsSimplificationLesson036.jsx)
+    - [`plataforma-curso/src/components/guidedNestedIfsSimplificationLesson.css`](../../plataforma-curso/src/components/guidedNestedIfsSimplificationLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [037 — M1.17 — Switch Tradicional](../aulas/037_M1_17_SWITCH_TRADICIONAL_OFICIAL.md)
+  - Oficina em revisão do switch tradicional Java, cobrindo simulador de menu interativo, animação de fall-through acidental vs break seguro, galeria de cases corporativos (pedido, OS, mensageria, prioridade) e clínica de 10 falhas.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/037_SWITCH_TRADICIONAL.md`](matrizes/037_SWITCH_TRADICIONAL.md)
+    - [`plataforma-curso/src/components/GuidedSwitchTradicionalLesson037.jsx`](../../plataforma-curso/src/components/GuidedSwitchTradicionalLesson037.jsx)
+    - [`plataforma-curso/src/components/guidedSwitchTradicionalLesson.css`](../../plataforma-curso/src/components/guidedSwitchTradicionalLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [038 — M1.18 — Switch Moderno e Expressões](../aulas/038_M1_18_SWITCH_MODERNO_E_EXPRESSOES_OFICIAL.md)
+  - Oficina em revisão do switch moderno Java, cobrindo comparador side-by-side (statement vs expression), simulador interativo de switch expression retornando valor, demonstrador de yield em bloco, galeria de 7 domínios corporativos e clínica de 10 erros.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/038_SWITCH_MODERNO.md`](matrizes/038_SWITCH_MODERNO.md)
+    - [`plataforma-curso/src/components/GuidedSwitchModernoLesson038.jsx`](../../plataforma-curso/src/components/GuidedSwitchModernoLesson038.jsx)
+    - [`plataforma-curso/src/components/guidedSwitchModernoLesson.css`](../../plataforma-curso/src/components/guidedSwitchModernoLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [ ] **Pendente** — [039 — M1.19 — While](../aulas/039_M1_19_WHILE_OFICIAL.md)
 - [ ] **Pendente** — [040 — M1.20 — Do While](../aulas/040_M1_20_DO_WHILE_OFICIAL.md)
 - [ ] **Pendente** — [041 — M1.21 — For Clássico](../aulas/041_M1_21_FOR_CLASSICO_OFICIAL.md)

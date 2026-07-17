@@ -370,6 +370,216 @@
         "plataforma-curso/src/components/guidedLesson.css",
         "plataforma-curso/src/components/MarkdownViewer.jsx"
       ]
+    },
+    "025_M1_05_TIPOS_INTEIROS_EM_JAVA_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-tipos-numericos-e-limites-com-simulacao-de-bits-overflow-observavel-e-clinica-de-erros",
+      "summary": "Oficina em revisão de tipos inteiros (byte, short, int, long) com bits, literais, sufixo L, underscores de legibilidade, overflow silencioso, exemplos backend e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/025_TIPOS_INTEIROS_EM_JAVA.md",
+        "plataforma-curso/src/components/GuidedIntegerTypesLesson025.jsx",
+        "plataforma-curso/src/components/guidedIntegerTypesLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "026_M1_06_TIPOS_DECIMAIS_E_PRIMEIRAS_LIMITACOES_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-tipos-decimais-e-aproximacao-com-simulador-de-precisao-divisao-de-inteiros-e-clinica-de-erros",
+      "summary": "Oficina em revisão de tipos decimais (double, float) com dízimas binárias, precisão em casas decimais, sufixo F, divisão inteira vs decimal, printf e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/026_TIPOS_DECIMAIS_PRIMEIRAS_LIMITACOES.md",
+        "plataforma-curso/src/components/GuidedDecimalTypesLesson026.jsx",
+        "plataforma-curso/src/components/guidedDecimalTypesLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "027_M1_07_BOOLEAN_E_REGRAS_VERDADEIRAS_FALSAS_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-regras-logicas-e-booleanos-com-tabelas-verdade-interativas-e-clinica-de-depuracao",
+      "summary": "Oficina em revisão cobrindo o tipo boolean, true/false minúsculos, negação lógica, operadores de comparação, operadores lógicos && e || com circuitos elétricos, uso de parênteses e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/027_BOOLEAN_REGRAS_VERDADEIRAS_FALSAS.md",
+        "plataforma-curso/src/components/GuidedBooleanRulesLesson027.jsx",
+        "plataforma-curso/src/components/guidedBooleanRulesLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "028_M1_08_CHAR_E_STRING_EM_USO_INICIAL_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-tipos-textuais-com-comparador-de-aspas-imutabilidade-em-memoria-virtual-playground-de-escape-e-clinica-de-erros",
+      "summary": "Oficina em revisão de tipos textuais (char, String) com comparador de aspas simples vs duplas, modelagem de CEP/CPF textuais, concatenação e precedência, caracteres de escape, imutabilidade física e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/028_CHAR_STRING_USO_INICIAL.md",
+        "plataforma-curso/src/components/GuidedCharStringLesson028.jsx",
+        "plataforma-curso/src/components/guidedCharStringLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "029_M1_09_STRING_BASICA_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-metodos-de-string-com-simulador-de-estado-e-comparacao-logica-lente-de-encadeamento-e-clinica-de-erros",
+      "summary": "Oficina em revisão cobrindo validações (length, isEmpty, isBlank), remoções de espaços (trim), comparações corretas (equals, equalsIgnoreCase) contra ==, buscas simples (contains) com case-sensitivity, encadeamento de métodos e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/029_STRING_BASICA.md",
+        "plataforma-curso/src/components/GuidedStringBasicsLesson029.jsx",
+        "plataforma-curso/src/components/guidedStringBasicsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "030_M1_10_ENTRADA_DE_DADOS_COM_SCANNER_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-entrada-interativa-de-dados-com-simulador-dinamico-de-fila-do-buffer-conversao-de-locale-e-clinica-de-erros",
+      "summary": "Oficina em revisão de entrada de dados com Scanner (System.in), cobrindo leituras textuais e numéricas (nextLine, nextInt, nextDouble), Locale regional, diferença de next vs nextLine, o erro clássico do buffer com quebra de linha (\n) e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/030_ENTRADA_DADOS_SCANNER.md",
+        "plataforma-curso/src/components/GuidedScannerInputLesson030.jsx",
+        "plataforma-curso/src/components/guidedScannerInputLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "031_M1_11_OPERADORES_ARITMETICOS_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-operadores-aritmeticos-com-arvore-de-precedencia-visual-simulacao-de-quebra-de-lotes-e-clinica-de-erros",
+      "summary": "Oficina em revisão de operadores aritméticos (+, -, *, /, %), cobrindo o comportamento de divisão inteira, o uso do cast double, o operador de resto para lotes e par/ímpar, a árvore de precedência implícita de operadores e parênteses, riscos de divisão por zero e overflow, e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/031_OPERADORES_ARITMETICOS.md",
+        "plataforma-curso/src/components/GuidedArithmeticOperatorsLesson031.jsx",
+        "plataforma-curso/src/components/guidedArithmeticOperatorsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "032_M1_12_OPERADORES_RELACIONAIS_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-operadores-relacionais-com-simulador-interativo-de-reguas-de-fronteiras-comparador-heap-stack-para-strings-e-clinica-de-erros",
+      "summary": "Oficina em revisão de operadores relacionais (>, <, >=, <=, ==, !=), cobrindo a comparação de tipos numéricos (int, long, double) e de caracteres (char), o perigo de comparação direta de double, a redundância de testes com booleano, a igualdade de strings com equals() vs == em Stack/Heap, parênteses em concatenação e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/032_OPERADORES_RELACIONAIS.md",
+        "plataforma-curso/src/components/GuidedRelationalOperatorsLesson032.jsx",
+        "plataforma-curso/src/components/guidedRelationalOperatorsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "033_M1_13_OPERADORES_LOGICOS_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-operadores-logicos-com-simulador-interativo-de-curto-circuito-painel-de-portas-logicas-e-clinica-de-erros",
+      "summary": "Oficina em revisão de operadores lógicos (&&, ||, !), cobrindo tabelas-verdade interativas com circuitos elétricos, o curto-circuito na JVM para evitar NullPointerException, ordem das condições com null check, precedência com parênteses, quebra de expressões extensas em booleanos intermediários e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/033_OPERADORES_LOGICOS.md",
+        "plataforma-curso/src/components/GuidedLogicalOperatorsLesson033.jsx",
+        "plataforma-curso/src/components/guidedLogicalOperatorsLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "034_M1_14_INCREMENTO_DECREMENTO_E_ACUMULADORES_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-contadores-acumuladores-e-incremento-com-cpu-step-simulator-para-pos-pre-incremento-registradora-de-esteira-e-clinica-de-erros",
+      "summary": "Oficina em revisão de incremento, decremento e acumuladores (++, --, +=, -=), cobrindo o simulador de CPU para pré/pós-incremento, esteira de vendas para contadores vs acumuladores de faturamento com BigDecimal, perigo de add sem atribuição, limites de decremento para login/estoque e clínica de 6 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/034_INCREMENTO_DECREMENTO.md",
+        "plataforma-curso/src/components/GuidedIncrementDecrementLesson034.jsx",
+        "plataforma-curso/src/components/guidedIncrementDecrementLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "035_M1_15_IF_ELSE_IF_E_ELSE_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-tomada-de-decisao-com-simulador-grafico-de-arvore-de-roteamento-comparador-de-fluxos-if-vs-else-if-e-clinica-de-erros",
+      "summary": "Oficina em revisão de tomada de decisão (if, else if, else), cobrindo o simulador de árvore de roteamento para faixas de valores e ordenação incorreta, comparador de caminhos paralelos vs excludentes, o perigo de ponto e vírgula indevido após a condição e clínica de 7 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/035_IF_ELSE.md",
+        "plataforma-curso/src/components/GuidedIfElseDecisionLesson035.jsx",
+        "plataforma-curso/src/components/guidedIfElseDecisionLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "036_M1_16_IFS_ANINHADOS_E_SIMPLIFICACAO_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-refatoracao-condicional-com-animador-de-achatamento-de-escada-comparador-de-validaacoes-independentes-vs-exclusivas-e-clinica-de-erros",
+      "summary": "Oficina em revisão de ifs aninhados e simplificação, cobrindo o animador de achatamento de código escada para fluxos lineares, o uso de booleanos locais autoexplicativos, o comparador de validações independentes (vários ifs com acumulador de erros) vs exclusivas (else if) e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/036_IFS_ANINHADOS.md",
+        "plataforma-curso/src/components/GuidedNestedIfsSimplificationLesson036.jsx",
+        "plataforma-curso/src/components/guidedNestedIfsSimplificationLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "037_M1_17_SWITCH_TRADICIONAL_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-selecao-por-valor-com-simulador-animado-de-fall-through-menu-interativo-e-clinica-de-erros",
+      "summary": "Oficina em revisão do switch tradicional Java, cobrindo simulador de menu interativo, animação de fall-through acidental vs break seguro, galeria de cases corporativos (pedido, OS, mensageria, prioridade) e clínica de 10 falhas.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/037_SWITCH_TRADICIONAL.md",
+        "plataforma-curso/src/components/GuidedSwitchTradicionalLesson037.jsx",
+        "plataforma-curso/src/components/guidedSwitchTradicionalLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "038_M1_18_SWITCH_MODERNO_E_EXPRESSOES_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-17",
+      "archetype": "oficina-de-expressoes-de-valor-com-comparador-side-by-side-simulador-de-switch-expression-demonstrador-de-yield-e-clinica-de-erros",
+      "summary": "Oficina em revisão do switch moderno Java, cobrindo comparador side-by-side (statement vs expression), simulador interativo de switch expression retornando valor, demonstrador de yield em bloco, galeria de 7 domínios corporativos e clínica de 10 erros.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/038_SWITCH_MODERNO.md",
+        "plataforma-curso/src/components/GuidedSwitchModernoLesson038.jsx",
+        "plataforma-curso/src/components/guidedSwitchModernoLesson.css",
+        "plataforma-curso/src/components/GuidedLessonFacts.jsx",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
     }
   }
 }

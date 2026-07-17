@@ -1,0 +1,205 @@
+.guided-scanner-input-lesson {
+  --scan30-emerald: #10b981;
+  --scan30-emerald-soft: #f0fdf4;
+  --scan30-mint: #34d399;
+  --scan30-slate: #475569;
+  --scan30-dark: #0f172a;
+  --scan30-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-scanner-input-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(16, 185, 129, .25), transparent 23rem),
+    linear-gradient(135deg, #064e3b, #10b981 58%, #0f172a);
+}
+
+.guided-scanner-input-lesson button { font: inherit; }
+
+.scan30-console-box, .scan30-buffer-simulator, .scan30-locale-simulator,
+.scan30-errors-clinic, .scan30-domains-gallery, .scan30-terminal, .scan30-code { min-width: 0; }
+
+.scan30-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #e6f4ea; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.scan30-code { background: var(--scan30-dark); }
+.scan30-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.scan30-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Terminal Interativo */
+.scan30-console-box {
+  display: flex; flex-direction: column; background: var(--scan30-dark);
+  border: 1px solid #1e293b; border-radius: 16px; overflow: hidden;
+}
+.scan30-console-header {
+  display: flex; gap: 6px; padding: 12px 16px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .75rem; font-weight: bold;
+}
+.scan30-console-screen {
+  padding: 20px; font-family: Consolas, monospace; font-size: .78rem;
+  line-height: 1.55; color: #34d399; min-height: 160px; display: flex; flex-direction: column; gap: 10px;
+}
+.scan30-console-line { display: flex; gap: 8px; align-items: center; }
+.scan30-console-input-wrap {
+  display: flex; gap: 8px; align-items: center; background: #1e293b;
+  padding: 6px 12px; border-radius: 8px; border: 1px solid #334155; width: fit-content;
+}
+.scan30-console-input-wrap input {
+  background: none; border: none; outline: none; color: #fff; font-family: inherit; font-size: inherit; width: 140px;
+}
+.scan30-console-input-wrap button {
+  background: var(--scan30-emerald); color: #fff; border: none; border-radius: 6px;
+  padding: 4px 8px; font-size: .65rem; font-weight: bold; cursor: pointer;
+}
+
+/* 2. Simulador do Buffer (Fila) */
+.scan30-buffer-simulator {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr); gap: 16px;
+  padding: 20px; background: var(--scan30-emerald-soft); border: 1px solid #bbf7d0; border-radius: 16px;
+}
+.scan30-buffer-panel { display: flex; flex-direction: column; gap: 14px; }
+.scan30-buffer-queue-wrap {
+  display: flex; flex-direction: column; gap: 6px; background: #0f172a; padding: 14px; border-radius: 12px;
+}
+.scan30-buffer-queue {
+  display: flex; gap: 6px; align-items: center; min-height: 38px; overflow-x: auto;
+}
+.scan30-buffer-item {
+  display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+  border-radius: 6px; font-family: Consolas, monospace; font-size: .8rem; font-weight: bold;
+}
+.scan30-buffer-item.char { background: #064e3b; color: #34d399; border: 1px solid #047857; }
+.scan30-buffer-item.nl { background: #701a75; color: #fdf4ff; border: 1px solid #86198f; font-size: .65rem; }
+.scan30-buffer-empty { color: #475569; font-size: .7rem; font-style: italic; }
+
+/* 3. Simulador de Locale */
+.scan30-locale-simulator {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(230px, .85fr); gap: 16px;
+}
+.scan30-locale-panel {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.scan30-locale-switch { display: flex; gap: 8px; }
+.scan30-locale-switch button {
+  flex: 1; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px;
+  font-size: .7rem; font-weight: bold; color: #475569; background: #fff; cursor: pointer; transition: all 0.2s;
+}
+.scan30-locale-switch button.active {
+  color: #fff; background: var(--scan30-emerald); border-color: var(--scan30-emerald);
+}
+
+/* 4. Galeria de Domínios */
+.scan30-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.scan30-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.scan30-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.scan30-domains-sidebar button:hover { background: #f8fafc; }
+.scan30-domains-sidebar button.active {
+  color: #fff; background: var(--scan30-emerald); border-color: var(--scan30-emerald);
+}
+.scan30-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.scan30-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.scan30-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.scan30-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #34d399;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 5. Clínica de Erros */
+.scan30-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.scan30-errors-nav { display: grid; gap: 6px; align-content: start; }
+.scan30-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.scan30-errors-nav button:hover { background: #f8fafc; }
+.scan30-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.scan30-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.scan30-errors-nav button.active span { background: #be123c; }
+
+.scan30-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.scan30-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.scan30-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.scan30-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.scan30-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.scan30-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.scan30-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.scan30-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.scan30-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.scan30-error-flow > span svg { color: var(--scan30-emerald); }
+.scan30-error-flow > span strong { color: #0f172a; }
+.scan30-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.scan30-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 6. Terminal e Entrega */
+.scan30-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.scan30-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.scan30-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.scan30-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.scan30-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.scan30-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.scan30-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.scan30-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.scan30-terminal pre strong { color: #fff; }
+.scan30-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.scan30-terminal p svg { flex: 0 0 auto; color: #10b981; }
+
+.scan30-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.scan30-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.scan30-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.scan30-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.scan30-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .scan30-buffer-simulator, .scan30-locale-simulator, .scan30-errors-clinic { grid-template-columns: 1fr; }
+  .scan30-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .scan30-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .scan30-domains-gallery { grid-template-columns: 1fr; }
+  .scan30-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .scan30-error-flow { grid-template-columns: 1fr; }
+  .scan30-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .scan30-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .scan30-errors-nav, .scan30-delivery-flow > nav { grid-template-columns: 1fr; }
+  .scan30-delivery-actions { flex-direction: column; align-items: stretch; }
+  .scan30-delivery-actions button { justify-content: center; }
+  .scan30-delivery-actions span { text-align: center; }
+}

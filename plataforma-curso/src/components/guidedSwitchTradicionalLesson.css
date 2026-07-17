@@ -1,0 +1,150 @@
+.guided-switch-tradicional-lesson {
+  --sw37-amber: #f59e0b;
+  --sw37-amber-soft: #fffbeb;
+  --sw37-orange: #ea580c;
+  --sw37-slate: #475569;
+  --sw37-dark: #0f172a;
+  --sw37-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-switch-tradicional-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(245, 158, 11, .28), transparent 23rem),
+    linear-gradient(135deg, #431407, #ea580c 52%, #0f172a);
+}
+
+.guided-switch-tradicional-lesson button { font: inherit; }
+
+.sw37-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #fffbeb; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.sw37-code { background: var(--sw37-dark); }
+.sw37-code .guided-file-title { color: #cbd5e1; background: #1e293b; border-color: #334155; }
+
+/* 1. Simulador de Menu / Seleção */
+.sw37-selector {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px;
+  padding: 20px; background: #fff; border: 1px solid var(--sw37-border); border-radius: 16px;
+}
+.sw37-menu-panel { display: flex; flex-direction: column; gap: 8px; }
+.sw37-menu-option {
+  display: flex; gap: 10px; padding: 10px 14px; align-items: center;
+  background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 10px; cursor: pointer; transition: all 0.2s;
+}
+.sw37-menu-option:hover { border-color: var(--sw37-amber); background: #fffbeb; }
+.sw37-menu-option.active { border-color: var(--sw37-amber); background: var(--sw37-amber); color: #fff; }
+.sw37-menu-option .badge { display: inline-flex; min-width: 26px; height: 26px; align-items: center; justify-content: center; background: rgba(255,255,255,.25); border-radius: 6px; font-weight: bold; font-size: .72rem; }
+.sw37-menu-option.active .badge { background: rgba(255,255,255,.3); }
+.sw37-result-panel { display: flex; flex-direction: column; gap: 8px; }
+.sw37-result-console { overflow: hidden; border-radius: 10px; background: #0f172a; border: 1px solid #1e293b; }
+.sw37-result-console header { display: flex; gap: 6px; padding: 8px 12px; align-items: center; color: #94a3b8; background: #1e293b; font-size: .65rem; font-weight: bold; }
+.sw37-result-console pre { margin: 0; padding: 12px 14px; color: #fbbf24; font-family: Consolas, monospace; font-size: .72rem; line-height: 1.5; }
+
+/* 2. Simulador de Fall-Through */
+.sw37-fallthrough-container {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 16px;
+  padding: 20px; background: #fff; border: 1px solid var(--sw37-border); border-radius: 16px;
+}
+.sw37-ft-cases { display: flex; flex-direction: column; gap: 6px; background: #0f172a; padding: 16px; border-radius: 10px; }
+.sw37-ft-case { padding: 9px 12px; border: 2px solid #1e293b; border-radius: 8px; color: #94a3b8; font-family: Consolas, monospace; font-size: .72rem; transition: all 0.3s; }
+.sw37-ft-case.active { border-color: var(--sw37-amber); color: #fff; background: #78350f; }
+.sw37-ft-case.executed { border-color: var(--sw37-orange); color: #fed7aa; background: #431407; }
+.sw37-ft-case.stopped { border-color: #22c55e; color: #86efac; background: #052e16; }
+.sw37-ft-controls { display: flex; flex-direction: column; gap: 10px; }
+.sw37-ft-toggle { display: flex; gap: 6px; }
+.sw37-ft-toggle button {
+  flex: 1; padding: 8px; border: 1px solid var(--sw37-border); border-radius: 8px; font-size: .65rem;
+  font-weight: bold; cursor: pointer; transition: all 0.2s;
+  background: #fff; color: var(--sw37-slate);
+}
+.sw37-ft-toggle button.danger { background: var(--sw37-orange); color: #fff; border-color: var(--sw37-orange); }
+.sw37-ft-toggle button.safe { background: #15803d; color: #fff; border-color: #15803d; }
+.sw37-ft-legend { display: flex; flex-direction: column; gap: 5px; font-size: .65rem; }
+.sw37-ft-legend span { display: flex; gap: 6px; align-items: center; }
+.sw37-ft-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+
+/* 3. Galeria de Domínios */
+.sw37-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.sw37-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.sw37-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: var(--sw37-slate); background: #fff;
+  border: 1px solid var(--sw37-border); border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s;
+}
+.sw37-domains-sidebar button:hover { background: #f8fafc; }
+.sw37-domains-sidebar button.active { color: #fff; background: var(--sw37-amber); border-color: var(--sw37-amber); }
+.sw37-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.sw37-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.sw37-console header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.sw37-console pre { margin: 0; padding: 14px; overflow-x: auto; color: #fbbf24; font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace; }
+.sw37-console p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.sw37-console p svg { flex: 0 0 auto; color: var(--sw37-amber); }
+
+/* 4. Clínica de Erros */
+.sw37-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.sw37-errors-nav { display: grid; gap: 6px; align-content: start; }
+.sw37-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: var(--sw37-slate); text-align: left; background: #fff;
+  border: 1px solid var(--sw37-border); border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.sw37-errors-nav button span { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem; }
+.sw37-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.sw37-errors-nav button.active span { background: #be123c; }
+.sw37-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid var(--sw37-border); border-radius: 15px; }
+.sw37-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.sw37-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.sw37-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.sw37-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.sw37-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid var(--sw37-border); border-radius: 10px; font-size: .69rem; }
+.sw37-error-flow > span svg { color: var(--sw37-amber); }
+.sw37-error-flow > span strong { color: #0f172a; }
+.sw37-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: var(--sw37-slate); }
+.sw37-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 5. Terminal e Entrega */
+.sw37-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.sw37-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.sw37-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.sw37-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.sw37-terminal pre strong { color: #fff; }
+.sw37-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.sw37-terminal p svg { flex: 0 0 auto; color: var(--sw37-amber); }
+.sw37-delivery-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.sw37-delivery-nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: var(--sw37-slate); text-align: left; background: #fff;
+  border: 1px solid var(--sw37-border); border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.sw37-delivery-nav button span { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; }
+.sw37-delivery-nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+.sw37-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.sw37-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid var(--sw37-border); border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.sw37-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.sw37-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media */
+@media (max-width: 1024px) {
+  .sw37-selector, .sw37-fallthrough-container, .sw37-errors-clinic { grid-template-columns: 1fr; }
+  .sw37-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sw37-delivery-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .sw37-domains-gallery { grid-template-columns: 1fr; }
+  .sw37-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .sw37-error-flow { grid-template-columns: 1fr; }
+  .sw37-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+@media (max-width: 520px) {
+  .sw37-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .sw37-errors-nav, .sw37-delivery-nav { grid-template-columns: 1fr; }
+  .sw37-delivery-actions { flex-direction: column; align-items: stretch; }
+  .sw37-delivery-actions button { justify-content: center; }
+}

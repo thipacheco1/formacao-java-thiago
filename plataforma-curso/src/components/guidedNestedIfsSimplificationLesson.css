@@ -1,0 +1,168 @@
+.guided-nested-ifs-simplification-lesson {
+  --nes36-violet: #8b5cf6;
+  --nes36-violet-soft: #f5f3ff;
+  --nes36-magenta: #d946ef;
+  --nes36-slate: #475569;
+  --nes36-dark: #0f172a;
+  --nes36-border: #cbd5e1;
+  overflow: visible;
+}
+
+.guided-nested-ifs-simplification-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 84% 6%, rgba(139, 92, 246, .25), transparent 23rem),
+    linear-gradient(135deg, #2e1065, #8b5cf6 58%, #0f172a);
+}
+
+.guided-nested-ifs-simplification-lesson button { font: inherit; }
+
+.nes36-flatten-container, .nes36-validator-box,
+.nes36-errors-clinic, .nes36-domains-gallery, .nes36-terminal, .nes36-code { min-width: 0; }
+
+.nes36-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #f5f3ff; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.nes36-code { background: var(--nes36-dark); }
+.nes36-code .guided-file-title {
+  color: #cbd5e1; background: #1e293b; border-color: #334155;
+}
+.nes36-code > pre {
+  max-width: 100%; overflow-x: auto !important;
+}
+
+/* 1. Animador de Achatamento de Escada */
+.nes36-flatten-container {
+  display: flex; flex-direction: column; gap: 12px; padding: 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 16px;
+}
+.nes36-code-indent-stage {
+  padding: 16px; background: #0f172a; border-radius: 10px; font-family: Consolas, monospace; font-size: .76rem; color: #f8fafc; line-height: 1.6;
+}
+.nes36-indent-line {
+  transition: padding-left 0.4s ease-in-out; white-space: pre-wrap;
+}
+
+/* 2. Validador de Erros Independentes */
+.nes36-validator-box {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr); gap: 16px;
+  padding: 20px; background: var(--nes36-violet-soft); border: 1px solid #ddd6fe; border-radius: 16px;
+}
+.nes36-error-console-list {
+  display: flex; flex-direction: column; gap: 6px; background: #0f172a; padding: 14px; border-radius: 10px; min-height: 90px;
+}
+.nes36-error-console-list .err-msg {
+  color: #fca5a5; font-size: .7rem; font-family: Consolas, monospace; display: flex; gap: 6px; align-items: center;
+}
+.nes36-error-console-list .success-msg {
+  color: #6ee7b7; font-size: .72rem; font-family: Consolas, monospace; display: flex; gap: 6px; align-items: center; font-weight: bold;
+}
+
+/* 3. Galeria de Domínios */
+.nes36-domains-gallery { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; }
+.nes36-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.nes36-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: #475569; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold;
+  cursor: pointer; transition: all 0.2s;
+}
+.nes36-domains-sidebar button:hover { background: #f8fafc; }
+.nes36-domains-sidebar button.active {
+  color: #fff; background: var(--nes36-violet); border-color: var(--nes36-violet);
+}
+.nes36-domains-content { display: flex; flex-direction: column; gap: 14px; }
+.nes36-console {
+  overflow: hidden; color: #e2e8f0; background: #0f172a;
+  border: 1px solid #1e293b; border-radius: 12px;
+}
+.nes36-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center;
+  color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold;
+}
+.nes36-console pre {
+  margin: 0; padding: 14px; overflow-x: auto; color: #a78bfa;
+  font-size: .72rem; line-height: 1.5; white-space: pre-wrap; font-family: Consolas, monospace;
+}
+
+/* 4. Clínica de Erros */
+.nes36-errors-clinic { display: grid; grid-template-columns: minmax(200px, .55fr) minmax(0, 1.45fr); gap: 14px; }
+.nes36-errors-nav { display: grid; gap: 6px; align-content: start; }
+.nes36-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 10px; font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.nes36-errors-nav button:hover { background: #f8fafc; }
+.nes36-errors-nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem;
+}
+.nes36-errors-nav button.active { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+.nes36-errors-nav button.active span { background: #be123c; }
+
+.nes36-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 15px; }
+.nes36-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: #be123c; }
+.nes36-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.nes36-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.nes36-error-card > section { display: grid; gap: 6px; margin-top: 12px; }
+.nes36-error-card > section small { color: #475569; font-size: .65rem; font-weight: bold; text-transform: uppercase; }
+.nes36-error-card > section code { padding: 10px; overflow-wrap: anywhere; color: #fecdd3; background: #0f172a; border-radius: 8px; font-size: .7rem; font-family: Consolas, monospace; }
+.nes36-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.nes36-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .69rem; }
+.nes36-error-flow > span svg { color: var(--nes36-violet); }
+.nes36-error-flow > span strong { color: #0f172a; }
+.nes36-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: #475569; }
+.nes36-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 5. Terminal e Entrega */
+.nes36-delivery-flow > nav {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px;
+}
+.nes36-delivery-flow > nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: #475569; text-align: left; background: #fff;
+  border: 1px solid #cbd5e1; border-radius: 8px; font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.nes36-delivery-flow > nav button span {
+  display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  color: #fff; background: #64748b; border-radius: 6px; font-weight: bold;
+}
+.nes36-delivery-flow > nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+
+.nes36-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.nes36-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.nes36-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.nes36-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.nes36-terminal pre strong { color: #fff; }
+.nes36-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.nes36-terminal p svg { flex: 0 0 auto; color: #8b5cf6; }
+
+.nes36-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.nes36-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.nes36-delivery-actions button:hover { background: #f8fafc; border-color: #94a3b8; }
+.nes36-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.nes36-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .nes36-flatten-container, .nes36-validator-box, .nes36-errors-clinic { grid-template-columns: 1fr; }
+  .nes36-errors-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nes36-delivery-flow > nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .nes36-domains-gallery { grid-template-columns: 1fr; }
+  .nes36-domains-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .nes36-error-flow { grid-template-columns: 1fr; }
+  .nes36-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 520px) {
+  .nes36-domains-sidebar { display: grid; grid-template-columns: 1fr; }
+  .nes36-errors-nav, .nes36-delivery-flow > nav { grid-template-columns: 1fr; }
+  .nes36-delivery-actions { flex-direction: column; align-items: stretch; }
+  .nes36-delivery-actions button { justify-content: center; }
+  .nes36-delivery-actions span { text-align: center; }
+}
