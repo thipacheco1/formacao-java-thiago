@@ -232,6 +232,13 @@ Em 2026-07-17, as aulas 053 a 058 entregues pelo Gemini foram auditadas e corrig
 - Acabamento do navegador: `plataforma-curso/src/components/sidebarNavigator.css`
 - Princípio de referência: a interface deve orientar o estudo com hierarquia clara e elementos compactos; a apresentação não pode ocupar o espaço da aprendizagem.
 
+### Descoberta pública, buscadores e IAs
+
+- Contrato completo: [`DESCOBERTA_PUBLICA_SEM_EXPOSICAO.md`](DESCOBERTA_PUBLICA_SEM_EXPOSICAO.md).
+- O catálogo público apresenta estrutura e metadados das 721 aulas; corpos, códigos, laboratórios e desafios continuam protegidos pelo login.
+- `generate-seo-pages.mjs` e `validate-public-discovery.mjs` são inseparáveis: toda alteração no catálogo deve passar pelo validador antes da publicação.
+- Busca e consultas iniciadas pelo usuário podem ler o catálogo; os crawlers de treinamento explicitamente bloqueados em `robots.txt` não devem ser liberados sem autorização.
+
 ### Sincronização permanente do progresso
 
 - Contrato completo: [`SINCRONIZACAO_PROGRESSO.md`](SINCRONIZACAO_PROGRESSO.md).

@@ -1,12 +1,13 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { COURSE_MODULES, COURSE_PHASES } from '../plataforma-curso/src/data/coursePlan.js';
+import { COURSE_MODULE_COUNT, COURSE_MODULES, COURSE_PHASES, COURSE_TOTAL_LESSONS } from '../plataforma-curso/src/data/coursePlan.js';
 import { MODULE_SEO, PHASE_SEO } from '../plataforma-curso/src/data/seoCatalog.js';
 
 const SITE_URL = 'https://formacao-java.vercel.app';
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const lessonsDir = join(rootDir, 'docs', 'aulas');
+const guidedComponentsDir = join(rootDir, 'plataforma-curso', 'src', 'components');
 const publicDir = join(rootDir, 'plataforma-curso', 'public');
 const trailsDir = join(publicDir, 'trilhas');
 const modulesDir = join(publicDir, 'modulos');
@@ -45,139 +46,115 @@ const cleanSlug = (str) => {
     .replace(/(^-|-$)/g, '');
 };
 
-const parseInlineMarkdown = (text) => {
-  return escapeHtml(text)
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`(.*?)`/g, '<code>$1</code>');
+const cleanText = value => String(value || '')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/[`*_#>|]/g, ' ')
+  .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const shorten = (value, limit = 220) => {
+  const text = cleanText(value);
+  if (text.length <= limit) return text;
+  const cut = text.slice(0, limit - 1).replace(/\s+\S*$/, '');
+  return `${cut}…`;
 };
 
-const extractDescription = (filePath, fallback) => {
-  try {
-    const raw = readFileSync(filePath, 'utf8');
-    let text = raw.replace(/^#\s+.+$/m, '');
-    text = text.replace(/^##+\s+.+$/gm, '');
-    text = text.replace(/```[\s\S]*?```/g, '');
-    text = text.replace(/[*_`#]/g, '')
-               .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-               .replace(/!\[[^\]]*\]\([^)]+\)/g, '');
-    text = text.replace(/\s+/g, ' ').trim();
-    if (text.length > 5) {
-      return text.slice(0, 155) + '...';
-    }
-  } catch (err) {
-    console.error(`Failed to extract description for ${filePath}:`, err);
-  }
-  return fallback;
+const filenameTitle = fileName => fileName
+  .replace(/\.md$/i, '')
+  .replace(/^\d{3}_(?:M\d+_\d+_)?/, '')
+  .replace(/_OFICIAL$/i, '')
+  .replace(/_/g, ' ')
+  .toLowerCase()
+  .replace(/\b(java|spring|backend|intellij|postgresql|docker|maven|gradle)\b/g, word => word[0].toUpperCase() + word.slice(1))
+  .replace(/\b(api|rest|sql|jpa|jdbc|jvm|jdk|jre|http|https|json|xml|csv|ddd|solid|ci|cd|jwt|oauth2|owasp|uuid|tdd)\b/g, word => word.toUpperCase())
+  .replace(/^./, letter => letter.toUpperCase());
+
+const normalizeTokens = value => cleanText(value)
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .match(/[a-z0-9]{3,}/g) || [];
+
+const isTrustworthyTitle = (candidate, fileName) => {
+  if (!candidate || candidate.length < 8 || candidate.length > 180) return false;
+  const ignored = new Set(['aula', 'formacao', 'backend', 'java', 'oficial']);
+  const expected = new Set(normalizeTokens(filenameTitle(fileName)).filter(token => !ignored.has(token)));
+  const actual = new Set(normalizeTokens(candidate));
+  const overlap = [...expected].filter(token => actual.has(token)).length;
+  return overlap >= Math.min(2, Math.max(1, expected.size));
 };
 
-const markdownToPreviewHtml = (filePath) => {
-  try {
-    const raw = readFileSync(filePath, 'utf8');
-    const lines = raw.split(/\r?\n/);
-    let html = '';
-    let inCodeBlock = false;
-    let paragraph = [];
-    let charCount = 0;
-    const maxChars = 5000;
-    let hasBeenCut = false;
-
-    for (const line of lines) {
-      if (charCount > maxChars) {
-        hasBeenCut = true;
-        break;
-      }
-      charCount += line.length;
-
-      if (line.startsWith('```')) {
-        if (inCodeBlock) {
-          html += '</code></pre>';
-          inCodeBlock = false;
-        } else {
-          html += '<pre><code>';
-          inCodeBlock = true;
-        }
-        continue;
-      }
-
-      if (inCodeBlock) {
-        html += escapeHtml(line) + '\n';
-        continue;
-      }
-
-      if (line.startsWith('#')) {
-        if (paragraph.length > 0) {
-          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
-          paragraph = [];
-        }
-        const level = line.match(/^#+/)[0].length;
-        const text = line.replace(/^#+\s+/, '');
-        html += `<h${level + 1}>${escapeHtml(text)}</h${level + 1}>`;
-        continue;
-      }
-
-      if (line.trim() === '') {
-        if (paragraph.length > 0) {
-          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
-          paragraph = [];
-        }
-        continue;
-      }
-
-      if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
-        if (paragraph.length > 0) {
-          html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
-          paragraph = [];
-        }
-        html += `<li>${parseInlineMarkdown(line.trim().substring(2))}</li>`;
-        continue;
-      }
-
-      paragraph.push(line.trim());
-    }
-
-    if (inCodeBlock) {
-      html += '</code></pre>';
-    }
-
-    if (paragraph.length > 0) {
-      html += `<p>${parseInlineMarkdown(paragraph.join(' '))}</p>`;
-    }
-
-    return { html, hasBeenCut };
-  } catch (err) {
-    console.error(`Failed to parse preview for ${filePath}:`, err);
-    return { html: '', hasBeenCut: false };
-  }
+const markdownMetadata = filePath => {
+  const raw = readFileSync(filePath, 'utf8');
+  const withoutCode = raw.replace(/```[\s\S]*?```/g, ' ');
+  const headings = [...withoutCode.matchAll(/^#{2,4}\s+(.+)$/gm)]
+    .map(match => cleanText(match[1]))
+    .filter(title => title.length >= 4 && title.length <= 90)
+    .filter(title => !/^(introdução|conclusão|resumo|checklist|exercícios?|material complementar|referências?)$/i.test(title));
+  const body = cleanText(withoutCode
+    .replace(/^#{1,6}\s+.+$/gm, ' ')
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, ' '));
+  return {
+    raw,
+    headingTitle: cleanText(withoutCode.match(/^#\s+(.+)$/m)?.[1]),
+    summary: shorten(body, 280),
+    topics: [...new Set(headings)].slice(0, 6)
+  };
 };
 
-const formatLessonTitle = (fileName) => {
+const guidedMetadata = new Map();
+for (const componentFile of readdirSync(guidedComponentsDir).filter(file => /^Guided.+Lesson\d{3}\.jsx$/.test(file))) {
+  const sequence = componentFile.match(/Lesson(\d{3})\.jsx$/)?.[1];
+  if (!sequence) continue;
+  const componentPath = join(guidedComponentsDir, componentFile);
+  const source = readFileSync(componentPath, 'utf8');
+  const title = cleanText(source.match(/<h1>([^<>{}]+)<\/h1>/)?.[1]);
+  const summary = cleanText(source.match(/<h1>[^<>{}]+<\/h1>\s*<p>([^<>{}]+)<\/p>/)?.[1]);
+  const steps = [...source.matchAll(/\{\s*id:\s*["'][^"']+["']\s*,\s*label:\s*["']([^"']+)["']\s*,\s*duration:\s*["'](\d+)\s*min["']/g)]
+    .map(match => ({ label: cleanText(match[1]), minutes: Number(match[2]) }));
+  guidedMetadata.set(sequence, {
+    title,
+    summary: shorten(summary, 280),
+    topics: [...new Set(steps.map(step => step.label))].slice(0, 8),
+    durationMinutes: steps.reduce((sum, step) => sum + step.minutes, 0),
+    sourcePath: componentPath
+  });
+}
+
+const getLessonMetadata = fileName => {
   const filePath = join(lessonsDir, fileName);
-  const content = readFileSync(filePath, 'utf8');
-  const markdownTitle = content.match(/^#\s+(.+)$/m)?.[1]?.trim();
-  if (markdownTitle) return markdownTitle;
-
-  return fileName
-    .replace(/\.md$/i, '')
-    .replace(/^\d{3}_M\d+_\d+_/, '')
-    .replace(/_OFICIAL$/i, '')
-    .replace(/_/g, ' ');
+  const markdown = markdownMetadata(filePath);
+  const sequence = fileName.slice(0, 3);
+  const guided = guidedMetadata.get(sequence);
+  const title = guided?.title
+    || (isTrustworthyTitle(markdown.headingTitle, fileName) ? markdown.headingTitle : filenameTitle(fileName));
+  return {
+    title,
+    summary: guided?.summary || markdown.summary || `Conheça ${title} dentro da Formação Java Backend.`,
+    topics: guided?.topics?.length ? guided.topics : markdown.topics,
+    durationMinutes: guided?.durationMinutes || null,
+    sourcePath: filePath,
+    guidedSourcePath: guided?.sourcePath || null
+  };
 };
 
 const lessonFiles = readdirSync(lessonsDir)
-  .filter(file => /^\d{3}_M\d+_\d+_.+\.md$/i.test(file))
+  .filter(file => /^000_.+\.md$/i.test(file) || /^\d{3}_M\d+_\d+_.+\.md$/i.test(file))
   .sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
 const lessonsByModule = lessonFiles.reduce((map, fileName) => {
-  const moduleId = fileName.match(/^\d{3}_(M\d+)_/i)?.[1]?.toUpperCase();
+  const moduleId = fileName.startsWith('000_')
+    ? 'P0'
+    : fileName.match(/^\d{3}_(M\d+)_/i)?.[1]?.toUpperCase();
   if (!moduleId) return map;
   if (!map.has(moduleId)) map.set(moduleId, []);
-  map.get(moduleId).push({ fileName, title: formatLessonTitle(fileName) });
+  map.get(moduleId).push({ fileName, ...getLessonMetadata(fileName) });
   return map;
 }, new Map());
 
 const publishedModules = COURSE_MODULES
-  .filter(module => module.id !== 'P0' && MODULE_SEO[module.id])
+  .filter(module => MODULE_SEO[module.id])
   .map(module => ({
     ...module,
     ...MODULE_SEO[module.id],
@@ -199,6 +176,7 @@ const css = `
   a{color:var(--blue)}.top{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.09)}.top-inner{width:min(1100px,calc(100% - 32px));margin:auto;padding:15px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;color:#f3f6fc;text-decoration:none;font-weight:800}.brand img{width:38px;height:38px}.top small{color:#91a2bf}
   .page{width:min(1100px,calc(100% - 32px));margin:28px auto 64px}.crumbs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;color:var(--muted);font-size:.78rem}.crumbs a{text-decoration:none}.hero{padding:clamp(26px,5vw,56px);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 22px 56px rgba(39,52,80,.08)}.eyebrow{display:inline-flex;padding:5px 9px;color:#31549e;background:var(--soft);border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{max-width:850px;margin:17px 0 14px;color:var(--ink);font-size:clamp(2rem,6vw,4rem);line-height:1.05;letter-spacing:-.05em}.lead{max-width:790px;margin:0;color:var(--copy);font-size:clamp(1rem,2vw,1.2rem)}.facts{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0;padding:0;list-style:none}.facts li{padding:8px 11px;color:#536176;background:#f5f7fb;border:1px solid #e1e6ee;border-radius:10px;font-size:.78rem}.cta-row,.share{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.cta,.share a{display:inline-flex;min-height:42px;padding:9px 14px;align-items:center;justify-content:center;border-radius:10px;font-size:.78rem;font-weight:750;text-decoration:none}.cta{color:#fff;background:#365fbe;border:1px solid #416ac5}.cta.secondary{color:#43516a;background:#f4f6fa;border:1px solid #dde3ec}.share a{min-height:36px;padding:7px 11px;color:#5a6880;background:#f7f9fc;border:1px solid #e1e6ee}
   .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.panel{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 34px rgba(39,52,80,.055)}.panel.wide{grid-column:1/-1}.panel h2{margin:0 0 12px;color:var(--ink);font-size:1.25rem;letter-spacing:-.025em}.panel p{margin:0}.topic-list,.lesson-list,.card-list{margin:0;padding-left:21px}.topic-list li,.lesson-list li{padding:5px 0}.lesson-list{columns:2;column-gap:34px}.lesson-list li{break-inside:avoid;font-size:.82rem}.card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0;gap:10px;list-style:none}.card{display:block;height:100%;padding:17px;color:inherit;background:#f8f9fc;border:1px solid #e2e7ef;border-radius:13px;text-decoration:none}.card:hover{border-color:#bfcbe3;background:#f3f6fd}.card strong{display:block;color:var(--ink);font-size:.9rem}.card span{display:block;margin-top:5px;color:var(--muted);font-size:.72rem}.card.disabled{opacity:.66}.nav-next{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.nav-next a{max-width:48%;padding:11px 13px;background:#fff;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:.75rem}.footer{margin-top:28px;color:#8793a5;font-size:.72rem;text-align:center}
+  .access-panel{background:linear-gradient(135deg,#111b2e,#182849);color:#dce6fb;border-color:#263c65}.access-panel h2{color:#fff}.access-panel p{color:#bdc9de}.access-list{margin:15px 0 0;padding-left:21px}.access-list li{padding:4px 0}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.tag{padding:6px 10px;color:#31549e;background:var(--soft);border:1px solid #dbe4fb;border-radius:999px;font-size:.75rem;font-weight:700}
   @media(max-width:720px){.grid,.card-list{grid-template-columns:1fr}.lesson-list{columns:1}.panel.wide{grid-column:auto}.top small{display:none}.hero{border-radius:18px}.nav-next{flex-direction:column}.nav-next a{max-width:100%}}
 `;
 
@@ -246,7 +224,18 @@ resetGeneratedDirectory(trailsDir);
 resetGeneratedDirectory(modulesDir);
 resetGeneratedDirectory(lessonsSeoDir);
 
-const sitemapUrls = [`${SITE_URL}/`];
+const toDate = (filePath) => statSync(filePath).mtime.toISOString().slice(0, 10);
+const latestDate = (...filePaths) => filePaths
+  .filter(Boolean)
+  .map(toDate)
+  .sort()
+  .at(-1);
+const sitemapEntries = [];
+const addSitemap = (url, ...sourcePaths) => {
+  sitemapEntries.push({ url, lastmod: latestDate(...sourcePaths) });
+};
+
+addSitemap(`${SITE_URL}/`, join(rootDir, 'plataforma-curso', 'index.html'));
 
 const hubCanonical = `${SITE_URL}/trilhas`;
 const hubCards = COURSE_PHASES.map(phase => {
@@ -265,16 +254,17 @@ writePage(trailsDir, renderDocument({
   canonical: hubCanonical,
   pageId: 'public:trilhas',
   breadcrumbs: `<a href="/">Início</a><span>/</span><span>Trilhas</span>`,
-  body: `<section class="hero"><span class="eyebrow">Currículo público</span><h1>Trilhas da Formação Java Backend</h1><p class="lead">Uma jornada gratuita e progressiva, organizada do primeiro contato com Java às decisões de arquitetura de sistemas.</p><ul class="facts"><li>${publishedModules.reduce((sum, module) => sum + module.publishedLessons.length, 0)} aulas publicadas</li><li>${publishedModules.length} módulos disponíveis</li><li>Estudo online e gratuito</li></ul><div class="cta-row"><a class="cta" href="/?utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=trilhas">Acessar plataforma</a></div>${shareLinks(hubCanonical, 'trilhas')}</section><section class="panel" style="margin-top:18px"><h2>Escolha uma trilha</h2><ul class="card-list">${hubCards}</ul></section>`,
+  body: `<section class="hero"><span class="eyebrow">Currículo público</span><h1>Trilhas da Formação Java Backend</h1><p class="lead">Uma jornada gratuita e progressiva, organizada do primeiro contato com Java às decisões de arquitetura de sistemas.</p><ul class="facts"><li>${publishedModules.reduce((sum, module) => sum + module.publishedLessons.length, 0)} aulas publicadas</li><li>${COURSE_MODULE_COUNT} módulos + aula de abertura</li><li>Estudo online e gratuito</li></ul><div class="cta-row"><a class="cta" href="/?utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=trilhas">Acessar plataforma</a></div>${shareLinks(hubCanonical, 'trilhas')}</section><section class="panel" style="margin-top:18px"><h2>Escolha uma trilha</h2><ul class="card-list">${hubCards}</ul></section>`,
   structuredData: {
     '@context': 'https://schema.org',
     '@graph': [
       breadcrumbJson([{ name: 'Início', url: `${SITE_URL}/` }, { name: 'Trilhas', url: hubCanonical }]),
-      { '@type': 'Course', name: 'Formação Java Backend', description: 'Formação gratuita e progressiva do Java básico à arquitetura.', url: hubCanonical, inLanguage: 'pt-BR', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Formação Java Backend', url: `${SITE_URL}/` } }
+      { '@type': 'Course', name: 'Formação Java Backend', description: 'Formação gratuita e progressiva do Java básico à arquitetura.', url: hubCanonical, inLanguage: 'pt-BR', isAccessibleForFree: true, educationalLevel: ['Iniciante', 'Intermediário', 'Avançado'], provider: { '@type': 'Organization', name: 'Formação Java Backend', url: `${SITE_URL}/` } },
+      { '@type': 'ItemList', name: 'Trilhas da Formação Java Backend', numberOfItems: publishedPhases.length, itemListElement: publishedPhases.map((phase, index) => ({ '@type': 'ListItem', position: index + 1, name: phase.name, url: `${SITE_URL}/trilhas/${phase.slug}` })) }
     ]
   }
 }));
-sitemapUrls.push(hubCanonical);
+addSitemap(hubCanonical, join(rootDir, 'plataforma-curso', 'src', 'data', 'coursePlan.js'));
 
 for (const phase of publishedPhases) {
   const canonical = `${SITE_URL}/trilhas/${phase.slug}`;
@@ -292,7 +282,7 @@ for (const phase of publishedPhases) {
     body: `<section class="hero"><span class="eyebrow">Trilha gratuita</span><h1>${escapeHtml(phase.name)}</h1><p class="lead">${escapeHtml(phase.description)}</p><ul class="facts"><li>${lessonCount} aulas publicadas</li><li>${phase.publishedModules.length} módulos disponíveis</li><li>Do seu ritmo, sem custo</li></ul><div class="cta-row"><a class="cta" href="/?utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=trilha_${phase.slug}">Começar a estudar</a><a class="cta secondary" href="/trilhas">Ver todas as trilhas</a></div>${shareLinks(canonical, `trilha_${phase.slug}`)}</section><div class="grid"><section class="panel"><h2>O que você vai aprender</h2><ul class="topic-list">${topics}</ul></section><section class="panel"><h2>Módulos publicados</h2><ul class="card-list">${cards}</ul></section></div>`,
     structuredData: { '@context': 'https://schema.org', '@graph': [breadcrumbJson(items), { '@type': 'Course', name: phase.name, description: phase.description, url: canonical, inLanguage: 'pt-BR', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Formação Java Backend', url: `${SITE_URL}/` } }] }
   }));
-  sitemapUrls.push(canonical);
+  addSitemap(canonical, join(rootDir, 'plataforma-curso', 'src', 'data', 'coursePlan.js'), join(rootDir, 'plataforma-curso', 'src', 'data', 'seoCatalog.js'));
 }
 
 for (const [index, module] of publishedModules.entries()) {
@@ -314,7 +304,7 @@ for (const [index, module] of publishedModules.entries()) {
     body: `<section class="hero"><span class="eyebrow">${escapeHtml(module.label)} · módulo gratuito</span><h1>${escapeHtml(module.name)}</h1><p class="lead">${escapeHtml(module.focus)}</p><ul class="facts"><li>${module.publishedLessons.length} de ${module.lessons} aulas publicadas</li><li>Aulas ${escapeHtml(module.range)}</li><li>Incluído na formação gratuita</li></ul><div class="cta-row"><a class="cta" href="/?utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=modulo_${module.slug}">Acessar as aulas</a><a class="cta secondary" href="/trilhas/${phase.slug}">Ver trilha completa</a></div>${shareLinks(canonical, `modulo_${module.slug}`)}</section><div class="grid"><section class="panel"><h2>Principais assuntos</h2><ul class="topic-list">${topics}</ul></section><section class="panel"><h2>Sobre este módulo</h2><p>Este módulo faz parte da trilha <a href="/trilhas/${phase.slug}">${escapeHtml(phase.name)}</a> e conecta teoria, prática e decisões profissionais de backend.</p></section><section class="panel wide"><h2>Conteúdo já publicado</h2><ol class="lesson-list">${lessons}</ol></section></div>${navigation}`,
     structuredData: { '@context': 'https://schema.org', '@graph': [breadcrumbJson(items), { '@type': 'LearningResource', name: module.name, description: module.focus, url: canonical, inLanguage: 'pt-BR', isAccessibleForFree: true, learningResourceType: 'Módulo de curso', teaches: module.highlights, isPartOf: { '@type': 'Course', name: 'Formação Java Backend', url: `${SITE_URL}/` } }] }
   }));
-  sitemapUrls.push(canonical);
+  addSitemap(canonical, join(rootDir, 'plataforma-curso', 'src', 'data', 'coursePlan.js'), join(rootDir, 'plataforma-curso', 'src', 'data', 'seoCatalog.js'));
 }
 
 // Flat list of all published lessons to generate static preview pages with previous/next controls
@@ -337,9 +327,16 @@ for (const [index, lesson] of allLessons.entries()) {
   const previous = allLessons[index - 1];
   const next = allLessons[index + 1];
   
-  const filePath = join(lessonsDir, fileName);
-  const description = extractDescription(filePath, `Aprenda ${title} gratuitamente na aula do módulo ${module.name} da Formação Java Backend.`);
-  const { html: previewHtml, hasBeenCut } = markdownToPreviewHtml(filePath);
+  const description = shorten(
+    lesson.summary || `Aprenda ${title} gratuitamente na aula do módulo ${module.name} da Formação Java Backend.`,
+    158
+  );
+  const moduleNumber = Number(module.id.replace(/\D/g, '') || 0);
+  const level = moduleNumber <= 4 ? 'Iniciante' : moduleNumber <= 14 ? 'Intermediário' : 'Avançado';
+  const topicValues = (lesson.topics?.length ? lesson.topics : module.highlights).slice(0, 8);
+  const topics = topicValues.map(topic => `<li>${escapeHtml(topic)}</li>`).join('');
+  const tags = topicValues.map(topic => `<li class="tag">${escapeHtml(topic)}</li>`).join('');
+  const duration = lesson.durationMinutes ? `${lesson.durationMinutes} min de roteiro guiado` : 'Roteiro guiado e progressivo';
   
   const breadcrumbs = `<a href="/">Início</a><span>/</span><a href="/trilhas">Trilhas</a><span>/</span><a href="/trilhas/${phase.slug}">${escapeHtml(phase.shortName)}</a><span>/</span><a href="/modulos/${module.slug}">${escapeHtml(module.id)}</a><span>/</span><span>Aula ${fileName.slice(0, 3)}</span>`;
   
@@ -353,44 +350,44 @@ for (const [index, lesson] of allLessons.entries()) {
   
   const navigation = `<nav class="nav-next" aria-label="Aulas próximas">${previous ? `<a href="/aulas/${cleanSlug(previous.fileName)}">← Aula Anterior</a>` : '<span></span>'}${next ? `<a href="/aulas/${cleanSlug(next.fileName)}">Próxima Aula →</a>` : ''}</nav>`;
   
-  const bannerTitle = hasBeenCut ? 'Você chegou ao fim da prévia da aula' : 'Gostou do conteúdo? Estude na plataforma!';
-  const bannerDescription = hasBeenCut 
-    ? 'Esta página é uma versão resumida para motores de busca. Na plataforma de estudos você terá acesso ao conteúdo de texto completo, reprodutor de vídeo, áudio-aula em MP3 para ouvir no caminho, material didático para download e acompanhamento de progresso.' 
-    : 'O texto completo desta aula está disponível acima. Acesse a plataforma oficial para registrar seu progresso, obter certificado de conclusão gratuito, fazer o download dos códigos-fonte e assistir às explicações em vídeo!';
-  const bannerButtonText = hasBeenCut ? 'Acessar Conteúdo Completo na Plataforma' : 'Acessar Plataforma de Estudos';
-
   const body = `
 <section class="hero">
   <span class="eyebrow">Aula ${fileName.slice(0, 3)} · Módulo ${escapeHtml(module.id)}</span>
   <h1>${escapeHtml(title)}</h1>
-  <p class="lead">Esta é uma aula pública de visualização da Formação Java Backend.</p>
+  <p class="lead">${escapeHtml(description)}</p>
   <ul class="facts">
     <li>Módulo: <a href="/modulos/${module.slug}" style="color: inherit; text-decoration: underline;">${escapeHtml(module.name)}</a></li>
     <li>Trilha: <a href="/trilhas/${phase.slug}" style="color: inherit; text-decoration: underline;">${escapeHtml(phase.name)}</a></li>
-    <li>Estudo 100% online e gratuito</li>
+    <li>Nível ${escapeHtml(level)}</li>
+    <li>${escapeHtml(duration)}</li>
+    <li>Conteúdo completo após cadastro gratuito</li>
   </ul>
   <div class="cta-row">
-    <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_${slug}">Assistir na Plataforma</a>
+    <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_${slug}">Estudar esta aula gratuitamente</a>
     <a class="cta secondary" href="/modulos/${module.slug}">Ver todas as aulas</a>
   </div>
   ${shareLinks(canonical, `aula_${slug}`)}
 </section>
 
 <div class="grid">
-  <section class="panel wide" style="background: #fff; padding: clamp(20px, 4vw, 40px);">
-    <h2>Prévia do conteúdo escrito</h2>
-    <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 24px;" />
-    <div class="lesson-preview" style="line-height: 1.75; font-size: 0.95rem; color: var(--copy);">
-      ${previewHtml}
-    </div>
-    
-    <div style="margin-top: 28px; padding: 28px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center;">
-      <h3 style="margin: 0 0 10px; color: var(--ink); font-size: 1.15rem;">${escapeHtml(bannerTitle)}</h3>
-      <p style="margin: 0 0 20px; color: var(--copy); font-size: 0.88rem; max-width: 650px; margin-inline: auto;">
-        ${escapeHtml(bannerDescription)}
-      </p>
-      <a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_completa_${slug}">${escapeHtml(bannerButtonText)}</a>
-    </div>
+  <section class="panel">
+    <h2>O que esta aula desenvolve</h2>
+    <ul class="topic-list">${topics}</ul>
+    <ul class="tags" aria-label="Temas da aula">${tags}</ul>
+  </section>
+  <section class="panel">
+    <h2>Onde ela entra na formação</h2>
+    <p>Esta é a aula ${fileName.slice(0, 3)} do módulo <a href="/modulos/${module.slug}">${escapeHtml(module.name)}</a>, dentro da trilha <a href="/trilhas/${phase.slug}">${escapeHtml(phase.name)}</a>.</p>
+  </section>
+  <section class="panel wide access-panel">
+    <h2>A aula completa continua protegida</h2>
+    <p>Esta página pública apresenta somente o objetivo, os temas e a posição da aula no currículo. Exemplos guiados, códigos, laboratórios, diagramas, clínicas de erros e desafios ficam disponíveis depois do login gratuito.</p>
+    <ul class="access-list">
+      <li>Conteúdo integral não é publicado no catálogo.</li>
+      <li>Seu progresso fica associado à sua conta.</li>
+      <li>O acesso ao curso continua gratuito.</li>
+    </ul>
+    <div class="cta-row"><a class="cta" href="/?aula=${escapeHtml(fileName)}&amp;utm_source=seo_page&amp;utm_medium=organic_search&amp;utm_campaign=formacao_java_backend&amp;utm_content=aula_protegida_${slug}">Entrar e abrir a aula completa</a></div>
   </section>
 </div>
 ${navigation}
@@ -415,6 +412,10 @@ ${navigation}
           'inLanguage': 'pt-BR',
           'isAccessibleForFree': true,
           'learningResourceType': 'Aula de curso',
+          'educationalLevel': level,
+          'teaches': topicValues,
+          ...(lesson.durationMinutes ? { 'timeRequired': `PT${lesson.durationMinutes}M` } : {}),
+          'conditionsOfAccess': 'Catálogo público; aula completa disponível mediante cadastro gratuito.',
           'isPartOf': {
             '@type': 'Course',
             'name': 'Formação Java Backend',
@@ -424,10 +425,92 @@ ${navigation}
       ]
     }
   }));
-  sitemapUrls.push(canonical);
+  addSitemap(canonical, lesson.sourcePath, lesson.guidedSourcePath);
 }
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url><loc>${escapeHtml(url)}</loc></url>`).join('\n')}\n</urlset>\n`;
+const publicIndex = {
+  version: 1,
+  generatedAt: new Date().toISOString(),
+  canonicalUrl: `${SITE_URL}/course-index.json`,
+  accessPolicy: {
+    catalog: 'public',
+    fullLessons: 'free-account-required',
+    note: 'This file contains curriculum metadata only. It intentionally excludes lesson bodies, code labs and exercises.'
+  },
+  course: {
+    name: 'Formação Java Backend: do zero à arquitetura de sistemas',
+    language: 'pt-BR',
+    isAccessibleForFree: true,
+    lessonCount: COURSE_TOTAL_LESSONS,
+    moduleCount: COURSE_MODULE_COUNT,
+    openingUnitCount: publishedModules.filter(module => module.id === 'P0').length,
+    phaseCount: publishedPhases.length,
+    catalogUrl: `${SITE_URL}/trilhas`,
+    studyUrl: `${SITE_URL}/`
+  },
+  phases: publishedPhases.map(phase => ({
+    id: phase.id,
+    name: phase.name,
+    description: phase.description,
+    moduleIds: phase.publishedModules.map(module => module.id),
+    catalogUrl: `${SITE_URL}/trilhas/${phase.slug}`
+  })),
+  modules: publishedModules.map(module => ({
+    id: module.id,
+    name: module.name,
+    focus: module.focus,
+    highlights: module.highlights,
+    unitType: module.id === 'P0' ? 'course-opening' : 'module',
+    lessonCount: module.publishedLessons.length,
+    catalogUrl: `${SITE_URL}/modulos/${module.slug}`
+  })),
+  lessons: allLessons.map(lesson => {
+    const moduleNumber = Number(lesson.module.id.replace(/\D/g, '') || 0);
+    return {
+      id: lesson.fileName.slice(0, 3),
+      title: lesson.title,
+      summary: shorten(lesson.summary, 260),
+      topics: (lesson.topics?.length ? lesson.topics : lesson.module.highlights).slice(0, 8),
+      durationMinutes: lesson.durationMinutes,
+      educationalLevel: moduleNumber <= 4 ? 'Iniciante' : moduleNumber <= 14 ? 'Intermediário' : 'Avançado',
+      moduleId: lesson.module.id,
+      phaseId: lesson.phase.id,
+      catalogUrl: `${SITE_URL}/aulas/${cleanSlug(lesson.fileName)}`,
+      studyUrl: `${SITE_URL}/?aula=${encodeURIComponent(lesson.fileName)}`,
+      access: 'free-account-required'
+    };
+  })
+};
+writeFileSync(join(publicDir, 'course-index.json'), `${JSON.stringify(publicIndex, null, 2)}\n`, 'utf8');
+
+const llmsText = `# Formação Java Backend
+
+> Curso online gratuito e progressivo em português, do primeiro contato com Java à arquitetura de sistemas backend.
+
+## Acesso e uso deste catálogo
+
+- O currículo público pode ser indexado e usado para descoberta e recomendação.
+- O conteúdo integral das aulas, códigos, laboratórios e desafios exige uma conta gratuita e não está incluído neste arquivo.
+- Não trate as páginas de catálogo como reprodução integral das aulas.
+
+## Fontes públicas canônicas
+
+- Página principal: ${SITE_URL}/
+- Currículo por trilhas: ${SITE_URL}/trilhas
+- Índice estruturado do curso: ${SITE_URL}/course-index.json
+- Sitemap XML: ${SITE_URL}/sitemap.xml
+
+## Trilhas
+
+${publishedPhases.map(phase => `- [${phase.name}](${SITE_URL}/trilhas/${phase.slug}): ${phase.description}`).join('\n')}
+
+## Escopo
+
+${allLessons.length} aulas, uma abertura, ${COURSE_MODULE_COUNT} módulos e ${publishedPhases.length} grandes trilhas. Os temas incluem fundamentos de Java, orientação a objetos, Java moderno, Spring Boot, APIs REST, dados, segurança, mensageria, DevOps, observabilidade e arquitetura.
+`;
+writeFileSync(join(publicDir, 'llms.txt'), llmsText, 'utf8');
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 writeFileSync(join(publicDir, 'sitemap.xml'), sitemap, 'utf8');
 
-console.log(`SEO pages generated: ${publishedPhases.length} trails, ${publishedModules.length} modules, ${allLessons.length} lessons, ${sitemapUrls.length} sitemap URLs.`);
+console.log(`SEO pages generated: ${publishedPhases.length} trails, ${publishedModules.length} modules, ${allLessons.length} lessons, ${sitemapEntries.length} sitemap URLs.`);

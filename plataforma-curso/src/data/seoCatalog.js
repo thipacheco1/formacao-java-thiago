@@ -1,4 +1,5 @@
 export const MODULE_SEO = {
+  P0: { slug: 'abertura-formacao-java', name: 'Abertura e mapa da Formação Java Backend' },
   M0: { slug: 'ambiente-e-ferramentas-java', name: 'Ambiente e ferramentas para desenvolvimento Java' },
   M1: { slug: 'java-para-iniciantes', name: 'Fundamentos de Java para iniciantes' },
   M2: { slug: 'java-core', name: 'Java Core: JVM, memória, exceptions e I/O' },

@@ -19,6 +19,19 @@
   --glass-blur: blur(12px);
 }
 
+.lesson-loading {
+  width: min(760px, calc(100% - 32px));
+  margin: 32px auto;
+  padding: 22px 24px;
+  color: #43516a;
+  background: #ffffff;
+  border: 1px solid #dce3ee;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(37, 51, 80, 0.08);
+  font-weight: 700;
+  text-align: center;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

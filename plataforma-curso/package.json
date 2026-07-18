@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "seo:generate": "node ../tools/generate-seo-pages.mjs",
+    "seo:validate": "node ../tools/validate-public-discovery.mjs",
     "predev": "npm run seo:generate",
     "dev": "node ../tools/dev-course.js",
     "dev:web": "vite",
     "dev:api": "node ../tools/local-api-server.js",
     "prebuild": "npm run seo:generate",
     "build": "vite build",
+    "postbuild": "npm run seo:validate",
     "lint": "oxlint",
     "preview": "vite preview"
   },

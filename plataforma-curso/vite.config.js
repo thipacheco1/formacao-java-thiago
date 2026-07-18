@@ -6,6 +6,10 @@ process.env.BROWSER = 'msedge';
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    target: ['es2020', 'safari14'],
+    cssTarget: 'safari14'
+  },
   server: {
     open: true, // Abre o navegador automaticamente ao iniciar
     proxy: {
