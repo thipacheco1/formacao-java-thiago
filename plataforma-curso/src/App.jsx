@@ -61,7 +61,9 @@ const readStoredProgress = (user) => {
 };
 
 const getProgressMutationKey = (email) => `progressMutations_${email.toLowerCase()}`;
-const getProgressMigrationKey = (email) => `progressCentralMigrationV2_${email.toLowerCase()}`;
+// V3 reruns the additive migration once so browsers repair legacy Redis
+// records stored as arrays without overwriting progress from another device.
+const getProgressMigrationKey = (email) => `progressCentralMigrationV3_${email.toLowerCase()}`;
 
 const readProgressMutations = (email) => {
   try {

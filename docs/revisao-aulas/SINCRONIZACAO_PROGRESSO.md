@@ -43,6 +43,14 @@ As chaves históricas `guided-*-lesson-NNN-progress` continuam sendo usadas pelo
 - `guidedProgressOwnerEmail` impede que etapas locais do usuário anterior sejam migradas para outra conta no mesmo navegador.
 - A primeira conta que encontra progresso legado sem proprietário pode migrá-lo; contas seguintes recebem apenas o próprio estado central.
 
+### Compatibilidade com progresso antigo
+
+Versões antigas podiam deixar `progress:<email>` como um array JSON, inclusive `[]`.
+A API aceita esse formato somente como legado, converte cada identificador válido em
+`{ "lessonId": true }` e grava o mapa atual na próxima alteração. A migração aditiva
+`progressCentralMigrationV3_<email>` também reenvia uma vez o progresso preservado
+no navegador, sem remover conclusões que já chegaram de outro dispositivo.
+
 ## Sessão e autorização
 
 - Login e cadastro criam o cookie HttpOnly assinado `course_user_session`.
@@ -65,6 +73,7 @@ Execute:
 
 ```powershell
 node tools/validate-learning-state-sync.mjs
+node tools/validate-progress-compatibility.mjs
 plataforma-curso\node_modules\.bin\oxlint.cmd plataforma-curso/src/App.jsx plataforma-curso/src/utils/useLearningStateSync.js api/learning-state.js api/progress.js api/users.js api/_lib/user-session.js api/_lib/admin-session.js
 npm.cmd run build --prefix plataforma-curso
 ```

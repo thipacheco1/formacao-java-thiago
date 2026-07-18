@@ -18,31 +18,51 @@ const UPDATE_LESSON_SCRIPT = `
 
   if stored then
     local trimmed = string.match(stored, '^%s*(.-)%s*$')
-    if string.sub(trimmed, 1, 1) ~= '{' or string.sub(trimmed, -1) ~= '}' then
-      return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
-    end
-
+    local firstCharacter = string.sub(trimmed, 1, 1)
+    local lastCharacter = string.sub(trimmed, -1)
     local ok, decoded = pcall(cjson.decode, stored)
     if not ok or type(decoded) ~= 'table' then
       return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
     end
 
-    for storedLessonId, isCompleted in pairs(decoded) do
-      if type(storedLessonId) ~= 'string'
-        or string.len(storedLessonId) < 1
-        or string.len(storedLessonId) > 220
-        or string.find(storedLessonId, '[^A-Za-z0-9_.%-]')
-        or (isCompleted ~= true and isCompleted ~= false) then
-        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
-      end
+    if firstCharacter == '[' and lastCharacter == ']' then
+      for _, storedLessonId in ipairs(decoded) do
+        if type(storedLessonId) ~= 'string'
+          or string.len(storedLessonId) < 1
+          or string.len(storedLessonId) > 220
+          or string.find(storedLessonId, '[^A-Za-z0-9_.%-]') then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
 
-      completedCount = completedCount + 1
-      if completedCount > tonumber(ARGV[3]) then
-        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        if data[storedLessonId] == nil then
+          completedCount = completedCount + 1
+        end
+        if completedCount > tonumber(ARGV[3]) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+        data[storedLessonId] = true
       end
+    elseif firstCharacter == '{' and lastCharacter == '}' then
+      for storedLessonId, isCompleted in pairs(decoded) do
+        if type(storedLessonId) ~= 'string'
+          or string.len(storedLessonId) < 1
+          or string.len(storedLessonId) > 220
+          or string.find(storedLessonId, '[^A-Za-z0-9_.%-]')
+          or (isCompleted ~= true and isCompleted ~= false) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+
+        completedCount = completedCount + 1
+        if completedCount > tonumber(ARGV[3]) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+        if isCompleted == true then
+          data[storedLessonId] = true
+        end
+      end
+    else
+        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
     end
-
-    data = decoded
   end
 
   if ARGV[2] == '1' then
@@ -69,31 +89,51 @@ const MERGE_PROGRESS_SCRIPT = `
 
   if stored then
     local trimmed = string.match(stored, '^%s*(.-)%s*$')
-    if string.sub(trimmed, 1, 1) ~= '{' or string.sub(trimmed, -1) ~= '}' then
-      return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
-    end
-
+    local firstCharacter = string.sub(trimmed, 1, 1)
+    local lastCharacter = string.sub(trimmed, -1)
     local ok, decoded = pcall(cjson.decode, stored)
     if not ok or type(decoded) ~= 'table' then
       return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
     end
 
-    for storedLessonId, isCompleted in pairs(decoded) do
-      if type(storedLessonId) ~= 'string'
-        or string.len(storedLessonId) < 1
-        or string.len(storedLessonId) > 220
-        or string.find(storedLessonId, '[^A-Za-z0-9_.%-]')
-        or (isCompleted ~= true and isCompleted ~= false) then
-        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
-      end
+    if firstCharacter == '[' and lastCharacter == ']' then
+      for _, storedLessonId in ipairs(decoded) do
+        if type(storedLessonId) ~= 'string'
+          or string.len(storedLessonId) < 1
+          or string.len(storedLessonId) > 220
+          or string.find(storedLessonId, '[^A-Za-z0-9_.%-]') then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
 
-      completedCount = completedCount + 1
-      if completedCount > tonumber(ARGV[2]) then
-        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        if data[storedLessonId] == nil then
+          completedCount = completedCount + 1
+        end
+        if completedCount > tonumber(ARGV[2]) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+        data[storedLessonId] = true
       end
+    elseif firstCharacter == '{' and lastCharacter == '}' then
+      for storedLessonId, isCompleted in pairs(decoded) do
+        if type(storedLessonId) ~= 'string'
+          or string.len(storedLessonId) < 1
+          or string.len(storedLessonId) > 220
+          or string.find(storedLessonId, '[^A-Za-z0-9_.%-]')
+          or (isCompleted ~= true and isCompleted ~= false) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+
+        completedCount = completedCount + 1
+        if completedCount > tonumber(ARGV[2]) then
+          return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
+        end
+        if isCompleted == true then
+          data[storedLessonId] = true
+        end
+      end
+    else
+        return redis.error_reply('${CORRUPT_PROGRESS_ERROR}')
     end
-
-    data = decoded
   end
 
   local incomingOk, incoming = pcall(cjson.decode, ARGV[1])
@@ -203,11 +243,13 @@ function parseStoredProgress(rawProgress) {
     throw new Error(CORRUPT_PROGRESS_ERROR);
   }
 
-  if (!progress || typeof progress !== 'object' || Array.isArray(progress)) {
+  if (!progress || typeof progress !== 'object') {
     throw new Error(CORRUPT_PROGRESS_ERROR);
   }
 
-  const entries = Object.entries(progress);
+  const entries = Array.isArray(progress)
+    ? progress.map(lessonId => [lessonId, true])
+    : Object.entries(progress);
   if (entries.length > MAX_COMPLETED_LESSONS) {
     throw new Error(CORRUPT_PROGRESS_ERROR);
   }
