@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedSwitchModernoLesson038.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedSwitchModernoLesson.css`
 - Arquétipo: oficina de expressões de valor com comparador side-by-side (tradicional vs moderno), simulador de switch expression, demonstrador de yield e clínica de erros
-- Estado: em_revisao
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 

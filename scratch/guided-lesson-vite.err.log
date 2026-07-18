@@ -873,3 +873,713 @@ Node.js v24.16.0
 Stored progress is invalid; refusing to overwrite it.
 [2m14:07:22[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
     at http://localhost:5173/src/App.jsx?t=1784305524871:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m14:14:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784305524871:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m14:15:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784305524871:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m14:16:31[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784305524871:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m14:16:33[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784308473271:228:11
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m15:25:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:25:58[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:28:26[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:28:53[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:28:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:29:15[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:29:29[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:40:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:40:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m15:43:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:12:37[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:12:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:13:15[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:13:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:13:32[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784312478418:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:13:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784315148811:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:15:35[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784315148811:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:24:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316167711:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:24:27[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316167711:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:35:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316167711:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:36:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:38:03[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:38:53[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:39:25[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:41:55[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:43:44[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784316725699:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m16:47:53[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784315148811:228:11
+Stored progress is invalid; refusing to overwrite it.
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m17:32:44[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784318037199:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m17:33:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784318037199:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m17:35:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784318037199:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m17:39:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784318037199:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m17:39:10[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784318037199:228:11
+Stored progress is invalid; refusing to overwrite it.
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.
+[2m20:17:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330215429:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:19:05[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330215429:228:11
+[2m20:21:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/GuidedUserSizedArraysLesson046.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m20:21:46[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/guidedUserSizedArraysLesson.css. This could be due to syntax errors or importing non-existent modules. (see errors above)
+Stored progress is invalid; refusing to overwrite it.
+[2m20:22:41[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330215429:228:11
+[2m20:22:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: DOMAIN_PROGRAMS is not defined
+[39m > DomainsGalleryLab src/components/GuidedArraySearchLesson048.jsx:333:15
+    331 |  function DomainsGalleryLab() {
+    332 |    const [selected, setSelected] = useState(0);
+    333 |    const item = DOMAIN_PROGRAMS[selected];
+        |                 ^
+    334 |    return (
+    335 |      <section className="as48-domains-gallery">
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:22:57[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <DomainsGalleryLab> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m20:22:59[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/components/GuidedUserSizedArraysLesson046.jsx (resolved id: C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedUserSizedArraysLesson046.jsx) in C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/MarkdownViewer.jsx. Does the file exist?
+Stored progress is invalid; refusing to overwrite it.
+[2m20:25:20[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330714827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:25:36[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330714827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:26:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784330714827:228:11
+[2m20:26:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: DOMAIN_PROGRAMS is not defined
+[39m > DomainsGalleryLab src/components/GuidedArraySearchLesson048.jsx:333:15
+    331 |  function DomainsGalleryLab() {
+    332 |    const [selected, setSelected] = useState(0);
+    333 |    const item = DOMAIN_PROGRAMS[selected];
+        |                 ^
+    334 |    return (
+    335 |      <section className="as48-domains-gallery">
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:26:06[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <DomainsGalleryLab> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:33:59[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331068312:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:35:06[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331298825:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:35:37[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331326991:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:36:13[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331326991:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:36:33[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331326991:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:38:34[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331469984:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:38:59[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331469984:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:44:56[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331866183:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:45:43[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784331866183:228:11
+[2m20:47:03[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: DOMAIN_PROGRAMS is not defined
+[39m > DomainsGalleryLab src/components/GuidedArraySearchLesson048.jsx:333:15
+    331 |  function DomainsGalleryLab() {
+    332 |    const [selected, setSelected] = useState(0);
+    333 |    const item = DOMAIN_PROGRAMS[selected];
+        |                 ^
+    334 |    return (
+    335 |      <section className="as48-domains-gallery">
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:47:03[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <DomainsGalleryLab> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:47:16[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784331866183:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:47:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784331866183:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:47:58[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:48:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:48:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:48:44[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784331866183:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:48:47[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:48:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+[2m20:49:08[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: ERRORS is not defined
+[39m > ErrorsClinicLab src/components/GuidedArraySearchLesson048.jsx:358:15
+    356 |  function ErrorsClinicLab() {
+    357 |    const [selected, setSelected] = useState(0);
+    358 |    const item = ERRORS[selected];
+        |                 ^
+    359 |    return (
+    360 |      <section className="as48-errors-clinic">
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:49:08[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <ErrorsClinicLab> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:49:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:49:17[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332061827:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:49:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332061827:228:11
+[2m20:49:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: ERRORS is not defined
+[39m > ErrorsClinicLab src/components/GuidedArraySearchLesson048.jsx:358:15
+    356 |  function ErrorsClinicLab() {
+    357 |    const [selected, setSelected] = useState(0);
+    358 |    const item = ERRORS[selected];
+        |                 ^
+    359 |    return (
+    360 |      <section className="as48-errors-clinic">
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:49:42[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <ErrorsClinicLab> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:49:50[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332167931:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:50:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332167931:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:52:22[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332167931:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:54:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332167931:228:11
+[2m20:54:37[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mInvalid characters after number
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/GuidedValueRefPassingLesson058.jsx:490:226 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m490 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mp[0m[38;5;249m>[0m[38;5;249mC[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249me[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mg[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mM[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249mj[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mD[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249má[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249ml[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mC[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m5[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249my[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m[[0m[38;5;249m][0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0mL[38;5;249m,[0m[38;5;249m [0m[38;5;249m2[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m}[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249me[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mI[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249mé[0m[38;5;249mt[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249má[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mp[0m[38;5;249m>[0m
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ┬  
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ╰── 
+[38;5;246m─────╯[0m
+[39m
+  Plugin: [35mvite:oxc[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedValueRefPassingLesson058.jsx[39m
+      at transformWithOxc (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3661:19)
+      at TransformPluginContext.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3732:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29745:51)
+      at async loadAndTransform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:19729:26)
+[2m20:54:37[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mInvalid characters after number
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/GuidedValueRefPassingLesson058.jsx:490:226 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m490 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mp[0m[38;5;249m>[0m[38;5;249mC[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249me[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mg[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mM[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249mj[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mD[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249má[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249ml[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mC[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m5[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249my[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m[[0m[38;5;249m][0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0mL[38;5;249m,[0m[38;5;249m [0m[38;5;249m2[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m}[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249me[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mI[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249mé[0m[38;5;249mt[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249má[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mp[0m[38;5;249m>[0m
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ┬  
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ╰── 
+[38;5;246m─────╯[0m
+[39m
+  Plugin: [35mvite:oxc[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedValueRefPassingLesson058.jsx[39m
+      at transformWithOxc (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3661:19)
+      at TransformPluginContext.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:3732:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:29745:51)
+      at async loadAndTransform (file:///C:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/node_modules/vite/dist/node/chunks/node.js:19729:26)
+[2m20:54:37[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mInvalid characters after number
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/GuidedValueRefPassingLesson058.jsx:490:226 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m490 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mp[0m[38;5;249m>[0m[38;5;249mC[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249me[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mg[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mM[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249mj[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mD[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249má[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249ml[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mC[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mv[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m5[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249my[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249ml[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m[[0m[38;5;249m][0m[38;5;249m [0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0mL[38;5;249m,[0m[38;5;249m [0m[38;5;249m2[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249mL[0m[38;5;249m}[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249me[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249md[0m[38;5;249me[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249me[0m[38;5;249m>[0m[38;5;249m.[0m[38;5;249m [0m[38;5;249mI[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249mé[0m[38;5;249mt[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249má[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249ms[0m[38;5;249m:[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249mp[0m[38;5;249m>[0m
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ┬  
+ [38;5;240m    │[0m                                                                                                                                                                                                                                  ╰── 
+[38;5;246m─────╯[0m
+
+  Plugin: [35mvite:oxc[39m
+  File: [36mC:/Users/win/Documents/Java/formacao-java-thiago/plataforma-curso/src/components/GuidedValueRefPassingLesson058.jsx[39m
+[2m20:54:37[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m20:54:37[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/MarkdownViewer.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+Stored progress is invalid; refusing to overwrite it.
+[2m20:55:35[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332167931:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:56:05[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:12[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:16[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+[2m20:57:19[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: useRef is not defined
+[39m > GuidedArraySearchLesson048 src/components/GuidedArraySearchLesson048.jsx:866:21
+    864 |  export default function GuidedArraySearchLesson048({ isCompleted, onToggleCompleted, onNextLesson, onPrevLesson, hasN...
+    865 |    const [activeIndex, setActiveIndex] = useState(0);
+    866 |    const stepNavRef = useRef(null);
+        |                       ^
+    867 |    const completionNormalizedRef = useRef(false);
+    868 |    const [completedStepIds, setCompletedStepIds] = useState(() => {
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:57:19[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <GuidedArraySearchLesson048> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:23[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+[2m20:57:24[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: useRef is not defined
+[39m > GuidedArraySearchLesson048 src/components/GuidedArraySearchLesson048.jsx:866:21
+    864 |  export default function GuidedArraySearchLesson048({ isCompleted, onToggleCompleted, onNextLesson, onPrevLesson, hasN...
+    865 |    const [activeIndex, setActiveIndex] = useState(0);
+    866 |    const stepNavRef = useRef(null);
+        |                       ^
+    867 |    const completionNormalizedRef = useRef(false);
+    868 |    const [completedStepIds, setCompletedStepIds] = useState(() => {
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:57:24[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <GuidedArraySearchLesson048> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m20:57:26[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: useRef is not defined
+[39m > GuidedArraySearchLesson048 src/components/GuidedArraySearchLesson048.jsx:866:21
+    864 |  export default function GuidedArraySearchLesson048({ isCompleted, onToggleCompleted, onNextLesson, onPrevLesson, hasN...
+    865 |    const [activeIndex, setActiveIndex] = useState(0);
+    866 |    const stepNavRef = useRef(null);
+        |                       ^
+    867 |    const completionNormalizedRef = useRef(false);
+    868 |    const [completedStepIds, setCompletedStepIds] = useState(() => {
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m20:57:26[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <GuidedArraySearchLesson048> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:29[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:50[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:57:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332528030:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:58:00[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:58:44[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:59:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:59:33[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m20:59:40[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:00:02[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:00:27[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:00:36[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:00:49[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:01:34[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:01:51[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:02:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:02:20[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:02:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to synchronize progress with the central database: Error: Progress request failed (409)
+    at http://localhost:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:04:45[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:05:09[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332670903:228:11
+Stored progress is invalid; refusing to overwrite it.
+[2m21:05:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to retry progress synchronization: Error: Progress request failed (409)
+    at http://127.0.0.1:5173/src/App.jsx?t=1784332670903:228:11
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0
+node:fs:1222
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas '\\?\C:\Users\win\Documents\Java\formacao-java-thiago\plataforma-curso\public\aulas'
+    at rmSync (node:fs:1222:18)
+    at resetGeneratedDirectory (file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:26:31)
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:247:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: 41,
+  code: 'ENOTEMPTY',
+  path: '\\\\?\\C:\\Users\\win\\Documents\\Java\\formacao-java-thiago\\plataforma-curso\\public\\aulas',
+  syscall: 'rm'
+}
+
+Node.js v24.16.0

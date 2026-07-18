@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedWhileLesson039.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedWhileLesson.css`
 - Arquétipo: oficina de repetição com animador de fluxo de iteração, simulador de contador + acumulador, galeria de padrões corporativos e clínica de erros
-- Estado: em_revisao
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 

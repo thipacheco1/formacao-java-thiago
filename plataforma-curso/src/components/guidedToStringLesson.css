@@ -1,0 +1,113 @@
+.guided-to-string-lesson { max-width: 100%; overflow: visible; }
+.ts120-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.ts120-stack button { cursor: pointer; }
+.ts120-stack button:disabled { cursor: not-allowed; opacity: .5; }
+.ts120-object { display: grid; grid-template-columns: minmax(190px,.55fr) auto minmax(0,1.45fr); align-items: center; gap: 12px; color: #cbd5e1; }
+.ts120-object > div:first-child { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 18px; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ts120-object > div:first-child code { color: #5eead4; }
+.ts120-object main { display: flex; min-width: 0; flex-direction: column; gap: 11px; padding: 18px; background: #111827; border-radius: 10px; }
+.ts120-object main > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.ts120-object button, .ts120-anatomy button, .ts120-intent button, .ts120-values button, .ts120-privacy button, .ts120-entity button, .ts120-composition button, .ts120-ecosystem button { padding: 9px 12px; color: #cbd5e1; background: #172033; border: 1px solid #334155; border-radius: 7px; }
+.ts120-object button.active, .ts120-anatomy button.active, .ts120-intent button.active, .ts120-values button.active, .ts120-privacy button.active, .ts120-entity button.active, .ts120-composition button.active, .ts120-ecosystem button.active { color: #fff; background: #0f766e; border-color: #2dd4bf; }
+.ts120-object pre, .ts120-intent pre, .ts120-entity pre, .ts120-composition pre, .ts120-ecosystem pre { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ts120-object p { margin: 0; }
+.ts120-anatomy { display: grid; grid-template-columns: minmax(230px,.7fr) minmax(0,1.3fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ts120-anatomy nav { display: flex; flex-direction: column; gap: 7px; padding: 14px; background: #172033; }
+.ts120-anatomy nav button { display: flex; align-items: center; gap: 9px; text-align: left; }
+.ts120-anatomy nav button > span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.ts120-anatomy nav button.done { color: #5eead4; border-color: #0f766e; }
+.ts120-anatomy main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px; }
+.ts120-anatomy main > span, .ts120-debug main > span, .ts120-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.ts120-anatomy h3, .ts120-anatomy p { margin: 0; }
+.ts120-anatomy code { max-width: 100%; padding: 11px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ts120-anatomy main button { display: flex; align-items: center; gap: 7px; }
+.ts120-intent, .ts120-values, .ts120-privacy, .ts120-entity, .ts120-composition, .ts120-ecosystem { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ts120-intent nav, .ts120-values nav, .ts120-privacy header, .ts120-entity nav, .ts120-composition nav, .ts120-ecosystem nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #172033; }
+.ts120-intent main, .ts120-ecosystem main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 11px; padding: 20px; }
+.ts120-intent main > span, .ts120-ecosystem main > span { color: #fbbf24; font-weight: 900; }
+.ts120-intent p, .ts120-ecosystem p { margin: 0; }
+.ts120-values main { display: grid; grid-template-columns: auto minmax(0,1fr) auto auto minmax(0,1fr) auto minmax(110px,.7fr); align-items: center; gap: 9px; padding: 18px; }
+.ts120-values code { padding: 9px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ts120-values b { color: #fbbf24; }
+.ts120-privacy > div { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 18px; }
+.ts120-privacy section { display: flex; min-width: 0; min-height: 120px; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 14px; background: #172033; border: 1px solid #334155; border-radius: 9px; text-align: center; }
+.ts120-privacy section > span { color: #94a3b8; font-size: .72rem; letter-spacing: .06em; }
+.ts120-privacy section code { max-width: 100%; color: #5eead4; overflow-wrap: anywhere; }
+.ts120-privacy section.safe { border-color: #0f766e; }
+.ts120-privacy section.safe b { color: #5eead4; }
+.ts120-privacy section.danger { border-color: #e11d48; }
+.ts120-privacy section.danger b { color: #fda4af; }
+.ts120-privacy > button { display: flex; align-items: center; gap: 7px; margin: 0 18px 18px; }
+.ts120-entity header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 14px; background: #111827; }
+.ts120-entity header > div { display: flex; flex: 1 1 220px; align-items: center; gap: 9px; }
+.ts120-entity header strong { color: #5eead4; }
+.ts120-entity > pre, .ts120-entity > p { margin: 0 16px 16px; }
+.ts120-composition { display: grid; grid-template-columns: minmax(220px,.7fr) minmax(0,1.3fr); }
+.ts120-graph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; background: #172033; }
+.ts120-graph > div { width: min(100%,210px); padding: 11px; background: #111827; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.ts120-graph > svg { transform: rotate(90deg); }
+.ts120-composition nav { grid-column: 2; }
+.ts120-composition nav button.danger { color: #fff; background: #9f1239; border-color: #fb7185; }
+.ts120-composition main { display: flex; min-width: 0; flex-direction: column; gap: 10px; padding: 18px; }
+.ts120-composition main > span { color: #5eead4; font-size: .72rem; font-weight: 900; letter-spacing: .07em; }
+.ts120-composition main.danger > span { color: #fda4af; }
+.ts120-composition main p { margin: 0; }
+.ts120-ecosystem main { align-items: stretch; }
+.ts120-ide-fields { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 7px; }
+.ts120-ide-fields label { display: flex; align-items: center; gap: 7px; padding: 9px; background: #172033; border-radius: 7px; }
+.ts120-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ts120-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #172033; }
+.ts120-debug > div button { display: flex; align-items: center; gap: 6px; padding: 8px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 6px; }
+.ts120-debug > div > span { margin-left: auto; }
+.ts120-debug > section { display: grid; grid-template-columns: minmax(220px,.7fr) minmax(0,1.3fr); }
+.ts120-debug aside { display: flex; min-width: 0; flex-direction: column; gap: 4px; padding: 10px; background: #0f172a; }
+.ts120-debug aside button { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 7px; padding: 7px; color: #94a3b8; background: transparent; border: 0; border-radius: 5px; text-align: left; overflow-wrap: anywhere; }
+.ts120-debug aside button.active { color: #fff; background: #0f766e; }
+.ts120-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.ts120-debug main h3, .ts120-debug main p { margin: 0; }
+.ts120-debug main > code { max-width: 100%; padding: 9px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ts120-debug main > div { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.ts120-debug main > div b { color: #fbbf24; }
+.ts120-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ts120-errors nav { display: flex; max-height: 440px; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; overflow: auto; background: #172033; }
+.ts120-errors nav button { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; }
+.ts120-errors nav button.active { color: #fff; background: #0f766e; }
+.ts120-errors nav button > span:first-child { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.ts120-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.ts120-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.ts120-errors main h3, .ts120-errors main p { margin: 0; }
+.ts120-errors main > span { display: flex; align-items: center; gap: 6px; }
+.ts120-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.ts120-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.ts120-errors main b { color: #5eead4; }
+.ts120-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.ts120-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.ts120-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #0f766e; background: #ccfbf1; border-radius: 50%; }
+.ts120-checklist button.done { color: #065f46; background: #ecfdf5; border-color: #6ee7b7; }
+.ts120-checklist button.done span { color: #fff; background: #059669; }
+@media (max-width: 900px) {
+  .ts120-anatomy, .ts120-composition, .ts120-errors, .ts120-debug > section { grid-template-columns: 1fr; }
+  .ts120-anatomy nav, .ts120-errors nav, .ts120-debug aside { flex-direction: row; overflow-x: auto; }
+  .ts120-anatomy nav button, .ts120-errors nav button, .ts120-debug aside button { flex: 0 0 min(230px,76vw); }
+  .ts120-composition nav { grid-column: auto; }
+  .ts120-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .ts120-object, .ts120-values main, .ts120-privacy > div { grid-template-columns: 1fr; }
+  .ts120-object > svg, .ts120-values main > svg, .ts120-privacy > div > svg { justify-self: center; transform: rotate(90deg); }
+  .ts120-ide-fields { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ts120-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .ts120-intent nav, .ts120-values nav, .ts120-privacy header, .ts120-entity nav, .ts120-composition nav, .ts120-ecosystem nav { flex-direction: column; }
+  .ts120-errors main > section { grid-template-columns: 1fr; }
+  .ts120-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .ts120-ide-fields, .ts120-checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .ts120-object main > div, .ts120-entity header { flex-direction: column; align-items: stretch; }
+  .ts120-debug > div { flex-wrap: wrap; }
+}
+@media (max-width: 320px) {
+  .ts120-object main, .ts120-anatomy main, .ts120-intent main, .ts120-values main, .ts120-privacy > div, .ts120-composition main, .ts120-ecosystem main, .ts120-debug main, .ts120-errors main { padding: 12px; }
+}

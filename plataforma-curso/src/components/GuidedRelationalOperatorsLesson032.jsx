@@ -43,7 +43,7 @@ const DOMAIN_PROGRAMS = [
 const ERRORS = [
   { title: 'Usar = em vez de ==', code: 'boolean igual = (quantidade = 10);', symptom: 'O Java atribui o valor 10 e pode gerar erro de incompatibilidade de tipos', cause: 'O operador = é de atribuição de dados, enquanto o == é de comparação lógica de igualdade.', fix: 'Substitua o operador para comparação: quantidade == 10;' },
   { title: 'Exclusão indesejada de limite', code: 'boolean maiorDeIdade = idade > 18; // Idade: 18', symptom: 'Retorna false para uma idade de 18 anos', cause: 'O operador > exclui o valor limite exato informado na comparação.', fix: 'Utilize o operador maior ou igual se a fronteira for inclusiva: idade >= 18;' },
-  { title: 'Comparação de Strings com ==', code: 'boolean aberto = (status == "ABERTA");', symptom: 'Retorna false aleatoriamente dependendo da alocação da JVM na Heap', cause: 'O operador == compara o endereço de referência física no Stack, não o conteúdo textual.', fix: 'Utilize o método seguro equals(): "ABERTA".equals(status);' },
+  { title: 'Comparação de conteúdo textual com ==', code: 'String status = new String("ABERTA");\nboolean aberto = (status == "ABERTA");', symptom: 'Retorna false mesmo com caracteres iguais', cause: 'O operador == testa identidade de referência, não equivalência de conteúdo.', fix: 'Use equals() para conteúdo e a constante à esquerda se status puder ser null: "ABERTA".equals(status);' },
   { title: 'Comparação com boolean redundante', code: 'boolean ativo = (clienteAtivo == true);', symptom: 'Código poluído com ruído visual redundante', cause: 'Variáveis booleanas já contêm por si mesmas os valores lógicos true ou false.', fix: 'Simplifique para a leitura direta: boolean ativo = clienteAtivo;' },
   { title: 'Comparação com false redundante', code: 'boolean ok = (pendente == false);', symptom: 'Código poluído e pouco natural', cause: 'Comparar com false pode ser expresso simplesmente pela negação da variável.', fix: 'Utilize o operador de negação: boolean ok = !pendente;' },
   { title: 'Concatenação de print sem parênteses', code: 'System.out.println("Resultado: " + A > B);', symptom: 'Erro de compilação ou concatenação incorreta', cause: 'O operador + de String lê da esquerda para a direita e concatena A antes do teste relacional.', fix: 'Envolva a expressão relacional com parênteses: System.out.println("Resultado: " + (A > B));' },
@@ -57,9 +57,9 @@ const EVIDENCE = [
   '# Aula 032 — Operadores Relacionais', '',
   '## Comparações Lógicas', '- [ ] Entendi o papel de todos os operadores relacionais (>, <, >=, <=, ==, !=)', '- [ ] Diferenciei atribuição (=) de comparação de igualdade (==)', '- [ ] Nomeei variáveis booleanas seguindo o padrão profissional (possuiEstoque, etc.)', '',
   '## Fronteiras de Dados', '- [ ] Testei valores de fronteira de limites mínimos e máximos', '- [ ] Evitei igualdades exatas de tipo double', '- [ ] Comparei caracteres char usando aspas simples', '',
-  '## String e equals', '- [ ] Compreendi a diferença de Stack/Heap na comparação de Strings', '- [ ] Usei equals() em vez de == para conteúdo textual', '- [ ] Simplifiquei testes de redundância com booleanos', '',
+  '## String e equals', '- [ ] Diferenciei identidade de referência e igualdade de conteúdo', '- [ ] Usei equals() em vez de == para conteúdo textual', '- [ ] Simplifiquei testes redundantes com booleanos', '',
   '## Evidências locais', '- [ ] Criei, compilei e testei as 12 classes locais', '- [ ] Garanti a ausência de arquivos binários compilados .class no Git', '',
-  '## Decisão de Projeto', '- Regras de triagem e limites avaliados no desafio de transferência:', '- Por que equals() difere de == na comparação de objetos da Heap:'
+  '## Decisão de Projeto', '- Regras de triagem e limites avaliados no desafio de transferência:', '- Por que equals() difere de == ao comparar objetos:'
 ].join('\n');
 
 function CopyButton({ value, label = 'Copiar' }) {
@@ -236,25 +236,25 @@ function HeapStackStringLab() {
 
     <div className="rel32-memoria-sim">
       <div className="rel32-memoria-block stack">
-        <span style={{ fontSize: '.58rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 'bold' }}>Stack (JVM):</span>
+        <span style={{ fontSize: '.58rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 'bold' }}>Referências (modelo conceitual):</span>
         <div className="rel32-memoria-cell">
           <span>s1</span>
-          <span className="address">@101</span>
+          <span className="address">ref A</span>
         </div>
         <div className="rel32-memoria-cell">
           <span>s2</span>
-          <span className="address">{equalOp === '==' ? '@102' : '@102'}</span>
+          <span className="address">ref B</span>
         </div>
       </div>
       <div style={{ color: '#fff', fontSize: '1.2rem' }}>&rarr;</div>
       <div className="rel32-memoria-block heap">
-        <span style={{ fontSize: '.58rem', color: '#c084fc', textTransform: 'uppercase', fontWeight: 'bold' }}>Heap String Pool:</span>
+        <span style={{ fontSize: '.58rem', color: '#c084fc', textTransform: 'uppercase', fontWeight: 'bold' }}>Objetos String:</span>
         <div className="rel32-memoria-cell">
-          <span className="address">@101</span>
+          <span className="address">objeto A</span>
           <span>"PENDENTE"</span>
         </div>
         <div className="rel32-memoria-cell">
-          <span className="address">@102</span>
+          <span className="address">objeto B</span>
           <span>"PENDENTE"</span>
         </div>
       </div>
@@ -262,9 +262,9 @@ function HeapStackStringLab() {
 
     <p style={{ margin: 0, fontSize: '.72rem', lineHeight: 1.5, color: '#475569' }}>
       {equalOp === '==' ? (
-        <span><b>Sintoma (==): false</b>. O operador <code>==</code> compara se as referências na Stack apontam para a mesma região física de memória (<code>@101 == @102</code>), ignorando o conteúdo dos caracteres.</span>
+        <span><b>Sintoma (==): false</b>. O operador <code>==</code> verifica se as referências representam o mesmo objeto (<code>ref A == ref B</code>), sem comparar os caracteres.</span>
       ) : (
-        <span><b>Sintoma (equals): true</b>. O método <code>.equals()</code> percorre os valores físicos armazenados no Heap Pool caractere por caractere (P-E-N-D-E-N-T-E), atestando a igualdade de conteúdo.</span>
+        <span><b>Sintoma (equals): true</b>. O contrato de <code>String.equals()</code> compara a sequência de caracteres e confirma a igualdade de conteúdo.</span>
       )}
     </p>
   </section>;
@@ -492,10 +492,10 @@ const steps = [
     id: 'strings',
     eyebrow: 'Memória',
     label: 'Igualdade de Strings',
-    title: 'Análise Heap vs Stack',
+    title: 'Identidade de referência vs igualdade de conteúdo',
     duration: '6 min',
     blocks: [
-      { type: 'lead', text: 'Descubra por que comparar conteúdo de Strings com == falha devido ao teste de endereços de referências de Stack na JVM:' },
+      { type: 'lead', text: 'Descubra por que == não é um operador de conteúdo para String. O diagrama usa referências simbólicas e não afirma endereços ou regiões físicas da JVM:' },
       { type: 'string_mem' }
     ]
   },

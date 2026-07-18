@@ -24,7 +24,7 @@ const DOMAIN_PROGRAMS = [
     id: 1, label: 'Validação Pedido', file: 'ValidacaoPedido.java',
     code: 'import java.math.BigDecimal;\n\npublic class ValidacaoPedido {\n    public static void main(String[] args) {\n        String cliente = "Ana";\n        BigDecimal valor = new BigDecimal("150.00");\n        int quantidade = 2;\n        boolean bloqueado = false;\n\n        boolean clienteInformado = cliente != null && !cliente.isBlank();\n        boolean valorPositivo = valor != null && valor.compareTo(BigDecimal.ZERO) > 0;\n        boolean quantidadePositiva = quantidade > 0;\n        boolean podeProcessar = clienteInformado && valorPositivo && quantidadePositiva && !bloqueado;\n\n        System.out.println("Pode processar: " + podeProcessar);\n    }\n}',
     output: 'Pode processar: true',
-    insight: 'Quebrar condições grandes em booleanos Stack locais nomeados documenta a regra de negócios e facilita o debug.'
+    insight: 'Quebrar condições grandes em booleanos locais nomeados documenta a regra de negócio e facilita o debug.'
   },
   {
     id: 2, label: 'Validação OS', file: 'ValidacaoOs.java',
@@ -41,9 +41,9 @@ const DOMAIN_PROGRAMS = [
 ];
 
 const ERRORS = [
-  { title: 'Usar & no lugar de &&', code: 'boolean ok = (A & B);', symptom: 'Desativa o curto-circuito. JVM avalia B mesmo se A for false', cause: 'O operador simples & roda avaliação lógica direta sem curto-circuito, gerando riscos.', fix: 'Utilize sempre o operador duplo && para avaliação lógica comum com desvio seguro.' },
-  { title: 'Usar | no lugar de ||', code: 'boolean ok = (A | B);', symptom: 'Desativa o curto-circuito. JVM avalia B mesmo se A for true', cause: 'O operador simples | roda avaliação lógica direta sem curto-circuito.', fix: 'Utilize sempre o operador duplo || para avaliação lógica.' },
-  { title: 'Ordem incorreta contra nulo', code: 'if (!nome.isBlank() && nome != null) { ... }', symptom: 'java.lang.NullPointerException', cause: 'A JVM tenta invocar isBlank() antes de verificar se o endereço de Stack aponta para null.', fix: 'Coloque sempre a verificação de existência (nome != null) em primeiro lugar.' },
+  { title: 'Usar & no lugar de &&', code: 'boolean ok = (A & B);', symptom: 'Desativa o curto-circuito: B é avaliado mesmo se A for false', cause: 'Com operandos booleanos, & avalia os dois lados. Isso pode executar trabalho desnecessário ou uma operação insegura.', fix: 'Prefira && quando o segundo teste só deve ocorrer se o primeiro for true. Use & apenas quando avaliar ambos os lados for uma decisão consciente.' },
+  { title: 'Usar | no lugar de ||', code: 'boolean ok = (A | B);', symptom: 'Desativa o curto-circuito: B é avaliado mesmo se A for true', cause: 'Com operandos booleanos, | avalia os dois lados.', fix: 'Prefira || quando um primeiro resultado true já resolve a expressão; use | apenas quando a avaliação de ambos for intencional.' },
+  { title: 'Ordem incorreta contra nulo', code: 'if (!nome.isBlank() && nome != null) { ... }', symptom: 'java.lang.NullPointerException', cause: 'isBlank() é chamado antes de a expressão confirmar que nome contém uma referência válida.', fix: 'Coloque a verificação nome != null primeiro para que o curto-circuito impeça a chamada insegura.' },
   { title: 'Esquecer parênteses', code: 'boolean ok = A && B || C;', symptom: 'Precedência lógica incorreta. JVM avalia AND antes do OR', cause: 'O operador && possui prioridade implícita sobre o || na tabela de precedência do Java.', fix: 'Utilize parênteses para agrupar e documentar: (A && B) || C;' },
   { title: 'Negação dupla confusa', code: 'boolean pode = !(!statusAtivo);', symptom: 'Dificuldade de leitura humana e erros ocultos de lógica', cause: 'Encadear negações desnecessárias sobre booleanos locais.', fix: 'Remova as negações duplas ou renomencie a variável de forma positiva.' },
   { title: 'Expressões gigantes em if', code: 'if (A && B && C && (D || E) && !F) { ... }', symptom: 'Código ilegível que prejudica o debug e a manutenção', cause: 'Escrever regras complexas em uma linha única e extensa.', fix: 'Quebre a expressão em booleanos locais explicativos (ex: clienteValido, pagamentoAprovado).' },
@@ -56,7 +56,7 @@ const EVIDENCE = [
   '# Aula 033 — Operadores Lógicos', '',
   '## Operações Lógicas', '- [ ] Entendi o comportamento do && (E lógico), || (OU lógico) e ! (NÃO lógico)', '- [ ] Pratiquei a construção de tabelas-verdade interativas com chaves e circuitos', '- [ ] Entendi a precedência implícita de && sobre || e o uso de parênteses', '',
   '## Curto-Circuito e Segurança', '- [ ] Compreendi o desvio de curto-circuito na JVM para && e ||', '- [ ] Apliquei a ordem correta de verificação contra null (null check primeiro)', '- [ ] Previni a exceção NullPointerException em tempo de execução', '',
-  '## Manutenibilidade e Limpeza', '- [ ] Refatorei condições extensas em booleanos locais explicativos (Stack-local)', '- [ ] Removi negações duplas confusas de booleanos do sistema', '',
+  '## Manutenibilidade e Limpeza', '- [ ] Refatorei condições extensas em booleanos locais explicativos', '- [ ] Removi negações duplas confusas de booleanos do sistema', '',
   '## Evidências locais', '- [ ] Criei, compilei e executei as 7 classes locais de regras de negócio', '- [ ] Garanti a ausência de binários compilados .class no histórico do Git', '',
   '## Decisão de Projeto', '- Regras lógicas combinadas e parênteses utilizados no desafio de transferência:', '- Por que a ordem dos operandos de null check importa no curto-circuito:'
 ].join('\n');
@@ -162,7 +162,7 @@ function PortasLogicasLab() {
       <aside className="guided-note info" style={{ margin: 0, padding: '16px', background: '#fff', borderColor: '#cbd5e1' }}>
         <Lightbulb size={22} style={{ color: 'var(--log33-teal)' }} />
         <div>
-          <strong>Tabela-Verdade Física</strong>
+          <strong>Tabela-verdade interativa</strong>
           <p style={{ fontSize: '.65rem', lineHeight: 1.45, color: '#475569', margin: '2px 0 0' }}>
             No circuito <b>E (&&)</b>, a lâmpada acende se ambas as chaves forem ligadas. No circuito <b>OU (||)</b>, ligar qualquer uma das chaves fecha a corrente e acende o sinal.
           </p>
@@ -200,7 +200,7 @@ function CurtoCircuitoLab() {
     </div>
 
     <div className="log33-thread-line">
-      <span style={{ color: '#94a3b8' }}>Thread JVM:</span>
+          <span style={{ color: '#94a3b8' }}>Ordem de avaliação:</span>
       {order === 'correta' ? (
         <>
           <span className="log33-thread-node eval">1. nome != null (FALSO)</span>
@@ -219,12 +219,12 @@ function CurtoCircuitoLab() {
     {order === 'incorreta' ? (
       <div className="log33-bomba-npe">
         <AlertTriangle size={18} style={{ flex: '0 0 auto' }} />
-        <span><b>Bomba de Runtime!</b> A JVM tenta chamar <code>isBlank()</code> em uma referência de Stack com valor <code>null</code>, lançando <code>NullPointerException</code>.</span>
+        <span><b>Falha em runtime:</b> o programa chama <code>isBlank()</code> quando <code>nome</code> é <code>null</code>, lançando <code>NullPointerException</code>.</span>
       </div>
     ) : (
       <div className="log33-bomba-npe" style={{ background: '#ecfdf5', borderColor: '#a7f3d0', color: '#065f46' }}>
         <Check size={18} style={{ flex: '0 0 auto', color: '#10b981' }} />
-        <span><b>Execução Segura!</b> O curto-circuito do <code>&&</code> impede que a JVM execute a segunda condição ao ver que a primeira é falsa, protegendo a Thread.</span>
+        <span><b>Execução segura:</b> o curto-circuito do <code>&&</code> não avalia a segunda condição quando a primeira já é falsa.</span>
       </div>
     )}
   </section>;
@@ -457,12 +457,12 @@ const steps = [
   },
   {
     id: 'curto',
-    eyebrow: ' JVM Thread',
+    eyebrow: 'Ordem de avaliação',
     label: 'Curto-Circuito',
     title: 'Desvio seguro contra falhas nulas',
     duration: '6 min',
     blocks: [
-      { type: 'lead', text: 'Chaveie a ordem de verificação contra nulos e entenda como a JVM aborta a execução protegendo a Thread ativa contra NullPointerExceptions:' },
+      { type: 'lead', text: 'Alterne a ordem da verificação contra null e observe quando o curto-circuito evita a chamada de método insegura:' },
       { type: 'short_circuit' }
     ]
   },
@@ -473,7 +473,7 @@ const steps = [
     title: 'Quebra de expressões extensas',
     duration: '4 min',
     blocks: [
-      { type: 'lead', text: 'Refatore um anti-pattern de condição extensa convertendo-a em booleanos Stack locais autoexplicativos:' },
+      { type: 'lead', text: 'Refatore uma condição extensa convertendo-a em booleanos locais autoexplicativos:' },
       { type: 'refactor' }
     ]
   },

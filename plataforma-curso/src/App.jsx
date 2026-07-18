@@ -6,9 +6,11 @@ import WelcomeView from './components/WelcomeView';
 import AuthModal from './components/AuthModal';
 import { Menu, ChevronRight } from 'lucide-react';
 import { trackPageView, trackPresence } from './utils/analytics';
+import { useLearningStateSync } from './utils/useLearningStateSync';
 
 const LEGACY_VISITOR_EMAIL = 'visitante@preview.local';
 const LEGACY_VISITOR_PROGRESS_KEY = 'completedLessons_visitor';
+const SIGNED_SESSION_MIGRATION_KEY = 'signedUserSessionV1';
 
 const readStoredUser = () => {
   const saved = localStorage.getItem('currentUser');
@@ -203,6 +205,24 @@ function App() {
     }
   }, []);
 
+  const handleSessionExpired = useCallback(() => {
+    activeUserEmailRef.current = null;
+    setCurrentUser(null);
+    localStorage.removeItem('currentUser');
+    applyProgressState({});
+    setSelectedLesson(null);
+    setPendingLesson(null);
+    setIsAuthModalOpen(true);
+  }, [applyProgressState]);
+
+  const { learningStateRevision } = useLearningStateSync({
+    currentUser,
+    selectedLesson,
+    lessons,
+    setSelectedLesson,
+    onSessionExpired: handleSessionExpired
+  });
+
   const queueProgressTask = useCallback((task) => {
     const queuedTask = progressSyncChainRef.current
       .catch(() => undefined)
@@ -229,6 +249,7 @@ function App() {
       });
 
       if (!response.ok) {
+        if (response.status === 401) handleSessionExpired();
         throw new Error(`Progress update failed (${response.status})`);
       }
 
@@ -236,7 +257,7 @@ function App() {
         .filter(pendingMutation => pendingMutation.id !== mutation.id);
       writeProgressMutations(email, remainingMutations);
     }
-  }), [queueProgressTask]);
+  }), [handleSessionExpired, queueProgressTask]);
 
   const migrateLegacyProgress = useCallback(async (user) => {
     const email = user?.email?.toLowerCase();
@@ -262,12 +283,13 @@ function App() {
       });
 
       if (!response.ok) {
+        if (response.status === 401) handleSessionExpired();
         throw new Error(`Legacy progress migration failed (${response.status})`);
       }
     });
 
     localStorage.setItem(getProgressMigrationKey(email), 'true');
-  }, [queueProgressTask]);
+  }, [handleSessionExpired, queueProgressTask]);
 
   const reconcileProgress = useCallback(async (user, signal) => {
     const email = user?.email?.toLowerCase();
@@ -287,6 +309,7 @@ function App() {
       });
 
       if (!response.ok) {
+        if (response.status === 401) handleSessionExpired();
         throw new Error(`Progress request failed (${response.status})`);
       }
 
@@ -300,7 +323,7 @@ function App() {
         return;
       }
     }
-  }, [applyProgressState, flushProgressMutations, migrateLegacyProgress]);
+  }, [applyProgressState, flushProgressMutations, handleSessionExpired, migrateLegacyProgress]);
 
   // Remove data created by the discontinued visitor mode.
   useEffect(() => {
@@ -348,6 +371,19 @@ function App() {
       localStorage.setItem(migrationKey, 'true');
     }
   }, [applyProgressState]);
+
+  // Accounts created before signed user sessions must authenticate once more so
+  // progress requests cannot be authorized by editable localStorage data alone.
+  useEffect(() => {
+    if (localStorage.getItem(SIGNED_SESSION_MIGRATION_KEY)) return;
+    localStorage.setItem(SIGNED_SESSION_MIGRATION_KEY, 'true');
+    if (!currentUser) return;
+    activeUserEmailRef.current = null;
+    setCurrentUser(null);
+    localStorage.removeItem('currentUser');
+    applyProgressState({});
+    setSelectedLesson(null);
+  }, [applyProgressState, currentUser]);
 
   // The central store is authoritative. Pending offline mutations are replayed
   // in order before applying the latest server state.
@@ -433,6 +469,7 @@ function App() {
     activeUserEmailRef.current = user?.email?.toLowerCase() || null;
     setCurrentUser(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem(SIGNED_SESSION_MIGRATION_KEY, 'true');
     
     // Quick local preview
     applyProgressState(readStoredProgress(user), user);
@@ -696,6 +733,7 @@ function App() {
             <div className={`content-scroll-area ${selectedLesson ? 'lesson-reading-scroll' : 'home-scroll'}`}>
               {selectedLesson ? (
                 <MarkdownViewer 
+                  key={`${selectedLesson.id}:${learningStateRevision}`}
                   lesson={selectedLesson} 
                   isCompleted={!!completedLessons[selectedLesson.id]}
                   onToggleCompleted={() => toggleLessonCompleted(selectedLesson.id)}

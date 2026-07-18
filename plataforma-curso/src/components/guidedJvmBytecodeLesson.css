@@ -1,0 +1,791 @@
+.guided-jvm-bytecode-lesson {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.guided-jvm-bytecode-lesson .guided-kicker {
+  color: #bfdbfe;
+}
+
+.jvm62-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 6px 10px;
+  color: #dbeafe;
+  background: #1e3a5f;
+  border: 1px solid #315681;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.jvm62-code {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.jvm62-code pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.jvm62-pipeline-lab,
+.jvm62-terminal-lab,
+.jvm62-bytecode-lab,
+.jvm62-loading-lab,
+.jvm62-failure-lab,
+.jvm62-runtime-lab,
+.jvm62-backend-lab,
+.jvm62-delivery {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jvm62-pipeline,
+.jvm62-runtime-map,
+.jvm62-backend-flow {
+  display: flex;
+  min-width: 0;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.jvm62-pipeline > svg,
+.jvm62-runtime-map > svg,
+.jvm62-backend-flow > svg {
+  align-self: center;
+  flex: 0 0 auto;
+  color: #94a3b8;
+}
+
+.jvm62-pipeline button {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 11px;
+  text-align: left;
+}
+
+.jvm62-pipeline button span,
+.jvm62-loading-map button span,
+.jvm62-checks button span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-radius: 50%;
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.jvm62-pipeline button small,
+.jvm62-tool-list button small {
+  color: #64748b;
+}
+
+.jvm62-pipeline button.active {
+  color: #eff6ff;
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.jvm62-pipeline button.active small,
+.jvm62-pipeline button.active span {
+  color: #dbeafe;
+}
+
+.jvm62-pipeline button.active span {
+  background: #1e40af;
+}
+
+.jvm62-pipeline button.visited {
+  border-color: #60a5fa;
+}
+
+.jvm62-stage-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 11px;
+}
+
+.jvm62-stage-detail > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jvm62-stage-detail small {
+  color: #64748b;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.jvm62-stage-detail strong {
+  overflow-wrap: anywhere;
+  color: #1e3a8a;
+}
+
+.jvm62-toolkit {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.jvm62-tool-list {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.jvm62-tool-list button {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.jvm62-tool-list button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.jvm62-tool-list button.active small {
+  color: #dbeafe;
+}
+
+.jvm62-toolkit > article {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #dbe4ef;
+  border-radius: 12px;
+}
+
+.jvm62-toolkit > article > span,
+.jvm62-command-compare small {
+  color: #2563eb;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.jvm62-toolkit h3 {
+  margin: 7px 0 10px;
+}
+
+.jvm62-versions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.jvm62-versions code,
+.jvm62-loading-lab > article code,
+.jvm62-command-compare code {
+  display: inline-block;
+  max-width: 100%;
+  padding: 8px 10px;
+  overflow-wrap: anywhere;
+  color: #dbeafe;
+  background: #0f172a;
+  border-radius: 7px;
+}
+
+.jvm62-caption {
+  margin: 0;
+  color: #64748b;
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.jvm62-run-tabs,
+.jvm62-failure-tabs,
+.jvm62-runtime-controls {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding-bottom: 3px;
+}
+
+.jvm62-run-tabs button,
+.jvm62-failure-tabs button,
+.jvm62-runtime-controls button {
+  display: inline-flex;
+  min-height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.jvm62-run-tabs button.active,
+.jvm62-failure-tabs button.active,
+.jvm62-runtime-controls button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.jvm62-workbench {
+  display: grid;
+  grid-template-columns: minmax(170px, .42fr) minmax(0, 1fr);
+  min-width: 0;
+  overflow: hidden;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+.jvm62-tree,
+.jvm62-terminal {
+  min-width: 0;
+}
+
+.jvm62-tree {
+  border-right: 1px solid #334155;
+}
+
+.jvm62-tree header,
+.jvm62-terminal header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 13px;
+  color: #94a3b8;
+  background: #111c30;
+  border-bottom: 1px solid #334155;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.jvm62-tree span {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 9px 12px;
+  overflow-wrap: anywhere;
+  color: #cbd5e1;
+  font-size: .75rem;
+}
+
+.jvm62-terminal pre {
+  min-height: 115px;
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.jvm62-terminal pre b {
+  color: #60a5fa;
+}
+
+.jvm62-terminal pre span {
+  color: #86efac;
+}
+
+.jvm62-terminal.danger {
+  overflow: hidden;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+.jvm62-terminal.danger header,
+.jvm62-terminal.danger pre span {
+  color: #fca5a5;
+}
+
+.jvm62-evidence {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 13px;
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  border-radius: 9px;
+  line-height: 1.5;
+}
+
+.jvm62-evidence svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.jvm62-bytecode-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr);
+  min-width: 0;
+  gap: 12px;
+}
+
+.jvm62-instruction-list {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jvm62-instruction-list button {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 9px 11px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.jvm62-instruction-list button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+
+.jvm62-instruction-list button code {
+  color: inherit;
+  font-weight: 800;
+}
+
+.jvm62-instruction-list button span {
+  overflow-wrap: anywhere;
+  font-size: .72rem;
+}
+
+.jvm62-loading-lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, .85fr);
+}
+
+.jvm62-loading-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.jvm62-loading-map button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 11px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.jvm62-loading-map button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.jvm62-loading-map button.active span {
+  color: #fff;
+  background: #1e40af;
+}
+
+.jvm62-loading-map button.visited {
+  border-color: #60a5fa;
+}
+
+.jvm62-loading-lab > article {
+  min-width: 0;
+  padding: 18px;
+  color: #dbeafe;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+.jvm62-loading-lab > article h3 {
+  margin: 8px 0;
+}
+
+.jvm62-loading-lab > article p {
+  color: #cbd5e1;
+  line-height: 1.55;
+}
+
+.jvm62-loading-lab > .jvm62-code,
+.jvm62-loading-lab > .guided-note {
+  grid-column: 1 / -1;
+}
+
+.jvm62-rule-grid,
+.jvm62-command-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.jvm62-rule-grid article,
+.jvm62-command-compare article {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #dbe4ef;
+  border-radius: 10px;
+}
+
+.jvm62-rule-grid p,
+.jvm62-command-compare p {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.jvm62-runtime-map article,
+.jvm62-backend-flow article {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 7px;
+  padding: 15px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 11px;
+}
+
+.jvm62-runtime-map article span,
+.jvm62-backend-flow article span {
+  overflow-wrap: anywhere;
+  color: #64748b;
+  font-size: .74rem;
+  line-height: 1.45;
+}
+
+.jvm62-runtime-map article.active {
+  color: #fff;
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.jvm62-runtime-map article.active span {
+  color: #dbeafe;
+}
+
+.jvm62-runtime-map article.hot {
+  background: #b45309;
+  border-color: #b45309;
+}
+
+.jvm62-runtime-map article.portable {
+  border-color: #60a5fa;
+}
+
+.jvm62-command-compare {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.jvm62-command-compare code {
+  margin-top: 8px;
+}
+
+.jvm62-errors {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-width: 0;
+  gap: 14px;
+}
+
+.jvm62-errors > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jvm62-errors button {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 10px;
+  color: #94a3b8;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: .73rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.jvm62-errors button > span:first-child {
+  display: grid;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  place-items: center;
+  color: #94a3b8;
+  background: #1e293b;
+  border-radius: 50%;
+}
+
+.jvm62-errors button > span:last-child {
+  min-width: 0;
+}
+
+.jvm62-errors button.active {
+  color: #fbbf24;
+  border-color: #f59e0b;
+}
+
+.jvm62-errors > article {
+  min-width: 0;
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+.jvm62-errors > article header {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  color: #fbbf24;
+  background: #1c1005;
+}
+
+.jvm62-errors > article header small {
+  display: block;
+  margin-bottom: 3px;
+  font-size: .66rem;
+}
+
+.jvm62-errors > article h3 {
+  margin: 0;
+}
+
+.jvm62-errors > article p {
+  display: flex;
+  gap: 7px;
+  padding: 0 16px;
+  line-height: 1.55;
+}
+
+.jvm62-errors > article p svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.jvm62-command-sequence {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.jvm62-command-sequence article {
+  min-width: 0;
+  overflow: hidden;
+  color: #dbeafe;
+  background: #0f172a;
+  border-radius: 10px;
+}
+
+.jvm62-command-sequence header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  color: #94a3b8;
+  background: #111c30;
+  border-bottom: 1px solid #334155;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.jvm62-command-sequence pre {
+  margin: 0;
+  padding: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: .74rem;
+  line-height: 1.55;
+}
+
+.jvm62-subtitle {
+  margin: 6px 0 0;
+}
+
+.jvm62-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.jvm62-checks button {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.jvm62-checks button.done {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+
+.jvm62-checks button.done span {
+  color: #fff;
+  background: #059669;
+}
+
+.guided-jvm-bytecode-lesson .guided-challenge {
+  margin: 2px 0;
+}
+
+@media (max-width: 1050px) {
+  .jvm62-pipeline,
+  .jvm62-runtime-map,
+  .jvm62-backend-flow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jvm62-pipeline > svg,
+  .jvm62-runtime-map > svg,
+  .jvm62-backend-flow > svg {
+    display: none;
+  }
+
+  .jvm62-bytecode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jvm62-instruction-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .jvm62-toolkit,
+  .jvm62-errors {
+    grid-template-columns: 1fr;
+  }
+
+  .jvm62-tool-list,
+  .jvm62-errors > div {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .jvm62-tool-list button,
+  .jvm62-errors button {
+    flex: 0 0 210px;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .jvm62-workbench,
+  .jvm62-loading-lab,
+  .jvm62-rule-grid,
+  .jvm62-command-compare,
+  .jvm62-command-sequence,
+  .jvm62-checks {
+    grid-template-columns: 1fr;
+  }
+
+  .jvm62-tree {
+    border-right: 0;
+    border-bottom: 1px solid #334155;
+  }
+
+  .jvm62-loading-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jvm62-loading-lab > .jvm62-code,
+  .jvm62-loading-lab > .guided-note {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .jvm62-pipeline,
+  .jvm62-runtime-map,
+  .jvm62-backend-flow,
+  .jvm62-stage-detail,
+  .jvm62-instruction-list,
+  .jvm62-loading-map {
+    grid-template-columns: 1fr;
+  }
+
+  .jvm62-pipeline button,
+  .jvm62-runtime-map article,
+  .jvm62-backend-flow article {
+    width: 100%;
+  }
+
+  .jvm62-evidence {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .jvm62-toolkit > article,
+  .jvm62-loading-lab > article {
+    padding: 14px;
+  }
+
+  .jvm62-copy {
+    padding-inline: 7px;
+  }
+
+  .jvm62-command-sequence header {
+    flex-wrap: wrap;
+  }
+}

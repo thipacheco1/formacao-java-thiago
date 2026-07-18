@@ -8,13 +8,13 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedCharStringLesson028.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedCharStringLesson.css`
 - Arquétipo: oficina de tipos textuais com comparador de aspas, visualizador de imutabilidade em memória, playground de escape e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
 - A Aula 027 ensinou booleanos, tabelas-verdade, comparadores e precedência lógica. A Aula 028 avança para os tipos textuais primitivos (`char`) e estruturados (`String`), introduzindo a manipulação inicial de strings e seus primeiros métodos básicos.
 - A Aula 029 aprofundará sobre String (básica). A Aula 028 foca em diferenciar o caractere individual (`char`) da cadeia de caracteres (`String`), enfatizando o uso de aspas simples vs duplas e a armadilha de zeros à esquerda em identificadores.
-- Comparações complexas e operações avançadas de Strings (como `equals` ou `StringBuilder`) são apenas sinalizadas de forma cautelar (avisando que `==` não deve ser usado). O foco absoluto está na declaração, concatenação, escape básico e na natureza de imutabilidade física das Strings.
+- Comparações complexas e operações avançadas de Strings (como `equals` ou `StringBuilder`) são apenas sinalizadas. O foco está na declaração, concatenação, escape básico e no contrato observável de imutabilidade de String.
 
 ## Inventário integral e destino didático
 
@@ -38,8 +38,8 @@
 | Caracteres de escape: barra invertida (`\\`) | Playground de Escape | Exibição de caminhos de arquivos de disco (ex: C:\dev). |
 | Caracteres de escape: quebra de linha (`\n`) | Playground de Escape | Texto quebrado em múltiplas linhas no console. |
 | Caracteres de escape: tabulação (`\t`) | Playground de Escape | Alinhamento tabular de colunas simples de dados. |
-| String com `null` | Painel conceitual de referências | Explicação da ausência de endereço de memória em contraste com `""`. |
-| Métodos iniciais de String: `length()` | Visualizador de Métodos | Exibição de contagem de posições físicas do texto no array. |
+| String com `null` | Painel conceitual de referências | Explicação da ausência de objeto referenciado em contraste com a String vazia `""`. |
+| Métodos iniciais de String: `length()` | Visualizador de Métodos | Exibição da quantidade de unidades UTF-16 retornada pelo método, sem fingir um array físico exposto. |
 | Métodos iniciais de String: `toUpperCase()` | Visualizador de Métodos e Imutabilidade | Demonstração do retorno modificado. |
 | Métodos iniciais de String: `toLowerCase()` | Visualizador de Métodos | Conversão do texto para caixa baixa. |
 | Princípio da Imutabilidade | Visualizador de Imutabilidade (Memória) | Ilustração gráfica mostrando que a variável original não muda e um novo bloco é criado. |
@@ -62,9 +62,9 @@
 
 - Os 7 códigos de exemplos aplicados (Cliente, Pedido, Ordem de Serviço, Documentos, Mensagem de erro, Status, Tamanho) foram consolidados na Galeria de Casos de Domínio com seus respectivos terminais.
 - Os avisos de aspas simples/duplas e char múltiplo foram unificados no Simulador de Aspas (Aspômetro).
-- A imutabilidade e os métodos de string foram consolidados no simulador visual de memória, unindo a prática com a teoria física.
+- A imutabilidade e os métodos de String foram consolidados em um simulador de referências conceituais e resultados observáveis.
 
 ## Lacunas resolvidas
 
-- A imutabilidade de String deixa de ser um texto teórico abstrato: o aluno vê graficamente dois blocos distintos na memória Heap, compreendendo por que chamar `toUpperCase()` não altera o valor da variável de origem.
+- A imutabilidade de String deixa de ser abstrata: o aluno observa que `toUpperCase()` devolve um resultado e não altera o valor da variável original, sem inventar endereços ou regiões garantidas pela linguagem.
 - A precedência na concatenação é ilustrada com fluxogramas mostrando a etapa exata onde o Java promove o número inteiro para texto.

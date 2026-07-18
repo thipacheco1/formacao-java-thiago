@@ -52,7 +52,7 @@ const ERRORS = [
 const EVIDENCE = [
   '# Aula 034 — Incremento, Decremento e Acumuladores', '',
   '## Aritmética de Fluxo', '- [ ] Entendi a diferença de Contadores (volume) e Acumuladores (valores)', '- [ ] Usei os operadores abreviados += e -= para totalizações rápidas', '- [ ] Identifiquei o perigo de decrementos negativos em contadores de tentativas', '',
-  '## Pré vs Pós Incremento', '- [ ] Compreendi a alocação no Stack do Java para x++ e ++x', '- [ ] Evitei misturar operadores de incremento em expressões complexas', '',
+  '## Pré vs Pós Incremento', '- [ ] Compreendi a ordem de avaliação de x++ e ++x', '- [ ] Evitei misturar operadores de incremento em expressões complexas', '',
   '## BigDecimal e Imutabilidade', '- [ ] Guardei o retorno de .add() em variáveis reatribuídas', '- [ ] Entendi por que BigDecimal não aceita o operador ++', '',
   '## Evidências locais', '- [ ] Criei, compilei e executei as 10 classes locais', '- [ ] Garanti a ausência de arquivos binários compilados .class no Git', '',
   '## Decisão de Projeto', '- Transações sucessivas e acúmulos lógicos feitos no desafio final:', '- Por que BigDecimal exige atribuição no retorno de operações matemáticas:'
@@ -161,7 +161,7 @@ function CpuStepLab() {
           </>
         ) : (
           <>
-            {step === 0 && <span>Passo 1: A CPU vai incrementar <code>x</code> (de 5 para 6) no Stack primeiro.</span>}
+            {step === 0 && <span>Passo 1: no pré-incremento, <code>x</code> muda de 5 para 6 antes de fornecer o valor à atribuição.</span>}
             {step === 1 && <span>Passo 2: <code>x</code> incrementado. Agora a CPU copia o novo valor para <code>y</code>.</span>}
             {step === 2 && <span>Final: Ambos <code>x</code> e <code>y</code> receberam o valor final de 6.</span>}
           </>
@@ -170,7 +170,7 @@ function CpuStepLab() {
     </div>
 
     <div className="inc34-cpu-register-box">
-      <span style={{ fontSize: '.58rem', color: '#047857', textTransform: 'uppercase', fontWeight: 'bold' }}>Stack do Java:</span>
+      <span style={{ fontSize: '.58rem', color: '#047857', textTransform: 'uppercase', fontWeight: 'bold' }}>Estado das variáveis:</span>
       <div>
         <span>Variável <code>x</code> (int):</span>
         <code style={{ float: 'right', fontSize: '.9rem' }}>{x}</code>
@@ -265,7 +265,7 @@ function AbbrevOperatorsLab() {
 
   return <section style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', background: '#f8fafc', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }}>
-      <span style={{ fontSize: '.75rem', color: '#475569' }}>Valor da Variável local no Stack:</span>
+      <span style={{ fontSize: '.75rem', color: '#475569' }}>Valor atual da variável local:</span>
       <code style={{ fontSize: '1rem', fontWeight: 'bold', fontFamily: 'Consolas, monospace', color: 'var(--inc34-emerald)' }}>{val}</code>
     </div>
     <div className="inc34-abbrev-grid">
@@ -449,12 +449,12 @@ function ContentBlock({ block }) {
 const steps = [
   {
     id: 'cpu',
-    eyebrow: 'CPU Stack',
+    eyebrow: 'Ordem de avaliação',
     label: 'Pré vs Pós',
     title: 'Análise de ciclo de instrução do incremento',
     duration: '5 min',
     blocks: [
-      { type: 'lead', text: 'Avance passo a passo os estados de Stack da CPU e aprenda como a ordem dos operadores ++ altera o resultado da atribuição lógica:' },
+      { type: 'lead', text: 'Avance passo a passo e observe quando o incremento acontece em relação ao valor entregue à expressão:' },
       { type: 'cpu_steps' }
     ]
   },
@@ -473,10 +473,10 @@ const steps = [
     id: 'abreviados',
     eyebrow: 'Aritmética Compacta',
     label: 'Operações Abreviadas',
-    title: 'Somas e subtrações compostas no Stack',
+    title: 'Somas e subtrações compostas no estado local',
     duration: '4 min',
     blocks: [
-      { type: 'lead', text: 'Utilize os operadores compactos += e -= e observe o comportamento evolutivo do espaço local de Stack:' },
+      { type: 'lead', text: 'Utilize os operadores compactos += e -= e observe a evolução do valor local sem depender de detalhes de alocação da JVM:' },
       { type: 'abbrev_ops' }
     ]
   },

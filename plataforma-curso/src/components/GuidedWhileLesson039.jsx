@@ -509,6 +509,7 @@ const steps = [
 
 export default function GuidedWhileLesson039({ isCompleted, onToggleCompleted, onNextLesson, onPrevLesson, hasNextLesson, hasPrevLesson }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const completionNormalizedRef = useRef(false);
   const [completedStepIds, setCompletedStepIds] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -526,6 +527,12 @@ export default function GuidedWhileLesson039({ isCompleted, onToggleCompleted, o
   const activeStepComplete = completedStepIds.has(activeStep.id);
   const lessonComplete = isCompleted && allStepsComplete;
   const completedLabel = `${completedStepIds.size} de ${steps.length} etapas concluídas`;
+
+  useEffect(() => {
+    if (completionNormalizedRef.current) return;
+    completionNormalizedRef.current = true;
+    if (isCompleted && !allStepsComplete) onToggleCompleted();
+  }, [allStepsComplete, isCompleted, onToggleCompleted]);
 
   const selectStep = index => {
     setActiveIndex(index);
@@ -564,7 +571,7 @@ export default function GuidedWhileLesson039({ isCompleted, onToggleCompleted, o
       <GuidedLessonFacts ariaLabel="Resumo técnico da aula" items={[
         { value: 'while', label: 'testa antes' },
         { value: '0..N', label: 'iterações' },
-        { value: '∞ risk', label: 'loop infinito' }
+        { value: '∞', label: 'risco de loop infinito' }
       ]} />
 
       <div className="guided-layout">

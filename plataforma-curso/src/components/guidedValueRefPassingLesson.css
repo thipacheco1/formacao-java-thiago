@@ -1,0 +1,552 @@
+/* ===================================================
+   AULA 058 — PASSAGEM DE VALORES E REFERÊNCIAS
+   guidedValueRefPassingLesson.css
+   =================================================== */
+
+/* ── Simulador Interativo Stack & Heap ── */
+.v58-memory-simulator {
+  background: #0f172a;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.v58-mem-grid {
+  display: grid;
+  grid-template-columns: 1fr 120px 1.2fr;
+  gap: 16px;
+}
+
+@media (max-width: 750px) {
+  .v58-mem-grid {
+    grid-template-columns: 1fr;
+  }
+  .v58-mem-arrow-col {
+    display: none;
+  }
+}
+
+.v58-mem-col {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.v58-mem-col h4 {
+  margin: 0;
+  font-size: .8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 6px;
+}
+
+.v58-mem-arrow-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #6366f1;
+}
+
+.v58-mem-arrow-item {
+  font-family: 'Consolas', monospace;
+  font-size: .65rem;
+  color: #475569;
+  text-align: center;
+}
+
+.v58-mem-arrow-item svg {
+  margin: 2px auto;
+  color: #6366f1;
+  animation: v58PulseArrow 1.5s infinite;
+}
+
+@keyframes v58PulseArrow {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+.v58-mem-item {
+  background: #1e293b;
+  border: 1.5px solid #334155;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: 'Consolas', monospace;
+  font-size: .78rem;
+  color: #cbd5e1;
+  transition: all 0.3s;
+}
+
+.v58-mem-item.active {
+  border-color: #6366f1;
+  background: #1e1b4b;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+.v58-mem-item.highlight {
+  border-color: #10b981;
+  background: #062f22;
+}
+
+.v58-mem-item small {
+  display: block;
+  font-size: .65rem;
+  color: #64748b;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.v58-mem-item.active small { color: #818cf8; }
+.v58-mem-item.highlight small { color: #34d399; }
+
+/* ── Comparativo Mutação vs Reatribuição ── */
+.v58-sim-box {
+  background: #0f172a;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  margin: 12px 0;
+}
+
+.v58-sim-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.v58-sim-controls label {
+  font-size: .78rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.v58-sim-action {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+  font-family: inherit;
+}
+
+.v58-sim-action:hover { background: #6366f1; }
+.v58-sim-action:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Console ── */
+.v58-console {
+  background: #020617;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.v58-console header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  font-size: .72rem;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.v58-console pre {
+  padding: 12px 16px;
+  font-family: 'Consolas', monospace;
+  font-size: .78rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  margin: 0;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  flex-grow: 1;
+}
+
+.v58-console.success pre { color: #4ade80; }
+.v58-console.error pre { color: #f87171; }
+.v58-console.warning pre { color: #fbbf24; }
+
+.v58-console p {
+  margin: 0;
+  padding: 8px 14px;
+  border-top: 1px solid #1e293b;
+  font-size: .74rem;
+  color: #64748b;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+/* ── Grid ── */
+.v58-sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+  .v58-sim-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Copy Button ── */
+.v58-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid #334155;
+  color: #64748b;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: .72rem;
+  cursor: pointer;
+  margin-left: auto;
+  font-family: inherit;
+  transition: all .2s;
+}
+
+.v58-copy:hover { border-color: #6366f1; color: #818cf8; }
+
+/* ── Dashboard Cards ── */
+.v58-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.v58-var-card {
+  background: #1e293b;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all .25s;
+}
+
+.v58-var-card small {
+  font-size: .65rem;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.v58-var-card strong {
+  font-size: 1.3rem;
+  font-family: 'Consolas', monospace;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.v58-var-card.soma { border-color: #6366f1; background: #1e1b4b; }
+.v58-var-card.soma strong { color: #818cf8; }
+.v58-var-card.media { border-color: #8b5cf6; background: #1e1b4b; }
+.v58-var-card.media strong { color: #a78bfa; }
+.v58-var-card.count { border-color: #10b981; background: #062f22; }
+.v58-var-card.count strong { color: #34d399; }
+.v58-var-card.error { border-color: #ef4444; background: #2f0606; }
+.v58-var-card.error strong { color: #f87171; }
+
+/* ── Galeria de Domínios ── */
+.v58-domains-gallery {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 14px;
+  margin: 8px 0;
+}
+
+@media (max-width: 650px) {
+  .v58-domains-gallery { grid-template-columns: 1fr; }
+  .v58-domains-sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+  .v58-domains-sidebar button { flex: 0 0 160px; scroll-snap-align: start; }
+}
+
+.v58-domains-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.v58-domains-sidebar button {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .78rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.v58-domains-sidebar button:hover { border-color: #6366f1; color: #e2e8f0; }
+.v58-domains-sidebar button.active { border-color: #6366f1; background: #1e1b4b; color: #818cf8; }
+
+.v58-domains-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Clínica de Erros ── */
+.v58-errors-clinic {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 14px;
+  margin: 8px 0;
+}
+
+@media (max-width: 650px) {
+  .v58-errors-clinic { grid-template-columns: 1fr; }
+  .v58-errors-nav { flex-direction: row; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+  .v58-errors-nav button { flex: 0 0 220px; scroll-snap-align: start; }
+}
+
+.v58-errors-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.v58-errors-nav button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: .75rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.v58-errors-nav button > span:first-child {
+  background: #1e293b;
+  color: #64748b;
+  font-weight: 700;
+  font-size: .68rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.v58-errors-nav button > span:last-child { min-width: 0; }
+
+.v58-errors-nav button:hover { border-color: #f59e0b; color: #e2e8f0; }
+.v58-errors-nav button.active { border-color: #f59e0b; background: #1c1005; color: #fbbf24; }
+.v58-errors-nav button.active > span:first-child { background: #f59e0b; color: #1c1005; }
+
+.v58-error-card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.v58-error-card header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #1c1005;
+  border-bottom: 1px solid #2c1a00;
+  color: #fbbf24;
+}
+
+.v58-error-card header small {
+  font-size: .65rem;
+  color: #92400e;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  display: block;
+}
+
+.v58-error-card header h3 {
+  margin: 4px 0 0;
+  font-size: .9rem;
+  color: #fbbf24;
+  font-weight: 700;
+}
+
+.v58-error-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 20px;
+  flex-wrap: wrap;
+}
+
+.v58-error-flow > span {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 12px 14px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.v58-error-flow > span svg { flex-shrink: 0; color: #6366f1; margin-top: 2px; }
+.v58-error-flow > span strong {
+  font-size: .75rem;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.v58-error-flow > span p { font-size: .78rem; color: #cbd5e1; margin: 0; line-height: 1.5; }
+.v58-error-flow > svg { color: #334155; flex-shrink: 0; margin-top: 20px; }
+
+/* ── Delivery ── */
+.v58-delivery-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.v58-delivery-nav button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  color: #64748b;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: .78rem;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.v58-delivery-nav button span {
+  background: #1e293b;
+  border-radius: 50%;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem;
+}
+
+.v58-delivery-nav button:hover { border-color: #6366f1; color: #e2e8f0; }
+.v58-delivery-nav button.active { border-color: #6366f1; background: #1e1b4b; color: #818cf8; }
+
+.v58-terminal {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.v58-terminal header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  font-size: .73rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.v58-terminal header small { margin-left: auto; color: #334155; font-size: .68rem; }
+
+.v58-terminal pre {
+  padding: 16px;
+  font-family: 'Consolas', monospace;
+  font-size: .8rem;
+  color: #4ade80;
+  line-height: 1.7;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.v58-terminal p {
+  margin: 0;
+  padding: 10px 16px;
+  border-top: 1px solid #1e293b;
+  font-size: .74rem;
+  color: #f59e0b;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.v58-delivery-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.v58-delivery-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: .82rem;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.v58-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.v58-delivery-actions button:not(:disabled):hover { border-color: #6366f1; color: #e2e8f0; }
+.v58-delivery-actions span { font-size: .78rem; color: #475569; }
+
+@media (max-width: 650px) {
+  .v58-domains-sidebar, .v58-errors-nav { flex-direction: row; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+  .v58-domains-sidebar button { flex: 0 0 160px; scroll-snap-align: start; }
+  .v58-errors-nav button { flex: 0 0 220px; scroll-snap-align: start; }
+}

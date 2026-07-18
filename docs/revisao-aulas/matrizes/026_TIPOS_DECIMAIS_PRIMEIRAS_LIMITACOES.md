@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedDecimalTypesLesson026.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedDecimalTypesLesson.css`
 - Arquétipo: oficina de tipos decimais e aproximação com simulador de precisão, divisão de inteiros e clínica de erros
-- Estado: em_revisao (aguardando implementação e inspeção visual)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -42,7 +42,7 @@
 | Exemplo aplicado: Média de pedidos | Galeria de Casos de Domínio | Código e saída do console da média com cast. |
 | double e a representação padrão na saída (99.9) | Painel do printf | Exibição de que a saída padrão remove zeros à direita não significativos. |
 | Uso do `printf` e especificador `%.2f` | Visualizador de printf | Aluno escolhe o formato (%.1f, %.2f) e vê o console correspondente. |
-| printf muda apenas exibição, não o valor interno | Alerta importante no visualizador | Explicação da diferença entre apresentação física e valor lógico. |
+| printf muda apenas exibição, não o valor interno | Alerta importante no visualizador | Explicação da diferença entre formatação e valor, incluindo a variação do separador conforme o Locale. |
 | Exemplo aplicado: Distância de entrega | Galeria de Casos de Domínio | Código e terminal com representação de km e horas estimadas. |
 | Exemplo aplicado: Nota média de avaliação | Galeria de Casos de Domínio | Média simples de três avaliações com divisão decimal. |
 | Exemplo aplicado: Percentual de conclusão | Galeria de Casos de Domínio | Cálculo com cast explícito para evitar divisão inteira de atividades. |

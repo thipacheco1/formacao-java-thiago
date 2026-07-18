@@ -1,4 +1,6 @@
 const MAX_EMAIL_LENGTH = 254;
+const { readAdminSession } = require('./_lib/admin-session');
+const { readUserSession } = require('./_lib/user-session');
 const MAX_LESSON_ID_LENGTH = 220;
 const MAX_COMPLETED_LESSONS = 1000;
 const CORRUPT_PROGRESS_ERROR = 'CORRUPT_PROGRESS_DATA';
@@ -127,7 +129,11 @@ function normalizeEmail(value) {
 
   const email = value.trim().toLowerCase();
   if (email.length < 3 || email.length > MAX_EMAIL_LENGTH) return null;
-  if (/\s|[\u0000-\u001f\u007f]/.test(email)) return null;
+  const hasControlCharacter = [...email].some(character => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127;
+  });
+  if (/\s/.test(email) || hasControlCharacter) return null;
 
   const firstAt = email.indexOf('@');
   if (
@@ -155,6 +161,34 @@ function normalizeLessonId(value) {
   }
 
   return lessonId;
+}
+
+function authorizeEmail(req, res, requestedEmail) {
+  const cleanEmail = normalizeEmail(requestedEmail);
+  if (!cleanEmail) {
+    res.status(400).json({ error: 'Valid email is required' });
+    return null;
+  }
+  try {
+    const adminSession = readAdminSession(req);
+    if (adminSession) return cleanEmail;
+    const userSession = readUserSession(req);
+    if (!userSession) {
+      res.status(401).json({ error: 'User authentication required' });
+      return null;
+    }
+    if (userSession.email !== cleanEmail) {
+      res.status(403).json({ error: 'Progress belongs to another user' });
+      return null;
+    }
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Vary', 'Cookie');
+    return userSession.email;
+  } catch (error) {
+    console.error('Progress session error:', error.message);
+    res.status(500).json({ error: 'User session is not configured' });
+    return null;
+  }
 }
 
 function parseStoredProgress(rawProgress) {
@@ -256,10 +290,8 @@ module.exports = async function handler(req, res) {
     // GET keeps the existing AdminReport contract: the JSON response is the
     // completed-lessons map itself, not a wrapper object.
     if (req.method === 'GET') {
-      const cleanEmail = normalizeEmail(req.query?.email);
-      if (!cleanEmail) {
-        return res.status(400).json({ error: 'Valid email is required' });
-      }
+      const cleanEmail = authorizeEmail(req, res, req.query?.email);
+      if (!cleanEmail) return;
 
       const data = await runKvCommand(['GET', `progress:${cleanEmail}`]);
       if (data.result === null) {
@@ -271,10 +303,8 @@ module.exports = async function handler(req, res) {
 
     if (req.method === 'POST') {
       const { email, completedLessons, lessonId: rawLessonId, completed } = req.body || {};
-      const cleanEmail = normalizeEmail(email);
-      if (!cleanEmail) {
-        return res.status(400).json({ error: 'Valid email is required' });
-      }
+      const cleanEmail = authorizeEmail(req, res, email);
+      if (!cleanEmail) return;
 
       const progressKey = `progress:${cleanEmail}`;
 

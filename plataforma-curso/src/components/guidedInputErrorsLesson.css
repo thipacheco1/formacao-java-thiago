@@ -1,0 +1,101 @@
+/* Aula 059 — tratamento inicial de erros de entrada */
+.guided-input-errors-lesson { --ie59-blue:#2563eb; --ie59-green:#059669; --ie59-amber:#d97706; --ie59-red:#dc2626; max-width:100%; overflow:visible; }
+.ie59-lab { display:flex; flex-direction:column; gap:16px; min-width:0; }
+.ie59-input-row { display:flex; align-items:flex-end; flex-wrap:wrap; gap:10px; }
+.ie59-input-row label { display:flex; flex-direction:column; gap:6px; color:#475569; font-size:.76rem; font-weight:700; }
+.ie59-input-row input { width:min(260px, 72vw); min-height:40px; padding:8px 12px; color:#17243b; background:#fff; border:1px solid #cbd5e1; border-radius:9px; font:inherit; }
+.ie59-input-row button,.ie59-tabs button,.ie59-method-list button,.ie59-domains-sidebar button,.ie59-delivery-nav button,.ie59-delivery-actions button,.ie59-copy { min-height:38px; display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:8px 13px; color:#fff; background:#2563eb; border:1px solid #2563eb; border-radius:9px; font-family:inherit; font-size:.77rem; font-weight:600; cursor:pointer; }
+.ie59-input-row button.secondary,.ie59-delivery-actions button { color:#475569; background:#fff; border-color:#cbd5e1; }
+.ie59-input-row button:disabled,.ie59-delivery-actions button:disabled { opacity:.45; cursor:not-allowed; }
+.ie59-copy { min-height:30px; margin-left:auto; padding:5px 10px; color:#dbeafe; background:#1e3a5f; border-color:#315681; font-size:.7rem; }
+
+.ie59-flow { display:flex; align-items:stretch; gap:8px; min-width:0; overflow-x:auto; padding:4px 0 8px; scroll-snap-type:x proximity; }
+.ie59-flow > div { flex:1 0 145px; min-width:145px; display:flex; align-items:center; gap:8px; padding:12px; color:#64748b; background:#f8fafc; border:1px solid #dbe4ef; border-radius:10px; scroll-snap-align:start; transition:.2s; }
+.ie59-flow > div span { width:24px; height:24px; flex:0 0 24px; display:grid; place-items:center; color:#64748b; background:#e2e8f0; border-radius:50%; font-size:.7rem; }
+.ie59-flow > div strong { font-size:.76rem; line-height:1.35; }
+.ie59-flow > div.active { color:#1d4ed8; background:#eff6ff; border-color:#60a5fa; box-shadow:0 0 0 3px rgba(37,99,235,.08); }
+.ie59-flow > div.active span { color:#fff; background:#2563eb; }
+.ie59-flow > div.done { color:#047857; background:#ecfdf5; border-color:#6ee7b7; }
+.ie59-flow > div.done span { color:#fff; background:#059669; }
+.ie59-flow > svg { flex:0 0 16px; align-self:center; color:#94a3b8; }
+
+.ie59-console,.ie59-terminal { min-width:0; overflow:hidden; color:#cbd5e1; background:#020617; border:1px solid #1e293b; border-radius:12px; }
+.ie59-console header,.ie59-terminal header { display:flex; align-items:center; gap:8px; padding:9px 14px; color:#94a3b8; background:#0f172a; border-bottom:1px solid #1e293b; font-size:.72rem; font-weight:700; }
+.ie59-console pre,.ie59-terminal pre { max-width:100%; margin:0; padding:15px; overflow-wrap:anywhere; white-space:pre-wrap; color:#cbd5e1; font:400 .78rem/1.65 Consolas,monospace; }
+.ie59-console.success { border-color:#34d399; }
+.ie59-console.success pre { color:#86efac; }
+.ie59-console.warning { border-color:#f59e0b; }
+.ie59-console.warning pre { color:#fcd34d; }
+.ie59-code { min-width:0; overflow:hidden; }
+.ie59-code pre { max-width:100%; }
+
+.ie59-buffer-map,.ie59-gates,.ie59-responsibility { display:flex; align-items:stretch; gap:12px; min-width:0; }
+.ie59-buffer-map > div,.ie59-gates > div,.ie59-responsibility > span { flex:1; min-width:0; padding:15px; background:#f8fafc; border:1px solid #dbe4ef; border-radius:11px; }
+.ie59-buffer-map small,.ie59-gates small,.ie59-responsibility small { display:block; margin-bottom:5px; color:#64748b; font-size:.66rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; }
+.ie59-buffer-map strong,.ie59-gates strong,.ie59-responsibility span { color:#17243b; font-size:.82rem; }
+.ie59-buffer-map > div.blocked,.ie59-gates > div.failed { color:#991b1b; background:#fef2f2; border-color:#fca5a5; }
+.ie59-buffer-map > div.consumed,.ie59-gates > div.passed { color:#065f46; background:#ecfdf5; border-color:#6ee7b7; }
+.ie59-buffer-map > svg,.ie59-gates > svg,.ie59-responsibility > svg { flex:0 0 18px; align-self:center; color:#94a3b8; }
+.ie59-gates p { margin:8px 0 0; color:#64748b; font-size:.77rem; line-height:1.45; }
+
+.ie59-tabs { display:flex; flex-wrap:wrap; gap:8px; }
+.ie59-tabs button { min-width:90px; color:#475569; background:#f8fafc; border-color:#dbe4ef; }
+.ie59-tabs button.active { color:#fff; background:#2563eb; border-color:#2563eb; }
+
+.ie59-methods,.ie59-domains-gallery,.ie59-errors-clinic { display:grid; grid-template-columns:210px minmax(0,1fr); gap:16px; min-width:0; }
+.ie59-method-list,.ie59-domains-sidebar,.ie59-errors-nav { display:flex; flex-direction:column; gap:7px; min-width:0; }
+.ie59-method-list button,.ie59-domains-sidebar button { min-height:auto; align-items:flex-start; flex-direction:column; text-align:left; color:#475569; background:#f8fafc; border-color:#dbe4ef; }
+.ie59-method-list button small { color:#94a3b8; font-size:.66rem; font-weight:500; }
+.ie59-method-list button.active,.ie59-domains-sidebar button.active { color:#1d4ed8; background:#eff6ff; border-color:#60a5fa; }
+.ie59-method-detail,.ie59-domain-card { min-width:0; padding:18px; background:#fff; border:1px solid #dbe4ef; border-radius:13px; }
+.ie59-method-detail > p,.ie59-domain-card > p { color:#475569; font-size:.84rem; line-height:1.55; }
+.ie59-domain-card h3 { margin:8px 0; color:#17243b; font-size:1rem; overflow-wrap:anywhere; }
+.ie59-domain-badge { display:inline-flex; padding:5px 9px; color:#1d4ed8; background:#dbeafe; border-radius:999px; font-size:.68rem; font-weight:800; text-transform:uppercase; }
+
+.ie59-errors-nav button { width:100%; display:flex; align-items:center; gap:8px; padding:9px 10px; color:#64748b; background:#0f172a; border:1px solid #1e293b; border-radius:8px; font-family:inherit; font-size:.74rem; font-weight:600; text-align:left; cursor:pointer; }
+.ie59-errors-nav button > span:first-child { width:22px; height:22px; flex:0 0 22px; display:grid; place-items:center; color:#64748b; background:#1e293b; border-radius:50%; font-size:.67rem; }
+.ie59-errors-nav button > span:last-child { min-width:0; }
+.ie59-errors-nav button.active { color:#fbbf24; background:#1c1005; border-color:#f59e0b; }
+.ie59-errors-nav button.active > span:first-child { color:#1c1005; background:#f59e0b; }
+.ie59-error-card { min-width:0; overflow:hidden; color:#cbd5e1; background:#0f172a; border:1px solid #1e293b; border-radius:13px; }
+.ie59-error-card > header { display:flex; align-items:flex-start; gap:10px; padding:15px 18px; color:#fbbf24; background:#1c1005; border-bottom:1px solid #2c1a00; }
+.ie59-error-card header small { color:#b45309; font-size:.65rem; font-weight:800; text-transform:uppercase; }
+.ie59-error-card h3 { margin:3px 0 0; color:#fbbf24; font-size:.94rem; }
+.ie59-error-symptom { display:flex; flex-direction:column; gap:7px; padding:15px 18px; }
+.ie59-error-symptom strong,.ie59-error-flow strong { color:#94a3b8; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; }
+.ie59-error-symptom code { overflow-wrap:anywhere; color:#fca5a5; }
+.ie59-error-flow { display:flex; align-items:stretch; gap:10px; padding:0 18px 18px; }
+.ie59-error-flow > span { flex:1; display:flex; gap:9px; min-width:0; padding:12px; background:#1e293b; border-radius:10px; }
+.ie59-error-flow p { margin:5px 0 0; color:#cbd5e1; font-size:.77rem; line-height:1.45; }
+.ie59-error-flow > svg { flex:0 0 17px; align-self:center; color:#475569; }
+
+.ie59-delivery-nav { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:13px; }
+.ie59-delivery-nav button { color:#64748b; background:#f8fafc; border-color:#dbe4ef; }
+.ie59-delivery-nav button > span { width:20px; height:20px; display:grid; place-items:center; background:#e2e8f0; border-radius:50%; font-size:.68rem; }
+.ie59-delivery-nav button.active { color:#fff; background:#2563eb; border-color:#2563eb; }
+.ie59-terminal header small { margin-left:auto; color:#64748b; }
+.ie59-terminal pre { color:#4ade80; }
+.ie59-terminal p { display:flex; gap:7px; margin:0; padding:10px 15px; color:#fbbf24; border-top:1px solid #1e293b; font-size:.73rem; }
+.ie59-delivery-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:10px 0 18px; }
+.ie59-delivery-actions span { color:#64748b; font-size:.75rem; }
+.guided-input-errors-lesson .guided-challenge { margin:18px 0; }
+
+@media (max-width:900px) {
+  .ie59-methods,.ie59-domains-gallery,.ie59-errors-clinic { grid-template-columns:1fr; }
+  .ie59-method-list,.ie59-domains-sidebar,.ie59-errors-nav { flex-direction:row; overflow-x:auto; padding-bottom:5px; scroll-snap-type:x proximity; }
+  .ie59-method-list button,.ie59-domains-sidebar button { flex:0 0 175px; scroll-snap-align:start; }
+  .ie59-errors-nav button { flex:0 0 220px; scroll-snap-align:start; }
+}
+@media (max-width:650px) {
+  .ie59-buffer-map,.ie59-gates,.ie59-responsibility,.ie59-error-flow { flex-direction:column; }
+  .ie59-buffer-map > svg,.ie59-gates > svg,.ie59-responsibility > svg,.ie59-error-flow > svg { transform:rotate(90deg); }
+  .ie59-input-row { align-items:stretch; }
+  .ie59-input-row label,.ie59-input-row input,.ie59-input-row button { width:100%; }
+  .ie59-delivery-actions { flex-wrap:wrap; }
+  .ie59-delivery-actions span { order:-1; width:100%; text-align:center; }
+  .ie59-delivery-actions button { flex:1; }
+}
+@media (max-width:380px) {
+  .ie59-method-detail,.ie59-domain-card { padding:13px; }
+  .ie59-flow > div { flex-basis:132px; min-width:132px; }
+}

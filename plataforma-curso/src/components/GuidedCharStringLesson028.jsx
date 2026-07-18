@@ -125,7 +125,7 @@ const DOMAIN_PROGRAMS = [
   {
     id: 4, label: 'Tamanho de CPF', file: 'TamanhoDocumentoTexto.java',
     code: 'public class TamanhoDocumentoTexto {\n    public static void main(String[] args) {\n        String cpf = "12345678900";\n        int tamanhoCpf = cpf.length();\n\n        System.out.println("CPF: " + cpf);\n        System.out.println("Tamanho do CPF: " + tamanhoCpf);\n    }\n}',
-    output: 'CPF: 12345678900\nTamanho do CPF: 11', insight: 'O método length() fornece o comprimento textual físico, essencial para validações cadastrais de entrada.'
+    output: 'CPF: 12345678900\nTamanho do CPF: 11', insight: 'length() retorna unidades UTF-16. Para um CPF formado apenas por dígitos ASCII, esse resultado coincide com a quantidade de caracteres visíveis: 11.'
   }
 ];
 
@@ -146,7 +146,7 @@ const EVIDENCE = [
   '# Aula 028 — char e String no Java', '',
   '## Tipos textuais e aspas', '- [ ] Entendi que char representa caractere único sob aspas simples', '- [ ] Constatei que String representa cadeia de texto sob aspas duplas', '- [ ] Diferenciei aspas simples de aspas duplas no compilador', '',
   '## Modelagem e semântica', '- [ ] Identifiquei que CEP, CPF e telefone devem ser String no backend', '- [ ] Compreendi o risco de perda de zeros à esquerda em inteiros', '- [ ] Pratiquei concatenação e entendi o papel do espaço em branco', '- [ ] Evitei armadilhas de precedência indevidas em somas textuais usando parênteses', '',
-  '## Escape e Métodos', '- [ ] Apliquei escapes de aspas, quebras e tabulações no console', '- [ ] Constatei a imutabilidade física das Strings na Heap do Java', '- [ ] Guardei o retorno modificado de toUpperCase() na nova referência', '- [ ] Verifiquei o comprimento físico de documentos via length()', '',
+  '## Escape e Métodos', '- [ ] Apliquei escapes de aspas, quebras e tabulações no console', '- [ ] Constatei que uma String não altera seu próprio conteúdo', '- [ ] Guardei o retorno de toUpperCase() em outra referência', '- [ ] Usei length() sabendo que ele conta unidades UTF-16', '',
   '## Evidências locais', '- [ ] Criei e compilei as nove classes locais', '- [ ] Mantive o repositório Git higienizado contra arquivos .class', '',
   '## Decisão de Projeto', '- Funcionário e máscara cadastrada no desafio de transferência:', '- Por que cpf.length() é preferível a validações numéricas:'
 ].join('\n');
@@ -333,29 +333,29 @@ function HeapMemoryLab() {
   return <section className="str28-heap-memory">
     <div className="str28-heap-board">
       <div className="str28-heap-stack">
-        <h4>Pilha (Stack) <span style={{ textTransform: 'none', fontSize: '.6rem', color: '#94a3b8' }}>(Variáveis locais)</span></h4>
+        <h4>Referências locais <span style={{ textTransform: 'none', fontSize: '.6rem', color: '#94a3b8' }}>(modelo conceitual)</span></h4>
         <div className="str28-heap-pointer active">
           <span>String nome</span>
-          <strong>0x7FA (endereço)</strong>
+          <strong>referência A</strong>
         </div>
         {step === 2 && (
           <div className="str28-heap-pointer active" style={{ borderColor: '#10b981' }}>
             <span style={{ color: '#10b981' }}>String maiusculo</span>
-            <strong>0x9CB (endereço)</strong>
+          <strong>referência B</strong>
           </div>
         )}
       </div>
       <div className="str28-heap-heap">
-        <h4>Memória Heap <span style={{ textTransform: 'none', fontSize: '.6rem', color: '#94a3b8' }}>(Objetos String imutáveis)</span></h4>
+        <h4>Valores String <span style={{ textTransform: 'none', fontSize: '.6rem', color: '#94a3b8' }}>(conteúdo imutável)</span></h4>
         <div className="str28-heap-block active" style={{ borderColor: step === 0 ? 'var(--str28-orchid)' : '#334155', background: step === 0 ? '#3b0764' : '#0f172a', color: step === 0 ? '#d8b4fe' : '#94a3b8' }}>
-          "ana" <span style={{ fontSize: '.6rem', display: 'block', color: '#94a3b8' }}>(Endereço: 0x7FA)</span>
+          "ana" <span style={{ fontSize: '.6rem', display: 'block', color: '#94a3b8' }}>(objeto A)</span>
         </div>
         {step !== 0 && (
           <div className="str28-heap-block highlight" style={{ borderColor: step === 2 ? '#10b981' : 'var(--str28-orchid)', background: step === 2 ? '#064e3b' : '#3b0764', color: step === 2 ? '#34d399' : '#d8b4fe' }}>
-            "ANA" <span style={{ fontSize: '.6rem', display: 'block', color: '#94a3b8' }}>(Endereço: 0x9CB)</span>
+          "ANA" <span style={{ fontSize: '.6rem', display: 'block', color: '#94a3b8' }}>(objeto B)</span>
           </div>
         )}
-        <div style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '.6rem', color: '#94a3b8' }}>*Heap Pool</div>
+        <div style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '.6rem', color: '#94a3b8' }}>*modelo didático; endereços reais não são expostos</div>
       </div>
     </div>
     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(220px, .8fr)', gap: '16px', alignItems: 'center' }}>
@@ -367,9 +367,9 @@ function HeapMemoryLab() {
           <button type="button" onClick={() => setStep(2)} style={{ padding: '8px 12px', background: step === 2 ? '#10b981' : '#fff', color: step === 2 ? '#fff' : '#475569', border: '1px solid #cbd5e1', borderRadius: '8px', fontSize: '.7rem', fontWeight: 'bold', cursor: 'pointer' }}>maiusculo = nome.toUpperCase();</button>
         </div>
         <div style={{ marginTop: '12px', fontSize: '.72rem', lineHeight: 1.5, color: '#581c87' }}>
-          {step === 0 && 'Estado Inicial: A variável nome aponta para o endereço 0x7FA contendo "ana".'}
-          {step === 1 && 'Alerta! O compilador gerou a nova String "ANA" no endereço 0x9CB, mas como você não atribuiu o retorno a nenhuma variável, a pilha stack continua apontando apenas para "ana". A String "ANA" fica órfã no Heap!'}
-          {step === 2 && 'Sucesso! A nova variável maiusculo foi alocada no Stack e aponta para o novo objeto "ANA" (0x9CB). Ambos os estados estão seguros e disponíveis de forma isolada no Heap.'}
+        {step === 0 && 'Estado inicial: a variável nome referencia o objeto A, cujo conteúdo é "ana".'}
+        {step === 1 && 'toUpperCase() devolve o valor "ANA", mas o retorno não foi guardado. A variável nome continua referenciando "ana"; detalhes de alocação e coleta pertencem à implementação da JVM.'}
+        {step === 2 && 'A variável maiusculo recebe o retorno "ANA". nome continua valendo "ana", provando a imutabilidade pelo comportamento observável.'}
         </div>
       </div>
       <div>
@@ -378,7 +378,7 @@ function HeapMemoryLab() {
           <div>
             <strong>Imutabilidade Lógica</strong>
             <p style={{ fontSize: '.65rem', color: '#475569', lineHeight: 1.4, margin: '2px 0 0' }}>
-              Uma String no Java nunca é modificada após criada. Qualquer método de transformação (como toUpperCase) gera um objeto totalmente novo no Heap Pool.
+          Uma String não altera seu próprio conteúdo. Métodos como <code>toUpperCase()</code> devolvem uma String com o resultado; ela pode ser guardada em outra variável. Não dependa de endereço, pool ou região de memória para explicar esse contrato.
             </p>
           </div>
         </aside>
@@ -477,7 +477,7 @@ function DeliveryLab() {
       title: 'Executar Programas',
       cmd: 'java Main\njava StatusTexto\njava TamanhoDocumentoTexto',
       out: 'Saída exibindo os textos, tamanhos de documentos e status formatados.',
-      tip: 'Verifique se os tamanhos físicos de documentos (length()) batem com o número correto de caracteres.'
+      tip: 'Para documentos compostos por dígitos ASCII, confirme se length() coincide com a quantidade esperada. Símbolos Unicode complexos serão estudados depois.'
     },
     {
       title: 'Fazer o Commit Git',
@@ -606,13 +606,13 @@ const steps = [
   {
     id: 'imutabilidade',
     eyebrow: 'Simulação',
-    label: 'Imutabilidade Heap',
-    title: 'Entendendo a alocação de Strings em memória',
+    label: 'Imutabilidade observável',
+    title: 'Entenda referências sem inventar endereços de memória',
     duration: '6 min',
     blocks: [
-      { type: 'lead', text: 'Métodos de String geram novos objetos. Veja graficamente o comportamento da pilha Stack e da Heap do Java na transformação de caixa alta:' },
+      { type: 'lead', text: 'Métodos de String devolvem resultados sem alterar o conteúdo original. O diagrama mostra referências conceituais, não endereços ou regiões físicas garantidas pela linguagem:' },
       { type: 'heap_memory' },
-      { type: 'note', tone: 'info', title: 'Aviso de Comparação', text: 'Como Strings são objetos em memória Heap, evite compará-las com == como regra geral. No futuro, aprenderemos a usar equals().' }
+      { type: 'note', tone: 'info', title: 'Aviso de comparação', text: 'O operador == testa se duas referências representam o mesmo objeto; não compara o conteúdo textual. Na próxima aula, equals() fará essa comparação de conteúdo.' }
     ]
   },
   {
@@ -728,7 +728,7 @@ export default function GuidedCharStringLesson028({ isCompleted, onToggleComplet
       </div>
     </header>
 
-    <GuidedLessonFacts ariaLabel="Resumo técnico da aula" items={[{ value: 'char / String', label: 'tipos de dados' }, { value: 'Heap Pool', label: 'imutabilidade' }, { value: '10 casos', label: 'clínica de erros' }]} />
+      <GuidedLessonFacts ariaLabel="Resumo técnico da aula" items={[{ value: 'char / String', label: 'tipos de dados' }, { value: '2 referências', label: 'imutabilidade observável' }, { value: '10 casos', label: 'clínica de erros' }]} />
 
     <div className="guided-layout">
       <nav className="guided-step-nav" aria-label="Etapas da aula 028">
@@ -788,7 +788,7 @@ export default function GuidedCharStringLesson028({ isCompleted, onToggleComplet
         {lessonComplete ? <CheckCircle2 size={18} /> : <Clock3 size={18} />}
         <span>
           <strong>{lessonComplete ? 'Aula concluída' : allStepsComplete ? 'Pronta para concluir' : `${completedStepIds.size} de ${steps.length} etapas`}</strong>
-          <small>{lessonComplete ? 'Texto com precisão sintática' : allStepsComplete ? 'Use o botão acima' : 'Estude as aspas e os blocos de memória Heap'}</small>
+            <small>{lessonComplete ? 'Texto com precisão sintática' : allStepsComplete ? 'Use o botão acima' : 'Estude aspas, referências e imutabilidade'}</small>
         </span>
       </div>
       <button type="button" onClick={onNextLesson} disabled={!hasNextLesson || !lessonComplete} title={!lessonComplete ? 'Conclua todas as etapas e a aula para avançar' : 'Abrir String básica'}>Aula 029 <ArrowRight size={17} /></button>

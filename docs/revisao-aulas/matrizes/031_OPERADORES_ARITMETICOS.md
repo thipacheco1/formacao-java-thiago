@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedArithmeticOperatorsLesson031.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedArithmeticOperatorsLesson.css`
 - Arquétipo: oficina de operadores aritméticos com árvore de precedência visual, simulação de quebra de lotes e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -34,7 +34,7 @@
 | Operações mistas int com double | Simulador de Divisão Inteira vs Decimal | Alerta sobre o comportamento impreciso e imutabilidade de tipos no Java. |
 | Dinheiro real vs uso de double | Seção de boas práticas monetárias | Explicação pedagógica de usar centavos inteiros (long) ou BigDecimal em regras de negócio. |
 | Incremento explícito e acumuladores | Seção de acumuladores | Exemplo de contadores e acumuladores de loops. |
-| Diferença entre cálculo e atribuição | Painel conceitual de atribuição | Explicação de que o lado direito do `=` é processado antes da escrita no Stack. |
+| Diferença entre cálculo e atribuição | Painel conceitual de atribuição | Explicação de que a expressão do lado direito é avaliada antes de o resultado ser atribuído à variável. |
 | Exemplo Main: 5 operações básicas | Galeria de Casos de Domínio | Código e console simulado com a saída do Main original. |
 | Exemplo DivisaoDecimal | Galeria de Casos de Domínio | Código e console mostrando as saídas de divisão. |
 | Exemplo PrecedenciaAritmetica | Galeria de Casos de Domínio | Exemplo conceitual comparativo. |

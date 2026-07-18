@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedScannerInputLesson030.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedScannerInputLesson.css`
 - Arquétipo: oficina de entrada interativa de dados com simulador dinâmico de fila do buffer, conversão de Locale e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -29,7 +29,7 @@
 | Método `nextDouble()` | Simulador de Entrada Dinâmica | Campo de decimais com validação regional. |
 | Configuração de Locale decimal (US vs BR) | Simulador de Locale | Aluno chaveia o Locale e digita `99,90` e `99.90` observando aceitação/rejeição. |
 | Importando `java.util.Locale` | Simulador de Locale | Instruções de importação da biblioteca regional. |
-| Onde colocar `Locale.setDefault(Locale.US)` | Simulador de Locale | Exemplo mostrando a invocação imperativa antes da instância do Scanner. |
+| Onde aplicar `Locale.US` | Simulador de Locale | Exemplo com `scanner.useLocale(Locale.US)`, evitando alterar globalmente outras partes da aplicação. |
 | Diferença entre `next()` e `nextLine()` | Tabela comparativa e interativo | Aluno digita "Ana Silva" e vê o retorno de ambas as funções lado a lado. |
 | O clássico problema do buffer | Simulador do Buffer (Fila) | Animação onde caracteres do número e a quebra `\n` entram na fila da JVM. |
 | Prática de quebra de fluxo sem limpeza | Simulador do Buffer (Fila) | Aluno vê o `nextLine()` sugar o `\n` pendente e pular a pergunta de nome. |

@@ -72,7 +72,7 @@ const DOMAIN_PROGRAMS = [
     id: 6, label: 'Null + Guard', file: 'SwitchModernoNull.java', type: 'String',
     code: 'public class SwitchModernoNull {\n    public static void main(String[] args) {\n        String status = null;\n\n        String mensagem;\n        if (status == null) {\n            mensagem = "Status não informado";\n        } else {\n            mensagem = switch (status) {\n                case "PENDENTE" -> "Pendente";\n                case "APROVADO" -> "Aprovado";\n                default -> "Desconhecido";\n            };\n        }\n\n        System.out.println(mensagem);\n    }\n}',
     output: 'Status não informado',
-    insight: 'O default NÃO protege contra null no switch com String. Se status for null, o Java lança NullPointerException antes de avaliar qualquer case. Sempre valide null antes com if.'
+    insight: 'default não cobre null. No Java 21, você pode usar case null explicitamente; esta versão mantém a guarda com if porque ela também funciona em baselines anteriores e deixa a decisão visível.'
   }
 ];
 
@@ -80,7 +80,7 @@ const ERRORS = [
   { title: 'Esquecer o ponto e vírgula final', code: 'String acao = switch (opcao) {\n    case 1 -> "Cadastrar";\n    default -> "Inválida";\n}', symptom: 'Erro de compilação: esperado ";" após o fechamento de bloco de switch expression.', cause: 'Switch expression é uma expressão dentro de uma atribuição. A instrução completa precisa de ";".', fix: 'Adicione ; depois do }:\nString acao = switch (opcao) { ... };' },
   { title: 'Bloco sem yield em switch expression', code: 'String msg = switch (status) {\n    case "APROVADO" -> {\n        String texto = "Aprovado";\n    }\n    default -> "?";\n};', symptom: 'Erro de compilação: missing return value.', cause: 'Quando o case usa bloco {}, precisa usar yield para devolver o valor.', fix: 'case "APROVADO" -> {\n    String texto = "Aprovado";\n    yield texto;\n}' },
   { title: 'Usar break em switch expression com seta', code: 'String acao = switch (opcao) {\n    case 1 -> {\n        break;\n    }\n    default -> "?";\n};', symptom: 'Erro de compilação: break não é permitido neste contexto.', cause: 'Switch expression com seta usa yield para devolver valor, não break.', fix: 'case 1 -> {\n    yield "Cadastrar";\n}' },
-  { title: 'Default tratando null automaticamente', code: 'String status = null;\nString msg = switch (status) {\n    default -> "Desconhecido";\n};', symptom: 'NullPointerException em tempo de execução.', cause: 'O Java avalia o valor de status antes dos cases. Se for null, lança NPE antes do default.', fix: 'Valide null antes:\nif (status == null) { ... } else { msg = switch(status) {...}; }' },
+  { title: 'Achar que default trata null', code: 'String status = null;\nString msg = switch (status) {\n    default -> "Desconhecido";\n};', symptom: 'NullPointerException em tempo de execução.', cause: 'default cobre valores não mapeados, mas não representa null.', fix: 'Na baseline Java 21, adicione case null -> "Não informado"; ou mantenha uma guarda if antes do switch quando quiser compatibilidade e explicitude.' },
   { title: 'Esquecer default com String', code: 'String msg = switch (status) {\n    case "PENDENTE" -> "Pendente";\n    case "APROVADO" -> "Aprovado";\n};', symptom: 'Erro de compilação: switch expression does not cover all possible input values.', cause: 'Com String, qualquer texto pode chegar. Sem default, o compilador não garante cobertura.', fix: 'Adicione:\ndefault -> "Status não mapeado";' },
   { title: 'Condição booleana no case', code: 'case valor >= 0 -> "Positivo";', symptom: 'Erro de compilação imediato.', cause: 'Switch por valor aceita apenas constantes discretas, não expressões booleanas.', fix: 'Substitua por if/else if para regras com relacionais.' },
   { title: 'Misturar estilos sem clareza', code: '// Mistura\ncase 1:\n    System.out.println("...");\n    break;\ncase 2 -> "Consultar";', symptom: 'Erro de compilação: não é possível misturar arrow syntax com a sintaxe de colon no mesmo switch.', cause: 'Cada switch deve usar um único estilo de sintaxe.', fix: 'Escolha um estilo e mantenha consistente no mesmo bloco switch.' },
@@ -331,9 +331,9 @@ function DeliveryLab() {
     },
     {
       title: 'Compilar e Quebrar',
-      cmd: 'javac *.java\njavac SwitchModernoSemYield.java',
-      out: 'SwitchModernoSemYield.java:7: error: missing return value',
-      tip: 'A compilação do SwitchModernoSemYield.java deve falhar com erro de bloco sem yield. Esse erro é intencional e educativo. Depois corrija adicionando yield.'
+      cmd: 'javac Main.java SwitchModernoStatement.java SwitchModernoPedido.java SwitchModernoOrdemServico.java SwitchModernoOperacaoAuditoria.java SwitchModernoMensageria.java SwitchModernoPerfil.java SwitchModernoPrioridade.java SwitchModernoSla.java SwitchModernoYieldPedido.java SwitchModernoStatusConsole.java SwitchModernoMenuConsole.java SwitchModernoNull.java\njavac SwitchModernoSemYield.java',
+      out: '[O primeiro comando termina sem saída]\nSwitchModernoSemYield.java:7: error: missing return value',
+      tip: 'Primeiro prove que os 13 arquivos válidos compilam. Depois isole o arquivo propositalmente inválido, observe o erro e corrija-o adicionando yield.'
     },
     {
       title: 'Testar SLA e Yield',
@@ -416,7 +416,8 @@ const steps = [
     duration: '5 min',
     blocks: [
       { type: 'lead', text: 'Veja lado a lado a diferença fundamental entre o switch tradicional que executa comandos e o switch moderno que produz um valor atribuível:' },
-      { type: 'comparator' }
+      { type: 'comparator' },
+      { type: 'note', tone: 'info', title: 'Compatibilidade', text: 'Switch expressions tornaram-se recurso definitivo no Java 14. O JDK LTS adotado pelo curso, 21, oferece suporte completo a esta sintaxe.' }
     ]
   },
   {
@@ -428,7 +429,7 @@ const steps = [
     blocks: [
       { type: 'lead', text: 'Selecione o status do pedido e observe o switch expression retornando um valor que é diretamente atribuído à variável:' },
       { type: 'expression_lab' },
-      { type: 'note', tone: 'info', title: 'Ponto e vírgula final', text: 'O "; depois do fechamento de bloco é obrigatório porque String mensagem = switch(...) {...}; é uma atribuição, não apenas um comando. O compilador rejeitará sem ele.' }
+      { type: 'note', tone: 'info', title: 'Ponto e vírgula final', text: 'O ponto e vírgula após a chave final é obrigatório porque String mensagem = switch (...) { ... }; é uma atribuição completa. O compilador rejeita a expressão sem esse terminador.' }
     ]
   },
   {
@@ -492,6 +493,7 @@ const steps = [
 
 export default function GuidedSwitchModernoLesson038({ isCompleted, onToggleCompleted, onNextLesson, onPrevLesson, hasNextLesson, hasPrevLesson }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const completionNormalizedRef = React.useRef(false);
   const [completedStepIds, setCompletedStepIds] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -509,6 +511,12 @@ export default function GuidedSwitchModernoLesson038({ isCompleted, onToggleComp
   const activeStepComplete = completedStepIds.has(activeStep.id);
   const lessonComplete = isCompleted && allStepsComplete;
   const completedLabel = `${completedStepIds.size} de ${steps.length} etapas concluídas`;
+
+  React.useEffect(() => {
+    if (completionNormalizedRef.current) return;
+    completionNormalizedRef.current = true;
+    if (isCompleted && !allStepsComplete) onToggleCompleted();
+  }, [allStepsComplete, isCompleted, onToggleCompleted]);
 
   const selectStep = index => {
     setActiveIndex(index);

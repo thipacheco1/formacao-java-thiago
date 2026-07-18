@@ -26,7 +26,7 @@ const DOMAINS_QUIZ = [
     title: 'Nota média de avaliação de hotel',
     options: ['double', 'BigDecimal/Centavos'],
     correct: 'double',
-    reason: 'Correto! A avaliação de estrelas (ex: 4.5) é puramente estatística e tolera perfeitamente aproximações binárias mínimas. Usar BigDecimal aqui traria complexidade desnecessária para a CPU.'
+    reason: 'Correto! Uma média de avaliações normalmente tolera pequenas aproximações binárias. double é uma escolha simples quando o contrato não exige aritmética decimal exata.'
   },
   {
     id: 1,
@@ -40,7 +40,7 @@ const DOMAINS_QUIZ = [
     title: 'Distância de rota de entrega de caminhão (km)',
     options: ['double', 'BigDecimal/Centavos'],
     correct: 'double',
-    reason: 'Correto! A distância percorrida (ex: 12.75 km) é uma grandeza física de medição. A tolerância a aproximações de ponto flutuante é aceitável, e o double atende perfeitamente.'
+    reason: 'Correto! Distância é uma medição e normalmente admite tolerância definida pelo domínio. double atende quando essa tolerância foi explicitada.'
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const DOMAINS_QUIZ = [
     title: 'Temperatura média do processador do servidor',
     options: ['double', 'BigDecimal/Centavos'],
     correct: 'double',
-    reason: 'Correto! Leituras de temperatura vindas de sensores físicos são inerentemente aproximadas. O double ou float são os tipos adequados e performáticos para esse tipo de telemetria.'
+    reason: 'Correto! Leituras de sensores já possuem incerteza de medição. double ou float podem servir, desde que faixa, resolução e tolerância tenham sido definidas.'
   },
   {
     id: 5,
@@ -73,9 +73,9 @@ const DIVISION_CASES = [
 
 const PRINTF_CASES = [
   { label: 'Saída Padrão (println)', code: 'System.out.println(valor);', output: '99.9', rule: 'A saída padrão oculta o zero à direita não significativo. Não é adequada para visualizações monetárias.' },
-  { label: 'Formatação 2 Casas', code: 'System.out.printf("%.2f%n", valor);', output: '99.90', rule: 'O %.2f obriga o console a formatar com duas casas decimais. O %n insere a quebra de linha correta para a plataforma.' },
-  { label: 'Formatação 4 Casas', code: 'System.out.printf("%.4f%n", valor);', output: '99.9000', rule: 'Útil para taxas ou cotações que exigem maior precisão visual na exibição.' },
-  { label: 'Formatando com Símbolo de %', code: 'System.out.printf("Taxa: %.1f%%%n", valor);', output: 'Taxa: 99.9%', rule: 'Para exibir o caractere de porcentagem em um printf, você deve usar o escape de duas porcentagens seguidas (%%).' }
+  { label: 'Formatação 2 Casas', code: 'System.out.printf("%.2f%n", valor);', output: '99,90 em pt-BR; 99.90 em Locale.US', rule: '%.2f mostra duas casas e %n quebra a linha. O separador decimal acompanha o Locale padrão do processo.' },
+  { label: 'Formatação 4 Casas', code: 'System.out.printf("%.4f%n", valor);', output: '99,9000 em pt-BR; 99.9000 em Locale.US', rule: 'A quantidade de casas é visual. O separador continua dependente do Locale.' },
+  { label: 'Formatando com Símbolo de %', code: 'System.out.printf("Taxa: %.1f%%%n", valor);', output: 'Taxa: 99,9% em pt-BR', rule: '%% exibe o caractere %. O decimal pode usar vírgula ou ponto conforme o Locale.' }
 ];
 
 const DOMAIN_PROGRAMS = [
@@ -118,7 +118,7 @@ const ERRORS = [
   { title: 'Achar que double é exato', code: 'double resultado = 0.1 + 0.2;\nif (resultado == 0.3) { ... }', symptom: 'Condição falsa - não entra no bloco', cause: 'O resultado de 0.1 + 0.2 é 0.30000000000000004 por causa da conversão para dízima binária.', fix: 'Evite comparações diretas de igualdade (==) em decimais primitivos; use margens de tolerância ou opte por BigDecimal.' },
   { title: 'Moedas com double', code: 'double saldo = 1000.00;\nsaldo -= 0.10;\nsaldo -= 0.10;', symptom: 'Divergência de centavos em balanços financeiros', cause: 'Operações acumuladas com ponto flutuante geram ruídos decimais que corrompem relatórios monetários.', fix: 'Use long em centavos ou BigDecimal para cálculos monetários comerciais.' },
   { title: 'Armadilha de divisão', code: 'double media = 10 / 4;', symptom: 'Armazena 2.0 em vez de 2.5', cause: 'A divisão ocorre inteiramente entre os inteiros 10 e 4, cortando a fração antes da atribuição.', fix: 'Insira .0 em um dos literais: 10.0 / 4 ou faça cast explícito: (double) 10 / 4.' },
-  { title: 'Achar printf altera valor', code: 'double valor = 99.9;\nSystem.out.printf("%.2f%n", valor);\n// valor continua 99.9 internamente', symptom: 'Cálculo subsequente falha com precisão antiga', cause: 'O printf formata e muda apenas a representação textual de exibição, não a precisão da variável na CPU.', fix: 'Saiba que a variável original continua com seu valor binário exato; printf é apenas uma lente de apresentação.' },
+  { title: 'Achar printf altera valor', code: 'double valor = 99.9;\nSystem.out.printf("%.2f%n", valor);\n// valor continua 99.9 internamente', symptom: 'A saída parece arredondada, mas cálculos posteriores continuam usando o mesmo double', cause: 'printf muda apenas a representação textual, não o valor armazenado na variável.', fix: 'Trate printf como formatação de saída. Se a regra exige arredondamento, aplique uma operação e política próprias.' },
   { title: 'Decimais e aspas', code: 'double valor = "99.90";', symptom: 'incompatible types: String cannot be converted to double', cause: 'Colocar aspas transforma o número decimal em um objeto String.', fix: 'Remova as aspas: 99.90.' },
   { title: 'float por economia', code: 'float preco = 12.50F;', symptom: 'Poluição de código com sufixos e casts', cause: 'Usar float sem necessidade obriga casts em somas com double padrão.', fix: 'Adote double por padrão para decimais genéricos de medição.' },
   { title: 'Ignorar escala comercial', code: 'double imposto = 12.3456;\n// sem regras de arredondamento', symptom: 'Erros de centavos ao declarar impostos', cause: 'Ignorar o arredondamento financeiro oficial no fim da operação.', fix: 'Use classes de arredondamento apropriadas ou BigDecimal definindo a escala necessária.' }
@@ -174,7 +174,7 @@ const steps = [
     title: 'Tolerante vs Crítico: Dinheiro não é double',
     duration: '6 min',
     blocks: [
-      { type: 'lead', text: 'Cálculos contábeis exigem exatidão absoluta. Medidas físicas toleram aproximações. Classifique os cenários abaixo e comprove seu discernimento profissional.' },
+      { type: 'lead', text: 'Cálculos contábeis exigem regras decimais e arredondamento explícitos. Medições trabalham com tolerâncias. Classifique cada cenário pelo contrato, não por uma regra automática.' },
       { type: 'domains_sorter' },
       { type: 'note', tone: 'warning', title: 'Dinheiro em Sistemas Reais', text: 'Para dinheiro, utilize BigDecimal ou guarde em centavos usando long. Nunca faça contas de dinheiro reais com double.' }
     ]
@@ -197,7 +197,7 @@ const steps = [
     title: 'Formatando a saída sem alterar os dados',
     duration: '5 min',
     blocks: [
-      { type: 'lead', text: 'Modifique a lente de exibição no console usando System.out.printf e o especificador %.2f. Lembre-se: printf altera a apresentação visual, nunca o valor lógico guardado na CPU.' },
+      { type: 'lead', text: 'Modifique a lente de exibição no console usando System.out.printf e o especificador %.2f. A formatação não altera a variável, e o separador decimal depende do Locale.' },
       { type: 'printf_visualizer' }
     ]
   },
@@ -235,11 +235,11 @@ const steps = [
       {
         type: 'challenge',
         title: 'Desafio Prático de Transferência: Frete e Cubagem',
-        text: 'Crie o arquivo FreteLogisticoDecimal.java em labs/m1/aula-026-tipos-decimais/. Modele o cálculo de frete de uma carga com ID (long), peso em kg (double), volume (double), valor base do frete em centavos (long) e taxa percentual de distância (double). Calcule o frete final (em centavos/long). Exiba no console os dados com e sem formatação printf e valide que compila silenciosamente.',
+        text: 'Crie o arquivo FreteLogisticoDecimal.java em labs/m1/aula-026-tipos-decimais/. Modele uma carga com ID (long), peso em kg (double), volume (double), valor base do frete em centavos (long) e taxa percentual de distância (double). Calcule o valor decimal ajustado e converta para centavos com Math.round, deixando explícita essa política. Exiba os dados com println e printf e compare o separador do Locale atual.',
         acceptance: [
           'ID da carga modelado como long.',
           'Grandezas físicas (peso/volume) e taxa de distância modeladas como double.',
-          'Valores monetários (base e frete final) calculados e guardados como long em centavos.',
+          'Valores monetários calculados e guardados como long em centavos, com Math.round explícito na conversão.',
           'O programa deve compilar sem avisos e rodar exibindo saídas formatadas com printf.',
           'Higiene Git: commit com histórico limpo de arquivos compilados .class.'
         ]
@@ -332,16 +332,16 @@ function PrecisionSelectorLab() {
   const [numVal, setNumVal] = useState('1.234567890123456789');
 
   const floatVal = useMemo(() => {
-    const val = parseFloat(numVal);
-    // Simula precisão de float (32 bits - aprox 7 casas)
-    if (isNaN(val)) return 'Inválido';
-    return val.toFloat32 ? val.toFloat32() : Math.fround(val).toString();
+    const val = Number(numVal);
+    // Aproxima o valor com a mesma largura binária de um float Java.
+    if (numVal.trim() === '' || !Number.isFinite(val)) return 'Inválido';
+    return Math.fround(val).toString();
   }, [numVal]);
 
   const doubleVal = useMemo(() => {
-    const val = parseFloat(numVal);
-    // Simula precisão de double (64 bits - aprox 16 casas)
-    if (isNaN(val)) return 'Inválido';
+    const val = Number(numVal);
+    // JavaScript Number e Java double seguem IEEE 754 binary64.
+    if (numVal.trim() === '' || !Number.isFinite(val)) return 'Inválido';
     return val.toString();
   }, [numVal]);
 
@@ -359,7 +359,7 @@ function PrecisionSelectorLab() {
       <div className="dec26-precision-card float">
         <header>
           <span>float (32 bits)</span>
-          <strong style={{ color: '#059669' }}>~7 casas</strong>
+          <strong style={{ color: '#059669' }}>~7 dígitos significativos</strong>
         </header>
         <strong>{floatVal}</strong>
         <p>Arredonda e perde precisão mais cedo devido ao limite menor de bits.</p>
@@ -367,7 +367,7 @@ function PrecisionSelectorLab() {
       <div className="dec26-precision-card double">
         <header>
           <span>double (64 bits)</span>
-          <strong style={{ color: '#06b6d4' }}>~16 casas</strong>
+          <strong style={{ color: '#06b6d4' }}>~15–16 dígitos significativos</strong>
         </header>
         <strong>{doubleVal}</strong>
         <p>Mantém maior precisão. É o tipo padrão de literais decimais no Java.</p>

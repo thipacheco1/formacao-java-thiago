@@ -296,11 +296,11 @@ function TriagemModelagemLab() {
         <div style={{ display: 'grid', gap: '8px', margin: '14px 0' }}>
           <button type="button" className={`bool27-compound-nav button ${step === 0 ? 'active' : ''}`} onClick={() => setStep(0)} style={{ padding: '10px', textAlign: 'left', background: step === 0 ? '#c7d2fe' : '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', cursor: 'pointer', fontSize: '.7rem', color: '#1e1b4b' }}>
             <strong>Opção A: Flags Esparsos (Antipadrão)</strong>
-            <pre style={{ margin: '4px 0 0', fontFamily: 'Consolas, monospace', fontSize: '.65rem', color: '#475569' }}>boolean aberto = true;{'\n'}boolean cancelado = true; // Inconsistência física!</pre>
+              <SyntaxHighlighter language="java" style={vscDarkPlus} wrapLongLines customStyle={{ margin: '4px 0 0', padding: '10px', fontSize: '.65rem', borderRadius: '8px' }}>{'boolean aberto = true;\nboolean cancelado = true; // Inconsistência lógica!'}</SyntaxHighlighter>
           </button>
           <button type="button" className={`bool27-compound-nav button ${step === 1 ? 'active' : ''}`} onClick={() => setStep(1)} style={{ padding: '10px', textAlign: 'left', background: step === 1 ? '#c7d2fe' : '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', cursor: 'pointer', fontSize: '.7rem', color: '#1e1b4b' }}>
             <strong>Opção B: Status Consolidado (Refatorado)</strong>
-            <pre style={{ margin: '4px 0 0', fontFamily: 'Consolas, monospace', fontSize: '.65rem', color: '#475569' }}>String statusPedido = "CANCELADO"; // Estado único e seguro</pre>
+              <SyntaxHighlighter language="java" style={vscDarkPlus} wrapLongLines customStyle={{ margin: '4px 0 0', padding: '10px', fontSize: '.65rem', borderRadius: '8px' }}>{'String statusPedido = "CANCELADO"; // Um único estado'}</SyntaxHighlighter>
           </button>
         </div>
       </div>

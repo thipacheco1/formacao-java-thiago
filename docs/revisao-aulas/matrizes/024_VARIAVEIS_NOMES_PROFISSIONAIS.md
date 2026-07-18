@@ -111,7 +111,7 @@
 - [x] Lint sem alertas.
 - [x] Dois builds completos de produção.
 - [x] `git diff --check` no escopo.
-- [x] JSON e cronograma atualizados com 24 aprovadas, 1 em revisão e 696 pendentes.
+- [x] JSON e cronograma atualizados após a auditoria do bloco, com 24 aprovadas, 16 em revisão e 681 pendentes.
 - [ ] Inspeção visual desktop em navegador real.
 - [ ] Inspeção visual mobile em navegador real.
 - [ ] Aprovação explícita do responsável.

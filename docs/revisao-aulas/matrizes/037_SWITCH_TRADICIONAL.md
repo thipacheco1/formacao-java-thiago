@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedSwitchTradicionalLesson037.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedSwitchTradicionalLesson.css`
 - Arquétipo: oficina de seleção por valor com simulador animado de fall-through, menu interativo de menu+Scanner e clínica de erros
-- Estado: em_revisao
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 

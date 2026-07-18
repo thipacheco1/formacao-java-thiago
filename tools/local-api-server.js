@@ -38,6 +38,7 @@ loadEnvFile(path.join(rootDir, 'plataforma-curso', '.env.local'));
 const routes = {
   '/api/users': require(path.join(rootDir, 'api', 'users.js')),
   '/api/progress': require(path.join(rootDir, 'api', 'progress.js')),
+  '/api/learning-state': require(path.join(rootDir, 'api', 'learning-state.js')),
   '/api/analytics': require(path.join(rootDir, 'api', 'analytics.js')),
   '/api/send-email': require(path.join(rootDir, 'api', 'send-email.js'))
 };

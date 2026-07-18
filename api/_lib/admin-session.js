@@ -158,25 +158,27 @@ function setNoStoreHeaders(res) {
   res.setHeader('Vary', 'Cookie');
 }
 
+function appendSessionCookie(res, cookie) {
+  const existing = typeof res.getHeader === 'function'
+    ? res.getHeader('Set-Cookie')
+    : res.headers?.['Set-Cookie'];
+  const values = existing ? (Array.isArray(existing) ? existing : [existing]) : [];
+  res.setHeader('Set-Cookie', [...values, cookie]);
+}
+
 function setAdminSessionCookie(req, res, email) {
   const token = createAdminSessionToken(email);
   const secureFlag = isHttpsRequest(req) ? '; Secure' : '';
 
   setNoStoreHeaders(res);
-  res.setHeader(
-    'Set-Cookie',
-    `${ADMIN_SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${ADMIN_SESSION_TTL_SECONDS}${secureFlag}`
-  );
+  appendSessionCookie(res, `${ADMIN_SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${ADMIN_SESSION_TTL_SECONDS}${secureFlag}`);
 }
 
 function clearAdminSessionCookie(req, res) {
   const secureFlag = isHttpsRequest(req) ? '; Secure' : '';
 
   setNoStoreHeaders(res);
-  res.setHeader(
-    'Set-Cookie',
-    `${ADMIN_SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT${secureFlag}`
-  );
+  appendSessionCookie(res, `${ADMIN_SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT${secureFlag}`);
 }
 
 function requireAdminSession(req, res) {

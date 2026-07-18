@@ -1,0 +1,896 @@
+.guided-object-relationships-lesson {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.or115-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.or115-principle,
+.or115-demeter {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  color: #164e63;
+  background: #ecfeff;
+  border: 1px solid #67e8f9;
+  border-radius: 9px;
+}
+
+.or115-principle > div,
+.or115-demeter > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.or115-relation,
+.or115-coupling,
+.or115-scenarios,
+.or115-errors {
+  display: grid;
+  grid-template-columns: minmax(205px, 0.72fr) minmax(0, 1.35fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+
+.or115-relation nav,
+.or115-coupling nav,
+.or115-scenarios nav,
+.or115-errors nav {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+}
+
+.or115-relation nav button,
+.or115-coupling nav button,
+.or115-scenarios nav button,
+.or115-errors nav button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #111827;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+
+.or115-relation nav button.active,
+.or115-coupling nav button.active,
+.or115-scenarios nav button.active,
+.or115-errors nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+
+.or115-relation nav button > span:first-child,
+.or115-scenarios nav button > span:first-child,
+.or115-errors nav button > span:first-child {
+  display: grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: inherit;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 50%;
+}
+
+.or115-relation main,
+.or115-coupling main,
+.or115-scenarios main,
+.or115-errors main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+}
+
+.or115-nodes {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.or115-nodes strong {
+  padding: 15px 10px;
+  color: #e0f2fe;
+  background: #0c4a6e;
+  border: 1px solid #0ea5e9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.or115-nodes span {
+  color: #67e8f9;
+  font-weight: 800;
+}
+
+.or115-relation main p,
+.or115-coupling main p,
+.or115-scenarios main p,
+.or115-errors main p {
+  margin: 0;
+}
+
+.or115-relation main .result {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #a7f3d0;
+}
+
+.or115-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.or115-toggle button {
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.or115-toggle button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.or115-delegation {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(190px, 0.8fr);
+  gap: 10px;
+  padding: 15px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+
+.or115-delegation > section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.or115-delegation > section > span,
+.or115-coupling main > span,
+.or115-scenarios main > span {
+  color: #fbbf24;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.or115-delegation.healthy > section > span {
+  color: #34d399;
+}
+
+.or115-delegation pre,
+.or115-coupling pre {
+  max-width: 100%;
+  margin: 0;
+  padding: 12px;
+  overflow: auto;
+  color: #bfdbfe;
+  background: #172033;
+  border-radius: 7px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.or115-call-list {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.or115-call-list article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px;
+  background: #172033;
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+}
+
+.or115-delegation.healthy .or115-call-list article {
+  border-left-color: #10b981;
+}
+
+.or115-call-list b {
+  color: #67e8f9;
+}
+
+.or115-order {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  gap: 10px;
+}
+
+.or115-order > div,
+.or115-order > article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+
+.or115-order label {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.75fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.or115-order input,
+.or115-order select,
+.or115-os input,
+.or115-os select,
+.or115-message input {
+  min-width: 0;
+  max-width: 100%;
+  padding: 8px;
+  color: #e2e8f0;
+  background: #172033;
+  border: 1px solid #475569;
+  border-radius: 7px;
+}
+
+.or115-order input[type="checkbox"],
+.or115-os input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  justify-self: start;
+}
+
+.or115-order article h3 {
+  margin: 0;
+  color: #67e8f9;
+}
+
+.or115-order article p {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 8px;
+  background: #172033;
+  border-radius: 6px;
+}
+
+.or115-order article code,
+.or115-scenarios main code {
+  overflow-wrap: anywhere;
+}
+
+.or115-order article > strong {
+  padding-top: 8px;
+  border-top: 1px solid #334155;
+}
+
+.or115-order .ok,
+.or115-message .ok,
+.or115-os .ok,
+.or115-scenarios .ok {
+  color: #6ee7b7;
+}
+
+.or115-order .fail,
+.or115-message .fail,
+.or115-os .fail,
+.or115-scenarios .fail {
+  color: #fca5a5;
+}
+
+.or115-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.or115-decision-grid button {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 11px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.or115-decision-grid button.active {
+  color: #1e3a8a;
+  background: #dbeafe;
+  border-color: #60a5fa;
+}
+
+.or115-decision-grid button span {
+  color: #2563eb;
+  font-weight: 900;
+}
+
+.or115-decision {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  padding: 17px;
+  color: #cbd5e1;
+  background: #111827;
+  border-radius: 9px;
+}
+
+.or115-decision > div {
+  min-width: 0;
+}
+
+.or115-decision span {
+  color: #67e8f9;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.or115-decision h3,
+.or115-decision p {
+  margin: 4px 0 0;
+}
+
+.or115-question {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px;
+  color: #78350f;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+}
+
+.or115-coupling nav button {
+  justify-content: flex-start;
+}
+
+.or115-coupling main pre {
+  width: 100%;
+}
+
+.or115-coupling main b,
+.or115-scenarios main code {
+  color: #67e8f9;
+}
+
+.or115-os {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(215px, 0.75fr);
+  gap: 10px;
+}
+
+.or115-os > section,
+.or115-os > article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+
+.or115-os .root,
+.or115-os .branch span,
+.or115-os .leaf span {
+  padding: 9px;
+  color: #dbeafe;
+  background: #172033;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  text-align: center;
+}
+
+.or115-os .root {
+  align-self: center;
+  width: min(240px, 100%);
+  color: #fff;
+  background: #1d4ed8;
+}
+
+.or115-os .branch,
+.or115-os .leaf {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.or115-os .leaf {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.or115-os .leaf span {
+  color: #67e8f9;
+  overflow-wrap: anywhere;
+}
+
+.or115-os article label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.or115-os article p {
+  margin: 0;
+  padding: 9px;
+  background: #172033;
+  border-radius: 6px;
+}
+
+.or115-version {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.or115-version section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px;
+  color: #cbd5e1;
+  background: #172033;
+  border-radius: 8px;
+}
+
+.or115-version strong {
+  color: #67e8f9;
+}
+
+.or115-message {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+
+.or115-message-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.or115-message-flow section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  background: #172033;
+  border-radius: 7px;
+  text-align: center;
+}
+
+.or115-message-flow strong {
+  color: #67e8f9;
+}
+
+.or115-message-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
+  align-items: end;
+  gap: 8px;
+}
+
+.or115-message-controls label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.or115-message-controls button,
+.or115-debug-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 11px;
+  color: #dbeafe;
+  background: #1e3a8a;
+  border: 1px solid #3b82f6;
+  border-radius: 7px;
+}
+
+.or115-message-controls button:disabled,
+.or115-debug-toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.or115-message > p {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid #334155;
+}
+
+.or115-scenarios nav {
+  max-height: 420px;
+  overflow: auto;
+}
+
+.or115-scenarios nav button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.or115-scenarios nav button small {
+  grid-column: 2;
+}
+
+.or115-scenarios main code,
+.or115-scenarios main strong {
+  max-width: 100%;
+  padding: 10px;
+  background: #172033;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+
+.or115-debug {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+
+.or115-debug-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: #172033;
+  border-bottom: 1px solid #334155;
+}
+
+.or115-debug-toolbar span {
+  margin-left: auto;
+}
+
+.or115-debug-body {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+}
+
+.or115-debug-body aside {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  background: #0f172a;
+}
+
+.or115-debug-body aside button {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  color: #94a3b8;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.or115-debug-body aside button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+
+.or115-debug-body aside span {
+  color: #67e8f9;
+}
+
+.or115-debug-body main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+}
+
+.or115-debug-body main > span {
+  color: #fbbf24;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.or115-debug-body main > strong {
+  color: #67e8f9;
+  overflow-wrap: anywhere;
+}
+
+.or115-debug-body main code {
+  max-width: 100%;
+  padding: 10px;
+  color: #bfdbfe;
+  background: #172033;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+
+.or115-debug-body main p {
+  margin: 0;
+}
+
+.or115-errors nav {
+  max-height: 440px;
+  overflow: auto;
+}
+
+.or115-errors nav button strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.or115-errors main > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fbbf24;
+}
+
+.or115-errors main > section {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.or115-errors main > section div {
+  align-self: stretch;
+  padding: 12px;
+  background: #172033;
+  border-radius: 7px;
+}
+
+.or115-errors main b {
+  color: #67e8f9;
+}
+
+.or115-checklist {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.or115-checklist button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  padding: 9px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+  text-align: left;
+}
+
+.or115-checklist button span {
+  display: grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: #2563eb;
+  background: #dbeafe;
+  border-radius: 50%;
+}
+
+.or115-checklist button.done {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+
+.or115-checklist button.done span {
+  color: #fff;
+  background: #059669;
+}
+
+@media (max-width: 900px) {
+  .or115-relation,
+  .or115-coupling,
+  .or115-scenarios,
+  .or115-errors,
+  .or115-delegation,
+  .or115-order,
+  .or115-os,
+  .or115-debug-body {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-relation nav,
+  .or115-coupling nav,
+  .or115-scenarios nav,
+  .or115-errors nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .or115-relation nav button,
+  .or115-coupling nav button,
+  .or115-scenarios nav button,
+  .or115-errors nav button {
+    flex: 0 0 min(230px, 76vw);
+  }
+
+  .or115-debug-body aside {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .or115-debug-body aside button {
+    flex: 0 0 min(260px, 76vw);
+  }
+
+  .or115-checklist {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .or115-decision-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .or115-message-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-message-flow > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .or115-message-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .or115-message-controls button {
+    width: 100%;
+  }
+
+  .or115-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .or115-nodes,
+  .or115-version,
+  .or115-errors main > section {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-nodes span,
+  .or115-version > svg,
+  .or115-errors main > section > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .or115-order label {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-order article p {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .or115-order article p b {
+    grid-column: 2;
+  }
+
+  .or115-decision-grid,
+  .or115-message-controls,
+  .or115-checklist {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .or115-principle,
+  .or115-demeter,
+  .or115-decision {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-toggle {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-os .branch,
+  .or115-os .leaf {
+    grid-template-columns: 1fr;
+  }
+
+  .or115-debug-toolbar {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 320px) {
+  .or115-relation main,
+  .or115-coupling main,
+  .or115-scenarios main,
+  .or115-errors main,
+  .or115-delegation,
+  .or115-order > div,
+  .or115-order > article,
+  .or115-os > section,
+  .or115-os > article,
+  .or115-message,
+  .or115-debug-body main {
+    padding: 12px;
+  }
+}

@@ -7,8 +7,8 @@
 - Aula posterior lida integralmente: `docs/aulas/033_M1_13_OPERADORES_LOGICOS_OFICIAL.md`
 - Experiência nova: `plataforma-curso/src/components/GuidedRelationalOperatorsLesson032.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedRelationalOperatorsLesson.css`
-- Arquétipo: oficina de operadores relacionais com simulador interativo de réguas de fronteiras, comparador Heap/Stack para Strings e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Arquétipo: oficina de operadores relacionais com simulador interativo de fronteiras, comparador de identidade de referência e conteúdo textual e clínica de erros
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -28,14 +28,14 @@
 | Operador < (menor que) e exclusão de limite | Simulador de Réguas de Fronteira | Teste com estoque máximo/baixo. |
 | Operador >= (maior ou igual) e inclusão de limite | Simulador de Réguas de Fronteira | Teste de limite mínimo incluindo a fronteira exata. |
 | Operador <= (menor ou igual) e inclusão de limite | Simulador de Réguas de Fronteira | Teste de limite máximo incluindo a fronteira exata. |
-| Operador == (igualdade) vs = (atribuição) | Painel explicativo e interativo | Aluno visualiza graficamente que = grava no Stack e == compara no processador. |
+| Operador == (igualdade) vs = (atribuição) | Painel explicativo e interativo | Aluno distingue atribuir um valor de testar igualdade. |
 | Operador != (diferença) para estados/erros | Simulador Geral Relacional | Comparação prática para testar códigos de erro numéricos. |
 | Nomenclatura profissional de booleanos | Seção de nomenclatura | Tabela comparativa e boas práticas para evitar nomes genéricos como "resultado". |
 | Comparação com int e long | Galeria de Casos de Domínio / Simulador | Teste de igualdade de identificadores únicos (IDs). |
 | Comparação com double (imprecisão física) | Simulador de Réguas de Fronteira | Alerta de tolerância de precisão em ponto flutuante. |
 | Comparação de char (aspas simples) | Simulador Geral Relacional | Aluno digita caracteres ('A', 'B') e analisa a igualdade de status do sistema. |
 | Redundância de comparar boolean com == true/false | Painel explicativo e interativo | Aluno visualiza a simplificação de `ativo == true` para `ativo` e `ativo == false` para `!ativo`. |
-| Perigo de usar == em Strings e equals() | Comparador Heap vs Stack | Animação visual ilustrando por que == compara endereços na Stack e equals() os valores no Pool. |
+| Perigo de usar == em Strings e equals() | Comparador de referências e conteúdo | Animação visual ilustrando que == testa identidade de referência e equals() compara a sequência textual. |
 | Parênteses na impressão concatenada de relacionais | Seção de boas práticas de escrita | Exemplo prático de `"A > B: " + (A > B)`. |
 | Exemplo ValidacaoEstoque | Galeria de Casos de Domínio | Código e console de estoque de segurança. |
 | Exemplo ValidacaoLimite | Galeria de Casos de Domínio | Código e console de limite de crédito. |
@@ -55,9 +55,9 @@
 ## Repetições consolidadas
 
 - Os 12 programas foram agrupados na Galeria de Casos de Domínio, evitando a necessidade de exibição redundante dos códigos em seções conceituais.
-- A explicação técnica do `equals` para Strings foi consolidada no Comparador Heap vs Stack, alinhando com a aula anterior.
+- A explicação técnica de `equals` foi consolidada no comparador de identidade e conteúdo, alinhando com a aula anterior.
 
 ## Lacunas resolvidas
 
 - A régua de fronteira dinâmica evita que o aluno confunda se deve usar `>` ou `>=` em limites, pois ele altera o valor e vê o resultado se deslocar graficamente em tempo real.
-- O comparador de Heap vs Stack de Strings saneia de vez o hábito incorreto de comparar Strings com `==`.
+- O comparador de identidade e conteúdo corrige o hábito de usar `==` quando a intenção é comparar texto.

@@ -1,0 +1,191 @@
+.guided-array-search-lesson {
+  --as48-sky: #0369a1;
+  --as48-sky-soft: #f0f9ff;
+  --as48-emerald: #059669;
+  --as48-emerald-soft: #ecfdf5;
+  --as48-slate: #475569;
+  --as48-dark: #0f172a;
+  --as48-border: #cbd5e1;
+  --as48-rose: #be123c;
+  --as48-rose-soft: #fff1f2;
+  overflow: visible;
+}
+
+.guided-array-search-lesson button { font: inherit; }
+
+.guided-array-search-lesson .guided-hero {
+  background:
+    radial-gradient(circle at 72% 12%, rgba(5, 150, 105, .25), transparent 22rem),
+    linear-gradient(135deg, #0f172a, #0d9488 55%, #0f172a);
+}
+
+.guided-array-search-lesson .guided-step-heading h2 {
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+}
+
+.as48-copy {
+  display: inline-flex; gap: 6px; margin-left: auto; padding: 6px 9px;
+  align-items: center; color: #ecfdf5; background: #111827;
+  border: 1px solid #1f2937; border-radius: 8px; font-size: .68rem;
+  font-weight: 800; cursor: pointer;
+}
+
+.as48-code { background: var(--as48-dark); }
+.as48-code .guided-file-title { color: #cbd5e1; background: #1e293b; border-color: #334155; }
+
+/* 1. Visualizador do Array */
+.as48-array-view {
+  display: flex; gap: 12px; margin: 16px 0; justify-content: center; flex-wrap: wrap;
+}
+.as48-cell {
+  display: flex; flex-direction: column; width: 68px; border: 2px solid var(--as48-border);
+  border-radius: 10px; background: #fff; overflow: hidden; text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.as48-cell.active {
+  border-color: var(--as48-sky);
+  box-shadow: 0 0 12px rgba(3, 105, 161, 0.25);
+  transform: translateY(-4px);
+}
+.as48-cell.found {
+  border-color: var(--as48-emerald);
+  box-shadow: 0 0 12px rgba(5, 150, 105, 0.25);
+  transform: translateY(-4px);
+}
+.as48-cell-idx {
+  padding: 4px; background: #f1f5f9; color: #64748b; font-family: Consolas, monospace;
+  font-size: .62rem; font-weight: bold; border-bottom: 1px solid var(--as48-border);
+}
+.as48-cell-val {
+  padding: 12px 6px; font-family: Consolas, monospace; font-size: 1.1rem;
+  font-weight: bold; color: var(--as48-dark);
+}
+.as48-cell.active .as48-cell-val { color: var(--as48-sky); }
+.as48-cell.found .as48-cell-val { color: var(--as48-emerald); }
+
+/* 2. Simuladores */
+.as48-sim-box {
+  padding: 20px; background: #fff; border: 1px solid var(--as48-border); border-radius: 16px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.as48-sim-controls {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+.as48-sim-controls label { font-size: .75rem; font-weight: bold; color: var(--as48-slate); }
+.as48-sim-controls select, .as48-sim-controls input {
+  padding: 8px 12px; border: 1px solid var(--as48-border); border-radius: 8px;
+  font-size: .75rem; background: #fff; color: var(--as48-dark);
+}
+.as48-sim-controls input[type="number"] { width: 90px; }
+.as48-sim-action {
+  padding: 8px 16px; background: var(--as48-emerald); color: #fff; border: none;
+  border-radius: 8px; font-size: .75rem; font-weight: bold; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.as48-sim-action:hover { opacity: 0.9; }
+
+.as48-sim-grid {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 14px;
+}
+.as48-console {
+  overflow: hidden; border-radius: 12px; background: #0f172a; border: 1px solid #1e293b;
+  display: flex; flex-direction: column;
+}
+.as48-console header {
+  display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #94a3b8;
+  background: #1e293b; border-bottom: 1px solid #334155; font-size: .65rem; font-weight: bold;
+}
+.as48-console pre {
+  margin: 0; padding: 14px; color: #38bdf8; font-family: Consolas, monospace;
+  font-size: .75rem; line-height: 1.55; white-space: pre-wrap; flex-grow: 1;
+}
+.as48-console.success pre { color: #4ade80; }
+.as48-console.error pre { color: #f87171; }
+
+.as48-var-display {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
+}
+.as48-var-card {
+  padding: 12px; border-radius: 10px; border: 1px solid var(--as48-border); background: #f8fafc;
+  display: flex; flex-direction: column; gap: 4px; text-align: center;
+}
+.as48-var-card.active { border-color: var(--as48-emerald); background: var(--as48-emerald-soft); }
+.as48-var-card.active-alt { border-color: var(--as48-sky); background: var(--as48-sky-soft); }
+.as48-var-card small { font-size: .6rem; text-transform: uppercase; color: var(--as48-slate); font-weight: bold; }
+.as48-var-card strong { font-size: 1.2rem; color: var(--as48-dark); }
+
+/* 3. Galeria de Domínios */
+.as48-domains-gallery { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 14px; }
+.as48-domains-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.as48-domains-sidebar button {
+  padding: 10px 12px; text-align: left; color: var(--as48-slate);
+  background: #fff; border: 1px solid var(--as48-border); border-radius: 8px;
+  font-size: .7rem; font-weight: bold; cursor: pointer; transition: all 0.2s;
+}
+.as48-domains-sidebar button:hover { background: #f8fafc; }
+.as48-domains-sidebar button.active { color: #fff; background: var(--as48-emerald); border-color: var(--as48-emerald); }
+.as48-domains-content { display: flex; flex-direction: column; gap: 12px; }
+
+/* 4. Clínica de Erros */
+.as48-errors-clinic { display: grid; grid-template-columns: minmax(200px, .5fr) minmax(0, 1.5fr); gap: 14px; }
+.as48-errors-nav { display: grid; gap: 6px; align-content: start; }
+.as48-errors-nav button {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 9px;
+  align-items: center; color: var(--as48-slate); text-align: left;
+  background: #fff; border: 1px solid var(--as48-border); border-radius: 10px;
+  font-size: .68rem; cursor: pointer; transition: all 0.2s;
+}
+.as48-errors-nav button span { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; font-size: .65rem; }
+.as48-errors-nav button.active { color: var(--as48-rose); background: var(--as48-rose-soft); border-color: #fecdd3; }
+.as48-errors-nav button.active span { background: var(--as48-rose); }
+.as48-error-card { min-width: 0; padding: 18px; background: #f8fafc; border: 1px solid var(--as48-border); border-radius: 15px; }
+.as48-error-card > header { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; color: var(--as48-rose); }
+.as48-error-card header small { font-size: .65rem; font-weight: bold; letter-spacing: .06em; text-transform: uppercase; }
+.as48-error-card header h3 { margin: 2px 0 0; font-size: .95rem; }
+.as48-error-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; margin-top: 12px; align-items: stretch; }
+.as48-error-flow > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px; padding: 11px; align-content: start; color: #334155; background: #fff; border: 1px solid var(--as48-border); border-radius: 10px; font-size: .69rem; }
+.as48-error-flow > span svg { color: var(--as48-emerald); }
+.as48-error-flow > span strong { color: #0f172a; }
+.as48-error-flow > span p { grid-column: 1 / -1; margin: 4px 0 0; line-height: 1.45; color: var(--as48-slate); }
+.as48-error-flow > svg { align-self: center; color: #94a3b8; }
+
+/* 5. Terminal & Entrega */
+.as48-terminal { overflow: hidden; color: #cbd5e1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; }
+.as48-terminal header { display: flex; gap: 6px; padding: 10px 12px; align-items: center; color: #cbd5e1; background: #1e293b; border-bottom: 1px solid #334155; font-size: .7rem; font-weight: bold; }
+.as48-terminal header small { margin-left: auto; color: #64748b; font-size: .6rem; }
+.as48-terminal pre { margin: 0; padding: 14px; overflow-x: auto; overflow-wrap: anywhere; font-size: .7rem; line-height: 1.55; white-space: pre-wrap; font-family: Consolas, monospace; }
+.as48-terminal pre strong { color: #fff; }
+.as48-terminal p { display: flex; gap: 8px; margin: 0; padding: 12px 14px; align-items: flex-start; color: #94a3b8; background: #1e293b; border-top: 1px solid #334155; font-size: .7rem; line-height: 1.45; }
+.as48-terminal p svg { flex: 0 0 auto; color: var(--as48-emerald); }
+.as48-delivery-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.as48-delivery-nav button {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 6px; padding: 8px;
+  align-items: center; color: var(--as48-slate); text-align: left;
+  background: #fff; border: 1px solid var(--as48-border); border-radius: 8px;
+  font-size: .66rem; font-weight: bold; cursor: pointer;
+}
+.as48-delivery-nav button span { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; color: #fff; background: #64748b; border-radius: 6px; font-weight: bold; }
+.as48-delivery-nav button.active { color: #0369a1; background: #f0f9ff; border-color: #bae6fd; }
+.as48-delivery-actions { display: flex; gap: 10px; margin: 12px 0; align-items: center; justify-content: space-between; }
+.as48-delivery-actions button { display: inline-flex; gap: 6px; padding: 8px 12px; align-items: center; color: #334155; background: #fff; border: 1px solid var(--as48-border); border-radius: 8px; font-size: .7rem; font-weight: bold; cursor: pointer; }
+.as48-delivery-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.as48-delivery-actions span { color: #64748b; font-size: .65rem; }
+
+@media (max-width: 1024px) {
+  .as48-sim-grid, .as48-errors-clinic { grid-template-columns: 1fr; }
+  .as48-errors-nav, .as48-delivery-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .as48-domains-gallery { grid-template-columns: 1fr; }
+  .as48-domains-sidebar { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+  .as48-domains-sidebar button { min-width: 150px; scroll-snap-align: start; }
+  .as48-errors-nav { display: flex; flex-direction: row; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; }
+  .as48-errors-nav button { flex: 0 0 220px; scroll-snap-align: start; }
+  .as48-error-flow { grid-template-columns: 1fr; }
+  .as48-error-flow > svg { justify-self: center; transform: rotate(90deg); }
+}
+@media (max-width: 520px) {
+  .as48-delivery-nav { grid-template-columns: 1fr; }
+  .as48-delivery-actions { flex-direction: column; align-items: stretch; }
+  .as48-delivery-actions button { justify-content: center; }
+}

@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedStringBasicsLesson029.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedStringBasicsLesson.css`
 - Arquétipo: laboratório de validações e comparações com simulador de estado vazio/branco, lente de encadeamento e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -32,7 +32,7 @@
 | Método `trim()` | Simulador de Limpeza (Borda) | Aluno digita texto com espaços e vê o trim podar as extremidades. |
 | `trim()` gera nova string imutável | Simulador de Limpeza (Borda) | Alerta gráfico mostrando a perda do retorno caso não seja reatribuído. |
 | Método `equals()` para comparação de conteúdo | Laboratório de Comparação | Aluno testa `"ABERTA".equals(status)` contra comparação com `==`. |
-| Perigo de usar `==` com Strings em Java | Laboratório de Comparação | Explicação visual de que `==` avalia endereços na Stack, não caracteres. |
+| Perigo de usar `==` para conteúdo de Strings | Laboratório de Comparação | Explicação visual de que `==` testa identidade de referência, enquanto `equals()` compara conteúdo. |
 | Padrão seguro de comparação: `"CONSTANTE".equals(variavel)` | Laboratório de Comparação | Dica técnica de design pattern defensivo para evitar `NullPointerException`. |
 | Método `equalsIgnoreCase()` | Laboratório de Comparação | Comparador que ignora diferenças de caixa em status de negócios. |
 | Método `contains()` | Auditor de Regras de Domínio | Validador simples de existência de subcadeias de caracteres. |

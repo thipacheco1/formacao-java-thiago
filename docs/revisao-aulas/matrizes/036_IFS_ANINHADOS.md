@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedNestedIfsSimplificationLesson036.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedNestedIfsSimplificationLesson.css`
 - Arquétipo: oficina de refatoração condicional com animador de achatamento de escada, comparador de validações (independentes vs exclusivas) e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -27,7 +27,7 @@
 | Quando o aninhamento faz sentido (dependência de dados) | Painel de refatoração | Casos de dependência física (ex: clienteEncontrado primeiro). |
 | Exemplo ruim: pedido com 4 aninhamentos | Animador de Achatamento de Escada | Código e console da escada clássica de pedidos. |
 | Pedido simplificado com regra booleana nomeada | Animador de Achatamento de Escada | Versão compilada com booleano intermediário autoexplicativo. |
-| Estratégias de simplificação 1 e 2 (variáveis locais) | Painel de refatoração | Demonstração prática do uso de variáveis locais Stack autoexplicativas. |
+| Estratégias de simplificação 1 e 2 (variáveis locais) | Painel de refatoração | Demonstração prática do uso de variáveis locais autoexplicativas. |
 | Estratégia 3 (validações independentes) | Validador de Erros Independentes | Simulação de inputs de cadastro falhando ao mesmo tempo. |
 | Acumulador booleano de erros (possuiErro = true) | Validador de Erros Independentes | Fluxo atestando todas as falhas consecutivas na tela. |
 | Estratégia 4 (else if para exclusividades) | Validador de Erros Independentes | Fluxo exibindo apenas a primeira falha ao usar else if. |

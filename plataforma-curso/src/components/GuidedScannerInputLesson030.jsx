@@ -16,13 +16,13 @@ const STORAGE_KEY = 'guided-scanner-input-lesson-030-progress';
 const DOMAIN_PROGRAMS = [
   {
     id: 0, label: 'Cadastro Simples', file: 'CadastroSimples.java',
-    code: 'import java.util.Locale;\nimport java.util.Scanner;\n\npublic class CadastroSimples {\n    public static void main(String[] args) {\n        Locale.setDefault(Locale.US);\n        Scanner scanner = new Scanner(System.in);\n\n        System.out.println("Digite o nome:");\n        String nome = scanner.nextLine();\n\n        System.out.println("Digite a idade:");\n        int idade = scanner.nextInt();\n\n        System.out.println("Digite o valor da compra:");\n        double valorCompra = scanner.nextDouble();\n\n        System.out.println("Nome: " + nome);\n        System.out.println("Idade: " + idade);\n        System.out.println("Valor da compra: " + valorCompra);\n\n        scanner.close();\n    }\n}',
+    code: 'import java.util.Locale;\nimport java.util.Scanner;\n\npublic class CadastroSimples {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        scanner.useLocale(Locale.US);\n\n        System.out.println("Digite o nome:");\n        String nome = scanner.nextLine();\n\n        System.out.println("Digite a idade:");\n        int idade = scanner.nextInt();\n\n        System.out.println("Digite o valor da compra:");\n        double valorCompra = scanner.nextDouble();\n\n        System.out.println("Nome: " + nome);\n        System.out.println("Idade: " + idade);\n        System.out.println("Valor da compra: " + valorCompra);\n\n        scanner.close();\n    }\n}',
     output: 'Digite o nome:\nAna\nDigite a idade:\n30\nDigite o valor da compra:\n150.75\nNome: Ana\nIdade: 30\nValor da compra: 150.75',
     insight: 'Este fluxo funciona sem limpeza de buffer porque nenhuma leitura textual de nextLine() é executada após a leitura numérica.'
   },
   {
     id: 1, label: 'Limpeza de Buffer', file: 'CadastroComObservacao.java',
-    code: 'import java.util.Locale;\nimport java.util.Scanner;\n\npublic class CadastroComObservacao {\n    public static void main(String[] args) {\n        Locale.setDefault(Locale.US);\n        Scanner scanner = new Scanner(System.in);\n\n        System.out.println("Digite o nome:");\n        String nome = scanner.nextLine();\n\n        System.out.println("Digite a idade:");\n        int idade = scanner.nextInt();\n\n        System.out.println("Digite o valor da compra:");\n        double valorCompra = scanner.nextDouble();\n        scanner.nextLine(); // LIMPA O BUFFER\n\n        System.out.println("Digite uma observação:");\n        String observacao = scanner.nextLine();\n\n        System.out.println("Nome: " + nome);\n        System.out.println("Idade: " + idade);\n        System.out.println("Observação: " + observacao);\n\n        scanner.close();\n    }\n}',
+    code: 'import java.util.Locale;\nimport java.util.Scanner;\n\npublic class CadastroComObservacao {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        scanner.useLocale(Locale.US);\n\n        System.out.println("Digite o nome:");\n        String nome = scanner.nextLine();\n\n        System.out.println("Digite a idade:");\n        int idade = scanner.nextInt();\n\n        System.out.println("Digite o valor da compra:");\n        double valorCompra = scanner.nextDouble();\n        scanner.nextLine(); // LIMPA O BUFFER\n\n        System.out.println("Digite uma observação:");\n        String observacao = scanner.nextLine();\n\n        System.out.println("Nome: " + nome);\n        System.out.println("Idade: " + idade);\n        System.out.println("Observação: " + observacao);\n\n        scanner.close();\n    }\n}',
     output: 'Digite o nome:\nAna\nDigite a idade:\n30\nDigite o valor da compra:\n99.90\nDigite uma observação:\nUrgente!\nNome: Ana\nIdade: 30\nObservação: Urgente!',
     insight: 'A limpeza de buffer scanner.nextLine() após o nextDouble() impede que a pergunta de observação seja pulada pela JVM.'
   },
@@ -44,11 +44,11 @@ const ERRORS = [
   { title: 'Esquecer o Import', code: 'Scanner sc = new Scanner(System.in);', symptom: 'cannot find symbol: class Scanner', cause: 'A classe Scanner não reside no pacote padrão java.lang, necessitando de importação explícita.', fix: 'Insira no topo do arquivo: import java.util.Scanner;' },
   { title: 'Fechar cedo demais', code: 'scanner.close();\nString nome = scanner.nextLine();', symptom: 'java.lang.IllegalStateException: Scanner closed', cause: 'Invocar qualquer leitura em um scanner já descartado dispara falha imediata da JVM.', fix: 'Feche o scanner exclusivamente no final do método main, após concluir todas as leituras.' },
   { title: 'Errar tipo numérico', code: 'int idade = scanner.nextInt(); // Digita: "trinta"', symptom: 'java.util.InputMismatchException', cause: 'O método nextInt() exige de forma estrita dígitos inteiros. Caracteres textuais causam quebra.', fix: 'Digite apenas números. Tratamento robusto com loops e exceções será estudado em módulos avançados.' },
-  { title: 'Vírgula decimal com Locale US', code: 'Locale.setDefault(Locale.US);\ndouble val = scanner.nextDouble(); // Digita: "99,90"', symptom: 'java.util.InputMismatchException', cause: 'Com Locale.US, o Java espera o ponto (.) como separador. A vírgula é considerada inválida.', fix: 'Digite números decimais utilizando ponto (ex: 99.90).' },
+  { title: 'Vírgula decimal com Locale US', code: 'scanner.useLocale(Locale.US);\ndouble val = scanner.nextDouble(); // Digita: "99,90"', symptom: 'java.util.InputMismatchException', cause: 'Com Locale.US nesse Scanner, o Java espera ponto como separador decimal.', fix: 'Digite 99.90 ou escolha conscientemente outro Locale para esse leitor.' },
   { title: 'Buffer não limpo', code: 'int idade = scanner.nextInt();\nString nome = scanner.nextLine();', symptom: 'O console pula a pergunta do nome e avalia como String vazia ""', cause: 'O método nextInt() lê o número mas deixa a quebra de linha (\\n) no buffer. O nextLine() engole o \\n.', fix: 'Insira um scanner.nextLine() extra logo após o nextInt() para limpar a fila.' },
   { title: 'next() lê só uma palavra', code: 'String nome = scanner.next(); // Digita: "Ana Silva"', symptom: 'A variável nome recebe apenas "Ana"', cause: 'O método next() encerra a leitura no primeiro espaço em branco encontrado.', fix: 'Substitua pelo método nextLine(), que lê a linha inteira incluindo os espaços.' },
   { title: 'Múltiplos Scanners', code: 'Scanner s1 = new Scanner(System.in);\nScanner s2 = new Scanner(System.in);', symptom: 'Falha ou comportamento indefinido na leitura do teclado', cause: 'Criar múltiplas instâncias de Scanner apontando concorrentemente para a mesma entrada System.in.', fix: 'Use uma única variável de Scanner para gerenciar todas as leituras do console.' },
-  { title: 'Declarar sem inicializar', code: 'Scanner scanner;\nString s = scanner.nextLine();', symptom: 'variable scanner might not have been initialized', cause: 'A variável foi declarada no Stack, mas o objeto Scanner não foi instanciado.', fix: 'Inicialize com o construtor: Scanner scanner = new Scanner(System.in);' },
+  { title: 'Declarar sem inicializar', code: 'Scanner scanner;\nString s = scanner.nextLine();', symptom: 'variable scanner might not have been initialized', cause: 'A variável local foi declarada, mas ainda não recebeu uma referência para um objeto Scanner.', fix: 'Inicialize com o construtor: Scanner scanner = new Scanner(System.in);' },
   { title: 'Sem instrução prévia', code: 'String cep = scanner.nextLine();', symptom: 'O console fica piscando sem que o usuário saiba o que digitar', cause: 'O programa bloqueia à espera de dados sem antes imprimir uma mensagem explicativa.', fix: 'Coloque sempre um System.out.println("Digite o CEP:"); antes da leitura.' },
   { title: 'Não validar texto branco', code: 'String nome = scanner.nextLine(); // Usuário dá espaços\n// Processa sem verificar...', symptom: 'Cadastro de usuários contendo nomes falsos formados por espaços', cause: 'Aceitar o resultado da leitura crua sem validar a consistência com isBlank().', fix: 'Valide sempre as entradas: if (!nome.isBlank()) { ... }' }
 ];
@@ -118,8 +118,8 @@ function ConsoleInputLab() {
   };
 
   const processFrete = () => {
-    const parsed = parseFloat(freteStr);
-    if (isNaN(parsed) || parsed <= 0.0 || freteStr.includes(',')) {
+    const parsed = Number(freteStr);
+    if (freteStr.trim() === '' || !Number.isFinite(parsed) || parsed <= 0.0 || freteStr.includes(',')) {
       setErrorMsg('java.util.InputMismatchException: Esperado decimal válido com ponto (.) regional (Locale.US).');
       return;
     }
@@ -324,7 +324,10 @@ function LocaleSimulatorLab() {
   const [locale, setLocale] = useState('US');
   const [val, setVal] = useState('99.90');
 
-  const isOk = locale === 'US' ? (val.includes('.') && !val.includes(',')) : (val.includes(',') && !val.includes('.'));
+  const decimalPattern = locale === 'US'
+    ? /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/
+    : /^[+-]?(?:\d+(?:,\d*)?|,\d+)$/;
+  const isOk = decimalPattern.test(val.trim());
 
   return <section className="scan30-locale-simulator">
     <div className="scan30-locale-panel">
@@ -346,7 +349,7 @@ function LocaleSimulatorLab() {
           {isOk ? 'Leitura Aceita' : 'Erro de Conversão'}
         </span>
         <span style={{ fontSize: '.7rem', color: '#475569' }}>
-          {isOk ? 'O Java lê o decimal e guarda o valor 99.9 com sucesso.' : 'java.util.InputMismatchException lançado no console!'}
+          {isOk ? `O Scanner aceita o token e lê ${val.trim().replace(',', '.')} como valor decimal.` : 'O Scanner rejeitaria este token para o Locale selecionado.'}
         </span>
       </div>
     </div>
@@ -356,7 +359,7 @@ function LocaleSimulatorLab() {
         <div>
           <strong>Locale Padronizado</strong>
           <p style={{ fontSize: '.65rem', lineHeight: 1.4, color: '#475569', margin: '2px 0 0' }}>
-            Utilizar <code>Locale.setDefault(Locale.US)</code> garante que o separador decimal seja sempre o ponto (.), independente de onde a aplicação seja executada (sua máquina, servidor em nuvem ou máquina do avaliador).
+            Use <code>scanner.useLocale(Locale.US)</code> para padronizar apenas este leitor. Isso evita alterar globalmente o Locale de outras partes da aplicação.
           </p>
         </div>
       </aside>
@@ -649,10 +652,10 @@ const steps = [
       {
         type: 'challenge',
         title: 'Desafio Prático de Transferência: Cadastro de Frete',
-        text: 'Crie o arquivo CadastroFreteConsole.java em labs/m1/aula-030-scanner/. Configure o Locale padrão americano. Pergunte e leia do console: código de frete (String), peso da carga em kg (double), limpe o buffer, descrição da mercadoria (String) e se a entrega é urgente (boolean via comparação). Valide que o código e a descrição não estão em branco (isBlank()) e que o peso é maior que 0.0. Exiba o recibo formatado com tabulações \\t e quebras de linha \\n no console.',
+        text: 'Crie CadastroFreteConsole.java em labs/m1/aula-030-scanner/. Aplique Locale.US no próprio Scanner com useLocale. Leia código de frete, peso em kg, descrição da mercadoria e urgência; depois da leitura numérica, consuma a quebra de linha antes do texto. Valide campos em branco e peso maior que 0.0. Exiba o recibo com tabulações e quebras de linha.',
         acceptance: [
           'Instanciação correta de Scanner associado a System.in.',
-          'Configuração regional Locale.US declarada antes do Scanner.',
+          'Configuração regional aplicada com scanner.useLocale(Locale.US).',
           'Limpeza de buffer obrigatória com scanner.nextLine() antes da leitura de texto.',
           'Validações lógicas elementares de consistência dos dados de frete.',
           'Compilação e execução corretas no terminal local com histórico de Git limpo.'

@@ -1,0 +1,140 @@
+.guided-object-identity-lesson { max-width: 100%; overflow: visible; }
+.oi118-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.oi118-memory { display: grid; grid-template-columns: minmax(190px,.7fr) auto minmax(220px,1.3fr); align-items: center; gap: 12px; padding: 18px; color: #cbd5e1; background: #111827; border-radius: 10px; }
+.oi118-vars { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
+.oi118-vars h3 { margin: 0 0 5px; font-size: .78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .08em; }
+.oi118-vars button { display: flex; justify-content: space-between; gap: 8px; padding: 10px; color: #dbeafe; background: #172033; border: 1px solid #334155; border-radius: 7px; }
+.oi118-vars button b { color: #5eead4; }
+.oi118-arrows { display: flex; flex-direction: column; gap: 18px; color: #2dd4bf; }
+.oi118-heap { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 6px; padding: 18px; color: #ecfeff; background: #0f766e; border: 2px solid #2dd4bf; border-radius: 10px; text-align: center; }
+.oi118-heap > span { align-self: flex-start; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.oi118-heap strong { font-size: 1.35rem; }
+.oi118-heap code { max-width: 100%; padding: 7px; color: #ccfbf1; background: rgb(15 23 42 / 42%); border-radius: 6px; overflow-wrap: anywhere; }
+.oi118-actions, .oi118-save { display: flex; flex-wrap: wrap; gap: 8px; }
+.oi118-actions button, .oi118-save, .oi118-cycle button, .oi118-os button { padding: 9px 11px; color: #d1fae5; background: #115e59; border: 1px solid #14b8a6; border-radius: 7px; }
+.oi118-actions p { flex: 1 1 300px; margin: 0; padding: 10px; color: #0f4c45; background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 8px; }
+.oi118-two-objects { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.oi118-two-objects > div { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 6px; padding: 18px; color: #cbd5e1; background: #111827; border-radius: 9px; }
+.oi118-two-objects span { padding: 5px 8px; color: #fbbf24; background: #172033; border-radius: 99px; font-family: monospace; }
+.oi118-two-objects strong { color: #5eead4; font-size: 1.25rem; }
+.oi118-compare { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(180px,1fr); align-items: center; gap: 12px; padding: 14px; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 9px; }
+.oi118-compare > div { display: flex; flex-direction: column; gap: 7px; }
+.oi118-compare button, .oi118-triangle-map button, .oi118-string nav button { padding: 9px; color: #475569; background: #fff; border: 1px solid #cbd5e1; border-radius: 7px; text-align: left; }
+.oi118-compare button.active, .oi118-triangle-map button.active, .oi118-string nav button.active { color: #fff; background: #0f766e; border-color: #0f766e; }
+.oi118-compare > strong { font-size: 2rem; color: #0f766e; }
+.oi118-compare p { margin: 0; color: #475569; }
+.oi118-triangle { display: grid; grid-template-columns: minmax(260px,.85fr) minmax(0,1.15fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.oi118-triangle-map { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; padding: 14px; background: #172033; }
+.oi118-triangle-map button { z-index: 1; min-width: 0; text-align: center; }
+.oi118-triangle-map button span { display: block; font-size: .7rem; }
+.oi118-triangle-map svg { grid-column: 1/-1; width: 100%; max-height: 185px; color: #2dd4bf; }
+.oi118-triangle-map path { fill: rgb(20 184 166 / 12%); stroke: currentColor; stroke-width: 2; }
+.oi118-triangle-map circle { fill: currentColor; }
+.oi118-triangle main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 22px; }
+.oi118-triangle main > span, .oi118-string main > span, .oi118-os main > span, .oi118-debug main > span, .oi118-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.oi118-triangle h3 { margin: 0; }
+.oi118-triangle code { max-width: 100%; padding: 10px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.oi118-triangle dl, .oi118-string dl { display: grid; width: 100%; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin: 0; }
+.oi118-triangle dl div, .oi118-string dl div { padding: 10px; background: #172033; border-radius: 7px; }
+.oi118-triangle dt, .oi118-string dt { color: #94a3b8; font-size: .72rem; text-transform: uppercase; }
+.oi118-triangle dd, .oi118-string dd { margin: 5px 0 0; }
+.oi118-cycle { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); gap: 12px; padding: 16px; color: #cbd5e1; background: #111827; border-radius: 10px; }
+.oi118-id-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 16px; color: #ecfeff; background: #0f766e; border-radius: 9px; text-align: center; }
+.oi118-id-card span { font-size: .7rem; letter-spacing: .08em; }
+.oi118-id-card strong { font-size: 1.45rem; }
+.oi118-cycle > div:last-child { display: flex; flex-wrap: wrap; align-content: center; gap: 8px; }
+.oi118-state-line { display: grid; flex-basis: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+.oi118-state-line span { padding: 11px 6px; background: #172033; border: 1px solid #334155; border-radius: 7px; text-align: center; }
+.oi118-state-line span.active { color: #fff; background: #0f766e; border-color: #2dd4bf; }
+.oi118-state-line span.done { color: #5eead4; border-color: #0f766e; }
+.oi118-cycle p { flex-basis: 100%; margin: 0; padding: 9px; background: #172033; border-radius: 7px; }
+.oi118-normalizer { display: grid; grid-template-columns: minmax(190px,1fr) auto minmax(180px,1fr) auto minmax(180px,1fr); align-items: center; gap: 10px; padding: 16px; color: #cbd5e1; background: #111827; border-radius: 10px; }
+.oi118-normalizer label, .oi118-normalizer div { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
+.oi118-normalizer input { min-width: 0; padding: 9px; color: #e2e8f0; background: #172033; border: 1px solid #475569; border-radius: 7px; }
+.oi118-normalizer span { color: #94a3b8; font-size: .72rem; text-transform: uppercase; }
+.oi118-normalizer code { padding: 9px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.oi118-normalizer b { color: #5eead4; }
+.oi118-string { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border-radius: 10px; }
+.oi118-string nav { display: flex; flex-direction: column; gap: 7px; padding: 14px; background: #172033; }
+.oi118-string main { display: flex; min-width: 0; flex-direction: column; gap: 12px; padding: 20px; }
+.oi118-string-objects { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.oi118-string-objects span { padding: 14px; color: #5eead4; background: #172033; border-radius: 7px; text-align: center; }
+.oi118-string dl dd { color: #5eead4; font-size: 1.2rem; font-weight: 900; }
+.oi118-string p { margin: 0; }
+.oi118-persistence { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 16px; color: #94a3b8; background: #111827; border-radius: 10px; }
+.oi118-persistence > div { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 16px; background: #172033; border: 1px solid #334155; border-radius: 9px; text-align: center; }
+.oi118-persistence > div.active { color: #fff; background: #0f766e; border-color: #2dd4bf; }
+.oi118-persistence code { padding: 6px; color: #5eead4; background: rgb(15 23 42 / 45%); border-radius: 6px; }
+.oi118-save { align-self: flex-start; }
+.oi118-os { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border-radius: 10px; }
+.oi118-os header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 20px; color: #ecfeff; background: #0f766e; text-align: center; }
+.oi118-os header div { display: flex; flex-direction: column; gap: 5px; }
+.oi118-os header span { font-size: .72rem; letter-spacing: .08em; }
+.oi118-os header strong { font-size: 1.35rem; }
+.oi118-os main { display: flex; flex-wrap: wrap; align-content: center; gap: 8px; padding: 20px; }
+.oi118-os main > strong { flex-basis: 100%; color: #5eead4; font-size: 1.45rem; }
+.oi118-os main > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.oi118-os main p { flex-basis: 100%; margin: 0; padding: 9px; background: #172033; border-radius: 7px; }
+.oi118-code-contrast { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.oi118-code-contrast div { display: flex; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 8px; }
+.oi118-code-contrast span { color: #0f766e; font-size: .72rem; font-weight: 900; }
+.oi118-code-contrast div:last-child span { color: #b45309; }
+.oi118-code-contrast code { overflow-wrap: anywhere; }
+.oi118-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.oi118-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px; background: #172033; }
+.oi118-debug > div span { margin-left: auto; }
+.oi118-debug button { padding: 8px 10px; color: #d1fae5; background: #115e59; border: 1px solid #14b8a6; border-radius: 7px; }
+.oi118-debug button:disabled { opacity: .45; }
+.oi118-debug > section { display: grid; grid-template-columns: minmax(220px,.8fr) minmax(0,1.2fr); }
+.oi118-debug aside { display: flex; min-width: 0; flex-direction: column; gap: 4px; padding: 10px; background: #0f172a; }
+.oi118-debug aside button { display: grid; grid-template-columns: auto minmax(0,1fr); color: #94a3b8; background: transparent; border: 0; text-align: left; overflow-wrap: anywhere; }
+.oi118-debug aside button.active { color: #fff; background: #0f766e; }
+.oi118-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.oi118-debug main h3, .oi118-debug main p { margin: 0; }
+.oi118-debug main > code { max-width: 100%; padding: 9px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.oi118-debug-question { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.oi118-debug-question b { color: #fbbf24; }
+.oi118-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.oi118-errors nav { display: flex; max-height: 440px; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; overflow: auto; background: #172033; }
+.oi118-errors nav button { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; }
+.oi118-errors nav button.active { color: #fff; background: #0f766e; }
+.oi118-errors nav button > span:first-child { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.oi118-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.oi118-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.oi118-errors main h3, .oi118-errors main p { margin: 0; }
+.oi118-errors main > span { display: flex; align-items: center; gap: 6px; }
+.oi118-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.oi118-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.oi118-errors main b { color: #5eead4; }
+.oi118-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.oi118-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.oi118-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #0f766e; background: #ccfbf1; border-radius: 50%; }
+.oi118-checklist button.done { color: #065f46; background: #ecfdf5; border-color: #6ee7b7; }
+.oi118-checklist button.done span { color: #fff; background: #059669; }
+@media (max-width: 900px) {
+  .oi118-triangle, .oi118-cycle, .oi118-string, .oi118-os, .oi118-errors, .oi118-debug > section { grid-template-columns: 1fr; }
+  .oi118-errors nav, .oi118-debug aside { flex-direction: row; overflow-x: auto; }
+  .oi118-errors nav button, .oi118-debug aside button { flex: 0 0 min(230px,76vw); }
+  .oi118-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .oi118-memory { grid-template-columns: 1fr; }
+  .oi118-arrows { flex-direction: row; justify-content: space-around; transform: rotate(90deg); }
+  .oi118-compare, .oi118-normalizer, .oi118-persistence { grid-template-columns: 1fr; }
+  .oi118-compare > strong { text-align: center; }
+  .oi118-normalizer > svg, .oi118-persistence > svg { justify-self: center; transform: rotate(90deg); }
+  .oi118-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .oi118-two-objects, .oi118-code-contrast, .oi118-string-objects, .oi118-triangle dl, .oi118-string dl, .oi118-errors main > section { grid-template-columns: 1fr; }
+  .oi118-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .oi118-checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .oi118-triangle-map, .oi118-state-line { grid-template-columns: 1fr; }
+  .oi118-triangle-map svg { display: none; }
+  .oi118-debug > div { flex-wrap: wrap; }
+}
+@media (max-width: 320px) {
+  .oi118-memory, .oi118-triangle main, .oi118-cycle, .oi118-normalizer, .oi118-string main, .oi118-persistence, .oi118-os main, .oi118-debug main, .oi118-errors main { padding: 12px; }
+}

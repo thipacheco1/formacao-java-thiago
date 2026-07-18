@@ -47,9 +47,9 @@ const DOMAIN_PROGRAMS = [
 ];
 
 const ERRORS = [
-  { title: 'Comparar com ==', code: 'String status = "ABERTA";\nif (status == "ABERTA") { ... }', symptom: 'Resultado imprevisível ou falhas intermitentes em execução', cause: 'O operador == compara o endereço de referência da memória, e não os caracteres internos.', fix: 'Substitua pela chamada equals(): status.equals("ABERTA") ou "ABERTA".equals(status).' },
-  { title: 'Esquecer case-sensitivity', code: 'String status = "aberta";\nboolean ok = status.equals("ABERTA");', symptom: 'Retorna false indevidamente para variações de caixa', cause: 'O método equals() exige correspondência absoluta de bytes e caracteres.', fix: 'Se a regra de negócio for insensível à caixa, use: status.equalsIgnoreCase("ABERTA").' },
-  { title: 'isEmpty no lugar de isBlank', code: 'String nome = "   ";\nif (nome.isEmpty()) { ... }', symptom: 'Retorna false e aceita nomes compostos por espaços vazios', cause: 'isEmpty() valida apenas se o tamanho físico é zero (length == 0). Espaços ocupam posições.', fix: 'Use o método isBlank() para capturar texto vazio ou contendo apenas espaços.' },
+  { title: 'Comparar conteúdo com ==', code: 'String status = new String("ABERTA");\nif (status == "ABERTA") { ... }', symptom: 'Retorna false mesmo com os mesmos caracteres', cause: 'O operador == testa identidade de referência: se os dois operandos representam o mesmo objeto. Ele não compara o conteúdo textual.', fix: 'Use equals(): status.equals("ABERTA") ou, quando status puder ser null, "ABERTA".equals(status).' },
+  { title: 'Esquecer case-sensitivity', code: 'String status = "aberta";\nboolean ok = status.equals("ABERTA");', symptom: 'Retorna false para variações de caixa', cause: 'String.equals() exige a mesma sequência de caracteres, incluindo maiúsculas e minúsculas.', fix: 'Se a regra de negócio for insensível à caixa, use status.equalsIgnoreCase("ABERTA").' },
+  { title: 'isEmpty no lugar de isBlank', code: 'String nome = "   ";\nif (nome.isEmpty()) { ... }', symptom: 'Retorna false e aceita nomes compostos por espaços', cause: 'isEmpty() só retorna true quando length() é zero. Neste exemplo, os três espaços contam como caracteres.', fix: 'Use isBlank() para reconhecer texto vazio ou composto apenas por espaços em branco.' },
   { title: 'Chamar trim() sem reatribuir', code: 'String nome = " Ana ";\nnome.trim();\nSystem.out.println(nome);', symptom: 'A saída continua exibindo os espaços nas bordas: " Ana "', cause: 'Strings em Java são imutáveis. Métodos de manipulação nunca modificam a String original.', fix: 'Reatribua o retorno: String nomeTratado = nome.trim(); ou nome = nome.trim();' },
   { title: 'contains() case-sensitive', code: 'String msg = "Erro ao salvar";\nboolean erro = msg.contains("erro");', symptom: 'Retorna false mesmo contendo a palavra "Erro"', cause: 'O método contains() diferencia maiúsculas de minúsculas de forma estrita.', fix: 'Padronize a string de busca: msg.toLowerCase().contains("erro").' },
   { title: 'Validação fraca com contains', code: 'boolean emailValido = email.contains("@");', symptom: 'Aceita entradas inválidas como "cliente@" ou "@exemplo.com"', cause: 'contains() apenas atesta presença do trecho, sem avaliar padrões ou estruturas.', fix: 'Use contains para checagem básica inicial, mas saiba que validações completas exigirão padrões maiores.' },
@@ -61,7 +61,7 @@ const ERRORS = [
 
 const EVIDENCE = [
   '# Aula 029 — String Básica no Java', '',
-  '## Validação de Estados', '- [ ] Entendi que isEmpty() exige tamanho 0', '- [ ] Compreendi que isBlank() aceita espaços e valida o conteúdo real', '- [ ] Pratiquei a limpeza de bordas com o método trim()', '- [ ] Fixei o princípio de que o trim() retorna uma referência modificada', '',
+  '## Validação de Estados', '- [ ] Entendi que isEmpty() exige tamanho 0', '- [ ] Compreendi que isBlank() reconhece texto vazio ou composto por espaços em branco', '- [ ] Pratiquei a limpeza de bordas com o método trim()', '- [ ] Fixei que trim() devolve uma String e não altera a original', '',
   '## Comparações e Buscas', '- [ ] Abandonei o == em comparações de texto na JVM', '- [ ] Dominei equals() e equalsIgnoreCase() para equivalência lógica', '- [ ] Usei contains() e compreendi sua sensibilidade a caixa', '- [ ] Aprendi a combinar toLowerCase().contains() para buscas tolerantes', '',
   '## Arquitetura de Pipelines', '- [ ] Compreendi a teoria por trás do encadeamento de métodos', '- [ ] Refatorei cadeias extensas por variáveis locais claras', '',
   '## Evidências locais', '- [ ] Compilei e executei as 9 classes Java locais', '- [ ] Realizei commit limpo sem arquivos .class no Git', '',
@@ -152,7 +152,7 @@ function StateSimulatorLab() {
       </tbody>
     </table>
     <p style={{ margin: 0, fontSize: '.68rem', lineHeight: 1.4, color: '#701a75' }}>
-      💡 <strong>Diferença didática:</strong> <code>isEmpty()</code> avalia apenas se a String tem comprimento literal zero. <code>isBlank()</code> verifica se ela está vazia ou contém exclusivamente caracteres invisíveis (como espaços, tabs ou quebras).
+          💡 <strong>Diferença didática:</strong> <code>isEmpty()</code> avalia apenas se a String tem comprimento zero. <code>isBlank()</code> verifica se ela está vazia ou contém exclusivamente espaços em branco, como espaços, tabulações ou quebras de linha.
     </p>
   </section>;
 }
@@ -196,7 +196,7 @@ function TrimSimulatorLab() {
         )}
       </div>
       <p style={{ margin: 0, fontSize: '.7rem', lineHeight: 1.4, color: '#475569' }}>
-        {trimmed ? 'Sucesso! O trim() removeu as caixas roxas de espaços das extremidades. A variável original continua com espaços caso não tenha sido reatribuída no Stack.' : 'Os blocos roxos (␣) representam espaços nas bordas que serão cortados. Espaços internos (caso existam) são preservados.'}
+        {trimmed ? 'Sucesso! O trim() devolveu um texto sem os espaços das extremidades. A variável original continua com seu valor anterior se você não guardar o retorno.' : 'Os blocos roxos (␣) representam espaços nas bordas que serão cortados. Espaços internos (caso existam) são preservados.'}
       </p>
     </div>
     <div>
@@ -235,7 +235,7 @@ function CompareLab() {
       <div className="str29-compare-results">
         <div className="str29-compare-row">
           <code>A == B</code>
-          <span>Compara referências físicas (Stack)</span>
+          <span>Compara identidade das referências</span>
           <span className={`val ${eq ? 'true' : 'false'}`} style={{ color: eq ? '#34d399' : '#f87171' }}>{eq ? 'true' : 'false'}</span>
         </div>
         <div className="str29-compare-row highlight">
@@ -256,7 +256,7 @@ function CompareLab() {
         <div>
           <strong>A Regra de Ouro</strong>
           <p style={{ fontSize: '.68rem', color: '#475569', lineHeight: 1.4, margin: '2px 0 0' }}>
-            Nunca use <code>==</code> para comparar dados textuais em Java. Diferentes origens de leitura (arquivos, banco de dados ou scanners) produzem diferentes instâncias de memória Heap, fazendo o <code>==</code> retornar false mesmo para strings idênticas.
+        Para comparar conteúdo textual, use <code>equals()</code> ou <code>equalsIgnoreCase()</code>. <code>==</code> só é apropriado quando a intenção explícita é testar se as duas referências representam o mesmo objeto.
           </p>
         </div>
       </aside>

@@ -251,6 +251,16 @@
 .guided-step-nav button strong { display: block; font-size: .78rem; line-height: 1.25; }
 .guided-step-nav button small { display: block; margin-top: 3px; color: #94a3b8; font-size: .66rem; }
 
+.guided-error-label {
+  display: -webkit-box;
+  min-width: 0;
+  overflow: hidden;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .guided-step-number {
   display: inline-flex;
   width: 28px;

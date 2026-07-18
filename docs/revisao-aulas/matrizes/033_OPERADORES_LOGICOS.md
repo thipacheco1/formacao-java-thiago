@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedLogicalOperatorsLesson033.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedLogicalOperatorsLesson.css`
 - Arquétipo: oficina de operadores lógicos com simulador interativo de curto-circuito (JVM thread), painel de portas lógicas (circuitos) e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -48,4 +48,4 @@
 
 ## Lacunas resolvidas
 
-- O "mistério" por trás de por que a ordem de variáveis em testes contra null importa é resolvido graficamente: o aluno vê que colocar a verificação de nulo em segundo lugar faz a JVM tentar acessar a variável inexistente na Stack antes do teste, provocando a explosão imediata da linha de código.
+- A ordem dos testes contra `null` é resolvida graficamente: chamar um método antes de confirmar que a referência não é nula provoca `NullPointerException`; colocar o teste primeiro permite ao curto-circuito evitar a chamada.

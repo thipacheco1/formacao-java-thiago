@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedBooleanRulesLesson027.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedBooleanRulesLesson.css`
 - Arquétipo: oficina de regras lógicas e booleanos com tabelas-verdade interativas, construtor de nomes profissionais e clínica de depuração
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -30,7 +30,7 @@
 | Evitar nomes negativos e dupla negação | Simulador de Negação e Clínica | Comparação visual de legibilidade com e sem negação dupla. |
 | Operador de negação lógica `!` | Simulador de Negação (Lente !) | Aluno clica em interruptor e vê a lente inverter o valor e sinal lógico. |
 | Operadores de comparação (`>`, `<`, `==`, `!=`, `>=`, `<=`) | Construtor de Comparação | Aluno monta expressões aritméticas simples e vê o boolean correspondente. |
-| Diferença fundamental entre `=` e `==` | Construtor e Clínica de Erros | Explicação de que `=` altera a memória física e `==` lê para testar. |
+| Diferença fundamental entre `=` e `==` | Construtor e Clínica de Erros | Explicação de que `=` atribui um valor e `==` testa igualdade nos tipos adequados. |
 | Exemplo mínimo `ComparacaoBoolean.java` | Galeria de Casos de Domínio | Código e console mostrando estoque e status correspondentes. |
 | Operadores lógicos `&&` e `||` | Tabela-Verdade Interativa | Aluno fecha circuitos lógicos e acende a lâmpada do resultado da regra. |
 | Tabela-verdade do operador `&&` | Tabela-Verdade Interativa (Circuito) | Ilustração de que a lâmpada só acende se ambos os disjuntores estiverem fechados. |

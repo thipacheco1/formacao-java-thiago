@@ -938,6 +938,15 @@ Toda imagem precisa de:
 - comportamento responsivo;
 - correspondência com o passo atual.
 
+#### Precisão em diagramas de memória e execução
+
+- ensine primeiro o contrato observável da linguagem: valor, referência, identidade, conteúdo, ordem de avaliação e saída;
+- não apresente Stack, Heap, pool, registradores, CPU ou endereços fictícios como garantias físicas da especificação Java;
+- quando um modelo de memória for realmente útil, identifique-o como **modelo conceitual** e use referências simbólicas (`ref A`, `objeto B`) em vez de endereços inventados;
+- `==` entre referências testa identidade; `equals()` depende do contrato do tipo e, em `String`, compara a sequência textual;
+- imutabilidade deve ser provada pelo estado antes/depois e pelo retorno do método, sem afirmar que todo método sempre cria um novo objeto;
+- detalhes de implementação da JVM só entram quando forem o assunto da aula e estiverem separados do que a linguagem garante.
+
 ### Passo 11 — Ensinar erro e recuperação
 
 Uma aula profissional não mostra apenas o caminho feliz.
@@ -1066,6 +1075,21 @@ Use domínios realistas, mas limite a quantidade de classes e regras ao objetivo
 
 Uma regra de reagendamento é útil porque se conecta ao backend. Um sistema inteiro de ordens de serviço dentro de uma aula inicial de `if` seria ruído.
 
+### 6.7 A quantidade de etapas nasce da aula
+
+Não existe meta fixa de seis, sete ou qualquer outra quantidade de etapas.
+
+A transformação pedagógica define o roteiro. É proibido comprimir competências diferentes apenas para fazer aulas sucessivas terem a mesma quantidade de tópicos.
+
+Quando uma aula possuir clínica de erros e entrega/desafio:
+
+- `Clínica de erros` deve ser uma etapa própria, com progresso próprio;
+- `Entrega e desafio` deve ser outra etapa, também com progresso próprio;
+- concluir uma não pode concluir implicitamente a outra;
+- a duração deve refletir o trabalho real de cada etapa.
+
+A matriz de cobertura só pode declarar um item como coberto quando apontar para evidência existente no componente: bloco guiado, interação, código, saída, diagnóstico ou critério de desafio. Intenção, semelhança genérica ou menção em uma frase não equivalem a demonstração.
+
 ## 7. Sistema visual
 
 ### 7.1 Continuidade
@@ -1155,6 +1179,23 @@ Regras para a página inicial:
 - não duplicar na abertura informações que já estão detalhadas no currículo abaixo.
 
 Alterações na moldura não mudam o conteúdo pedagógico das aulas nem o estado do cronograma. Elas só devem ser registradas neste blueprint quando estabelecerem um padrão reutilizável.
+
+### 7.5 Continuidade entre dispositivos
+
+Toda aula guiada deve usar uma chave no formato `guided-<assunto>-lesson-NNN-progress`. Essa convenção permite que `useLearningStateSync.js` sincronize automaticamente as etapas sem acoplar o componente à API.
+
+O contrato completo está em `docs/revisao-aulas/SINCRONIZACAO_PROGRESSO.md`. São invariantes da plataforma:
+
+- conclusão da aula, etapas concluídas, etapa ativa e última aula pertencem ao usuário autenticado;
+- o Redis é a autoridade para retomada em outro computador ou celular;
+- `localStorage` é cache e fila offline, não a única fonte de verdade;
+- uma falha de rede não apaga mutações pendentes;
+- trocar de conta no mesmo navegador não transfere progresso detalhado;
+- a etapa ativa deve ser restaurada e centralizada no roteiro móvel;
+- APIs de progresso exigem cookie de sessão assinado e recusam outro e-mail;
+- exclusão da conta remove conclusão e estado detalhado.
+
+Validar com `node tools/validate-learning-state-sync.mjs` sempre que App, autenticação, progresso, navegação de etapas ou APIs relacionadas forem alterados.
 
 ## 8. Critério de conclusão de uma aula
 

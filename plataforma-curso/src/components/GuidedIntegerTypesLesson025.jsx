@@ -39,16 +39,16 @@ const TYPES_DATA = {
     max: '2.147.483.647',
     desc: 'Guarda valores de até 2 bilhões de forma eficiente (32 bits). É o tipo inteiro padrão em Java.',
     usages: ['Quantidades de itens no estoque', 'Tentativas de login realizadas', 'Número da página atual de uma API', 'Contadores simples e idades de pessoas'],
-    rule: 'Se o valor não corre risco de ultrapassar 2 bilhões, o int deve ser sempre o tipo escolhido.'
+    rule: 'int é o padrão natural para muitas contagens comuns, mas a escolha final depende do contrato, da unidade e da interoperabilidade do dado.'
   },
   long: {
     label: 'long',
     bits: 64,
     min: '-9.223.372.036.854.775.808',
     max: '9.223.372.036.854.775.807',
-    desc: 'Guarda valores astronômicos de 64 bits. Indispensável para IDs globais e contadores massivos.',
+    desc: 'Guarda inteiros de 64 bits. É útil para contadores e identificadores numéricos que podem ultrapassar o limite de int.',
     usages: ['IDs de pedidos e transações de banco', 'Timestamps em milissegundos', 'Contagem de auditoria global do sistema', 'Armazenamento de dinheiro em centavos (ex: 9990L)'],
-    rule: 'Qualquer literal de número que precise ser long deve conter o sufixo L (maiúsculo) no final.'
+    rule: 'Um literal inteiro acima da faixa de int precisa do sufixo L. Em valores menores, o L é opcional, mas pode tornar a intenção explícita.'
   }
 };
 
@@ -105,7 +105,7 @@ const ERRORS = [
   { title: 'long sem o sufixo L', code: 'long id = 3000000000;', symptom: 'integer number too large', cause: 'Mesmo a variável sendo long, o literal inteiro sem sufixo é avaliado como int padrão, que estoura 2 bilhões.', fix: 'Escreva L no final do número: 3000000000L.' },
   { title: 'Sufixo l minúsculo', code: 'long numero = 3000000000l;', symptom: 'Compila, mas atrapalha a leitura', cause: 'O caractere "l" em minúsculo se confunde facilmente com o dígito "1".', fix: 'Substitua pelo "L" maiúsculo por padrão corporativo de legibilidade.' },
   { title: 'Overflow silencioso', code: 'int resultado = 2_000_000_000 + 2_000_000_000;', symptom: 'Compila e roda, mas dá saída -294967296', cause: 'Estouro silencioso da faixa máxima do tipo int em tempo de execução sem lançar exceções.', fix: 'Promova ao menos um termo para long na operação: 2_000_000_000L + 2_000_000_000L.' },
-  { title: 'Achar que int cabe ID', code: 'int idAuditoria = 5_000_000_000;', symptom: 'integer number too large', cause: 'Muitos desenvolvedores usam int para ID sem prever que a base cresce e estoura 2 bilhões.', fix: 'IDs globais de entidades do banco de dados sempre devem ser do tipo long.' },
+  { title: 'Achar que int cabe qualquer ID numérico', code: 'int idAuditoria = 5_000_000_000;', symptom: 'integer number too large', cause: 'Um identificador numérico pode ultrapassar a faixa de int conforme a base cresce.', fix: 'Se o contrato do identificador for numérico e puder ultrapassar int, use long. UUID, String e outros formatos exigem uma decisão diferente.' },
   { title: 'Otimização com byte/short', code: 'byte idade = 30;\n// byte novaIdade = idade + 1; // dá erro', symptom: 'possible lossy conversion from int to byte', cause: 'Java promove operações aritméticas menores para int por segurança e performance.', fix: 'Use int diretamente no código comum de negócio para evitar complexidade de casts.' },
   { title: 'Uso de vírgula em literais', code: 'int valor = 1,000;', symptom: "';' expected", cause: 'A vírgula não é usada para separar milhares nem decimais em Java.', fix: 'Substitua pela notação de underscore: 1_000.' },
   { title: 'Decimal em variável inteira', code: 'int valor = 99.90;', symptom: 'possible lossy conversion from double to int', cause: 'Java não faz coerção automática de valores decimais em inteiros por risco de perda de precisão.', fix: 'Use double/float (próxima aula) ou represente o valor em centavos como long (9990L).' },
@@ -123,7 +123,7 @@ const EVIDENCE = [
 
 const steps = [
   { id: 'tabela', label: 'Tabela de tipos', duration: '12 min', eyebrow: 'Comece aqui', title: 'Entenda os limites físicos e a intenção de cada tipo inteiro', blocks: [{ type: 'lead', text: 'Iniciantes usam int para tudo, mas o Java oferece quatro primitivos inteiros. A escolha depende da faixa do número e do significado no domínio do negócio.' }, { type: 'types_selector' }, { type: 'note', tone: 'info', title: 'Resultado prático', text: 'Ao final do laboratório, você criará nove programas executáveis no PowerShell, preverá suas saídas, diagnosticará 10 tipos de falhas e auditará seus commits.' }] },
-  { id: 'memoria', label: 'Bits e Memória', duration: '15 min', eyebrow: 'Etapa 1', title: 'Visualize a ocupação física de bits e o espaço na memória', blocks: [{ type: 'lead', text: 'Computadores representam números com bits (digitos binários). Quanto mais bits o tipo possui, maior o número que ele consegue conter na memória.' }, { type: 'bits_visualizer' }] },
+  { id: 'memoria', label: 'Bits e representação', duration: '15 min', eyebrow: 'Etapa 1', title: 'Compare a largura dos tipos e a representação em complemento de dois', blocks: [{ type: 'lead', text: 'Os inteiros Java têm larguras fixas. Mais bits ampliam a faixa; valores negativos usam complemento de dois, portanto o bit mais significativo não é um sinal separado dos demais.' }, { type: 'bits_visualizer' }] },
   { id: 'sufixo', label: 'Sufixo L', duration: '18 min', eyebrow: 'Etapa 2', title: 'Marque literais long de forma visível e evite confusoes de leitura', blocks: [{ type: 'lead', text: 'Em Java, literais inteiros sem marcação são int por padrão. Para números gigantes, o sufixo L avisa ao compilador o tamanho correto de imediato.' }, { type: 'suffix_simulator' }] },
   { id: 'overflow', label: 'Overflow de dados', duration: '15 min', eyebrow: 'Etapa 3', title: 'Descubra como números estouram limites e dão a volta de forma silenciosa', blocks: [{ type: 'lead', text: 'Somar 1 ao limite máximo de um tipo inteiro faz o valor virar o seu limite negativo. Esse bug silencioso não gera exceções ou travamentos no console.' }, { type: 'overflow_simulator' }] },
   { id: 'underscore', label: 'Underscores', duration: '10 min', eyebrow: 'Etapa 4', title: 'Use underscores para melhorar a leitura sem violar as regras sintáticas', blocks: [{ type: 'lead', text: 'O underscore _ ajuda humanos a lerem números grandes (como 1_000_000L). O compilador os remove antes de rodar o programa.' }, { type: 'underscore_quiz' }] },
@@ -182,11 +182,12 @@ function BitsVisualizerLab() {
   const boxes = useMemo(() => {
     const list = [];
     for (let i = numBits - 1; i >= 0; i--) {
-      // Primeiro bit (índice 7 para byte, 15 para short, etc) é o de sinal
+      // O bit mais significativo indica negatividade em complemento de dois,
+      // mas participa do valor e não representa sinal-magnitude.
       const isSign = i === numBits - 1;
       list.push(
-        <div key={i} className={`int25-bit-box ${isSign ? 'sign' : 'active'}`} title={isSign ? 'Bit de Sinal (1 = Negativo / 0 = Positivo)' : `Bit de Dados ${i}`}>
-          {isSign ? 'S' : '1'}
+        <div key={i} className={`int25-bit-box ${isSign ? 'sign' : 'active'}`} title={isSign ? 'Bit mais significativo: em complemento de dois, 1 indica valor negativo' : `Posição binária ${i}`}>
+          {isSign ? 'MSB' : '1'}
         </div>
       );
     }
@@ -195,7 +196,7 @@ function BitsVisualizerLab() {
 
   return <section className="int25-bits-container">
     <div className="int25-bits-header">
-      <h4>Slots de representação física (primitivo {selectedType})</h4>
+      <h4>Largura esquemática do tipo primitivo {selectedType}</h4>
       <select value={selectedType} onChange={e => setSelectedType(e.target.value)} style={{ padding: '6px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#fff', fontSize: '.75rem', fontWeight: 'bold', cursor: 'pointer' }}>
         <option value="byte">byte (8 bits)</option>
         <option value="short">short (16 bits)</option>
@@ -207,8 +208,8 @@ function BitsVisualizerLab() {
       {boxes}
     </div>
     <div className="int25-bits-legend">
-      <span><div className="int25-legend-box bg-sign" /> Bit de Sinal (S)</span>
-      <span><div className="int25-legend-box bg-active" /> Bits de Dados (1 / 0)</span>
+      <span><div className="int25-legend-box bg-sign" /> Bit mais significativo (MSB)</span>
+      <span><div className="int25-legend-box bg-active" /> Demais posições binárias</span>
       <span>Total: {numBits} bits ({numBits / 8} {numBits === 8 ? 'byte' : 'bytes'})</span>
     </div>
   </section>;
@@ -308,7 +309,7 @@ function OverflowSimulatorLab() {
         </div>
       </div>
       <div className="int25-overflow-state" style={{ background: isOverflowed ? '#fee2e2' : 'rgba(255, 255, 255, 0.7)', borderColor: isOverflowed ? '#fecdd3' : '#fde68a' }}>
-        <span style={{ color: isOverflowed ? '#991b1b' : '#78350f' }}>Valor em Memória: <strong style={{ fontSize: '1rem' }}>{value.toLocaleString('pt-BR')}</strong></span>
+        <span style={{ color: isOverflowed ? '#991b1b' : '#78350f' }}>Valor simulado: <strong style={{ fontSize: '1rem' }}>{value.toLocaleString('pt-BR')}</strong></span>
         <span style={{ color: isOverflowed ? '#b91c1c' : '#b45309' }}>Limite Máximo: <strong>{max.toLocaleString('pt-BR')}</strong></span>
         {isOverflowed && (
           <div className="int25-overflow-alert">
@@ -316,7 +317,7 @@ function OverflowSimulatorLab() {
             <div>
               <strong>Overflow Ocorrido!</strong>
               <p style={{ margin: '2px 0 0', fontSize: '.65rem', lineHeight: 1.4, color: '#991b1b' }}>
-                O valor superou o máximo ({max.toLocaleString('pt-BR')}) e retornou para o início ({min.toLocaleString('pt-BR')}) de forma invisível. Nenhum log de erro é impresso no terminal Java.
+                O valor superou o máximo ({max.toLocaleString('pt-BR')}) e voltou ao mínimo ({min.toLocaleString('pt-BR')}) segundo a aritmética inteira Java. Nenhuma exceção ou mensagem é emitida automaticamente.
               </p>
             </div>
           </div>

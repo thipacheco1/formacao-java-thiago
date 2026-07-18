@@ -294,9 +294,9 @@ function DeliveryLab() {
     },
     {
       title: 'Compilar Fontes',
-      cmd: 'javac *.java',
-      out: '[Compilação silenciosa - nenhum retorno significa sucesso]',
-      tip: 'Se FallThroughAcidental.java compilar com warning de fall-through, isso é esperado e educativo.'
+      cmd: 'javac *.java\njavac -Xlint:fallthrough FallThroughAcidental.java',
+      out: '[O primeiro comando termina sem saída]\nFallThroughAcidental.java:[linha]: warning: possible fall-through into case',
+      tip: 'O javac comum compila o fall-through sem avisar. A segunda compilação ativa a análise específica; o número da linha pode variar.'
     },
     {
       title: 'Testar Fall-Through',

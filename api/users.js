@@ -4,6 +4,10 @@ const {
   requireAdminSession,
   setAdminSessionCookie
 } = require('./_lib/admin-session');
+const {
+  clearUserSessionCookie,
+  setUserSessionCookie
+} = require('./_lib/user-session');
 
 module.exports = async function handler(req, res) {
   const kvUrl = process.env.KV_REST_API_URL;
@@ -11,6 +15,7 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'POST' && req.body?.action === 'logout') {
     clearAdminSessionCookie(req, res);
+    clearUserSessionCookie(req, res);
     return res.status(200).json({ success: true });
   }
 
@@ -95,6 +100,7 @@ module.exports = async function handler(req, res) {
         } else {
           clearAdminSessionCookie(req, res);
         }
+        setUserSessionCookie(req, res, cleanEmail);
 
         return res.status(200).json({ success: true, user: withoutPassword(user) });
       }
@@ -109,6 +115,7 @@ module.exports = async function handler(req, res) {
         await runKvCommand(['HDEL', 'users_hash', email.toLowerCase()]);
         // Also delete their progress data
         await runKvCommand(['DEL', `progress:${email.toLowerCase()}`]);
+        await runKvCommand(['DEL', `learning-state:${email.toLowerCase()}`]);
         return res.status(200).json({ success: true, message: 'User deleted successfully' });
       }
 
@@ -136,6 +143,7 @@ module.exports = async function handler(req, res) {
 
       // Save user to Redis Hash
       await runKvCommand(['HSET', 'users_hash', cleanEmail, JSON.stringify(newUser)]);
+      setUserSessionCookie(req, res, cleanEmail);
 
       // ----------------------------------------------------
       // Send Webhook and Email Notifications in background

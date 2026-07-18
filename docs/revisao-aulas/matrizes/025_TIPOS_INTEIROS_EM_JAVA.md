@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedIntegerTypesLesson025.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedIntegerTypesLesson.css`
 - Arquétipo: oficina de tipos numéricos e limites com simulação de bits, overflow observável e clínica de erros
-- Estado: em_revisao (aguardando implementação e inspeção visual)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -24,10 +24,10 @@
 | Uso comum do `int` por iniciantes | Introdução e mapa da aula | Aluno contrasta `int` para tudo com a necessidade de responsabilidade de tipos. |
 | Os quatro tipos inteiros: byte, short, int, long | Seletor comparativo de tipos | Aluno seleciona cada tipo e vê suas especificidades. |
 | Tabela de tamanhos e faixas de valores | Seletor e gráfico interativo | Exibição de bits (8, 16, 32, 64) e limites correspondentes. |
-| Por que existem limites (bits e memória) | Simulador de Bits e Caixas de Memória | Representação visual dos slots de bits ocupados pelo valor. |
+| Por que existem limites (largura em bits) | Simulador de representação | Comparação visual de 8, 16, 32 e 64 bits com complemento de dois explicitado. |
 | `int` como padrão comum e faixa de +-2 bilhões | Painel do `int` | Casos clássicos (contadores, quantidades, tentativas) justificados no domínio. |
 | `long` para números grandes que passam de 2 bilhões | Painel do `long` | Casos reais de IDs e timestamps com simulação de dados corporativos. |
-| Sufixo `L` maiúsculo nas variáveis e literais | Simulador de Sufixo L | Aluno testa com e sem `L` e analisa os resultados do compilador. |
+| Sufixo `L` maiúsculo em literais `long` | Simulador de Sufixo L | Aluno testa que o sufixo é obrigatório acima da faixa de `int` e opcional em literais menores. |
 | Evitar `l` minúsculo por parecer o número 1 | Dica visual no simulador do sufixo | Comparação visual direta entre `l` e `1` sob diferentes fontes. |
 | Erro de literal fora do limite de int sem o `L` | Simulador e Clínica de Erros | Mensagem do compilador do Java explicada na prática. |
 | `byte` guarda de -128 a 127 e seu uso binário | Painel do `byte` | Menção a buffers, arquivos, imagens e rede; desaconselhado para uso em lógica comum. |
@@ -62,7 +62,7 @@
 
 ## Lacunas resolvidas
 
-- O mecanismo de overflow passa a ser demonstrado visualmente, permitindo ao aluno ver o bit de sinal mudar e a representação numérica dar a volta passo a passo.
+- O mecanismo de overflow passa a ser demonstrado visualmente, sem ensinar sinal-magnitude: o aluno observa a passagem do máximo ao mínimo segundo a aritmética inteira Java.
 - O perigo do `l` minúsculo é evidenciado através de uma comparação gráfica real de tipografia de fontes comuns de desenvolvimento (onde se torna impossível diferenciar `l` de `1`).
 - O comportamento da promoção aritmética do Java é explicado de forma a evitar que o aluno encare os erros de soma de bytes como uma falha aleatória, mostrando graficamente a ampliação temporária de espaço para `int`.
 

@@ -44,6 +44,87 @@ import GuidedNestedIfsSimplificationLesson036 from './GuidedNestedIfsSimplificat
 import GuidedSwitchTradicionalLesson037 from './GuidedSwitchTradicionalLesson037';
 import GuidedSwitchModernoLesson038 from './GuidedSwitchModernoLesson038';
 import GuidedWhileLesson039 from './GuidedWhileLesson039';
+import GuidedDoWhileLesson040 from './GuidedDoWhileLesson040';
+import GuidedForClassicLesson041 from './GuidedForClassicLesson041';
+import GuidedBreakContinueLesson042 from './GuidedBreakContinueLesson042';
+import GuidedNestedLoopsLesson043 from './GuidedNestedLoopsLesson043';
+import GuidedInputValidationLesson044 from './GuidedInputValidationLesson044';
+import GuidedNumericArraysLesson045 from './GuidedNumericArraysLesson045';
+import GuidedUserSizedArraysLesson046 from './GuidedUserSizedArraysLesson046';
+import GuidedArrayModificationLesson047 from './GuidedArrayModificationLesson047';
+import GuidedArraySearchLesson048 from './GuidedArraySearchLesson048';
+import GuidedArrayStatsLesson049 from './GuidedArrayStatsLesson049';
+import GuidedStringArrayLesson050 from './GuidedStringArrayLesson050';
+import GuidedArrayParallelLesson051 from './GuidedArrayParallelLesson051';
+import GuidedMatrixInitialLesson052 from './GuidedMatrixInitialLesson052';
+import GuidedVoidMethodsLesson053 from './GuidedVoidMethodsLesson053';
+import GuidedMethodsWithReturnLesson054 from './GuidedMethodsWithReturnLesson054';
+import GuidedMethodsWithParamsLesson055 from './GuidedMethodsWithParamsLesson055';
+import GuidedOverloadLesson056 from './GuidedOverloadLesson056';
+import GuidedScopeLesson057 from './GuidedScopeLesson057';
+import GuidedValueRefPassingLesson058 from './GuidedValueRefPassingLesson058';
+import GuidedInputErrorsLesson059 from './GuidedInputErrorsLesson059';
+import GuidedFundamentalsDebugLesson060 from './GuidedFundamentalsDebugLesson060';
+import GuidedCalculatorProjectLesson061 from './GuidedCalculatorProjectLesson061';
+import GuidedJvmBytecodeLesson062 from './GuidedJvmBytecodeLesson062';
+import GuidedStackHeapReferencesLesson063 from './GuidedStackHeapReferencesLesson063';
+import GuidedGarbageCollectorLesson064 from './GuidedGarbageCollectorLesson064';
+import GuidedDefaultValuesInitializationLesson065 from './GuidedDefaultValuesInitializationLesson065';
+import GuidedNullPointerLesson066 from './GuidedNullPointerLesson066';
+import GuidedStringPoolLesson067 from './GuidedStringPoolLesson067';
+import GuidedStringBuilderLesson068 from './GuidedStringBuilderLesson068';
+import GuidedWrappersLesson069 from './GuidedWrappersLesson069';
+import GuidedConversionsCastingLesson070 from './GuidedConversionsCastingLesson070';
+import GuidedMathRandomLesson071 from './GuidedMathRandomLesson071';
+import GuidedBigDecimalLesson072 from './GuidedBigDecimalLesson072';
+import GuidedLocaleNumberFormatLesson073 from './GuidedLocaleNumberFormatLesson073';
+import GuidedJavaTimeLesson074 from './GuidedJavaTimeLesson074';
+import GuidedTimezoneInstantLesson075 from './GuidedTimezoneInstantLesson075';
+import GuidedProfessionalEnumLesson076 from './GuidedProfessionalEnumLesson076';
+import GuidedRecordsLesson077 from './GuidedRecordsLesson077';
+import GuidedVarCriteriaLesson078 from './GuidedVarCriteriaLesson078';
+import GuidedVarargsLesson079 from './GuidedVarargsLesson079';
+import GuidedBasicAnnotationsLesson080 from './GuidedBasicAnnotationsLesson080';
+import GuidedConceptualReflectionLesson081 from './GuidedConceptualReflectionLesson081';
+import GuidedSealedTypesLesson082 from './GuidedSealedTypesLesson082';
+import GuidedPatternMatchingLesson083 from './GuidedPatternMatchingLesson083';
+import GuidedTextBlocksLesson084 from './GuidedTextBlocksLesson084';
+import GuidedExceptionsInternalsLesson085 from './GuidedExceptionsInternalsLesson085';
+import GuidedRobustConsoleLesson086 from './GuidedRobustConsoleLesson086';
+import GuidedJavaPackagesLesson087 from './GuidedJavaPackagesLesson087';
+import GuidedOfficialDocsLesson088 from './GuidedOfficialDocsLesson088';
+import GuidedJavaCoreLibraryLesson089 from './GuidedJavaCoreLibraryLesson089';
+import GuidedSmallMethodsLesson090 from './GuidedSmallMethodsLesson090';
+import GuidedProfessionalSignatureLesson091 from './GuidedProfessionalSignatureLesson091';
+import GuidedMethodCohesionLesson092 from './GuidedMethodCohesionLesson092';
+import GuidedParameterObjectsLesson093 from './GuidedParameterObjectsLesson093';
+import GuidedBooleanValidationLesson094 from './GuidedBooleanValidationLesson094';
+import GuidedCalculationMethodsLesson095 from './GuidedCalculationMethodsLesson095';
+import GuidedDisplayMethodsLesson096 from './GuidedDisplayMethodsLesson096';
+import GuidedInputMethodsLesson097 from './GuidedInputMethodsLesson097';
+import GuidedDryReuseLesson098 from './GuidedDryReuseLesson098';
+import GuidedMethodDebugLesson099 from './GuidedMethodDebugLesson099';
+import GuidedExtractMethodLesson100 from './GuidedExtractMethodLesson100';
+import GuidedProceduralArchitectureLesson101 from './GuidedProceduralArchitectureLesson101';
+import GuidedCalculatorRevisitedLesson102 from './GuidedCalculatorRevisitedLesson102';
+import GuidedOrderServiceProcessingLesson103 from './GuidedOrderServiceProcessingLesson103';
+import GuidedFundamentalsReviewLesson104 from './GuidedFundamentalsReviewLesson104';
+import GuidedObjectThinkingLesson105 from './GuidedObjectThinkingLesson105';
+import GuidedPaperModelingLesson106 from './GuidedPaperModelingLesson106';
+import GuidedClassObjectLesson107 from './GuidedClassObjectLesson107';
+import GuidedMeaningfulAttributesLesson108 from './GuidedMeaningfulAttributesLesson108';
+import GuidedBehaviorMethodsLesson109 from './GuidedBehaviorMethodsLesson109';
+import GuidedConstructorsLesson110 from './GuidedConstructorsLesson110';
+import GuidedTrueEncapsulationLesson111 from './GuidedTrueEncapsulationLesson111';
+import GuidedGettersSettersLesson112 from './GuidedGettersSettersLesson112';
+import GuidedImmutabilityLesson113 from './GuidedImmutabilityLesson113';
+import GuidedCompositionLesson114 from './GuidedCompositionLesson114';
+import GuidedObjectRelationshipsLesson115 from './GuidedObjectRelationshipsLesson115';
+import GuidedValueObjectsLesson116 from './GuidedValueObjectsLesson116';
+import GuidedEntitiesLesson117 from './GuidedEntitiesLesson117';
+import GuidedObjectIdentityLesson118 from './GuidedObjectIdentityLesson118';
+import GuidedEqualsHashCodeLesson119 from './GuidedEqualsHashCodeLesson119';
+import GuidedToStringLesson120 from './GuidedToStringLesson120';
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1435,6 +1516,276 @@ const MarkdownViewerV2 = (props) => {
 
   if (props.lesson?.id?.startsWith('039_')) {
     return <GuidedWhileLesson039 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('040_')) {
+    return <GuidedDoWhileLesson040 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('041_')) {
+    return <GuidedForClassicLesson041 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('042_')) {
+    return <GuidedBreakContinueLesson042 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('043_')) {
+    return <GuidedNestedLoopsLesson043 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('044_')) {
+    return <GuidedInputValidationLesson044 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('045_')) {
+    return <GuidedNumericArraysLesson045 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('046_')) {
+    return <GuidedUserSizedArraysLesson046 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('047_')) {
+    return <GuidedArrayModificationLesson047 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('048_')) {
+    return <GuidedArraySearchLesson048 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('049_')) {
+    return <GuidedArrayStatsLesson049 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('050_')) {
+    return <GuidedStringArrayLesson050 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('051_')) {
+    return <GuidedArrayParallelLesson051 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('052_')) {
+    return <GuidedMatrixInitialLesson052 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('053_')) {
+    return <GuidedVoidMethodsLesson053 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('054_')) {
+    return <GuidedMethodsWithReturnLesson054 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('055_')) {
+    return <GuidedMethodsWithParamsLesson055 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('056_')) {
+    return <GuidedOverloadLesson056 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('057_')) {
+    return <GuidedScopeLesson057 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('058_')) {
+    return <GuidedValueRefPassingLesson058 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('059_')) {
+    return <GuidedInputErrorsLesson059 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('060_')) {
+    return <GuidedFundamentalsDebugLesson060 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('061_')) {
+    return <GuidedCalculatorProjectLesson061 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('062_')) {
+    return <GuidedJvmBytecodeLesson062 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('063_')) {
+    return <GuidedStackHeapReferencesLesson063 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('064_')) {
+    return <GuidedGarbageCollectorLesson064 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('065_')) {
+    return <GuidedDefaultValuesInitializationLesson065 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('066_')) {
+    return <GuidedNullPointerLesson066 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('067_')) {
+    return <GuidedStringPoolLesson067 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('068_')) {
+    return <GuidedStringBuilderLesson068 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('069_')) {
+    return <GuidedWrappersLesson069 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('070_')) {
+    return <GuidedConversionsCastingLesson070 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('071_')) {
+    return <GuidedMathRandomLesson071 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('072_')) {
+    return <GuidedBigDecimalLesson072 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('073_')) {
+    return <GuidedLocaleNumberFormatLesson073 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('074_')) {
+    return <GuidedJavaTimeLesson074 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('075_')) {
+    return <GuidedTimezoneInstantLesson075 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('076_')) {
+    return <GuidedProfessionalEnumLesson076 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('077_')) {
+    return <GuidedRecordsLesson077 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('078_')) {
+    return <GuidedVarCriteriaLesson078 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('079_')) {
+    return <GuidedVarargsLesson079 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('080_')) {
+    return <GuidedBasicAnnotationsLesson080 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('081_')) {
+    return <GuidedConceptualReflectionLesson081 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('082_')) {
+    return <GuidedSealedTypesLesson082 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('083_')) {
+    return <GuidedPatternMatchingLesson083 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('084_')) {
+    return <GuidedTextBlocksLesson084 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('085_')) {
+    return <GuidedExceptionsInternalsLesson085 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('086_')) {
+    return <GuidedRobustConsoleLesson086 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('087_')) {
+    return <GuidedJavaPackagesLesson087 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('088_')) {
+    return <GuidedOfficialDocsLesson088 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('089_')) {
+    return <GuidedJavaCoreLibraryLesson089 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('090_')) {
+    return <GuidedSmallMethodsLesson090 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('091_')) {
+    return <GuidedProfessionalSignatureLesson091 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('092_')) {
+    return <GuidedMethodCohesionLesson092 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('093_')) {
+    return <GuidedParameterObjectsLesson093 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('094_')) {
+    return <GuidedBooleanValidationLesson094 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('095_')) {
+    return <GuidedCalculationMethodsLesson095 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('096_')) {
+    return <GuidedDisplayMethodsLesson096 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('097_')) {
+    return <GuidedInputMethodsLesson097 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('098_')) {
+    return <GuidedDryReuseLesson098 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('099_')) {
+    return <GuidedMethodDebugLesson099 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('100_')) {
+    return <GuidedExtractMethodLesson100 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('101_')) {
+    return <GuidedProceduralArchitectureLesson101 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('102_')) {
+    return <GuidedCalculatorRevisitedLesson102 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('103_')) {
+    return <GuidedOrderServiceProcessingLesson103 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('104_')) {
+    return <GuidedFundamentalsReviewLesson104 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('105_')) {
+    return <GuidedObjectThinkingLesson105 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('106_')) {
+    return <GuidedPaperModelingLesson106 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('107_')) {
+    return <GuidedClassObjectLesson107 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('108_')) {
+    return <GuidedMeaningfulAttributesLesson108 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('109_')) {
+    return <GuidedBehaviorMethodsLesson109 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('110_')) {
+    return <GuidedConstructorsLesson110 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('111_')) {
+    return <GuidedTrueEncapsulationLesson111 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('112_')) {
+    return <GuidedGettersSettersLesson112 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('113_')) {
+    return <GuidedImmutabilityLesson113 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('114_')) {
+    return <GuidedCompositionLesson114 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('115_')) {
+    return <GuidedObjectRelationshipsLesson115 {...props} />;
+  }
+
+  if (props.lesson?.id?.startsWith('116_')) {
+    return <GuidedValueObjectsLesson116 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('117_')) {
+    return <GuidedEntitiesLesson117 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('118_')) {
+    return <GuidedObjectIdentityLesson118 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('119_')) {
+    return <GuidedEqualsHashCodeLesson119 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('120_')) {
+    return <GuidedToStringLesson120 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

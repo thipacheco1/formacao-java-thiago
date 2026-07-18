@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedIfElseDecisionLesson035.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedIfElseDecisionLesson.css`
 - Arquétipo: oficina de tomada de decisão com simulador gráfico de árvore de roteamento, comparador de fluxos (if vs else if) e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 

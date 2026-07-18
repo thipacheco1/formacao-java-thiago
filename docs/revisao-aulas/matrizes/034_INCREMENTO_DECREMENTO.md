@@ -8,7 +8,7 @@
 - Experiência nova: `plataforma-curso/src/components/GuidedIncrementDecrementLesson034.jsx`
 - Estilos próprios: `plataforma-curso/src/components/guidedIncrementDecrementLesson.css`
 - Arquétipo: oficina de contadores, acumuladores e incremento com CPU Step Simulator para pós/pré-incremento, registradora de esteira e clínica de erros
-- Estado: em_revisao (aguardando implementação e aprovação)
+- Estado: implementada e auditada tecnicamente em 2026-07-17; permanece `em_revisao` até inspeção visual e aprovação do responsável.
 
 ## Fronteiras curriculares
 
@@ -23,8 +23,8 @@
 | Contagem de ocorrências (contadores) | Painel de Registradora Dinâmica | Contador de itens passando pela esteira mecânica. |
 | Acúmulo de totais (acumuladores) | Painel de Registradora Dinâmica | Total de vendas acumulado a cada item inserido no carrinho. |
 | Totalizadores (inteiros e BigDecimal) | Painel de Registradora Dinâmica | Demonstração e cálculo lado a lado de int vs BigDecimal. |
-| Operador ++ (incremento) | Painel de Operações Abreviadas | Aluno clica em ++ e vê a variável aumentar 1 na Stack. |
-| Operador -- (decremento) | Painel de Operações Abreviadas | Aluno clica em -- e vê a variável reduzir 1 na Stack. |
+| Operador ++ (incremento) | Painel de Operações Abreviadas | Aluno clica em ++ e vê o valor da variável aumentar em 1. |
+| Operador -- (decremento) | Painel de Operações Abreviadas | Aluno clica em -- e vê o valor da variável reduzir em 1. |
 | Operador += (acumular) | Painel de Operações Abreviadas | Aluno seleciona um valor e acumula na variável original. |
 | Operador -= (reduzir) | Painel de Operações Abreviadas | Aluno seleciona um valor e subtrai do saldo. |
 | Pré-incremento vs Pós-incremento | CPU Step Simulator | CPU mostrando passo a passo onde o valor é copiado e quando ocorre o incremento. |
@@ -52,4 +52,4 @@
 ## Lacunas resolvidas
 
 - O simulador passo a passo da CPU demonstra fisicamente o valor original sendo retido antes do incremento no pós-incremento, esclarecendo a clássica confusão do porquê `y = x++` resulta em valores diferentes de `y = ++x`.
-- A imutabilidade do BigDecimal é demonstrada fisicamente no painel da Registradora, mostrando que chamar `.add` sem atribuição resulta no valor antigo boiando sem persistência na Stack.
+- A imutabilidade de BigDecimal é demonstrada pelo resultado observável: chamar `.add` sem guardar o retorno deixa a variável com o valor anterior.

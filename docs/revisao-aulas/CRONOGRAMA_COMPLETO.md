@@ -2,7 +2,7 @@
 
 > Este arquivo é gerado por `node tools/update-lesson-review-schedule.mjs`. Não altere as marcações manualmente; atualize `STATUS_REVISAO.json` e gere novamente.
 
-Última atualização declarada: **2026-07-17**.
+Última atualização declarada: **2026-07-18**.
 
 ## Resumo geral
 
@@ -10,8 +10,8 @@
 - Aulas numeradas de 001 a 720: **720**.
 - Aula de abertura 000: **1**.
 - Refeitas e aprovadas: **24**.
-- Em revisão: **15**.
-- Pendentes: **682**.
+- Em revisão: **97**.
+- Pendentes: **600**.
 - Bloqueadas: **0**.
 
 ## Resumo por módulo
@@ -20,10 +20,10 @@
 |---|---:|---:|---:|---:|---:|---:|
 | P0 | 1 | 1 | 0 | 0 | 0 | 100% |
 | M0 | 20 | 20 | 0 | 0 | 0 | 100% |
-| M1 | 41 | 3 | 15 | 23 | 0 | 7% |
-| M2 | 28 | 0 | 0 | 28 | 0 | 0% |
-| M3 | 15 | 0 | 0 | 15 | 0 | 0% |
-| M4 | 41 | 0 | 0 | 41 | 0 | 0% |
+| M1 | 41 | 3 | 38 | 0 | 0 | 7% |
+| M2 | 28 | 0 | 28 | 0 | 0 | 0% |
+| M3 | 15 | 0 | 15 | 0 | 0 | 0% |
+| M4 | 41 | 0 | 16 | 25 | 0 | 0% |
 | M5 | 26 | 0 | 0 | 26 | 0 | 0% |
 | M6 | 14 | 0 | 0 | 14 | 0 | 0% |
 | M7 | 15 | 0 | 0 | 15 | 0 | 0% |
@@ -400,97 +400,806 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [039 — M1.19 — While](../aulas/039_M1_19_WHILE_OFICIAL.md)
-- [ ] **Pendente** — [040 — M1.20 — Do While](../aulas/040_M1_20_DO_WHILE_OFICIAL.md)
-- [ ] **Pendente** — [041 — M1.21 — For Clássico](../aulas/041_M1_21_FOR_CLASSICO_OFICIAL.md)
-- [ ] **Pendente** — [042 — M1.22 — Break e Continue](../aulas/042_M1_22_BREAK_E_CONTINUE_OFICIAL.md)
-- [ ] **Pendente** — [043 — M1.23 — Laços Aninhados](../aulas/043_M1_23_LACOS_ANINHADOS_OFICIAL.md)
-- [ ] **Pendente** — [044 — M1.24 — Validação de Entrada sem Try/Catch Profundo](../aulas/044_M1_24_VALIDACAO_DE_ENTRADA_SEM_TRY_CATCH_PROFUNDO_OFICIAL.md)
-- [ ] **Pendente** — [045 — M1.25 — Arrays de Números](../aulas/045_M1_25_ARRAYS_DE_NUMEROS_OFICIAL.md)
-- [ ] **Pendente** — [046 — M1.26 — Arrays com Tamanho Definido pelo Usuário](../aulas/046_M1_26_ARRAYS_COM_TAMANHO_DEFINIDO_PELO_USUARIO_OFICIAL.md)
-- [ ] **Pendente** — [047 — M1.27 — Alteração de Posições do Array](../aulas/047_M1_27_ALTERACAO_DE_POSICOES_DO_ARRAY_OFICIAL.md)
-- [ ] **Pendente** — [048 — M1.28 — Busca em Array](../aulas/048_M1_28_BUSCA_EM_ARRAY_OFICIAL.md)
-- [ ] **Pendente** — [049 — M1.29 — Maior, Menor, Soma e Média em Array](../aulas/049_M1_29_MAIOR_MENOR_SOMA_E_MEDIA_EM_ARRAY_OFICIAL.md)
-- [ ] **Pendente** — [050 — M1.30 — Arrays de String](../aulas/050_M1_30_ARRAYS_DE_STRING_OFICIAL.md)
-- [ ] **Pendente** — [051 — M1.31 — Arrays Paralelos](../aulas/051_M1_31_ARRAYS_PARALELOS_OFICIAL.md)
-- [ ] **Pendente** — [052 — M1.32 — Matriz Bidimensional Inicial](../aulas/052_M1_32_MATRIZ_BIDIMENSIONAL_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [053 — M1.33 — Métodos sem Retorno](../aulas/053_M1_33_METODOS_SEM_RETORNO_OFICIAL.md)
-- [ ] **Pendente** — [054 — M1.34 — Métodos com Retorno](../aulas/054_M1_34_METODOS_COM_RETORNO_OFICIAL.md)
-- [ ] **Pendente** — [055 — M1.35 — Métodos com Parâmetros](../aulas/055_M1_35_METODOS_COM_PARAMETROS_OFICIAL.md)
-- [ ] **Pendente** — [056 — M1.36 — Sobrecarga de Métodos Inicial](../aulas/056_M1_36_SOBRECARGA_DE_METODOS_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [057 — M1.37 — Escopo de Variáveis](../aulas/057_M1_37_ESCOPO_DE_VARIAVEIS_OFICIAL.md)
-- [ ] **Pendente** — [058 — M1.38 — Passagem de Valores e Referências](../aulas/058_M1_38_PASSAGEM_DE_VALORES_E_REFERENCIAS_OFICIAL.md)
-- [ ] **Pendente** — [059 — M1.39 — Tratamento Inicial de Erros de Entrada](../aulas/059_M1_39_TRATAMENTO_INICIAL_DE_ERROS_DE_ENTRADA_OFICIAL.md)
-- [ ] **Pendente** — [060 — M1.40 — Debug Aplicado aos Fundamentos](../aulas/060_M1_40_DEBUG_APLICADO_AOS_FUNDAMENTOS_OFICIAL.md)
-- [ ] **Pendente** — [061 — M1.41 — Mini Projeto Calculadora Profissional Console](../aulas/061_M1_41_MINI_PROJETO_CALCULADORA_PROFISSIONAL_CONSOLE_OFICIAL.md)
+- [ ] **Em revisão** — [039 — M1.19 — While](../aulas/039_M1_19_WHILE_OFICIAL.md)
+  - Oficina em revisão de repetição em Java com while, cobrindo animador de fluxo (crescente, decrescente, zero iterações), simulador de contador + acumulador, galeria de 6 padrões corporativos de negócio e clínica de 10 erros comuns.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/039_WHILE.md`](matrizes/039_WHILE.md)
+    - [`plataforma-curso/src/components/GuidedWhileLesson039.jsx`](../../plataforma-curso/src/components/GuidedWhileLesson039.jsx)
+    - [`plataforma-curso/src/components/guidedWhileLesson.css`](../../plataforma-curso/src/components/guidedWhileLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [040 — M1.20 — Do While](../aulas/040_M1_20_DO_WHILE_OFICIAL.md)
+  - Oficina em revisão de do while, cobrindo execução garantida antes do teste, comparação com while, ponto e vírgula final, menu com sentinela e switch, validações numéricas e textuais, senha limitada, Scanner nextInt/nextLine, break/continue inicial, diagnóstico e entrega versionada.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/040_DO_WHILE.md`](matrizes/040_DO_WHILE.md)
+    - [`plataforma-curso/src/components/GuidedDoWhileLesson040.jsx`](../../plataforma-curso/src/components/GuidedDoWhileLesson040.jsx)
+    - [`plataforma-curso/src/components/guidedDoWhileLesson.css`](../../plataforma-curso/src/components/guidedDoWhileLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [041 — M1.21 — For Clássico](../aulas/041_M1_21_FOR_CLASSICO_OFICIAL.md)
+  - Oficina em revisão de for clássico, cobrindo inicialização, condição e atualização, ordem real do ciclo, crescente e decrescente, zero-based, fronteiras e off-by-one, contador e acumulador, passos, lotes, Scanner, paginação, parcelas, escopo e dez diagnósticos.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/041_FOR_CLASSICO.md`](matrizes/041_FOR_CLASSICO.md)
+    - [`plataforma-curso/src/components/GuidedForClassicLesson041.jsx`](../../plataforma-curso/src/components/GuidedForClassicLesson041.jsx)
+    - [`plataforma-curso/src/components/guidedForClassicLesson.css`](../../plataforma-curso/src/components/guidedForClassicLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [042 — M1.22 — Break e Continue](../aulas/042_M1_22_BREAK_E_CONTINUE_OFICIAL.md)
+  - Oficina em revisão de break e continue, cobrindo parada versus salto, falha crítica versus item inválido, uso em for/while/do while, risco do continue antes da atualização, alcance em switch e loops internos, auditoria, Scanner, dez erros e entrega testável.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/042_BREAK_CONTINUE.md`](matrizes/042_BREAK_CONTINUE.md)
+    - [`plataforma-curso/src/components/GuidedBreakContinueLesson042.jsx`](../../plataforma-curso/src/components/GuidedBreakContinueLesson042.jsx)
+    - [`plataforma-curso/src/components/guidedBreakContinueLesson.css`](../../plataforma-curso/src/components/guidedBreakContinueLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [043 — M1.23 — Laços Aninhados](../aulas/043_M1_23_LACOS_ANINHADOS_OFICIAL.md)
+  - Oficina em revisão de laços aninhados, cobrindo loop externo/interno, reinício do interno, multiplicação de iterações, grade conceitual, print/println, acumuladores por nível, hierarquias de backend, alcance de break/continue, escala, nomes e dez diagnósticos.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/043_LACOS_ANINHADOS.md`](matrizes/043_LACOS_ANINHADOS.md)
+    - [`plataforma-curso/src/components/GuidedNestedLoopsLesson043.jsx`](../../plataforma-curso/src/components/GuidedNestedLoopsLesson043.jsx)
+    - [`plataforma-curso/src/components/guidedNestedLoopsLesson.css`](../../plataforma-curso/src/components/guidedNestedLoopsLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [044 — M1.24 — Validação de Entrada sem Try/Catch Profundo](../aulas/044_M1_24_VALIDACAO_DE_ENTRADA_SEM_TRY_CATCH_PROFUNDO_OFICIAL.md)
+  - Oficina em revisão de validação de entrada, cobrindo fluxo ler-normalizar-validar-processar, regra lógica versus erro técnico, while/do while, mensagens, faixas, texto, status, centavos, nextInt/nextLine, tentativas, múltiplos campos, limitações didáticas e dez diagnósticos.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/044_VALIDACAO_ENTRADA.md`](matrizes/044_VALIDACAO_ENTRADA.md)
+    - [`plataforma-curso/src/components/GuidedInputValidationLesson044.jsx`](../../plataforma-curso/src/components/GuidedInputValidationLesson044.jsx)
+    - [`plataforma-curso/src/components/guidedInputValidationLesson.css`](../../plataforma-curso/src/components/guidedInputValidationLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [045 — M1.25 — Arrays de Números](../aulas/045_M1_25_ARRAYS_DE_NUMEROS_OFICIAL.md)
+  - Oficina em revisão de arrays numéricos, cobrindo declaração, inicialização, valores padrão, tamanho fixo, índice zero, length, acesso, alteração, for, limites, soma, média decimal, extremos, contagem, continue, centavos, Scanner, domínios de backend, debug e dez diagnósticos.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/045_ARRAYS_NUMEROS.md`](matrizes/045_ARRAYS_NUMEROS.md)
+    - [`plataforma-curso/src/components/GuidedNumericArraysLesson045.jsx`](../../plataforma-curso/src/components/GuidedNumericArraysLesson045.jsx)
+    - [`plataforma-curso/src/components/guidedNumericArraysLesson.css`](../../plataforma-curso/src/components/guidedNumericArraysLesson.css)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [046 — M1.26 — Arrays com Tamanho Definido pelo Usuário](../aulas/046_M1_26_ARRAYS_COM_TAMANHO_DEFINIDO_PELO_USUARIO_OFICIAL.md)
+  - Oficina reconstruída do zero pelo Codex sobre tamanho decidido em execução, portão antes da alocação, valores padrão, programa completo, preenchimento validado, processamento seguro, sete contratos de backend, dez diagnósticos e entrega profissional. Validação estática, lint, build e inspeção responsiva passaram; apenas a aprovação do responsável continua pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/046_ARRAYS_TAMANHO_USUARIO.md`](matrizes/046_ARRAYS_TAMANHO_USUARIO.md)
+    - [`plataforma-curso/src/components/GuidedUserSizedArraysLesson046.jsx`](../../plataforma-curso/src/components/GuidedUserSizedArraysLesson046.jsx)
+    - [`plataforma-curso/src/components/guidedUserSizedArraysLesson.css`](../../plataforma-curso/src/components/guidedUserSizedArraysLesson.css)
+    - [`tools/validate-lesson-046.mjs`](../../tools/validate-lesson-046.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [047 — M1.27 — Alteração de Posições do Array](../aulas/047_M1_27_ALTERACAO_DE_POSICOES_DO_ARRAY_OFICIAL.md)
+  - Oficina do Gemini auditada e corrigida pelo Codex, cobrindo tamanho fixo e conteúdo mutável, posição amigável e índice técnico, validação de limites, valor antigo, recálculo completo e incremental consistente, dez padrões de domínio e lote, dez diagnósticos e entrega versionada. Validação estática, lint, build e inspeção responsiva passaram; apenas a aprovação do responsável continua pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/047_ALTERACAO_POSICOES_ARRAY.md`](matrizes/047_ALTERACAO_POSICOES_ARRAY.md)
+    - [`plataforma-curso/src/components/GuidedArrayModificationLesson047.jsx`](../../plataforma-curso/src/components/GuidedArrayModificationLesson047.jsx)
+    - [`plataforma-curso/src/components/guidedArrayModificationLesson.css`](../../plataforma-curso/src/components/guidedArrayModificationLesson.css)
+    - [`tools/validate-lesson-047.mjs`](../../tools/validate-lesson-047.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [048 — M1.28 — Busca em Array](../aulas/048_M1_28_BUSCA_EM_ARRAY_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. As coleções ausentes que derrubavam a Galeria de Domínios e a Clínica de Erros foram reconstruídas; a aula agora cobre busca linear, primeira e última ocorrência, contagem, sentinela -1, dez domínios, dez diagnósticos e um programa guiado com Scanner. Validação estática, lint, build e inspeção responsiva passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/048_BUSCA_ARRAY.md`](matrizes/048_BUSCA_ARRAY.md)
+    - [`plataforma-curso/src/components/GuidedArraySearchLesson048.jsx`](../../plataforma-curso/src/components/GuidedArraySearchLesson048.jsx)
+    - [`plataforma-curso/src/components/guidedArraySearchLesson.css`](../../plataforma-curso/src/components/guidedArraySearchLesson.css)
+    - [`tools/validate-lessons-048-052.mjs`](../../tools/validate-lessons-048-052.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [049 — M1.29 — Maior, Menor, Soma e Média em Array](../aulas/049_M1_29_MAIOR_MENOR_SOMA_E_MEDIA_EM_ARRAY_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. A cobertura de soma, média, maior, menor, posições, empates, array vazio e dois passes foi preservada e recebeu um programa guiado completo com Scanner, persistência normalizada, foco móvel e acabamento responsivo. Validação estática, lint, build e inspeção responsiva passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/049_MAIOR_MENOR_SOMA_MEDIA_ARRAY.md`](matrizes/049_MAIOR_MENOR_SOMA_MEDIA_ARRAY.md)
+    - [`plataforma-curso/src/components/GuidedArrayStatsLesson049.jsx`](../../plataforma-curso/src/components/GuidedArrayStatsLesson049.jsx)
+    - [`plataforma-curso/src/components/guidedArrayStatsLesson.css`](../../plataforma-curso/src/components/guidedArrayStatsLesson.css)
+    - [`tools/validate-lessons-048-052.mjs`](../../tools/validate-lessons-048-052.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [050 — M1.30 — Arrays de String](../aulas/050_M1_30_ARRAYS_DE_STRING_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. A distinção entre null, vazio e branco, comparação, normalização, busca e contagem textuais foi preservada e recebeu matriz pedagógica própria, programa guiado completo com Scanner, persistência normalizada, foco móvel e acabamento responsivo. Validação estática, lint, build e inspeção responsiva passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/050_ARRAYS_DE_STRING.md`](matrizes/050_ARRAYS_DE_STRING.md)
+    - [`plataforma-curso/src/components/GuidedStringArrayLesson050.jsx`](../../plataforma-curso/src/components/GuidedStringArrayLesson050.jsx)
+    - [`plataforma-curso/src/components/guidedStringArrayLesson.css`](../../plataforma-curso/src/components/guidedStringArrayLesson.css)
+    - [`tools/validate-lessons-048-052.mjs`](../../tools/validate-lessons-048-052.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [051 — M1.31 — Arrays Paralelos](../aulas/051_M1_31_ARRAYS_PARALELOS_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. O vínculo por índice, a fragilidade de desalinhamento, a validação de tamanhos e as operações cruzadas foram preservados e receberam um programa guiado completo com Scanner, persistência normalizada, foco móvel e acabamento responsivo. Validação estática, lint, build e inspeção responsiva passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/051_ARRAYS_PARALELOS.md`](matrizes/051_ARRAYS_PARALELOS.md)
+    - [`plataforma-curso/src/components/GuidedArrayParallelLesson051.jsx`](../../plataforma-curso/src/components/GuidedArrayParallelLesson051.jsx)
+    - [`plataforma-curso/src/components/guidedArrayParallelLesson.css`](../../plataforma-curso/src/components/guidedArrayParallelLesson.css)
+    - [`tools/validate-lessons-048-052.mjs`](../../tools/validate-lessons-048-052.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [052 — M1.32 — Matriz Bidimensional Inicial](../aulas/052_M1_32_MATRIZ_BIDIMENSIONAL_INICIAL_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. Linhas, colunas, laços aninhados, preenchimento, estatísticas, busca, escrita e validação de coordenadas foram preservados e receberam um programa guiado completo com Scanner, persistência normalizada, foco móvel e acabamento responsivo. Validação estática, lint, build e inspeção responsiva passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/052_MATRIZ_BIDIMENSIONAL_INICIAL.md`](matrizes/052_MATRIZ_BIDIMENSIONAL_INICIAL.md)
+    - [`plataforma-curso/src/components/GuidedMatrixInitialLesson052.jsx`](../../plataforma-curso/src/components/GuidedMatrixInitialLesson052.jsx)
+    - [`plataforma-curso/src/components/guidedMatrixInitialLesson.css`](../../plataforma-curso/src/components/guidedMatrixInitialLesson.css)
+    - [`tools/validate-lessons-048-052.mjs`](../../tools/validate-lessons-048-052.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [053 — M1.33 — Métodos sem Retorno](../aulas/053_M1_33_METODOS_SEM_RETORNO_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. O domínio de normalização que faltava foi reposto, a terminologia de passagem por valor foi corrigida e a aula recebeu um programa completo e compilável antes do desafio. Comandos, progresso, foco móvel, responsividade e Clínica de Erros foram corrigidos. Validador, compilação Java, lint e build passaram; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/053_METODOS_SEM_RETORNO.md`](matrizes/053_METODOS_SEM_RETORNO.md)
+    - [`plataforma-curso/src/components/GuidedVoidMethodsLesson053.jsx`](../../plataforma-curso/src/components/GuidedVoidMethodsLesson053.jsx)
+    - [`plataforma-curso/src/components/guidedVoidMethodsLesson.css`](../../plataforma-curso/src/components/guidedVoidMethodsLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [054 — M1.34 — Métodos com Retorno](../aulas/054_M1_34_METODOS_COM_RETORNO_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. O domínio de busca de cliente que faltava foi reposto e a aula recebeu um programa completo e compilável que demonstra total, média, busca, sentinela e normalização antes do desafio. Comandos, explicações, progresso, foco móvel, responsividade e Clínica de Erros foram corrigidos. Validador, compilação Java, lint e build passaram; aprovação pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/054_METODOS_COM_RETORNO.md`](matrizes/054_METODOS_COM_RETORNO.md)
+    - [`plataforma-curso/src/components/GuidedMethodsWithReturnLesson054.jsx`](../../plataforma-curso/src/components/GuidedMethodsWithReturnLesson054.jsx)
+    - [`plataforma-curso/src/components/guidedMethodsWithReturnLesson.css`](../../plataforma-curso/src/components/guidedMethodsWithReturnLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [055 — M1.35 — Métodos com Parâmetros](../aulas/055_M1_35_METODOS_COM_PARAMETROS_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. Foi corrigida a afirmação de passagem por referência: Java sempre passa por valor e copia o valor da referência para arrays e matrizes. Um programa compilável repõe int, long, double, boolean, String, arrays, matrizes e retorno. Comandos, progresso, foco móvel, responsividade e Clínica de Erros foram corrigidos; aprovação do responsável pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/055_METODOS_COM_PARAMETROS.md`](matrizes/055_METODOS_COM_PARAMETROS.md)
+    - [`plataforma-curso/src/components/GuidedMethodsWithParamsLesson055.jsx`](../../plataforma-curso/src/components/GuidedMethodsWithParamsLesson055.jsx)
+    - [`plataforma-curso/src/components/guidedMethodsWithParamsLesson.css`](../../plataforma-curso/src/components/guidedMethodsWithParamsLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [056 — M1.36 — Sobrecarga de Métodos Inicial](../aulas/056_M1_36_SOBRECARGA_DE_METODOS_INICIAL_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. O exemplo completo e compilável agora cobre sobrecarga por quantidade e tipo, primitivos, arrays, boolean, normalização e delegação, preservando promoção e ambiguidade com null. Comandos, progresso, foco móvel, responsividade e Clínica de Erros foram corrigidos. Validador, compilação Java, lint e build passaram; aprovação pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/056_SOBRECARGA_METODOS.md`](matrizes/056_SOBRECARGA_METODOS.md)
+    - [`plataforma-curso/src/components/GuidedOverloadLesson056.jsx`](../../plataforma-curso/src/components/GuidedOverloadLesson056.jsx)
+    - [`plataforma-curso/src/components/guidedOverloadLesson.css`](../../plataforma-curso/src/components/guidedOverloadLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [057 — M1.37 — Escopo de Variáveis](../aulas/057_M1_37_ESCOPO_DE_VARIAVEIS_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. Um programa completo e compilável repõe a demonstração conjunta de if/else, for, while, temporárias, parâmetros, métodos e shadowing. A saída divergente e os comandos foram corrigidos, assim como progresso, foco móvel, responsividade e Clínica de Erros. Validador, compilação Java, lint e build passaram; aprovação pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/057_ESCOPO_DE_VARIAVEIS.md`](matrizes/057_ESCOPO_DE_VARIAVEIS.md)
+    - [`plataforma-curso/src/components/GuidedScopeLesson057.jsx`](../../plataforma-curso/src/components/GuidedScopeLesson057.jsx)
+    - [`plataforma-curso/src/components/guidedScopeLesson.css`](../../plataforma-curso/src/components/guidedScopeLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [058 — M1.38 — Passagem de Valores e Referências](../aulas/058_M1_38_PASSAGEM_DE_VALORES_E_REFERENCIAS_OFICIAL.md)
+  - Oficina entregue pelo Gemini e auditada pelo Codex. O programa completo e compilável demonstra cópias de int, long, double e boolean, mutação e reatribuição de arrays, String imutável e StringBuilder. A galeria de matriz passou a comparar mutação com reatribuição; normalização, comandos, progresso, foco móvel, responsividade e Clínica de Erros foram corrigidos. Aprovação visual pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/058_PASSAGEM_DE_VALORES_E_REFERENCIAS.md`](matrizes/058_PASSAGEM_DE_VALORES_E_REFERENCIAS.md)
+    - [`plataforma-curso/src/components/GuidedValueRefPassingLesson058.jsx`](../../plataforma-curso/src/components/GuidedValueRefPassingLesson058.jsx)
+    - [`plataforma-curso/src/components/guidedValueRefPassingLesson.css`](../../plataforma-curso/src/components/guidedValueRefPassingLesson.css)
+    - [`tools/validate-lessons-053-058.mjs`](../../tools/validate-lessons-053-058.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [059 — M1.39 — Tratamento Inicial de Erros de Entrada](../aulas/059_M1_39_TRATAMENTO_INICIAL_DE_ERROS_DE_ENTRADA_OFICIAL.md)
+  - Oficina reconstruída pelo Codex com simulador quadro a quadro do try/catch, mapa do buffer do Scanner, leitores de int, long e double, separação entre incompatibilidade de tipo e regra de negócio, métodos reutilizáveis, seis domínios, dez diagnósticos e programa completo compilável antes do desafio. Validador Java, lint e build executados; aprovação visual pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/059_TRATAMENTO_INICIAL_ERROS_ENTRADA.md`](matrizes/059_TRATAMENTO_INICIAL_ERROS_ENTRADA.md)
+    - [`plataforma-curso/src/components/GuidedInputErrorsLesson059.jsx`](../../plataforma-curso/src/components/GuidedInputErrorsLesson059.jsx)
+    - [`plataforma-curso/src/components/guidedInputErrorsLesson.css`](../../plataforma-curso/src/components/guidedInputErrorsLesson.css)
+    - [`tools/validate-lesson-059.mjs`](../../tools/validate-lesson-059.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [060 — M1.40 — Debug Aplicado aos Fundamentos](../aulas/060_M1_40_DEBUG_APLICADO_AOS_FUNDAMENTOS_OFICIAL.md)
+  - Oficina reconstruída pelo Codex com simulação didática do IntelliJ, breakpoint e linha atual, Step Over/Into/Out/Resume, Variables, Watches, Evaluate Expression e Call Stack aplicados a if, método, laços, matriz, passagem de dados e try/catch. Inclui seis domínios, dez diagnósticos, programa compilável e desafio por hipóteses. Validador Java, lint e build aprovados; inspeção visual pendente.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/060_DEBUG_APLICADO_FUNDAMENTOS.md`](matrizes/060_DEBUG_APLICADO_FUNDAMENTOS.md)
+    - [`plataforma-curso/src/components/GuidedFundamentalsDebugLesson060.jsx`](../../plataforma-curso/src/components/GuidedFundamentalsDebugLesson060.jsx)
+    - [`plataforma-curso/src/components/guidedFundamentalsDebugLesson.css`](../../plataforma-curso/src/components/guidedFundamentalsDebugLesson.css)
+    - [`tools/validate-lesson-060.mjs`](../../tools/validate-lesson-060.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [061 — M1.41 — Mini Projeto Calculadora Profissional Console](../aulas/061_M1_41_MINI_PROJETO_CALCULADORA_PROFISSIONAL_CONSOLE_OFICIAL.md)
+  - Projeto integrador reconstruído pelo Codex em nove etapas, com simulador funcional, mapa de responsabilidades, entrada segura, quatro operações, proteção de divisor zero, histórico rotativo de dez resultados, estatísticas, dez testes, dez diagnósticos e entrega guiada. O programa Java completo foi compilado pelo validador dedicado; lint e build foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/061_CALCULADORA_PROFISSIONAL_CONSOLE.md`](matrizes/061_CALCULADORA_PROFISSIONAL_CONSOLE.md)
+    - [`plataforma-curso/src/components/GuidedCalculatorProjectLesson061.jsx`](../../plataforma-curso/src/components/GuidedCalculatorProjectLesson061.jsx)
+    - [`plataforma-curso/src/components/guidedCalculatorProjectLesson.css`](../../plataforma-curso/src/components/guidedCalculatorProjectLesson.css)
+    - [`tools/validate-lesson-061.mjs`](../../tools/validate-lesson-061.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 
 ## M2 — 28 aulas
 
-- [ ] **Pendente** — [062 — M2.01 — JVM, Bytecode e Execução por Baixo](../aulas/062_M2_01_JVM_BYTECODE_E_EXECUCAO_POR_BAIXO_OFICIAL.md)
-- [ ] **Pendente** — [063 — M2.02 — Stack, Heap e Referências](../aulas/063_M2_02_STACK_HEAP_E_REFERENCIAS_OFICIAL.md)
-- [ ] **Pendente** — [064 — M2.03 — Garbage Collector Conceitual](../aulas/064_M2_03_GARBAGE_COLLECTOR_CONCEITUAL_OFICIAL.md)
-- [ ] **Pendente** — [065 — M2.04 — Default Values e Inicialização](../aulas/065_M2_04_DEFAULT_VALUES_E_INICIALIZACAO_OFICIAL.md)
-- [ ] **Pendente** — [066 — M2.05 — Null e NullPointerException](../aulas/066_M2_05_NULL_E_NULLPOINTEREXCEPTION_OFICIAL.md)
-- [ ] **Pendente** — [067 — M2.06 — String Pool e Imutabilidade de String](../aulas/067_M2_06_STRING_POOL_E_IMUTABILIDADE_DE_STRING_OFICIAL.md)
-- [ ] **Pendente** — [068 — M2.07 — StringBuilder e StringBuffer](../aulas/068_M2_07_STRINGBUILDER_E_STRINGBUFFER_OFICIAL.md)
-- [ ] **Pendente** — [069 — M2.08 — Wrappers e Autoboxing](../aulas/069_M2_08_WRAPPERS_E_AUTOBOXING_OFICIAL.md)
-- [ ] **Pendente** — [070 — M2.09 — Conversões e Casting](../aulas/070_M2_09_CONVERSOES_E_CASTING_OFICIAL.md)
-- [ ] **Pendente** — [071 — M2.10 — Math, Random e Números Utilitários](../aulas/071_M2_10_MATH_RANDOM_E_NUMEROS_UTILITARIOS_OFICIAL.md)
-- [ ] **Pendente** — [072 — M2.11 — BigDecimal desde a Base](../aulas/072_M2_11_BIGDECIMAL_DESDE_A_BASE_OFICIAL.md)
-- [ ] **Pendente** — [073 — M2.12 — Locale, NumberFormat e Formatação](../aulas/073_M2_12_LOCALE_NUMBERFORMAT_E_FORMATACAO_OFICIAL.md)
-- [ ] **Pendente** — [074 — M2.13 — java.time básico](../aulas/074_M2_13_JAVA_TIME_BASICO_OFICIAL.md)
-- [ ] **Pendente** — [075 — M2.14 — Timezone e Instant](../aulas/075_M2_14_TIMEZONE_E_INSTANT_OFICIAL.md)
-- [ ] **Pendente** — [076 — M2.15 — Enum profissional](../aulas/076_M2_15_ENUM_PROFISSIONAL_OFICIAL.md)
-- [ ] **Pendente** — [077 — M2.16 — Records](../aulas/077_M2_16_RECORDS_OFICIAL.md)
-- [ ] **Pendente** — [078 — M2.17 — Var com critério](../aulas/078_M2_17_VAR_COM_CRITERIO_OFICIAL.md)
-- [ ] **Pendente** — [079 — M2.18 — Varargs](../aulas/079_M2_18_VARARGS_OFICIAL.md)
-- [ ] **Pendente** — [080 — M2.19 — Annotations básicas](../aulas/080_M2_19_ANNOTATIONS_BASICAS_OFICIAL.md)
-- [ ] **Pendente** — [081 — M2.20 — Reflection conceitual](../aulas/081_M2_20_REFLECTION_CONCEITUAL_OFICIAL.md)
-- [ ] **Pendente** — [082 — M2.21 — Sealed classes e interfaces](../aulas/082_M2_21_SEALED_CLASSES_E_INTERFACES_OFICIAL.md)
-- [ ] **Pendente** — [083 — M2.22 — Pattern matching](../aulas/083_M2_22_PATTERN_MATCHING_OFICIAL.md)
-- [ ] **Pendente** — [084 — M2.23 — Text blocks](../aulas/084_M2_23_TEXT_BLOCKS_OFICIAL.md)
-- [ ] **Pendente** — [085 — M2.24 — Exceptions por baixo](../aulas/085_M2_24_EXCEPTIONS_POR_BAIXO_OFICIAL.md)
-- [ ] **Pendente** — [086 — M2.25 — Entrada/saída básica com console robusto](../aulas/086_M2_25_ENTRADA_SAIDA_BASICA_COM_CONSOLE_ROBUSTO_OFICIAL.md)
-- [ ] **Pendente** — [087 — M2.26 — Organização de pacotes desde cedo](../aulas/087_M2_26_ORGANIZACAO_DE_PACOTES_DESDE_CEDO_OFICIAL.md)
-- [ ] **Pendente** — [088 — M2.27 — Leitura de documentação oficial](../aulas/088_M2_27_LEITURA_DE_DOCUMENTACAO_OFICIAL.md)
-- [ ] **Pendente** — [089 — M2.28 — Mini projeto biblioteca Java Core](../aulas/089_M2_28_MINI_PROJETO_BIBLIOTECA_JAVA_CORE_OFICIAL.md)
+- [ ] **Em revisão** — [062 — M2.01 — JVM, Bytecode e Execução por Baixo](../aulas/062_M2_01_JVM_BYTECODE_E_EXECUCAO_POR_BAIXO_OFICIAL.md)
+  - Aula reconstruída pelo Codex em dez etapas independentes, com pipeline interativo do fonte à saída, separação entre JDK, runtime/JRE e JVM, bancada sincronizada de terminal e artefatos, leitura guiada de javap -c, classloader e classpath com duas classes, diagnóstico por fase, portabilidade, JIT, ponte para JAR e Spring Boot, dez erros e entrega com debug e Git. O validador compila, executa e desmonta o programa Java real; lint e build foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/062_JVM_BYTECODE_EXECUCAO.md`](matrizes/062_JVM_BYTECODE_EXECUCAO.md)
+    - [`plataforma-curso/src/components/GuidedJvmBytecodeLesson062.jsx`](../../plataforma-curso/src/components/GuidedJvmBytecodeLesson062.jsx)
+    - [`plataforma-curso/src/components/guidedJvmBytecodeLesson.css`](../../plataforma-curso/src/components/guidedJvmBytecodeLesson.css)
+    - [`tools/validate-lesson-062.mjs`](../../tools/validate-lesson-062.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [063 — M2.02 — Stack, Heap e Referências](../aulas/063_M2_02_STACK_HEAP_E_REFERENCIAS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com modelo conceitual animado de stack e heap, ciclo de frames, comparação entre valor, mutação e reatribuição, laboratório de null e curto-circuito, String versus StringBuilder, alcançabilidade, seis decisões de backend, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma as sete linhas de saída; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/063_STACK_HEAP_REFERENCIAS.md`](matrizes/063_STACK_HEAP_REFERENCIAS.md)
+    - [`plataforma-curso/src/components/GuidedStackHeapReferencesLesson063.jsx`](../../plataforma-curso/src/components/GuidedStackHeapReferencesLesson063.jsx)
+    - [`plataforma-curso/src/components/guidedStackHeapReferencesLesson.css`](../../plataforma-curso/src/components/guidedStackHeapReferencesLesson.css)
+    - [`tools/validate-lesson-063.mjs`](../../tools/validate-lesson-063.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [064 — M2.03 — Garbage Collector Conceitual](../aulas/064_M2_03_GARBAGE_COLLECTOR_CONCEITUAL_OFICIAL.md)
+  - Aula reconstruída em nove etapas com grafo de alcançabilidade, linha entre referência removida, elegibilidade e coleta, simulador de cache limitado e sem limite, pressão de memória, observação didática com Runtime, recursos externos, seis domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma seis saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/064_GARBAGE_COLLECTOR_CONCEITUAL.md`](matrizes/064_GARBAGE_COLLECTOR_CONCEITUAL.md)
+    - [`plataforma-curso/src/components/GuidedGarbageCollectorLesson064.jsx`](../../plataforma-curso/src/components/GuidedGarbageCollectorLesson064.jsx)
+    - [`plataforma-curso/src/components/guidedGarbageCollectorLesson.css`](../../plataforma-curso/src/components/guidedGarbageCollectorLesson.css)
+    - [`tools/validate-lesson-064.mjs`](../../tools/validate-lesson-064.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [065 — M2.04 — Default Values e Inicialização](../aulas/065_M2_04_DEFAULT_VALUES_E_INICIALIZACAO_OFICIAL.md)
+  - Aula reconstruída em oito etapas com mapa dos defaults por tipo e local, análise visual dos caminhos de variáveis locais, separação entre slots e objetos em arrays, comparação entre estado técnico e estado válido, quatro estratégias de inicialização, seis domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma seis saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/065_DEFAULT_VALUES_INICIALIZACAO.md`](matrizes/065_DEFAULT_VALUES_INICIALIZACAO.md)
+    - [`plataforma-curso/src/components/GuidedDefaultValuesInitializationLesson065.jsx`](../../plataforma-curso/src/components/GuidedDefaultValuesInitializationLesson065.jsx)
+    - [`plataforma-curso/src/components/guidedDefaultValuesInitializationLesson.css`](../../plataforma-curso/src/components/guidedDefaultValuesInitializationLesson.css)
+    - [`tools/validate-lesson-065.mjs`](../../tools/validate-lesson-065.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [066 — M2.05 — Null e NullPointerException](../aulas/066_M2_05_NULL_E_NULLPOINTEREXCEPTION_OFICIAL.md)
+  - Aula reconstruída em dez etapas com cadeias visuais de NPE, comparação entre null, vazio e blank, curto-circuito, fail fast na borda, array manipulável, contratos de busca, Optional aplicado com limites, seis domínios, leitura interativa de stack trace, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma nove saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/066_NULL_NULLPOINTEREXCEPTION.md`](matrizes/066_NULL_NULLPOINTEREXCEPTION.md)
+    - [`plataforma-curso/src/components/GuidedNullPointerLesson066.jsx`](../../plataforma-curso/src/components/GuidedNullPointerLesson066.jsx)
+    - [`plataforma-curso/src/components/guidedNullPointerLesson.css`](../../plataforma-curso/src/components/guidedNullPointerLesson.css)
+    - [`tools/validate-lesson-066.mjs`](../../tools/validate-lesson-066.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [067 — M2.06 — String Pool e Imutabilidade de String](../aulas/067_M2_06_STRING_POOL_E_IMUTABILIDADE_DE_STRING_OFICIAL.md)
+  - Aula reconstruída em nove etapas com mapa interativo do String pool, comparação entre identidade e conteúdo, imutabilidade quadro a quadro, métodos e normalização, frames de método, concatenação por escala, seis domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma dez saídas; lint e build de fechamento do ciclo foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/067_STRING_POOL_IMUTABILIDADE.md`](matrizes/067_STRING_POOL_IMUTABILIDADE.md)
+    - [`plataforma-curso/src/components/GuidedStringPoolLesson067.jsx`](../../plataforma-curso/src/components/GuidedStringPoolLesson067.jsx)
+    - [`plataforma-curso/src/components/guidedStringPoolLesson.css`](../../plataforma-curso/src/components/guidedStringPoolLesson.css)
+    - [`tools/validate-lesson-067.mjs`](../../tools/validate-lesson-067.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [068 — M2.07 — StringBuilder e StringBuffer](../aulas/068_M2_07_STRINGBUILDER_E_STRINGBUFFER_OFICIAL.md)
+  - Aula reconstruída em nove etapas com builder manipulável, append de vários tipos, edição por índices, simulador de length e capacity, comparação visual de StringBuilder local, global e StringBuffer, relatório incremental, seis domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma onze saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/068_STRINGBUILDER_STRINGBUFFER.md`](matrizes/068_STRINGBUILDER_STRINGBUFFER.md)
+    - [`plataforma-curso/src/components/GuidedStringBuilderLesson068.jsx`](../../plataforma-curso/src/components/GuidedStringBuilderLesson068.jsx)
+    - [`plataforma-curso/src/components/guidedStringBuilderLesson.css`](../../plataforma-curso/src/components/guidedStringBuilderLesson.css)
+    - [`tools/validate-lesson-068.mjs`](../../tools/validate-lesson-068.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [069 — M2.08 — Wrappers e Autoboxing](../aulas/069_M2_08_WRAPPERS_E_AUTOBOXING_OFICIAL.md)
+  - Aula reconstruída em nove etapas com mapa de oito pares primitivo-wrapper, boxing quadro a quadro, políticas para unboxing de null, bancada de parsing, comparação segura diante do cache, nove decisões de domínio, simulador de overhead, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma doze saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/069_WRAPPERS_AUTOBOXING.md`](matrizes/069_WRAPPERS_AUTOBOXING.md)
+    - [`plataforma-curso/src/components/GuidedWrappersLesson069.jsx`](../../plataforma-curso/src/components/GuidedWrappersLesson069.jsx)
+    - [`plataforma-curso/src/components/guidedWrappersLesson.css`](../../plataforma-curso/src/components/guidedWrappersLesson.css)
+    - [`tools/validate-lesson-069.mjs`](../../tools/validate-lesson-069.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [070 — M2.09 — Conversões e Casting](../aulas/070_M2_09_CONVERSOES_E_CASTING_OFICIAL.md)
+  - Aula reconstruída em oito etapas com escada de widening e promoção, simulador de narrowing e overflow, laboratório de truncamento e divisão inteira, bancada de parsing, quatro políticas de conversão, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma treze saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/070_CONVERSOES_CASTING.md`](matrizes/070_CONVERSOES_CASTING.md)
+    - [`plataforma-curso/src/components/GuidedConversionsCastingLesson070.jsx`](../../plataforma-curso/src/components/GuidedConversionsCastingLesson070.jsx)
+    - [`plataforma-curso/src/components/guidedConversionsCastingLesson.css`](../../plataforma-curso/src/components/guidedConversionsCastingLesson.css)
+    - [`tools/validate-lesson-070.mjs`](../../tools/validate-lesson-070.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [071 — M2.10 — Math, Random e Números Utilitários](../aulas/071_M2_10_MATH_RANDOM_E_NUMEROS_UTILITARIOS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com régua de cast, round, floor e ceil, paginação por duas fórmulas, seis utilitários matemáticos, construtor de faixa inclusiva, laboratório de seed e sorteio, limites e métodos Exact, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma dezesseis saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/071_MATH_RANDOM_NUMEROS_UTILITARIOS.md`](matrizes/071_MATH_RANDOM_NUMEROS_UTILITARIOS.md)
+    - [`plataforma-curso/src/components/GuidedMathRandomLesson071.jsx`](../../plataforma-curso/src/components/GuidedMathRandomLesson071.jsx)
+    - [`plataforma-curso/src/components/guidedMathRandomLesson.css`](../../plataforma-curso/src/components/guidedMathRandomLesson.css)
+    - [`tools/validate-lesson-071.mjs`](../../tools/validate-lesson-071.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [072 — M2.11 — BigDecimal desde a Base](../aulas/072_M2_11_BIGDECIMAL_DESDE_A_BASE_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparação entre double e quatro origens de BigDecimal, fluxo de imutabilidade e operações, divisão terminante e não terminante, seis RoundingMode, scale, equals versus compareTo, fronteira monetária, rateio manipulável, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma dezenove saídas; lint e build de fechamento do ciclo foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/072_BIGDECIMAL_DESDE_A_BASE.md`](matrizes/072_BIGDECIMAL_DESDE_A_BASE.md)
+    - [`plataforma-curso/src/components/GuidedBigDecimalLesson072.jsx`](../../plataforma-curso/src/components/GuidedBigDecimalLesson072.jsx)
+    - [`plataforma-curso/src/components/guidedBigDecimalLesson.css`](../../plataforma-curso/src/components/guidedBigDecimalLesson.css)
+    - [`tools/validate-lesson-072.mjs`](../../tools/validate-lesson-072.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [073 — M2.12 — Locale, NumberFormat e Formatação](../aulas/073_M2_12_LOCALE_NUMBERFORMAT_E_FORMATACAO_OFICIAL.md)
+  - Aula reconstruída em oito etapas com showroom de três locales, moeda, número e percentual configuráveis, separação entre cálculo e exibição, parsing brasileiro controlado, laboratório de mutabilidade do NumberFormat, seis domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma dezessete saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/073_LOCALE_NUMBERFORMAT_FORMATACAO.md`](matrizes/073_LOCALE_NUMBERFORMAT_FORMATACAO.md)
+    - [`plataforma-curso/src/components/GuidedLocaleNumberFormatLesson073.jsx`](../../plataforma-curso/src/components/GuidedLocaleNumberFormatLesson073.jsx)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`tools/validate-lesson-073.mjs`](../../tools/validate-lesson-073.mjs)
+    - [`plataforma-curso/src/components/GuidedLessonFacts.jsx`](../../plataforma-curso/src/components/GuidedLessonFacts.jsx)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [074 — M2.13 — java.time básico](../aulas/074_M2_13_JAVA_TIME_BASICO_OFICIAL.md)
+  - Aula reconstruída em sete etapas com mapa de LocalDate, LocalTime e LocalDateTime, laboratório de imutabilidade e comparação, seletor Period versus Duration, parsing e formatação, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma vinte e quatro saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/074_JAVA_TIME_BASICO.md`](matrizes/074_JAVA_TIME_BASICO.md)
+    - [`plataforma-curso/src/components/GuidedJavaTimeLesson074.jsx`](../../plataforma-curso/src/components/GuidedJavaTimeLesson074.jsx)
+    - [`plataforma-curso/src/components/guidedJavaTimeLesson.css`](../../plataforma-curso/src/components/guidedJavaTimeLesson.css)
+    - [`tools/validate-lesson-074.mjs`](../../tools/validate-lesson-074.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [075 — M2.14 — Timezone e Instant](../aulas/075_M2_14_TIMEZONE_E_INSTANT_OFICIAL.md)
+  - Aula reconstruída em nove etapas com linha do tempo global e relógio mundial, comparação ZoneId versus ZoneOffset, diagrama para atribuir zona versus converter visão, quatro contratos temporais, pipeline de auditoria UTC, simulador Duration e Clock, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma treze saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/075_TIMEZONE_INSTANT.md`](matrizes/075_TIMEZONE_INSTANT.md)
+    - [`plataforma-curso/src/components/GuidedTimezoneInstantLesson075.jsx`](../../plataforma-curso/src/components/GuidedTimezoneInstantLesson075.jsx)
+    - [`plataforma-curso/src/components/guidedTimezoneInstantLesson.css`](../../plataforma-curso/src/components/guidedTimezoneInstantLesson.css)
+    - [`tools/validate-lesson-075.mjs`](../../tools/validate-lesson-075.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [076 — M2.15 — Enum profissional](../aulas/076_M2_15_ENUM_PROFISSIONAL_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparador String versus enum, anatomia de constantes e atributos, simulador de switch e comportamento, catálogo values/valueOf/name/ordinal/toString, laboratório fromCode, refatorações e limites, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma doze saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/076_ENUM_PROFISSIONAL.md`](matrizes/076_ENUM_PROFISSIONAL.md)
+    - [`plataforma-curso/src/components/GuidedProfessionalEnumLesson076.jsx`](../../plataforma-curso/src/components/GuidedProfessionalEnumLesson076.jsx)
+    - [`plataforma-curso/src/components/guidedProfessionalEnumLesson.css`](../../plataforma-curso/src/components/guidedProfessionalEnumLesson.css)
+    - [`tools/validate-lesson-076.mjs`](../../tools/validate-lesson-076.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [077 — M2.16 — Records](../aulas/077_M2_16_RECORDS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparação classe versus record, contrato gerado e novo objeto, construtores canônico e compacto, composição com tipos profissionais, simulador de imutabilidade superficial, decisão DTO versus entidade, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma quatorze saídas determinísticas; lint e build de fechamento do ciclo foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/077_RECORDS.md`](matrizes/077_RECORDS.md)
+    - [`plataforma-curso/src/components/GuidedRecordsLesson077.jsx`](../../plataforma-curso/src/components/GuidedRecordsLesson077.jsx)
+    - [`plataforma-curso/src/components/guidedRecordsLesson.css`](../../plataforma-curso/src/components/guidedRecordsLesson.css)
+    - [`tools/validate-lesson-077.mjs`](../../tools/validate-lesson-077.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [078 — M2.17 — Var com critério](../aulas/078_M2_17_VAR_COM_CRITERIO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com lente de inferência, mapa de contextos válidos, laboratório de tipos, teste de legibilidade, comparação generics/interface/diamond, refatorações, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma onze saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/078_VAR_COM_CRITERIO.md`](matrizes/078_VAR_COM_CRITERIO.md)
+    - [`plataforma-curso/src/components/GuidedVarCriteriaLesson078.jsx`](../../plataforma-curso/src/components/GuidedVarCriteriaLesson078.jsx)
+    - [`plataforma-curso/src/components/guidedVarCriteriaLesson.css`](../../plataforma-curso/src/components/guidedVarCriteriaLesson.css)
+    - [`tools/validate-lesson-078.mjs`](../../tools/validate-lesson-078.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [079 — M2.18 — Varargs](../aulas/079_M2_18_VARARGS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com transformação varargs-array, seletor de aridade, regras de assinatura, utilitários tipados, três estados de null, decisões de sobrecarga/Object/request, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma doze saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/079_VARARGS.md`](matrizes/079_VARARGS.md)
+    - [`plataforma-curso/src/components/GuidedVarargsLesson079.jsx`](../../plataforma-curso/src/components/GuidedVarargsLesson079.jsx)
+    - [`plataforma-curso/src/components/guidedVarargsLesson.css`](../../plataforma-curso/src/components/guidedVarargsLesson.css)
+    - [`tools/validate-lesson-079.mjs`](../../tools/validate-lesson-079.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [080 — M2.19 — Annotations básicas](../aulas/080_M2_19_ANNOTATIONS_BASICAS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com annotation versus comentário, simulador Override, linha de depreciação, escopo de SuppressWarnings, anatomia customizada, fluxo Retention/Target/runtime, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma oito saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/080_ANNOTATIONS_BASICAS.md`](matrizes/080_ANNOTATIONS_BASICAS.md)
+    - [`plataforma-curso/src/components/GuidedBasicAnnotationsLesson080.jsx`](../../plataforma-curso/src/components/GuidedBasicAnnotationsLesson080.jsx)
+    - [`plataforma-curso/src/components/guidedBasicAnnotationsLesson.css`](../../plataforma-curso/src/components/guidedBasicAnnotationsLesson.css)
+    - [`tools/validate-lesson-080.mjs`](../../tools/validate-lesson-080.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [081 — M2.20 — Reflection conceitual](../aulas/081_M2_20_REFLECTION_CONCEITUAL_OFICIAL.md)
+  - Aula reconstruída em nove etapas com espelho Class/Field/Method/Constructor, três formas de obter Class, explorador de membros, scanner de annotations, validador didático, criação/invocação/acesso dinâmicos, sete domínios, decisões de uso, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma doze saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/081_REFLECTION_CONCEITUAL.md`](matrizes/081_REFLECTION_CONCEITUAL.md)
+    - [`plataforma-curso/src/components/GuidedConceptualReflectionLesson081.jsx`](../../plataforma-curso/src/components/GuidedConceptualReflectionLesson081.jsx)
+    - [`plataforma-curso/src/components/guidedConceptualReflectionLesson.css`](../../plataforma-curso/src/components/guidedConceptualReflectionLesson.css)
+    - [`tools/validate-lesson-081.mjs`](../../tools/validate-lesson-081.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [082 — M2.21 — Sealed classes e interfaces](../aulas/082_M2_21_SEALED_CLASSES_E_INTERFACES_OFICIAL.md)
+  - Aula reconstruída em nove etapas com fronteira aberta versus sealed, simulador de permits e javac, árvore final/sealed/non-sealed, comparação interface/classe abstrata, Resultado com records, decisão enum/sealed/aberto, sete domínios, refatoração, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma oito saídas determinísticas; lint e build de fechamento do ciclo foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/082_SEALED_CLASSES_INTERFACES.md`](matrizes/082_SEALED_CLASSES_INTERFACES.md)
+    - [`plataforma-curso/src/components/GuidedSealedTypesLesson082.jsx`](../../plataforma-curso/src/components/GuidedSealedTypesLesson082.jsx)
+    - [`plataforma-curso/src/components/guidedSealedTypesLesson.css`](../../plataforma-curso/src/components/guidedSealedTypesLesson.css)
+    - [`tools/validate-lesson-082.mjs`](../../tools/validate-lesson-082.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [083 — M2.22 — Pattern matching](../aulas/083_M2_22_PATTERN_MATCHING_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparação cast/type pattern, flow scoping, retorno antecipado, laboratório null/&&/||, records e enums, sealed com switch conceitual, decisão pattern/polimorfismo, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma nove saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/083_PATTERN_MATCHING.md`](matrizes/083_PATTERN_MATCHING.md)
+    - [`plataforma-curso/src/components/GuidedPatternMatchingLesson083.jsx`](../../plataforma-curso/src/components/GuidedPatternMatchingLesson083.jsx)
+    - [`plataforma-curso/src/components/guidedPatternMatchingLesson.css`](../../plataforma-curso/src/components/guidedPatternMatchingLesson.css)
+    - [`tools/validate-lesson-083.mjs`](../../tools/validate-lesson-083.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [084 — M2.23 — Text blocks](../aulas/084_M2_23_TEXT_BLOCKS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com sintaxe de três aspas, mapa de quebra final, laboratório de strip/stripIndent/indent, seletor de escapes, JSON formatted com risco visível, SQL/HTML/mensagens, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma nove saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/084_TEXT_BLOCKS.md`](matrizes/084_TEXT_BLOCKS.md)
+    - [`plataforma-curso/src/components/GuidedTextBlocksLesson084.jsx`](../../plataforma-curso/src/components/GuidedTextBlocksLesson084.jsx)
+    - [`plataforma-curso/src/components/guidedTextBlocksLesson.css`](../../plataforma-curso/src/components/guidedTextBlocksLesson.css)
+    - [`tools/validate-lesson-084.mjs`](../../tools/validate-lesson-084.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [085 — M2.24 — Exceptions por baixo](../aulas/085_M2_24_EXCEPTIONS_POR_BAIXO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com árvore Throwable, leitor de stack trace, tipos de runtime exception, fluxo try/catch/finally, propagação por camadas, causa raiz e wrapping, exception própria, catches, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma oito saídas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/085_EXCEPTIONS_POR_BAIXO.md`](matrizes/085_EXCEPTIONS_POR_BAIXO.md)
+    - [`plataforma-curso/src/components/GuidedExceptionsInternalsLesson085.jsx`](../../plataforma-curso/src/components/GuidedExceptionsInternalsLesson085.jsx)
+    - [`plataforma-curso/src/components/guidedExceptionsInternalsLesson.css`](../../plataforma-curso/src/components/guidedExceptionsInternalsLesson.css)
+    - [`tools/validate-lesson-085.mjs`](../../tools/validate-lesson-085.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [086 — M2.25 — Entrada/saída básica com console robusto](../aulas/086_M2_25_ENTRADA_SAIDA_BASICA_COM_CONSOLE_ROBUSTO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com contrato visual de entrada e saída, comparação print/println, simulação do buffer nextInt/nextLine, pipeline editável de texto, laboratório de formato e faixa, BigDecimal, confirmação, LocalDate, menu robusto, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma oito linhas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/086_CONSOLE_ROBUSTO.md`](matrizes/086_CONSOLE_ROBUSTO.md)
+    - [`plataforma-curso/src/components/GuidedRobustConsoleLesson086.jsx`](../../plataforma-curso/src/components/GuidedRobustConsoleLesson086.jsx)
+    - [`plataforma-curso/src/components/guidedRobustConsoleLesson.css`](../../plataforma-curso/src/components/guidedRobustConsoleLesson.css)
+    - [`tools/validate-lesson-086.mjs`](../../tools/validate-lesson-086.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [087 — M2.26 — Organização de pacotes desde cedo](../aulas/087_M2_26_ORGANIZACAO_DE_PACOTES_DESDE_CEDO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparação package/import, árvore pacote-pasta, default package, mapa app/domínio/console/util, simulação javac -d out, classpath e FQCN, cinco casos de import, mock interativo do IntelliJ Refactor Move, dez diagnósticos e entrega multiarquivo. O validador compila oito arquivos-fonte distribuídos em quatro pacotes e confirma seis saídas; lint e build de produção foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/087_ORGANIZACAO_PACOTES.md`](matrizes/087_ORGANIZACAO_PACOTES.md)
+    - [`plataforma-curso/src/components/GuidedJavaPackagesLesson087.jsx`](../../plataforma-curso/src/components/GuidedJavaPackagesLesson087.jsx)
+    - [`plataforma-curso/src/components/guidedJavaPackagesLesson.css`](../../plataforma-curso/src/components/guidedJavaPackagesLesson.css)
+    - [`tools/validate-lesson-087.mjs`](../../tools/validate-lesson-087.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [088 — M2.27 — Leitura de documentação oficial](../aulas/088_M2_27_LEITURA_DE_DOCUMENTACAO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com comparação de fontes, mock navegável de JavaDoc, assinatura segmentada, laboratórios de String e BigDecimal, seis fichas de API, Since/Deprecated/overload, Quick Documentation no IntelliJ, sete domínios, dez diagnósticos e entrega com debug. O validador compila o programa integrado e confirma doze provas determinísticas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/088_DOCUMENTACAO_OFICIAL.md`](matrizes/088_DOCUMENTACAO_OFICIAL.md)
+    - [`plataforma-curso/src/components/GuidedOfficialDocsLesson088.jsx`](../../plataforma-curso/src/components/GuidedOfficialDocsLesson088.jsx)
+    - [`plataforma-curso/src/components/guidedOfficialDocsLesson.css`](../../plataforma-curso/src/components/guidedOfficialDocsLesson.css)
+    - [`tools/validate-lesson-088.mjs`](../../tools/validate-lesson-088.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [089 — M2.28 — Mini projeto biblioteca Java Core](../aulas/089_M2_28_MINI_PROJETO_BIBLIOTECA_JAVA_CORE_OFICIAL.md)
+  - Aula reconstruída em nove etapas com mapa de três pacotes, record e enum interativos, laboratórios de TextoUtils, DinheiroUtils e DataUtils, quatro asserts manuais, suíte com cenários normais e inválidos, explorador dos oito arquivos-fonte, oito perguntas de revisão, dez diagnósticos e entrega com debug. O validador compila os oito arquivos, executa Main e a suíte manual e confirma as saídas; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/089_MINI_PROJETO_JAVA_CORE.md`](matrizes/089_MINI_PROJETO_JAVA_CORE.md)
+    - [`plataforma-curso/src/components/GuidedJavaCoreLibraryLesson089.jsx`](../../plataforma-curso/src/components/GuidedJavaCoreLibraryLesson089.jsx)
+    - [`plataforma-curso/src/components/guidedJavaCoreLibraryLesson.css`](../../plataforma-curso/src/components/guidedJavaCoreLibraryLesson.css)
+    - [`tools/validate-lesson-089.mjs`](../../tools/validate-lesson-089.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 
 ## M3 — 15 aulas
 
-- [ ] **Pendente** — [090 — M3.01 — De main gigante para métodos pequenos](../aulas/090_M3_01_DE_MAIN_GIGANTE_PARA_METODOS_PEQUENOS_OFICIAL.md)
-- [ ] **Pendente** — [091 — M3.02 — Assinatura de método profissional](../aulas/091_M3_02_ASSINATURA_DE_METODO_PROFISSIONAL_OFICIAL.md)
-- [ ] **Pendente** — [092 — M3.03 — Coesão em métodos](../aulas/092_M3_03_COESAO_EM_METODOS_OFICIAL.md)
-- [ ] **Pendente** — [093 — M3.04 — Parâmetros demais e alternativas](../aulas/093_M3_04_PARAMETROS_DEMAIS_E_ALTERNATIVAS_OFICIAL.md)
-- [ ] **Pendente** — [094 — M3.05 — Retorno boolean para validação](../aulas/094_M3_05_RETORNO_BOOLEAN_PARA_VALIDACAO_OFICIAL.md)
-- [ ] **Pendente** — [095 — Métodos de cálculo](../aulas/095_M3_06_METODOS_DE_CALCULO_OFICIAL.md)
-- [ ] **Pendente** — [096 — Métodos de exibição](../aulas/096_M3_07_METODOS_DE_EXIBICAO_OFICIAL.md)
-- [ ] **Pendente** — [097 — Métodos de leitura](../aulas/097_M3_08_METODOS_DE_LEITURA_OFICIAL.md)
-- [ ] **Pendente** — [098 — Reuso sem duplicação](../aulas/098_M3_09_REUSO_SEM_DUPLICACAO_OFICIAL.md)
-- [ ] **Pendente** — [099 — Debug entrando em métodos](../aulas/099_M3_10_DEBUG_ENTRANDO_EM_METODOS_OFICIAL.md)
-- [ ] **Pendente** — [100 — Refatoração Extract Method no IntelliJ](../aulas/100_M3_11_REFATORACAO_EXTRACT_METHOD_NO_INTELLIJ_OFICIAL.md)
-- [ ] **Pendente** — [101 — M3.12 — Mini arquitetura procedural](../aulas/101_M3_12_MINI_ARQUITETURA_PROCEDURAL_OFICIAL.md)
-- [ ] **Pendente** — [102 — M3.13 — Projeto calculadora console revisitada](../aulas/102_M3_13_PROJETO_CALCULADORA_CONSOLE_REVISITADA_OFICIAL.md)
-- [ ] **Pendente** — [103 — M3.14 — Projeto processamento de OS console](../aulas/103_M3_14_PROJETO_PROCESSAMENTO_DE_OS_CONSOLE_OFICIAL.md)
-- [ ] **Pendente** — [104 — M3.15 — Revisão final de fundamentos antes de OO](../aulas/104_M3_15_REVISAO_FINAL_DE_FUNDAMENTOS_ANTES_DE_OO_OFICIAL.md)
+- [ ] **Em revisão** — [090 — M3.01 — De main gigante para métodos pequenos](../aulas/090_M3_01_DE_MAIN_GIGANTE_PARA_METODOS_PEQUENOS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com diagnóstico de sete responsabilidades misturadas, seis critérios de extração, sete refatorações incrementais, laboratório de parâmetros/retorno/void, comparação integral antes/depois, mock interativo do IntelliJ Extract Method, console robusto completo, sete domínios, dez diagnósticos e entrega com debug. O validador compila MainGigante e PedidoRefatorado, executa ambos e confirma oito linhas exatamente equivalentes; lint dos arquivos alterados foi executado. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/090_MAIN_GIGANTE_METODOS_PEQUENOS.md`](matrizes/090_MAIN_GIGANTE_METODOS_PEQUENOS.md)
+    - [`plataforma-curso/src/components/GuidedSmallMethodsLesson090.jsx`](../../plataforma-curso/src/components/GuidedSmallMethodsLesson090.jsx)
+    - [`plataforma-curso/src/components/guidedSmallMethodsLesson.css`](../../plataforma-curso/src/components/guidedSmallMethodsLesson.css)
+    - [`tools/validate-lesson-090.mjs`](../../tools/validate-lesson-090.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [091 — M3.02 — Assinatura de método profissional](../aulas/091_M3_02_ASSINATURA_DE_METODO_PROFISSIONAL_OFICIAL.md)
+  - Aula reconstruída em nove etapas com anatomia segmentada da assinatura, fluxo de contrato, sete verbos e retornos, laboratório de nome/tipo/ordem/null, boolean versus enum, comparação integral ruim/boa, quatro refatorações, sete programas de domínio completos, dez diagnósticos e entrega com debug. O validador compila nove fontes Java, executa as duas assinaturas e o pedido e confirma as saídas; lint e build de produção foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/091_ASSINATURA_METODO_PROFISSIONAL.md`](matrizes/091_ASSINATURA_METODO_PROFISSIONAL.md)
+    - [`plataforma-curso/src/components/GuidedProfessionalSignatureLesson091.jsx`](../../plataforma-curso/src/components/GuidedProfessionalSignatureLesson091.jsx)
+    - [`plataforma-curso/src/components/guidedProfessionalSignatureLesson.css`](../../plataforma-curso/src/components/guidedProfessionalSignatureLesson.css)
+    - [`tools/validate-lesson-091.mjs`](../../tools/validate-lesson-091.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [092 — M3.03 — Coesão em métodos](../aulas/092_M3_03_COESAO_EM_METODOS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com mapa de intenção versus tamanho, níveis de abstração, oito sintomas e efeitos, sete fronteiras incrementais, comparação integral pouco coeso/coeso, julgamento de método curto versus maior, seis programas de domínio completos, dez diagnósticos e entrega com debug. O validador compila dez fontes Java, executa as duas versões centrais e confirma quatro linhas exatamente equivalentes; lint dos arquivos alterados foi executado e o build completo permanece coberto pela Aula 091. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/092_COESAO_EM_METODOS.md`](matrizes/092_COESAO_EM_METODOS.md)
+    - [`plataforma-curso/src/components/GuidedMethodCohesionLesson092.jsx`](../../plataforma-curso/src/components/GuidedMethodCohesionLesson092.jsx)
+    - [`plataforma-curso/src/components/guidedMethodCohesionLesson.css`](../../plataforma-curso/src/components/guidedMethodCohesionLesson.css)
+    - [`tools/validate-lesson-092.mjs`](../../tools/validate-lesson-092.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [093 — M3.04 — Parâmetros demais e alternativas](../aulas/093_M3_04_PARAMETROS_DEMAIS_E_ALTERNATIVAS_OFICIAL.md)
+  - Aula reconstruída em nove etapas com escala de parâmetros como alerta, simulação de ordem perigosa, sete alternativas, record de entrada, record de resultado, comparação integral ruim/final, julgamento de agrupamentos, seis programas de domínio completos, oito diagnósticos da fonte e entrega com debug. O validador compila nove fontes Java, executa as versões antes/depois e confirma sete linhas equivalentes; lint dos arquivos alterados foi executado e o build completo permanece coberto pela Aula 091. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/093_PARAMETROS_DEMAIS_ALTERNATIVAS.md`](matrizes/093_PARAMETROS_DEMAIS_ALTERNATIVAS.md)
+    - [`plataforma-curso/src/components/GuidedParameterObjectsLesson093.jsx`](../../plataforma-curso/src/components/GuidedParameterObjectsLesson093.jsx)
+    - [`plataforma-curso/src/components/guidedParameterObjectsLesson.css`](../../plataforma-curso/src/components/guidedParameterObjectsLesson.css)
+    - [`tools/validate-lesson-093.mjs`](../../tools/validate-lesson-093.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [094 — M3.05 — Retorno boolean para validação](../aulas/094_M3_05_RETORNO_BOOLEAN_PARA_VALIDACAO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com sete perguntas booleanas, decisão entre boolean e retorno rico, separação de mensagem, seis refatorações, exemplos básicos de texto e BigDecimal, sete programas de domínio completos, seis testes manuais, oito diagnósticos e entrega com debug. O validador compila dez fontes Java e executa os dois exemplos básicos e a suíte manual; lint dos arquivos alterados foi executado e o build completo permanece coberto pela Aula 091. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/094_RETORNO_BOOLEAN_VALIDACAO.md`](matrizes/094_RETORNO_BOOLEAN_VALIDACAO.md)
+    - [`plataforma-curso/src/components/GuidedBooleanValidationLesson094.jsx`](../../plataforma-curso/src/components/GuidedBooleanValidationLesson094.jsx)
+    - [`plataforma-curso/src/components/guidedBooleanValidationLesson.css`](../../plataforma-curso/src/components/guidedBooleanValidationLesson.css)
+    - [`tools/validate-lesson-094.mjs`](../../tools/validate-lesson-094.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [095 — Métodos de cálculo](../aulas/095_M3_06_METODOS_DE_CALCULO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com contrato previsível, separação entre cálculo e exibição, simulador de divisão inteira, pipeline monetário em cinco passos, cinco pré-condições, desafio interativo de comissão, testes manuais, mock do IntelliJ, oito diagnósticos e entrega. O validador compila e executa quatro fontes Java e confere os resultados básicos, monetários, dos testes e da comissão; lint dos arquivos alterados foi executado e o build completo permanece coberto pela Aula 091. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/095_METODOS_DE_CALCULO.md`](matrizes/095_METODOS_DE_CALCULO.md)
+    - [`plataforma-curso/src/components/GuidedCalculationMethodsLesson095.jsx`](../../plataforma-curso/src/components/GuidedCalculationMethodsLesson095.jsx)
+    - [`plataforma-curso/src/components/guidedCalculationMethodsLesson.css`](../../plataforma-curso/src/components/guidedCalculationMethodsLesson.css)
+    - [`tools/validate-lesson-095.mjs`](../../tools/validate-lesson-095.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [096 — Métodos de exibição](../aulas/096_M3_07_METODOS_DE_EXIBICAO_OFICIAL.md)
+  - Aula reconstruída em nove etapas com mapa de cálculo/exibição/leitura, contrato de void, exibição básica observável, comparação de Text Block e saída, resumo com record e cenário nulo, ConsoleView não instanciável, solução de ordem de serviço, simulação didática de Step Over, oito diagnósticos e entrega. O validador compila seis fontes Java, executa cinco programas e confere menus, resumo, prefixos e OS preenchida/nula; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/096_METODOS_DE_EXIBICAO.md`](matrizes/096_METODOS_DE_EXIBICAO.md)
+    - [`plataforma-curso/src/components/GuidedDisplayMethodsLesson096.jsx`](../../plataforma-curso/src/components/GuidedDisplayMethodsLesson096.jsx)
+    - [`plataforma-curso/src/components/guidedDisplayMethodsLesson.css`](../../plataforma-curso/src/components/guidedDisplayMethodsLesson.css)
+    - [`tools/validate-lesson-096.mjs`](../../tools/validate-lesson-096.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [097 — Métodos de leitura](../aulas/097_M3_08_METODOS_DE_LEITURA_OFICIAL.md)
+  - Aula reconstruída em nove etapas com pipeline de adaptador, simulador do Enter residual do Scanner, texto obrigatório, inteiro com retry, ConsoleInput para String/int/BigDecimal, ciclo de vida de um único Scanner, cadastro de produto, simulação didática de debug, oito diagnósticos e entrega. O validador compila quatro fontes Java, injeta sequências inválidas e válidas em três programas e confere repetição, conversão e cadastro final; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/097_METODOS_DE_LEITURA.md`](matrizes/097_METODOS_DE_LEITURA.md)
+    - [`plataforma-curso/src/components/GuidedInputMethodsLesson097.jsx`](../../plataforma-curso/src/components/GuidedInputMethodsLesson097.jsx)
+    - [`plataforma-curso/src/components/guidedInputMethodsLesson.css`](../../plataforma-curso/src/components/guidedInputMethodsLesson.css)
+    - [`tools/validate-lesson-097.mjs`](../../tools/validate-lesson-097.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [098 — Reuso sem duplicação](../aulas/098_M3_09_REUSO_SEM_DUPLICACAO_OFICIAL.md)
+  - Aula reconstruída em dez etapas com simulador de propagação de mudança, seis classificações de duplicação semântica/visual, análise de quatro cópias, extração de ValidacoesBasicas, CalculosPedido, teste manual, comparação Utils/coesas, desafio CalculosEstoque, simulação didática de Step Into, oito diagnósticos e entrega. O validador compila cinco fontes Java, executa teste manual e estoque e confere validação, total, desconto e valor final; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/098_REUSO_SEM_DUPLICACAO.md`](matrizes/098_REUSO_SEM_DUPLICACAO.md)
+    - [`plataforma-curso/src/components/GuidedDryReuseLesson098.jsx`](../../plataforma-curso/src/components/GuidedDryReuseLesson098.jsx)
+    - [`plataforma-curso/src/components/guidedDryReuseLesson.css`](../../plataforma-curso/src/components/guidedDryReuseLesson.css)
+    - [`tools/validate-lesson-098.mjs`](../../tools/validate-lesson-098.mjs)
+    - [`plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css`](../../plataforma-curso/src/components/guidedLocaleNumberFormatLesson.css)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [099 — Debug entrando em métodos](../aulas/099_M3_10_DEBUG_ENTRANDO_EM_METODOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com pilha interativa, comparação de F8/F7/Shift+F8, programa em camadas, mock didático do IntelliJ com Frames e Variables, mapa do bug monetário, rastreamento em cinco pausas, correção comprovada, leitura de StackTrace, Evaluate Expression, oito diagnósticos e entrega. O validador compila quatro fontes Java, executa três fluxos e confirma a exceção intencional e sua cadeia; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/099_DEBUG_ENTRANDO_EM_METODOS.md`](matrizes/099_DEBUG_ENTRANDO_EM_METODOS.md)
+    - [`plataforma-curso/src/components/GuidedMethodDebugLesson099.jsx`](../../plataforma-curso/src/components/GuidedMethodDebugLesson099.jsx)
+    - [`plataforma-curso/src/components/guidedMethodDebugLesson.css`](../../plataforma-curso/src/components/guidedMethodDebugLesson.css)
+    - [`tools/validate-lesson-099.mjs`](../../tools/validate-lesson-099.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [100 — Refatoração Extract Method no IntelliJ](../aulas/100_M3_11_REFATORACAO_EXTRACT_METHOD_NO_INTELLIJ_OFICIAL.md)
+  - Aula reconstruída em dez etapas com contrato de refatoração, comparação de três fronteiras de seleção, baseline executável, mock do IntelliJ em quatro estados, fluxo de parâmetros e retorno, limite de duas saídas, comparação integral antes/depois, auditoria de assinaturas, oficina de ordem de serviço, oito diagnósticos e entrega. O validador compila quatro fontes Java e confirma duas equivalências exatas de console; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/100_EXTRACT_METHOD_INTELLIJ.md`](matrizes/100_EXTRACT_METHOD_INTELLIJ.md)
+    - [`plataforma-curso/src/components/GuidedExtractMethodLesson100.jsx`](../../plataforma-curso/src/components/GuidedExtractMethodLesson100.jsx)
+    - [`plataforma-curso/src/components/guidedExtractMethodLesson.css`](../../plataforma-curso/src/components/guidedExtractMethodLesson.css)
+    - [`tools/validate-lesson-100.mjs`](../../tools/validate-lesson-100.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [101 — M3.12 — Mini arquitetura procedural](../aulas/101_M3_12_MINI_ARQUITETURA_PROCEDURAL_OFICIAL.md)
+  - Aula reconstruída em onze etapas com pipeline arquitetural, diagnóstico de quatro responsabilidades no main, baseline executável, simulador de coordenação com F7, agrupamento de leitura/validação/processamento/exibição, fonte organizada completa com records, ordem de navegação, limites da abordagem, projeto de OS com LocalDate, oito diagnósticos e entrega. O validador compila três fontes Java, confirma equivalência exata do pedido e executa a OS; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/101_MINI_ARQUITETURA_PROCEDURAL.md`](matrizes/101_MINI_ARQUITETURA_PROCEDURAL.md)
+    - [`plataforma-curso/src/components/GuidedProceduralArchitectureLesson101.jsx`](../../plataforma-curso/src/components/GuidedProceduralArchitectureLesson101.jsx)
+    - [`plataforma-curso/src/components/guidedProceduralArchitectureLesson.css`](../../plataforma-curso/src/components/guidedProceduralArchitectureLesson.css)
+    - [`tools/validate-lesson-101.mjs`](../../tools/validate-lesson-101.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [102 — M3.13 — Projeto calculadora console revisitada](../aulas/102_M3_13_PROJETO_CALCULADORA_CONSOLE_REVISITADA_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa do ciclo, cinco grupos de responsabilidade, projeto completo, simulador de quatro operações, guardas e retry, histórico interativo de dez posições, relatório ao vivo, debug em cinco pausas, extensão V2, oito diagnósticos e entrega. O validador compila três fontes Java e confirma fluxo principal, rejeições, limite, suíte manual e cinco métricas V2; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/102_CALCULADORA_CONSOLE_REVISITADA.md`](matrizes/102_CALCULADORA_CONSOLE_REVISITADA.md)
+    - [`plataforma-curso/src/components/GuidedCalculatorRevisitedLesson102.jsx`](../../plataforma-curso/src/components/GuidedCalculatorRevisitedLesson102.jsx)
+    - [`plataforma-curso/src/components/guidedCalculatorRevisitedLesson.css`](../../plataforma-curso/src/components/guidedCalculatorRevisitedLesson.css)
+    - [`tools/validate-lesson-102.mjs`](../../tools/validate-lesson-102.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [103 — M3.14 — Projeto processamento de OS console](../aulas/103_M3_14_PROJETO_PROCESSAMENTO_DE_OS_CONSOLE_OFICIAL.md)
+  - Aula reconstruída em dez etapas com mapa integral do processamento, cinco grupos de responsabilidade, fonte completa, simulador de prioridades de fila, quatro entradas defensivas, histórico e relatório interativos, debug em sete pausas, evolução V2, oito diagnósticos e entrega. O validador compila três fontes Java e confirma fluxo principal, retries, datas, filas, limite, contadores e métricas da V2; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/103_PROCESSAMENTO_OS_CONSOLE.md`](matrizes/103_PROCESSAMENTO_OS_CONSOLE.md)
+    - [`plataforma-curso/src/components/GuidedOrderServiceProcessingLesson103.jsx`](../../plataforma-curso/src/components/GuidedOrderServiceProcessingLesson103.jsx)
+    - [`plataforma-curso/src/components/guidedOrderServiceProcessingLesson.css`](../../plataforma-curso/src/components/guidedOrderServiceProcessingLesson.css)
+    - [`tools/validate-lesson-103.mjs`](../../tools/validate-lesson-103.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [104 — M3.15 — Revisão final de fundamentos antes de OO](../aulas/104_M3_15_REVISAO_FINAL_DE_FUNDAMENTOS_ANTES_DE_OO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com diagnóstico ativo de 25 conceitos, pipeline procedural para backend, prova prática completa, simulador de regras, seis entradas inválidas, histórico e relatório interativos, debug em dez pausas, auditoria com sete critérios, desafio Fraude V2, oito diagnósticos e entrega com dez perguntas orais. O validador compila três fontes Java e confirma fluxos, retries, limite, contadores, média e V2; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/104_REVISAO_FINAL_FUNDAMENTOS_ANTES_OO.md`](matrizes/104_REVISAO_FINAL_FUNDAMENTOS_ANTES_OO.md)
+    - [`plataforma-curso/src/components/GuidedFundamentalsReviewLesson104.jsx`](../../plataforma-curso/src/components/GuidedFundamentalsReviewLesson104.jsx)
+    - [`plataforma-curso/src/components/guidedFundamentalsReviewLesson.css`](../../plataforma-curso/src/components/guidedFundamentalsReviewLesson.css)
+    - [`tools/validate-lesson-104.mjs`](../../tools/validate-lesson-104.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 
 ## M4 — 41 aulas
 
-- [ ] **Pendente** — [105 — M4.01 — Pensamento orientado a objetos](../aulas/105_M4_01_PENSAMENTO_ORIENTADO_A_OBJETOS_OFICIAL.md)
-- [ ] **Pendente** — [106 — M4.02 — Modelagem no papel](../aulas/106_M4_02_MODELAGEM_NO_PAPEL_OFICIAL.md)
-- [ ] **Pendente** — [107 — M4.03 — Classe e objeto em Java](../aulas/107_M4_03_CLASSE_E_OBJETO_EM_JAVA_OFICIAL.md)
-- [ ] **Pendente** — [108 — M4.04 — Atributos com significado](../aulas/108_M4_04_ATRIBUTOS_COM_SIGNIFICADO_OFICIAL.md)
-- [ ] **Pendente** — [109 — M4.05 — Métodos de comportamento](../aulas/109_M4_05_METODOS_DE_COMPORTAMENTO_OFICIAL.md)
-- [ ] **Pendente** — [110 — M4.06 — Construtor padrão e parametrizado](../aulas/110_M4_06_CONSTRUTOR_PADRAO_E_PARAMETRIZADO_OFICIAL.md)
-- [ ] **Pendente** — [111 — M4.07 — Encapsulamento de verdade](../aulas/111_M4_07_ENCAPSULAMENTO_DE_VERDADE_OFICIAL.md)
-- [ ] **Pendente** — [112 — M4.08 — Getters, setters e critério](../aulas/112_M4_08_GETTERS_SETTERS_E_CRITERIO_OFICIAL.md)
-- [ ] **Pendente** — [113 — M4.09 — Imutabilidade aplicada](../aulas/113_M4_09_IMUTABILIDADE_APLICADA_OFICIAL.md)
-- [ ] **Pendente** — [114 — M4.10 — Composição](../aulas/114_M4_10_COMPOSICAO_OFICIAL.md)
-- [ ] **Pendente** — [115 — M4.11 — Relacionamento entre objetos](../aulas/115_M4_11_RELACIONAMENTO_ENTRE_OBJETOS_OFICIAL.md)
-- [ ] **Pendente** — [116 — M4.12 — Objetos de valor](../aulas/116_M4_12_OBJETOS_DE_VALOR_OFICIAL.md)
-- [ ] **Pendente** — [117 — M4.13 — Entidades](../aulas/117_M4_13_ENTIDADES_OFICIAL.md)
-- [ ] **Pendente** — [118 — M4.14 — Identidade de objetos](../aulas/118_M4_14_IDENTIDADE_DE_OBJETOS_OFICIAL.md)
-- [ ] **Pendente** — [119 — M4.15 — equals e hashCode](../aulas/119_M4_15_EQUALS_HASHCODE_OFICIAL.md)
-- [ ] **Pendente** — [120 — M4.16 — toString com critério](../aulas/120_M4_16_TO_STRING_COM_CRITERIO_OFICIAL.md)
+- [ ] **Em revisão** — [105 — M4.01 — Pensamento orientado a objetos](../aulas/105_M4_01_PENSAMENTO_ORIENTADO_A_OBJETOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com alternância entre pensamento procedural e OO, anatomia de classe/objeto/estado/comportamento/identidade, comparação integral executável, mock de duas instâncias em memória, classificação de fronteiras, descoberta por substantivos e verbos, exemplo Pedido, debug com this e frames, desafio Cliente, oito diagnósticos e entrega. O validador compila cinco fontes Java e confirma OS procedural/OO, Pedido, Cliente e doze testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/105_PENSAMENTO_ORIENTADO_A_OBJETOS.md`](matrizes/105_PENSAMENTO_ORIENTADO_A_OBJETOS.md)
+    - [`plataforma-curso/src/components/GuidedObjectThinkingLesson105.jsx`](../../plataforma-curso/src/components/GuidedObjectThinkingLesson105.jsx)
+    - [`plataforma-curso/src/components/guidedObjectThinkingLesson.css`](../../plataforma-curso/src/components/guidedObjectThinkingLesson.css)
+    - [`tools/validate-lesson-105.mjs`](../../tools/validate-lesson-105.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [106 — M4.02 — Modelagem no papel](../aulas/106_M4_02_MODELAGEM_NO_PAPEL_OFICIAL.md)
+  - Aula reconstruída em onze etapas com processo visual em oito movimentos, leitura por substantivos, verbos e regras, filtro de candidatos, rascunhos de OS e Pedido, implementação executável, classificação de responsabilidades, auditoria de qualidade, debug em nove pausas, desafio Cliente, oito diagnósticos e entrega. O validador compila quatro fontes Java e confirma OS, Pedido, Cliente e onze testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/106_MODELAGEM_NO_PAPEL.md`](matrizes/106_MODELAGEM_NO_PAPEL.md)
+    - [`plataforma-curso/src/components/GuidedPaperModelingLesson106.jsx`](../../plataforma-curso/src/components/GuidedPaperModelingLesson106.jsx)
+    - [`plataforma-curso/src/components/guidedPaperModelingLesson.css`](../../plataforma-curso/src/components/guidedPaperModelingLesson.css)
+    - [`tools/validate-lesson-106.mjs`](../../tools/validate-lesson-106.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [107 — M4.03 — Classe e objeto em Java](../aulas/107_M4_03_CLASSE_E_OBJETO_EM_JAVA_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa classe-objeto-referência-Heap, primeiro programa completo, construção em cinco movimentos, anatomia de estado e comportamento, comparação de duas instâncias, simulador de OS, limites de encapsulamento, laboratório de Pedido, debug em oito pausas, oito diagnósticos e desafio Pagamento. O validador compila seis fontes Java e confirma Cliente, dois clientes, OS, Pedido, Pagamento e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/107_CLASSE_E_OBJETO_EM_JAVA.md`](matrizes/107_CLASSE_E_OBJETO_EM_JAVA.md)
+    - [`plataforma-curso/src/components/GuidedClassObjectLesson107.jsx`](../../plataforma-curso/src/components/GuidedClassObjectLesson107.jsx)
+    - [`plataforma-curso/src/components/guidedClassObjectLesson.css`](../../plataforma-curso/src/components/guidedClassObjectLesson.css)
+    - [`tools/validate-lesson-107.mjs`](../../tools/validate-lesson-107.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [108 — M4.04 — Atributos com significado](../aulas/108_M4_04_ATRIBUTOS_COM_SIGNIFICADO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com filtro de cinco perguntas, contraste entre nomes ruins e bons, simulador de inconsistência de dados derivados, laboratório de tipos semânticos, OS tipada, raio-X de classe inchada, invariantes obrigatórias, Pagamento completo, debug em oito pausas, oito diagnósticos e desafio Produto. O validador compila sete fontes Java e confirma Cliente ruim/bom, Pedido mínimo, OS, Pagamento, Produto e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/108_ATRIBUTOS_COM_SIGNIFICADO.md`](matrizes/108_ATRIBUTOS_COM_SIGNIFICADO.md)
+    - [`plataforma-curso/src/components/GuidedMeaningfulAttributesLesson108.jsx`](../../plataforma-curso/src/components/GuidedMeaningfulAttributesLesson108.jsx)
+    - [`plataforma-curso/src/components/guidedMeaningfulAttributesLesson.css`](../../plataforma-curso/src/components/guidedMeaningfulAttributesLesson.css)
+    - [`tools/validate-lesson-108.mjs`](../../tools/validate-lesson-108.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [109 — M4.05 — Métodos de comportamento](../aulas/109_M4_05_METODOS_DE_COMPORTAMENTO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com classificação de acesso/comportamento, refatoração visual de objeto anêmico, cinco perguntas de pertencimento, simuladores e fontes de Pedido, OS e Pagamento, laboratório de nomes e retornos, fronteiras entre domínio e infraestrutura, debug em oito chamadas, oito diagnósticos e desafio Produto. O validador compila seis fontes Java e confirma objeto anêmico, Pedido, OS, Pagamento, Produto e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/109_METODOS_DE_COMPORTAMENTO.md`](matrizes/109_METODOS_DE_COMPORTAMENTO.md)
+    - [`plataforma-curso/src/components/GuidedBehaviorMethodsLesson109.jsx`](../../plataforma-curso/src/components/GuidedBehaviorMethodsLesson109.jsx)
+    - [`plataforma-curso/src/components/guidedBehaviorMethodsLesson.css`](../../plataforma-curso/src/components/guidedBehaviorMethodsLesson.css)
+    - [`tools/validate-lesson-109.mjs`](../../tools/validate-lesson-109.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [110 — M4.06 — Construtor padrão e parametrizado](../aulas/110_M4_06_CONSTRUTOR_PADRAO_E_PARAMETRIZADO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com nascimento do objeto em seis movimentos, Cliente parametrizado, simulador da regra do construtor automático, Produto com padrões, contrato obrigatório do Pedido, quatro falhas com IllegalArgumentException, sobrecarga com this(...), cinco invariantes de OS, debug em oito pausas, oito diagnósticos e desafio Pagamento. O validador compila oito fontes Java e confirma construtores sem parâmetros/parametrizados, validações, sobrecarga, OS, Pagamento e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/110_CONSTRUTOR_PADRAO_E_PARAMETRIZADO.md`](matrizes/110_CONSTRUTOR_PADRAO_E_PARAMETRIZADO.md)
+    - [`plataforma-curso/src/components/GuidedConstructorsLesson110.jsx`](../../plataforma-curso/src/components/GuidedConstructorsLesson110.jsx)
+    - [`plataforma-curso/src/components/guidedConstructorsLesson.css`](../../plataforma-curso/src/components/guidedConstructorsLesson.css)
+    - [`tools/validate-lesson-110.mjs`](../../tools/validate-lesson-110.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [111 — M4.07 — Encapsulamento de verdade](../aulas/111_M4_07_ENCAPSULAMENTO_DE_VERDADE_OFICIAL.md)
+  - Aula reconstruída em onze etapas com quatro níveis de proteção, contraste executável entre campo público e private, Conta com depósito e saque protegidos, auditoria de getters/setters, máquinas de estado de OS e Pagamento, política de final e mutação protegida, centralização visual, debug em oito pausas, oito diagnósticos e desafio Produto. O validador compila sete fontes Java e confirma invariantes, transições, API intencional, Produto e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/111_ENCAPSULAMENTO_DE_VERDADE.md`](matrizes/111_ENCAPSULAMENTO_DE_VERDADE.md)
+    - [`plataforma-curso/src/components/GuidedTrueEncapsulationLesson111.jsx`](../../plataforma-curso/src/components/GuidedTrueEncapsulationLesson111.jsx)
+    - [`plataforma-curso/src/components/guidedTrueEncapsulationLesson.css`](../../plataforma-curso/src/components/guidedTrueEncapsulationLesson.css)
+    - [`tools/validate-lesson-111.mjs`](../../tools/validate-lesson-111.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [112 — M4.08 — Getters, setters e critério](../aulas/112_M4_08_GETTERS_SETTERS_E_CRITERIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com auditoria de getter/setter por necessidade, Pagamento vulnerável executável, máquina de estados protegida, comparação JavaBean/nomes diretos, Cliente por ações, vazamento visual de coleção mutável, Produto sem setters livres, fronteira DTO/domínio, seis refatorações, debug em oito pausas, oito diagnósticos e desafio Ordem de Serviço. O validador compila sete fontes Java e confirma critérios de acesso, transições, DTO, domínio, OS e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/112_GETTERS_SETTERS_E_CRITERIO.md`](matrizes/112_GETTERS_SETTERS_E_CRITERIO.md)
+    - [`plataforma-curso/src/components/GuidedGettersSettersLesson112.jsx`](../../plataforma-curso/src/components/GuidedGettersSettersLesson112.jsx)
+    - [`plataforma-curso/src/components/guidedGettersSettersLesson.css`](../../plataforma-curso/src/components/guidedGettersSettersLesson.css)
+    - [`tools/validate-lesson-112.mjs`](../../tools/validate-lesson-112.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [113 — M4.09 — Imutabilidade aplicada](../aulas/113_M4_09_IMUTABILIDADE_APLICADA_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa de mutabilidade, Cliente que se torna inválido, fluxo visual comEmail entre referências, limite de final com conteúdo mutável, tipos imutáveis do JDK, Dinheiro e Email como valores, Pagamento versionado com retorno ignorado/guardado, record validado, classificador valor/entidade, debug em oito pausas, sete diagnósticos e desafio Telefone. O validador compila nove fontes Java e confirma originais preservados, cálculos, validações, record, referências e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/113_IMUTABILIDADE_APLICADA.md`](matrizes/113_IMUTABILIDADE_APLICADA.md)
+    - [`plataforma-curso/src/components/GuidedImmutabilityLesson113.jsx`](../../plataforma-curso/src/components/GuidedImmutabilityLesson113.jsx)
+    - [`plataforma-curso/src/components/guidedImmutabilityLesson.css`](../../plataforma-curso/src/components/guidedImmutabilityLesson.css)
+    - [`tools/validate-lesson-113.mjs`](../../tools/validate-lesson-113.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [114 — M4.10 — Composição](../aulas/114_M4_10_COMPOSICAO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com classificador tem um/é um, Pedido gigante executável, extração por prefixos, árvores de Pedido e OS, Pedido composto com subtotal/total/pago, seis falhas no dono correto, comparador de construtores, OS aninhada, auditoria de acoplamento, debug em oito chamadas, sete diagnósticos e desafio Mensageria. O validador compila cinco fontes Java e confirma composição, tipos fortes, validações, colaboração, ciclo da Mensagem e sete testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/114_COMPOSICAO.md`](matrizes/114_COMPOSICAO.md)
+    - [`plataforma-curso/src/components/GuidedCompositionLesson114.jsx`](../../plataforma-curso/src/components/GuidedCompositionLesson114.jsx)
+    - [`plataforma-curso/src/components/guidedCompositionLesson.css`](../../plataforma-curso/src/components/guidedCompositionLesson.css)
+    - [`tools/validate-lesson-114.mjs`](../../tools/validate-lesson-114.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [115 — M4.11 — Relacionamento entre objetos](../aulas/115_M4_11_RELACIONAMENTO_ENTRE_OBJETOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa de composição/parâmetro/colaboração, contraste entre centralização e delegação, Pedido interativo com Cupom temporário, classificador atributo/parâmetro, auditoria de acoplamento e Lei de Demeter, OS colaborativa com reagendamento imutável, Mensagem coordenada, sete cenários, debug em nove chamadas, oito diagnósticos e desafio Contrato. O validador compila cinco fontes Java em conjunto e confirma Pedido, OS, Mensagem, Contrato, BigDecimal, LocalDate, enums, preservação do original e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/115_RELACIONAMENTO_ENTRE_OBJETOS.md`](matrizes/115_RELACIONAMENTO_ENTRE_OBJETOS.md)
+    - [`plataforma-curso/src/components/GuidedObjectRelationshipsLesson115.jsx`](../../plataforma-curso/src/components/GuidedObjectRelationshipsLesson115.jsx)
+    - [`plataforma-curso/src/components/guidedObjectRelationshipsLesson.css`](../../plataforma-curso/src/components/guidedObjectRelationshipsLesson.css)
+    - [`tools/validate-lesson-115.mjs`](../../tools/validate-lesson-115.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [116 — M4.12 — Objetos de valor](../aulas/116_M4_12_OBJETOS_DE_VALOR_OFICIAL.md)
+  - Aula reconstruída em onze etapas com comparador valor/entidade, contraste executável de dados soltos, validadores interativos de Email e Telefone, laboratório imutável de Dinheiro, linha temporal de Período, árvore tipada de Pedido, classificador de candidatos com record, debug em nove pausas, oito diagnósticos e desafio de Ordem de Serviço. O validador compila cinco fontes Java em conjunto e confirma normalização, BigDecimal, LocalDate, operações imutáveis, composição, valores da OS e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/116_OBJETOS_DE_VALOR.md`](matrizes/116_OBJETOS_DE_VALOR.md)
+    - [`plataforma-curso/src/components/GuidedValueObjectsLesson116.jsx`](../../plataforma-curso/src/components/GuidedValueObjectsLesson116.jsx)
+    - [`plataforma-curso/src/components/guidedValueObjectsLesson.css`](../../plataforma-curso/src/components/guidedValueObjectsLesson.css)
+    - [`tools/validate-lesson-116.mjs`](../../tools/validate-lesson-116.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [117 — M4.13 — Entidades](../aulas/117_M4_13_ENTIDADES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com continuidade de identidade, classificador entidade/valor, contraste executável de entidade anêmica, ciclo interativo de Cliente, comparador setter/ação, máquina de estados do Pedido, cenários de igualdade conceitual, OS com histórico de reagendamentos, debug em nove pausas, oito diagnósticos e desafio Produto. O validador compila seis fontes Java em conjunto e confirma identidade, guardas, transições, objetos de valor, estoque, estados finais e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/117_ENTIDADES.md`](matrizes/117_ENTIDADES.md)
+    - [`plataforma-curso/src/components/GuidedEntitiesLesson117.jsx`](../../plataforma-curso/src/components/GuidedEntitiesLesson117.jsx)
+    - [`plataforma-curso/src/components/guidedEntitiesLesson.css`](../../plataforma-curso/src/components/guidedEntitiesLesson.css)
+    - [`tools/validate-lesson-117.mjs`](../../tools/validate-lesson-117.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [118 — M4.14 — Identidade de objetos](../aulas/118_M4_14_IDENTIDADE_DE_OBJETOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa Stack/Heap de duas referências, contraste de dois objetos com os mesmos dados, triângulo referência/entidade/valor, ciclo do Pedido 1001, normalizador de Email, comparador de String e pool, entidade antes e depois do id persistido, identidade estável da OS, debug em dez pausas, oito diagnósticos e desafio Produto. O validador compila oito fontes Java em conjunto e confirma aliases, dois new, identidade por id e código, valor normalizado, conteúdo de String, estados, estoque e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/118_IDENTIDADE_DE_OBJETOS.md`](matrizes/118_IDENTIDADE_DE_OBJETOS.md)
+    - [`plataforma-curso/src/components/GuidedObjectIdentityLesson118.jsx`](../../plataforma-curso/src/components/GuidedObjectIdentityLesson118.jsx)
+    - [`plataforma-curso/src/components/guidedObjectIdentityLesson.css`](../../plataforma-curso/src/components/guidedObjectIdentityLesson.css)
+    - [`tools/validate-lesson-118.mjs`](../../tools/validate-lesson-118.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [119 — M4.15 — equals e hashCode](../aulas/119_M4_15_EQUALS_HASHCODE_OFICIAL.md)
+  - Aula reconstruída em onze etapas com contraste de referência e igualdade lógica, anatomia interativa das quatro guardas de equals, simulador do contrato de hash, objetos de valor Email e Telefone, entidade Cliente por id, operações acompanhadas em HashSet e HashMap, decisão entre record e entidade, armadilha de campo mutável, debug em dez pausas, oito diagnósticos e desafio Produto. O validador compila nove fontes Java em conjunto e confirma equals, hashCode, coleções, record, mutabilidade, Produto e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/119_EQUALS_HASHCODE.md`](matrizes/119_EQUALS_HASHCODE.md)
+    - [`plataforma-curso/src/components/GuidedEqualsHashCodeLesson119.jsx`](../../plataforma-curso/src/components/GuidedEqualsHashCodeLesson119.jsx)
+    - [`plataforma-curso/src/components/guidedEqualsHashCodeLesson.css`](../../plataforma-curso/src/components/guidedEqualsHashCodeLesson.css)
+    - [`tools/validate-lesson-119.mjs`](../../tools/validate-lesson-119.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [120 — M4.16 — toString com critério](../aulas/120_M4_16_TO_STRING_COM_CRITERIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com contraste do toString padrão e sobrescrito, fluxo automático do println, separação entre texto técnico, resumo e regra, objetos de valor Email e Dinheiro, simulador de vazamento e máscara, entidade Pedido, composição controlada e risco de recursão, coleção, record e geração no IntelliJ, debug em dez pausas, oito diagnósticos e desafio Ordem de Serviço. O validador compila dez fontes Java em conjunto e confirma representação, máscaras de senha, CPF e telefone, composição, record, OS e oito testes; lint, build e diff check foram executados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/120_TO_STRING_COM_CRITERIO.md`](matrizes/120_TO_STRING_COM_CRITERIO.md)
+    - [`plataforma-curso/src/components/GuidedToStringLesson120.jsx`](../../plataforma-curso/src/components/GuidedToStringLesson120.jsx)
+    - [`plataforma-curso/src/components/guidedToStringLesson.css`](../../plataforma-curso/src/components/guidedToStringLesson.css)
+    - [`tools/validate-lesson-120.mjs`](../../tools/validate-lesson-120.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [ ] **Pendente** — [121 — M4.17 — static com critério](../aulas/121_M4_17_STATIC_COM_CRITERIO_OFICIAL.md)
 - [ ] **Pendente** — [122 — M4.18 — final em classes, métodos e atributos](../aulas/122_M4_18_FINAL_EM_CLASSES_METODOS_E_ATRIBUTOS_OFICIAL.md)
 - [ ] **Pendente** — [123 — M4.19 — Sobrecarga de construtores](../aulas/123_M4_19_SOBRECARGA_DE_CONSTRUTORES_OFICIAL.md)

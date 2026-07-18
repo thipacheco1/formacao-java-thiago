@@ -1,0 +1,72 @@
+.guided-procedural-architecture-lesson{max-width:100%;overflow:visible}
+.pa101-stack,.pa101-delivery{display:flex;min-width:0;flex-direction:column;gap:16px}
+.pa101-pipeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.pa101-pipeline button,.pa101-limits button{display:flex;min-width:0;flex-direction:column;align-items:center;gap:5px;padding:11px;color:#475569;background:#f8fafc;border:1px solid #dbe4ef;border-radius:8px;text-align:center}
+.pa101-pipeline button>span,.pa101-limits button>span,.pa101-checks button>span{display:grid;flex:0 0 auto;width:25px;height:25px;place-items:center;background:#e2e8f0;border-radius:50%}
+.pa101-pipeline button.active,.pa101-limits button.active{color:#fff;background:#2563eb;border-color:#2563eb}
+.pa101-pipeline button.done{color:#065f46;background:#ecfdf5;border-color:#6ee7b7}
+.pa101-main-role{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;padding:16px;color:#cbd5e1;background:#0f172a;border-radius:10px}
+.pa101-main-role>div{display:flex;min-width:0;flex-direction:column;gap:4px}
+.pa101-main-role strong{overflow-wrap:anywhere;color:#67e8f9}
+.pa101-rule,.pa101-warning{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;padding:14px;color:#1e3a8a;background:#eff6ff;border:1px solid #93c5fd;border-radius:9px}
+.pa101-rule>div,.pa101-warning>div{display:flex;min-width:0;flex-direction:column;gap:4px}
+.pa101-warning{color:#92400e;background:#fffbeb;border-color:#fcd34d}
+.pa101-smell{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.6fr);overflow:hidden;color:#cbd5e1;background:#111827;border:1px solid #334155;border-radius:10px}
+.pa101-smell aside{display:flex;min-width:0;flex-direction:column;gap:6px;padding:12px;background:#172033;border-right:1px solid #334155}
+.pa101-smell aside button{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:3px 8px;padding:9px;color:#94a3b8;background:#111827;border:1px solid transparent;border-radius:7px;text-align:left}
+.pa101-smell aside button>span{display:grid;grid-row:1/3;width:24px;height:24px;place-items:center;background:#253047;border-radius:50%}
+.pa101-smell aside button.active{color:#fff;background:#1d4ed8}
+.pa101-smell main{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:11px;padding:20px}
+.pa101-smell main strong{color:#67e8f9}
+.pa101-smell main p{margin:0}
+.pa101-smell main>div{display:flex;align-items:center;gap:8px;padding:9px 11px;color:#fde68a;background:#78350f;border-radius:7px}
+.pa101-terminal{overflow:hidden;color:#cbd5e1;background:#0f172a;border:1px solid #334155;border-radius:10px}
+.pa101-terminal header{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#1e293b;font-weight:800}
+.pa101-terminal header .guided-copy{margin-left:auto}
+.pa101-terminal pre{overflow:auto;margin:0;padding:18px;white-space:pre-wrap;font-family:Consolas,'Courier New',monospace;line-height:1.65}
+.pa101-terminal pre b{color:#93c5fd}
+.pa101-orchestrator{overflow:hidden;color:#cbd5e1;background:#111827;border:1px solid #334155;border-radius:10px}
+.pa101-orchestrator>header,.pa101-orchestrator>footer{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;background:#1f2937}
+.pa101-orchestrator-body{display:grid;grid-template-columns:minmax(220px,.9fr) minmax(0,1.5fr)}
+.pa101-orchestrator-body aside{display:flex;min-width:0;flex-direction:column;gap:6px;padding:12px;border-right:1px solid #334155}
+.pa101-orchestrator-body aside button{display:flex;min-width:0;align-items:center;gap:8px;padding:9px;color:#94a3b8;background:#172033;border:1px solid transparent;border-radius:7px;text-align:left}
+.pa101-orchestrator-body aside button>span{display:grid;flex:0 0 auto;width:24px;height:24px;place-items:center;background:#253047;border-radius:50%}
+.pa101-orchestrator-body aside button code{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pa101-orchestrator-body aside button.active{color:#fff;background:#1d4ed8}
+.pa101-orchestrator-body main{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:10px;padding:20px}
+.pa101-orchestrator-body main strong{overflow-wrap:anywhere;color:#67e8f9}
+.pa101-orchestrator-body main code{overflow-wrap:anywhere}
+.pa101-orchestrator-body main p{margin:0}
+.pa101-orchestrator-body main button{display:flex;align-items:center;gap:6px;padding:8px 10px;color:#fff;background:#2563eb;border:0;border-radius:7px}
+.pa101-orchestrator-body main button:disabled{opacity:.45}
+.pa101-responsibilities{display:grid;grid-template-columns:minmax(150px,.65fr) minmax(0,1.7fr);overflow:hidden;border:1px solid #dbe4ef;border-radius:10px}
+.pa101-responsibilities nav{display:flex;flex-direction:column;gap:6px;padding:12px;background:#f8fafc;border-right:1px solid #dbe4ef}
+.pa101-responsibilities nav button{display:flex;align-items:center;gap:8px;padding:9px;color:#475569;background:#fff;border:1px solid #dbe4ef;border-radius:7px;text-align:left}
+.pa101-responsibilities nav button>span{display:grid;width:24px;height:24px;place-items:center;background:#e2e8f0;border-radius:50%}
+.pa101-responsibilities nav button.active{color:#fff;background:#2563eb;border-color:#2563eb}
+.pa101-responsibilities main{display:flex;min-width:0;flex-direction:column;gap:12px;padding:20px}
+.pa101-responsibilities main p{margin:0;color:#475569}
+.pa101-responsibilities main>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.pa101-responsibilities main code{padding:9px;overflow-wrap:anywhere;color:#1e3a8a;background:#eff6ff;border-radius:7px}
+.pa101-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pa101-toggle button{min-width:0;padding:10px;color:#475569;background:#f8fafc;border:1px solid #dbe4ef;border-radius:8px;font-weight:800}
+.pa101-toggle button.active{color:#fff;background:#2563eb;border-color:#2563eb}
+.pa101-compare{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
+.pa101-compare section{display:flex;min-width:0;flex-direction:column;align-items:center;gap:5px;padding:15px;color:#cbd5e1;background:#0f172a;border-radius:9px}
+.pa101-compare strong{color:#86efac}
+.pa101-order{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.pa101-order button{display:flex;min-width:0;flex-direction:column;align-items:center;gap:5px;padding:9px;color:#475569;background:#f8fafc;border:1px solid #dbe4ef;border-radius:7px}
+.pa101-order button>span{display:grid;width:23px;height:23px;place-items:center;background:#e2e8f0;border-radius:50%}
+.pa101-order button strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pa101-order button.active{color:#fff;background:#2563eb;border-color:#2563eb}
+.pa101-limits{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.pa101-errors button>span:first-child{flex:0 0 auto}
+.pa101-errors button>span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pa101-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.pa101-checks button{display:flex;min-width:0;align-items:center;gap:9px;padding:9px;color:#475569;background:#f8fafc;border:1px solid #dbe4ef;border-radius:7px;text-align:left}
+.pa101-checks button.done{color:#065f46;background:#ecfdf5;border-color:#6ee7b7}
+@media(max-width:900px){.pa101-pipeline{grid-template-columns:repeat(3,minmax(0,1fr))}.pa101-limits{grid-template-columns:repeat(3,minmax(0,1fr))}.pa101-order{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:680px){.pa101-smell,.pa101-orchestrator-body,.pa101-responsibilities{grid-template-columns:1fr}.pa101-smell aside,.pa101-orchestrator-body aside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-right:0;border-bottom:1px solid #334155}.pa101-responsibilities nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-right:0;border-bottom:1px solid #dbe4ef}.pa101-checks{grid-template-columns:1fr}.pa101-errors button>span:last-child{white-space:normal}.pa101-limits{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pa101-pipeline,.pa101-limits,.pa101-order,.pa101-toggle{grid-template-columns:1fr}.pa101-main-role,.pa101-rule,.pa101-warning{grid-template-columns:1fr}.pa101-smell aside,.pa101-orchestrator-body aside,.pa101-responsibilities nav,.pa101-responsibilities main>div{grid-template-columns:1fr}.pa101-orchestrator>header,.pa101-orchestrator>footer{flex-direction:column}.pa101-compare{grid-template-columns:1fr}.pa101-compare>svg{transform:rotate(90deg)}}
+@media(max-width:380px){.pa101-smell main,.pa101-orchestrator-body main,.pa101-responsibilities main,.pa101-terminal pre{padding:13px}.pa101-main-role{padding:12px}}
+@media(max-width:320px){.pa101-stack,.pa101-delivery{gap:13px}.pa101-pipeline button,.pa101-limits button,.pa101-checks button{padding:8px}}

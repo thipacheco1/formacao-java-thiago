@@ -1,0 +1,605 @@
+.guided-true-encapsulation-lesson {
+  max-width: 100%;
+  overflow: visible;
+}
+.ec111-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+.ec111-principle {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  color: #1e3a8a;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 9px;
+}
+.ec111-principle > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+.ec111-layers,
+.ec111-api,
+.ec111-mutability {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.76fr) minmax(0, 1.35fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.ec111-layers nav,
+.ec111-api nav,
+.ec111-mutability nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+}
+.ec111-layers nav button,
+.ec111-api nav button,
+.ec111-mutability nav button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #111827;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+.ec111-layers nav button > span,
+.ec111-checks button > span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  background: #253047;
+  border-radius: 50%;
+}
+.ec111-layers nav button.active,
+.ec111-api nav button.active,
+.ec111-mutability nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.ec111-api nav code,
+.ec111-mutability nav code {
+  overflow-wrap: anywhere;
+}
+.ec111-layers main,
+.ec111-api main,
+.ec111-mutability main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 21px;
+}
+.ec111-layers main strong,
+.ec111-api main strong,
+.ec111-mutability main strong {
+  color: #67e8f9;
+}
+.ec111-layers main code {
+  max-width: 100%;
+  padding: 9px;
+  overflow-wrap: anywhere;
+  background: #172033;
+  border-radius: 6px;
+}
+.ec111-layers main p,
+.ec111-api main p,
+.ec111-mutability main p {
+  margin: 0;
+}
+.ec111-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.ec111-toggle:has(button:nth-child(3)) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ec111-toggle button {
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  font-weight: 800;
+}
+.ec111-toggle button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.ec111-terminal {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.ec111-terminal header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #1e293b;
+  font-weight: 800;
+}
+.ec111-terminal header .guided-copy {
+  margin-left: auto;
+}
+.ec111-terminal pre {
+  overflow: auto;
+  margin: 0;
+  padding: 18px;
+  white-space: pre-wrap;
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.65;
+}
+.ec111-terminal pre b {
+  color: #93c5fd;
+}
+.ec111-account {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(210px, 0.8fr);
+  gap: 10px;
+}
+.ec111-account > div,
+.ec111-account article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+.ec111-account label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ec111-account input {
+  max-width: 100%;
+  padding: 9px;
+  color: #e2e8f0;
+  background: #172033;
+  border: 1px solid #475569;
+  border-radius: 7px;
+}
+.ec111-account > div > div,
+.ec111-account article {
+  display: flex;
+}
+.ec111-account button,
+.ec111-machine button,
+.ec111-payment button,
+.ec111-debug main button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: #fff;
+  background: #2563eb;
+  border: 0;
+  border-radius: 7px;
+}
+.ec111-account > div > div {
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.ec111-account article strong,
+.ec111-machine article strong,
+.ec111-payment article strong {
+  color: #67e8f9;
+}
+.ec111-account article code,
+.ec111-machine article code,
+.ec111-payment article code {
+  overflow-wrap: anywhere;
+}
+.ec111-account article span {
+  color: #a7f3d0;
+}
+.ec111-questions {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+.ec111-questions span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+}
+.ec111-questions b {
+  color: #1d4ed8;
+}
+.ec111-machine {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.ec111-machine > div {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 7px;
+  padding: 18px;
+  background: #172033;
+}
+.ec111-machine > div span {
+  padding: 10px;
+  text-align: center;
+  background: #253047;
+  border-radius: 7px;
+}
+.ec111-machine > div span:last-child {
+  grid-column: 1/-1;
+  color: #fed7aa;
+  background: #7c2d12;
+}
+.ec111-machine article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 18px;
+}
+.ec111-machine article p {
+  margin: 0;
+}
+.ec111-machine article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ec111-payment {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.75fr) minmax(0, 1.25fr);
+  gap: 10px;
+}
+.ec111-payment article,
+.ec111-payment > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+.ec111-payment > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: center;
+}
+.ec111-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+.ec111-benefits span {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  padding: 10px;
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  border-radius: 7px;
+}
+.ec111-debug {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.ec111-debug > header,
+.ec111-debug > footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #1f2937;
+}
+.ec111-debug > div {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(0, 1.5fr);
+}
+.ec111-debug aside {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-right: 1px solid #334155;
+}
+.ec111-debug aside button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #172033;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+.ec111-debug aside button > span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  background: #253047;
+  border-radius: 50%;
+}
+.ec111-debug aside button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.ec111-debug main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 20px;
+}
+.ec111-debug main strong {
+  color: #67e8f9;
+}
+.ec111-debug main code {
+  overflow-wrap: anywhere;
+}
+.ec111-debug main p {
+  margin: 0;
+}
+.ec111-debug main button:disabled {
+  opacity: 0.45;
+}
+.ec111-errors button > span:first-child {
+  flex: 0 0 auto;
+}
+.ec111-errors button > span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ec111-contract {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.ec111-contract section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  color: #cbd5e1;
+  background: #172033;
+  border-radius: 8px;
+}
+.ec111-contract strong {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+.ec111-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.ec111-checks button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  padding: 9px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+  text-align: left;
+}
+.ec111-checks button > span {
+  color: #fff;
+}
+.ec111-checks button.done {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+.ec111-checks button.done > span {
+  background: #059669;
+}
+.ec111-centralization {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.ec111-centralization nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #334155;
+}
+.ec111-centralization nav button {
+  padding: 10px;
+  color: #94a3b8;
+  background: #172033;
+  border: 0;
+}
+.ec111-centralization nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.ec111-centralization main {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) auto minmax(150px, 0.7fr);
+  align-items: center;
+  gap: 10px;
+  padding: 18px;
+}
+.ec111-centralization main > small,
+.ec111-centralization main > strong {
+  grid-column: 1/-1;
+}
+.ec111-centralization main > strong {
+  color: #67e8f9;
+}
+.ec111-centralization main div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+  border-radius: 7px;
+}
+.ec111-centralization main code {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+@media (max-width: 900px) {
+  .guided-true-encapsulation-lesson .guided-step-nav {
+    scroll-behavior: smooth;
+  }
+}
+@media (max-width: 680px) {
+  .ec111-layers,
+  .ec111-api,
+  .ec111-mutability,
+  .ec111-debug > div,
+  .ec111-machine,
+  .ec111-payment,
+  .ec111-account {
+    grid-template-columns: 1fr;
+  }
+  .ec111-layers nav,
+  .ec111-api nav,
+  .ec111-mutability nav,
+  .ec111-debug aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-right: 0;
+    border-bottom: 1px solid #334155;
+  }
+  .ec111-machine > div {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .ec111-machine > div span:nth-of-type(3) {
+    grid-column: 1/-1;
+  }
+  .ec111-machine > div span:last-child {
+    grid-column: 1/-1;
+  }
+  .ec111-payment > div {
+    grid-template-columns: 1fr;
+  }
+  .ec111-questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ec111-centralization main {
+    grid-template-columns: 1fr;
+  }
+  .ec111-centralization main > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .ec111-errors button > span:last-child {
+    white-space: normal;
+  }
+  .ec111-checks {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .ec111-toggle,
+  .ec111-toggle:has(button:nth-child(3)),
+  .ec111-contract,
+  .ec111-benefits,
+  .ec111-layers nav,
+  .ec111-api nav,
+  .ec111-mutability nav,
+  .ec111-debug aside,
+  .ec111-questions {
+    grid-template-columns: 1fr;
+  }
+  .ec111-centralization nav {
+    grid-template-columns: 1fr;
+  }
+  .ec111-principle {
+    grid-template-columns: 1fr;
+  }
+  .ec111-machine > div {
+    grid-template-columns: 1fr;
+  }
+  .ec111-machine > div > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .ec111-debug > header,
+  .ec111-debug > footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 380px) {
+  .ec111-layers main,
+  .ec111-api main,
+  .ec111-mutability main,
+  .ec111-debug main,
+  .ec111-terminal pre,
+  .ec111-machine article {
+    padding: 13px;
+  }
+  .ec111-centralization main {
+    padding: 13px;
+  }
+}
+@media (max-width: 320px) {
+  .ec111-stack {
+    gap: 13px;
+  }
+  .ec111-contract section,
+  .ec111-checks button {
+    padding: 8px;
+  }
+}

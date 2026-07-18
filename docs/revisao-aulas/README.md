@@ -187,7 +187,17 @@ Esta pasta é a fonte de verdade para reconstruir as aulas da Formação Java se
 - `docs/revisao-aulas/matrizes/023_COMENTARIOS_UTEIS_DOCUMENTACAO.md`
 - Conceito de referência: comentários devem preservar intenção sem disputar a verdade com o código; sintaxe, execução, revisão, segurança, IDE, documentação e Git terminam em decisões e evidências observáveis.
 
-## Experiência atualmente em revisão
+## Experiências atualmente em revisão
+
+A auditoria técnica consolidada das aulas 024 a 039 está em [`AUDITORIA_024_039.md`](AUDITORIA_024_039.md). As aulas 040 a 045 foram implementadas na sequência e documentadas em suas matrizes próprias. Todas continuam `em_revisao` até inspeção visual e aprovação explícita.
+
+A auditoria pedagógica extraordinária e o registro da correção das aulas 041 a 045 estão em [`AUDITORIA_041_045.md`](AUDITORIA_041_045.md). A fórmula estrutural indevida foi removida, conteúdos foram repostos e as matrizes foram corrigidas. A faixa continua `em_revisao` até inspeção visual e aprovação explícita.
+
+Em 2026-07-17, a apresentação produzida no piloto local da Aula 046 foi descartada integralmente. O Codex reconstruiu a experiência do zero em uma oficina única de oito etapas. A Aula 047 entregue pelo Gemini foi auditada na sequência; o Codex corrigiu cobertura, consistência do recálculo, explicações de saída, conclusão persistida e responsividade. Validadores, lint, build e inspeções em desktop, 640 px e 360 px foram aprovados. Ambas permanecem `em_revisao` somente até a aprovação explícita do responsável.
+
+Em 2026-07-17, as aulas 048 a 052 entregues pelo Gemini também foram auditadas e corrigidas pelo Codex. A Aula 048 continha uma falha fatal: duas coleções usadas pela Galeria de Domínios e pela Clínica de Erros não existiam, derrubando a interface ao abrir essas etapas. As coleções e a cobertura foram reconstruídas. Nas cinco aulas foram acrescentados exemplos completos e guiados com `Scanner`, normalização do progresso persistido, foco automático da etapa ativa no celular e ajustes de tipografia e responsividade. O validador dedicado, lint, build e inspeções em desktop, 640 px e 360 px passaram; a faixa permanece `em_revisao` somente até a aprovação explícita do responsável.
+
+Em 2026-07-17, as aulas 053 a 058 entregues pelo Gemini foram auditadas e corrigidas pelo Codex. A auditoria encontrou comandos `jacac`, chamadas `javac` separadas por vírgula, galerias com exemplos prometidos mas ausentes, cobertura prática reduzida e terminologia incorreta sobre passagem por referência. Cada aula passou a ensinar com um programa Java completo e compilável antes do desafio. O validador dedicado compila esses seis programas com o JDK e também protege progresso, portão pedagógico, foco móvel e responsividade. O defeito visual da Clínica de Erros das aulas 049 a 058 foi corrigido na raiz: apenas o primeiro `span` pode receber o círculo numérico, enquanto o título usa `guided-error-label` com até duas linhas legíveis. A faixa permanece `em_revisao` até aprovação visual explícita.
 
 ### Aula 024 — oficina visual de variáveis e nomes profissionais
 
@@ -197,12 +207,22 @@ Esta pasta é a fonte de verdade para reconstruir as aulas da Formação Java se
 - Estado: implementada e tecnicamente validada, aguardando inspeção visual e aprovação do responsável antes de virar referência aprovada.
 - Conceito em avaliação: variável precisa ser ensinada como estado nomeado com tipo, ciclo de vida e fronteira local; nomes profissionais, Rename seguro, saídas e diagnósticos transformam sintaxe em código legível e verificável.
 
+### Aulas 025 a 120 — fundamentos, tipos, precisão, metadados, modelagem, métodos e entrada em OO
+
+- Matrizes: `docs/revisao-aulas/matrizes/025_*.md` a `120_*.md`.
+- Componentes: `GuidedIntegerTypesLesson025.jsx` a `GuidedToStringLesson120.jsx`, com nomes específicos por assunto registrados em `STATUS_REVISAO.json`.
+- Estado: implementadas e auditadas tecnicamente até 2026-07-18; permanecem em revisão até a aprovação visual explícita do responsável.
+- Cobertura: fundamentos, memória, texto, conversões, precisão, localização, API temporal, enum, record, inferência local, varargs, annotations, reflection, sealed, pattern matching, text blocks, exceptions, console, pacotes, documentação oficial, mini projeto Java Core testável, decomposição de `main`, assinaturas, coesão, records de parâmetros, retorno boolean, métodos de cálculo, exibição, leitura defensiva, DRY, debug, Extract Method, mini arquitetura procedural, projetos integrados, checkpoint final, modelagem, classes, estado, comportamento, nascimento, encapsulamento, getters/setters, DTO/domínio, imutabilidade, objetos de valor, record, composição, árvores de objetos, validação distribuída, tipos fortes, colaboração, dependência por parâmetro, delegação, Lei de Demeter, controle de acoplamento, tipos do domínio, normalização, invariantes, valores imutáveis, identidade de objetos, `equals`, `hashCode`, contratos de hash, `HashSet`/`HashMap`, `toString`, representação segura, máscaras de dados e separação entre texto técnico, resumo e regra.
+- Próxima aula curricular: Aula 121 — `static` com critério. Qualquer implementação existente deve ser auditada antes de ser tratada como referência.
+
 ### Integração
 
 - `plataforma-curso/src/components/MarkdownViewer.jsx`
 - `plataforma-curso/src/components/GuidedLessonFacts.jsx`
 - Faixa de resumo: todas as aulas guiadas usam o mesmo componente entre o cabeçalho e o roteiro; somente números, rótulos e texto acessível podem variar. Não criar versões locais desse elemento em CSS de aula.
 - Moldura da aula: `guidedLesson.css` mantém cabeçalho compacto, roteiro lateral `sticky` no desktop, rolagem interna para roteiros altos, ancora trocas de etapa no início do conteúdo, centraliza a etapa ativa no trilho horizontal de celular e fixa a navegação entre aulas no rodapé visível. A raiz da aula deve conservar `overflow: visible`; recortes pertencem somente aos painéis internos. Aulas novas não devem sobrescrever essas dimensões.
+- Clínica de Erros: o círculo numérico deve usar um seletor restrito como `button > span:first-child`; nunca aplique tamanho fixo a todos os `span` do botão. O título completo deve permanecer em `guided-error-label`, legível em até duas linhas, e o menu vira trilho horizontal no celular.
+- Entrega guiada: antes de qualquer desafio aberto, a aula deve oferecer pelo menos um programa completo com classe, `main`, métodos, comando de compilação, comando de execução e saída esperada. O validador da faixa deve compilar esse programa sempre que houver JDK disponível.
 
 ### Interface permanente da plataforma
 
@@ -211,6 +231,14 @@ Esta pasta é a fonte de verdade para reconstruir as aulas da Formação Java se
 - Navegador lateral: `plataforma-curso/src/components/Sidebar.jsx`
 - Acabamento do navegador: `plataforma-curso/src/components/sidebarNavigator.css`
 - Princípio de referência: a interface deve orientar o estudo com hierarquia clara e elementos compactos; a apresentação não pode ocupar o espaço da aprendizagem.
+
+### Sincronização permanente do progresso
+
+- Contrato completo: [`SINCRONIZACAO_PROGRESSO.md`](SINCRONIZACAO_PROGRESSO.md).
+- A conclusão curricular, as etapas do roteiro, a etapa ativa e a última aula precisam permanecer sincronizadas por usuário no Redis.
+- `useLearningStateSync.js` é a ponte obrigatória para as chaves locais `guided-*-lesson-NNN-progress`; aulas novas devem conservar esse padrão de chave.
+- A fila offline nunca deve ser apagada por falha de rede, e a troca de conta no mesmo navegador nunca pode reaproveitar as etapas locais do usuário anterior.
+- APIs de progresso devem aceitar somente a sessão assinada da própria conta ou uma sessão administrativa válida.
 
 ## Atualizar o cronograma
 

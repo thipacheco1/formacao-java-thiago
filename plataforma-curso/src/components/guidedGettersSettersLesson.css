@@ -1,0 +1,714 @@
+.guided-getters-setters-lesson {
+  max-width: 100%;
+  overflow: visible;
+}
+.gs112-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+.gs112-principle {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  color: #1e3a8a;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 9px;
+}
+.gs112-principle > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+.gs112-audit,
+.gs112-setter-compare {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.76fr) minmax(0, 1.35fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-audit nav,
+.gs112-setter-compare nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+}
+.gs112-audit nav button,
+.gs112-setter-compare nav button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #111827;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+.gs112-audit nav button.active,
+.gs112-setter-compare nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.gs112-audit nav code,
+.gs112-setter-compare nav code {
+  overflow-wrap: anywhere;
+}
+.gs112-audit main,
+.gs112-setter-compare main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 21px;
+}
+.gs112-audit main strong,
+.gs112-setter-compare main strong {
+  color: #67e8f9;
+}
+.gs112-audit main code {
+  max-width: 100%;
+  padding: 9px;
+  overflow-wrap: anywhere;
+  background: #172033;
+  border-radius: 6px;
+}
+.gs112-audit main p,
+.gs112-setter-compare main p {
+  margin: 0;
+}
+.gs112-bad-payment {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.85fr);
+  gap: 10px;
+}
+.gs112-bad-payment > div,
+.gs112-bad-payment article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+.gs112-bad-payment label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gs112-bad-payment input,
+.gs112-bad-payment select,
+.gs112-client input {
+  max-width: 100%;
+  padding: 9px;
+  color: #e2e8f0;
+  background: #172033;
+  border: 1px solid #475569;
+  border-radius: 7px;
+}
+.gs112-bad-payment article strong {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+.gs112-bad-payment article.invalid {
+  color: #fed7aa;
+  background: #7c2d12;
+  border-color: #fb923c;
+}
+.gs112-bad-payment article.invalid strong {
+  color: #fff;
+}
+.gs112-terminal {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-terminal header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #1e293b;
+  font-weight: 800;
+}
+.gs112-terminal header .guided-copy {
+  margin-left: auto;
+}
+.gs112-terminal pre {
+  overflow: auto;
+  margin: 0;
+  padding: 18px;
+  white-space: pre-wrap;
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.65;
+}
+.gs112-terminal pre b {
+  color: #93c5fd;
+}
+.gs112-machine {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-machine > div {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 7px;
+  padding: 18px;
+  background: #172033;
+}
+.gs112-machine > div span {
+  padding: 10px;
+  text-align: center;
+  background: #253047;
+  border: 1px solid transparent;
+  border-radius: 7px;
+}
+.gs112-machine > div span:last-child {
+  grid-column: 1/-1;
+}
+.gs112-machine > div span.active {
+  color: #fff;
+  background: #1d4ed8;
+  border-color: #60a5fa;
+}
+.gs112-machine article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 18px;
+}
+.gs112-machine article strong {
+  color: #67e8f9;
+}
+.gs112-machine article code {
+  overflow-wrap: anywhere;
+}
+.gs112-machine article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gs112-machine button,
+.gs112-client button,
+.gs112-product button,
+.gs112-boundary main button,
+.gs112-debug main button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: #fff;
+  background: #2563eb;
+  border: 0;
+  border-radius: 7px;
+}
+.gs112-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.gs112-toggle.gs112-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gs112-toggle button {
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  font-weight: 800;
+}
+.gs112-toggle button.active {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.gs112-names {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.gs112-names section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px;
+  color: #cbd5e1;
+  background: #172033;
+  border-radius: 8px;
+}
+.gs112-names code {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+.gs112-client {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.85fr);
+  gap: 10px;
+}
+.gs112-client > div,
+.gs112-client article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+.gs112-client label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gs112-client > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gs112-client article strong {
+  color: #67e8f9;
+}
+.gs112-client article code {
+  overflow-wrap: anywhere;
+}
+.gs112-client article p {
+  margin: 0;
+}
+.gs112-leak {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+.gs112-leak article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  color: #fed7aa;
+  background: #7c2d12;
+  border-radius: 9px;
+}
+.gs112-leak article.safe {
+  color: #a7f3d0;
+  background: #064e3b;
+}
+.gs112-leak strong {
+  overflow-wrap: anywhere;
+  color: #fff;
+}
+.gs112-leak button {
+  padding: 8px;
+  color: #fff;
+  background: #b45309;
+  border: 1px solid #fdba74;
+  border-radius: 7px;
+}
+.gs112-product {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.75fr) minmax(0, 1.25fr);
+  gap: 10px;
+}
+.gs112-product article,
+.gs112-product > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+}
+.gs112-product article strong {
+  color: #67e8f9;
+}
+.gs112-product > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+}
+.gs112-boundary {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(0, 1.4fr);
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-boundary nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+}
+.gs112-boundary nav button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #111827;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+.gs112-boundary nav button > span,
+.gs112-checks button > span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  background: #253047;
+  border-radius: 50%;
+}
+.gs112-boundary nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.gs112-boundary main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 20px;
+}
+.gs112-boundary main strong {
+  color: #67e8f9;
+}
+.gs112-boundary main p {
+  margin: 0;
+}
+.gs112-boundary main button:disabled,
+.gs112-debug main button:disabled {
+  opacity: 0.45;
+}
+.gs112-refactor {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-refactor nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #334155;
+}
+.gs112-refactor nav button {
+  min-width: 0;
+  padding: 10px;
+  color: #94a3b8;
+  background: #172033;
+  border: 0;
+}
+.gs112-refactor nav button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.gs112-refactor nav code {
+  overflow-wrap: anywhere;
+}
+.gs112-refactor main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 18px;
+}
+.gs112-refactor main section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #172033;
+  border-radius: 7px;
+}
+.gs112-refactor main code,
+.gs112-refactor main strong {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+.gs112-questions {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+.gs112-questions span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+}
+.gs112-questions b {
+  color: #1d4ed8;
+}
+.gs112-debug {
+  overflow: hidden;
+  color: #cbd5e1;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+.gs112-debug > header,
+.gs112-debug > footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #1f2937;
+}
+.gs112-debug > div {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(0, 1.5fr);
+}
+.gs112-debug aside {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-right: 1px solid #334155;
+}
+.gs112-debug aside button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  color: #94a3b8;
+  background: #172033;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+}
+.gs112-debug aside button > span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  background: #253047;
+  border-radius: 50%;
+}
+.gs112-debug aside button.active {
+  color: #fff;
+  background: #1d4ed8;
+}
+.gs112-debug main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 20px;
+}
+.gs112-debug main strong {
+  color: #67e8f9;
+}
+.gs112-debug main code {
+  overflow-wrap: anywhere;
+}
+.gs112-debug main p {
+  margin: 0;
+}
+.gs112-errors button > span:first-child {
+  flex: 0 0 auto;
+}
+.gs112-errors button > span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gs112-contract {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.gs112-contract section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  color: #cbd5e1;
+  background: #172033;
+  border-radius: 8px;
+}
+.gs112-contract strong {
+  overflow-wrap: anywhere;
+  color: #67e8f9;
+}
+.gs112-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.gs112-checks button {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  padding: 9px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+  text-align: left;
+}
+.gs112-checks button > span {
+  color: #fff;
+}
+.gs112-checks button.done {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+.gs112-checks button.done > span {
+  background: #059669;
+}
+@media (max-width: 900px) {
+  .guided-getters-setters-lesson .guided-step-nav {
+    scroll-behavior: smooth;
+  }
+}
+@media (max-width: 680px) {
+  .gs112-audit,
+  .gs112-setter-compare,
+  .gs112-bad-payment,
+  .gs112-machine,
+  .gs112-client,
+  .gs112-product,
+  .gs112-boundary,
+  .gs112-debug > div {
+    grid-template-columns: 1fr;
+  }
+  .gs112-audit nav,
+  .gs112-setter-compare nav,
+  .gs112-boundary nav,
+  .gs112-debug aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-right: 0;
+    border-bottom: 1px solid #334155;
+  }
+  .gs112-machine > div {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .gs112-machine > div span:nth-of-type(3),
+  .gs112-machine > div span:last-child {
+    grid-column: 1/-1;
+  }
+  .gs112-leak,
+  .gs112-refactor main {
+    grid-template-columns: 1fr;
+  }
+  .gs112-leak > svg,
+  .gs112-refactor main > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .gs112-refactor nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gs112-questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gs112-errors button > span:last-child {
+    white-space: normal;
+  }
+  .gs112-checks {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .gs112-toggle,
+  .gs112-toggle.gs112-three,
+  .gs112-names,
+  .gs112-product > div,
+  .gs112-audit nav,
+  .gs112-setter-compare nav,
+  .gs112-boundary nav,
+  .gs112-debug aside,
+  .gs112-refactor nav,
+  .gs112-questions,
+  .gs112-contract {
+    grid-template-columns: 1fr;
+  }
+  .gs112-principle {
+    grid-template-columns: 1fr;
+  }
+  .gs112-machine > div {
+    grid-template-columns: 1fr;
+  }
+  .gs112-machine > div > svg {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .gs112-debug > header,
+  .gs112-debug > footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 380px) {
+  .gs112-audit main,
+  .gs112-setter-compare main,
+  .gs112-machine article,
+  .gs112-boundary main,
+  .gs112-debug main,
+  .gs112-terminal pre,
+  .gs112-refactor main {
+    padding: 13px;
+  }
+}
+@media (max-width: 320px) {
+  .gs112-stack {
+    gap: 13px;
+  }
+  .gs112-contract section,
+  .gs112-checks button {
+    padding: 8px;
+  }
+}
