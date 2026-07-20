@@ -3,13 +3,13 @@
 ## Ponto de retomada confirmado
 
 - Verificação realizada em: **2026-07-19**.
-- Última aula implementada: **140 — M4.36 — Limites de responsabilidade do domínio**.
-- Estado da Aula 140: **`em_revisao`**, tecnicamente validada e ainda sem aprovação visual explícita.
-- Próxima aula autorizada: **141 — M4.37 — Revisão prática de OO e domínio**.
-- Meta atual: reconstruir, em ordem, as aulas **141 a 145** e encerrar integralmente a **Fase 1 — Base Java**.
+- Última aula implementada: **141 — M4.37 — Revisão prática de OO e domínio**.
+- Estado da Aula 141: **`em_revisao`**, tecnicamente validada e ainda sem aprovação visual explícita.
+- Próxima aula autorizada: **142 — M4.38 — Mini-projeto Ordem de Serviço Console**.
+- Meta atual: reconstruir, em ordem, as aulas **142 a 145** e encerrar integralmente a **Fase 1 — Base Java**.
 - A Aula **146** inicia a Fase 2 e não pertence a este marco.
 
-A conferência física encontra 141 componentes guiados, numerados de 000 a 140. A Aula 140 possui componente, matriz e validador próprios; a Aula 141 é o próximo ponto sem esses artefatos.
+A conferência física encontra 142 componentes guiados, numerados de 000 a 141. A Aula 141 possui componente, matriz e validador próprios; a Aula 142 é o próximo ponto sem esses artefatos.
 
 ## Como interpretar este plano
 
@@ -112,4 +112,4 @@ Depois da Aula 145, antes de iniciar a 146:
 
 ## Prompt pronto para um novo chat
 
-> Leia integralmente `docs/revisao-aulas/README.md`, `BLUEPRINT_RECONSTRUCAO_AULAS.md`, `PLANO_FECHAMENTO_FASE_1_121_145.md`, `MODELO_MATRIZ_COBERTURA.md` e o objeto `continuation` de `STATUS_REVISAO.json`. Execute `node tools/validate-review-continuity.mjs` antes de editar. A última aula implementada confirmada é a 140; a próxima autorizada é a 141 — Revisão prática de OO e domínio; a meta é chegar à 145 e encerrar a Fase 1. Trabalhe uma aula por vez. Leia integralmente a aula antiga, as adjacentes relevantes e as referências aprovadas; produza a matriz antes do componente; preserve todo conteúdo único; ensine como professor e mentor com código destacado, saídas, mocks, diagramas, prática, erros e recuperação quando necessários. Integre com `React.lazy`, progresso sincronizável e validador real. Atualize status e cronograma sem marcar como `refeita` antes da minha aprovação visual explícita.
+> Leia integralmente `docs/revisao-aulas/README.md`, `BLUEPRINT_RECONSTRUCAO_AULAS.md`, `PLANO_FECHAMENTO_FASE_1_121_145.md`, `MODELO_MATRIZ_COBERTURA.md` e o objeto `continuation` de `STATUS_REVISAO.json`. Execute `node tools/validate-review-continuity.mjs` antes de editar. A última aula implementada confirmada é a 141; a próxima autorizada é a 142 — Mini-projeto Ordem de Serviço Console; a meta é chegar à 145 e encerrar a Fase 1. Trabalhe uma aula por vez. Leia integralmente a aula antiga, as adjacentes relevantes e as referências aprovadas; produza a matriz antes do componente; preserve todo conteúdo único; ensine como professor e mentor com código destacado, saídas, mocks, diagramas, prática, erros e recuperação quando necessários. Integre com `React.lazy`, progresso sincronizável e validador real. Atualize status e cronograma sem marcar como `refeita` antes da minha aprovação visual explícita.

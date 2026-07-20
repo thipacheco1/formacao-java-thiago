@@ -3,15 +3,15 @@
   "updatedAt": "2026-07-19",
   "continuation": {
     "verifiedAt": "2026-07-19",
-    "lastImplementedLesson": 140,
-    "lastImplementedLessonId": "140_M4_36_LIMITES_DE_RESPONSABILIDADE_DO_DOMINIO_OFICIAL",
+    "lastImplementedLesson": 141,
+    "lastImplementedLessonId": "141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL",
     "lastImplementedStatus": "em_revisao",
-    "nextAuthorizedLesson": 141,
-    "nextAuthorizedLessonId": "141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL",
+    "nextAuthorizedLesson": 142,
+    "nextAuthorizedLessonId": "142_M4_38_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_OFICIAL",
     "milestoneTargetLesson": 145,
     "milestone": "Concluir integralmente a Fase 1 — Base Java, encerrando o M4 de Orientação a Objetos e domínio.",
     "phaseRange": "000-145",
-    "pendingRangeForMilestone": "141-145",
+    "pendingRangeForMilestone": "142-145",
     "nextPhaseStartsAt": 146,
     "continuationPlan": "docs/revisao-aulas/PLANO_FECHAMENTO_FASE_1_121_145.md",
     "authorizationRule": "Avançar uma aula por vez, em ordem numérica, salvo autorização explícita do responsável pelo curso.",
@@ -2176,6 +2176,21 @@
         "plataforma-curso/src/components/GuidedDomainBoundariesLesson140.jsx",
         "plataforma-curso/src/components/guidedDomainBoundariesLesson.css",
         "tools/validate-lesson-140.mjs",
+        "plataforma-curso/src/components/guidedLesson.css",
+        "plataforma-curso/src/components/MarkdownViewer.jsx"
+      ]
+    },
+    "141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL": {
+      "status": "em_revisao",
+      "approvedByUser": false,
+      "reviewedAt": "2026-07-19",
+      "archetype": "oficina-integradora-de-radar-conceitual-arquitetura-valores-composicao-agregado-builder-usecases-fluxo-invariantes-debug-clinica-e-contrato",
+      "summary": "Aula reconstruída em onze etapas como revisão prática integradora: radar de treze conceitos com evidências concretas, árvore de pacotes e mapa de responsabilidades, oficina de Dinheiro, CodigoOs, PeriodoAtendimento e enums, comparação entre Cliente associado e filhos compostos, laboratório da raiz OrdemServico com comandos e histórico, Builder visual com padrões e validação final, três casos de uso coordenando repositório e notificador, fluxo completo com atualização da mesma OS por código, arena de cinco invariantes, mock do IntelliJ com onze paradas, oito diagnósticos e transferência completa dos critérios para o agregado Contrato. O validador compila trinta e uma fontes Java e confirma cinco execuções, incluindo dezesseis testes. O menu com Scanner permanece corretamente reservado à Aula 142. Inspeção visual e aprovação explícita permanecem pendentes.",
+      "referenceFiles": [
+        "docs/revisao-aulas/matrizes/141_REVISAO_PRATICA_OO_DOMINIO.md",
+        "plataforma-curso/src/components/GuidedOoDomainReviewLesson141.jsx",
+        "plataforma-curso/src/components/guidedOoDomainReviewLesson.css",
+        "tools/validate-lesson-141.mjs",
         "plataforma-curso/src/components/guidedLesson.css",
         "plataforma-curso/src/components/MarkdownViewer.jsx"
       ]

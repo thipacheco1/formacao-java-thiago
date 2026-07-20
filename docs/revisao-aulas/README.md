@@ -21,9 +21,9 @@ Esta pasta é a fonte de verdade para reconstruir as aulas da Formação Java se
 
 ## Marco de continuidade confirmado em 2026-07-19
 
-- Última aula implementada: **140 — Limites de responsabilidade do domínio**.
-- Estado da Aula 140: **`em_revisao`**, pois ainda depende de aprovação visual explícita.
-- Próxima aula autorizada: **141 — Revisão prática de OO e domínio**.
+- Última aula implementada: **141 — Revisão prática de OO e domínio**.
+- Estado da Aula 141: **`em_revisao`**, pois ainda depende de aprovação visual explícita.
+- Próxima aula autorizada: **142 — Mini-projeto Ordem de Serviço Console**.
 - Meta autorizada: seguir em ordem até a **145**, encerrando toda a **Fase 1 — Base Java**.
 - A Aula **146** abre a Fase 2 e não deve ser iniciada antes do gate de fechamento registrado no plano.
 - Fonte estruturada: objeto `continuation` de `STATUS_REVISAO.json`.
@@ -219,13 +219,13 @@ Em 2026-07-17, as aulas 053 a 058 entregues pelo Gemini foram auditadas e corrig
 - Estado: implementada e tecnicamente validada, aguardando inspeção visual e aprovação do responsável antes de virar referência aprovada.
 - Conceito em avaliação: variável precisa ser ensinada como estado nomeado com tipo, ciclo de vida e fronteira local; nomes profissionais, Rename seguro, saídas e diagnósticos transformam sintaxe em código legível e verificável.
 
-### Aulas 025 a 140 — fundamentos, tipos, precisão, metadados, modelagem, métodos e entrada em OO
+### Aulas 025 a 141 — fundamentos, tipos, precisão, metadados, modelagem, métodos e entrada em OO
 
-- Matrizes: `docs/revisao-aulas/matrizes/025_*.md` a `140_*.md`.
-- Componentes: `GuidedIntegerTypesLesson025.jsx` a `GuidedDomainBoundariesLesson140.jsx`, com nomes específicos por assunto registrados em `STATUS_REVISAO.json`.
+- Matrizes: `docs/revisao-aulas/matrizes/025_*.md` a `141_*.md`.
+- Componentes: `GuidedIntegerTypesLesson025.jsx` a `GuidedOoDomainReviewLesson141.jsx`, com nomes específicos por assunto registrados em `STATUS_REVISAO.json`.
 - Estado: implementadas e auditadas tecnicamente até 2026-07-19; permanecem em revisão até a aprovação visual explícita do responsável.
 - Cobertura: fundamentos, memória, texto, conversões, precisão, localização, API temporal, enum, record, inferência local, varargs, annotations, reflection, sealed, pattern matching, text blocks, exceptions, console, pacotes, documentação oficial, mini projeto Java Core testável, decomposição de `main`, assinaturas, coesão, records de parâmetros, retorno boolean, métodos de cálculo, exibição, leitura defensiva, DRY, debug, Extract Method, mini arquitetura procedural, projetos integrados, checkpoint final, modelagem, classes, estado, comportamento, nascimento, encapsulamento, getters/setters, DTO/domínio, imutabilidade, objetos de valor, record, composição, árvores de objetos, validação distribuída, tipos fortes, colaboração, dependência por parâmetro, delegação, Lei de Demeter, controle de acoplamento, tipos do domínio, normalização, invariantes, valores imutáveis, identidade de objetos, `equals`, `hashCode`, contratos de hash, `HashSet`/`HashMap`, `toString`, representação segura, máscaras de dados e separação entre texto técnico, resumo e regra.
-- Próxima aula curricular: Aula 141 — Revisão prática de OO e domínio. Qualquer implementação existente deve ser auditada antes de ser tratada como referência.
+- Próxima aula curricular: Aula 142 — Mini-projeto Ordem de Serviço Console. Qualquer implementação existente deve ser auditada antes de ser tratada como referência.
 
 ### Integração
 
@@ -278,4 +278,4 @@ git diff --check
 
 Use este texto:
 
-> Leia integralmente `docs/revisao-aulas/README.md`, `BLUEPRINT_RECONSTRUCAO_AULAS.md`, `PLANO_FECHAMENTO_FASE_1_121_145.md`, `MODELO_MATRIZ_COBERTURA.md` e o objeto `continuation` de `STATUS_REVISAO.json`. Execute `node tools/validate-review-continuity.mjs` antes de editar. A última aula implementada confirmada é a 140; a próxima autorizada é a 141 — Revisão prática de OO e domínio; a meta atual é chegar à 145 e encerrar a Fase 1. Trabalhe uma aula por vez. Antes de implementar, leia a aula antiga inteira e as adjacentes relevantes, produza a matriz de cobertura, preserve todo conteúdo único e siga o padrão de professor, mentor e guia com recursos visuais e evidências quando necessários. Não marque nenhuma aula como refeita antes de executar toda a validação e receber minha aprovação visual explícita.
+> Leia integralmente `docs/revisao-aulas/README.md`, `BLUEPRINT_RECONSTRUCAO_AULAS.md`, `PLANO_FECHAMENTO_FASE_1_121_145.md`, `MODELO_MATRIZ_COBERTURA.md` e o objeto `continuation` de `STATUS_REVISAO.json`. Execute `node tools/validate-review-continuity.mjs` antes de editar. A última aula implementada confirmada é a 141; a próxima autorizada é a 142 — Mini-projeto Ordem de Serviço Console; a meta atual é chegar à 145 e encerrar a Fase 1. Trabalhe uma aula por vez. Antes de implementar, leia a aula antiga inteira e as adjacentes relevantes, produza a matriz de cobertura, preserve todo conteúdo único e siga o padrão de professor, mentor e guia com recursos visuais e evidências quando necessários. Não marque nenhuma aula como refeita antes de executar toda a validação e receber minha aprovação visual explícita.

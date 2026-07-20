@@ -145,6 +145,7 @@ const GuidedCollectionsInsideObjectsLesson137 = lazy(() => import('./GuidedColle
 const GuidedCompositionCollectionsLesson138 = lazy(() => import('./GuidedCompositionCollectionsLesson138'));
 const GuidedAggregatesLesson139 = lazy(() => import('./GuidedAggregatesLesson139'));
 const GuidedDomainBoundariesLesson140 = lazy(() => import('./GuidedDomainBoundariesLesson140'));
+const GuidedOoDomainReviewLesson141 = lazy(() => import('./GuidedOoDomainReviewLesson141'));
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1866,6 +1867,9 @@ const MarkdownViewerContent = (props) => {
   }
   if (props.lesson?.id?.startsWith('140_')) {
     return <GuidedDomainBoundariesLesson140 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('141_')) {
+    return <GuidedOoDomainReviewLesson141 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

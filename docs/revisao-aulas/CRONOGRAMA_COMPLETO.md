@@ -6,10 +6,10 @@
 
 ## Ponto de continuidade
 
-- Última aula implementada: **140** — estado **em_revisao**.
-- Próxima aula autorizada: **141**.
+- Última aula implementada: **141** — estado **em_revisao**.
+- Próxima aula autorizada: **142**.
 - Marco atual: **Concluir integralmente a Fase 1 — Base Java, encerrando o M4 de Orientação a Objetos e domínio.**
-- Faixa pendente do marco: **141-145**.
+- Faixa pendente do marco: **142-145**.
 - Plano: [`docs/revisao-aulas/PLANO_FECHAMENTO_FASE_1_121_145.md`](PLANO_FECHAMENTO_FASE_1_121_145.md).
 
 ## Resumo geral
@@ -18,8 +18,8 @@
 - Aulas numeradas de 001 a 720: **720**.
 - Aula de abertura 000: **1**.
 - Refeitas e aprovadas: **24**.
-- Em revisão: **117**.
-- Pendentes: **580**.
+- Em revisão: **118**.
+- Pendentes: **579**.
 - Bloqueadas: **0**.
 
 ## Resumo por módulo
@@ -31,7 +31,7 @@
 | M1 | 41 | 3 | 38 | 0 | 0 | 7% |
 | M2 | 28 | 0 | 28 | 0 | 0 | 0% |
 | M3 | 15 | 0 | 15 | 0 | 0 | 0% |
-| M4 | 41 | 0 | 36 | 5 | 0 | 0% |
+| M4 | 41 | 0 | 37 | 4 | 0 | 0% |
 | M5 | 26 | 0 | 0 | 26 | 0 | 0% |
 | M6 | 14 | 0 | 0 | 14 | 0 | 0% |
 | M7 | 15 | 0 | 0 | 15 | 0 | 0% |
@@ -1388,7 +1388,15 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`tools/validate-lesson-140.mjs`](../../tools/validate-lesson-140.mjs)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [141 — M4.37 — Revisão prática OO + domínio](../aulas/141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL.md)
+- [ ] **Em revisão** — [141 — M4.37 — Revisão prática OO + domínio](../aulas/141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas como revisão prática integradora: radar de treze conceitos com evidências concretas, árvore de pacotes e mapa de responsabilidades, oficina de Dinheiro, CodigoOs, PeriodoAtendimento e enums, comparação entre Cliente associado e filhos compostos, laboratório da raiz OrdemServico com comandos e histórico, Builder visual com padrões e validação final, três casos de uso coordenando repositório e notificador, fluxo completo com atualização da mesma OS por código, arena de cinco invariantes, mock do IntelliJ com onze paradas, oito diagnósticos e transferência completa dos critérios para o agregado Contrato. O validador compila trinta e uma fontes Java e confirma cinco execuções, incluindo dezesseis testes. O menu com Scanner permanece corretamente reservado à Aula 142. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/141_REVISAO_PRATICA_OO_DOMINIO.md`](matrizes/141_REVISAO_PRATICA_OO_DOMINIO.md)
+    - [`plataforma-curso/src/components/GuidedOoDomainReviewLesson141.jsx`](../../plataforma-curso/src/components/GuidedOoDomainReviewLesson141.jsx)
+    - [`plataforma-curso/src/components/guidedOoDomainReviewLesson.css`](../../plataforma-curso/src/components/guidedOoDomainReviewLesson.css)
+    - [`tools/validate-lesson-141.mjs`](../../tools/validate-lesson-141.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [ ] **Pendente** — [142 — M4.38 — Mini-projeto Ordem de Serviço Console](../aulas/142_M4_38_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_OFICIAL.md)
 - [ ] **Pendente** — [143 — M4.39 — Mini-projeto Ordem de Serviço Console — Parte 2](../aulas/143_M4_39_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_PARTE_2_OFICIAL.md)
 - [ ] **Pendente** — [144 — M4.40 — Mini-projeto Ordem de Serviço Console — Parte 3](../aulas/144_M4_40_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_PARTE_3_OFICIAL.md)
