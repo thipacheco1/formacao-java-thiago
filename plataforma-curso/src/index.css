@@ -3730,9 +3730,9 @@ body {
 
 .details-module-badge {
   font-size: 0.65rem;
-  font-weight: 700;
-  background: rgba(99, 102, 241, 0.1);
-  color: #a5b4fc;
+  font-weight: 800;
+  background: #e0e7ff;
+  color: #3730a3;
   padding: 2px 6px;
   border-radius: 4px;
   flex-shrink: 0;
@@ -3740,8 +3740,8 @@ body {
 
 .details-module-title {
   font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: #1e293b;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3749,8 +3749,8 @@ body {
 
 .details-module-progress {
   font-size: 0.72rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+  color: #475569;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
@@ -3765,11 +3765,11 @@ body {
 }
 
 .details-lessons-list::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 .details-lessons-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.05);
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
@@ -3783,7 +3783,7 @@ body {
 }
 
 .details-lesson-item:hover {
-  background: rgba(255, 255, 255, 0.01);
+  background: #f1f5f9;
 }
 
 .lesson-status-indicator {
@@ -3796,27 +3796,29 @@ body {
 }
 
 .done-icon {
-  color: #2dd4bf;
-  filter: drop-shadow(0 0 3px rgba(45, 212, 191, 0.2));
+  color: #059669;
+  filter: drop-shadow(0 0 2px rgba(5, 150, 105, 0.15));
 }
 
 .todo-bullet {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: #94a3b8;
 }
 
 .details-lesson-title-text {
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: #334155;
+  font-weight: 550;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .details-lesson-item.completed .details-lesson-title-text {
-  color: var(--text-primary);
+  color: #0f172a;
+  font-weight: 650;
 }
 
 @media (max-width: 768px) {
@@ -4633,7 +4635,7 @@ body {
 .details-lessons-group-title {
   display: block;
   margin-bottom: 6px;
-  color: var(--text-secondary);
+  color: #1e293b;
   font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;

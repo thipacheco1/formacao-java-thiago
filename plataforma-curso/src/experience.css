@@ -3247,8 +3247,8 @@ select {
 .details-lessons-group-title {
   display: block;
   margin-bottom: 6px;
-  color: #667286;
-  font-size: 0.65rem;
+  color: #1e293b;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -3256,20 +3256,21 @@ select {
 
 .details-lessons-group .details-lessons-list {
   max-height: 170px;
-  padding: 8px;
+  padding: 8px 10px;
   overflow-y: auto;
-  background: #fff;
-  border: 1px solid #e0e5ed;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 9px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .details-lesson-item {
-  color: #5e6b7f;
-  border-color: #edf0f4;
+  color: #334155;
+  border-color: #f1f5f9;
 }
 
 .details-lesson-item .done-icon {
-  color: var(--course-accent);
+  color: #059669;
 }
 
 .no-progress-text,
