@@ -1,0 +1,104 @@
+.guided-this-reference-lesson { max-width: 100%; overflow: visible; }
+.th124-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.th124-stack button { cursor: pointer; }
+.th124-stack button:disabled { cursor: not-allowed; opacity: .5; }
+.th124-current, .th124-shadow, .th124-optional, .th124-constructor, .th124-method, .th124-fluent, .th124-value, .th124-passing, .th124-safety { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.th124-current nav, .th124-shadow header, .th124-optional nav, .th124-constructor header, .th124-method header, .th124-fluent header, .th124-value nav, .th124-passing header, .th124-safety nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #172033; }
+.th124-current button, .th124-shadow button, .th124-optional button, .th124-constructor button, .th124-method button, .th124-fluent button, .th124-value button, .th124-passing button, .th124-safety button { padding: 9px 11px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 7px; }
+.th124-current button.active, .th124-shadow button.active, .th124-optional button.active, .th124-constructor button.active, .th124-method button.active, .th124-value button.active, .th124-passing button.active, .th124-safety button.active { color: #fff; background: #7c3aed; border-color: #c4b5fd; }
+.th124-shadow button.danger, .th124-constructor button.danger, .th124-method button.danger, .th124-safety button.danger { color: #fff; background: #9f1239; border-color: #fb7185; }
+.th124-current main, .th124-shadow main, .th124-passing main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; padding: 18px; }
+.th124-current main section, .th124-shadow main section, .th124-passing main section { display: flex; min-width: 0; min-height: 125px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 13px; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.th124-current main section.this-node { color: #fff; border-color: #a78bfa; box-shadow: inset 0 0 28px rgb(124 58 237 / 20%); }
+.th124-current main span, .th124-shadow main span, .th124-passing main section > small, .th124-method main > span, .th124-safety main > span { color: #fbbf24; font-size: .7rem; font-weight: 900; letter-spacing: .07em; }
+.th124-current main code, .th124-shadow main code, .th124-passing main code { color: #c4b5fd; overflow-wrap: anywhere; }
+.th124-current > p, .th124-shadow > p, .th124-fluent > p, .th124-value > p { margin: 0 18px 18px; }
+.th124-shadow main { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); }
+.th124-shadow main section.safe { border-color: #10b981; }
+.th124-shadow main section.danger { border-color: #fb7185; }
+.th124-shadow main section.safe strong { color: #a7f3d0; }
+.th124-shadow main section.danger strong { color: #fda4af; }
+.th124-optional main, .th124-method main, .th124-safety main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; border-left: 4px solid #7c3aed; }
+.th124-optional pre, .th124-method code, .th124-safety code { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.th124-optional p, .th124-method p, .th124-safety p { margin: 0; }
+.th124-constructor main { padding: 20px; border-left: 4px solid transparent; }
+.th124-constructor main.safe { border-color: #10b981; }
+.th124-constructor main.danger { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 12px; border-color: #fb7185; }
+.th124-constructor main.danger > svg { color: #fda4af; }
+.th124-constructor main pre { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.th124-constructor main section { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 8px; }
+.th124-constructor main section code, .th124-constructor main section strong { min-width: 0; padding: 11px; color: #c4b5fd; background: #172033; border-radius: 7px; text-align: center; overflow-wrap: anywhere; }
+.th124-constructor main p { margin: 12px 0 0; }
+.th124-method main.safe, .th124-safety main.safe { border-color: #10b981; }
+.th124-method main.danger, .th124-safety main.danger { border-color: #fb7185; }
+.th124-fluent header { align-items: center; }
+.th124-fluent header > div { display: flex; flex: 1 1 220px; flex-direction: column; gap: 3px; }
+.th124-fluent main { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; padding: 18px; }
+.th124-fluent main section { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 8px; padding: 12px; color: #64748b; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.th124-fluent main section.active { color: #fff; border-color: #a78bfa; }
+.th124-fluent main section.done { color: #a7f3d0; border-color: #10b981; }
+.th124-fluent main code { max-width: 100%; overflow-wrap: anywhere; }
+.th124-value main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 9px; padding: 18px; }
+.th124-value main section { display: flex; min-width: 0; min-height: 105px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 12px; background: #172033; border: 1px solid #334155; border-radius: 8px; }
+.th124-value main section.new { color: #a7f3d0; border-color: #10b981; }
+.th124-value main section span { color: #fbbf24; font-size: .72rem; }
+.th124-passing main { grid-template-columns: minmax(0,.8fr) auto minmax(0,1.2fr); }
+.th124-passing main section.wide { border-color: #f59e0b; }
+.th124-passing main section.narrow { border-color: #10b981; }
+.th124-passing main section > svg { color: #c4b5fd; }
+.th124-passing main p { margin: 0; }
+.th124-safety main > svg { color: #fbbf24; }
+.th124-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.th124-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #172033; }
+.th124-debug > div button { display: flex; align-items: center; gap: 6px; padding: 8px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 6px; }
+.th124-debug > div > span { margin-left: auto; }
+.th124-debug > section { display: grid; grid-template-columns: minmax(210px,.7fr) minmax(0,1.3fr); }
+.th124-debug aside, .th124-errors nav { display: flex; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; background: #172033; }
+.th124-debug aside button, .th124-errors nav button { display: grid; min-width: 0; grid-template-columns: auto minmax(0,1fr); align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; overflow-wrap: anywhere; }
+.th124-debug aside button > span, .th124-errors nav button > span:first-child { display: grid; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.th124-debug aside button.active, .th124-errors nav button.active { color: #fff; background: #7c3aed; border-color: #c4b5fd; }
+.th124-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.th124-debug main > span, .th124-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.th124-debug main h3, .th124-debug main p { margin: 0; }
+.th124-debug main > code { max-width: 100%; padding: 9px; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.th124-debug main > div { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.th124-debug main > div b { color: #fbbf24; }
+.th124-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.th124-errors nav { max-height: 440px; overflow: auto; }
+.th124-errors nav button { display: flex; }
+.th124-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.th124-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.th124-errors main h3, .th124-errors main p { margin: 0; }
+.th124-errors main > span { display: flex; align-items: center; gap: 6px; }
+.th124-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.th124-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.th124-errors main b { color: #c4b5fd; }
+.th124-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.th124-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.th124-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #7c3aed; background: #ede9fe; border-radius: 50%; }
+.th124-checklist button.done { color: #5b21b6; background: #f5f3ff; border-color: #c4b5fd; }
+.th124-checklist button.done span { color: #fff; background: #7c3aed; }
+@media (max-width: 900px) {
+  .th124-debug > section, .th124-errors { grid-template-columns: 1fr; }
+  .th124-debug aside, .th124-errors nav { flex-direction: row; overflow-x: auto; }
+  .th124-debug aside button, .th124-errors nav button { flex: 0 0 min(240px,78vw); }
+  .th124-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .th124-current main, .th124-shadow main, .th124-passing main, .th124-constructor main section, .th124-value main { grid-template-columns: 1fr; }
+  .th124-current main > svg, .th124-shadow main > svg, .th124-passing main > svg, .th124-constructor main section > svg, .th124-value main > svg { justify-self: center; transform: rotate(90deg); }
+  .th124-fluent main { grid-template-columns: 1fr; }
+  .th124-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .th124-current nav, .th124-shadow header, .th124-optional nav, .th124-constructor header, .th124-method header, .th124-value nav, .th124-passing header, .th124-safety nav { flex-direction: column; }
+  .th124-errors main > section { grid-template-columns: 1fr; }
+  .th124-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .th124-checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .th124-debug > div, .th124-fluent header { flex-wrap: wrap; }
+}
+@media (max-width: 320px) {
+  .th124-current main, .th124-shadow main, .th124-optional main, .th124-constructor main, .th124-method main, .th124-fluent main, .th124-value main, .th124-passing main, .th124-safety main, .th124-debug main, .th124-errors main { padding: 12px; }
+}

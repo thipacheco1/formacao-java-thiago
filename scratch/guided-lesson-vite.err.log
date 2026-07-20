@@ -1583,3 +1583,15 @@ Error: ENOTEMPTY, Directory not empty: \\?\C:\Users\win\Documents\Java\formacao-
 }
 
 Node.js v24.16.0
+file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:306
+  sitemapUrls.push(canonical);
+  ^
+
+ReferenceError: sitemapUrls is not defined
+    at file:///C:/Users/win/Documents/Java/formacao-java-thiago/tools/generate-seo-pages.mjs:306:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0
+Stored progress is invalid; refusing to overwrite it.

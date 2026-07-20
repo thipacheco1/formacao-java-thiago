@@ -1238,15 +1238,17 @@ O novo chat deve executar esta ordem:
 1. ler este blueprint inteiro;
 2. ler `README.md` desta pasta;
 3. ler `STATUS_REVISAO.json`;
-4. consultar o início e o módulo relevante do cronograma;
-5. abrir as referências 008 e 010;
-6. confirmar qual aula está autorizada;
-7. ler integralmente o original e as aulas adjacentes;
-8. preencher a matriz de cobertura;
-9. apresentar ou implementar a nova experiência;
-10. validar;
-11. aguardar aprovação;
-12. atualizar o estado e gerar o cronograma.
+4. ler o plano de marco apontado por `continuation.continuationPlan`;
+5. executar `node tools/validate-review-continuity.mjs`;
+6. consultar o início e o módulo relevante do cronograma;
+7. abrir as referências 008 e 010;
+8. confirmar qual aula está autorizada;
+9. ler integralmente o original e as aulas adjacentes;
+10. preencher a matriz de cobertura;
+11. apresentar ou implementar a nova experiência;
+12. validar;
+13. aguardar aprovação;
+14. atualizar o estado e gerar o cronograma.
 
 Se alguma referência estiver ausente ou não compilar, o trabalho deve parar e o problema deve ser informado. Não se deve improvisar silenciosamente um padrão diferente.
 

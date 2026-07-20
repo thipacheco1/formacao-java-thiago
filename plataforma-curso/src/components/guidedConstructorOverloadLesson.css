@@ -1,0 +1,109 @@
+.guided-constructor-overload-lesson { max-width: 100%; overflow: visible; }
+.ov123-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.ov123-stack button { cursor: pointer; }
+.ov123-stack button:disabled { cursor: not-allowed; opacity: .5; }
+.ov123-signature { display: grid; grid-template-columns: minmax(245px,.8fr) minmax(0,1.2fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ov123-signature nav, .ov123-debug aside, .ov123-errors nav { display: flex; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; background: #172033; }
+.ov123-signature nav button, .ov123-debug aside button, .ov123-errors nav button { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; overflow-wrap: anywhere; }
+.ov123-signature nav button > span, .ov123-debug aside button > span, .ov123-errors nav button > span:first-child { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.ov123-signature nav button.active, .ov123-debug aside button.active, .ov123-errors nav button.active { color: #fff; background: #0369a1; border-color: #38bdf8; }
+.ov123-signature nav button.collision { color: #fff; background: #9f1239; border-color: #fb7185; }
+.ov123-signature main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 22px; }
+.ov123-signature main > svg { color: #38bdf8; }
+.ov123-signature main.collision { border-left: 4px solid #fb7185; }
+.ov123-signature main > span, .ov123-defaults main > span, .ov123-factory main > span, .ov123-debug main > span, .ov123-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.ov123-signature main code, .ov123-signature main strong { max-width: 100%; padding: 9px; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-signature main p { margin: 0; }
+.ov123-purpose, .ov123-duplication, .ov123-chain, .ov123-this-error, .ov123-defaults, .ov123-value, .ov123-factory, .ov123-os-flow { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ov123-purpose header, .ov123-duplication header, .ov123-chain header, .ov123-this-error header, .ov123-defaults nav, .ov123-value nav, .ov123-factory header, .ov123-os-flow header { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #172033; }
+.ov123-purpose button, .ov123-duplication button, .ov123-chain button, .ov123-this-error button, .ov123-defaults button, .ov123-value button, .ov123-factory button, .ov123-os-flow button { padding: 9px 11px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 7px; }
+.ov123-purpose button.active, .ov123-duplication button.active, .ov123-chain button.active, .ov123-this-error button.active, .ov123-defaults button.active, .ov123-value button.active, .ov123-factory button.active, .ov123-os-flow button.active { color: #fff; background: #0369a1; border-color: #38bdf8; }
+.ov123-duplication button.danger, .ov123-this-error button.danger, .ov123-defaults button.danger, .ov123-factory button.danger { color: #fff; background: #9f1239; border-color: #fb7185; }
+.ov123-purpose main { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 12px; padding: 20px; }
+.ov123-purpose main > svg { color: #38bdf8; }
+.ov123-purpose main > div { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 8px; }
+.ov123-purpose main span { color: #fbbf24; font-size: .72rem; font-weight: 900; }
+.ov123-purpose h3, .ov123-purpose p { margin: 0; }
+.ov123-purpose code { max-width: 100%; padding: 9px; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-duplication main { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(150px,.7fr); gap: 10px; padding: 18px; }
+.ov123-duplication main section { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 8px; padding: 13px; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.ov123-duplication main code { color: #7dd3fc; overflow-wrap: anywhere; }
+.ov123-duplication main strong { display: flex; align-items: center; justify-content: center; padding: 13px; color: #a7f3d0; background: #064e3b; border-radius: 8px; text-align: center; }
+.ov123-duplication main strong.danger { color: #fecdd3; background: #881337; }
+.ov123-duplication > p, .ov123-chain > p, .ov123-inheritance > p, .ov123-os-flow > p { margin: 0 18px 18px; }
+.ov123-chain main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.2fr); align-items: center; gap: 8px; padding: 18px; }
+.ov123-chain main section { display: flex; min-width: 0; min-height: 105px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 12px; color: #64748b; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.ov123-chain main section.active { color: #fff; border-color: #38bdf8; }
+.ov123-chain main section.principal { color: #a7f3d0; border-color: #10b981; }
+.ov123-chain main small { color: inherit; }
+.ov123-this-error main { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 12px; padding: 20px; border-left: 4px solid transparent; }
+.ov123-this-error main.safe { border-color: #10b981; }
+.ov123-this-error main.danger { border-color: #fb7185; }
+.ov123-this-error main > svg { color: #38bdf8; }
+.ov123-this-error pre { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-this-error p { grid-column: 2; margin: 0; }
+.ov123-defaults main, .ov123-factory main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; border-left: 4px solid transparent; }
+.ov123-defaults main.safe, .ov123-factory main.safe { border-color: #10b981; }
+.ov123-defaults main.danger, .ov123-factory main.danger { border-color: #fb7185; }
+.ov123-defaults h3, .ov123-defaults p, .ov123-factory p { margin: 0; }
+.ov123-defaults code, .ov123-factory code { max-width: 100%; padding: 10px; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-defaults main strong { padding: 7px 10px; color: #fff; background: #0369a1; border-radius: 999px; }
+.ov123-defaults main.danger strong { background: #9f1239; }
+.ov123-value main { display: grid; grid-template-columns: auto minmax(0,.8fr) auto minmax(0,1.2fr) auto minmax(0,.7fr); align-items: center; gap: 9px; padding: 18px; }
+.ov123-value main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; }
+.ov123-value main code, .ov123-value main b, .ov123-value main strong { min-width: 0; padding: 9px; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-os-flow main { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 18px; overflow-x: auto; }
+.ov123-os-flow main > div { display: flex; flex: 1 0 auto; align-items: center; gap: 8px; }
+.ov123-os-flow main span { display: flex; min-width: 120px; min-height: 70px; align-items: center; justify-content: center; padding: 10px; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.ov123-os-flow main span.principal { color: #a7f3d0; border-color: #10b981; }
+.ov123-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ov123-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #172033; }
+.ov123-debug > div button { display: flex; align-items: center; gap: 6px; padding: 8px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 6px; }
+.ov123-debug > div > span { margin-left: auto; }
+.ov123-debug > section { display: grid; grid-template-columns: minmax(210px,.7fr) minmax(0,1.3fr); }
+.ov123-debug aside button { display: grid; grid-template-columns: auto minmax(0,1fr); }
+.ov123-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.ov123-debug main h3, .ov123-debug main p { margin: 0; }
+.ov123-debug main > code { max-width: 100%; padding: 9px; color: #7dd3fc; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.ov123-debug main > div { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.ov123-debug main > div b { color: #fbbf24; }
+.ov123-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.ov123-errors nav { max-height: 440px; overflow: auto; }
+.ov123-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.ov123-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.ov123-errors main h3, .ov123-errors main p { margin: 0; }
+.ov123-errors main > span { display: flex; align-items: center; gap: 6px; }
+.ov123-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.ov123-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.ov123-errors main b { color: #7dd3fc; }
+.ov123-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.ov123-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.ov123-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #0369a1; background: #e0f2fe; border-radius: 50%; }
+.ov123-checklist button.done { color: #075985; background: #f0f9ff; border-color: #7dd3fc; }
+.ov123-checklist button.done span { color: #fff; background: #0284c7; }
+@media (max-width: 900px) {
+  .ov123-signature, .ov123-debug > section, .ov123-errors { grid-template-columns: 1fr; }
+  .ov123-signature nav, .ov123-debug aside, .ov123-errors nav { flex-direction: row; overflow-x: auto; }
+  .ov123-signature nav button, .ov123-debug aside button, .ov123-errors nav button { flex: 0 0 min(250px,78vw); }
+  .ov123-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .ov123-duplication main, .ov123-chain main, .ov123-value main { grid-template-columns: 1fr; }
+  .ov123-chain main > svg, .ov123-value main > svg { justify-self: center; transform: rotate(90deg); }
+  .ov123-this-error main { grid-template-columns: 1fr; }
+  .ov123-this-error p { grid-column: auto; }
+  .ov123-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .ov123-purpose header, .ov123-duplication header, .ov123-chain header, .ov123-this-error header, .ov123-defaults nav, .ov123-value nav, .ov123-factory header, .ov123-os-flow header { flex-direction: column; }
+  .ov123-errors main > section { grid-template-columns: 1fr; }
+  .ov123-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .ov123-checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .ov123-debug > div { flex-wrap: wrap; }
+  .ov123-purpose main { grid-template-columns: 1fr; }
+}
+@media (max-width: 320px) {
+  .ov123-signature main, .ov123-purpose main, .ov123-duplication main, .ov123-chain main, .ov123-this-error main, .ov123-defaults main, .ov123-value main, .ov123-factory main, .ov123-os-flow main, .ov123-debug main, .ov123-errors main { padding: 12px; }
+}

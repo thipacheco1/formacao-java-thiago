@@ -2,7 +2,15 @@
 
 > Este arquivo é gerado por `node tools/update-lesson-review-schedule.mjs`. Não altere as marcações manualmente; atualize `STATUS_REVISAO.json` e gere novamente.
 
-Última atualização declarada: **2026-07-18**.
+Última atualização declarada: **2026-07-19**.
+
+## Ponto de continuidade
+
+- Última aula implementada: **140** — estado **em_revisao**.
+- Próxima aula autorizada: **141**.
+- Marco atual: **Concluir integralmente a Fase 1 — Base Java, encerrando o M4 de Orientação a Objetos e domínio.**
+- Faixa pendente do marco: **141-145**.
+- Plano: [`docs/revisao-aulas/PLANO_FECHAMENTO_FASE_1_121_145.md`](PLANO_FECHAMENTO_FASE_1_121_145.md).
 
 ## Resumo geral
 
@@ -10,8 +18,8 @@
 - Aulas numeradas de 001 a 720: **720**.
 - Aula de abertura 000: **1**.
 - Refeitas e aprovadas: **24**.
-- Em revisão: **97**.
-- Pendentes: **600**.
+- Em revisão: **117**.
+- Pendentes: **580**.
 - Bloqueadas: **0**.
 
 ## Resumo por módulo
@@ -23,7 +31,7 @@
 | M1 | 41 | 3 | 38 | 0 | 0 | 7% |
 | M2 | 28 | 0 | 28 | 0 | 0 | 0% |
 | M3 | 15 | 0 | 15 | 0 | 0 | 0% |
-| M4 | 41 | 0 | 16 | 25 | 0 | 0% |
+| M4 | 41 | 0 | 36 | 5 | 0 | 0% |
 | M5 | 26 | 0 | 0 | 26 | 0 | 0% |
 | M6 | 14 | 0 | 0 | 14 | 0 | 0% |
 | M7 | 15 | 0 | 0 | 15 | 0 | 0% |
@@ -1200,26 +1208,186 @@ A ordem padrão é numérica, preservando pré-requisitos. Uma aula pode ser ant
     - [`tools/validate-lesson-120.mjs`](../../tools/validate-lesson-120.mjs)
     - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
     - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
-- [ ] **Pendente** — [121 — M4.17 — static com critério](../aulas/121_M4_17_STATIC_COM_CRITERIO_OFICIAL.md)
-- [ ] **Pendente** — [122 — M4.18 — final em classes, métodos e atributos](../aulas/122_M4_18_FINAL_EM_CLASSES_METODOS_E_ATRIBUTOS_OFICIAL.md)
-- [ ] **Pendente** — [123 — M4.19 — Sobrecarga de construtores](../aulas/123_M4_19_SOBRECARGA_DE_CONSTRUTORES_OFICIAL.md)
-- [ ] **Pendente** — [124 — M4.20 — this e autorreferência](../aulas/124_M4_20_THIS_E_SELF_REFERENCE_OFICIAL.md)
-- [ ] **Pendente** — [125 — M4.21 — Organização de classes em arquivos](../aulas/125_M4_21_ORGANIZACAO_DE_CLASSES_EM_ARQUIVOS_OFICIAL.md)
-- [ ] **Pendente** — [126 — M4.22 — Pacotes de domínio](../aulas/126_M4_22_PACOTES_DE_DOMINIO_OFICIAL.md)
-- [ ] **Pendente** — [127 — M4.23 — Modificadores de acesso](../aulas/127_M4_23_MODIFICADORES_DE_ACESSO_OFICIAL.md)
-- [ ] **Pendente** — [128 — M4.24 — Coesão em classes](../aulas/128_M4_24_COESAO_EM_CLASSES_OFICIAL.md)
-- [ ] **Pendente** — [129 — M4.25 — Acoplamento entre classes](../aulas/129_M4_25_ACOPLAMENTO_ENTRE_CLASSES_OFICIAL.md)
-- [ ] **Pendente** — [130 — M4.26 — Colaboração entre objetos](../aulas/130_M4_26_COLABORACAO_ENTRE_OBJETOS_OFICIAL.md)
-- [ ] **Pendente** — [131 — M4.27 — Tell, Don't Ask](../aulas/131_M4_27_TELL_DONT_ASK_OFICIAL.md)
-- [ ] **Pendente** — [132 — M4.28 — Objetos anêmicos](../aulas/132_M4_28_OBJETOS_ANEMICOS_OFICIAL.md)
-- [ ] **Pendente** — [133 — M4.29 — Invariantes de domínio](../aulas/133_M4_29_INVARIANTES_DE_DOMINIO_OFICIAL.md)
-- [ ] **Pendente** — [134 — M4.30 — Serviços de domínio inicial](../aulas/134_M4_30_SERVICOS_DE_DOMINIO_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [135 — M4.31 — Factories simples](../aulas/135_M4_31_FACTORIES_SIMPLES_OFICIAL.md)
-- [ ] **Pendente** — [136 — M4.32 — Builder inicial](../aulas/136_M4_32_BUILDER_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [137 — M4.33 — Coleções dentro de objetos](../aulas/137_M4_33_COLECOES_DENTRO_DE_OBJETOS_OFICIAL.md)
-- [ ] **Pendente** — [138 — M4.34 — Composição com coleções](../aulas/138_M4_34_COMPOSICAO_COM_COLECOES_OFICIAL.md)
-- [ ] **Pendente** — [139 — M4.35 — Agregados inicial](../aulas/139_M4_35_AGREGADOS_INICIAL_OFICIAL.md)
-- [ ] **Pendente** — [140 — M4.36 — Limites de responsabilidade do domínio](../aulas/140_M4_36_LIMITES_DE_RESPONSABILIDADE_DO_DOMINIO_OFICIAL.md)
+- [ ] **Em revisão** — [121 — M4.17 — static com critério](../aulas/121_M4_17_STATIC_COM_CRITERIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa visual entre Heap e área da classe, bootstrap da JVM até o main, contador compartilhado, distinção entre constante e referência final para objeto mutável, utilitário puro com construtor privado, erro real de contexto static, factory nomeada, simulador de contaminação entre testes, substituição do estado global por dependência explícita, decisão de design em seis cenários, debug em cinco pausas, oito diagnósticos e desafio Ordem de Serviço. O validador compila nove fontes Java válidas em conjunto, exige a falha do décimo exemplo deliberadamente inválido e confirma propriedade, isolamento, factory, OS e oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/121_STATIC_COM_CRITERIO.md`](matrizes/121_STATIC_COM_CRITERIO.md)
+    - [`plataforma-curso/src/components/GuidedStaticCriteriaLesson121.jsx`](../../plataforma-curso/src/components/GuidedStaticCriteriaLesson121.jsx)
+    - [`plataforma-curso/src/components/guidedStaticCriteriaLesson.css`](../../plataforma-curso/src/components/guidedStaticCriteriaLesson.css)
+    - [`tools/validate-lesson-121.mjs`](../../tools/validate-lesson-121.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [122 — M4.18 — final em classes, métodos e atributos](../aulas/122_M4_18_FINAL_EM_CLASSES_METODOS_E_ATRIBUTOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa dos cinco contextos de final, comparador entre final e static, terminal de reatribuição em variável e parâmetro, grafo de inicialização de atributo em todos os caminhos, entidade Produto com identidade estável e ciclo mutável, diagrama Stack/Heap de referência final, imutabilidade profunda em cinco camadas com cópia defensiva, método e classe final, objetos de valor Email e Dinheiro, constante static final, debug em seis pausas, oito diagnósticos e desafio Ordem de Serviço. O validador compila dez fontes Java válidas em conjunto, exige a falha de três exemplos deliberadamente inválidos e confirma os cinco contextos, OS e oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/122_FINAL_COM_CRITERIO.md`](matrizes/122_FINAL_COM_CRITERIO.md)
+    - [`plataforma-curso/src/components/GuidedFinalCriteriaLesson122.jsx`](../../plataforma-curso/src/components/GuidedFinalCriteriaLesson122.jsx)
+    - [`plataforma-curso/src/components/guidedFinalCriteriaLesson.css`](../../plataforma-curso/src/components/guidedFinalCriteriaLesson.css)
+    - [`tools/validate-lesson-122.mjs`](../../tools/validate-lesson-122.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [123 — M4.19 — Sobrecarga de construtores](../aulas/123_M4_19_SOBRECARGA_DE_CONSTRUTORES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com resolvedor de assinaturas, formas legítimas de nascimento, comparação entre validação duplicada e construtor principal, encadeamento visual com this, falha real quando this não é a primeira instrução, classificador de valores padrão do domínio, objeto Dinheiro por String, BigDecimal e int, comparação entre sobrecarga e static factory, ambiguidade com null, OS com tipos prontos ou construtor de conveniência, debug em seis frames, oito diagnósticos e desafio Contrato. O validador compila oito fontes Java válidas em conjunto, exige a falha de três exemplos deliberadamente inválidos e confirma encadeamento, factory, Contrato e oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/123_SOBRECARGA_DE_CONSTRUTORES.md`](matrizes/123_SOBRECARGA_DE_CONSTRUTORES.md)
+    - [`plataforma-curso/src/components/GuidedConstructorOverloadLesson123.jsx`](../../plataforma-curso/src/components/GuidedConstructorOverloadLesson123.jsx)
+    - [`plataforma-curso/src/components/guidedConstructorOverloadLesson.css`](../../plataforma-curso/src/components/guidedConstructorOverloadLesson.css)
+    - [`tools/validate-lesson-123.mjs`](../../tools/validate-lesson-123.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [124 — M4.20 — this e autorreferência](../aulas/124_M4_20_THIS_E_SELF_REFERENCE_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa do objeto atual entre duas instâncias, simulador do bug nome = nome, comparação entre this obrigatório, opcional e equilibrado, delegação de construtores e falha da primeira instrução, fronteira entre método de instância e static, fluent interface rastreada pela mesma referência, objeto Dinheiro imutável e atalho this == outro em equals, passagem consciente do próprio Pedido para auditoria, limites de null e escape durante construção, debug em oito pausas, oito diagnósticos e desafio Pedido de domínio. O validador compila onze fontes Java válidas em conjunto, exige a falha de dois exemplos deliberadamente inválidos e confirma autorreferência, entidade, auditoria, Pedido e oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/124_THIS_E_AUTORREFERENCIA.md`](matrizes/124_THIS_E_AUTORREFERENCIA.md)
+    - [`plataforma-curso/src/components/GuidedThisReferenceLesson124.jsx`](../../plataforma-curso/src/components/GuidedThisReferenceLesson124.jsx)
+    - [`plataforma-curso/src/components/guidedThisReferenceLesson.css`](../../plataforma-curso/src/components/guidedThisReferenceLesson.css)
+    - [`tools/validate-lesson-124.mjs`](../../tools/validate-lesson-124.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [125 — M4.21 — Organização de classes em arquivos](../aulas/125_M4_21_ORGANIZACAO_DE_CLASSES_EM_ARQUIVOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com regra classe public/arquivo, duas falhas reais de compilação, contraste entre package-private e public, crescimento de arquivo didático, árvores navegáveis de Pedido, OS e Contrato, compilação de múltiplas fontes, mock do IntelliJ, critério de separação, debug e oito diagnósticos. O validador compila 21 fontes válidas, exige duas falhas deliberadas e executa seis programas. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/125_ORGANIZACAO_DE_CLASSES_EM_ARQUIVOS.md`](matrizes/125_ORGANIZACAO_DE_CLASSES_EM_ARQUIVOS.md)
+    - [`plataforma-curso/src/components/GuidedClassFilesLesson125.jsx`](../../plataforma-curso/src/components/GuidedClassFilesLesson125.jsx)
+    - [`plataforma-curso/src/components/guidedClassFilesLesson.css`](../../plataforma-curso/src/components/guidedClassFilesLesson.css)
+    - [`tools/validate-lesson-125.mjs`](../../tools/validate-lesson-125.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [126 — M4.22 — Pacotes de domínio](../aulas/126_M4_22_PACOTES_DE_DOMINIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa package/pasta, ordem do arquivo, pacote default, árvores navegáveis de Pedido, OS e Contrato, decisão de imports, pipeline javac -d out, classpath e nome qualificado, comparação entre organização técnica e por domínio, convenções profissionais, mock do IntelliJ, debug e oito diagnósticos. O validador compila 17 fontes distribuídas em pacotes e executa quatro pontos de entrada qualificados, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/126_PACOTES_DE_DOMINIO.md`](matrizes/126_PACOTES_DE_DOMINIO.md)
+    - [`plataforma-curso/src/components/GuidedDomainPackagesLesson126.jsx`](../../plataforma-curso/src/components/GuidedDomainPackagesLesson126.jsx)
+    - [`plataforma-curso/src/components/guidedDomainPackagesLesson.css`](../../plataforma-curso/src/components/guidedDomainPackagesLesson.css)
+    - [`tools/validate-lesson-126.mjs`](../../tools/validate-lesson-126.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [127 — M4.23 — Modificadores de acesso](../aulas/127_M4_23_MODIFICADORES_DE_ACESSO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com matriz de acesso, fronteira entre API e estado, Cliente com campos privados, Dinheiro com construtor private e factories, Pedido com API pública pequena e validações internas, auxiliar package-private, regras de classes de topo, introdução criteriosa a protected, decisões sobre getters e setters, mock do IntelliJ com seis frames, seis bloqueios reais, oito diagnósticos e desafio Contrato. O validador compila vinte fontes Java válidas, exige a falha de seis acessos deliberadamente proibidos e confirma sete execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/127_MODIFICADORES_DE_ACESSO.md`](matrizes/127_MODIFICADORES_DE_ACESSO.md)
+    - [`plataforma-curso/src/components/GuidedAccessModifiersLesson127.jsx`](../../plataforma-curso/src/components/GuidedAccessModifiersLesson127.jsx)
+    - [`plataforma-curso/src/components/guidedAccessModifiersLesson.css`](../../plataforma-curso/src/components/guidedAccessModifiersLesson.css)
+    - [`tools/validate-lesson-127.mjs`](../../tools/validate-lesson-127.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [128 — M4.24 — Coesão em classes](../aulas/128_M4_24_COESAO_EM_CLASSES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa visual de coesão, comparação entre tamanho e foco, Pedido e Contrato de baixa coesão executáveis, refatoração guiada por motivos de mudança, workspaces de classes coesas, auditoria por responsabilidade, nome, atributos, métodos e pacote, simulador entre classe gigante e fragmentação, mock do IntelliJ com oito paradas, oito diagnósticos e desafio Ordem de Serviço. O validador compila vinte e três fontes Java e confirma seis execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/128_COESAO_EM_CLASSES.md`](matrizes/128_COESAO_EM_CLASSES.md)
+    - [`plataforma-curso/src/components/GuidedClassCohesionLesson128.jsx`](../../plataforma-curso/src/components/GuidedClassCohesionLesson128.jsx)
+    - [`plataforma-curso/src/components/guidedClassCohesionLesson.css`](../../plataforma-curso/src/components/guidedClassCohesionLesson.css)
+    - [`tools/validate-lesson-128.mjs`](../../tools/validate-lesson-128.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [129 — M4.25 — Acoplamento entre classes](../aulas/129_M4_25_ACOPLAMENTO_ENTRE_CLASSES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa das formas de dependência, escala entre acoplamento inevitável e prejudicial, diagnóstico do new escondido em Pedido, refatoração guiada para domínio e infraestrutura, workspace executável de Pedido, direção entre pacotes, comparação entre estado static global e dependência explícita em Contrato, critérios para new, static, herança e interfaces, mock do IntelliJ com depuração, oito diagnósticos e desafio Ordem de Serviço com notificação externa separada. O validador compila vinte e quatro fontes Java e confirma seis execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/129_ACOPLAMENTO_ENTRE_CLASSES.md`](matrizes/129_ACOPLAMENTO_ENTRE_CLASSES.md)
+    - [`plataforma-curso/src/components/GuidedClassCouplingLesson129.jsx`](../../plataforma-curso/src/components/GuidedClassCouplingLesson129.jsx)
+    - [`plataforma-curso/src/components/guidedClassCouplingLesson.css`](../../plataforma-curso/src/components/guidedClassCouplingLesson.css)
+    - [`tools/validate-lesson-129.mjs`](../../tools/validate-lesson-129.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [130 — M4.26 — Colaboração entre objetos](../aulas/130_M4_26_COLABORACAO_ENTRE_OBJETOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com simulador de remetente, mensagem e receptor, autópsia de oito responsabilidades concentradas no main procedural, mapa de responsabilidades, workspace executável de Pedido, sequência temporal de nove mensagens entre Pedido, Produto, ItemPedido e Dinheiro, comparação entre colaboração direta e coordenação por caso de uso, ciclo completo de Ordem de Serviço, laboratório de getters, setters e invariantes, mock do IntelliJ com dez paradas, oito diagnósticos e desafio Contrato. O validador compila vinte e duas fontes Java e confirma cinco execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/130_COLABORACAO_ENTRE_OBJETOS.md`](matrizes/130_COLABORACAO_ENTRE_OBJETOS.md)
+    - [`plataforma-curso/src/components/GuidedObjectCollaborationLesson130.jsx`](../../plataforma-curso/src/components/GuidedObjectCollaborationLesson130.jsx)
+    - [`plataforma-curso/src/components/guidedObjectCollaborationLesson.css`](../../plataforma-curso/src/components/guidedObjectCollaborationLesson.css)
+    - [`tools/validate-lesson-130.mjs`](../../tools/validate-lesson-130.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [131 — M4.27 — Tell, Don't Ask](../aulas/131_M4_27_TELL_DONT_ASK_OFICIAL.md)
+  - Aula reconstruída em onze etapas com lente Ask/Set versus Tell, classificador de commands, queries, coordenação e violação, simulador de transições inválidas por setter, refatoração guiada em quatro passos, workspace executável de Pedido, comparação de estoque por get/set e reservarEstoque, reagendamento atômico de Ordem de Serviço, distinção entre if externo legítimo e regra roubada em Contrato, mock do IntelliJ com dez paradas, oito diagnósticos e desafio PagamentoContrato com confirmação e estorno. O validador compila vinte fontes Java e confirma oito execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/131_TELL_DONT_ASK.md`](matrizes/131_TELL_DONT_ASK.md)
+    - [`plataforma-curso/src/components/GuidedTellDontAskLesson131.jsx`](../../plataforma-curso/src/components/GuidedTellDontAskLesson131.jsx)
+    - [`plataforma-curso/src/components/guidedTellDontAskLesson.css`](../../plataforma-curso/src/components/guidedTellDontAskLesson.css)
+    - [`tools/validate-lesson-131.mjs`](../../tools/validate-lesson-131.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [132 — M4.28 — Objetos anêmicos](../aulas/132_M4_28_OBJETOS_ANEMICOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com scanner de anemia por dados, verbos e regras externas, distinção entre DTO, entidade, objeto de valor e projeção, simulador de crescimento de service compensatório, migração de setter para verbo de domínio em cinco passos, workspaces executáveis de Pedido, Produto, Contrato e Ordem de Serviço, comparação de Strings e setters com tipos fortes e ações atômicas, mock do IntelliJ com doze paradas, oito diagnósticos e desafio Pagamento com ciclo protegido. O validador compila vinte e duas fontes Java e confirma dez execuções, incluindo oito testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/132_OBJETOS_ANEMICOS.md`](matrizes/132_OBJETOS_ANEMICOS.md)
+    - [`plataforma-curso/src/components/GuidedAnemicObjectsLesson132.jsx`](../../plataforma-curso/src/components/GuidedAnemicObjectsLesson132.jsx)
+    - [`plataforma-curso/src/components/guidedAnemicObjectsLesson.css`](../../plataforma-curso/src/components/guidedAnemicObjectsLesson.css)
+    - [`tools/validate-lesson-132.mjs`](../../tools/validate-lesson-132.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [133 — M4.29 — Invariantes de domínio](../aulas/133_M4_29_INVARIANTES_DE_DOMINIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com linha do tempo antes-tentativa-depois, classificador entre validação de entrada e invariante, contraste entre objetos quebrados e nascimento protegido, simuladores de mutações do Pedido e estoque do Produto, workspaces executáveis de Pedido, Produto, Contrato e Ordem de Serviço, proteção com enum, objetos de valor e exceções, entrevista de nove perguntas para descobrir invariantes, mock do IntelliJ com doze paradas, oito diagnósticos e desafio Pagamento submetido a transições proibidas. O validador compila vinte e quatro fontes Java e confirma nove execuções, incluindo doze ataques automatizados. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/133_INVARIANTES_DE_DOMINIO.md`](matrizes/133_INVARIANTES_DE_DOMINIO.md)
+    - [`plataforma-curso/src/components/GuidedDomainInvariantsLesson133.jsx`](../../plataforma-curso/src/components/GuidedDomainInvariantsLesson133.jsx)
+    - [`plataforma-curso/src/components/guidedDomainInvariantsLesson.css`](../../plataforma-curso/src/components/guidedDomainInvariantsLesson.css)
+    - [`tools/validate-lesson-133.mjs`](../../tools/validate-lesson-133.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [134 — M4.30 — Serviços de domínio inicial](../aulas/134_M4_30_SERVICOS_DE_DOMINIO_INICIAL_OFICIAL.md)
+  - Aula reconstruída em onze etapas com mapa de pertencimento por três perguntas, autópsia visual de PedidoService gigante, comparação executável entre regra roubada e comportamento na entidade, roteador entre entidade, objeto de valor, serviço de domínio, aplicação e infraestrutura, política de desconto entre Cliente e Pedido, sequência de oito mensagens, política de alocação com conflito entre várias ordens, scanner de pureza, estado e nomes, mock do IntelliJ com doze paradas, oito diagnósticos e desafio de elegibilidade de reagendamento com motivo explícito. O validador compila vinte e uma fontes Java e confirma seis execuções, incluindo dez testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/134_SERVICOS_DE_DOMINIO_INICIAL.md`](matrizes/134_SERVICOS_DE_DOMINIO_INICIAL.md)
+    - [`plataforma-curso/src/components/GuidedDomainServicesLesson134.jsx`](../../plataforma-curso/src/components/GuidedDomainServicesLesson134.jsx)
+    - [`plataforma-curso/src/components/guidedDomainServicesLesson.css`](../../plataforma-curso/src/components/guidedDomainServicesLesson.css)
+    - [`tools/validate-lesson-134.mjs`](../../tools/validate-lesson-134.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [135 — M4.31 — Factories simples](../aulas/135_M4_31_FACTORIES_SIMPLES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com autópsia de criação espalhada, escolha proporcional entre construtor, static factory, factory class e futuro Builder, pipeline de Dinheiro.de, comparação entre Pedido.novo e importado, simulador de PedidoFactory com contador e alerta de concorrência, workspaces executáveis de OrdemServicoFactory e ContratoFactory, roteador de fronteiras, mock do IntelliJ com doze paradas, oito diagnósticos e desafio PagamentoFactory mantendo confirmação e estorno na entidade. O validador compila vinte e sete fontes Java e confirma sete execuções, incluindo dez testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/135_FACTORIES_SIMPLES.md`](matrizes/135_FACTORIES_SIMPLES.md)
+    - [`plataforma-curso/src/components/GuidedFactoriesLesson135.jsx`](../../plataforma-curso/src/components/GuidedFactoriesLesson135.jsx)
+    - [`plataforma-curso/src/components/guidedFactoriesLesson.css`](../../plataforma-curso/src/components/guidedFactoriesLesson.css)
+    - [`tools/validate-lesson-135.mjs`](../../tools/validate-lesson-135.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [136 — M4.32 — Builder inicial](../aulas/136_M4_32_BUILDER_INICIAL_OFICIAL.md)
+  - Aula reconstruída em onze etapas com autópsia de construtor de dez parâmetros, decisão proporcional entre construtor, factory, Builder e setter, laboratório visual de return this, formulário executável de ContratoBuilder, portão de validação entre Builder e entidade, workshops de OrdemServicoBuilder e PedidoBuilder, risco de reuso do objeto temporário, mock do IntelliJ com doze paradas, oito diagnósticos e desafio completo de PagamentoBuilder sem deslocar confirmar e estornar da entidade. O validador compila vinte e oito fontes Java e confirma seis execuções, incluindo dez testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/136_BUILDER_INICIAL.md`](matrizes/136_BUILDER_INICIAL.md)
+    - [`plataforma-curso/src/components/GuidedBuilderLesson136.jsx`](../../plataforma-curso/src/components/GuidedBuilderLesson136.jsx)
+    - [`plataforma-curso/src/components/guidedBuilderLesson.css`](../../plataforma-curso/src/components/guidedBuilderLesson.css)
+    - [`tools/validate-lesson-136.mjs`](../../tools/validate-lesson-136.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [137 — M4.33 — Coleções dentro de objetos](../aulas/137_M4_33_COLECOES_DENTRO_DE_OBJETOS_OFICIAL.md)
+  - Aula reconstruída em onze etapas com reprodução visual e executável de lista interna apagada por fora, diagrama das proteções de referência, estrutura e elementos, oficina de Pedido com duplicidade, total, remoção e pagamento, comparação entre lista original, visão não modificável e List.copyOf, roteador de consultas mínimas, laboratórios de Contrato com serviços e OS com histórico automático, simulação de alias e cópia defensiva, mock do IntelliJ com doze paradas, oito diagnósticos e desafio completo de Checklist. O validador compila vinte e quatro fontes Java e confirma sete execuções, incluindo doze testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/137_COLECOES_DENTRO_DE_OBJETOS.md`](matrizes/137_COLECOES_DENTRO_DE_OBJETOS.md)
+    - [`plataforma-curso/src/components/GuidedCollectionsInsideObjectsLesson137.jsx`](../../plataforma-curso/src/components/GuidedCollectionsInsideObjectsLesson137.jsx)
+    - [`plataforma-curso/src/components/guidedCollectionsInsideObjectsLesson.css`](../../plataforma-curso/src/components/guidedCollectionsInsideObjectsLesson.css)
+    - [`tools/validate-lesson-137.mjs`](../../tools/validate-lesson-137.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [138 — M4.34 — Composição com coleções](../aulas/138_M4_34_COMPOSICAO_COM_COLECOES_OFICIAL.md)
+  - Aula reconstruída em onze etapas com reprodução de um filho mutável compartilhado entre dois Pedidos, classificador de associação e composição pelas perguntas de ciclo de vida, diagrama da fronteira App-Pai-Filho, barreira package-private comprovada por falha real do javac, oficinas de Pedido compondo ItemPedido e associando Cliente, Contrato compondo ServicoContrato e OS compondo ocorrências, laboratório de identidade, remoção e histórico, mock do IntelliJ com doze paradas, oito diagnósticos e desafio completo de Checklist dono das perguntas. O validador compila vinte e três fontes Java, confirma seis execuções, uma compilação negativa esperada e doze testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/138_COMPOSICAO_COM_COLECOES.md`](matrizes/138_COMPOSICAO_COM_COLECOES.md)
+    - [`plataforma-curso/src/components/GuidedCompositionCollectionsLesson138.jsx`](../../plataforma-curso/src/components/GuidedCompositionCollectionsLesson138.jsx)
+    - [`plataforma-curso/src/components/guidedCompositionCollectionsLesson.css`](../../plataforma-curso/src/components/guidedCompositionCollectionsLesson.css)
+    - [`tools/validate-lesson-138.mjs`](../../tools/validate-lesson-138.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [139 — M4.35 — Agregados inicial](../aulas/139_M4_35_AGREGADOS_INICIAL_OFICIAL.md)
+  - Aula reconstruída em onze etapas com reprodução de Pedido pago cujo total muda por referência externa, comparador entre composição e agregado, mapa de raiz, filhos e associação, simulação conceitual de unidade futura de persistência, Pedido coordenando itens e eventos com bloqueio posterior ao pagamento, OrdemServico concluída somente quando todas as atividades terminam e registrando ocorrências, Contrato protegendo serviços e ativação, laboratório de tamanho, acesso, serviços de domínio e agregado gigante, mock do IntelliJ com quinze paradas, oito diagnósticos e desafio completo de Checklist com perguntas e eventos internos. O validador compila trinta fontes Java e confirma nove execuções, incluindo quatorze testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/139_AGREGADOS_INICIAL.md`](matrizes/139_AGREGADOS_INICIAL.md)
+    - [`plataforma-curso/src/components/GuidedAggregatesLesson139.jsx`](../../plataforma-curso/src/components/GuidedAggregatesLesson139.jsx)
+    - [`plataforma-curso/src/components/guidedAggregatesLesson.css`](../../plataforma-curso/src/components/guidedAggregatesLesson.css)
+    - [`tools/validate-lesson-139.mjs`](../../tools/validate-lesson-139.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
+- [ ] **Em revisão** — [140 — M4.36 — Limites de responsabilidade do domínio](../aulas/140_M4_36_LIMITES_DE_RESPONSABILIDADE_DO_DOMINIO_OFICIAL.md)
+  - Aula reconstruída em onze etapas com autópsia executável de uma entidade que mistura regra, SQL, HTTP e apresentação, classificador de doze responsabilidades, mapa visual de domínio, aplicação e infraestrutura, Pedido puro com fluxo coordenado de persistência e notificação, OrdemServico separando reagendamento de efeitos externos, Contrato preservando serviços, total e ativação no núcleo, análise de data/hora, exceções, logs, histórico, representação e proporcionalidade, mock do IntelliJ seguindo seis paradas pelas camadas, oito diagnósticos e desafio completo de Pagamento com confirmação e estorno. O validador compila trinta e cinco fontes Java e confirma seis execuções, incluindo quatorze testes. Inspeção visual e aprovação explícita permanecem pendentes.
+  - Referências:
+    - [`docs/revisao-aulas/matrizes/140_LIMITES_DE_RESPONSABILIDADE_DO_DOMINIO.md`](matrizes/140_LIMITES_DE_RESPONSABILIDADE_DO_DOMINIO.md)
+    - [`plataforma-curso/src/components/GuidedDomainBoundariesLesson140.jsx`](../../plataforma-curso/src/components/GuidedDomainBoundariesLesson140.jsx)
+    - [`plataforma-curso/src/components/guidedDomainBoundariesLesson.css`](../../plataforma-curso/src/components/guidedDomainBoundariesLesson.css)
+    - [`tools/validate-lesson-140.mjs`](../../tools/validate-lesson-140.mjs)
+    - [`plataforma-curso/src/components/guidedLesson.css`](../../plataforma-curso/src/components/guidedLesson.css)
+    - [`plataforma-curso/src/components/MarkdownViewer.jsx`](../../plataforma-curso/src/components/MarkdownViewer.jsx)
 - [ ] **Pendente** — [141 — M4.37 — Revisão prática OO + domínio](../aulas/141_M4_37_REVISAO_PRATICA_OO_DOMINIO_OFICIAL.md)
 - [ ] **Pendente** — [142 — M4.38 — Mini-projeto Ordem de Serviço Console](../aulas/142_M4_38_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_OFICIAL.md)
 - [ ] **Pendente** — [143 — M4.39 — Mini-projeto Ordem de Serviço Console — Parte 2](../aulas/143_M4_39_MINI_PROJETO_ORDEM_SERVICO_CONSOLE_PARTE_2_OFICIAL.md)

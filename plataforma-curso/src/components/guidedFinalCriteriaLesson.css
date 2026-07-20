@@ -1,0 +1,129 @@
+.guided-final-criteria-lesson { max-width: 100%; overflow: visible; }
+.fn122-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.fn122-stack button { cursor: pointer; }
+.fn122-stack button:disabled { cursor: not-allowed; opacity: .5; }
+.fn122-context-map { display: grid; grid-template-columns: minmax(220px,.7fr) minmax(0,1.3fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.fn122-context-map nav, .fn122-errors nav, .fn122-debug aside { display: flex; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; background: #172033; }
+.fn122-context-map nav button, .fn122-errors nav button, .fn122-debug aside button { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; }
+.fn122-context-map nav button > span, .fn122-errors nav button > span:first-child, .fn122-debug aside button > span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.fn122-context-map nav button.active, .fn122-errors nav button.active, .fn122-debug aside button.active { color: #fff; background: #4338ca; border-color: #818cf8; }
+.fn122-context-map main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 11px; padding: 22px; }
+.fn122-context-map main > svg { color: #a5b4fc; }
+.fn122-context-map main > span, .fn122-debug main > span, .fn122-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.fn122-context-map h3, .fn122-context-map p { margin: 0; }
+.fn122-context-map code { max-width: 100%; padding: 10px; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.fn122-context-map strong { padding: 8px 11px; color: #eef2ff; background: #312e81; border-radius: 999px; }
+.fn122-ownership, .fn122-compile, .fn122-init, .fn122-entity, .fn122-layers, .fn122-inheritance, .fn122-values { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.fn122-ownership header, .fn122-compile header, .fn122-inheritance header, .fn122-values nav, .fn122-init nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #172033; }
+.fn122-ownership button, .fn122-compile button, .fn122-init button, .fn122-entity button, .fn122-reference button, .fn122-inheritance button, .fn122-values button { padding: 9px 11px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 7px; }
+.fn122-ownership button.active, .fn122-compile button.active, .fn122-init button.active, .fn122-inheritance button.active, .fn122-values button.active { color: #fff; background: #4338ca; border-color: #818cf8; }
+.fn122-compile button.danger, .fn122-init button.danger, .fn122-reference button.danger, .fn122-inheritance button.danger { color: #fff; background: #9f1239; border-color: #fb7185; }
+.fn122-ownership main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 18px; }
+.fn122-ownership main section { display: flex; min-width: 0; min-height: 135px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 14px; background: #172033; border: 1px solid #334155; border-radius: 9px; text-align: center; }
+.fn122-ownership main section.lit { border-color: #818cf8; box-shadow: inset 0 0 28px rgb(79 70 229 / 18%); }
+.fn122-ownership main section svg { color: #a5b4fc; }
+.fn122-ownership main section p { margin: 0; }
+.fn122-ownership > pre { max-width: calc(100% - 36px); margin: 0 18px 18px; padding: 11px; white-space: pre-wrap; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.fn122-compile main, .fn122-init main { display: flex; min-width: 0; flex-direction: column; gap: 10px; padding: 20px; border-left: 4px solid transparent; }
+.fn122-compile main.safe, .fn122-init main.safe { border-color: #14b8a6; }
+.fn122-compile main.danger, .fn122-init main.danger { border-color: #fb7185; }
+.fn122-compile main > svg { color: #a5b4fc; }
+.fn122-compile main > span { color: #fbbf24; font-size: .74rem; font-weight: 900; }
+.fn122-compile pre { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.fn122-compile p, .fn122-init h3, .fn122-init p { margin: 0; }
+.fn122-path { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 8px; }
+.fn122-path span { min-width: 0; padding: 10px; background: #172033; border: 1px solid #334155; border-radius: 7px; text-align: center; overflow-wrap: anywhere; }
+.fn122-init main.danger .fn122-path span:last-child { color: #fda4af; border-color: #fb7185; }
+.fn122-entity header { display: flex; align-items: center; gap: 11px; padding: 15px 18px; background: #172033; }
+.fn122-entity header > svg { color: #a5b4fc; }
+.fn122-entity header > div { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.fn122-entity header span, .fn122-entity main section > span, .fn122-reference section > span, .fn122-layers header span, .fn122-inheritance main span { color: #fbbf24; font-size: .7rem; font-weight: 900; letter-spacing: .07em; }
+.fn122-entity main { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; padding: 18px; }
+.fn122-entity main > section { display: flex; min-width: 0; flex-direction: column; gap: 10px; padding: 15px; background: #172033; border-radius: 8px; }
+.fn122-entity main section > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.fn122-entity aside { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.fn122-entity aside article { display: grid; grid-template-columns: auto 1fr; gap: 5px 8px; padding: 12px; background: #172033; border: 1px solid #334155; border-radius: 8px; }
+.fn122-entity aside article svg { color: #a5b4fc; }
+.fn122-entity aside p { grid-column: 2; margin: 0; }
+.fn122-reference { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; color: #cbd5e1; }
+.fn122-reference > section { display: flex; min-width: 0; flex-direction: column; gap: 10px; padding: 16px; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.fn122-reference article { display: flex; min-width: 0; flex-direction: column; gap: 7px; padding: 13px; background: #172033; border-radius: 8px; }
+.fn122-reference article code { color: #c4b5fd; }
+.fn122-reference-result { display: flex; gap: 10px; padding: 13px; color: #334155; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; }
+.fn122-reference-result strong { color: #4338ca; }
+.fn122-reference-result p { margin: 0; }
+.fn122-layers header { display: flex; align-items: center; gap: 11px; padding: 14px 18px; background: #172033; }
+.fn122-layers header > svg { color: #a5b4fc; }
+.fn122-layers header > div { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.fn122-layers main { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 7px; padding: 18px; }
+.fn122-layers main button { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 8px; padding: 12px 8px; color: #94a3b8; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.fn122-layers main button span { display: grid; width: 28px; height: 28px; place-items: center; background: #111827; border-radius: 50%; }
+.fn122-layers main button.done { color: #fff; background: #4338ca; border-color: #818cf8; }
+.fn122-layers footer { margin: 0 18px 18px; padding: 12px; border-radius: 7px; }
+.fn122-layers footer.safe { color: #a7f3d0; background: #064e3b; }
+.fn122-layers footer.warning { color: #fde68a; background: #78350f; }
+.fn122-inheritance main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 18px; }
+.fn122-inheritance main > div { display: flex; min-width: 0; flex-direction: column; gap: 8px; padding: 15px; background: #172033; border: 1px solid #334155; border-radius: 8px; }
+.fn122-inheritance main > div.open { border-color: #818cf8; }
+.fn122-inheritance main > div.blocked { color: #fda4af; border-color: #fb7185; }
+.fn122-inheritance main code { color: #c4b5fd; overflow-wrap: anywhere; }
+.fn122-inheritance > p { margin: 0 18px 18px; }
+.fn122-values main { display: grid; grid-template-columns: auto minmax(0,.8fr) minmax(0,1fr) auto minmax(0,.8fr); align-items: center; gap: 11px; padding: 20px; }
+.fn122-values main > svg { color: #a5b4fc; }
+.fn122-values main > span { color: #fbbf24; font-weight: 900; }
+.fn122-values main code, .fn122-values main strong { min-width: 0; padding: 9px; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.fn122-values main p { grid-column: 2 / -1; margin: 0; }
+.fn122-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.fn122-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #172033; }
+.fn122-debug > div button { display: flex; align-items: center; gap: 6px; padding: 8px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 6px; }
+.fn122-debug > div > span { margin-left: auto; }
+.fn122-debug > section { display: grid; grid-template-columns: minmax(210px,.7fr) minmax(0,1.3fr); }
+.fn122-debug aside button { display: grid; grid-template-columns: auto minmax(0,1fr); overflow-wrap: anywhere; }
+.fn122-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.fn122-debug main h3, .fn122-debug main p { margin: 0; }
+.fn122-debug main > code { max-width: 100%; padding: 9px; color: #c4b5fd; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.fn122-debug main > div { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.fn122-debug main > div b { color: #fbbf24; }
+.fn122-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.fn122-errors nav { max-height: 440px; overflow: auto; }
+.fn122-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.fn122-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.fn122-errors main h3, .fn122-errors main p { margin: 0; }
+.fn122-errors main > span { display: flex; align-items: center; gap: 6px; }
+.fn122-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.fn122-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.fn122-errors main b { color: #c4b5fd; }
+.fn122-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.fn122-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.fn122-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #4338ca; background: #e0e7ff; border-radius: 50%; }
+.fn122-checklist button.done { color: #3730a3; background: #eef2ff; border-color: #a5b4fc; }
+.fn122-checklist button.done span { color: #fff; background: #4f46e5; }
+@media (max-width: 900px) {
+  .fn122-context-map, .fn122-debug > section, .fn122-errors { grid-template-columns: 1fr; }
+  .fn122-context-map nav, .fn122-debug aside, .fn122-errors nav { flex-direction: row; overflow-x: auto; }
+  .fn122-context-map nav button, .fn122-debug aside button, .fn122-errors nav button { flex: 0 0 min(230px,76vw); }
+  .fn122-layers main { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .fn122-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .fn122-ownership main, .fn122-entity main, .fn122-reference, .fn122-inheritance main, .fn122-values main { grid-template-columns: 1fr; }
+  .fn122-ownership main > svg, .fn122-reference > svg, .fn122-inheritance main > svg, .fn122-values main > svg { justify-self: center; transform: rotate(90deg); }
+  .fn122-values main p { grid-column: auto; }
+  .fn122-path { grid-template-columns: 1fr; }
+  .fn122-path > svg { justify-self: center; transform: rotate(90deg); }
+  .fn122-layers main { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .fn122-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .fn122-ownership header, .fn122-compile header, .fn122-init nav, .fn122-inheritance header, .fn122-values nav { flex-direction: column; }
+  .fn122-layers main, .fn122-checklist { grid-template-columns: 1fr; }
+  .fn122-errors main > section { grid-template-columns: 1fr; }
+  .fn122-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .fn122-reference-result { flex-direction: column; }
+}
+@media (max-width: 380px) {
+  .fn122-debug > div, .fn122-entity main section > div { flex-wrap: wrap; }
+}
+@media (max-width: 320px) {
+  .fn122-context-map main, .fn122-ownership main, .fn122-compile main, .fn122-init main, .fn122-entity main, .fn122-reference > section, .fn122-layers main, .fn122-inheritance main, .fn122-values main, .fn122-debug main, .fn122-errors main { padding: 12px; }
+}

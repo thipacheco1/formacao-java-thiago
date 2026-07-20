@@ -11,6 +11,11 @@ const outputPath = path.join(reviewDirectory, 'CRONOGRAMA_COMPLETO.md');
 
 const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
 const knownStatuses = new Set(Object.keys(statusData.statusDefinitions));
+const continuation = statusData.continuation;
+
+if (!continuation) {
+  throw new Error('STATUS_REVISAO.json precisa declarar o objeto continuation.');
+}
 
 const cleanHeading = (line, fallback) => {
   const title = line?.replace(/^(?:\s*#\s*)+/, '').trim();
@@ -73,6 +78,14 @@ const lines = [
   '> Este arquivo é gerado por `node tools/update-lesson-review-schedule.mjs`. Não altere as marcações manualmente; atualize `STATUS_REVISAO.json` e gere novamente.',
   '',
   `Última atualização declarada: **${statusData.updatedAt}**.`,
+  '',
+  '## Ponto de continuidade',
+  '',
+  `- Última aula implementada: **${String(continuation.lastImplementedLesson).padStart(3, '0')}** — estado **${continuation.lastImplementedStatus}**.`,
+  `- Próxima aula autorizada: **${String(continuation.nextAuthorizedLesson).padStart(3, '0')}**.`,
+  `- Marco atual: **${continuation.milestone}**`,
+  `- Faixa pendente do marco: **${continuation.pendingRangeForMilestone}**.`,
+  `- Plano: [\`${continuation.continuationPlan}\`](${path.relative(reviewDirectory, path.join(repositoryRoot, continuation.continuationPlan)).replaceAll('\\', '/')}).`,
   '',
   '## Resumo geral',
   '',

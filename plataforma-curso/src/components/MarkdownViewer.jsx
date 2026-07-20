@@ -125,6 +125,26 @@ const GuidedEntitiesLesson117 = lazy(() => import('./GuidedEntitiesLesson117'));
 const GuidedObjectIdentityLesson118 = lazy(() => import('./GuidedObjectIdentityLesson118'));
 const GuidedEqualsHashCodeLesson119 = lazy(() => import('./GuidedEqualsHashCodeLesson119'));
 const GuidedToStringLesson120 = lazy(() => import('./GuidedToStringLesson120'));
+const GuidedStaticCriteriaLesson121 = lazy(() => import('./GuidedStaticCriteriaLesson121'));
+const GuidedFinalCriteriaLesson122 = lazy(() => import('./GuidedFinalCriteriaLesson122'));
+const GuidedConstructorOverloadLesson123 = lazy(() => import('./GuidedConstructorOverloadLesson123'));
+const GuidedThisReferenceLesson124 = lazy(() => import('./GuidedThisReferenceLesson124'));
+const GuidedClassFilesLesson125 = lazy(() => import('./GuidedClassFilesLesson125'));
+const GuidedDomainPackagesLesson126 = lazy(() => import('./GuidedDomainPackagesLesson126'));
+const GuidedAccessModifiersLesson127 = lazy(() => import('./GuidedAccessModifiersLesson127'));
+const GuidedClassCohesionLesson128 = lazy(() => import('./GuidedClassCohesionLesson128'));
+const GuidedClassCouplingLesson129 = lazy(() => import('./GuidedClassCouplingLesson129'));
+const GuidedObjectCollaborationLesson130 = lazy(() => import('./GuidedObjectCollaborationLesson130'));
+const GuidedTellDontAskLesson131 = lazy(() => import('./GuidedTellDontAskLesson131'));
+const GuidedAnemicObjectsLesson132 = lazy(() => import('./GuidedAnemicObjectsLesson132'));
+const GuidedDomainInvariantsLesson133 = lazy(() => import('./GuidedDomainInvariantsLesson133'));
+const GuidedDomainServicesLesson134 = lazy(() => import('./GuidedDomainServicesLesson134'));
+const GuidedFactoriesLesson135 = lazy(() => import('./GuidedFactoriesLesson135'));
+const GuidedBuilderLesson136 = lazy(() => import('./GuidedBuilderLesson136'));
+const GuidedCollectionsInsideObjectsLesson137 = lazy(() => import('./GuidedCollectionsInsideObjectsLesson137'));
+const GuidedCompositionCollectionsLesson138 = lazy(() => import('./GuidedCompositionCollectionsLesson138'));
+const GuidedAggregatesLesson139 = lazy(() => import('./GuidedAggregatesLesson139'));
+const GuidedDomainBoundariesLesson140 = lazy(() => import('./GuidedDomainBoundariesLesson140'));
 
 const CodeBlockWithCopy = ({ match, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -1786,6 +1806,66 @@ const MarkdownViewerContent = (props) => {
   }
   if (props.lesson?.id?.startsWith('120_')) {
     return <GuidedToStringLesson120 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('121_')) {
+    return <GuidedStaticCriteriaLesson121 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('122_')) {
+    return <GuidedFinalCriteriaLesson122 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('123_')) {
+    return <GuidedConstructorOverloadLesson123 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('124_')) {
+    return <GuidedThisReferenceLesson124 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('125_')) {
+    return <GuidedClassFilesLesson125 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('126_')) {
+    return <GuidedDomainPackagesLesson126 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('127_')) {
+    return <GuidedAccessModifiersLesson127 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('128_')) {
+    return <GuidedClassCohesionLesson128 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('129_')) {
+    return <GuidedClassCouplingLesson129 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('130_')) {
+    return <GuidedObjectCollaborationLesson130 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('131_')) {
+    return <GuidedTellDontAskLesson131 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('132_')) {
+    return <GuidedAnemicObjectsLesson132 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('133_')) {
+    return <GuidedDomainInvariantsLesson133 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('134_')) {
+    return <GuidedDomainServicesLesson134 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('135_')) {
+    return <GuidedFactoriesLesson135 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('136_')) {
+    return <GuidedBuilderLesson136 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('137_')) {
+    return <GuidedCollectionsInsideObjectsLesson137 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('138_')) {
+    return <GuidedCompositionCollectionsLesson138 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('139_')) {
+    return <GuidedAggregatesLesson139 {...props} />;
+  }
+  if (props.lesson?.id?.startsWith('140_')) {
+    return <GuidedDomainBoundariesLesson140 {...props} />;
   }
 
   return <StandardMarkdownViewer {...props} />;

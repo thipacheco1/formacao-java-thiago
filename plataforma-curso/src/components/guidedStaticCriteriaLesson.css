@@ -1,0 +1,136 @@
+.guided-static-criteria-lesson { max-width: 100%; overflow: visible; }
+.st121-stack { display: flex; min-width: 0; flex-direction: column; gap: 16px; }
+.st121-stack button { cursor: pointer; }
+.st121-stack button:disabled { cursor: not-allowed; opacity: .5; }
+.st121-memory { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,.8fr); align-items: center; gap: 12px; color: #cbd5e1; }
+.st121-memory > section { min-width: 0; padding: 16px; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-memory > section > span, .st121-constant main > span, .st121-context main > span, .st121-factory article > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.st121-memory > section > div { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin: 12px 0; }
+.st121-memory article { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 5px; padding: 12px 8px; background: #172033; border: 1px solid #334155; border-radius: 8px; text-align: center; }
+.st121-memory article svg { color: #5eead4; }
+.st121-memory article small { max-width: 100%; overflow-wrap: anywhere; }
+.st121-memory button, .st121-bootstrap button, .st121-constant button, .st121-context button, .st121-factory button, .st121-global button, .st121-decision button { padding: 9px 11px; color: #cbd5e1; background: #172033; border: 1px solid #334155; border-radius: 7px; }
+.st121-memory .class-area article { color: #fff; border-color: #0f766e; box-shadow: inset 0 0 0 1px rgb(45 212 191 / 18%); }
+.st121-memory .class-area p { margin: 9px 0 0; font-size: .84rem; }
+.st121-counter { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-counter header { display: flex; align-items: center; gap: 11px; padding: 14px 18px; background: #172033; }
+.st121-counter header > svg { color: #5eead4; }
+.st121-counter header > div { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.st121-counter header strong { color: #5eead4; }
+.st121-counter main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 18px; }
+.st121-counter main section { display: flex; min-width: 0; flex-direction: column; gap: 9px; padding: 14px; background: #172033; border: 1px solid #334155; border-radius: 8px; }
+.st121-counter main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; text-align: center; text-transform: uppercase; }
+.st121-counter main code { color: #5eead4; overflow-wrap: anywhere; }
+.st121-counter main button { padding: 9px; color: #fff; background: #0f766e; border: 1px solid #2dd4bf; border-radius: 7px; }
+.st121-counter footer { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; padding: 0 18px 18px; }
+.st121-counter footer article { padding: 11px; background: #172033; border-radius: 7px; }
+.st121-counter footer article b { color: #fbbf24; }
+.st121-counter footer article p { margin: 6px 0 0; font-size: .82rem; }
+.st121-bootstrap { display: grid; grid-template-columns: minmax(220px,.7fr) minmax(0,1.3fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-bootstrap nav, .st121-decision nav { display: flex; flex-direction: column; gap: 7px; padding: 14px; background: #172033; }
+.st121-bootstrap nav button, .st121-decision nav button { display: flex; align-items: center; gap: 8px; text-align: left; }
+.st121-bootstrap nav button span, .st121-decision nav button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.st121-bootstrap button.active, .st121-constant button.active, .st121-context button.active, .st121-factory button.active, .st121-global button.active, .st121-decision button.active { color: #fff; background: #0f766e; border-color: #2dd4bf; }
+.st121-bootstrap main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 11px; padding: 22px; }
+.st121-bootstrap main > svg { color: #5eead4; }
+.st121-bootstrap main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.st121-bootstrap h3, .st121-bootstrap p { margin: 0; }
+.st121-bootstrap code, .st121-decision code { max-width: 100%; padding: 10px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.st121-bootstrap main button { display: flex; align-items: center; gap: 6px; }
+.st121-constant, .st121-context { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-constant nav, .st121-context nav, .st121-global header { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #172033; }
+.st121-constant button.danger, .st121-context button.danger, .st121-global button.danger { color: #fff; background: #9f1239; border-color: #fb7185; }
+.st121-constant main, .st121-context main { display: flex; min-width: 0; flex-direction: column; gap: 11px; padding: 20px; border-left: 4px solid transparent; }
+.st121-constant main.safe, .st121-context main.safe { border-color: #14b8a6; }
+.st121-constant main.danger, .st121-context main.danger { border-color: #fb7185; }
+.st121-constant code, .st121-context pre { max-width: 100%; margin: 0; padding: 11px; white-space: pre-wrap; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.st121-constant p, .st121-context p { margin: 0; }
+.st121-utility { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1.2fr) auto minmax(0,.8fr); align-items: stretch; gap: 10px; color: #cbd5e1; }
+.st121-utility section { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 8px; padding: 15px; background: #111827; border: 1px solid #334155; border-radius: 9px; }
+.st121-utility section > span { color: #94a3b8; font-size: .7rem; font-weight: 900; letter-spacing: .07em; }
+.st121-utility input { min-width: 0; padding: 10px; color: #fff; background: #172033; border: 1px solid #475569; border-radius: 6px; }
+.st121-utility code { color: #5eead4; overflow-wrap: anywhere; }
+.st121-utility strong { color: #5eead4; overflow-wrap: anywhere; }
+.st121-criteria { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.st121-criteria article { display: grid; grid-template-columns: auto 1fr; gap: 5px 9px; padding: 14px; color: #334155; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 9px; }
+.st121-criteria article:first-child svg { color: #059669; }
+.st121-criteria article:last-child svg { color: #e11d48; }
+.st121-criteria p { grid-column: 2; margin: 0; }
+.st121-factory { display: grid; grid-template-columns: auto minmax(190px,.75fr) auto minmax(0,1.25fr); align-items: center; gap: 12px; padding: 16px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-factory > svg { color: #5eead4; }
+.st121-factory > section { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
+.st121-factory article { display: flex; min-width: 0; flex-direction: column; gap: 7px; padding: 16px; background: #172033; border: 1px solid #0f766e; border-radius: 9px; }
+.st121-factory article p { margin: 0; }
+.st121-global { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-global main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 12px; padding: 18px; }
+.st121-global main section { display: flex; min-width: 0; flex-direction: column; gap: 9px; padding: 14px; background: #172033; border: 1px solid #334155; border-radius: 8px; }
+.st121-global main section.danger { border-color: #fb7185; }
+.st121-global main section.safe { border-color: #2dd4bf; }
+.st121-global main section.danger strong { color: #fda4af; }
+.st121-global main section.safe strong { color: #5eead4; }
+.st121-global main button { display: flex; align-items: center; gap: 6px; }
+.st121-global > p { margin: 0 18px 18px; }
+.st121-decision { display: grid; grid-template-columns: minmax(210px,.75fr) minmax(0,1.25fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-decision main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 22px; }
+.st121-decision main > svg { color: #5eead4; }
+.st121-decision main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.st121-decision h3, .st121-decision p { margin: 0; }
+.st121-decision strong { padding: 8px 12px; color: #052e2b; background: #5eead4; border-radius: 999px; }
+.st121-debug { overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-debug > div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #172033; }
+.st121-debug > div button { display: flex; align-items: center; gap: 6px; padding: 8px; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 6px; }
+.st121-debug > div > span { margin-left: auto; }
+.st121-debug > section { display: grid; grid-template-columns: minmax(190px,.65fr) minmax(0,1.35fr); }
+.st121-debug aside { display: flex; min-width: 0; flex-direction: column; gap: 5px; padding: 10px; background: #0f172a; }
+.st121-debug aside button { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 7px; padding: 8px; color: #94a3b8; background: transparent; border: 0; border-radius: 6px; text-align: left; overflow-wrap: anywhere; }
+.st121-debug aside button.active { color: #fff; background: #0f766e; }
+.st121-debug main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.st121-debug main > span, .st121-errors main > span { color: #fbbf24; font-size: .72rem; font-weight: 900; letter-spacing: .08em; }
+.st121-debug main h3, .st121-debug main p { margin: 0; }
+.st121-debug main > code { max-width: 100%; padding: 9px; color: #5eead4; background: #172033; border-radius: 7px; overflow-wrap: anywhere; }
+.st121-debug main > div { display: flex; width: 100%; flex-direction: column; gap: 5px; padding: 10px; background: #172033; border-radius: 7px; }
+.st121-debug main > div b { color: #fbbf24; }
+.st121-errors { display: grid; grid-template-columns: minmax(205px,.72fr) minmax(0,1.35fr); overflow: hidden; color: #cbd5e1; background: #111827; border: 1px solid #334155; border-radius: 10px; }
+.st121-errors nav { display: flex; max-height: 440px; min-width: 0; flex-direction: column; gap: 6px; padding: 12px; overflow: auto; background: #172033; }
+.st121-errors nav button { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 9px; color: #94a3b8; background: #111827; border: 1px solid transparent; border-radius: 7px; text-align: left; }
+.st121-errors nav button.active { color: #fff; background: #0f766e; }
+.st121-errors nav button > span:first-child { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; background: rgb(255 255 255 / 8%); border-radius: 50%; }
+.st121-errors nav .guided-error-label { display: -webkit-box; min-width: 0; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.st121-errors main { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+.st121-errors main h3, .st121-errors main p { margin: 0; }
+.st121-errors main > span { display: flex; align-items: center; gap: 6px; }
+.st121-errors main > section { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 10px; }
+.st121-errors main > section div { align-self: stretch; padding: 12px; background: #172033; border-radius: 7px; }
+.st121-errors main b { color: #5eead4; }
+.st121-checklist { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 7px; }
+.st121-checklist button { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 9px; color: #475569; background: #f8fafc; border: 1px solid #dbe4ef; border-radius: 7px; }
+.st121-checklist button span { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; color: #0f766e; background: #ccfbf1; border-radius: 50%; }
+.st121-checklist button.done { color: #065f46; background: #ecfdf5; border-color: #6ee7b7; }
+.st121-checklist button.done span { color: #fff; background: #059669; }
+@media (max-width: 900px) {
+  .st121-bootstrap, .st121-decision, .st121-errors, .st121-debug > section { grid-template-columns: 1fr; }
+  .st121-bootstrap nav, .st121-decision nav, .st121-errors nav, .st121-debug aside { flex-direction: row; overflow-x: auto; }
+  .st121-bootstrap nav button, .st121-decision nav button, .st121-errors nav button, .st121-debug aside button { flex: 0 0 min(230px,76vw); }
+  .st121-checklist { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .st121-memory, .st121-counter main, .st121-utility, .st121-factory, .st121-global main { grid-template-columns: 1fr; }
+  .st121-memory > svg, .st121-utility > svg, .st121-factory > svg, .st121-global main > svg { justify-self: center; transform: rotate(90deg); }
+  .st121-memory > section > div { grid-template-columns: 1fr; }
+  .st121-counter footer { grid-template-columns: 1fr; }
+  .st121-criteria { grid-template-columns: 1fr; }
+  .st121-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .st121-constant nav, .st121-context nav, .st121-global header { flex-direction: column; }
+  .st121-errors main > section { grid-template-columns: 1fr; }
+  .st121-errors main > section > svg { justify-self: center; transform: rotate(90deg); }
+  .st121-checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .st121-debug > div { flex-wrap: wrap; }
+  .st121-factory > section { align-items: stretch; }
+}
+@media (max-width: 320px) {
+  .st121-memory > section, .st121-counter main, .st121-bootstrap main, .st121-constant main, .st121-utility section, .st121-context main, .st121-factory, .st121-global main, .st121-decision main, .st121-debug main, .st121-errors main { padding: 12px; }
+}
