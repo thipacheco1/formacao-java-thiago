@@ -9,6 +9,8 @@
   --jdk-amber: #a05e08;
   --jdk-red: #b53b4c;
   --jdk-dark: #101827;
+  --ps-blue: #2563eb;
+  --ps-muted: #64748b;
 }
 
 .guided-java-platform-lesson,
